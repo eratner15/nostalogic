@@ -44,7 +44,7 @@ const generateRemixPrompt = ai.definePrompt({
           name: z.string(),
         })
       ).describe('Data for the properties to remix.'),
-      rebootType: z.string().describe('The type of reboot to generate (TV Show, Movie, Video Game, Toys).'),
+ rebootType: z.enum(['TV Show', 'Movie', 'Video Game', 'Toys']).describe('The type of reboot to generate (TV Show, Movie, Video Game, Toys).'),
     }),
   },
   output: {

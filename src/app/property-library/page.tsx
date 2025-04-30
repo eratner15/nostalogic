@@ -1,4 +1,3 @@
-'use client';
 
 import {useEffect, useState} from 'react';
 import {getProperty, getProperties, Property} from '@/services/property-data';

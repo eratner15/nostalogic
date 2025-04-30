@@ -1,7 +1,6 @@
-'use client';
 
 import {useEffect, useState} from 'react';
-import {getProperty, Property} from '@/services/property-data';
+import {getProperty, Property, RebootType} from '@/services/property-data';
 import {generateRemix} from '@/ai/flows/generate-remix';
 import {Button} from '@/components/ui/button';
 import {Input} from '@/components/ui/input';
@@ -24,7 +23,7 @@ const HeroBanner = () => (
 export default function RemixLab() {
   const [propertyIds, setPropertyIds] = useState<string[]>([]);
   const [properties, setProperties] = useState<Property[]>([]);
-  const [rebootType, setRebootType] = useState('Movie');
+  const [rebootType, setRebootType] = useState<RebootType>('Movie');
   const [remixTitle, setRemixTitle] = useState('');
   const [remixPremise, setRemixPremise] = useState('');
   const [conceptBreakdowns, setConceptBreakdowns] = useState<

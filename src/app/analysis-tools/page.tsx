@@ -2,7 +2,7 @@
 
 import {useEffect, useState} from 'react';
 import {useSearchParams} from 'next/navigation';
-import {getProperty, Property} from '@/services/property-data';
+import {getProperty, Property, RebootType} from '@/services/property-data';
 import {analyzeProperty} from '@/ai/flows/analyze-property';
 import {Button} from '@/components/ui/button';
 import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select';
@@ -28,7 +28,7 @@ export default function AnalysisTools() {
 
   const [propertyId, setPropertyId] = useState(propertyIdFromURL || '');
   const [property, setProperty] = useState<Property | null>(null);
-  const [rebootType, setRebootType] = useState('Movie');
+  const [rebootType, setRebootType] = useState<RebootType>('Movie');
   const [analysis, setAnalysis] = useState('');
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -77,7 +77,7 @@ export default function AnalysisTools() {
             type="text"
             placeholder="Property ID"
             value={propertyId}
-            onChange={(e) => setPropertyId(e.target.value)}
+            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPropertyId(e.target.value)}
           />
 
           <Select onValueChange={setRebootType}>

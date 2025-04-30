@@ -1,5 +1,3 @@
-'use client';
-
 import {useEffect, useState} from 'react';
 import {getProperty, getFeaturedProperties, Property} from '@/services/property-data';
 import {Button} from '@/components/ui/button';

@@ -44,6 +44,8 @@ id: string;
   rank: number;
 }
 
+export type RebootType = "Movie" | "TV Show" | "Video Game" | "Toys";
+
 /**
  * Asynchronously retrieves property data by ID.
  *

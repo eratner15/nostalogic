@@ -34,7 +34,7 @@ const analyzePropertyPrompt = ai.definePrompt({
   input: {
     schema: z.object({
       propertyName: z.string().describe('The name of the property to analyze.'),
-      rebootType: z.string().describe('The type of reboot to consider.'),
+ rebootType: z.enum(['TV Show', 'Movie', 'Video Game', 'Toys']).describe('The type of reboot to consider.'),
     }),
   },
   output: {
