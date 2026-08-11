@@ -5,16 +5,12 @@
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "next build",
+    "deploy": "npm run build && npx wrangler pages deploy out --project-name nostaldamus --branch main --commit-dirty=true",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "tsc --noEmit",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@geist-ui/core": "^2.3.8",
-    "@geist-ui/react": "^2.2.5",
-    "@genkit-ai/googleai": "^1.0.4",
-    "@genkit-ai/next": "^1.0.4",
-    "@hookform/resolvers": "^4.1.3",
     "@radix-ui/react-accordion": "^1.2.3",
     "@radix-ui/react-alert-dialog": "^1.1.6",
     "@radix-ui/react-avatar": "^1.1.3",
@@ -35,33 +31,24 @@
     "@radix-ui/react-tabs": "^1.1.3",
     "@radix-ui/react-toast": "^1.2.6",
     "@radix-ui/react-tooltip": "^1.1.8",
-    "@tanstack-query-firebase/react": "^1.0.5",
-    "@tanstack/react-query": "^5.66.0",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
-    "date-fns": "^3.6.0",
-    "firebase": "^11.3.0",
-    "genkit": "^1.0.4",
     "lucide-react": "^0.475.0",
-    "next": "^15.3.1",
-    "patch-package": "^8.0.0",
-    "react": "^18.3.1",
-    "react-day-picker": "^8.10.1",
-    "react-dom": "^18.3.1",
-    "react-hook-form": "^7.54.2",
-    "react-markdown": "^10.1.0",
-    "recharts": "^2.15.1",
+    "next": "^16.2.4",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
     "tailwind-merge": "^3.0.1",
-    "tailwindcss-animate": "^1.0.7",
-    "zod": "^3.24.2"
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20.17.32",
-    "@types/react": "^18.3.20",
-    "@types/react-dom": "^18",
-    "genkit-cli": "^1.0.4",
-    "postcss": "^8",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "postcss": "8.5.10",
     "tailwindcss": "^3.4.17",
     "typescript": "^5"
+  },
+  "overrides": {
+    "postcss": "8.5.10"
   }
 }

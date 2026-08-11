@@ -1,143 +1,288 @@
+"use client";
 
-import {useEffect, useState} from 'react';
-import {getProperty, Property, RebootType} from '@/services/property-data';
-import {generateRemix} from '@/ai/flows/generate-remix';
-import {Button} from '@/components/ui/button';
-import {Input} from '@/components/ui/input';
-import {Select, SelectContent, SelectItem, SelectTrigger, SelectValue} from '@/components/ui/select';
+import { Suspense, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
+import { Copy, Layers3, Plus, Shuffle, WandSparkles, X } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import {
+  generateCompositePitch,
+  getProperty,
+  scoredProperties,
+  type PropertyScore,
+  type RebootType,
+} from "@/services/property-data";
 
-const HeroBanner = () => (
-  <div className="relative bg-background py-10 md:py-20">
-    <div className="container mx-auto text-center">
-      <h1 className="text-4xl md:text-5xl font-bold text-foreground mb-4">
-        Unlock the Nostalgia Goldmine
-      </h1>
-      <p className="text-lg md:text-xl text-muted-foreground mb-8">
-        Identify, analyze, and visualize the next big hit from the 90s
-      </p>
-      {/* Removed Link Here */}
-    </div>
-  </div>
-);
+const formats: RebootType[] = ["Streaming Series", "Movie", "Video Game", "Toys", "Live Event", "TV Show"];
 
-export default function RemixLab() {
-  const [propertyIds, setPropertyIds] = useState<string[]>([]);
-  const [properties, setProperties] = useState<Property[]>([]);
-  const [rebootType, setRebootType] = useState<RebootType>('Movie');
-  const [remixTitle, setRemixTitle] = useState('');
-  const [remixPremise, setRemixPremise] = useState('');
-  const [conceptBreakdowns, setConceptBreakdowns] = useState<
-    { propertyId: string; conceptBreakdown: string }[]
-  >([]);
-  const [conceptImageUrl, setConceptImageUrl] = useState<string | null>(null);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+const recipes = [
+  ["Clueless", "Tamagotchi", "Windows 95"],
+  ["Scream", "GoldenEye", "Goosebumps TV/Books"],
+  ["Toy Story", "Beanie Babies", "Nintendo 64"],
+  ["The Craft", "Spice Girls: Spice", "Lisa Frank School Supplies"],
+  ["Chrono Trigger", "Romeo + Juliet", "Nirvana: MTV Unplugged"],
+];
 
-  useEffect(() => {
-    const loadProperties = async () => {
-      // For simplicity, load all properties.  In a real app, you'd want a selection list.
-      // Also, this current implementation is not scalable if you have 1000+ properties
-      // because we are loading all of them at once.  We'd want to implement pagination to address this.
-      // But in the spirit of creating a prototype, we are loading all for now.
-      // TODO: Fix implementation to load properties in batches and load properties in chunks.
-      try {
-        //TODO: Implement this by calling an API.  The API should ideally return a large number of properties
-        const property: Property = await getProperty('1');
-        setProperties([property]);
+function findByName(name: string) {
+  return scoredProperties.find((property) => property.name === name)?.id;
+}
 
-      } catch (e: any) {
-        setError(e.message);
-      }
-    };
+function RemixContent() {
+  const params = useSearchParams();
+  const initialId = params.get("propertyId") || scoredProperties[0].id;
+  const initialBlend = useMemo(() => {
+    const anchor = getProperty(initialId) || scoredProperties[0];
+    const complements = scoredProperties
+      .filter((property) => property.id !== anchor.id && property.category !== anchor.category)
+      .slice(0, 2);
+    return [anchor.id, ...complements.map((property) => property.id)];
+  }, [initialId]);
 
-    loadProperties();
-  }, []);
+  const [selectedIds, setSelectedIds] = useState(initialBlend);
+  const [propertyToAdd, setPropertyToAdd] = useState(scoredProperties[0].id);
+  const [format, setFormat] = useState<RebootType>("Streaming Series");
+  const [copied, setCopied] = useState(false);
 
-  const handleGenerateRemix = async () => {
-    setLoading(true);
-    setError(null);
+  const selectedProperties = useMemo(
+    () => selectedIds.map((id) => getProperty(id)).filter((property): property is PropertyScore => Boolean(property)),
+    [selectedIds]
+  );
+  const properties = selectedProperties.length ? selectedProperties : [scoredProperties[0]];
+  const pitch = generateCompositePitch(properties, format);
+  const isComposite = properties.length > 1;
+  const availableProperties = scoredProperties.filter((property) => !selectedIds.includes(property.id));
 
+  const memo = [
+    pitch.title,
+    pitch.subtitle,
+    pitch.logline,
+    `Composite Readiness: ${pitch.compositeScore}`,
+    `Audience: ${pitch.audience}`,
+    `World Engine: ${pitch.world.join(" ")}`,
+    `Launch: ${pitch.launch.join(" ")}`,
+    `Risk: ${pitch.risk}`,
+  ].join("\n\n");
+
+  const addSource = () => {
+    if (selectedIds.includes(propertyToAdd) || selectedIds.length >= 5) return;
+    setSelectedIds((current) => [...current, propertyToAdd]);
+    const next = scoredProperties.find((property) => property.id !== propertyToAdd && !selectedIds.includes(property.id));
+    if (next) setPropertyToAdd(next.id);
+  };
+
+  const removeSource = (id: string) => {
+    setSelectedIds((current) => current.filter((item) => item !== id));
+  };
+
+  const applyRecipe = (names: string[]) => {
+    const ids = names.map(findByName).filter((id): id is string => Boolean(id));
+    if (ids.length) setSelectedIds(ids);
+  };
+
+  const copyPitch = async () => {
     try {
-      const result = await generateRemix({
-        propertyIds: propertyIds,
-        rebootType: rebootType,
-      });
-
-      setRemixTitle(result.remixTitle);
-      setRemixPremise(result.remixPremise);
-      setConceptBreakdowns(result.conceptBreakdowns);
-      setConceptImageUrl(result.conceptImageUrl || null); // Handle undefined URL
-    } catch (e: any) {
-      setError(e.message);
-    } finally {
-      setLoading(false);
+      await navigator.clipboard.writeText(memo);
+      setCopied(true);
+      window.setTimeout(() => setCopied(false), 1400);
+    } catch {
+      setCopied(false);
     }
   };
 
-  const handlePropertyIdChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setPropertyIds(e.target.value.split(',').map((id) => id.trim()));
-  };
-
   return (
-    <div>
-      <HeroBanner/>
+    <main className="mx-auto max-w-7xl px-4 py-10 md:px-6">
+      <section className="mb-8 grid gap-6 lg:grid-cols-[1fr_430px] lg:items-end">
+        <div>
+          <Badge className="border-accent/40 bg-accent/10 text-accent hover:bg-accent/10">Composite Remix Engine</Badge>
+          <h1 className="mt-4 text-4xl font-semibold tracking-normal md:text-5xl">Build a new property from multiple nostalgia signals.</h1>
+          <p className="mt-4 max-w-3xl text-muted-foreground">
+            Blend two to five 1994-1996 properties into an original franchise concept. The engine synthesizes audience overlap,
+            category tension, preserve/update rules, and rights risk into a development-ready pitch.
+          </p>
+        </div>
+        <div className="scan-card grid gap-3 p-4">
+          <div>
+            <label className="mb-2 block text-xs uppercase tracking-[0.16em] text-muted-foreground">Add Source Property</label>
+            <div className="flex gap-2">
+              <select
+                value={propertyToAdd}
+                onChange={(event) => setPropertyToAdd(event.target.value)}
+                className="h-11 min-w-0 flex-1 rounded-md border border-white/10 bg-card px-3 text-sm"
+              >
+                {availableProperties.map((item) => (
+                  <option key={item.id} value={item.id}>{item.name}</option>
+                ))}
+              </select>
+              <Button onClick={addSource} disabled={selectedIds.length >= 5 || !availableProperties.length} className="h-11 px-3">
+                <Plus className="h-4 w-4" />
+              </Button>
+            </div>
+          </div>
+          <div>
+            <label className="mb-2 block text-xs uppercase tracking-[0.16em] text-muted-foreground">Output Format</label>
+            <select
+              value={format}
+              onChange={(event) => setFormat(event.target.value as RebootType)}
+              className="h-11 w-full rounded-md border border-white/10 bg-card px-3 text-sm"
+            >
+              {formats.map((item) => <option key={item} value={item}>{item}</option>)}
+            </select>
+          </div>
+        </div>
+      </section>
 
-      <div className="container mx-auto py-8">
-        <h2 className="text-2xl font-semibold text-foreground mb-4">Remix Lab</h2>
+      <section className="mb-6 grid gap-3 md:grid-cols-2 xl:grid-cols-5">
+        {recipes.map((recipe) => (
+          <button
+            key={recipe.join("-")}
+            onClick={() => applyRecipe(recipe)}
+            className="rounded-md border border-white/10 bg-white/[0.025] p-3 text-left text-sm leading-6 text-muted-foreground transition hover:border-primary/40 hover:bg-primary/10"
+          >
+            <span className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-primary">
+              <Shuffle className="h-3.5 w-3.5" /> Recipe
+            </span>
+            {recipe.join(" + ")}
+          </button>
+        ))}
+      </section>
 
-        <div className="flex flex-col gap-4 mb-4">
-          <Input
-            type="text"
-            placeholder="Property IDs (comma-separated)"
-            value={propertyIds.join(', ')}
-            onChange={handlePropertyIdChange}
-          />
+      <section className="grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
+        <div className="space-y-6">
+          <div className="scan-card p-5">
+            <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Source stack</p>
+            <h2 className="mt-2 text-2xl font-semibold">{properties.length} signal{properties.length === 1 ? "" : "s"} selected</h2>
+            <div className="mt-5 grid gap-3">
+              {properties.map((property) => (
+                <div key={property.id} className="rounded-md border border-white/10 bg-white/[0.025] p-4">
+                  <div className="flex items-start justify-between gap-3">
+                    <div>
+                      <div className="flex flex-wrap items-center gap-2">
+                        <h3 className="font-semibold">{property.name}</h3>
+                        <Badge variant="outline" className="border-white/15 text-muted-foreground">{property.category}</Badge>
+                      </div>
+                      <p className="mt-2 text-sm leading-6 text-muted-foreground">{property.briefDescription}</p>
+                    </div>
+                    <Button
+                      onClick={() => removeSource(property.id)}
+                      disabled={selectedIds.length <= 1}
+                      variant="ghost"
+                      size="icon"
+                      className="h-8 w-8 shrink-0"
+                      aria-label={`Remove ${property.name}`}
+                    >
+                      <X className="h-4 w-4" />
+                    </Button>
+                  </div>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {property.tags.slice(0, 4).map((tag) => (
+                      <Badge key={tag} variant="outline" className="border-white/15 text-muted-foreground">{tag}</Badge>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
 
-          <Select onValueChange={setRebootType}>
-            <SelectTrigger className="w-[180px]">
-              <SelectValue placeholder="Select Reboot Type"/>
-            </SelectTrigger>
-            <SelectContent>
-              <SelectItem value="Movie">Movie</SelectItem>
-              <SelectItem value="TV Show">TV Show</SelectItem>
-              <SelectItem value="Video Game">Video Game</SelectItem>
-              <SelectItem value="Toys">Toys</SelectItem>
-            </SelectContent>
-          </Select>
-
-          <Button onClick={handleGenerateRemix} disabled={loading}>
-            {loading ? 'Generating...' : 'Generate Remix'}
-          </Button>
+          <div className="grid grid-cols-2 gap-3">
+            <div className="metric-tile">
+              <div className="text-3xl font-semibold">{pitch.compositeScore}</div>
+              <div className="text-sm text-muted-foreground">Composite Readiness</div>
+            </div>
+            <div className="metric-tile">
+              <div className="text-3xl font-semibold">{pitch.riskScore}</div>
+              <div className="text-sm text-muted-foreground">Risk</div>
+            </div>
+          </div>
         </div>
 
-        {error && <p className="text-red-500">Error: {error}</p>}
+        <div className="scan-card overflow-hidden">
+          <div className="border-b border-white/10 p-5">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div>
+                <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Generated new property</p>
+                <h2 className="mt-1 text-3xl font-semibold">{pitch.title}</h2>
+                <p className="mt-2 text-sm text-muted-foreground">{pitch.subtitle}</p>
+              </div>
+              <Button onClick={copyPitch} variant="outline" className="border-white/15 bg-white/5">
+                <Copy className="h-4 w-4" />
+                {copied ? "Copied" : "Copy"}
+              </Button>
+            </div>
+          </div>
+          <div className="space-y-5 p-5">
+            <div>
+              <h3 className="mb-2 flex items-center gap-2 font-semibold text-primary"><WandSparkles className="h-4 w-4" /> Logline</h3>
+              <p className="leading-7 text-muted-foreground">{pitch.logline}</p>
+            </div>
+            <div>
+              <h3 className="mb-2 font-semibold text-secondary">Audience Thesis</h3>
+              <p className="leading-7 text-muted-foreground">{pitch.audience}</p>
+            </div>
 
-        {remixTitle && (
-          <div className="mt-8">
-            <h3 className="text-xl font-semibold text-foreground">Remix Title: {remixTitle}</h3>
-            <p className="text-lg text-foreground mt-2">Premise: {remixPremise}</p>
+            <div>
+              <h3 className="mb-3 flex items-center gap-2 font-semibold text-accent"><Layers3 className="h-4 w-4" /> World Engine</h3>
+              <div className="grid gap-3">
+                {pitch.world.map((item, index) => (
+                  <div key={item} className="rounded-md border border-white/10 bg-white/[0.025] p-3 text-sm leading-6 text-muted-foreground">
+                    <span className="mr-2 font-mono text-white">0{index + 1}</span>{item}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div>
+              <h3 className="mb-3 font-semibold text-primary">Franchise Mechanics</h3>
+              <div className="grid gap-3">
+                {pitch.mechanics.map((item, index) => (
+                  <div key={item} className="rounded-md border border-white/10 bg-white/[0.025] p-3 text-sm leading-6 text-muted-foreground">
+                    <span className="mr-2 font-mono text-white">0{index + 1}</span>{item}
+                  </div>
+                ))}
+              </div>
+            </div>
+            <div className="grid gap-4 md:grid-cols-2">
+              <div>
+                <h3 className="mb-3 font-semibold text-secondary">Preserve DNA</h3>
+                <ul className="list-disc space-y-2 pl-5 text-sm leading-6 text-muted-foreground">
+                  {pitch.preserve.slice(0, 4).map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </div>
+              <div>
+                <h3 className="mb-3 font-semibold text-accent">Update Rules</h3>
+                <ul className="list-disc space-y-2 pl-5 text-sm leading-6 text-muted-foreground">
+                  {pitch.update.slice(0, 4).map((item) => <li key={item}>{item}</li>)}
+                </ul>
+              </div>
+            </div>
+            <div>
+              <h3 className="mb-3 font-semibold text-accent">Launch Campaign</h3>
+              <div className="grid gap-3">
+                {pitch.launch.map((item, index) => (
+                  <div key={item} className="rounded-md border border-white/10 bg-white/[0.025] p-3 text-sm leading-6 text-muted-foreground">
+                    <span className="mr-2 font-mono text-white">0{index + 1}</span>{item}
+                  </div>
+                ))}
+              </div>
+            </div>
 
-            <h4 className="text-lg font-semibold text-foreground mt-4">Concept Breakdowns:</h4>
-            <ul>
-              {conceptBreakdowns.map((item) => (
-                <li key={item.propertyId}>
-                  Property ID: {item.propertyId} - {item.conceptBreakdown}
-                </li>
-              ))}
-            </ul>
-
-            {conceptImageUrl ? (
-              <img
-                src={conceptImageUrl}
-                alt="Concept Image"
-                className="mt-4 pixelated"
-              />
-            ) : (
-              <p className="mt-4">No concept image generated.</p>
+            <div className="rounded-md border border-primary/20 bg-primary/10 p-4 text-sm leading-6 text-muted-foreground">
+              <span className="font-semibold text-primary">Development risk:</span> {pitch.risk}
+            </div>
+            {isComposite && (
+              <div className="rounded-md border border-white/10 bg-white/[0.025] p-4 text-xs leading-5 text-muted-foreground">
+                Rights note: this is a new-property synthesis model, not a literal crossover recommendation. Clear rights before using names, characters, marks, music, artwork, or protected story expression.
+              </div>
             )}
           </div>
-        )}
-      </div>
-    </div>
+        </div>
+      </section>
+    </main>
+  );
+}
+
+export default function RemixLab() {
+  return (
+    <Suspense fallback={<main className="p-8">Loading remix lab...</main>}>
+      <RemixContent />
+    </Suspense>
   );
 }

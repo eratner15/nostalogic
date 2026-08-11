@@ -1,61 +1,52 @@
-import {useEffect, useState} from 'react';
-import {getAuth, onAuthStateChanged, signOut} from 'firebase/auth';
-import {initializeApp} from 'firebase/app';
-import {firebaseConfig} from '@/lib/firebase';
-import {Button} from '@/components/ui/button';
+import Link from "next/link";
+import { Bell, FileText, ListChecks } from "lucide-react";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 
-// Initialize Firebase (if not already initialized)
-try {
-  initializeApp(firebaseConfig);
-} catch (e: any) {
-  // Ignore error if already initialized
-}
+const planned = [
+  {
+    icon: ListChecks,
+    title: "Watchlists",
+    text: "Track specific properties and receive readiness changes when social or rights signals move.",
+  },
+  {
+    icon: FileText,
+    title: "Board Reports",
+    text: "Generate exportable IP memos with model inputs, launch windows, and modernization guidance.",
+  },
+  {
+    icon: Bell,
+    title: "Signal Alerts",
+    text: "Notify strategy teams when a dormant property crosses a readiness or risk threshold.",
+  },
+];
 
-const Account = () => {
-  const [user, setUser] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
-
-  useEffect(() => {
-    const auth = getAuth();
-    const unsubscribe = onAuthStateChanged(auth, (user) => {
-      setUser(user);
-      setLoading(false);
-    });
-
-    return () => unsubscribe(); // Unsubscribe on unmount
-  }, []);
-
-  const handleSignOut = async () => {
-    const auth = getAuth();
-    try {
-      await signOut(auth);
-      // Redirect to home page after sign-out
-      window.location.href = '/';
-    } catch (error: any) {
-      console.error('Sign out error:', error);
-      alert(`Sign out failed: ${error.message}`);
-    }
-  };
-
-  if (loading) {
-    return <p>Loading account information...</p>;
-  }
-
+export default function Account() {
   return (
-    <div className="container mx-auto py-8">
-      <h2 className="text-2xl font-semibold mb-4">Account Information</h2>
-
-      {user ? (
-        <div>
-          <p>Email: {user.email}</p>
-          <p>User ID: {user.uid}</p>
-          <Button onClick={handleSignOut} className="mt-4">Sign Out</Button>
-        </div>
-      ) : (
-        <p>No user logged in.  <a href="/">Go Home and Sign In.</a></p>
-      )}
-    </div>
+    <main className="mx-auto max-w-6xl px-4 py-10 md:px-6">
+      <section className="mb-8">
+        <Badge className="border-secondary/40 bg-secondary/10 text-secondary hover:bg-secondary/10">Workspace Roadmap</Badge>
+        <h1 className="mt-4 text-4xl font-semibold tracking-normal md:text-5xl">Account features are staged for phase two.</h1>
+        <p className="mt-4 max-w-3xl leading-7 text-muted-foreground">
+          The Cloudflare MVP is intentionally static: fast to deploy, easy to share, and safe to review. Workspace
+          features come after the demo validates the scoring and pitch workflows.
+        </p>
+      </section>
+      <section className="grid gap-4 md:grid-cols-3">
+        {planned.map((item) => {
+          const Icon = item.icon;
+          return (
+            <div key={item.title} className="scan-card p-6">
+              <Icon className="h-6 w-6 text-primary" />
+              <h2 className="mt-5 text-xl font-semibold">{item.title}</h2>
+              <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.text}</p>
+            </div>
+          );
+        })}
+      </section>
+      <Button asChild className="mt-6">
+        <Link href="/remix-lab">Open Remix Lab</Link>
+      </Button>
+    </main>
   );
-};
-
-export default Account;
+}
