@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "next build",
-    "deploy": "npm run build && npx wrangler pages deploy out --project-name nostaldamus --branch main --commit-dirty=true",
+    "deploy": "npm run build && npx wrangler deploy",
     "start": "next start",
     "lint": "tsc --noEmit",
     "typecheck": "tsc --noEmit"

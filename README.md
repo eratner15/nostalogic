@@ -33,21 +33,12 @@ npm run build
 
 `npm run lint` currently opens Next.js' interactive ESLint setup because this starter repo did not include an ESLint config.
 
-## Cloudflare Pages Deployment
+## Cloudflare Worker Deployment
 
-This app is configured for static export and Cloudflare Pages.
+The Next.js static export and Hono API deploy together as one Cloudflare Worker. The Worker serves `out` through Assets, mounts the API at `/api/*`, and binds the production D1 database.
 
-Recommended Cloudflare Pages settings:
-
-- Build command: `npm run build`
-- Build output directory: `out`
-- Node version: 20+
-
-`public/_headers` adds baseline security headers and immutable caching for Next static chunks.
-`public/_redirects` normalizes known app routes to their static-export trailing slash paths.
-
-After Pages is connected, attach the custom domain:
-
-```text
-nostaldamus.cafecito-ai.com
+```bash
+npm run deploy
 ```
+
+The canonical domain is `https://nostalogic.cafecito-ai.com`. The legacy `cafecito-ai.com/nostaldamus` routes redirect there. `public/_headers` adds baseline security headers and immutable caching for Next static chunks; `public/_redirects` normalizes static-export routes.
