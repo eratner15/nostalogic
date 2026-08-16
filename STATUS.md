@@ -19,8 +19,13 @@ Updated 2026-08-15 (Yosemite batch, session 2: re-platform LIVE)
   ANTHROPIC_API_KEY is set: no key exists on this machine, so
   `wrangler secret put ANTHROPIC_API_KEY` NEEDS EVAN (one command, then AI
   turns on with no redeploy).
-- scripts/load-seed.mjs ready: node scripts/load-seed.mjs <seed.json>
-  <rubric_version>. Awaiting the 120-property corpus from the seed agent.
+- SEEDED: 120-property corpus loaded via scripts/load-seed.mjs, rubric
+  r2-claude-2026-08-15. Verified live: /api/health properties=120, ranked
+  list (Starship Troopers 82, Banjo-Kazooie 81, Daria 81...), year and
+  category filters correct. Corpus shape: Movie 35, TV 25, Video Game 20,
+  Music 15, Toy/Fad 15, Tech 5, Sports/Media 5; active-blockbuster
+  franchises excluded by design. Scoring notes in the seed agent's
+  nostaldamus-seed-notes.md (scratchpad, not committed - scores live in D1).
 
 ## Done session 1
 - Batch docs installed: docs/FINALIZE-PLAN.md, docs/MASTER-PROMPT.md.
