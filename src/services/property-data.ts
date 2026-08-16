@@ -14,7 +14,7 @@ export type TimingStage = "Pre-Peak" | "Sweet Spot" | "Mature";
 export interface Property {
   id: string;
   name: string;
-  year: 1994 | 1995 | 1996;
+  year: number; // 1993-1998, the confirmed window
   category: PropertyCategory;
   genre: string;
   originalImpact: number;
@@ -58,7 +58,7 @@ const slug = (name: string, year: number) =>
 
 const p = (
   name: string,
-  year: 1994 | 1995 | 1996,
+  year: number,
   category: PropertyCategory,
   genre: string,
   originalImpact: number,
@@ -207,7 +207,7 @@ export const properties: Property[] = [
 ];
 
 export const categories: (PropertyCategory | "All")[] = ["All", "Movie", "TV", "Music", "Video Game", "Toy/Fad", "Tech", "Sports/Media"];
-export const years = ["All", "1994", "1995", "1996"];
+export const years = ["All", "1993", "1994", "1995", "1996", "1997", "1998"];
 
 export function getTargetAudienceAge(property: Property): number {
   return CURRENT_YEAR - property.year + PEAK_CHILDHOOD_AGE;
@@ -269,6 +269,45 @@ export function scoreProperty(property: Property, index = 0): PropertyScore {
     launchWindow: getLaunchWindow(property),
     recommendation: getRecommendation(property),
   };
+}
+
+export function scoreAll(list: Property[]): PropertyScore[] {
+  return list
+    .map(scoreProperty)
+    .sort((a, b) => b.revivalReadinessScore - a.revivalReadinessScore)
+    .map((property, index) => ({ ...property, rank: index + 1 }));
+}
+
+/**
+ * Live library from the API, with the bundled list as the offline fallback.
+ * The API returns camelCase Property fields; anything extra is ignored.
+ */
+export async function fetchPropertiesFromApi(): Promise<Property[] | null> {
+  try {
+    const res = await fetch("/api/properties", { headers: { accept: "application/json" } });
+    if (!res.ok) return null;
+    const data = (await res.json()) as { properties?: Property[] };
+    if (!data.properties || data.properties.length === 0) return null;
+    return data.properties;
+  } catch {
+    return null;
+  }
+}
+
+export function getPropertiesFrom(list: PropertyScore[], filters: PropertyFilters = {}): PropertyScore[] {
+  const query = filters.query?.trim().toLowerCase();
+  return list.filter((property) => {
+    const categoryMatches = !filters.category || filters.category === "All" || property.category === filters.category;
+    const yearMatches = !filters.year || filters.year === "All" || String(property.year) === filters.year;
+    const timingMatches = !filters.timing || filters.timing === "All" || property.timingStage === filters.timing;
+    const queryMatches =
+      !query ||
+      [property.name, property.genre, property.briefDescription, property.tags.join(" "), property.currentSignal]
+        .join(" ")
+        .toLowerCase()
+        .includes(query);
+    return categoryMatches && yearMatches && timingMatches && queryMatches;
+  });
 }
 
 export const scoredProperties: PropertyScore[] = properties

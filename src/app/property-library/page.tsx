@@ -6,7 +6,7 @@ import { ArrowUpDown, Search } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { categories, getProperties, years, type PropertyCategory, type TimingStage } from "@/services/property-data";
+import { categories, fetchPropertiesFromApi, getProperties, getPropertiesFrom, scoreAll, years, type Property, type PropertyCategory, type TimingStage } from "@/services/property-data";
 
 type SortKey = "rank" | "name" | "year" | "category" | "score" | "risk";
 
@@ -21,9 +21,20 @@ export default function PropertyLibrary() {
   const [sortKey, setSortKey] = useState<SortKey>("score");
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
   const [page, setPage] = useState(1);
+  const [apiSource, setApiSource] = useState<Property[] | null>(null);
+
+  useEffect(() => {
+    let alive = true;
+    fetchPropertiesFromApi().then((list) => {
+      if (alive && list) setApiSource(list);
+    });
+    return () => { alive = false; };
+  }, []);
 
   const properties = useMemo(() => {
-    const rows = getProperties({ query, category, year, timing });
+    const rows = apiSource
+      ? getPropertiesFrom(scoreAll(apiSource), { query, category, year, timing })
+      : getProperties({ query, category, year, timing });
     return [...rows].sort((a, b) => {
       const direction = sortDirection === "asc" ? 1 : -1;
       if (sortKey === "name") return a.name.localeCompare(b.name) * direction;
@@ -33,7 +44,7 @@ export default function PropertyLibrary() {
       if (sortKey === "rank") return (a.rank - b.rank) * direction;
       return (a.revivalReadinessScore - b.revivalReadinessScore) * direction;
     });
-  }, [category, query, sortDirection, sortKey, timing, year]);
+  }, [apiSource, category, query, sortDirection, sortKey, timing, year]);
 
   const totalPages = Math.max(1, Math.ceil(properties.length / pageSize));
   const visibleProperties = properties.slice((page - 1) * pageSize, page * pageSize);
