@@ -1,19 +1,32 @@
 "use client";
 
-import { Suspense, useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Copy, Layers3, Plus, Shuffle, WandSparkles, X } from "lucide-react";
+import { Copy, Layers3, Plus, Shuffle, Sparkles, WandSparkles, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
+  fetchPropertiesFromApi,
   generateCompositePitch,
-  getProperty,
+  scoreAll,
   scoredProperties,
   type PropertyScore,
   type RebootType,
 } from "@/services/property-data";
 
 const formats: RebootType[] = ["Streaming Series", "Movie", "Video Game", "Toys", "Live Event", "TV Show"];
+
+function getSessionKey(): string {
+  try {
+    const existing = window.localStorage.getItem("nostaldamus-session");
+    if (existing) return existing;
+    const fresh = crypto.randomUUID();
+    window.localStorage.setItem("nostaldamus-session", fresh);
+    return fresh;
+  } catch {
+    return "anon";
+  }
+}
 
 const recipes = [
   ["Clueless", "Tamagotchi", "Windows 95"],
@@ -23,34 +36,68 @@ const recipes = [
   ["Chrono Trigger", "Romeo + Juliet", "Nirvana: MTV Unplugged"],
 ];
 
-function findByName(name: string) {
-  return scoredProperties.find((property) => property.name === name)?.id;
-}
-
 function RemixContent() {
   const params = useSearchParams();
+  const [library, setLibrary] = useState<PropertyScore[]>(scoredProperties);
+
+  useEffect(() => {
+    let cancelled = false;
+    fetchPropertiesFromApi().then((remote) => {
+      if (!cancelled && remote) setLibrary(scoreAll(remote));
+    });
+    return () => { cancelled = true; };
+  }, []);
+
+  const findById = (id: string) => library.find((property) => property.id === id);
+  const findByName = (name: string) => library.find((property) => property.name === name)?.id;
+
   const initialId = params.get("propertyId") || scoredProperties[0].id;
   const initialBlend = useMemo(() => {
-    const anchor = getProperty(initialId) || scoredProperties[0];
-    const complements = scoredProperties
+    const anchor = library.find((p) => p.id === initialId) || library[0];
+    const complements = library
       .filter((property) => property.id !== anchor.id && property.category !== anchor.category)
       .slice(0, 2);
     return [anchor.id, ...complements.map((property) => property.id)];
+    // Intentionally computed once from the bundled library; hydration only widens choices.
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [initialId]);
 
   const [selectedIds, setSelectedIds] = useState(initialBlend);
   const [propertyToAdd, setPropertyToAdd] = useState(scoredProperties[0].id);
   const [format, setFormat] = useState<RebootType>("Streaming Series");
   const [copied, setCopied] = useState(false);
+  const [aiState, setAiState] = useState<
+    { phase: "idle" } | { phase: "loading" } | { phase: "done"; concept: string; id: string } | { phase: "error"; message: string }
+  >({ phase: "idle" });
 
   const selectedProperties = useMemo(
-    () => selectedIds.map((id) => getProperty(id)).filter((property): property is PropertyScore => Boolean(property)),
-    [selectedIds]
+    () => selectedIds.map(findById).filter((property): property is PropertyScore => Boolean(property)),
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [selectedIds, library]
   );
-  const properties = selectedProperties.length ? selectedProperties : [scoredProperties[0]];
+  const properties = selectedProperties.length ? selectedProperties : [library[0]];
   const pitch = generateCompositePitch(properties, format);
   const isComposite = properties.length > 1;
-  const availableProperties = scoredProperties.filter((property) => !selectedIds.includes(property.id));
+  const availableProperties = library.filter((property) => !selectedIds.includes(property.id));
+
+  const generateAiPitch = async () => {
+    setAiState({ phase: "loading" });
+    try {
+      const res = await fetch("/api/remix", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ propertyIds: selectedIds.slice(0, 4), sessionKey: getSessionKey() }),
+      });
+      const data = await res.json();
+      if (!res.ok) {
+        setAiState({ phase: "error", message: data.error ?? `request failed (${res.status})` });
+        return;
+      }
+      setAiState({ phase: "done", concept: data.concept, id: data.id });
+    } catch {
+      setAiState({ phase: "error", message: "network error" });
+    }
+  };
 
   const memo = [
     pitch.title,
@@ -96,7 +143,7 @@ function RemixContent() {
           <Badge className="border-accent/40 bg-accent/10 text-accent hover:bg-accent/10">Composite Remix Engine</Badge>
           <h1 className="mt-4 text-4xl font-semibold tracking-normal md:text-5xl">Build a new property from multiple nostalgia signals.</h1>
           <p className="mt-4 max-w-3xl text-muted-foreground">
-            Blend two to five 1994-1996 properties into an original franchise concept. The engine synthesizes audience overlap,
+            Blend two to five 1993-1998 properties into an original franchise concept. The engine synthesizes audience overlap,
             category tension, preserve/update rules, and rights risk into a development-ready pitch.
           </p>
         </div>
@@ -272,6 +319,34 @@ function RemixContent() {
                 Rights note: this is a new-property synthesis model, not a literal crossover recommendation. Clear rights before using names, characters, marks, music, artwork, or protected story expression.
               </div>
             )}
+
+            <div className="rounded-md border border-accent/25 bg-accent/[0.06] p-4">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <h3 className="flex items-center gap-2 font-semibold text-accent">
+                  <Sparkles className="h-4 w-4" /> Prophet deep pitch
+                </h3>
+                <Button
+                  onClick={generateAiPitch}
+                  disabled={aiState.phase === "loading" || selectedIds.length < 2}
+                  variant="outline"
+                  className="border-accent/30 bg-accent/10"
+                >
+                  {aiState.phase === "loading" ? "Consulting the Prophet..." : "Generate"}
+                </Button>
+              </div>
+              <p className="mt-2 text-xs leading-5 text-muted-foreground">
+                The deterministic pitch above always works. This one asks the AI Prophet for a written concept from your exact source stack and saves it to the library.
+              </p>
+              {aiState.phase === "error" && (
+                <p className="mt-3 rounded-md border border-white/10 bg-white/[0.03] p-3 text-sm leading-6 text-muted-foreground">{aiState.message}</p>
+              )}
+              {aiState.phase === "done" && (
+                <div className="mt-3 rounded-md border border-white/10 bg-white/[0.03] p-4">
+                  <pre className="whitespace-pre-wrap font-sans text-sm leading-6 text-muted-foreground">{aiState.concept}</pre>
+                  <p className="mt-3 text-xs text-muted-foreground">Saved as remix {aiState.id.slice(0, 8)}.</p>
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </section>

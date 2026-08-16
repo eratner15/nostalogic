@@ -1,8 +1,28 @@
 # STATUS - NostalDamus
 
-Updated 2026-08-15 (Yosemite batch, session 1)
+Updated 2026-08-15 (Yosemite batch, session 2: re-platform LIVE)
 
-## Done this session
+## Live surface (session 2)
+- LIVE at https://nostalogic.cafecito-ai.com (canonical). The old
+  cafecito-ai.com/nostaldamus path 301s there so shared links keep working.
+- Worker: Hono API at /api/* over D1 nostaldamus-db
+  (1c94c92c-5013-413a-83d3-97207f122309), static Next export via ASSETS.
+- Era window widened to 1993-1998 per Evan (types, filters, D1 CHECK).
+- Library page hydrates from GET /api/properties with the bundled 3-property
+  corpus as offline fallback; deterministic Revival Readiness Score computed
+  in the worker and in the client identically.
+- Remix Lab: deterministic composite pitch always works; new "Prophet deep
+  pitch" button POSTs /api/remix (persists to remixes table, 20/day limit).
+- Prophet Chat page NEW at /prophet-chat: grounded answers over the scored
+  library via POST /api/chat (40/day), citations Name (year, score N).
+- Both AI features fail closed 503 with a clear message until
+  ANTHROPIC_API_KEY is set: no key exists on this machine, so
+  `wrangler secret put ANTHROPIC_API_KEY` NEEDS EVAN (one command, then AI
+  turns on with no redeploy).
+- scripts/load-seed.mjs ready: node scripts/load-seed.mjs <seed.json>
+  <rubric_version>. Awaiting the 120-property corpus from the seed agent.
+
+## Done session 1
 - Batch docs installed: docs/FINALIZE-PLAN.md, docs/MASTER-PROMPT.md.
 - Phase 0 gap audit complete: docs/GAP-AUDIT.md.
 

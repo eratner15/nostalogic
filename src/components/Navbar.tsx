@@ -2,13 +2,14 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BarChart3, Beaker, LibraryBig, Radar, Sparkles } from "lucide-react";
+import { BarChart3, Beaker, LibraryBig, MessageCircle, Radar, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
   { href: "/property-library", label: "Library", icon: LibraryBig },
   { href: "/analysis-tools", label: "Analysis", icon: BarChart3 },
   { href: "/remix-lab", label: "Remix Lab", icon: Beaker },
+  { href: "/prophet-chat", label: "Prophet", icon: MessageCircle },
   { href: "/market-intelligence", label: "Market", icon: Radar },
 ];
 
