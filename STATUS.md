@@ -52,3 +52,11 @@ Updated 2026-08-15 (Yosemite batch, session 2: re-platform LIVE)
 ## Blockers
 - None technical. The two routing/window decisions shape Phase 1 but Phase 1 can
   start with the API mounted under /nostaldamus/api regardless.
+
+
+## Revenue-ready funnel (2026-08-16)
+- Homepage repositioned for producers, rights holders, studios, and investors around a concrete decision: which dormant IP deserves development and rights diligence.
+- Added the deck-approved $199 one-time Revival Opportunity Brief with transparent deliverables and no unsupported accuracy claims.
+- Added /order-report intake, D1 brief_requests persistence, honeypot and per-email daily limit.
+- Optional REPORT_CHECKOUT_URL sends successful intake to hosted checkout; without it, the team confirms scope and emails payment manually.
+- Full self-serve subscriptions remain later-stage. Immediate launch SOP is docs/REVENUE-TODAY.md.

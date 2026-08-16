@@ -14,6 +14,7 @@ type Env = {
   DB: D1Database;
   ASSETS: Fetcher;
   ANTHROPIC_API_KEY?: string;
+  REPORT_CHECKOUT_URL?: string;
 };
 
 const app = new Hono<{ Bindings: Env }>().basePath("/api");
@@ -188,6 +189,32 @@ app.post("/chat", async (c) => {
 app.get("/health", async (c) => {
   const n = await c.env.DB.prepare("SELECT COUNT(*) AS n FROM properties").first<{ n: number }>();
   return c.json({ ok: true, properties: n?.n ?? 0, ai: Boolean(c.env.ANTHROPIC_API_KEY) });
+});
+
+app.post("/brief-requests", async (c) => {
+  const body = await c.req.json<{
+    name?: string; email?: string; company?: string; propertyName?: string;
+    objective?: string; website?: string;
+  }>().catch(() => null);
+  if (!body || body.website) return c.json({ error: "invalid request" }, 400);
+
+  const name = (body.name ?? "").trim().slice(0, 100);
+  const email = (body.email ?? "").trim().toLowerCase().slice(0, 180);
+  const company = (body.company ?? "").trim().slice(0, 140);
+  const propertyName = (body.propertyName ?? "").trim().slice(0, 180);
+  const objective = (body.objective ?? "").trim().slice(0, 1200);
+  if (!name || !/^\S+@\S+\.\S+$/.test(email) || !propertyName || objective.length < 10) {
+    return c.json({ error: "name, valid email, property, and objective are required" }, 400);
+  }
+  if (!(await bumpUsage(c.env, "brief-request", email, 3))) {
+    return c.json({ error: "request limit reached; email team@cafecito-ai.com" }, 429);
+  }
+
+  const id = crypto.randomUUID();
+  await c.env.DB.prepare(
+    "INSERT INTO brief_requests (id, name, email, company, property_name, objective) VALUES (?, ?, ?, ?, ?, ?)",
+  ).bind(id, name, email, company || null, propertyName, objective).run();
+  return c.json({ ok: true, id, checkoutUrl: c.env.REPORT_CHECKOUT_URL ?? null });
 });
 
 const CANONICAL = "https://nostalogic.cafecito-ai.com";

@@ -54,3 +54,18 @@ CREATE TABLE IF NOT EXISTS usage_counters (
   n          INTEGER NOT NULL DEFAULT 0,
   PRIMARY KEY (bucket, actor_key, day)
 );
+
+
+-- Same-day commercial funnel: qualified requests for the 99 Revival
+-- Opportunity Brief. Payment stays on a hosted checkout URL when configured.
+CREATE TABLE IF NOT EXISTS brief_requests (
+  id            TEXT PRIMARY KEY,
+  name          TEXT NOT NULL,
+  email         TEXT NOT NULL,
+  company       TEXT,
+  property_name TEXT NOT NULL,
+  objective     TEXT NOT NULL,
+  status        TEXT NOT NULL DEFAULT 'new',
+  created_at    TEXT NOT NULL DEFAULT (datetime('now'))
+);
+CREATE INDEX IF NOT EXISTS idx_brief_requests_created ON brief_requests(created_at DESC);

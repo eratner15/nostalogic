@@ -2,10 +2,11 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BarChart3, Beaker, LibraryBig, MessageCircle, Radar, Sparkles } from "lucide-react";
+import { BarChart3, Beaker, FileText, LibraryBig, MessageCircle, Radar, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
+  { href: "/order-report", label: "$199 Brief", icon: FileText },
   { href: "/property-library", label: "Library", icon: LibraryBig },
   { href: "/analysis-tools", label: "Analysis", icon: BarChart3 },
   { href: "/remix-lab", label: "Remix Lab", icon: Beaker },
@@ -30,7 +31,7 @@ export default function Navbar() {
             </span>
           </Link>
 
-          <nav className="hidden items-center gap-1 md:flex">
+          <nav className="hidden items-center gap-1 lg:flex">
             {navItems.map((item) => {
               const Icon = item.icon;
               const active = pathname === item.href;
@@ -50,7 +51,7 @@ export default function Navbar() {
             })}
           </nav>
         </div>
-        <nav className="mt-3 flex gap-2 overflow-x-auto pb-1 md:hidden">
+        <nav className="mt-3 flex gap-2 overflow-x-auto pb-1 lg:hidden">
           {navItems.map((item) => {
             const Icon = item.icon;
             const active = pathname === item.href;

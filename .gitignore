@@ -43,3 +43,6 @@ next-env.d.ts
 
 .genkit/*
 .gstack/
+
+# local Cloudflare development state
+/.wrangler/

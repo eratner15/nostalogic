@@ -22,3 +22,6 @@ database_id = "1c94c92c-5013-413a-83d3-97207f122309"
 
 # Secret (wrangler secret put, never here): ANTHROPIC_API_KEY. Without it the
 # library and deterministic scoring work; Remix/Chat return a clear 503.
+
+# Optional secret: REPORT_CHECKOUT_URL. When configured, successful $199
+# brief intake redirects to hosted checkout; otherwise the team follows up manually.
