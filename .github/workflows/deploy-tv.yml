@@ -1,0 +1,89 @@
+name: Deploy trailer site
+
+# Deploys projects/05-product/site to Cloudflare Workers.
+# Secrets expected in the repository: CLOUDFLARE_API_TOKEN, CLOUDFLARE_ACCOUNT_ID. Optional: ADMIN_TOKEN.
+# Step 1 deploys a workers.dev preview (always). Step 2 deploys the ratlinks.com/tv route (needs the zone on the account).
+
+on:
+  push:
+    branches: ["main", "claude/**"]
+    paths:
+      - "projects/05-product/site/**"
+      - ".github/workflows/deploy-tv.yml"
+  workflow_dispatch:
+
+concurrency:
+  group: deploy-tv
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: projects/05-product/site
+    env:
+      CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+      CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: projects/05-product/site/package-lock.json
+      - name: Check secrets
+        run: |
+          if [ -z "$CLOUDFLARE_API_TOKEN" ] || [ -z "$CLOUDFLARE_ACCOUNT_ID" ]; then
+            echo "::error::Set repository secrets CLOUDFLARE_API_TOKEN and CLOUDFLARE_ACCOUNT_ID."; exit 1; fi
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm test
+      - name: Build seed and posters
+        run: npm run seed:build
+      - name: Resolve or create the D1 database
+        id: d1
+        continue-on-error: true
+        run: |
+          set -e
+          NAME=porchlight-guide-db
+          ID=$(npx wrangler d1 list --json | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);const r=j.find(x=>x.name===process.argv[1]);process.stdout.write(r?(r.uuid||r.id||""):"")})' "$NAME")
+          if [ -z "$ID" ]; then
+            npx wrangler d1 create "$NAME" >/dev/null
+            ID=$(npx wrangler d1 list --json | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);const r=j.find(x=>x.name===process.argv[1]);process.stdout.write(r?(r.uuid||r.id||""):"")})' "$NAME")
+          fi
+          [ -n "$ID" ] || { echo "no database id"; exit 1; }
+          echo "id=$ID" >> "$GITHUB_OUTPUT"
+          sed -i "s/REPLACE_WITH_ID_FROM_wrangler_d1_list/$ID/" wrangler.toml wrangler.tv.toml
+          npx wrangler d1 migrations apply "$NAME" --remote
+          npx wrangler d1 execute "$NAME" --remote --file=./seed/seed.sql
+      - name: Deploy workers.dev preview (with D1)
+        if: steps.d1.outcome == 'success'
+        run: npx wrangler deploy
+      - name: Deploy workers.dev preview (no D1, in-memory fallback)
+        if: steps.d1.outcome != 'success'
+        run: |
+          echo "::warning::D1 step failed (token may lack D1 permissions). Deploying the in-memory preview instead."
+          npx wrangler deploy --config wrangler.preview.toml
+      - name: Set ADMIN_TOKEN secret
+        if: steps.d1.outcome == 'success' && env.ADMIN_TOKEN != ''
+        env:
+          ADMIN_TOKEN: ${{ secrets.ADMIN_TOKEN }}
+        run: echo "$ADMIN_TOKEN" | npx wrangler secret put ADMIN_TOKEN
+      - name: Deploy ratlinks.com/tv route
+        if: steps.d1.outcome == 'success'
+        continue-on-error: true
+        run: |
+          npx wrangler deploy --config wrangler.tv.toml || { echo "::warning::Route deploy failed. The ratlinks.com zone must be on this Cloudflare account and the token needs Workers Routes edit."; exit 1; }
+      - name: Set ADMIN_TOKEN on the routed worker
+        if: steps.d1.outcome == 'success' && env.ADMIN_TOKEN != ''
+        continue-on-error: true
+        env:
+          ADMIN_TOKEN: ${{ secrets.ADMIN_TOKEN }}
+        run: echo "$ADMIN_TOKEN" | npx wrangler secret put ADMIN_TOKEN --config wrangler.tv.toml
+      - name: Summary
+        run: |
+          echo "## Trailer site deploy" >> "$GITHUB_STEP_SUMMARY"
+          echo "- Preview: the workers.dev URL printed by the deploy step above (streetlights-guide or streetlights-preview)." >> "$GITHUB_STEP_SUMMARY"
+          echo "- Route: https://ratlinks.com/tv/ if the route step succeeded." >> "$GITHUB_STEP_SUMMARY"
+          echo "- Dashboard: append /admin?token=ADMIN_TOKEN to either URL." >> "$GITHUB_STEP_SUMMARY"

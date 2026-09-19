@@ -1,9 +1,13 @@
-# Default deploy: workers.dev preview with D1. The GitHub workflow fills database_id from `wrangler d1 list`.
-name = "streetlights-guide"
+# Routed deploy at ratlinks.com/tv. Same D1 database as wrangler.toml. Requires the ratlinks.com zone on the account.
+name = "streetlights-tv"
 main = "src/index.ts"
 compatibility_date = "2026-09-01"
 compatibility_flags = ["nodejs_compat"]
-workers_dev = true
+workers_dev = false
+routes = [
+  { pattern = "ratlinks.com/tv", zone_name = "ratlinks.com" },
+  { pattern = "ratlinks.com/tv/*", zone_name = "ratlinks.com" },
+]
 
 [assets]
 directory = "public"
@@ -18,5 +22,4 @@ migrations_dir = "migrations"
 
 [vars]
 SITE_ENV = "production"
-BASE_PATH = ""
-# Secret (wrangler secret put, never here): ADMIN_TOKEN
+BASE_PATH = "/tv"
