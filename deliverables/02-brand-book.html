@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Porchlight Brand Book</title>
+<meta name="description" content="Phase 2 result for Project Porchlight: position, name shortlist with screens, voice, and visual identity, with Fork D and counsel gate CG-01 open.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,100..900&family=Newsreader:opsz,wght@6..72,400..700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#faf7f2;--ink:#1f1b16;--muted:#5d554b;--line:#e2dbd0;--card:#ffffff;
+    --accent:#b5541c;--go:#1f7a4d;--go-bg:#e6f4ec;--warn:#9a6b00;--warn-bg:#fbf1d6;--kill:#a3302a;--kill-bg:#f9e4e2;
+    --table-head:#f1ebe2;
+    --sp-paper:#F3ECDD;--sp-ink:#1C1A16;--sp-ink-60:rgba(28,26,22,.60);--sp-ink-20:rgba(28,26,22,.20);--sp-accent:#C9391E;--sp-glow:#FFC46B;--sp-glow-30:rgba(255,196,107,.30);
+    --sw-l-paper:#F3ECDD;--sw-l-ink:#1C1A16;--sw-l-accent:#C9391E;--sw-l-glow:#FFC46B;
+    --sw-d-paper:#15130F;--sw-d-ink:#EFE6D3;--sw-d-accent:#E8583A;--sw-d-glow:#FFD08A;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#17150f;--ink:#f0ebe3;--muted:#b8ae9f;--line:#332e26;--card:#201d16;
+      --accent:#e78a4e;--go:#6fd19a;--go-bg:#16301f;--warn:#e6b84a;--warn-bg:#332a10;--kill:#f08a82;--kill-bg:#3a1d1a;
+      --table-head:#2a261e;
+      --sp-paper:#15130F;--sp-ink:#EFE6D3;--sp-ink-60:rgba(239,230,211,.60);--sp-ink-20:rgba(239,230,211,.20);--sp-accent:#E8583A;--sp-glow:#FFD08A;--sp-glow-30:rgba(255,208,138,.30);
+      --sw-l-paper:#F3ECDD;--sw-l-ink:#1C1A16;--sw-l-accent:#C9391E;--sw-l-glow:#FFC46B;
+      --sw-d-paper:#15130F;--sw-d-ink:#EFE6D3;--sw-d-accent:#E8583A;--sw-d-glow:#FFD08A;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#17150f;--ink:#f0ebe3;--muted:#b8ae9f;--line:#332e26;--card:#201d16;
+    --accent:#e78a4e;--go:#6fd19a;--go-bg:#16301f;--warn:#e6b84a;--warn-bg:#332a10;--kill:#f08a82;--kill-bg:#3a1d1a;
+    --table-head:#2a261e;
+    --sp-paper:#15130F;--sp-ink:#EFE6D3;--sp-ink-60:rgba(239,230,211,.60);--sp-ink-20:rgba(239,230,211,.20);--sp-accent:#E8583A;--sp-glow:#FFD08A;--sp-glow-30:rgba(255,208,138,.30);
+    --sw-l-paper:#F3ECDD;--sw-l-ink:#1C1A16;--sw-l-accent:#C9391E;--sw-l-glow:#FFC46B;
+    --sw-d-paper:#15130F;--sw-d-ink:#EFE6D3;--sw-d-accent:#E8583A;--sw-d-glow:#FFD08A;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Georgia,"Times New Roman",serif}
+  main{max-width:960px;margin:0 auto;padding:32px 16px 64px}
+  h1{font-size:2rem;line-height:1.15;margin:0 0 8px}
+  h2{font-size:1.4rem;margin:40px 0 12px;padding-top:12px;border-top:2px solid var(--line)}
+  h3{font-size:1.1rem;margin:24px 0 8px}
+  h4{font-size:1rem;margin:18px 0 6px;font-family:system-ui,sans-serif}
+  p{margin:0 0 12px}
+  .kicker{color:var(--muted);font-family:system-ui,sans-serif;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase}
+  .verdict{display:grid;grid-template-columns:1fr;gap:12px;margin:24px 0}
+  @media(min-width:700px){.verdict{grid-template-columns:1fr 1fr 1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+  .card .label{font-family:system-ui,sans-serif;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .card .big{font-size:1.5rem;font-weight:700;margin:4px 0 6px}
+  .go{background:var(--go-bg);border-color:var(--go)} .go .big{color:var(--go)}
+  .warn{background:var(--warn-bg);border-color:var(--warn)} .warn .big{color:var(--warn)}
+  .kill{background:var(--kill-bg);border-color:var(--kill)} .kill .big{color:var(--kill)}
+  table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-family:system-ui,sans-serif;font-size:.9rem}
+  th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+  th{background:var(--table-head)}
+  .wrap{overflow-x:auto}
+  .compact{font-size:.82rem}
+  .compact th,.compact td{padding:5px 8px}
+  .pill{display:inline-block;padding:2px 8px;border-radius:999px;font-family:system-ui,sans-serif;font-size:.75rem;font-weight:700;white-space:nowrap}
+  .p-go{background:var(--go-bg);color:var(--go)} .p-warn{background:var(--warn-bg);color:var(--warn)} .p-kill{background:var(--kill-bg);color:var(--kill)}
+  ol,ul{padding-left:22px} li{margin-bottom:6px}
+  .src{font-family:system-ui,sans-serif;font-size:.82rem;color:var(--muted)}
+  .rec{border-left:4px solid var(--accent);padding:8px 14px;background:var(--card);margin:12px 0}
+  .promise{border:1px solid var(--line);border-radius:10px;padding:14px 16px;background:var(--card);margin:12px 0;font-size:1.05rem}
+  .promise .label{font-family:system-ui,sans-serif;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin-bottom:4px}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.9em}
+  a{color:var(--accent)}
+  footer{margin-top:48px;color:var(--muted);font-size:.85rem;font-family:system-ui,sans-serif}
+
+  /* Type specimens. Brand tokens switch with the page theme. */
+  .spec{background:var(--sp-paper);color:var(--sp-ink);border:1px solid var(--line);border-radius:10px;padding:24px 20px;margin:12px 0 20px;overflow:hidden}
+  .spec .note{font-family:system-ui,sans-serif;font-size:.78rem;color:var(--muted);margin:0 0 14px;letter-spacing:.04em;text-transform:uppercase}
+  .masthead{font-family:"Archivo","Arial Narrow",Arial,sans-serif;font-stretch:72%;font-weight:800;font-size:clamp(2.6rem,11vw,6rem);line-height:.92;letter-spacing:-.01em;text-transform:uppercase;margin:0;color:var(--sp-ink);word-break:break-word}
+  .masthead .dot{color:var(--sp-glow)}
+  .mast-rule{border:0;border-top:1px solid var(--sp-ink-20);margin:10px 0 6px}
+  .mast-sub{font-family:"Archivo",Arial,sans-serif;font-stretch:100%;font-weight:500;font-size:.85rem;letter-spacing:.12em;text-transform:uppercase;color:var(--sp-ink-60);margin:0}
+  .listing{display:grid;grid-template-columns:56px 1fr;gap:0 14px;align-items:start;padding:12px 0;border-top:1px solid var(--sp-ink-20)}
+  .listing:last-child{border-bottom:1px solid var(--sp-ink-20)}
+  .listing.premiere{border-top:2px solid var(--sp-accent)}
+  .listing .num{font-family:"Archivo","Arial Narrow",Arial,sans-serif;font-stretch:72%;font-weight:800;font-size:2.6rem;line-height:1;font-feature-settings:"tnum";color:var(--sp-ink)}
+  .listing .band{font-family:"Archivo",Arial,sans-serif;font-stretch:100%;font-weight:500;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--sp-ink-60);margin:0 0 2px}
+  .listing .blurb{font-family:"Newsreader",Georgia,serif;font-optical-sizing:auto;font-size:1.05rem;line-height:1.45;margin:0;max-width:60ch;color:var(--sp-ink)}
+  .listing .blurb .show{font-family:"Archivo",Arial,sans-serif;font-stretch:100%;font-weight:500;font-variant-caps:all-small-caps;letter-spacing:.04em;font-size:1.05em}
+  .listing .blurb em{color:var(--sp-ink-60)}
+  .onair{display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--sp-glow);box-shadow:0 0 0 6px var(--sp-glow-30);vertical-align:middle;margin-right:8px}
+
+  /* Swatches. Fixed values, both editions shown side by side. */
+  .swatches{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:12px 0 20px}
+  @media(min-width:700px){.swatches{grid-template-columns:repeat(4,1fr)}}
+  .sw{border:1px solid var(--line);border-radius:10px;overflow:hidden;font-family:system-ui,sans-serif;font-size:.8rem}
+  .sw .chip{height:64px}
+  .sw .meta{padding:8px 10px;background:var(--card)}
+  .sw .meta b{display:block}
+  .sw .meta code{color:var(--muted)}
+  .edition{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px 14px 4px;margin:12px 0}
+  .edition h4{margin:0 0 6px}
+  .logo-dirs{display:grid;grid-template-columns:1fr;gap:12px;margin:12px 0}
+  @media(min-width:700px){.logo-dirs{grid-template-columns:1fr 1fr 1fr}}
+  .check{counter-reset:item;list-style:none;padding-left:0}
+  .check li{position:relative;padding-left:34px;margin-bottom:8px}
+  .check li::before{counter-increment:item;content:counter(item);position:absolute;left:0;top:1px;width:24px;height:24px;border-radius:50%;background:var(--table-head);border:1px solid var(--line);font-family:system-ui,sans-serif;font-size:.75rem;font-weight:700;display:flex;align-items:center;justify-content:center}
+  @media (prefers-reduced-motion: no-preference){
+    .onair{animation:breathe 4s ease-in-out infinite}
+    @keyframes breathe{0%,100%{box-shadow:0 0 0 6px var(--sp-glow-30);opacity:.75}50%{box-shadow:0 0 0 9px var(--sp-glow-30);opacity:1}}
+  }
+  @media print{body{background:#fff;color:#000} .card{break-inside:avoid} h2{break-after:avoid}}
+</style>
+</head>
+<body>
+<main>
+<p class="kicker">Project Porchlight, Phase 2 deliverable, 2026-09-19. Codename only. Internal.</p>
+<h1>Brand Book: Position, Name, Voice, Identity</h1>
+<p>This book closes the build work of Phase 2. It states the position with sources, screens five names and ranks thirty, sets the voice and the ritual words, and specifies the visual identity the product builder is already using. It ends at Fork D, which the owner decides, and at counsel gate CG-01, which an attorney clears. Nothing here is canon until the Orchestrator writes it to <code>canon/</code>.</p>
+
+<div class="verdict">
+  <div class="card warn"><div class="label">Fork D: brand name</div><div class="big">Open. Recommendation: Streetlights</div><p>Five names screened. Streetlights is the only one with no trademark hit in entertainment, video, or family content, and it carries the memory the parent persona holds. Rumpus is the runner-up. The owner picks. Until then the site uses the provisional name as one config constant.</p></div>
+  <div class="card kill"><div class="label">Counsel gate CG-01</div><div class="big"><code>COUNSEL_GATE</code>: no filing, no public use</div><p>Counsel clears the trademark before any filing, any public use, or any domain purchase beyond a defensive hold. Counsel checks the wordmark and, if Direction 2 is chosen, the window symbol as well.</p></div>
+  <div class="card"><div class="label">Screening caveat</div><div class="big">Signals, not clearances</div><p>The research proxy blocked the USPTO search API, WHOIS, and RDAP for every name and domain. Trademark results rest on web search results that index those databases. Domain results rest on DNS lookups. A missing record proves nothing. Counsel must run the direct USPTO search and a registrar lookup.</p></div>
+</div>
+
+<h2>1. Position</h2>
+<p class="src">Source key: <strong>A</strong> is <code>canon/AUDIENCE.md</code>. <strong>G</strong> is <code>deliverables/01-gap-memo.html</code>. Section numbers follow each fact. No other sources are used in this section.</p>
+<div class="rec"><strong>One line.</strong> An original comedy block for the whole house, on one fixed night a week, made new for the kids of the parents who grew up on one.</div>
+
+<h3>For whom</h3>
+<p>The household. One parent account plus the people who watch with it (A, section 1).</p>
+<h4>The parent</h4>
+<ul>
+<li>Born 1981 to 1990. Age 36 to 45 in 2026 (A, section 2).</li>
+<li>Watched a fixed-night family comedy block as a child. Recalls the night, the hosts, the late bedtime, and the jingle more than any one plot (A, section 2).</li>
+<li>Already co-views. Over 90 percent of parents of children 2 to 12 co-view (A, section 1).</li>
+<li>Feels behind on screen time. 42 percent say they could manage it better. 65 percent say they spend too much time on their own phone (A, section 2).</li>
+<li>Names nostalgia as a driver of shared content time (A, section 2).</li>
+<li>Holds the account, the remote, and the decision about the night (A, section 2).</li>
+</ul>
+<h4>The child</h4>
+<ul>
+<li>Age 6 to 14, in two bands. Ages 6 to 9 watch with a parent almost always. Ages 10 to 14 start to pull toward feeds and games (A, section 3).</li>
+<li>Wants something that feels like theirs, characters to talk about at school, and a mild scare with a safe landing (A, section 3).</li>
+<li>Cannot hold an account, comment, chat, or receive a notification. The product never asks the child for anything (A, section 3).</li>
+</ul>
+<h4>The parent's jobs the brand must serve (A, section 2)</h4>
+<ol>
+<li>One night a week where the whole family sits on one couch and laughs at the same thing.</li>
+<li>A screen ritual the parent is proud of, not one the parent apologizes for.</li>
+<li>A way to share a piece of the parent's own childhood without showing the kid a 30-year-old rerun.</li>
+<li>Make it easy. Tell me when, tell me what, and give me something to do after.</li>
+</ol>
+
+<h3>Against what</h3>
+<p>The brand competes for a night, not for a library.</p>
+<div class="wrap"><table>
+<tr><th>Rival</th><th>Evidence</th><th>Source</th></tr>
+<tr><td rowspan="2"><strong>The feed and the playground</strong></td><td>YouTube holds 13.8 percent of all TV viewing. Roblox has 123 million daily users. Netflix counted kids as nearly 22 percent of 2025 views. They own the feed, the library, or the playground. None owns a night for ages 6 to 14.</td><td>G, section 3</td></tr>
+<tr><td>Only 17 percent of parents co-view short-form video. The feed is watched alone.</td><td>A, section 2</td></tr>
+<tr><td rowspan="3"><strong>The closest live models</strong></td><td>A public broadcaster runs a weekly family movie night with no hosts and no original comedy, aimed at preschool and early elementary.</td><td>G, section 3; A, section 5</td></tr>
+<tr><td>A faith-and-family cable network premieres movies on a fixed night. A greeting-card network runs weekend premiere nights. A values-based studio releases an animated series weekly to 2.61 million paying members.</td><td>G, section 3</td></tr>
+<tr><td>None of these runs a hosted, original, scripted comedy block for families with children 6 to 14 on a fixed night.</td><td>G, section 1, H1; G, section 3</td></tr>
+<tr><td><strong>The rerun</strong></td><td>Three streaming-era nostalgia sitcoms drew both generations on night one and lost the child by the third season. The brand is not a revival. It is new characters for today's kids, with the parent's ritual as the wrapper.</td><td>A, section 4</td></tr>
+<tr><td><strong>Nothing at all</strong></td><td>No source measures parent demand for a scheduled weekly ritual. The brand's first job is to make that demand visible: the trailer site, the votes, and the parent sign-ups.</td><td>A, section 5; G, section 8; D-013 in <code>DECISIONS.md</code></td></tr>
+</table></div>
+
+<h3>Why now</h3>
+<ol>
+<li>The audience math lines up. 33.3 million US families have children under 18. Parents of today's 6 to 14 year olds were born mostly in the 1980s. That is the generation that watched a fixed-night comedy block as children. <span class="src">G, section 1, H3a; A, section 2.</span></li>
+<li>The supply gap is real. No US streamer, FAST service, kids network, creator studio, or faith network runs a hosted, original, scripted comedy block for families on a fixed night. <span class="src">G, section 1, H1; G, section 3.</span></li>
+<li>The old blocks ended on cost and strategy, not on the end of demand. <span class="src">G, section 1, H4.</span></li>
+<li>Kids media is contracting. One kids cable channel went dark in March 2025. One family cable channel closed in August 2025. The largest family streamer retired watch-together in 2023. Fewer incumbents hold the night. <span class="src">G, section 3.</span></li>
+<li>Appointment viewing survives on streaming. Weekly drops create watercooler moments. <span class="src">G, section 2, H1.</span></li>
+<li>Made-for-kids platform rules disable comments, notifications, and playlists. The weekly reminder must live in a parent-facing channel. That makes the owned site the product, not a marketing page. <span class="src">G, section 4; G, section 9.</span></li>
+<li>A small studio can prove audience before capital. Nine creator cases show it. <span class="src">G, section 1, H5.</span></li>
+</ol>
+
+<h3>What the brand must not claim</h3>
+<ul>
+<li>It must not claim that a 30-year nostalgia cycle drives timing. That hypothesis is not supported (G, section 1, H3b).</li>
+<li>It must not claim parent demand for a weekly ritual until the demand test measures it (A, section 5).</li>
+<li>It must not claim to serve ages 13 to 14 with co-viewing data. No source measures that band (A, section 2).</li>
+</ul>
+
+<h3>Position statement</h3>
+<div class="rec">For parents born in the 1980s who want one night a week on one couch with their kids, [NAME] is the original comedy block that premieres on a fixed night, with new characters for today's 6 to 14 year olds and the ritual the parent remembers. Unlike the feed, the library, and the rerun, it owns a night, not a scroll.</div>
+<p class="src"><code>[NAME]</code> is the provisional name constant until Fork D closes and counsel clears CG-01.</p>
+
+<h2>2. The five names, screened</h2>
+<p>Three signals per name. Each result is CLEAR-SIGNAL, CONFLICT-SIGNAL, or UNKNOWN, with the search that produced it. Screens ran on 2026-09-19.</p>
+<ol>
+<li><strong>Trademark.</strong> The proxy returned HTTP 403 from the USPTO search API and blocked the two secondary trademark databases. Every trademark result rests on web search results that index those databases, not on a direct query. Counsel runs the direct search. That is gate CG-01.</li>
+<li><strong>Domain.</strong> Two checks per domain: a DNS lookup from the shell (<code>getent hosts</code>) and a web search for the domain string. Page fetch and RDAP were blocked for every domain. A missing DNS record is not proof that a domain is available. Only a registrar lookup proves it.</li>
+<li><strong>Handles.</strong> Web search for the exact YouTube handle and Instagram handle. A search that finds no exact handle is a weak clear signal. It does not prove the handle is free.</li>
+</ol>
+<p><span class="pill p-go">CLEAR</span> no conflicting use found in entertainment, video, or family content. <span class="pill p-kill">CONFLICT</span> a live use in or near that field, or the exact domain or handle in use. <span class="pill p-warn">UNKNOWN</span> the check could not run or returned nothing usable.</p>
+
+<div class="wrap"><table>
+<tr><th>Name</th><th>Trademark</th><th>.com</th><th>.tv</th><th>YouTube</th><th>Instagram</th><th>Source search</th></tr>
+<tr>
+<td><strong>1. Streetlights</strong><br><span class="src">Parent memory. Network-style.</span></td>
+<td><span class="pill p-go">CLEAR (weak)</span><br>Registered marks found in real estate (Reg. 5010901) and municipal lighting control (Reg. 5508833). No class 41 or video mark found.</td>
+<td><span class="pill p-kill">CONFLICT</span><br>DNS resolves. A Texas real estate developer holds it.</td>
+<td><span class="pill p-go">CLEAR (weak)</span><br>No DNS record. Not proof of availability.</td>
+<td><span class="pill p-kill">CONFLICT (variants)</span><br>A gospel ministry, a small production company, and a music channel use the word. Exact handle not confirmed.</td>
+<td><span class="pill p-kill">CONFLICT (variants)</span><br>Three variant handles exist. Exact handle not confirmed either way.</td>
+<td class="src">Web search for the mark with "USPTO entertainment" and "class 41"; <code>getent hosts</code> on both domains; web search for the exact handle strings. Sources on file in <code>names-5.md</code>.</td>
+</tr>
+<tr>
+<td><strong>2. Rumpus</strong><br><span class="src">Highest kid appeal.</span></td>
+<td><span class="pill p-warn">UNKNOWN, leaning conflict</span><br>Registered for fonts (Reg. 4350203) and pet toys (Reg. 5910391), both outside class 41. A prior kids entertainment company of the same name ran rumpus.com from 1996. Its current status is unknown.</td>
+<td><span class="pill p-kill">CONFLICT</span><br>DNS resolves. No active site found. Registered, not in visible use.</td>
+<td><span class="pill p-kill">CONFLICT</span><br>DNS resolves to a pair of addresses that match registrar parking.</td>
+<td><span class="pill p-kill">CONFLICT (variant)</span><br>A house music DJ holds the music variant. Exact handle not confirmed.</td>
+<td><span class="pill p-kill">CONFLICT (variant)</span><br>The same DJ and a literary magazine hold variants.</td>
+<td class="src">Web search for the mark with "USPTO entertainment", "class 41 animation children", and the prior company's founder; <code>getent hosts</code>; handle searches.</td>
+</tr>
+<tr>
+<td><strong>3. Screen Door</strong><br><span class="src">High image.</span></td>
+<td><span class="pill p-kill">CONFLICT (same field)</span><br>A Canadian film and television production company founded in 1999 uses the name. Its productions aired in the US. No US registration found, but use in commerce in the same field is a risk.</td>
+<td><span class="pill p-kill">CONFLICT</span><br>DNS resolves. No live site at the exact domain. Registered.</td>
+<td><span class="pill p-go">CLEAR (weak)</span><br>No DNS record. Not proof of availability.</td>
+<td><span class="pill p-go">CLEAR (weak)</span><br>No exact handle found. An installer's channel exists.</td>
+<td><span class="pill p-kill">CONFLICT (variants)</span><br>A microcinema, an ice cream shop, and two restaurants hold variants.</td>
+<td class="src">Web search for the production company by its founders and for "class 41 entertainment production"; <code>getent hosts</code>; handle searches.</td>
+</tr>
+<tr>
+<td><strong>4. Pilot Light</strong><br><span class="src">Best double meaning. Worst screen.</span></td>
+<td><span class="pill p-kill">CONFLICT</span><br>Registered for a sleep and stress app (class 9). A production company trades under the name for video production.</td>
+<td><span class="pill p-kill">CONFLICT (for sale)</span><br>Registered and offered for sale. Price unknown.</td>
+<td><span class="pill p-kill">CONFLICT</span><br>Live site for a commercial video production company.</td>
+<td><span class="pill p-kill">CONFLICT</span><br>The production company's channel and a conversation series channel both exist.</td>
+<td><span class="pill p-kill">CONFLICT (variants)</span><br>A music venue, a band, and a chefs' account hold variants.</td>
+<td class="src">Web search for the mark with "USPTO entertainment television"; web search for both domains; <code>getent hosts</code>; handle searches.</td>
+</tr>
+<tr>
+<td><strong>5. Lights Up</strong><br><span class="src">Symmetry with Lights Out.</span></td>
+<td><span class="pill p-kill">CONFLICT (class 41)</span><br>Two registered class 41 marks: one for theater productions (Reg. 4742234), one for songwriting (Reg. 4876655). Two more entertainment filings on record.</td>
+<td><span class="pill p-kill">CONFLICT</span><br>DNS resolves. Registered. Content unknown.</td>
+<td><span class="pill p-go">CLEAR (weak)</span><br>No DNS record. Not proof of availability.</td>
+<td><span class="pill p-warn">UNKNOWN</span><br>No exact handle found. A well-known 2019 pop song of the same title floods search.</td>
+<td><span class="pill p-kill">CONFLICT (variants)</span><br>A production account, a lighting company, a game, and a regional account hold variants.</td>
+<td class="src">Web search for the mark with "USPTO entertainment"; web search for the domain; <code>getent hosts</code>; handle searches.</td>
+</tr>
+</table></div>
+<p class="src">Full evidence rows with URLs: <code>projects/02-brand/out/names-5.md</code>.</p>
+
+<div class="rec"><strong>Recommendation: Streetlights. <code>COUNSEL_GATE</code> CG-01 stays open.</strong>
+<p>Streetlights is the recommendation because it is the only name of the five with no trademark hit in entertainment, video, or family content, and it carries the exact memory the parent persona holds. AUDIENCE.md section 2 says the parent was born 1981 to 1990 and recalls the night more than any plot. That parent also remembers the rule of that era: come home when the streetlights come on. The name turns the old signal to go inside into the new signal to sit down together. It is one word, two syllables, and a kid can chant it. It names a light, an evening, and a neighborhood without naming a porch. On a printed guide masthead it reads like a real publication. The domain field is the cost: the .com belongs to a real estate developer, so the site would live on the .tv or a phrase domain, and the handles would need a modifier such as a "night" or "watch" prefix, both unchecked. Rumpus is the runner-up and moves to first if counsel finds the prior kids entertainment mark dead and clears the pet-toy and font marks as non-confusing. Pilot Light, Screen Door, and Lights Up each collide with a working company in the same field and should not go to counsel unless the first two fail.</p>
+<p>Counsel clears the trademark before any filing, any public use, or any domain purchase beyond a defensive hold. Held in reserve if all five fail: Lamppost, Hall Light, Gloaming, Homeglow, Evenglow.</p>
+</div>
+
+<h2>3. The 30 candidates</h2>
+<p>Rules applied to every candidate: no use or echo of the two block trademarks named in <code>canon/STANDARDS.md</code> section 2, item 13, or of any existing block brand; no "TV" plus a day of the week; no known network, block, app, or streaming brand; "Porchlight" is the codename and is excluded. "N" marks a network-style name: short, sayable, chantable by a kid. Ten carry the mark. Bold rows went to the screen.</p>
+<div class="wrap"><table class="compact">
+<tr><th>#</th><th>Name</th><th>Construction</th><th>Register</th><th>Rationale</th><th>N</th></tr>
+<tr><td>1</td><td><strong>Streetlights</strong></td><td>Single compound word</td><td>Warm, retro</td><td>The signal every 1980s-born parent remembers: come home when the streetlights come on. The block is the new reason to come in.</td><td>N</td></tr>
+<tr><td>2</td><td><strong>Rumpus</strong></td><td>Single word</td><td>Playful, retro</td><td>A rumpus room is where the family made noise. A rumpus is the noise itself. Two syllables a six-year-old can shout.</td><td>N</td></tr>
+<tr><td>3</td><td><strong>Pilot Light</strong></td><td>Two words</td><td>Warm, modern</td><td>The small flame that never goes out, ready to light the whole stove. Also a TV pilot. Double meaning with no wink.</td><td></td></tr>
+<tr><td>4</td><td><strong>Screen Door</strong></td><td>Two words</td><td>Retro, warm</td><td>The summer sound of a door that lets you see in and calls you in. "Screen" also means the one screen the family shares.</td><td></td></tr>
+<tr><td>5</td><td><strong>Lights Up</strong></td><td>Phrase</td><td>Modern, playful</td><td>The stage cue that starts a show. Mirrors Slot 4, Lights Out, and gives the block a beginning and an end.</td><td></td></tr>
+<tr><td>6</td><td>Lamppost</td><td>Single word</td><td>Warm, mysterious</td><td>One light on a dark street. A meeting point. Kids can say it and draw it.</td><td>N</td></tr>
+<tr><td>7</td><td>Doorbell</td><td>Single word</td><td>Playful, warm</td><td>The sound that means someone came over. The block rings once a week.</td><td>N</td></tr>
+<tr><td>8</td><td>Snug</td><td>Single word</td><td>Warm</td><td>The small back room in a pub where regulars sit close. One syllable. Says cozy without saying cozy.</td><td>N</td></tr>
+<tr><td>9</td><td>Stoop</td><td>Single word</td><td>Retro, warm</td><td>The front step where neighbors gathered before screens. Short, plain, confident.</td><td>N</td></tr>
+<tr><td>10</td><td>Wick</td><td>Single word</td><td>Modern, warm</td><td>The part of the candle that carries the flame. One syllable, easy mark, strong logo shape.</td><td>N</td></tr>
+<tr><td>11</td><td>Hearth</td><td>Single word</td><td>Warm</td><td>The oldest word for the place a family faces together. Premium and plain.</td><td>N</td></tr>
+<tr><td>12</td><td>Jamboree</td><td>Single word</td><td>Playful, retro</td><td>A big gathering with music and noise. Four syllables that bounce. Kids chant it.</td><td>N</td></tr>
+<tr><td>13</td><td>Gloaming</td><td>Single word</td><td>Mysterious, warm</td><td>The old word for the last light of evening. Sounds like glow. Unusual enough to own.</td><td>N</td></tr>
+<tr><td>14</td><td>Knock Knock</td><td>Phrase</td><td>Playful</td><td>The first joke every kid learns, and a door about to open. Comedy and welcome in two words.</td><td></td></tr>
+<tr><td>15</td><td>Hall Light</td><td>Two words</td><td>Warm</td><td>The light a parent leaves on so a kid can sleep. Safety, warmth, and a late bedtime in one image.</td><td></td></tr>
+<tr><td>16</td><td>Dinner Bell</td><td>Two words</td><td>Retro, warm</td><td>The sound that called everyone to the table. The block calls everyone to the couch.</td><td></td></tr>
+<tr><td>17</td><td>Blanket Fort</td><td>Two words</td><td>Playful</td><td>The thing kids build to watch something that feels like theirs. Hands ownership to the child.</td><td></td></tr>
+<tr><td>18</td><td>Lamplighter</td><td>Single word</td><td>Retro, mysterious</td><td>The person who lit the street lamps at dusk. A host in one word.</td><td></td></tr>
+<tr><td>19</td><td>Gather Round</td><td>Phrase</td><td>Warm</td><td>A plain invitation. Works spoken by a host and printed on a masthead.</td><td></td></tr>
+<tr><td>20</td><td>Sundown Club</td><td>Two words</td><td>Retro</td><td>A place that opens when the sun goes down and lets kids in. "Club" says membership without a login.</td><td></td></tr>
+<tr><td>21</td><td>Eventide</td><td>Single word</td><td>Mysterious</td><td>Archaic word for evening. Reads premium. Carries the Slot 4 mood without scaring the Anchor audience.</td><td></td></tr>
+<tr><td>22</td><td>Lightkeeper</td><td>Single compound word</td><td>Mysterious, warm</td><td>The keeper of the lighthouse. Someone stays up to keep the light on for you.</td><td></td></tr>
+<tr><td>23</td><td>Second Helping</td><td>Two words</td><td>Warm, playful</td><td>What you ask for when dinner was good. The block is the second helping after dinner.</td><td></td></tr>
+<tr><td>24</td><td>Warm Front</td><td>Two words</td><td>Playful</td><td>A weather term turned into a promise. Something warm is moving in tonight.</td><td></td></tr>
+<tr><td>25</td><td>Yellow Window</td><td>Two words</td><td>Warm, mysterious</td><td>The lit window you see from outside at night. The whole brand is the view from the sidewalk.</td><td></td></tr>
+<tr><td>26</td><td>Hearthside</td><td>Single compound word</td><td>Warm</td><td>The spot next to the fire. Softer than Hearth, more place than object.</td><td></td></tr>
+<tr><td>27</td><td>Welcome Mat</td><td>Two words</td><td>Warm, playful</td><td>The first thing at the door. Says the block is for everyone in the house.</td><td></td></tr>
+<tr><td>28</td><td>Homeglow</td><td>Invented compound</td><td>Warm, modern</td><td>Invented word for the light a house gives off at night. Clean mark, open domain space likely.</td><td></td></tr>
+<tr><td>29</td><td>Evenglow</td><td>Invented, from an archaic word</td><td>Warm, mysterious</td><td>The glow of evening. Sounds like "even" as in level and calm. Distinct and easy to spell.</td><td></td></tr>
+<tr><td>30</td><td>Come On In</td><td>Phrase</td><td>Warm, playful</td><td>The literal signal. A host can say it every week and it never wears out.</td><td></td></tr>
+</table></div>
+<p>Why the five went to the screen: each carries the light or come-in signal without saying "porch"; each has a double meaning a parent gets and a kid does not need; each reads premium on a printed masthead, not kitsch; two are network-style and three are two-word marks with strong logo shapes.</p>
+
+<h2>4. Voice</h2>
+<div class="rec"><strong>Voice in one line.</strong> A confident host who is glad you came. Warm, plain, funny on purpose, never winking.</div>
+
+<h3>The ten rules</h3>
+<ol>
+<li><strong>Speak to the parent.</strong> Never call a child to act. No "click," "subscribe," "share," or "tell us" aimed at a kid (<code>canon/STANDARDS.md</code> section 2, item 10).</li>
+<li><strong>Short sentences.</strong> One idea each. If a sentence needs a comma to breathe, split it.</li>
+<li><strong>Say the night.</strong> Every public page names the fixed night and the block. The reader should never wonder when.</li>
+<li><strong>Be warm without being soft.</strong> No "cozy," "snuggle," "magical," or "wholesome." Show the couch. Do not describe the feeling of the couch.</li>
+<li><strong>Be confident without being loud.</strong> No exclamation points in headings. One per page at most in body copy.</li>
+<li><strong>Never wink.</strong> No irony about being a TV block, no "remember when," no quotation marks around the word retro. The guide format is played straight.</li>
+<li><strong>Never name the old blocks.</strong> No use of the two block trademarks named in <code>canon/STANDARDS.md</code> section 2, item 13, and no reference to any 1990s brand, jingle, or catchphrase in any public text (section 2, items 12 and 13).</li>
+<li><strong>Jokes land for a 35-year-old and stay clean for a 6-year-old.</strong> If a line needs the kid not to get it, cut it.</li>
+<li><strong>State facts with a source or not at all.</strong> Audience numbers, results, and claims about the old blocks stay in research files.</li>
+<li><strong>No em dashes.</strong> Restructure the sentence. Spell out acronyms on first use.</li>
+</ol>
+
+<h3>Ritual language</h3>
+<p>One word per concept. Internal words from <code>canon/GLOSSARY.md</code> stay as they are. This table adds the public word a family says.</p>
+<div class="wrap"><table>
+<tr><th>Concept</th><th>Internal word</th><th>Public word</th><th>How it sounds</th></tr>
+<tr><td>The fixed night</td><td>Fixed night</td><td>[NAME] Night</td><td>"It's [NAME] Night."</td></tr>
+<tr><td>The full program</td><td>Block</td><td>The block</td><td>"Tonight's block starts at the top of the hour."</td></tr>
+<tr><td>Slot 1</td><td>Anchor</td><td>Anchor</td><td>Printed as the first listing. "First up, the Anchor."</td></tr>
+<tr><td>Slot 2</td><td>Hangout</td><td>Hangout</td><td>"Then the Hangout."</td></tr>
+<tr><td>Slot 3</td><td>Wildcard</td><td>Wildcard</td><td>"Then the Wildcard. Anything goes."</td></tr>
+<tr><td>Slot 4</td><td>Lights Out</td><td>Lights Out</td><td>"And last, Lights Out. Then bed."</td></tr>
+<tr><td>The host segments</td><td>Interstitial, home base</td><td>The Wrap</td><td>"Stay for the Wrap." The hosts speak from Home Base.</td></tr>
+<tr><td>The transition</td><td>Bumper</td><td>Bumper</td><td>Not spoken. Seen and heard.</td></tr>
+<tr><td>The after-show</td><td>Ritual kit</td><td>The Last Word</td><td>One question, one snack card, one thing to do. "Tonight's Last Word is on the fridge."</td></tr>
+<tr><td>The reminder</td><td>Parent email</td><td>The Listing</td><td>"The Listing lands in your inbox before the block."</td></tr>
+<tr><td>The sign-up</td><td>Parent account</td><td>Save the night</td><td>"Save the night" is the button. The parent is the account holder.</td></tr>
+<tr><td>The vote</td><td>Metric</td><td>I'd watch this</td><td>The one thing a parent can say about a trailer.</td></tr>
+<tr><td>The premiere</td><td>Premiere</td><td>Premiere</td><td>"Premieres on [NAME] Night."</td></tr>
+</table></div>
+<ul>
+<li>The public word never replaces the internal word in <code>canon/</code> or in agent files.</li>
+<li>"Lights Out" is Slot 4 only. It never means bedtime in copy, so the two ideas do not blur.</li>
+<li>"The Wrap" is the host moment. Not "the bit," not "the segment."</li>
+<li>The child is never named as the user. "Your kid" and "the whole house" are the words. Never "you" to a child.</li>
+</ul>
+
+<h3>The two promises</h3>
+<div class="promise"><div class="label">The promise to parents</div>One night a week, one couch, one thing you all laugh at, and nothing you have to apologize for.</div>
+<div class="promise"><div class="label">The promise to kids</div>Something that is yours every week, with a little scare at the end and a safe landing.<p class="src" style="margin:8px 0 0">Spoken by a host on screen. Never written as a call to action to a child.</p></div>
+
+<h3>Six sample lines</h3>
+<div class="wrap"><table>
+<tr><th>Where</th><th>Line</th></tr>
+<tr><td>Hero line (site home)</td><td>"One night a week. Four new shows. The whole house on one couch."</td></tr>
+<tr><td>Guide tagline (under the masthead)</td><td>"[NAME]. The block premieres every [fixed night]. Listings inside."</td></tr>
+<tr><td>Trailer page prompt (above the player, to the parent)</td><td>"Watch the trailer. Then tell us one thing: would your house watch this?"</td></tr>
+<tr><td>Email subject (The Listing)</td><td>"Tonight's block: the Anchor, the Hangout, the Wildcard, and Lights Out"</td></tr>
+<tr><td>Vote button label</td><td>"I'd watch this"</td></tr>
+<tr><td>Footer line</td><td>"[NAME] is for families. A parent holds every account. We collect nothing from children. Read how we handle data."</td></tr>
+</table></div>
+<p>Each sample line names the parent as the actor and the household as the audience. The footer line satisfies <code>canon/STANDARDS.md</code> section 4, item 2.</p>
+
+<h2>5. Identity</h2>
+<p><strong>The idea.</strong> The site is a printed TV guide that came to life. A family opens it, finds the night, reads the four listings, and clicks one to watch the trailer. It must feel like a real publication with a real art director, not a costume. The 1990s reference stays in the bones (grid, type, numbers, paper) and never in the surface (no scan lines, no video-tape noise, no fake static, no "retro" badge).</p>
+<p><strong>Premium</strong> means tight typography, generous margins, real hierarchy, one accent, and motion that stays out of the way. <strong>Kitsch</strong> means glow filters, neon, distressed textures, and jokes about the format. The brief bans the second list.</p>
+
+<h3>The printed guide, translated to screen</h3>
+<div class="wrap"><table>
+<tr><th>Printed element</th><th>What it was</th><th>On screen</th></tr>
+<tr><td>Newsprint grid</td><td>Narrow columns, thin rules, dense listings</td><td>A 12-column grid on desktop that collapses to 4 on mobile. Hairline rules (1 pixel, ink at 20 percent) separate listings. No cards, no drop shadows.</td></tr>
+<tr><td>Condensed headlines</td><td>Tall, tight sans headlines that fit a column</td><td>One condensed display face for show titles and the masthead. Tracking tight. Never stretched by CSS.</td></tr>
+<tr><td>Listing typography</td><td>Small text, bold show name, plain blurb, run-in style</td><td>Show name in bold small caps. Blurb in regular text following on the same line. 45 to 65 characters per line.</td></tr>
+<tr><td>Channel numbers</td><td>A big numeral at the left of each row</td><td>Each slot gets a number: 1, 2, 3, 4. Set large in the display face, tabular figures, left of the listing. Not a real channel number.</td></tr>
+<tr><td>Time bands</td><td>Rows keyed to half-hour marks</td><td>The four slots sit in four horizontal bands in order. Bands read "First," "Second," "Third," "Last." No clock times on the page. The fixed night is named. The time is not.</td></tr>
+<tr><td>Small-caps show blurbs</td><td>One or two lines that sold the episode</td><td>One line per show, 12 to 18 words, written by the showrunner, passed by standards. Small caps for the show name only.</td></tr>
+<tr><td>Masthead</td><td>The publication name across the top</td><td>[NAME] set in the display face, full width, with the fixed night and the words "Listings inside" set small under it.</td></tr>
+<tr><td>Highlight box</td><td>A boxed pick of the night</td><td>One boxed listing per page: the premiere. It gets the accent color as a 2 pixel rule, not a fill.</td></tr>
+<tr><td>Paper</td><td>Cream, slightly warm, visible fiber</td><td>A flat paper color with no texture image. Warmth comes from the hex value, not from a grain overlay.</td></tr>
+</table></div>
+<p>What is not translated: no fake ads in the margins, no fake crossword, no fake horoscope. Filler reads as a joke about the format and breaks the "never wink" voice rule.</p>
+
+<h3>Typography: two pairings, Google Fonts only</h3>
+<h4>Pairing A (recommended): Archivo + Newsreader</h4>
+<ul>
+<li><strong>Display and listings: Archivo.</strong> A variable grotesque with a width axis from 62 to 125 and weights 100 to 900. Use the condensed end (width 70 to 80) at weight 700 to 800 for the masthead, show titles, and slot numerals. Use width 100, weight 500, for small-caps show names. Enable tabular numerals (<code>font-feature-settings: "tnum"</code>) for the slot numbers.</li>
+<li><strong>Body and blurbs: Newsreader.</strong> A variable serif built for on-screen reading with an optical size axis. Use optical size 14 to 16 for blurbs and body, weight 400. Use italic for the one-line premiere note.</li>
+<li><strong>Why:</strong> Archivo condensed reads as a real listings headline face without imitating any one publication. Newsreader gives the blurb the density of print and the readability of a screen. The pair is calm. Nothing in it says costume.</li>
+</ul>
+
+<div class="spec">
+<p class="note">Live specimen, Pairing A. Masthead in Archivo at width 72, weight 800. Fonts load from Google Fonts; a fallback face shows if the network is off.</p>
+<p class="masthead">Streetlights<span class="dot">.</span></p>
+<hr class="mast-rule">
+<p class="mast-sub">Premieres every Friday night &nbsp;&middot;&nbsp; Listings inside</p>
+<div style="height:22px"></div>
+<p class="note">Listing blurbs in Newsreader, optical size auto. Show names in Archivo small caps. Slot numerals tabular.</p>
+<div class="listing premiere">
+  <div class="num">1</div>
+  <div><p class="band"><span class="onair"></span>First &nbsp;&middot;&nbsp; Anchor &nbsp;&middot;&nbsp; Premiere</p><p class="blurb"><span class="show">Sample Show Title</span> A placeholder blurb of twelve to eighteen words, written by the showrunner and passed by standards. <em>Premieres tonight.</em></p></div>
+</div>
+<div class="listing">
+  <div class="num">2</div>
+  <div><p class="band">Second &nbsp;&middot;&nbsp; Hangout</p><p class="blurb"><span class="show">Sample Show Title</span> One line that sells the episode to a parent and reads fine to a six-year-old over a shoulder.</p></div>
+</div>
+<div class="listing">
+  <div class="num">4</div>
+  <div><p class="band">Last &nbsp;&middot;&nbsp; Lights Out</p><p class="blurb"><span class="show">Sample Show Title</span> A little scare at the end and a safe landing. Then bed.</p></div>
+</div>
+</div>
+
+<h4>Pairing B: Bricolage Grotesque + Source Serif 4</h4>
+<ul>
+<li><strong>Display: Bricolage Grotesque.</strong> Variable, with optical size and width axes. Use the condensed width at weight 800 for the masthead and titles. It carries more personality in the letterforms (a slightly rounded, slightly odd grotesque), which suits the Wildcard slot and the host voice.</li>
+<li><strong>Body: Source Serif 4.</strong> Variable serif with an optical size axis. Weight 400 for body, 600 for small-caps show names.</li>
+<li><strong>Why:</strong> warmer and more characterful than Pairing A. The tradeoff is that Bricolage has a strong flavor and may read as designed rather than printed. Choose B if the logo direction is "the signal" and the brand needs more play.</li>
+</ul>
+<p class="src">Pairing B is not rendered here. This page loads only the two families the site uses, so the specimen matches the build.</p>
+<h4>Rules for both</h4>
+<ul>
+<li>Two families per page. No third.</li>
+<li>No faux bold, no faux small caps. Use the real small-caps feature only where the face supports it; otherwise set capitals at 80 percent size with 5 percent tracking.</li>
+<li>Minimum body size 16 pixels. Minimum listing blurb 15 pixels. Parents read on phones at night.</li>
+<li>Line length 45 to 75 characters.</li>
+</ul>
+
+<h3>Color system</h3>
+<p>One paper, one ink, one accent, one on-air glow. Grays derive from ink at fixed opacities. No gradients except the glow halo.</p>
+<div class="edition">
+<h4>Light (default, "daytime edition")</h4>
+<div class="swatches">
+  <div class="sw"><div class="chip" style="background:var(--sw-l-paper);border-bottom:1px solid var(--line)"></div><div class="meta"><b>Paper</b><code>#F3ECDD</code> Page background. Warm cream, no texture.</div></div>
+  <div class="sw"><div class="chip" style="background:var(--sw-l-ink)"></div><div class="meta"><b>Ink</b><code>#1C1A16</code> All text, rules, numerals. Ink 60 and Ink 20 are this value at 60 and 20 percent opacity.</div></div>
+  <div class="sw"><div class="chip" style="background:var(--sw-l-accent)"></div><div class="meta"><b>Accent</b><code>#C9391E</code> One per page: the premiere rule, the primary button, the active link. A brick red that prints.</div></div>
+  <div class="sw"><div class="chip" style="background:var(--sw-l-glow)"></div><div class="meta"><b>On-air glow</b><code>#FFC46B</code> The now-playing dot, the play halo, the sonic logo visual. 100 percent as a dot, 30 percent as a halo.</div></div>
+</div>
+</div>
+<div class="edition">
+<h4>Dark ("late edition")</h4>
+<div class="swatches">
+  <div class="sw"><div class="chip" style="background:var(--sw-d-paper)"></div><div class="meta"><b>Paper</b><code>#15130F</code> Page background. Ink-black with warmth.</div></div>
+  <div class="sw"><div class="chip" style="background:var(--sw-d-ink);border-bottom:1px solid var(--line)"></div><div class="meta"><b>Ink</b><code>#EFE6D3</code> All text, rules, numerals. Ink 60 and Ink 20 at the same opacities.</div></div>
+  <div class="sw"><div class="chip" style="background:var(--sw-d-accent)"></div><div class="meta"><b>Accent</b><code>#E8583A</code> Same roles. Lifted for contrast.</div></div>
+  <div class="sw"><div class="chip" style="background:var(--sw-d-glow)"></div><div class="meta"><b>On-air glow</b><code>#FFD08A</code> Same roles. Brighter on dark.</div></div>
+</div>
+</div>
+<ul>
+<li>Contrast: ink on paper passes WCAG AA at every size in both modes. Accent on paper passes AA at 18 pixels and up. Never set body text in accent.</li>
+<li>The glow is the only thing on the page that looks lit. It appears only where something is playing or about to play.</li>
+<li>The trailer pages use the dark set by default, so the video is the brightest object.</li>
+<li>Slot 4, Lights Out, may use the dark set on its listing row in the light edition. That is the one exception to a single paper per page.</li>
+</ul>
+
+<h3>Motion rules</h3>
+<div class="wrap"><table>
+<tr><th>What moves</th><th>What never moves</th></tr>
+<tr><td>
+<ol>
+<li>The on-air glow breathes. Opacity 30 to 60 percent over a slow cycle. It is the only ambient motion on the site.</li>
+<li>Listings reveal on load in slot order, first to last, each with a 40 millisecond stagger and a 6 pixel rise. One pass. Never on scroll.</li>
+<li>The trailer player fades from paper to dark when play starts. The listing behind it stays put.</li>
+<li>The vote button confirms with a single ink fill from left to right and a checkmark. No confetti, no bounce.</li>
+<li>Hover on a listing raises the hairline rule to ink 60. Nothing else.</li>
+</ol>
+</td><td>
+<ol>
+<li>The masthead. It is print. It does not scroll away, shrink, or animate.</li>
+<li>Type. No kinetic type, no letter-by-letter reveals, no marquee.</li>
+<li>The grid. Columns do not shift on hover or reflow on interaction.</li>
+<li>The paper. No parallax, no grain, no flicker, no scan lines, no static.</li>
+<li>Anything for longer than 300 milliseconds, except the glow breath.</li>
+</ol>
+</td></tr>
+</table></div>
+<p><strong>Accessibility.</strong> Honor <code>prefers-reduced-motion</code>. When set, the glow holds at 45 percent and the load stagger is removed. No strobe of any kind (<code>canon/STANDARDS.md</code> section 3, item 9).</p>
+
+<h3>Sonic logo brief</h3>
+<div class="wrap"><table>
+<tr><th>Element</th><th>Specification</th></tr>
+<tr><td>Length</td><td>2.5 seconds for the full ident. A 1 second short cut for bumpers.</td></tr>
+<tr><td>Instrumentation</td><td>One real instrument, recorded, not synthesized. First choice: a single upright piano playing a three-note rising figure, close-miked, with room tone. Second choice: a vibraphone with the same figure. Optional: one soft doorbell-like chime on the last note, played on the same instrument, not a sample of a real doorbell.</td></tr>
+<tr><td>Structure</td><td>Three notes up, a held fourth note, then silence. The silence is part of the logo. The block starts in the silence.</td></tr>
+<tr><td>Mood</td><td>The feeling of a light turning on in a window. Confident, warm, unhurried. A parent should be able to hum it. A kid should be able to sing it.</td></tr>
+<tr><td>Tempo and key</td><td>Mid tempo, major key, no swing. It must sit under a host's voice without fighting it.</td></tr>
+<tr><td>Loudness</td><td>Peaks no louder than dialogue peak (<code>canon/STANDARDS.md</code> section 3, item 8). Mastered to the same loudness target as the trailers.</td></tr>
+<tr><td>Variants</td><td>A full ident (2.5 seconds), a bumper cut (1 second), and a Lights Out variant that plays the same figure one octave lower with a longer hold. Same notes, darker room.</td></tr>
+<tr><td>What it must not sound like</td><td>No orchestral swell, no synth pad, no whoosh or riser, no sampled crowd or kids' cheer, no vocal tag, no jingle with lyrics, no sound that recalls any network ident or block jingle from any era, no melody that resolves like a commercial. Any resemblance to a known ident fails standards item 12 (copied expression).</td></tr>
+<tr><td>Deliverable</td><td>A stem session, three mixed variants, and a written note on the notes and intervals so the format architect and the showrunner can reference it in scripts.</td></tr>
+</table></div>
+
+<h3>Logo: three directions in words</h3>
+<p>Each direction produces a wordmark. No mascot. No badge. The wordmark must work in one color, in ink on paper and in paper on ink, at masthead size and at favicon size.</p>
+<div class="logo-dirs">
+  <div class="card go"><div class="label">Direction 1, recommended</div><div class="big">The Masthead</div><p>The name set in the condensed display face, full width, all capitals, tracked tight. Under it, a single hairline rule and the fixed night in small caps. The mark is typography alone. The distinguishing detail is a single amber dot (the on-air glow) placed as the tittle of one letter or as a period after the name. In the favicon, the dot alone on paper is the mark.</p><p><strong>Strength:</strong> reads as a real publication. Cheapest to build. Ages well.<br><strong>Risk:</strong> without the dot it could be any masthead. The dot must be consistent.</p></div>
+  <div class="card"><div class="label">Direction 2</div><div class="big">The Signal</div><p>A wordmark plus a small geometric symbol: a lit window. A rectangle in ink with a smaller rectangle in amber inside it, offset to the upper right, like a lamp seen through a window from the street. Nothing else. The symbol sits left of the name at masthead size and stands alone as the favicon and the app tile. It animates once on load: the inner rectangle goes from paper to amber.</p><p><strong>Strength:</strong> gives the brand an object a kid can draw. Works in motion. Ties to the glow.<br><strong>Risk:</strong> window symbols exist in other categories. Counsel checks the symbol as well as the word.</p></div>
+  <div class="card"><div class="label">Direction 3</div><div class="big">The Number</div><p>The name set in the display face with the four slot numerals 1 2 3 4 set beneath it in the same face, spaced to the width of the name, with a hairline rule between. The numerals are the promise: four shows, in order, every week. The favicon is the numeral 4 in ink with the amber dot.</p><p><strong>Strength:</strong> says the format without a tagline. Distinct from any single-show brand.<br><strong>Risk:</strong> if the format changes slot count, the mark changes. Fits only if the format architect fixes four slots as canon.</p></div>
+</div>
+<div class="rec"><strong>Recommendation:</strong> Direction 1 for the site launch, with the amber dot as the constant, and Direction 2 held for the app tile and video platform channel art once the format is fixed.</div>
+
+<h3>The not-slop checklist</h3>
+<p>The site must pass all ten before the standards agent reviews it. A page that fails any one item goes back to the builder.</p>
+<ol class="check">
+<li>Every image on the site was made for the site. No stock photography, no generic AI render of a family on a couch, no clip art. If the site has a photo, it has a credit.</li>
+<li>Every word on the site was written by a person and read aloud once. No filler paragraphs, no "Welcome to our website," no placeholder text.</li>
+<li>No page has more than one accent color element competing for the eye. Count them. One per view.</li>
+<li>The masthead, the listing grid, and the footer are identical on every page. A returning parent knows where they are in one glance.</li>
+<li>Zero texture overlays. No grain, no paper fiber image, no scan lines, no vignette. Warmth comes from the hex values and the type.</li>
+<li>Type is never stretched, skewed, or faux-bolded. Font widths come from the variable axis only.</li>
+<li>Every trailer page shows the same four things in the same order: the listing line, the player, the vote, the parent note. No page adds a fifth thing.</li>
+<li>Load time: the guide page renders its type and grid before any video asset loads. A parent on a phone sees listings in the first paint.</li>
+<li>Nothing on the site addresses a child. Read every button and heading as if a 7-year-old were the reader. If it asks them to do anything, rewrite it (<code>canon/STANDARDS.md</code> section 2, item 10).</li>
+<li>The site says, on every page, that a parent holds the account and that no child data is collected (<code>canon/STANDARDS.md</code> section 4, item 2). The footer line in the voice section is the default.</li>
+</ol>
+
+<h2>6. How the site applies it</h2>
+<p>The trailer site in <code>projects/05-product/site/</code> is built to this book. What it takes and where it lives:</p>
+<div class="wrap"><table>
+<tr><th>Element</th><th>Applied as</th><th>Where</th></tr>
+<tr><td>Type</td><td>Pairing A. Archivo at width 72 for the masthead, titles, and slot numerals. Newsreader for blurbs and body.</td><td><code>public/guide.css</code>, tokens <code>--f-head</code>, <code>--f-body</code>, <code>--wdth</code></td></tr>
+<tr><td>Color</td><td>The light set as default. The dark set under <code>prefers-color-scheme: dark</code> and under an explicit <code>data-theme="dark"</code>. Ink 60, ink 20, and glow 30 derived as opacities.</td><td><code>public/guide.css</code>, tokens <code>--paper</code>, <code>--ink</code>, <code>--accent</code>, <code>--glow</code></td></tr>
+<tr><td>Logo</td><td>Direction 1, the Masthead, with the amber dot as the constant.</td><td>Masthead component in <code>src/</code></td></tr>
+<tr><td>Name</td><td>The provisional name <code>Streetlights</code> as a single config constant. Fork D replaces the value in one place. No other file hard-codes the name.</td><td><code>src/config.ts</code>, <code>SITE.name</code></td></tr>
+<tr><td>Ritual words</td><td>Slot labels, ordinals, the vote label, the save button, the email name, and the footer line come from the voice section.</td><td><code>src/config.ts</code></td></tr>
+<tr><td>Motion</td><td>The glow breath and the load stagger only, both removed under <code>prefers-reduced-motion</code>.</td><td><code>public/guide.css</code></td></tr>
+</table></div>
+<p>If the owner picks a different name at Fork D, or overrides the pairing or the direction, the builder changes the constant and the tokens. Nothing else in the site should need to move.</p>
+
+<h2>7. Sources and hand-off</h2>
+<ul class="src">
+<li><code>projects/02-brand/out/position.md</code> (cites <code>canon/AUDIENCE.md</code> and <code>deliverables/01-gap-memo.html</code> only)</li>
+<li><code>projects/02-brand/out/names-30.md</code></li>
+<li><code>projects/02-brand/out/names-5.md</code> (screen evidence with URLs, run 2026-09-19)</li>
+<li><code>projects/02-brand/out/voice.md</code></li>
+<li><code>projects/02-brand/out/identity-brief.md</code></li>
+<li><code>DECISIONS.md</code>: Fork D note, D-013, and the CG-01 row</li>
+</ul>
+<p>Hand-off: the product builder uses Pairing A, both color sets, the motion rules, and Direction 1 unless the owner overrides at Fork D. The format architect receives the sonic logo brief and the ritual words. The compliance gate receives the name screens for CG-01.</p>
+
+<footer>Project Porchlight. Phase 2 brand book. Codename only. The name in the specimen is provisional and not cleared. This document names other companies' marks and products as screening evidence only. It proposes no use of any other party's expression.</footer>
+</main>
+</body>
+</html>

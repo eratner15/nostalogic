@@ -1,0 +1,14 @@
+# Preview config for a temporary or review deploy with no D1 binding. The worker falls back to an in-memory store.
+name = "streetlights-preview"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+
+[assets]
+directory = "public"
+binding = "ASSETS"
+run_worker_first = true
+
+[vars]
+SITE_ENV = "preview"
+BASE_PATH = ""

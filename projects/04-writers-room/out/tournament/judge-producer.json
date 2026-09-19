@@ -1,0 +1,186 @@
+{
+  "judge": "Judge X",
+  "lens": "producer, AI-assisted trailers then cheap full episodes",
+  "scores": [
+    {
+      "id": "A1",
+      "engine": 6,
+      "hook": 7,
+      "originality": 6,
+      "trailer": 6,
+      "standards": 7,
+      "note": "Risk: a stranger-of-the-week porch crowd, bus passes, and four-way overlapping talk are exactly what AI video does worst, and a porch set collides with the block's own porch wrapper and reads near the generic 1990s porch family sitcom; advantage: a real turn (the form back in the drawer) and a callback button give the trailer a shape most Anchor pitches lack."
+    },
+    {
+      "id": "A2",
+      "engine": 7,
+      "hook": 9,
+      "originality": 5,
+      "trailer": 5,
+      "standards": 8,
+      "note": "Risk: the courtroom-at-home bit is a familiar sketch shape and a judge parent sitcom already exists as a category, while a six-person table and a bounce house cross-examination are motion and consistency problems; advantage: the strongest one-sentence parent pitch in the slot, a nameable six-year-old bailiff, and a fixed kitchen that is cheap to shoot forever."
+    },
+    {
+      "id": "A3",
+      "engine": 8,
+      "hook": 7,
+      "originality": 7,
+      "trailer": 7,
+      "standards": 9,
+      "note": "Risk: the trailer has no unanswered question, only four handoff vignettes, and the seatbelt chair style of physical gag is out of reach; advantage: one set at three light levels, two-shots, a whiteboard prop, and a radio voice-over device make it the most AI-tolerant live-action Anchor, with nothing near a Standards FAIL."
+    },
+    {
+      "id": "A4",
+      "engine": 5,
+      "hook": 8,
+      "originality": 8,
+      "trailer": 8,
+      "standards": 8,
+      "note": "Risk: exteriors, buyer tours, a deer, and a Halloween crowd push full episodes off one set and above micro-budget; advantage: the empty grid, forty mailboxes, and one lit house are the most AI-consistent world image in the slate and the trailer already shows the engine in one shot with a want and a button."
+    },
+    {
+      "id": "A5",
+      "engine": 9,
+      "hook": 6,
+      "originality": 6,
+      "trailer": 4,
+      "standards": 6,
+      "note": "Risk: a trailer of a man reading a binder plays as slides, has no turn, and the bathroom flowchart beat puts an AI-generated child in a towel, which I would not generate; advantage: static reading scenes on one dining room set are the cheapest episodes on the slate and the blended-family category is broad enough to be safe if the manual stays the joke."
+    },
+    {
+      "id": "H1",
+      "engine": 8,
+      "hook": 8,
+      "originality": 6,
+      "trailer": 6,
+      "standards": 7,
+      "note": "Risk: kid detective agency is the most crowded genre in children's TV and the trailer leans on a tag montage that Section 8 warns against, with five AI-generated child faces to keep consistent; advantage: one basement set, item close-ups, and a hug button are cheap and the lost-and-found premise is a clean parent sentence."
+    },
+    {
+      "id": "H2",
+      "engine": 9,
+      "hook": 7,
+      "originality": 8,
+      "trailer": 8,
+      "standards": 9,
+      "note": "Risk: the window-seat vote is a thin turn and a bus interior can look the same every week; advantage: assigned seats lock six faces into fixed frames, road plates through four seasons are generated cheaply, and one rented bus is the whole full-episode set."
+    },
+    {
+      "id": "H3",
+      "engine": 5,
+      "hook": 8,
+      "originality": 7,
+      "trailer": 5,
+      "standards": 6,
+      "note": "Risk: a dressed showroom with four hundred pieces and sixty kids is a large-location build, kids on display beds is a framing I would keep away from AI image generation, and the fictional store brand must never resemble a real chain; advantage: the GRAND CLOSING banner plus school bus cold open and the rug-section line are a marketable sentence a parent repeats."
+    },
+    {
+      "id": "H4",
+      "engine": 4,
+      "hook": 6,
+      "originality": 7,
+      "trailer": 3,
+      "standards": 7,
+      "note": "Risk: twelve child leads across six costume swaps is the single worst ask for AI character consistency and twelve minors is the most expensive full-episode cast on the slate; advantage: the halftime debate and the Us, Us, Our parents exchange are genuinely funny dialogue that would survive if the cast were cut to three."
+    },
+    {
+      "id": "H5",
+      "engine": 6,
+      "hook": 7,
+      "originality": 5,
+      "trailer": 4,
+      "standards": 8,
+      "note": "Risk: a mixed-age crowd at every bell plus a shared talent-show song is crowd, music, and performance timing all at once, and the concept sits near a known intergenerational documentary format; advantage: a two-clipboard face-off at a folding table is a cheap, strong two-shot and the ageism rule makes the scripts easy to pass."
+    },
+    {
+      "id": "W1",
+      "engine": 8,
+      "hook": 7,
+      "originality": 6,
+      "trailer": 8,
+      "standards": 8,
+      "note": "Risk: an animal-staffed municipal office in an animal town sits near a crowded animated-animal-city genre and the trailer has no turn, just four gags; advantage: stylized animals, a few fixed sets, held poses, and a marble down a hallway are the AI-friendliest kind of animation, with only the Code Amber siren level to watch."
+    },
+    {
+      "id": "W2",
+      "engine": 5,
+      "hook": 7,
+      "originality": 4,
+      "trailer": 6,
+      "standards": 6,
+      "note": "Risk: a night guard in a museum after closing will be read by parents as the museum film franchise no matter what the exhibits do, and every sketch is a new set and cast, so episodes never get cheaper; advantage: Docent 4 is a stylized, glitching robot whose voice and face are an easy AI build and a nameable kid character."
+    },
+    {
+      "id": "W3",
+      "engine": 9,
+      "hook": 8,
+      "originality": 7,
+      "trailer": 9,
+      "standards": 7,
+      "note": "Risk: parliamentary jokes must stay on procedure or they drift toward real politics (item 8), and talking-bird cartoons are a broad genre; advantage: one ledge, seven stylized birds, humans from the knees down, and a trailer that is dialogue over held poses with a real turn (the hawk) and a button make this the best AI-assisted trailer on the slate."
+    },
+    {
+      "id": "W4",
+      "engine": 6,
+      "hook": 6,
+      "originality": 5,
+      "trailer": 4,
+      "standards": 5,
+      "note": "Risk: puppets, a beatboxer synced to a machine, and a crowd sing-along are performance timing that AI cannot fake and synthesized singing is the deepest CG-03 exposure on the slate, while two heckling puppets in a bin sit near a famous puppet duo; advantage: a single laundromat set is cheap and the neon cold open is easy."
+    },
+    {
+      "id": "W5",
+      "engine": 7,
+      "hook": 8,
+      "originality": 8,
+      "trailer": 7,
+      "standards": 9,
+      "note": "Risk: weekly costumes, brief field locations, and live comic timing at the panel need performers, and the one-joke premise must escalate; advantage: the last-week rule is the most original sentence in the slot, slow-motion cart collisions and costume stills are a good AI fit, and the no-real-events rule leaves nothing to fix on Standards."
+    },
+    {
+      "id": "L1",
+      "engine": 8,
+      "hook": 8,
+      "originality": 8,
+      "trailer": 9,
+      "standards": 8,
+      "note": "Risk: the customer of the week is a new human face every episode and the reveals can feel like cheats if clues are unfair; advantage: a fixed returns desk, item close-ups, two-shots, and a dialogue-only cold open and button (two receipts) are the closest thing to a guaranteed non-slop AI trailer, on the cheapest live-action set in the slot."
+    },
+    {
+      "id": "L2",
+      "engine": 7,
+      "hook": 7,
+      "originality": 6,
+      "trailer": 7,
+      "standards": 6,
+      "note": "Risk: one room, one odd guest per week is the structure of a known single-room anthology and of motel horror films, and a 15-year-old alone at a night desk with strange adults plus a guest who thins into sunrise sit close to items 6 and 7; advantage: fog, neon, water, and silhouettes are AI strengths and the Bees exchange is the best trailer dialogue in the slot."
+    },
+    {
+      "id": "L3",
+      "engine": 9,
+      "hook": 6,
+      "originality": 5,
+      "trailer": 7,
+      "standards": 7,
+      "note": "Risk: the calm host taking strange calls after midnight is the format of a real paranormal call-in radio program and of a well-known town-radio fiction, and animatics over a booth can read as a slideshow; advantage: one booth, three regulars, and callers who are only voices make it the cheapest full episode on the slate, with the CG-03 disclosure needing to sit front and center because voice is the whole show."
+    },
+    {
+      "id": "L4",
+      "engine": 6,
+      "hook": 7,
+      "originality": 7,
+      "trailer": 8,
+      "standards": 5,
+      "note": "Risk: a 12-year-old on a bike alone in headlights at strange houses every night is the closest thing to an item 6 FAIL on the slate even with her mother on the radio, the van must not resemble any real courier, and a new porch each week is a location per episode that also collides with the block's porch wrapper; advantage: a single adult lead, night porches, and headlight shots are AI-consistent and cheap."
+    },
+    {
+      "id": "L5",
+      "engine": 5,
+      "hook": 9,
+      "originality": 4,
+      "trailer": 6,
+      "standards": 7,
+      "note": "Risk: a sibling pair keeping a field guide of a small town's creatures with a skeptical brother sits near a very well-known animated series, and compositing 2D creatures onto live night exteriors is a two-pipeline build with two child actors; advantage: nice monsters with a Danger: none card is the most kid-marketable sentence in the slot and creature design and field-guide cards are easy AI assets."
+    }
+  ]
+}

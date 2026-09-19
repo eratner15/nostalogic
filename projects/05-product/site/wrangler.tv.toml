@@ -1,0 +1,21 @@
+# Routed deploy at ratlinks.com/tv. Requires the ratlinks.com zone on the account and Workers Routes edit on the token.
+# The GitHub workflow appends a [[d1_databases]] block when the token has D1 permission. Without it the worker
+# runs on the in-memory store (review mode).
+name = "streetlights-tv"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = false
+routes = [
+  { pattern = "ratlinks.com/tv", zone_name = "ratlinks.com" },
+  { pattern = "ratlinks.com/tv/*", zone_name = "ratlinks.com" },
+]
+
+[assets]
+directory = "public"
+binding = "ASSETS"
+run_worker_first = true
+
+[vars]
+SITE_ENV = "production"
+BASE_PATH = "/tv"

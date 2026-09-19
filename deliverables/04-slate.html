@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Porchlight Slate</title>
+<meta name="description" content="Phase 4 result for Project Porchlight: the four winning shows, the tournament that picked them, and the green-light checklist for the owner.">
+<style>
+  :root{
+    --bg:#faf7f2;--ink:#1f1b16;--muted:#5d554b;--line:#e2dbd0;--card:#ffffff;
+    --accent:#b5541c;--go:#1f7a4d;--go-bg:#e6f4ec;--warn:#9a6b00;--warn-bg:#fbf1d6;--kill:#a3302a;--kill-bg:#f9e4e2;
+    --table-head:#f1ebe2;--quote:#f5efe6;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#17150f;--ink:#f0ebe3;--muted:#b8ae9f;--line:#332e26;--card:#201d16;
+      --accent:#e78a4e;--go:#6fd19a;--go-bg:#16301f;--warn:#e6b84a;--warn-bg:#332a10;--kill:#f08a82;--kill-bg:#3a1d1a;
+      --table-head:#2a261e;--quote:#262219;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#17150f;--ink:#f0ebe3;--muted:#b8ae9f;--line:#332e26;--card:#201d16;
+    --accent:#e78a4e;--go:#6fd19a;--go-bg:#16301f;--warn:#e6b84a;--warn-bg:#332a10;--kill:#f08a82;--kill-bg:#3a1d1a;
+    --table-head:#2a261e;--quote:#262219;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Georgia,"Times New Roman",serif}
+  main{max-width:960px;margin:0 auto;padding:32px 16px 64px}
+  h1{font-size:2rem;line-height:1.15;margin:0 0 8px}
+  h2{font-size:1.4rem;margin:40px 0 12px;padding-top:12px;border-top:2px solid var(--line)}
+  h3{font-size:1.1rem;margin:24px 0 8px}
+  h4{font-family:system-ui,sans-serif;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:20px 0 6px}
+  p{margin:0 0 12px}
+  .kicker{color:var(--muted);font-family:system-ui,sans-serif;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase}
+  .verdict{display:grid;grid-template-columns:1fr;gap:12px;margin:24px 0}
+  @media(min-width:700px){.verdict{grid-template-columns:1fr 1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px;min-width:0}
+  .card .label{font-family:system-ui,sans-serif;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .card .big{font-size:1.5rem;font-weight:700;margin:4px 0 6px}
+  .card .score{font-family:system-ui,sans-serif;font-size:.85rem;color:var(--muted);margin:0 0 8px}
+  .card p:last-child{margin-bottom:0}
+  .go{background:var(--go-bg);border-color:var(--go)} .go .big{color:var(--go)}
+  .warn{background:var(--warn-bg);border-color:var(--warn)} .warn .big{color:var(--warn)}
+  .kill{background:var(--kill-bg);border-color:var(--kill)} .kill .big{color:var(--kill)}
+  table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-family:system-ui,sans-serif;font-size:.9rem}
+  th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+  th{background:var(--table-head)}
+  .wrap{overflow-x:auto}
+  .num{text-align:right;white-space:nowrap}
+  .pill{display:inline-block;padding:2px 8px;border-radius:999px;font-family:system-ui,sans-serif;font-size:.75rem;font-weight:700;white-space:nowrap}
+  .p-go{background:var(--go-bg);color:var(--go)} .p-warn{background:var(--warn-bg);color:var(--warn)} .p-kill{background:var(--kill-bg);color:var(--kill)}
+  .p-lead{background:var(--accent);color:#fff}
+  ol,ul{padding-left:22px} li{margin-bottom:6px}
+  .src{font-family:system-ui,sans-serif;font-size:.82rem;color:var(--muted)}
+  .rec{border-left:4px solid var(--accent);padding:8px 14px;background:var(--card);margin:12px 0}
+  .quote{background:var(--quote);border-left:3px solid var(--line);padding:6px 12px;margin:0 0 10px;font-style:italic}
+  .show{border:1px solid var(--line);border-radius:12px;padding:0 16px 16px;margin:24px 0;background:var(--card)}
+  .show h2{border-top:0;margin-top:0;padding-top:16px}
+  .show .slot{font-family:system-ui,sans-serif;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--accent)}
+  .checks{list-style:none;padding:0;margin:8px 0 12px}
+  .checks li{display:flex;gap:10px;align-items:flex-start;margin-bottom:8px;font-family:system-ui,sans-serif;font-size:.92rem}
+  .box{flex:0 0 16px;width:16px;height:16px;margin-top:3px;border:2px solid var(--muted);border-radius:3px;position:relative}
+  .box.on{border-color:var(--go);background:var(--go)}
+  .box.on::after{content:"";position:absolute;left:4px;top:0;width:4px;height:8px;border:solid #fff;border-width:0 2px 2px 0;transform:rotate(45deg)}
+  .box.half{border-color:var(--warn);background:linear-gradient(90deg,var(--warn) 50%,transparent 50%)}
+  .box.off{border-color:var(--kill)}
+  .files{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.82rem;word-break:break-all}
+  .files li{margin-bottom:4px}
+  code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.88em;word-break:break-all}
+  a{color:var(--accent)}
+  footer{margin-top:48px;color:var(--muted);font-size:.85rem;font-family:system-ui,sans-serif}
+  @media print{body{background:#fff;color:#000} .card,.show{break-inside:avoid} h2{break-after:avoid}}
+</style>
+</head>
+<body>
+<main>
+<p class="kicker">Project Porchlight, Phase 4 deliverable, 2026-09-19. Codename only. Internal.</p>
+<h1>Porchlight Slate</h1>
+<p>This page closes Phase 4. It shows the four shows the tournament picked, what each one is, what is built for each, and what the owner must decide before any trailer is produced. Read the summary box first. Then read the show you want to green-light. Every file named here is a plain path in the repo.</p>
+
+<h2>1. Producer's summary</h2>
+<p>Four shows, one per slot, in slot order. Totals are out of 50 from three judges on five criteria. The shared town is Carrow Bend (D-023).</p>
+
+<div class="verdict">
+  <div class="card">
+    <div class="label">Slot 1, Anchor</div>
+    <div class="big">Kitchen Court</div>
+    <div class="score">A2. Tournament total 38.66. Won the slot by 0.33.</div>
+    <p>In a house where Mom is a real judge, every family fight goes to trial at the kitchen table, and when the kids sue their parents, a kid presides.</p>
+  </div>
+  <div class="card">
+    <div class="label">Slot 2, Hangout</div>
+    <div class="big">Long Route</div>
+    <div class="score">H2. Tournament total 38.33. Tie broken on originality.</div>
+    <p>Six kids ride the county's last long school bus route for 48 minutes twice a day, and the bus is where everything that happens to them actually happens.</p>
+  </div>
+  <div class="card go">
+    <div class="label">Slot 3, Wildcard. Lead show by total.</div>
+    <div class="big">Recent History Society</div>
+    <div class="score">W5. Tournament total 39.34. Highest in the slate.</div>
+    <p>A neighborhood historical society reenacts only what happened last week, in full costume, with total seriousness, and a grandfather and his granddaughter run it.</p>
+  </div>
+  <div class="card go">
+    <div class="label">Slot 4, Lights Out. Co-lead for production.</div>
+    <div class="big">The Returns Desk</div>
+    <div class="score">L1. Tournament total 39.33. Retitled from The Night Desk (D-022).</div>
+    <p>At the all-night returns desk of a neighborhood hardware store, every item comes back with a ghost story, and the desk always finds the ordinary truth.</p>
+  </div>
+</div>
+
+<div class="rec"><strong>Lead and co-lead.</strong> Recent History Society leads by tournament total. The Orchestrator named The Returns Desk co-lead for production because the producer judge rates it the most reliable AI-assisted trailer on the slate (D-020). Both are recommendations. Neither is final until the owner rules at Fork E.</div>
+
+<h3>Two owner decisions open</h3>
+<div class="wrap"><table>
+<tr><th>Decision</th><th>Options</th><th>Tradeoff</th><th>Recommendation</th></tr>
+<tr><td><strong>Fork E. Lead show and slate order.</strong></td><td>(1) Keep slot order as scored: Kitchen Court, Long Route, Recent History Society, The Returns Desk. Lead is Recent History Society. (2) Lead with The Returns Desk and produce its trailer first. (3) Produce all four in parallel and let the trailer site pick the lead by vote.</td><td>Option 1 follows the score and the block bible's slot logic. Option 2 puts the cheapest, safest trailer first and delays the highest scorer. Option 3 costs the most before any demand data exists.</td><td>Option 1 for slot order. Produce The Returns Desk trailer first as the pipeline test, then Recent History Society. The site shows all four from launch (D-017), so production order does not change what a visitor sees.</td></tr>
+<tr><td><strong>Alternate title for slot 4.</strong></td><td>(1) The Returns Desk. (2) Two Receipts.</td><td>The Returns Desk puts the premise in the title and the handle is likely free. Two Receipts is the show's last line and its fairness rule, and it is more distinctive. Counsel runs the direct trademark search on either under CG-01.</td><td>Keep The Returns Desk. Hold Two Receipts as the fallback if counsel finds a conflict. The last line does not change under either title.</td></tr>
+</table></div>
+
+<h2>2. The tournament in one view</h2>
+<p>Method from D-015. The showrunner wrote 20 concepts, 5 per slot. Three judge agents scored every concept on five criteria, each 1 to 10, equal weight, maximum 50. A script aggregated the scores. The top 2 per slot went to a head-to-head. One winner per slot. No override was used (D-020).</p>
+
+<h3>The three judge lenses</h3>
+<ul>
+<li><strong>Judge K, the kid.</strong> Reads every concept as an 11-year-old and as a 7-year-old, and asks whether each age has something to watch.</li>
+<li><strong>Judge P, the parent.</strong> Born 1985, kids 7 and 11. Asks whether the pitch is funny on the page to an adult and whether the house would sit down for it.</li>
+<li><strong>Judge X, the producer.</strong> Plans AI-assisted trailers first and cheap full episodes after. Asks what the set, cast, and consistency problems cost.</li>
+</ul>
+<p class="src">Criteria: engine (does it yield 100 episodes), hook (the two-generation pull), originality (distance from any existing show), trailer (strength of the six-beat teaser), standards (fit with the content rules). A concept is disqualified if any judge scores standards below 5 or if its engine does not yield 100 episodes. None was disqualified.</p>
+
+<h3>Slot 1, Anchor</h3>
+<div class="wrap"><table>
+<tr><th>Rank</th><th>ID</th><th>Title</th><th>Logline</th><th class="num">Engine</th><th class="num">Hook</th><th class="num">Orig.</th><th class="num">Trailer</th><th class="num">Stds.</th><th class="num">Total</th><th>Result</th></tr>
+<tr><td>1</td><td>A2</td><td><strong>Kitchen Court</strong></td><td>Every family dispute goes to trial at the kitchen table, because Mom is a real small claims judge and Grandma is a retired referee.</td><td class="num">8</td><td class="num">9</td><td class="num">6.33</td><td class="num">7.33</td><td class="num">8</td><td class="num"><strong>38.66</strong></td><td><span class="pill p-go">WINNER</span></td></tr>
+<tr><td>2</td><td>A4</td><td>Lot One</td><td>A family bought the model home of a subdivision that never got built, and now they live alone on a street with forty mailboxes and one house.</td><td class="num">6.33</td><td class="num">7.33</td><td class="num">8.67</td><td class="num">7.33</td><td class="num">8.67</td><td class="num"><strong>38.33</strong></td><td><span class="pill p-warn">Runner-up</span></td></tr>
+<tr><td>3</td><td>A3</td><td>Shift Change</td><td>With Mom on night shift and Dad on morning radio, three kids live under three governments every day, and Nana runs the biggest one.</td><td class="num">7.67</td><td class="num">7</td><td class="num">7.33</td><td class="num">6.33</td><td class="num">9</td><td class="num"><strong>37.33</strong></td><td></td></tr>
+<tr><td>4</td><td>A1</td><td>Stop Fourteen</td><td>Three generations live in the only house in town whose front porch is a legal city bus stop, and the whole town waits there.</td><td class="num">7.33</td><td class="num">7.33</td><td class="num">7.33</td><td class="num">7</td><td class="num">7.67</td><td class="num"><strong>36.66</strong></td><td></td></tr>
+<tr><td>5</td><td>A5</td><td>Revised Edition</td><td>When two families merge into one house, a retired appliance-manual writer writes the operating manual for the new family and updates it every week.</td><td class="num">7.67</td><td class="num">6</td><td class="num">6.67</td><td class="num">5.33</td><td class="num">7.33</td><td class="num"><strong>33</strong></td><td></td></tr>
+</table></div>
+<p class="src">Head-to-head: A2 Kitchen Court (38.66) beat A4 Lot One (38.33). Kitchen Court scored lowest on originality among the four winners. The bible's IP distance section answers that (section 3 below).</p>
+
+<h3>Slot 2, Hangout</h3>
+<div class="wrap"><table>
+<tr><th>Rank</th><th>ID</th><th>Title</th><th>Logline</th><th class="num">Engine</th><th class="num">Hook</th><th class="num">Orig.</th><th class="num">Trailer</th><th class="num">Stds.</th><th class="num">Total</th><th>Result</th></tr>
+<tr><td>1</td><td>H2</td><td><strong>Long Route</strong></td><td>Six kids at the far end of the county's last long school bus route spend 48 minutes together twice a day, and that bus is where everything happens.</td><td class="num">7.67</td><td class="num">7</td><td class="num">7.33</td><td class="num">7.33</td><td class="num">9</td><td class="num"><strong>38.33</strong></td><td><span class="pill p-go">WINNER</span></td></tr>
+<tr><td>2</td><td>H1</td><td>Unclaimed</td><td>Five seventh graders inherit the school lost and found and run it like a detective agency, because every lost thing has a story and someone who wants it back.</td><td class="num">8.33</td><td class="num">8</td><td class="num">7</td><td class="num">6.67</td><td class="num">8.33</td><td class="num"><strong>38.33</strong></td><td><span class="pill p-warn">Runner-up</span></td></tr>
+<tr><td>3</td><td>H3</td><td>Showroom</td><td>When their middle school runs out of room, the whole seventh grade moves into a closed furniture store across the parking lot, and the bedroom section becomes homeroom.</td><td class="num">7.33</td><td class="num">8</td><td class="num">7.67</td><td class="num">7</td><td class="num">7.33</td><td class="num"><strong>37.33</strong></td><td></td></tr>
+<tr><td>4</td><td>H4</td><td>All Twelve</td><td>At a school so small that twelve kids are the entire eighth grade, every kid has to be on every team, in every club, and in every play.</td><td class="num">6.67</td><td class="num">7.33</td><td class="num">7.33</td><td class="num">6</td><td class="num">8</td><td class="num"><strong>35.33</strong></td><td></td></tr>
+<tr><td>5</td><td>H5</td><td>Both Ends</td><td>Budget cuts put a middle school and a senior center in the same building, and the kids and the seniors share the gym, the cafeteria, and the drama.</td><td class="num">7</td><td class="num">6.33</td><td class="num">6</td><td class="num">5.33</td><td class="num">8</td><td class="num"><strong>32.66</strong></td><td></td></tr>
+</table></div>
+<p class="src">Head-to-head: H2 Long Route and H1 Unclaimed tied at 38.33. The tie broke on originality, 7.33 to 7. Long Route won.</p>
+
+<h3>Slot 3, Wildcard</h3>
+<div class="wrap"><table>
+<tr><th>Rank</th><th>ID</th><th>Title</th><th>Logline</th><th class="num">Engine</th><th class="num">Hook</th><th class="num">Orig.</th><th class="num">Trailer</th><th class="num">Stds.</th><th class="num">Total</th><th>Result</th></tr>
+<tr><td>1</td><td>W5</td><td><strong>Recent History Society</strong></td><td>A sketch show about a historical reenactment society that only reenacts things that happened last week, in full costume, with total seriousness.</td><td class="num">7</td><td class="num">8</td><td class="num">8</td><td class="num">7.67</td><td class="num">8.67</td><td class="num"><strong>39.34</strong></td><td><span class="pill p-go">WINNER</span> <span class="pill p-lead">LEAD</span></td></tr>
+<tr><td>2</td><td>W3</td><td>Pigeon Council</td><td>The pigeons of one city block govern themselves through a council that meets on a ledge, and every crumb, statue, and window box is a matter of state.</td><td class="num">7.67</td><td class="num">7.33</td><td class="num">7.67</td><td class="num">8</td><td class="num">7.67</td><td class="num"><strong>38.34</strong></td><td><span class="pill p-warn">Runner-up</span></td></tr>
+<tr><td>3</td><td>W1</td><td>Minor Matters</td><td>An animated workplace comedy about the Department of Small Things, the town office for the tiniest problems, from a balloon on a wire to a gate squeaking in B-flat.</td><td class="num">8.33</td><td class="num">7</td><td class="num">6.33</td><td class="num">7.67</td><td class="num">8</td><td class="num"><strong>37.33</strong></td><td></td></tr>
+<tr><td>4</td><td>W4</td><td>Suds Night</td><td>A variety show from a 24-hour laundromat, where the night attendant hosts an open mic for whoever waits on a dryer, including puppets, a beatboxer, and the lost socks.</td><td class="num">6.67</td><td class="num">6.33</td><td class="num">6.67</td><td class="num">5.33</td><td class="num">7.33</td><td class="num"><strong>32.33</strong></td><td></td></tr>
+<tr><td>5</td><td>W2</td><td>The Hall of Nearly</td><td>A sketch show in the Museum of Things That Almost Happened, where a night guard and a half-broken animatronic docent tour exhibits of near misses.</td><td class="num">6.33</td><td class="num">6.33</td><td class="num">5</td><td class="num">6.33</td><td class="num">7</td><td class="num"><strong>30.99</strong></td><td></td></tr>
+</table></div>
+<p class="src">Head-to-head: W5 Recent History Society (39.34) beat W3 Pigeon Council (38.34).</p>
+
+<h3>Slot 4, Lights Out</h3>
+<div class="wrap"><table>
+<tr><th>Rank</th><th>ID</th><th>Title</th><th>Logline</th><th class="num">Engine</th><th class="num">Hook</th><th class="num">Orig.</th><th class="num">Trailer</th><th class="num">Stds.</th><th class="num">Total</th><th>Result</th></tr>
+<tr><td>1</td><td>L1</td><td><strong>The Returns Desk</strong> <span class="src">(scored as The Night Desk)</span></td><td>The overnight clerk at a 24-hour hardware store hears the story behind every item that comes back to the returns desk, and every return has a spooky reason.</td><td class="num">8</td><td class="num">7.33</td><td class="num">7.33</td><td class="num">8</td><td class="num">8.67</td><td class="num"><strong>39.33</strong></td><td><span class="pill p-go">WINNER</span> <span class="pill p-lead">CO-LEAD</span></td></tr>
+<tr><td>2</td><td>L5</td><td>Local Creatures</td><td>A nature documentary about the mild monsters of one county, narrated by a 13-year-old cryptozoologist and her skeptical little brother, in which every creature turns out to be misunderstood.</td><td class="num">7</td><td class="num">9</td><td class="num">6.67</td><td class="num">7</td><td class="num">7.67</td><td class="num"><strong>37.34</strong></td><td><span class="pill p-warn">Runner-up</span></td></tr>
+<tr><td>3</td><td>L4</td><td>Wrong Address</td><td>A cheerful delivery driver keeps delivering to the wrong house at night, and every wrong house has something odd behind the door that turns out to be fine.</td><td class="num">7.67</td><td class="num">7.33</td><td class="num">8</td><td class="num">8.33</td><td class="num">6</td><td class="num"><strong>37.33</strong></td><td></td></tr>
+<tr><td>4</td><td>L2</td><td>The Lakeshore Rest</td><td>At a family-run lakeside motel, something odd checks into Room Six every week, and the teen night manager and her grandfather have until checkout to figure out what.</td><td class="num">8</td><td class="num">7.67</td><td class="num">6.67</td><td class="num">8</td><td class="num">6.67</td><td class="num"><strong>37.01</strong></td><td></td></tr>
+<tr><td>5</td><td>L3</td><td>The Late Line</td><td>A late-night radio host takes calls from listeners who saw something strange in town, and each call becomes an animated story that ends safe before midnight.</td><td class="num">7.67</td><td class="num">5.67</td><td class="num">6</td><td class="num">6.33</td><td class="num">8.33</td><td class="num"><strong>34</strong></td><td></td></tr>
+</table></div>
+<p class="src">Head-to-head: L1 (39.33) beat L5 Local Creatures (37.34). The title check then rated The Night Desk REVIEW, and D-022 retitled it The Returns Desk. The premise and score did not change.</p>
+
+<h3>The block</h3>
+<div class="wrap"><table>
+<tr><th>Slot</th><th>Show</th><th class="num">Total</th><th>Role</th></tr>
+<tr><td>Anchor</td><td>Kitchen Court (A2)</td><td class="num">38.66</td><td></td></tr>
+<tr><td>Hangout</td><td>Long Route (H2)</td><td class="num">38.33</td><td></td></tr>
+<tr><td>Wildcard</td><td>Recent History Society (W5)</td><td class="num">39.34</td><td>Lead show by total</td></tr>
+<tr><td>Lights Out</td><td>The Returns Desk (L1)</td><td class="num">39.33</td><td>Co-lead for production</td></tr>
+</table></div>
+<p class="src">Full judge notes: <code>projects/04-writers-room/out/tournament/results.md</code>. Concepts: <code>concepts.md</code>. Scorer: <code>score-tournament.mjs</code>.</p>
+
+<h2>3. The four shows</h2>
+<p>One section per show, in slot order. Each section ends with the green-light checklist and the files. A full mark means the item is done. A half mark means it is partly done. An empty mark means it has not started.</p>
+
+<!-- ============ KITCHEN COURT ============ -->
+<section class="show" id="kitchen-court">
+<h2><span class="slot">Slot 1, Anchor</span><br>Kitchen Court</h2>
+<p><strong>Logline.</strong> In a house where Mom is a real judge, every family fight goes to trial at the kitchen table, and when the kids sue their parents, a kid presides.</p>
+<p><strong>Pitch.</strong> It's about a family where the mom is an actual small claims judge, so every fight in the house, a waffle, a bedtime, whose turn it is, goes to trial at the kitchen table. The grandma is a retired basketball referee, so she doesn't decide anything, she just blows a whistle and calls fouls. The six-year-old is the bailiff and she runs the toaster, and when your toast pops, your time is up. And the house rule is that when the kids sue a grown-up, a kid gets to be the judge. Every verdict ends with a snack and a hug, no exceptions. It's the only show where a first-grader can overrule a judge and the judge has to serve her a snack.</p>
+
+<h4>Regulars</h4>
+<div class="wrap"><table>
+<tr><th>Name</th><th>Age</th><th>Role</th><th>Voice in one line</th></tr>
+<tr><td>Renata Delacroix</td><td>44</td><td>Mother. The Judge. County small claims judge.</td><td>"Downtown I've never been reversed. In this kitchen I'm 0 and 4 this week, and one of those was a first-grader."</td></tr>
+<tr><td>Wendell Liang</td><td>45</td><td>Father. Facilities. Owner of Liang Party Rental.</td><td>"I'm not a party to this case. I'm a party rental. There's a difference and I've explained it to the fridge."</td></tr>
+<tr><td>Antoinette "Toni" Delacroix</td><td>73</td><td>Grandmother. Ref. Retired basketball referee.</td><td>"I don't do right. I do fair."</td></tr>
+<tr><td>Marisol Delacroix-Liang</td><td>13</td><td>Eldest. Counsel. Founded the court with a napkin at seven.</td><td>"Objection. Also, can Nadia sleep over? I'll withdraw the objection."</td></tr>
+<tr><td>Ansel Delacroix-Liang</td><td>10</td><td>Middle. The Filer. Files more cases than anyone, has won two.</td><td>"Objection." "To what?" "She's winning."</td></tr>
+<tr><td>Philippa "Pip" Delacroix-Liang</td><td>6</td><td>Youngest. Bailiff. Runs the toaster.</td><td>"I'm the bailiff. I'm not on a side. I'm on the toaster."</td></tr>
+</table></div>
+
+<h4>The engine</h4>
+<p>Every episode has one A-case governed by the five Fridge Rules: anything over five dollars or five minutes goes to the table; each side gets one slice of toast and stops when it pops; evidence must fit on the table; when a grown-up is a party, the next kid on the Rota presides; and no verdict is final until the loser picks the snack, the winner serves it, both hug, and Ref whistles. Every episode also has a B-story from one of four streams (Wendell's rental inventory, Renata's downtown world leaking home, the Pinwheel neighbors, the kids' week) and the B-story must collide with the A-case at the verdict. Stakes rise across a season without leaving the kitchen: waffle, bedtime, hoodie, whether the court takes outside cases, whether Mom takes a bigger court. Seven streams multiply; the bible lists 100 seeds and the showrunner estimates a room could write 200.</p>
+
+<h4>Season 1 arc, ten episodes</h4>
+<p class="src">Season question: who decides? Can Renata be fair to people she loves, and can a kid be the judge for real?</p>
+<ol>
+<li><strong>The Last Waffle.</strong> Pip files against Ansel, Renata's first ruling against her own child runs eleven pages, and Ref invents delay of game.</li>
+<li><strong>Counsel.</strong> Marisol files for a later bedtime and hires Ref as her lawyer, and Ref hates every second and wins.</li>
+<li><strong>Six Chairs.</strong> Wendell rents out all forty chairs, Ansel files Family v. Facilities, and Rule Four puts Pip on the Stool for her first grown-up case.</li>
+<li><strong>Aisle Six.</strong> A litigant recognizes Renata at the grocery store, and Ansel finds the word "precedent" and relitigates last year.</li>
+<li><strong>The Back Door.</strong> A neighbor kid brings the first outside case, and the Full Table outvotes Renata six forks to one.</li>
+<li><strong>Order.</strong> Ref's whistle goes missing, the court dissolves into a normal family argument, and the whistle turns up in the freezer, filed as evidence by Pip.</li>
+<li><strong>Across the River.</strong> Renata is asked to sit on a bigger court, tells only Wendell, and Wendell writes it on a docket slip by accident.</li>
+<li><strong>The Binder.</strong> The kids draft a Household Constitution that is better than the Fridge Rules, and Ref refuses to sign anything.</li>
+<li><strong>Everyone v. Mom, part one.</strong> The kids file to block the new job, the Rota says Pip presides, and the trial cannot start because nobody is hungry.</li>
+<li><strong>Everyone v. Mom, part two.</strong> Pip rules from the second step: Mom takes the job, Kitchen Court moves to breakfast, and Ref uses the full whistle once.</li>
+</ol>
+
+<h4>The trailer, 90 seconds, v2</h4>
+<div class="wrap"><table>
+<tr><th>Beat</th><th>Timecode</th><th>What plays</th><th>The line that carries it</th></tr>
+<tr><td>1. Cold open</td><td>00:00 to 00:12</td><td>No music, no title. Ansel enters a bitten waffle into evidence. The toast pops mid-sentence. His mouth stays open.</td><td>Pip (O.S.): "Time." <span class="pill p-go">Kid laugh, 00:09</span></td></tr>
+<tr><td>2. World</td><td>00:12 to 00:30</td><td>The Pinwheel from above at dusk. The van. The Docket on the freezer door. Pip drags the Stool. Toni's whistle rises up the stairs. Renata climbs the Stool and taps the Masher.</td><td>Toni: "Five dollars or five minutes. Anything bigger goes to the table. It's on the fridge. Laminated." Pip: "Kitchen Court is open. Feet on the floor. Hands on the table. Mom's feet don't count." Renata: "Who's hungry and who's mad?"</td></tr>
+<tr><td>3. Character</td><td>00:30 to 00:55</td><td>Marisol's tabbed folder. Ansel objects to the folder. Wendell backs in with forty chairs and proposes splitting the waffle. Five voices say no. Toni calls traveling.</td><td>Renata: "Overruled. Downtown I've never been reversed. In this kitchen I'm 0 and 4 this week, and one of those was a first-grader." <span class="pill p-go">Parent laugh, 00:38</span></td></tr>
+<tr><td>4. Turn</td><td>00:55 to 01:15</td><td>Marisol calls Mom as a witness. Renata steps down to the Wobble, admits she was alone with the waffle, and asks for a lawyer. Ansel amends: Everyone versus Mom. Rule Four. The Rota arrow stops on PIP.</td><td>Renata: "It was a quality check. Let the record also show that I am very proud of you, and I would like a lawyer." Pip: "Kid on the Stool."</td></tr>
+<tr><td>5. Button</td><td>01:15 to 01:25</td><td>Pip on the second step slides the fruit bowl aside, takes the Masher in both hands, and opens court. Renata sits on the kids' side. Pip slides the waffle to the exact center of the table.</td><td>Pip: "Kitchen Court is open. Who's hungry and who's mad?" Renata: "Both." <span class="pill p-warn">Last line</span></td></tr>
+<tr><td>6. Title card</td><td>01:25 to 01:30</td><td>Black. Kitchen Court. Anchor. Premieres Friday on [BRAND]. The account holder is a parent.</td><td>No voice. No call to action.</td></tr>
+</table></div>
+<ul>
+<li><strong>The question a cold viewer writes:</strong> "Will Pip rule against her mom?"</li>
+<li><strong>Parent laugh:</strong> 00:38, Renata's 0 and 4 line. Spare at 00:19, "Laminated."</li>
+<li><strong>Kid laugh on sight:</strong> 00:09, the toast pops and Pip says "Time." Spare at 00:24, "Mom's feet don't count."</li>
+<li><strong>Last line:</strong> Pip: "Kitchen Court is open. Who's hungry and who's mad?" Renata: "Both."</li>
+<li><strong>Dialogue share:</strong> about 74 percent on the page. The floor is 60.</li>
+</ul>
+
+<h4>New expression (from the bible appendix)</h4>
+<p>All new to this file: the Pinwheel and Spoke Court; Liang Party Rental; the Docket on the freezer door; the Rota; the five Fridge Rules; the Stool; the Masher; the Cart and the toaster rule; the Wobble; the Binder; the Filer and the Filed; the Say; snack, hug, whistle, done; "Who's hungry and who's mad?"; "Court's closed. Dinner."; Facilities; Ref; the household fouls (Traveling, Hands, Holding, Offside, Delay of game, Using a voice); the courtesy blow; the Full Table and the fork vote; the Declaration; the Long Table; and the six characters as written. No gavel, no robe, no bench, no plaintiff, no defendant, no "your honor," no "all rise." The judge never judges a grown-up case. The winner serves the loser.</p>
+
+<h4>Production note</h4>
+<p><strong>Voice path:</strong> package in progress. The package holds the look bible, the six-character consistency kit, and a 35-shot list. Sections 4 (voice) and 7 (quality gate) are not written yet. The package's binding rules already state that no child's voice is synthesized, and the bible asks for human performance on all six faces and voices, with no AI child likeness requested. The package's supersession note for counsel says the trailer needs six consistent synthetic likenesses, three of them fictional children, and offers a fallback that keeps every child line off camera or in profile if counsel declines.</p>
+<p><strong>Biggest risk:</strong> comic timing across six people at one table, two of them under eleven, with three child performers including a six-year-old. The producer judge also flagged a six-person table as a motion and consistency problem for generated picture. Originality is the lowest of the four winners (6.33), so the IP distance choices above are load-bearing.</p>
+
+<h4>Standards posture</h4>
+<p>Showrunner self-pass on all 15 hard items. The nearest risk is soft rule 2, child sarcasm to a parent, and the show is built against it five ways: the kids are sincere, not sarcastic; Rule Four turns a kid-versus-parent case into a kid being fair to a parent; Renata is never the fool; every kid win ends in the parent losing gracefully and the hug on screen; and any line that would sting said flat is rewritten. The `standards` agent's pass on the scripts is still pending.</p>
+
+<h4>Green-light checklist</h4>
+<ul class="checks">
+<li><span class="box on"></span><span>Bible complete. Twelve sections, 100 seeds, IP distance statement, production note.</span></li>
+<li><span class="box on"></span><span>Trailer script v2. Punch-up pass done, four line changes, Two-Laugh test PASS.</span></li>
+<li><span class="box on"></span><span>Character sheet. Faces, costume tokens, set.</span></li>
+<li><span class="box half"></span><span>Production package. Look bible, consistency kit, and shot list exist. Voice plan, sound, edit, quality gate, and disclosure draft are in progress.</span></li>
+<li><span class="box on"></span><span>IP check. Title CLEAR. Premise CLEAR. Expression CLEAR on one condition: the old nickname for Renata is retired and she is "The Judge" (D-024). Counsel runs the direct trademark search under CG-01.</span></li>
+<li><span class="box off"></span><span>Standards pass. Pending. Self-checks by the showrunner, staff-writer, and punch-up agent all read PASS. The `standards` agent has not yet issued its report.</span></li>
+</ul>
+
+<h4>Files</h4>
+<ul class="files">
+<li>Bible: projects/04-writers-room/out/bibles/A2-kitchen-court.md</li>
+<li>Trailer v2: projects/04-writers-room/out/scripts/A2-kitchen-court-trailer-v2.md</li>
+<li>Cold open v2: projects/04-writers-room/out/scripts/A2-kitchen-court-cold-open-v2.md</li>
+<li>Character sheet: projects/04-writers-room/out/scripts/A2-kitchen-court-character-sheet.md</li>
+<li>Package: projects/04-writers-room/out/production/A2-kitchen-court-package.md (partial)</li>
+</ul>
+</section>
+
+<!-- ============ LONG ROUTE ============ -->
+<section class="show" id="long-route">
+<h2><span class="slot">Slot 2, Hangout</span><br>Long Route</h2>
+<p><strong>Logline.</strong> Six kids ride the county's last long school bus route for 48 minutes twice a day, and the bus is where everything that happens to them actually happens.</p>
+<p><strong>Pitch.</strong> There is a school bus that goes all the way out to the orchards and back. Six kids ride it, and they have turned it into a tiny country: assigned seats, a written code, a back-row parliament, and a market for the good window. The driver, Frances, has driven it for thirty years and pretends not to listen. School is out the window and at the door. Home is at the end of the lane. The ride is the only place these six are all together, and they will never admit it is the best part of the day.</p>
+
+<h4>Regulars</h4>
+<div class="wrap"><table>
+<tr><th>Name</th><th>Age</th><th>Role</th><th>Voice in one line</th></tr>
+<tr><td>Frances Keel</td><td>58</td><td>The driver. Thirty years on Route 12. The secret lead.</td><td>"I'm not listening. I'm driving. I just drive with my ears."</td></tr>
+<tr><td>Mateo Arriaga</td><td>14</td><td>Stop 1. Back row. Speaker of the parliament, which he denies.</td><td>"It's not a long route. It's the whole way. There's a difference."</td></tr>
+<tr><td>Priya Coker</td><td>11</td><td>Stop 7. Row 2. Author of the bus code.</td><td>"Section 3 says no standing. I wrote section 3. Sit."</td></tr>
+<tr><td>Dele Oyelaran</td><td>12</td><td>Stop 2. Back row. The whip. Wants to be Speaker.</td><td>"I'm not loud. The bus is quiet. That's a bus problem."</td></tr>
+<tr><td>Tola Oyelaran</td><td>12</td><td>Stop 2. Row 11. The swing vote. Keeps the minutes and draws the window.</td><td>"We're not a bloc. We're two people who get on at the same stop."</td></tr>
+<tr><td>Cal Whitlock</td><td>13</td><td>Stop 5. Row 7. The market. Keeps the seat ledger.</td><td>"I don't have a seat. I have a position."</td></tr>
+<tr><td>Hollis Keel</td><td>13</td><td>Stop 0. Row 1. The driver's grandson, in the kitchen seat.</td><td>"Left. Left. Big one."</td></tr>
+</table></div>
+
+<h4>The engine</h4>
+<p>Every episode is a ride, morning or afternoon or both, and the story moves in stop order so the viewer always knows where on the route it is by what is outside the window. The back row runs a parliament with a Speaker, a whip, a clerk, and Priya's written code, and every episode has one session about the thing the episode is really about; the code forbids motions about a person. One stop per episode brings the outside in: a face boards, a rule bends, a sign changes. The seat economy gives every ride a small stake, with Cal's ledger, Priya's code, and Frances's veto. Against the sameness risk the judges named, the bible lists ten levers: windows, the loop, stops, weather, substitutes, breakdowns, field trips, route changes, seat changes, and ride direction. Two rides a day, six kids, eight stops, five seasons of road, and one driver with a life multiply to 100 without strain.</p>
+
+<h4>Season 1 arc, ten episodes</h4>
+<p class="src">Season question: does the Long Route survive the year? The county has a limit on route length, and Route 12 runs nine minutes over.</p>
+<ol>
+<li><strong>Timed.</strong> Mr. Tull from the county boards with a stopwatch and sits in a contested seat.</li>
+<li><strong>The Quiet.</strong> The twins split on a vote for the first time, and the fight has to be held in silence at the rail crossing.</li>
+<li><strong>Position Six.</strong> The bus is moved in the loop, and the six campaign through the door to get Position 3 back.</li>
+<li><strong>Harvest Seats.</strong> Frances reassigns seats for orchard season. Cal's ledger collapses.</li>
+<li><strong>Stop Zero.</strong> Hollis asks for a stop of his own, the mailbox before the barn, and the county adds it to the clock.</li>
+<li><strong>Wrong Order.</strong> Dale subs and drives the route backwards. Hollis must navigate for a man who will not listen.</li>
+<li><strong>Chains.</strong> First snow. The ride runs double. Parliament passes eleven motions and repeals ten. Mr. Tull rode a long route once too.</li>
+<li><strong>The Detour.</strong> The creek bridge closes. The route runs through town. It is nine minutes shorter. The county likes it. The kids do not.</li>
+<li><strong>Nieves.</strong> Mateo's sister gets a trial ride. The county proposes a van for Pennock Hollow. Mateo would ride alone, and says he wants that.</li>
+<li><strong>Board Meeting on Wheels.</strong> The county board rides the route. Mateo says out loud that it is not a long route, it is the whole way. The route stays.</li>
+</ol>
+
+<h4>The trailer, 90 seconds, v2</h4>
+<div class="wrap"><table>
+<tr><th>Beat</th><th>Timecode</th><th>What plays</th><th>The line that carries it</th></tr>
+<tr><td>1. Cold open</td><td>00:00 to 00:12</td><td>A stopwatch in a grown man's hand. Mr. Tull folded into the back row. Priya, the smallest person on the bus, does not look up.</td><td>Priya: "You're in a contested seat." Tull: "I'm from the county." Priya: "Then you should know better." Then: "Section eight. It's in the book. There's a diagram."</td></tr>
+<tr><td>2. World</td><td>00:12 to 00:30</td><td>The bus on the orchard road at dawn. The wave at the lane. The chalkboard. The creek and the heron. The rail crossing and the Quiet: Dele and Cal argue with their faces, Hollis shushes a grown man with one finger.</td><td>Hollis: "Waiting on the wave." Frances: "Rule of the crossing. Nobody talked. Nothing happened."</td></tr>
+<tr><td>3. Character</td><td>00:30 to 00:55</td><td>Parliament in session. Dele stands to move for the Tuesday window. Priya cites section three from row 2. Cal has sold the window twice. Hollis calls the pothole.</td><td>Frances: "I'm not listening. I'm driving. I just drive with my ears." <span class="pill p-go">Parent laugh, 00:52</span></td></tr>
+<tr><td>4. Turn</td><td>00:55 to 01:15</td><td>The door shot at the school loop. Ms. Odum says the county called. Tull stands in the aisle and states the terms.</td><td>Tull: "Route 12 runs nine minutes over the county limit. Cut nine minutes, or the county splits the route." Dele: "Which nine?" Mateo: "I said I wanted off." Tola: "You said it to the window."</td></tr>
+<tr><td>5. Button</td><td>01:15 to 01:25</td><td>Priya comes all the way back to sit beside Tull with the book open. Six hands go up. Then Tull's.</td><td>Priya: "All in favor of the county sitting somewhere else." Then: "Motion carries. Sir." <span class="pill p-go">Kid laugh, 01:20</span></td></tr>
+<tr><td>6. Title card</td><td>01:25 to 01:30</td><td>The door folds shut on the running stopwatch. Tull is on his feet looking for anywhere else. Black. Long Route. Hangout. Premieres Friday on [BRAND]. The account holder is a parent.</td><td>Frances (to the mirror): "Sit down, sir. We're not there yet." <span class="pill p-warn">Last line</span></td></tr>
+</table></div>
+<ul>
+<li><strong>The question a cold viewer writes:</strong> "Will the county cut the Long Route?"</li>
+<li><strong>Parent laugh:</strong> 00:52, "I just drive with my ears." Spare at 00:28, "Nobody talked. Nothing happened," after a silent fight.</li>
+<li><strong>Kid laugh on sight:</strong> 01:20, the county man votes himself out of his own seat and Priya says "Sir." Spare at 00:24, Hollis shushes a grown man with one finger.</li>
+<li><strong>Last line:</strong> Frances: "Sit down, sir. We're not there yet."</li>
+<li><strong>Dialogue share:</strong> about 71 percent on the page.</li>
+</ul>
+
+<h4>New expression (from the bible's IP distance section)</h4>
+<p>No classroom set and no magic: the school is only ever seen through the loop door and the windows, and the bus never transforms, never talks, and never goes anywhere a bus cannot go. The Quiet, the silent stop at the rail crossing where fights are held with faces. A bus code written by the youngest rider, in a composition book, with sections and amendments. The back-row parliament with a Speaker who denies the job, a whip, and a clerk who keeps minutes. The seat economy and Cal's ledger. The wave at the lane. Frances's rules numbered out of order on purpose. The driver's grandson in the kitchen seat. The mirror shot and the six seat frames against moving road plates. "Twelve, go."</p>
+
+<h4>Production note</h4>
+<p><strong>Voice path recommended:</strong> hired voice actors for every one of the thirty lines under CG-04. Generated picture throughout under CG-03. No synthesized voice at v1. Frances's and Priya's reads do not survive synthesis, and those two voices carry the cold open, the parent laugh, the button, and the last line. Recorded human lines also drive the nine lip-sync shots better than synthetic audio. Counsel must say under CG-04 whether the six kid roles are voiced by child performers or by adults with young-reading voices.</p>
+<p><strong>Biggest risk:</strong> the premise is rated REVIEW because three bus-only kids' comedies exist. The bible's five distance rules are mandatory, and the trailer script gets a compliance re-check before any public asset. On the production side, seven generated likenesses, six of them written as children, must hold across 44 shots, and a synthetic child voice is the one element most likely to make a parent close the tab, which is why the package takes it off the table.</p>
+
+<h4>Standards posture</h4>
+<p>Showrunner self-pass on all 15 hard items. The nearest risk is hard rule 5, bullying, and the show is built against it: the code forbids motions about a person, Frances's rule nineteen backs it, parliament is only ever about things, and no episode ends with a kid humiliated. Frances is present in every scene set on the road, and nobody is ever stranded. The `standards` agent's pass on the scripts is still pending.</p>
+
+<h4>Green-light checklist</h4>
+<ul class="checks">
+<li><span class="box on"></span><span>Bible complete. Twelve sections, 100 seeds, IP distance statement, production note.</span></li>
+<li><span class="box on"></span><span>Trailer script v2. Punch-up pass done, three line changes, Two-Laugh test PASS. Note: some character cues in the trailer and cold-open script files still show the pre-D-024 names. A sweep is needed before the package is used.</span></li>
+<li><span class="box on"></span><span>Character sheet. Faces, costume tokens, set. Same rename sweep applies to one prop label.</span></li>
+<li><span class="box on"></span><span>Production package. Complete: look bible, consistency kit, 44-shot list, voice plan, sound, edit, 12-point quality gate, disclosure draft.</span></li>
+<li><span class="box half"></span><span>IP check. Title CLEAR. Premise REVIEW: distance rules mandatory, trailer re-check before any public asset. Expression REVIEW resolved by four renames (D-024); the compliance gate re-checks the new names.</span></li>
+<li><span class="box off"></span><span>Standards pass. Pending. Self-checks read PASS. The `standards` agent has not yet issued its report.</span></li>
+</ul>
+
+<h4>Files</h4>
+<ul class="files">
+<li>Bible: projects/04-writers-room/out/bibles/H2-long-route.md</li>
+<li>Trailer v2: projects/04-writers-room/out/scripts/H2-long-route-trailer-v2.md</li>
+<li>Cold open v2: projects/04-writers-room/out/scripts/H2-long-route-cold-open-v2.md</li>
+<li>Character sheet: projects/04-writers-room/out/scripts/H2-long-route-character-sheet.md</li>
+<li>Package: projects/04-writers-room/out/production/H2-long-route-package.md</li>
+</ul>
+</section>
+
+<!-- ============ RECENT HISTORY SOCIETY ============ -->
+<section class="show" id="recent-history-society">
+<h2><span class="slot">Slot 3, Wildcard. Lead show by total.</span><br>Recent History Society</h2>
+<p><strong>Logline.</strong> A neighborhood historical society reenacts only what happened last week, in full costume, with total seriousness, and a grandfather and his granddaughter run it.</p>
+<p><strong>Pitch.</strong> There is a club in a brick hall that treats last Tuesday like ancient history. The grocery store ran out of eggs, so twelve people in bonnets and hats stage the empty shelf as a fallen empire, with a narrator, a printed program, and a panel of historians who argue about which aisle it was. The founder is a retired bridge tender who thinks his errands are history. His ten-year-old granddaughter is the club's best actor and keeps getting cast as a fire hydrant. A mail carrier plays every horse. An archivist with a red card can stop the whole thing by saying "Point of History." Nothing they reenact is real. Everything they reenact is small. They take it as seriously as anything you have ever seen. The kids laugh at the falls. You laugh at the minutes.</p>
+
+<h4>Regulars</h4>
+<div class="wrap"><table>
+<tr><th>Name</th><th>Age</th><th>Role</th><th>Voice in one line</th></tr>
+<tr><td>Harlan Mabry</td><td>61</td><td>The Commodore. Founder. Retired lift bridge tender.</td><td>"Those who forget last week are doomed to repeat it."</td></tr>
+<tr><td>Piper Mabry</td><td>10</td><td>Youngest member. Best actor. Has only ever played objects.</td><td>"I'm not a hydrant. I'm the hydrant that saw everything."</td></tr>
+<tr><td>Dr. Imani Beale</td><td>38</td><td>Society historian. Chair of the Accuracy Committee. Holds the red card.</td><td>"For the record, I was right. For the record, it did not help."</td></tr>
+<tr><td>Dale Renfro</td><td>45</td><td>Member. Mail carrier. All the horses.</td><td>"Is there a horse?"</td></tr>
+<tr><td>Mrs. Lorraine Tulliver</td><td>70</td><td>Costumes. Former dry cleaner. Sorts the rack by weekday.</td><td>"Tuesday was a simpler time."</td></tr>
+<tr><td>Member Twelve</td><td>unseen</td><td>The narrator. Reads the program from the sound booth. Counted toward quorum. Not a regular.</td><td>No line in the trailer (v3). The booth window stays lit. The voice returns at full-episode stage.</td></tr>
+</table></div>
+
+<h4>The engine</h4>
+<p>A twelve-minute episode with a fixed spine: the Fall (a slow-motion tumble in costume with no context), the Call to Order, the Reenactment, the Panel, the Field Piece at the real site, and the Corrections read into the record. The one joke is that people treat the trivial as history, and D-020 required it to escalate by rule. It does so on two clocks. Inside an episode, the Restaging Ladder (Article 7): every sustained objection restages the scene bigger and keeps everything that was already wrong. Across a season, the Scale Ladder: the kind of event climbs seven rungs, from ordinary events to smaller events, disputed events, events nobody saw, the Society itself, an event too big, and an event during the reenactment, and the season never stays on one rung for more than two episodes. Four inputs multiply: the event, the casting (no member plays themselves), the dispute, and the field. The heart is Harlan and Piper, who take each other seriously, always.</p>
+
+<h4>Season 1 arc, ten episodes</h4>
+<p class="src">Season question: does last week matter if the only people who remember it are the twelve of you? The answer is yes, and the proof is the room.</p>
+<ol>
+<li><strong>The Great Egg Shortage of Tuesday.</strong> Two carts met in aisle five. Piper, as the soup, gets her first standing ovation and no lead.</li>
+<li><strong>The Battle of the Four-Way Stop.</strong> Four bicycles arrived at once and nobody yielded for eleven minutes. Dale plays all four horses.</li>
+<li><strong>The Sweater.</strong> Harlan returned a sweater without a receipt. Piper plays Harlan, better than he does, which he sustains.</li>
+<li><strong>The Tooth.</strong> Piper lost a tooth in the library quiet room. Dale must play Piper and asks whether the tooth can be a horse.</li>
+<li><strong>The Two Bake Sales.</strong> Two witnesses disagree. Two reenactments run on one stage at once. The red card is retired for the week.</li>
+<li><strong>The Hailstone.</strong> Nobody saw it land. The Society reconstructs the fall from the jar in the Archive. Piper finally plays weather.</li>
+<li><strong>The Minutes.</strong> The Society reenacts its own last meeting. The Corrections require Corrections.</li>
+<li><strong>The Week Without a Horse.</strong> Dale is cast as a cart, plays it as a horse, and the Society votes it his finest horse.</li>
+<li><strong>Foundry Day.</strong> The neighborhood asks for the founding of Bell Hollow. Too old. They reenact last week's planning meeting in the fair's main tent instead.</li>
+<li><strong>The Lights Went Out.</strong> The hall goes dark mid-reenactment. They finish by flashlight. Piper calls the cues. Harlan hands her the bell.</li>
+</ol>
+
+<h4>The trailer, 73 seconds, v2</h4>
+<div class="wrap"><table>
+<tr><th>Beat</th><th>Timecode</th><th>What plays</th><th>The line that carries it</th></tr>
+<tr><td>1. Cold open</td><td>00:00 to 00:09</td><td>Slow motion, no context. A cardboard grocery aisle. Two carts roll in. Piper, wearing the soup pyramid, goes over with grief. A bell rings.</td><td>Piper, inside the cans: "Slower. It was slower than this." Oscar: "This is as slow as it goes." <span class="pill p-go">Kid laugh, 00:05</span></td></tr>
+<tr><td>2. World</td><td>00:09 to 00:21</td><td>Foundry Hall. Forty chairs, twelve people. The banner: EST. RECENTLY. Harlan calls the meeting to order.</td><td>Harlan: "Who remembers?" All: "We do." Imani (to her folder): "It was aisle six."</td></tr>
+<tr><td>3. Character</td><td>00:21 to 00:44</td><td>The costume rack sorted by weekday. Piper asks for the cart and is told she is the soup. Dale raises his hand for a full beat. Mrs. Tulliver holds a cardigan to the light. Imani confronts Harlan at the rack.</td><td>Dale: "Is there a horse?" Imani: "That's every week, Harlan. That's how weeks work." <span class="pill p-go">Parent laugh, 00:41</span></td></tr>
+<tr><td>4. Turn</td><td>00:44 to 00:57</td><td>The panel table. Imani raises the red card. Piper testifies from inside the cans. The longest hold in the cut. Imani points at the Archive. Harlan lifts the bell.</td><td>Imani: "Point of History. It was aisle six. I was standing in aisle six. I was buying oats." Piper: "I felt it." Harlan: "Sustained. Restage it."</td></tr>
+<tr><td>5. Button</td><td>00:57 to 01:08</td><td>The same aisle, the 5 crossed out and a 6 written by hand. Dale pushes a cart in a full cloth horse head. Nobody cast him. Nobody stops him. Piper falls slower and with more grief.</td><td>Imani, reading a card: "Aisle six. For the record." Piper (from the floor): "Still felt it." Dale, inside the horse head: "It was seven." Harlan: "Adjourned. Same time next week. Something will have happened by then." <span class="pill p-warn">Last line</span></td></tr>
+<tr><td>6. Title card</td><td>01:08 to 01:13</td><td>Black. Hand-lettered. Recent History Society. Wildcard. Premieres Friday on [BRAND]. The account holder is a parent.</td><td>No music. Room tone.</td></tr>
+</table></div>
+<ul>
+<li><strong>The question a cold viewer writes:</strong> "Which aisle was it?"</li>
+<li><strong>Parent laugh:</strong> 00:41, "That's every week, Harlan. That's how weeks work." Spare at 00:46, "I was buying oats."</li>
+<li><strong>Kid laugh on sight:</strong> 00:05, the soup pyramid goes over with a kid inside it. Spare at 00:59, a horse head pushes a grocery cart, "Same soup."</li>
+<li><strong>Last line:</strong> Harlan: "Adjourned. Same time next week. Something will have happened by then."</li>
+<li><strong>Dialogue share:</strong> about 66 percent on the page. The cut sits at its 73-second target with a 75-second ceiling.</li>
+</ul>
+
+<h4>New expression (from the bible's IP distance section)</h4>
+<p>No mockumentary device: no talking heads, no handheld, no glance at the lens, no caption cards. The One-Week Rule (Article 1), which no existing show or sketch has. Article 2, no real news. The Restaging Rule (Article 7) and the Corrections read into the record. Member Twelve, an unseen narrator counted toward quorum. The Archive, a filing cabinet that outranks the founder. A ten-year-old lead who only plays objects and gives each one a tragic backstory. The costume rack sorted by weekday. Dale does the horses (Article 10). No member plays themselves (Article 6). Point of History and the red card. Foundry Hall, EST. RECENTLY. "Who remembers?" "We do." "So noted." And the closing line.</p>
+
+<h4>Production note</h4>
+<p><strong>Voice path recommended:</strong> hired human voices for the five on-screen speakers under CG-04, including a child's voice recorded once with a parent in the room, and a synthesized voice for Member Twelve under CG-03. Generated picture throughout, mostly held tableaux and slow motion, which hide the limits of generated motion. Sequence: a scratch pass with synthesized voices to time the cut in private, then hired voices replace every scratch line except Member Twelve, then any dialogue clip whose mouth no longer matches is regenerated. Nothing from the scratch pass reaches the public site. The all-synthesized one-gate path also works, with the tableau fallback for any shot whose mouth fails review.</p>
+<p><strong>Biggest risk:</strong> voice is where "slop" is heard first. A viewer forgives a held cardboard tableau and does not forgive a machine reading "Is there a horse?" without the beat. The parent judge also named hard rule 8 as the live wire: procedure comedy must never read as a comment on a real institution. The bible closes it with Article 2 and a line test on every Corrections list.</p>
+
+<h4>Standards posture</h4>
+<p>Showrunner self-report: PASS, no FAIL items, no WARN items. Hard rule 8 is closed in the world (Article 2 bans real news), in the tone rules (no real people, politics, religion, or public office), and by a line test: if a line could be read as a comment on a real institution, cut it. Falls are tableau falls; nobody bleeds, nobody limps, the soup gets up. The `standards` agent's pass on the scripts is still pending.</p>
+
+<h4>Green-light checklist</h4>
+<ul class="checks">
+<li><span class="box on"></span><span>Bible complete. Twelve sections, 100 seeds, IP distance statement, production note.</span></li>
+<li><span class="box on"></span><span>Trailer script v2. Punch-up pass done, two changes, Two-Laugh test PASS.</span></li>
+<li><span class="box on"></span><span>Character sheet. Faces, costume tokens, set.</span></li>
+<li><span class="box on"></span><span>Production package. Complete: look bible, consistency kit, shot list, voice plan, sound, edit, 12-point quality gate, disclosure draft in two variants.</span></li>
+<li><span class="box on"></span><span>IP check. Title CLEAR. Premise CLEAR. Expression CLEAR with guardrails. Watch item: "Harlan Mabry" is a small online persona name, held as an internal note (D-024).</span></li>
+<li><span class="box off"></span><span>Standards pass. Pending. Self-checks read PASS with no WARN. The `standards` agent has not yet issued its report.</span></li>
+</ul>
+
+<h4>Files</h4>
+<ul class="files">
+<li>Bible: projects/04-writers-room/out/bibles/W5-recent-history-society.md</li>
+<li>Trailer v2: projects/04-writers-room/out/scripts/W5-recent-history-society-trailer-v3.md</li>
+<li>Cold open v2: projects/04-writers-room/out/scripts/W5-recent-history-society-cold-open-v2.md</li>
+<li>Character sheet: projects/04-writers-room/out/scripts/W5-recent-history-society-character-sheet.md</li>
+<li>Package: projects/04-writers-room/out/production/W5-recent-history-society-package.md</li>
+</ul>
+</section>
+
+<!-- ============ THE RETURNS DESK ============ -->
+<section class="show" id="the-returns-desk">
+<h2><span class="slot">Slot 4, Lights Out. Co-lead for production.</span><br>The Returns Desk</h2>
+<p><strong>Logline.</strong> At the all-night returns desk of a neighborhood hardware store, every item comes back with a ghost story, and the desk always finds the ordinary truth.</p>
+<p><strong>Pitch.</strong> It is a hardware store that never closes. People bring things back at night, and every one of them swears the thing is haunted. The woman at the returns desk believes all of them and files the paperwork anyway. The owner's twelve-year-old, doing homework at the counter, figures out what really happened. It is a little spooky, then it is funny, every single time, and nobody on the show is ever in real danger.</p>
+<p class="src">Retitled from The Night Desk by D-022. Alternate title held: Two Receipts. The last line does not change under either title.</p>
+
+<h4>Regulars</h4>
+<div class="wrap"><table>
+<tr><th>Name</th><th>Age</th><th>Role</th><th>Voice in one line</th></tr>
+<tr><td>Marguerite Salcedo</td><td>63</td><td>The desk. Overnight returns clerk, thirty-one years. Believes every story.</td><td>"Store policy says receipt required. My policy says story required. Start where you were standing."</td></tr>
+<tr><td>Nieves Ruiz</td><td>12</td><td>The ledger. The owner's daughter, doing homework at the counter. Solves every one.</td><td>"Three questions. Where was the flashlight. Where were you. Where was the dog. You skipped the dog."</td></tr>
+<tr><td>Teddy Vance</td><td>16</td><td>The stock boy. Night stock. Jumps at the ice machine every time.</td><td>"Aisle 12 is fine. Aisle 12 is paint. Paint doesn't watch you. Paint has never watched anybody."</td></tr>
+<tr><td>Ambrose Quayle</td><td>74</td><td>The regular. Returns something from his own garage every night. Has never bought anything.</td><td>"I have the receipt. It's for a rake. I feel it's the same spirit."</td></tr>
+<tr><td>Dolores Ruiz</td><td>41</td><td>The dock. Store owner, night manager, Nieves's mother. One swinging door away. Not in the regular count.</td><td>"Nieves. Ledger. Coat."</td></tr>
+</table></div>
+
+<h4>The engine</h4>
+<p>An eighteen-minute anthology inside a frame. The frame is the desk. The anthology is the customer's story: one item, one customer, one set, one insert location per episode. The item does its one strange thing on screen, small. Marguerite takes the story and fills out the form. Nieves asks three questions. The insert plays the customer's version at night with every fair clue in focus. Teddy's own small scare resolves first so the youngest viewer sees a safe landing before the main one. Then the fair reveal: Nieves names the cause, the insert replays the exact shot with the clue lit, and no new information is added. Three rules guard against cheats: write the cause first, put the clue on screen, and replay rather than reveal. The one-thing rule caps every scare: an object does exactly one unexplained thing and never adds a second. Ten item categories by ten cause categories give a hundred cells, and no cell is used twice.</p>
+
+<h4>Season 1 arc, ten episodes</h4>
+<p class="src">Season question: the oldest tag on the Shelf of Returned Things is blank. Nieves wants to know what it was for. The service bell rings on its own in every button.</p>
+<ol>
+<li><strong>Two Receipts.</strong> A father returns a doorbell that rings when the porch is empty. Cause: a kid across the street built a science-project transmitter.</li>
+<li><strong>As Installed.</strong> A grandmother returns a stepladder that is one rung taller every morning. Cause: her husband, so their grandson can reach the treehouse.</li>
+<li><strong>Aisle 12.</strong> Teddy returns his own flashlight, which shows eyes at the end of the paint aisle. Cause: reflective safety stickers.</li>
+<li><strong>Still Air.</strong> A night-shift nurse returns a wind chime that chimes with no wind. Cause: a very patient cat waiting for her to come home.</li>
+<li><strong>Not On The Chart.</strong> A paint chip that glows after dark. Cause: glow primer, mislabeled by Teddy on his first night. Nieves notices the blank tag.</li>
+<li><strong>Faces The House.</strong> A garden gnome that turns to face a widower's house every night. Cause: the neighbor's kid, on purpose, because the man said it looked lonely.</li>
+<li><strong>Wrong Door.</strong> A key that opens the wrong door. Cause: it is the landlord's master key. Nieves asks about the blank tag. Marguerite: "Pending."</li>
+<li><strong>The Hum.</strong> A light bulb that hums a tune. Cause: the dimmer picks up the dock intercom, and the tune is Dolores humming.</li>
+<li><strong>Nobody's Mail.</strong> A mailbox that gets letters addressed to nobody. Cause: a pen pal writing to the previous owner's dog. Nieves writes back.</li>
+<li><strong>The Bell.</strong> Mr. Quayle buys something. Nieves proves every tag has a cause but one, and proves the bell rings from the ice machine's drop. Then it rings with no ice. Marguerite: "Then I'll need two receipts."</li>
+</ol>
+
+<h4>The trailer, 120 seconds, v2</h4>
+<div class="wrap"><table>
+<tr><th>Beat</th><th>Timecode</th><th>What plays</th><th>The line that carries it</th></tr>
+<tr><td>1. Cold open</td><td>00:00 to 00:12</td><td>Straight down on a wireless doorbell chime on yellowed laminate. No music. Two voices off screen. The doorbell rings. A box drops somewhere.</td><td>Marguerite (O.S.): "Returns?" Desmond (O.S.): "It rings." Marguerite: "They do." Desmond: "When nobody's there." Teddy (O.S.): "That's fine. That's fine."</td></tr>
+<tr><td>2. World</td><td>00:12 to 00:30</td><td>The desk, the Shelf of Returned Things, the window with reversed gold lettering, Nieves at the far end of the counter, Dolores on the dock intercom. The STORY HEARD stamp comes down.</td><td>Marguerite: "Hardison's. Ambler Street. Open all night. Everything comes back eventually." Nieves: "Item. Claim. Clue. Cause." Marguerite: "She has a system." Nieves: "You have a stamp."</td></tr>
+<tr><td>3. Character</td><td>00:30 to 01:02</td><td>Desmond's story. The peephole insert with the fair clue in focus: a poster board across the street, HOW FAR CAN MY SIGNAL GO? Nieves asks three questions. Mr. Quayle arrives holding a flashlight like a candle.</td><td>Mr. Quayle: "I'd like to return this flashlight. It's showing me things." "Mostly the garage. But at night." "I have the receipt. It's for a rake. I feel it's the same spirit." <span class="pill p-go">Parent laugh, 00:59</span></td></tr>
+<tr><td>4. Turn</td><td>01:02 to 01:28</td><td>Nieves walks the shelf reading causes off the tags, Marguerite a pen's length away. Her hand stops on the oldest tag. It is blank. Teddy stares at the ice machine, waiting. It drops. He jumps anyway.</td><td>Nieves: "Timer. Grandmother wound it. Rain gauge. Neighbor's sprinkler. Bath plug. Cat." Nieves: "What was it?" Marguerite: "Pending." Teddy: "I saw it. I saw it coming. It doesn't help." <span class="pill p-go">Kid laugh, 01:22</span></td></tr>
+<tr><td>5. Button</td><td>01:28 to 01:52</td><td>Dolores through the swinging door for Nieves. The ice machine drops and nobody jumps. Desmond stops at the counter with his shoebox and asks for a ruling. Marguerite pulls a fresh tag.</td><td>Dolores: "Nieves. Ledger. Coat." Nieves: "Cause pending." Dolores: "Coat's not." Desmond: "So is it haunted or not? I have to tell my wife something." Marguerite: "Do you have the receipt?" Desmond: "It's haunted." Marguerite: "Then I'll need two receipts." <span class="pill p-warn">Last line</span></td></tr>
+<tr><td>6. Title card</td><td>01:52 to 02:00</td><td>Marguerite's hand on the gooseneck lamp. Click. The tags catch the streetlight. Plain type: The Returns Desk. Lights Out. Premieres Friday on [BRAND]. The account holder is a parent.</td><td>No music. No voice. No call to action.</td></tr>
+</table></div>
+<ul>
+<li><strong>The question a cold viewer writes:</strong> "What is the blank tag on the shelf, and why won't she say?"</li>
+<li><strong>Parent laugh:</strong> 00:59, "I have the receipt. It's for a rake. I feel it's the same spirit." Spare at 01:39, a man who needs a ruling to bring home to his wife.</li>
+<li><strong>Kid laugh on sight:</strong> 01:22, Teddy jumps at the ice machine while staring straight at it. Spare at 01:03, "Bath plug. Cat."</li>
+<li><strong>Last line:</strong> Marguerite: "Then I'll need two receipts."</li>
+<li><strong>Dialogue share:</strong> about 84 percent. The fair clue is on screen at 00:36, before anyone names the cause, and the trailer never names it.</li>
+</ul>
+
+<h4>New expression (from the bible's IP distance section)</h4>
+<p>Nothing is ever haunted: every episode ends with an ordinary cause on screen, and the show depends on the object not being real. The frame is a returns desk with procedure as the joke: no host, no fire, no chair, no narrator. The Shelf of Returned Things with manila tags. The STORY HEARD stamp. "Story required." The two-receipt rule as both the show's comedy and its fairness rule. The ledger's four columns: Item, Claim, Clue, Cause. The fair-clue replay. "Haunted as purchased or as installed." The blank tag. The kid solves and the adult believes, and neither converts the other. One set, one lamp, one window, and the scariest thing on the show is an ice machine. The objects are ordinary hardware-store goods with no history older than the receipt. Every reveal lands safe and kind. "Then I'll need two receipts."</p>
+
+<h4>Production note</h4>
+<p><strong>Voice path:</strong> package in progress. No production package file exists yet for this show. The bible's production note recommends no AI voice at all: every voice, including the customer's, is recorded by a human performer under CG-04, and Nieves is played by a human with no likeness of any real child generated for any reason. AI-assisted production can carry the item close-ups on the counter, the aisle plates, the window exterior, the insert stills, and the shelf, all without a face. The producer judge called this the closest thing to a guaranteed non-slop AI trailer, on the cheapest live-action set in the slot.</p>
+<p><strong>Biggest risk:</strong> mundane reveals feel like cheats unless the clues are fair, which is why the fair-clue rule is written into every script and the `standards` agent reads every insert twice. The customer is a new face every episode. And Nieves is never in a frame without Marguerite or the swinging door with Dolores behind it, which is the show's answer to hard rule 6 and must hold in every generated shot.</p>
+
+<h4>Standards posture</h4>
+<p>Showrunner self-pass on all 15 hard items, conditional on the CG-03 log. Nothing supernatural is ever confirmed. No face at the window, no hand from the dark, no voice that says a name, no figure that follows a child. Every effect is mixed at or below the dialogue peak. Every episode ends at the desk with the door open, the lamp warm, the ice dropping, and Dolores taking her daughter home. Watch items in every script: hard 7 and hard 6 first, then soft 1, 8, and 9. The `standards` agent's pass on the scripts is still pending.</p>
+
+<h4>Green-light checklist</h4>
+<ul class="checks">
+<li><span class="box on"></span><span>Bible complete. Twelve sections, 100 seeds, IP distance statement, production note, retitle note.</span></li>
+<li><span class="box on"></span><span>Trailer script v2. Punch-up pass done, three changes, Two-Laugh test PASS.</span></li>
+<li><span class="box on"></span><span>Character sheet. Faces, costume tokens, set.</span></li>
+<li><span class="box off"></span><span>Production package. In progress. No file yet.</span></li>
+<li><span class="box half"></span><span>IP check. Title REVIEW as The Night Desk, resolved by retitle to The Returns Desk (D-022); counsel runs the direct trademark search on the new title and the alternate under CG-01. Premise CLEAR. Expression CLEAR with guardrails.</span></li>
+<li><span class="box off"></span><span>Standards pass. Pending. Self-checks read PASS. The `standards` agent has not yet issued its report.</span></li>
+</ul>
+
+<h4>Files</h4>
+<ul class="files">
+<li>Bible: projects/04-writers-room/out/bibles/L1-the-returns-desk.md</li>
+<li>Trailer v2: projects/04-writers-room/out/scripts/L1-the-returns-desk-trailer-v2.md</li>
+<li>Cold open v2: projects/04-writers-room/out/scripts/L1-the-returns-desk-cold-open-v2.md</li>
+<li>Character sheet: projects/04-writers-room/out/scripts/L1-the-returns-desk-character-sheet.md</li>
+<li>Package: projects/04-writers-room/out/production/L1-the-returns-desk-package.md (package in progress, file not yet written)</li>
+</ul>
+</section>
+
+<h2>4. Shared files</h2>
+<ul class="files">
+<li>Tournament results: projects/04-writers-room/out/tournament/results.md</li>
+<li>Concepts, all 20: projects/04-writers-room/out/tournament/concepts.md</li>
+<li>Punch-up change notes, v1 to v2: projects/04-writers-room/out/scripts/change-notes.md</li>
+<li>IP check, titles and premises: projects/08-compliance/out/ip-checks/04-slate-titles.md</li>
+<li>IP check, expression in the scripts: projects/08-compliance/out/ip-checks/04-slate-scripts.md</li>
+<li>Canon, section 4: canon/CANON.md</li>
+<li>Decisions D-015, D-020, D-022, D-023, D-024: DECISIONS.md</li>
+<li>Gate register: projects/08-compliance/out/gate-register.md</li>
+</ul>
+
+<h2>5. What happens next</h2>
+<ol>
+<li><strong>Owner rules at Fork E.</strong> Lead show, slate order, and the slot 4 title. Log it in <code>DECISIONS.md</code>.</li>
+<li><strong>Finish the two open packages.</strong> Kitchen Court needs sections 4 to 8 (voice, sound, edit, quality gate, disclosure). The Returns Desk needs its whole package. Both follow the Long Route and Recent History Society packages as the template.</li>
+<li><strong>Sweep the pre-D-024 names.</strong> The Long Route trailer, cold open, and character sheet files still carry old character cues in places. Replace them before any package is used, then the compliance gate re-checks the new names.</li>
+<li><strong>Standards pass on all eight scripts.</strong> The `standards` agent issues its report on each trailer v2 and cold open v2. No asset moves to production without it.</li>
+<li><strong>Produce the four trailers from the packages under CG-03 and CG-04.</strong> CG-03 covers every generated image, motion clip, and any synthesized voice, and requires the disclosure on the About page before release. CG-04 covers every hired voice actor, and counsel decides whether the kid roles are child performers or adults with young-reading voices. Each trailer passes its 12-point quality gate before it moves.</li>
+<li><strong>Load the MP4 URLs into <code>projects/05-product/site/content/shows.json</code>.</strong> Set <code>trailerUrl</code> per show slug (<code>kitchen-court</code>, <code>long-route</code>, <code>recent-history-society</code>, <code>the-returns-desk</code>) only after that show's quality gate passes. Recent History Society also changes <code>trailerSeconds</code> from 70 to 73. All four trailers go live from launch (D-017).</li>
+<li><strong>Counsel clears CG-01.</strong> The direct trademark search on all four titles, the alternate title, the shared town name Carrow Bend, and the brand name from Fork D.</li>
+<li><strong>Measure against the D-013 develop-further line, per show.</strong> At least 40 percent trailer completion and an "I'd watch this" vote ratio at or above 3 to 1 in favor. A show that misses either line does not advance to a full episode.</li>
+<li><strong>Measure against the D-009 sign-up floor.</strong> 500 parent households from organic and low-cost traffic is the floor for developing any show further. Below it, stop or pivot at the Phase 8 memo. No child data is collected at any step.</li>
+</ol>
+
+<h2>6. Kill list</h2>
+<p>The four runners-up. Each lost a head-to-head. None is dead. This is the record of why each lost and whether it is worth a future slot.</p>
+<div class="wrap"><table>
+<tr><th>Concept</th><th class="num">Total</th><th>Why it lost</th><th>Future slot?</th></tr>
+<tr><td><strong>A4 Lot One</strong> (Anchor)</td><td class="num">38.33</td><td>Lost to Kitchen Court by 0.33. The world is quiet by design: no other kids on the street, so an 11-year-old has nobody their age to watch until neighbors arrive, and the pitch is sweeter than it is funny. Exteriors, buyer tours, and a Halloween crowd push full episodes above micro-budget.</td><td><span class="pill p-go">Yes</span> One lit house on a dark grid of forty mailboxes is the most AI-consistent world image in the slate and the trailer already shows the engine in one shot. Hold for a stunt week or a second-season Anchor swap.</td></tr>
+<tr><td><strong>H1 Unclaimed</strong> (Hangout)</td><td class="num">38.33</td><td>Tied Long Route and lost on originality. Kid detectives are the most crowded lane in children's TV. The trailer leans on a tag montage with no turn. Deadpan and kind is a tone an 11-year-old admires more than laughs at. Five generated child faces to keep consistent.</td><td><span class="pill p-warn">Maybe</span> The engine (8.33) and hook (8) were the best in the slot. Worth a second look only with a new shape that is not a detective agency.</td></tr>
+<tr><td><strong>W3 Pigeon Council</strong> (Wildcard)</td><td class="num">38.34</td><td>Lost to Recent History Society by 1.0. Parliamentary procedure sails over a 7-year-old, the show is dialogue over held poses on one ledge, and procedure comedy lives next door to hard rule 8 every episode.</td><td><span class="pill p-go">Yes, smaller</span> The producer judge called it the best AI-assisted trailer on the slate: one ledge, seven stylized birds, humans from the knees down. Fits as an interstitial or a Wrap segment, with the procedure-only rule enforced.</td></tr>
+<tr><td><strong>L5 Local Creatures</strong> (Lights Out)</td><td class="num">37.34</td><td>Lost to The Returns Desk by 2.0. A sibling pair keeping a field guide of a small town's creatures with a skeptical brother sits near a very well-known animated series. Compositing 2D creatures onto live night exteriors is a two-pipeline build with two child actors. The "Danger: none" card delivers safety before the scare and uses text cards the trailer spec forbids.</td><td><span class="pill p-kill">Not in this form</span> The most kid-marketable sentence in the slot and easy creature assets, but the IP proximity is structural, not cosmetic. Revisit only with a different frame.</td></tr>
+</table></div>
+
+<footer>Project Porchlight. Phase 4 slate. Codename only. Every show, character, place, and line on this page is original to the bibles and scripts named above. [BRAND] and [TOWN] are placeholders until Fork D and CG-01 close. Nothing here is a public asset.</footer>
+</main>
+</body>
+</html>

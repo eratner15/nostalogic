@@ -1,0 +1,17 @@
+# Default deploy: workers.dev preview. The GitHub workflow appends a [[d1_databases]] block when the token has
+# D1 permission. Without it the worker runs on the in-memory store (review mode). For local dev, wrangler.local.toml adds D1.
+name = "streetlights-guide"
+main = "src/index.ts"
+compatibility_date = "2026-09-01"
+compatibility_flags = ["nodejs_compat"]
+workers_dev = true
+
+[assets]
+directory = "public"
+binding = "ASSETS"
+run_worker_first = true
+
+[vars]
+SITE_ENV = "production"
+BASE_PATH = ""
+# Secret (wrangler secret put, never here): ADMIN_TOKEN
