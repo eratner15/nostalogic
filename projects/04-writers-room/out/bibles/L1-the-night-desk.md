@@ -165,7 +165,7 @@ What the show does not do, ever, at any age band:
 
 **The landing rule (soft rule 1).** Safety is visible before the end of the segment, and there is a laugh in the last thirty seconds. Every episode ends at the desk, with the door open, the lamp warm, the ice dropping, and Dolores taking her daughter home. If a 6-year-old asks "is it real," a character has already answered on screen.
 
-**The 6-year-old check in the room.** The writers' room keeps one rule pinned above the whiteboard: describe the scare out loud to a 6-year-old at bedtime in one sentence. If the sentence needs the word "but" to be safe, cut the scare.
+**The 6-year-old check in the room.** The writers' room keeps one rule pinned above the whiteboard: describe the scare out loud to a 6-year-old, in one sentence, with the lights off. If the sentence needs the word "but" to be safe, cut the scare.
 
 ### The fair-clue rule
 
@@ -241,7 +241,7 @@ A hardware store stocks tens of thousands of items, and any of them can come bac
 
 ## 8. One hundred episode seeds
 
-Each line names the returned object and the claimed haunting. The cause is in parentheses so a producer can check that every reveal is fair and mundane. No two seeds share an object or a cause.
+Each line names the returned object and the claimed haunting. The cause is in parentheses so a producer can check that every reveal is fair and mundane. No two seeds share an object, and no two share the same object-and-cause pair. Dogs, kids, and neighbors recur as causes because they recur in life; the object and the mechanism never repeat.
 
 1. A doorbell that rings when the porch is empty (a science-project transmitter across the street).
 2. A stepladder that is one rung taller each morning (a grandfather adding rungs at night).
@@ -289,7 +289,7 @@ Each line names the returned object and the claimed haunting. The cause is in pa
 44. A hinge that squeaks a melody (three hinges, three pitches, and a kid who opens the doors in order).
 45. A thermostat that sets itself (a grandmother with the app and cold feet).
 46. Flashlight batteries that die only in the basement (he stores the flashlight on top of the chest freezer).
-47. A trash can lid that opens itself at night (a raccoon that learned the foot pedal).
+47. A trash can lid that opens itself at night (a possum that learned the foot pedal, and is shown learning it).
 48. A yard sign that faces the wrong way every morning (a paper carrier turning it so he can read it in the dark).
 49. A chain-link fence that hums (the neighbor's box fan at one speed, on one wind).
 50. Duct tape that peels off one wall only (the wall is the chimney; heat).
@@ -299,7 +299,7 @@ Each line names the returned object and the claimed haunting. The cause is in pa
 54. An ice scraper that writes on the windshield (frost patterns plus a kid's initials from the inside).
 55. A motion light that follows the customer down the driveway (three lights on staggered sensors, installed in the wrong order).
 56. A bathroom fan that sighs (the flap on the outside vent, in a crosswind).
-57. Door bells for the holidays that ring inside a closet (the closet shares a wall with the neighbor's doorbell).
+57. A string of sleigh bells for a door that ring inside a closet (the closet shares a wall with the neighbor's doorbell).
 58. A sprinkler that runs only in the rain (a rain sensor installed upside down).
 59. Shelf brackets that bend overnight (a plaster wall, a full set of encyclopedias, and gravity).
 60. A bath plug that floats to the same corner every time (the tub is not level; the level from seed 13 is called back).

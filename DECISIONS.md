@@ -113,6 +113,13 @@ Format: date, decision, options, choice, reason. Counsel gates carry the tag `CO
 ### D-021. 2026-09-19. Live preview and the D1 permission gap
 - The GitHub workflow deployed `https://streetlights-preview.evan-ratner.workers.dev` in review mode. The Cloudflare token lacks D1 Edit (authentication error 10000), so votes and sign-ups are not saved. The routed deploy to ratlinks.com/tv is now attempted on every run regardless of D1. Owner action: add D1 Edit and Zone Workers Routes Edit to the token, then re-run the workflow.
 
+### D-022. 2026-09-19. Retitle: "The Night Desk" becomes "The Returns Desk"
+- Finding: `projects/08-compliance/out/ip-checks/04-slate-titles.md` rates the title REVIEW. An active YouTube channel of the same name publishes weekly horror fiction, and the handle is taken. Premise is CLEAR.
+- Options: keep the title and fight for the handle; retitle "The Returns Desk"; retitle "Two Receipts".
+- Choice: "The Returns Desk". Alternate held: "Two Receipts". Slug `the-returns-desk`.
+- Reason: the premise reads in the title, the handle is likely free, and the last line stays as the show's signature. The owner can flip to the alternate at Fork E.
+- Also from the check: Long Route's premise is REVIEW (three bus-only kids' comedies exist). The bible's IP distance rules are mandatory, and the trailer script gets a compliance re-check before any public asset. Counsel runs the direct USPTO search on all four titles under CG-01.
+
 ## Open forks
 
 - Fork A: decided, Go (D-011).
