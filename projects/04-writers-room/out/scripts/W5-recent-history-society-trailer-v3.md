@@ -15,8 +15,8 @@ v3. Recut after the standards pass (`projects/08-compliance/out/standards/04-W5-
 
 Production notes that bind the cut.
 
-1. Member Twelve is a character in the Society, counted toward quorum, never seen. Member Twelve reads the program during reenactments and nowhere else. Member Twelve speaks twice here, both times over a reenactment, both times as the Society's narrator. Member Twelve never addresses the viewer.
-2. Member Twelve's voice and any generated tableau carry a CG-03 disclosure. Human performers carry CG-04.
+1. Member Twelve is a character in the Society, counted toward quorum, never seen. In this cut Member Twelve has no line. The booth window stays lit in the hall wide. At full-episode stage the voice reads the program during reenactments, as a character, never in a cold open, and never addresses the viewer.
+2. Any generated tableau carries a CG-03 disclosure. Human performers carry CG-04. No synthesized voice is needed for this cut.
 3. No music bed. Room tone, the bell, and voices. The bell is mixed at or below the dialogue peak.
 4. Slow motion is in-camera or in the edit. No strobe. No flash.
 5. Every fall is a tableau fall: slow, soft, and nobody is hurt. The soup gets up.

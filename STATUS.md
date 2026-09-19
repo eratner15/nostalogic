@@ -22,8 +22,7 @@ Rule: 3 lines or less per project. Detail lives in each project's own STATUS.md.
 - Done. Friday. Four slots. Porch Host, porch home base, lamp, Moth, sonic ID, trailer spec. Canon merged. Block bible delivered.
 
 ## Porchlight: 04 Writers Room (Phase 4)
-- Done to Fork E. Tournament picked Kitchen Court, Long Route, Recent History Society (lead), The Returns Desk (co-lead). Each has a bible, trailer script, cold open, character sheet, and production package. Standards PASS, IP CLEAR after renames.
-- Open: standards re-check of the Recent History Society v3 recut.
+- Done to Fork E. Tournament picked Kitchen Court, Long Route, Recent History Society (lead), The Returns Desk (co-lead). Each has a bible, trailer script, cold open, character sheet, and production package. Standards PASS on every script, five trailer tests passed, IP CLEAR after renames.
 
 ## Porchlight: 05 Product (Phase 5)
 - Live. Cloudflare Workers, Hono, D1, Drizzle. Guide, four show pages, votes, parent sign-up, admin dashboard, base path, exports, 9 tests. Deploys on every push.
