@@ -103,6 +103,16 @@ Format: date, decision, options, choice, reason. Counsel gates carry the tag `CO
 - Choice: option 2. Option 3 cannot upload files from this container, and it would create a site the owner did not ask for.
 - Consequence: the site supports `BASE_PATH=/tv`, a preview config without D1, and a static export. Runbook section 8 holds the ratlinks.com/tv steps for both Cloudflare and non-Cloudflare hosts.
 
+### D-020. 2026-09-19. Tournament result accepted
+- Method: D-015. Three judges (parent, kid, producer), five criteria, equal weights, deterministic aggregator (`projects/04-writers-room/out/tournament/results.md`).
+- Winners: Anchor, Kitchen Court (A2, 38.66). Hangout, Long Route (H2, 38.33, tie with H1 broken on originality). Wildcard, Recent History Society (W5, 39.34). Lights Out, The Night Desk (L1, 39.33).
+- Lead show by total: Recent History Society. The Orchestrator names The Night Desk co-lead for production because the producer judge rates it the most reliable AI-assisted trailer. Fork E (lead show and slate order) stays with the owner.
+- Orchestrator notes for the writers: Kitchen Court scored lowest on originality among winners (6.33); the bible must push the specific expression away from any judge-parent sitcom, and the IP check must confirm distance. Long Route must keep school on screen through the windows and stops, not only retold. Recent History Society must escalate its one joke by rule. The Night Desk needs a recurring young character at the desk so the slot has a kid to root for.
+- No override. All four winners advance to bibles, trailer scripts, and production packages.
+
+### D-021. 2026-09-19. Live preview and the D1 permission gap
+- The GitHub workflow deployed `https://streetlights-preview.evan-ratner.workers.dev` in review mode. The Cloudflare token lacks D1 Edit (authentication error 10000), so votes and sign-ups are not saved. The routed deploy to ratlinks.com/tv is now attempted on every run regardless of D1. Owner action: add D1 Edit and Zone Workers Routes Edit to the token, then re-run the workflow.
+
 ## Open forks
 
 - Fork A: decided, Go (D-011).

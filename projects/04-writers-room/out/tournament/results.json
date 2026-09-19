@@ -1,0 +1,534 @@
+{
+  "winners": [
+    {
+      "slot": "A",
+      "slotName": "Anchor",
+      "id": "A2",
+      "title": "Kitchen Court",
+      "total": 38.66
+    },
+    {
+      "slot": "H",
+      "slotName": "Hangout",
+      "id": "H2",
+      "title": "Long Route",
+      "total": 38.33
+    },
+    {
+      "slot": "W",
+      "slotName": "Wildcard",
+      "id": "W5",
+      "title": "Recent History Society",
+      "total": 39.34
+    },
+    {
+      "slot": "L",
+      "slotName": "Lights Out",
+      "id": "L1",
+      "title": "The Night Desk",
+      "total": 39.33
+    }
+  ],
+  "rows": [
+    {
+      "id": "A1",
+      "slot": "A",
+      "slotName": "Anchor",
+      "title": "Stop Fourteen",
+      "logline": "Three generations of the Okonkwo-Reyes family live in the only house in town whose front porch is a legal city bus stop, and the whole town waits there.",
+      "engineYields100": true,
+      "productionFormat": "live action, one set",
+      "ipRiskNote": "Could be mistaken for a generic porch-and-family sitcom of the 1990s window. No existing show has a public bus stop on a porch, a zoning-clerk mother, or a retired driver hosting the stop.",
+      "mean": {
+        "engine": 7.33,
+        "hook": 7.33,
+        "originality": 7.33,
+        "trailer": 7,
+        "standards": 7.67
+      },
+      "total": 36.66,
+      "minStandards": 7,
+      "notes": [
+        "Judge K: Strongest is Bram with a clipboard and a whistle telling grown-ups they are late, which both ages would draw and quote; weakest is that most weekly problems belong to adult riders and a zoning clerk, so the 11-year-old waits through grown-up stuff.",
+        "Judge P: Strongest is Ijeoma refusing to file the one form on principle, which is a parent joke with a spine; weakest is that a stranger on the porch every 22 minutes reads as a sketch premise until the family story proves it can carry a week.",
+        "Judge X: Risk: a stranger-of-the-week porch crowd, bus passes, and four-way overlapping talk are exactly what AI video does worst, and a porch set collides with the block's own porch wrapper and reads near the generic 1990s porch family sitcom; advantage: a real turn (the form back in the drawer) and a callback button give the trailer a shape most Anchor pitches lack."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "A2",
+      "slot": "A",
+      "slotName": "Anchor",
+      "title": "Kitchen Court",
+      "logline": "In the Delacroix-Huang house every family dispute goes to trial at the kitchen table, because Mom is a real small claims judge and Grandma is a retired referee.",
+      "engineYields100": true,
+      "productionFormat": "live action, one set",
+      "ipRiskNote": "Could be mistaken for a courtroom show or lawyer sitcom. No judge show is set at a family table with a whistle-blowing referee grandmother and a six-year-old bailiff.",
+      "mean": {
+        "engine": 8,
+        "hook": 9,
+        "originality": 6.33,
+        "trailer": 7.33,
+        "standards": 8
+      },
+      "total": 38.66,
+      "minStandards": 8,
+      "notes": [
+        "Judge K: Strongest is that a kid gets to sue a sibling over a waffle and sometimes win, with a 6-year-old bailiff for the 7-year-old and 'Objection, he's winning' for the 11-year-old; weakest is that a lost case can drift toward a kid being shown up, so every verdict needs the hug and dessert rule enforced.",
+        "Judge P: Strongest is a joke on every line of the pitch, from 'Objection, he's winning' to 'Court is adjourned, also dinner,' and both my kids would file suit by Saturday; weakest is that home-courtroom is a familiar sketch shape and kid cross-examination of a parent sits close to soft rule 2 every week.",
+        "Judge X: Risk: the courtroom-at-home bit is a familiar sketch shape and a judge parent sitcom already exists as a category, while a six-person table and a bounce house cross-examination are motion and consistency problems; advantage: the strongest one-sentence parent pitch in the slot, a nameable six-year-old bailiff, and a fixed kitchen that is cheap to shoot forever."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "A3",
+      "slot": "A",
+      "slotName": "Anchor",
+      "title": "Shift Change",
+      "logline": "With Mom on night shift at the hospital and Dad on morning radio, the three Abernathy kids live under three governments every day, and Nana runs the biggest one.",
+      "engineYields100": true,
+      "productionFormat": "live action, one set",
+      "ipRiskNote": "Could be mistaken for a generic working-family sitcom. The three-government structure, the traffic-report device, and the backdated-rules grandmother belong to no existing show.",
+      "mean": {
+        "engine": 7.67,
+        "hook": 7,
+        "originality": 7.33,
+        "trailer": 6.33,
+        "standards": 9
+      },
+      "total": 37.33,
+      "minStandards": 9,
+      "notes": [
+        "Judge K: Strongest is Junie working the gaps between three rule systems with a binder, which an 11-year-old recognizes as their own life; weakest is that the show is really about tired adults missing each other, and the 7-year-old sees grown-ups asleep on a couch, not a story that moves.",
+        "Judge P: Strongest is Curtis reporting his own family as traffic, plus two parents who pass in a doorway, which is my actual life; weakest is a trailer that is four montage images with no complication and no question I could write down.",
+        "Judge X: Risk: the trailer has no unanswered question, only four handoff vignettes, and the seatbelt chair style of physical gag is out of reach; advantage: one set at three light levels, two-shots, a whiteboard prop, and a radio voice-over device make it the most AI-tolerant live-action Anchor, with nothing near a Standards FAIL."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "A4",
+      "slot": "A",
+      "slotName": "Anchor",
+      "title": "Lot One",
+      "logline": "The Farrow-Batiste family bought the model home of a subdivision that never got built, and now they live alone on a street with forty mailboxes and one house.",
+      "engineYields100": true,
+      "productionFormat": "live action, one set plus exteriors",
+      "ipRiskNote": "Could be mistaken for the broad 'family moves somewhere strange' category. No existing show is set in a one-house subdivision with a one-member homeowners association and a self-elected child mayor.",
+      "mean": {
+        "engine": 6.33,
+        "hook": 7.33,
+        "originality": 8.67,
+        "trailer": 7.33,
+        "standards": 8.67
+      },
+      "total": 38.33,
+      "minStandards": 8,
+      "notes": [
+        "Judge K: Strongest is an entire empty neighborhood as a kid kingdom with an 8-year-old mayor, an image no kid has seen; weakest is that the world is quiet by design and there are no other kids on the street, so the 11-year-old has nobody their age to watch until neighbors arrive.",
+        "Judge P: Strongest is the image of one lit house on a dark grid of forty mailboxes, which no other show owns; weakest is that the pitch is sweeter than it is funny, and a quiet world with tours as the only weekly guest is thin for 100 episodes.",
+        "Judge X: Risk: exteriors, buyer tours, a deer, and a Halloween crowd push full episodes off one set and above micro-budget; advantage: the empty grid, forty mailboxes, and one lit house are the most AI-consistent world image in the slate and the trailer already shows the engine in one shot with a want and a button."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "A5",
+      "slot": "A",
+      "slotName": "Anchor",
+      "title": "Revised Edition",
+      "logline": "When two families merge into one house, Grandpa Ray, a retired appliance-manual writer, writes the operating manual for the new family and updates it every week.",
+      "engineYields100": true,
+      "productionFormat": "live action, one set",
+      "ipRiskNote": "Could be mistaken for the blended-family sitcom category. The household manual device and the technical-writer grandfather belong to no existing series.",
+      "mean": {
+        "engine": 7.67,
+        "hook": 6,
+        "originality": 6.67,
+        "trailer": 5.33,
+        "standards": 7.33
+      },
+      "total": 33,
+      "minStandards": 6,
+      "notes": [
+        "Judge K: Strongest is Nova's loophole 'it says bedtime, it does not say sleep,' which an 11-year-old will try at home that night; weakest is that the show is grown-ups reading a binder aloud at a table, which the 7-year-old cannot follow and the 11-year-old will skip for a feed.",
+        "Judge P: Strongest is Ray writing warnings for things that already happened and Yolanda's scheduled Spontaneous Fun in matching shirts; weakest is that people reading a binder aloud is static on screen and the blended-family category has a famous shadow.",
+        "Judge X: Risk: a trailer of a man reading a binder plays as slides, has no turn, and the bathroom flowchart beat puts an AI-generated child in a towel, which I would not generate; advantage: static reading scenes on one dining room set are the cheapest episodes on the slate and the blended-family category is broad enough to be safe if the manual stays the joke."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "H1",
+      "slot": "H",
+      "slotName": "Hangout",
+      "title": "Unclaimed",
+      "logline": "Five seventh graders inherit the school lost and found and run it like a detective agency, because every lost thing has a story and someone who wants it back.",
+      "engineYields100": true,
+      "productionFormat": "live action, one set",
+      "ipRiskNote": "Could be mistaken for the kid-detective genre. No existing series is set in a lost and found, and the tag-system engine and five characters are original.",
+      "mean": {
+        "engine": 8.33,
+        "hook": 8,
+        "originality": 7,
+        "trailer": 6.67,
+        "standards": 8.33
+      },
+      "total": 38.33,
+      "minStandards": 7,
+      "notes": [
+        "Judge K: Strongest is five kids with their own basement room and a real job, solving a one-mitten mystery the 7-year-old can follow and a three-claimant love note the 11-year-old cannot resist; weakest is that kid detectives are a crowded lane, so the tag gun and the wall of unsolved items have to do the work of feeling new.",
+        "Judge P: Strongest is five distinct joke engines around a real job at school, with Kwame labeling people like items; weakest is that deadpan and kind is a tone my 11-year-old admires more than laughs at, and the trailer has no turn.",
+        "Judge X: Risk: kid detective agency is the most crowded genre in children's TV and the trailer leans on a tag montage that Section 8 warns against, with five AI-generated child faces to keep consistent; advantage: one basement set, item close-ups, and a hug button are cheap and the lost-and-found premise is a clean parent sentence."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "H2",
+      "slot": "H",
+      "slotName": "Hangout",
+      "title": "Long Route",
+      "logline": "Six kids at the far end of the county's last long school bus route spend 48 minutes together twice a day, and that bus is where everything happens.",
+      "engineYields100": true,
+      "productionFormat": "live action, one set (bus interior) plus road plates",
+      "ipRiskNote": "Could be mistaken for a school-bus sketch or any school comedy. No existing series lives on a long rural route with a driver-grandson pair and a back-row parliament.",
+      "mean": {
+        "engine": 7.67,
+        "hook": 7,
+        "originality": 7.33,
+        "trailer": 7.33,
+        "standards": 9
+      },
+      "total": 38.33,
+      "minStandards": 9,
+      "notes": [
+        "Judge K: Strongest is the back-row parliament voting on a Tuesday window seat, which every bus kid has lived; weakest is that school happens off screen and gets retold, so the 11-year-old sees six kids talking in the same seats every week and reaches for the game controller.",
+        "Judge P: Strongest is Frances, who drives with her ears and is the secret lead every parent will love; weakest is one bus interior twice a day for 100 episodes, which the showrunner admits and the seasons only partly fix.",
+        "Judge X: Risk: the window-seat vote is a thin turn and a bus interior can look the same every week; advantage: assigned seats lock six faces into fixed frames, road plates through four seasons are generated cheaply, and one rented bus is the whole full-episode set."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "H3",
+      "slot": "H",
+      "slotName": "Hangout",
+      "title": "Showroom",
+      "logline": "When their middle school runs out of room, the whole seventh grade moves into a closed furniture store across the parking lot, and the bedroom section becomes homeroom.",
+      "engineYields100": true,
+      "productionFormat": "live action, one set",
+      "ipRiskNote": "Could be mistaken for the 'weird school' genre. No existing series puts a grade in a furniture store. The store brand is fictional.",
+      "mean": {
+        "engine": 7.33,
+        "hook": 8,
+        "originality": 7.67,
+        "trailer": 7,
+        "standards": 7.33
+      },
+      "total": 37.33,
+      "minStandards": 6,
+      "notes": [
+        "Judge K: Strongest is homeroom on beds, a forbidden mattress department, and a hidden door behind the recliners, which is a quest both ages want in on; weakest is that the building is funnier than the kids so far, and Naomi's made-up offices are a smaller hook than Felix's door.",
+        "Judge P: Strongest is a school where you sit on couches and the mattress department is forbidden, which both my kids would lean into on sight; weakest is that the building is funnier than any kid in it yet, and mattress jokes need watching against soft rule 3.",
+        "Judge X: Risk: a dressed showroom with four hundred pieces and sixty kids is a large-location build, kids on display beds is a framing I would keep away from AI image generation, and the fictional store brand must never resemble a real chain; advantage: the GRAND CLOSING banner plus school bus cold open and the rug-section line are a marketable sentence a parent repeats."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "H4",
+      "slot": "H",
+      "slotName": "Hangout",
+      "title": "All Twelve",
+      "logline": "At a school so small that twelve kids are the entire eighth grade, every kid has to be on every team, in every club, and in every play.",
+      "engineYields100": true,
+      "productionFormat": "live action, one set (gym, re-dressed)",
+      "ipRiskNote": "Could be mistaken for the small-town school genre. No existing series has the everyone-does-everything roster rule.",
+      "mean": {
+        "engine": 6.67,
+        "hook": 7.33,
+        "originality": 7.33,
+        "trailer": 6,
+        "standards": 8
+      },
+      "total": 35.33,
+      "minStandards": 7,
+      "notes": [
+        "Judge K: Strongest is Cass being medium at everything, the truest 11-year-old feeling in the slate, plus the same twelve faces in six uniforms which a 7-year-old gets on sight; weakest is twelve leads, so no single kid is the one to draw or want to be.",
+        "Judge P: Strongest is 'Who's in the stands? Our parents,' and a formal debate at halftime, which made me laugh out loud reading it and which a kid can repeat at school; weakest is twelve leads when only three are written.",
+        "Judge X: Risk: twelve child leads across six costume swaps is the single worst ask for AI character consistency and twelve minors is the most expensive full-episode cast on the slate; advantage: the halftime debate and the Us, Us, Our parents exchange are genuinely funny dialogue that would survive if the cast were cut to three."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "H5",
+      "slot": "H",
+      "slotName": "Hangout",
+      "title": "Both Ends",
+      "logline": "Budget cuts put Hadley Middle School and the Hadley Senior Center in the same building, and the kids and the seniors share the gym, the cafeteria, and the drama.",
+      "engineYields100": true,
+      "productionFormat": "live action, one set (shared hall and gym)",
+      "ipRiskNote": "Could be mistaken for an intergenerational sitcom. No existing series puts a middle school and a senior center in one building with a liaison committee.",
+      "mean": {
+        "engine": 7,
+        "hook": 6.33,
+        "originality": 6,
+        "trailer": 5.33,
+        "standards": 8
+      },
+      "total": 32.66,
+      "minStandards": 8,
+      "notes": [
+        "Judge K: Strongest is Marcus discovering he is a big deal in the west wing and Gus mowing the field into a maze; weakest is that half the cast is seniors negotiating pickleball time, so an 11-year-old reads it as a show for their parents' parents and leaves.",
+        "Judge P: Strongest is Gus Feeney treating a pickleball schedule like a union contract; weakest is that an 11-year-old will not choose a show about a senior center, and the whole premise is one careless line from an age joke the rules forbid.",
+        "Judge X: Risk: a mixed-age crowd at every bell plus a shared talent-show song is crowd, music, and performance timing all at once, and the concept sits near a known intergenerational documentary format; advantage: a two-clipboard face-off at a folding table is a cheap, strong two-shot and the ageism rule makes the scripts easy to pass."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "W1",
+      "slot": "W",
+      "slotName": "Wildcard",
+      "title": "Minor Matters",
+      "logline": "An animated workplace comedy about the Department of Small Things, the town office for the tiniest problems, from a balloon on a wire to a gate squeaking in B-flat.",
+      "engineYields100": true,
+      "productionFormat": "2D animation",
+      "ipRiskNote": "Could be mistaken for the animated-animal-workplace genre. The department, its staff, and the small-case engine are original. Town government is never a real political joke.",
+      "mean": {
+        "engine": 8.33,
+        "hook": 7,
+        "originality": 6.33,
+        "trailer": 7.67,
+        "standards": 8
+      },
+      "total": 37.33,
+      "minStandards": 8,
+      "notes": [
+        "Judge K: Strongest is Bart the tortoise chasing a marble down a hallway and a full siren response to a lost button, which a 7-year-old laughs at on sight and problems that are exactly kid sized; weakest is that a cartoon animal office signals 'for little kids' to the 11-year-old, and animal workplace cartoons are a crowded lane.",
+        "Judge P: Strongest is a premise that escalates by rule, a Code Amber siren for a button, and a tortoise agent who has gained a foot, which a 7-year-old will imitate in the living room; weakest is that an animated animal office is crowded territory and the siren needs a sound-level check.",
+        "Judge X: Risk: an animal-staffed municipal office in an animal town sits near a crowded animated-animal-city genre and the trailer has no turn, just four gags; advantage: stylized animals, a few fixed sets, held poses, and a marble down a hallway are the AI-friendliest kind of animation, with only the Code Amber siren level to watch."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "W2",
+      "slot": "W",
+      "slotName": "Wildcard",
+      "title": "The Hall of Nearly",
+      "logline": "A sketch show in the Museum of Things That Almost Happened, where a night guard and a half-broken animatronic docent tour exhibits of near misses, one sketch per exhibit.",
+      "engineYields100": true,
+      "productionFormat": "mixed: live action wrapper on one set, sketches as live, puppet, or animated inserts",
+      "ipRiskNote": "Could be mistaken for a 'night in a museum' film premise. No exhibits come alive, no historical figures appear, the museum is fictional, and the subject is near misses.",
+      "mean": {
+        "engine": 6.33,
+        "hook": 6.33,
+        "originality": 5,
+        "trailer": 6.33,
+        "standards": 7
+      },
+      "total": 30.99,
+      "minStandards": 6,
+      "notes": [
+        "Judge K: Strongest is Docent 4 freezing mid-sentence with 'please hold,' a bit both ages will imitate; weakest is that the sketches are about adult regrets like unsent letters and jobs not taken, an 11-year-old will instantly call it 'that museum movie,' and a dark museum with a flashlight is spooky-coded in the one slot that must stay fear-free for a 6-year-old.",
+        "Judge P: Strongest is the Rosalind and Docent 4 two-hander, with 'please hold' as a kid laugh on sight; weakest is that an after-hours museum with a night guard sits one step from a famous film premise, and beat 3 of the trailer is montage.",
+        "Judge X: Risk: a night guard in a museum after closing will be read by parents as the museum film franchise no matter what the exhibits do, and every sketch is a new set and cast, so episodes never get cheaper; advantage: Docent 4 is a stylized, glitching robot whose voice and face are an easy AI build and a nameable kid character."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "W3",
+      "slot": "W",
+      "slotName": "Wildcard",
+      "title": "Pigeon Council",
+      "logline": "The pigeons of one city block govern themselves through a council that meets on a ledge, and every crumb, statue, and window box is a matter of state.",
+      "engineYields100": true,
+      "productionFormat": "2D animation",
+      "ipRiskNote": "Could be mistaken for talking-bird cartoons as a genre. The council device, the block-as-nation, and the seven birds are original. No real party, issue, or figure is ever referenced.",
+      "mean": {
+        "engine": 7.67,
+        "hook": 7.33,
+        "originality": 7.67,
+        "trailer": 8,
+        "standards": 7.67
+      },
+      "total": 38.34,
+      "minStandards": 7,
+      "notes": [
+        "Judge K: Strongest is seven pigeons with titles and a tiny wren nobody counts, characters a kid would draw on every notebook, plus the hawk shadow answered with 'Committee'; weakest is that it is dialogue over held poses on one ledge, and parliamentary procedure sails over the 7-year-old.",
+        "Judge P: Strongest is a hawk sighting answered by forming a committee while nobody moves; weakest is that a 7-year-old does not know what a quorum is, the show is dialogue over held poses, and parliamentary procedure lives next door to hard rule 8 every single episode.",
+        "Judge X: Risk: parliamentary jokes must stay on procedure or they drift toward real politics (item 8), and talking-bird cartoons are a broad genre; advantage: one ledge, seven stylized birds, humans from the knees down, and a trailer that is dialogue over held poses with a real turn (the hawk) and a button make this the best AI-assisted trailer on the slate."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "W4",
+      "slot": "W",
+      "slotName": "Wildcard",
+      "title": "Suds Night",
+      "logline": "A variety show from a 24-hour laundromat, where the night attendant hosts an open mic for whoever waits on a dryer, including puppets, a beatboxer, and the lost socks.",
+      "engineYields100": true,
+      "productionFormat": "mixed: live action on one set plus puppets and animated inserts",
+      "ipRiskNote": "Could be mistaken for late-night variety as a format. No existing series is hosted from a laundromat by an attendant and two lost socks. The laundromat brand is fictional.",
+      "mean": {
+        "engine": 6.67,
+        "hook": 6.33,
+        "originality": 6.67,
+        "trailer": 5.33,
+        "standards": 7.33
+      },
+      "total": 32.33,
+      "minStandards": 5,
+      "notes": [
+        "Judge K: Strongest is a beatboxer who performs to the heavy cycle and two lost socks who heckle, both imitable in a living room; weakest is a variety format hosted by a 52-year-old attendant with a retired magician and a weather reporter, which is the parent's late night, not the kid's, and a 7-year-old has no story to follow.",
+        "Judge P: Strongest is the lost-sock puppets heckling from the bin and a beatboxer who needs the heavy cycle, which is the most imitable thing in the slot; weakest is that variety with no story gives the trailer no unanswered question, so the teaser reads as a sizzle reel the spec forbids.",
+        "Judge X: Risk: puppets, a beatboxer synced to a machine, and a crowd sing-along are performance timing that AI cannot fake and synthesized singing is the deepest CG-03 exposure on the slate, while two heckling puppets in a bin sit near a famous puppet duo; advantage: a single laundromat set is cheap and the neon cold open is easy."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "W5",
+      "slot": "W",
+      "slotName": "Wildcard",
+      "title": "Recent History Society",
+      "logline": "A sketch show about a historical reenactment society that only reenacts things that happened last week, in full costume, with total seriousness.",
+      "engineYields100": true,
+      "productionFormat": "live action, one set plus brief field locations",
+      "ipRiskNote": "Could be mistaken for club-based mockumentary comedy. No mockumentary device is used, the last-week rule is original, and no real news or politics is ever reenacted.",
+      "mean": {
+        "engine": 7,
+        "hook": 8,
+        "originality": 8,
+        "trailer": 7.67,
+        "standards": 8.67
+      },
+      "total": 39.34,
+      "minStandards": 8,
+      "notes": [
+        "Judge K: Strongest is Piper, 10, playing a fire hydrant with too much emotion and a slow-motion cart collision in aisle five, which kids will reenact at home the same night; weakest is that a 7-year-old may not get why grown-ups are in costume for last Tuesday until the falls and the horse start.",
+        "Judge P: Strongest is 'That's every week, Harlan, that's how weeks work' and a grandfather and granddaughter who take each other seriously; weakest is a one-joke premise the showrunner already flagged, and the weekly 'no real news' rule is a live wire.",
+        "Judge X: Risk: weekly costumes, brief field locations, and live comic timing at the panel need performers, and the one-joke premise must escalate; advantage: the last-week rule is the most original sentence in the slot, slow-motion cart collisions and costume stills are a good AI fit, and the no-real-events rule leaves nothing to fix on Standards."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "L1",
+      "slot": "L",
+      "slotName": "Lights Out",
+      "title": "The Night Desk",
+      "logline": "The overnight clerk at a 24-hour hardware store hears the story behind every item that comes back to the returns desk, and every return has a spooky reason.",
+      "engineYields100": true,
+      "productionFormat": "live action, one set (returns desk) with story inserts",
+      "ipRiskNote": "Could be mistaken for hosted spooky anthologies as a mechanic. No existing anthology uses a hardware returns desk, and no story crosses into real threat.",
+      "mean": {
+        "engine": 8,
+        "hook": 7.33,
+        "originality": 7.33,
+        "trailer": 8,
+        "standards": 8.67
+      },
+      "total": 39.33,
+      "minStandards": 8,
+      "notes": [
+        "Judge K: Strongest is a flashlight that 'shows me things, mostly the garage, but at night' and a stock boy who jumps at the ice machine, safe spooky that both ages can take; weakest is that there is no kid at the desk to root for, the customers are adults with objects, and haunted-object anthologies are a familiar shape.",
+        "Judge P: Strongest is Marguerite's desk deadpan, 'Then I'll need two receipts,' which is a last line worth repeating and the exact campfire pleasure the slot wants; weakest is that mundane reveals can feel like cheats unless the clues are fair, and beat 3 is a montage.",
+        "Judge X: Risk: the customer of the week is a new human face every episode and the reveals can feel like cheats if clues are unfair; advantage: a fixed returns desk, item close-ups, two-shots, and a dialogue-only cold open and button (two receipts) are the closest thing to a guaranteed non-slop AI trailer, on the cheapest live-action set in the slot."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "L2",
+      "slot": "L",
+      "slotName": "Lights Out",
+      "title": "The Lakeshore Rest",
+      "logline": "At a family-run lakeside motel, something odd checks into Room Six every week, and the teen night manager and her grandfather have until checkout to figure out what.",
+      "engineYields100": true,
+      "productionFormat": "live action, one set (lobby and Room Six) with lake exteriors",
+      "ipRiskNote": "Could be mistaken for single-room motel anthologies or motel horror films. Here a warm family runs the desk, nobody is ever in danger, and every guest is revealed as friendly.",
+      "mean": {
+        "engine": 8,
+        "hook": 7.67,
+        "originality": 6.67,
+        "trailer": 8,
+        "standards": 6.67
+      },
+      "total": 37.01,
+      "minStandards": 6,
+      "notes": [
+        "Judge K: Strongest is the fog man who cannot stay past sunrise and a 9-year-old who thinks every strange guest is a friend and is right, the best mild scare with a safe landing in the slot; weakest is a 15-year-old alone at a night desk with strange guests, which the standards agent will need Walt in frame for every single script.",
+        "Judge P: Strongest is Benji befriending the fog man, 'He can't stay past sunrise, work thing,' which is the sweet-scared tone exactly; weakest is that a roadside motel with pale guests and a man who thins into the light stands in the shadow of motel horror and wink-vampires, closer to hard rule 7 than the pitch admits.",
+        "Judge X: Risk: one room, one odd guest per week is the structure of a known single-room anthology and of motel horror films, and a 15-year-old alone at a night desk with strange adults plus a guest who thins into sunrise sit close to items 6 and 7; advantage: fog, neon, water, and silhouettes are AI strengths and the Bees exchange is the best trailer dialogue in the slot."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "L3",
+      "slot": "L",
+      "slotName": "Lights Out",
+      "title": "The Late Line",
+      "logline": "A late-night radio host takes calls from listeners who saw something strange in town, and each call becomes an animated story that ends safe before midnight.",
+      "engineYields100": true,
+      "productionFormat": "audio with animatics, upgraded to 2D animation for call segments",
+      "ipRiskNote": "Could be mistaken for radio-host spooky formats as a mechanic. No existing show pairs a call-in host with animated, kid-safe reveals and a recurring scarecrow caller.",
+      "mean": {
+        "engine": 7.67,
+        "hook": 5.67,
+        "originality": 6,
+        "trailer": 6.33,
+        "standards": 8.33
+      },
+      "total": 34,
+      "minStandards": 7,
+      "notes": [
+        "Judge K: Strongest is the woodpecker face in the bedroom window and the scarecrow that says hi, which a 7-year-old can take; weakest is that there is no kid on screen at all, the host is a calm 58-year-old in a static booth, the concept admits it may be too gentle, and a radio show in the dark is the parent's memory, so the 11-year-old who came for the reward slot leaves.",
+        "Judge P: Strongest is Dot's 'kid with a ghost, ghost with a kid, I panicked,' and Corwin's calm as the safety net; weakest is that it is a radio booth, my 7-year-old needs pictures on a Friday couch, and the showrunner's own fear that it is too gentle to feel spooky is right.",
+        "Judge X: Risk: the calm host taking strange calls after midnight is the format of a real paranormal call-in radio program and of a well-known town-radio fiction, and animatics over a booth can read as a slideshow; advantage: one booth, three regulars, and callers who are only voices make it the cheapest full episode on the slate, with the CG-03 disclosure needing to sit front and center because voice is the whole show."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "L4",
+      "slot": "L",
+      "slotName": "Lights Out",
+      "title": "Wrong Address",
+      "logline": "A cheerful delivery driver keeps delivering to the wrong house at night, and every wrong house has something odd behind the door that turns out to be fine.",
+      "engineYields100": true,
+      "productionFormat": "live action, one recurring set (the van) plus a new porch each week",
+      "ipRiskNote": "Could be mistaken for door-to-door mystery formats. No existing series follows a courier through spooky-then-safe houses with a dispatcher and a kid on a bike.",
+      "mean": {
+        "engine": 7.67,
+        "hook": 7.33,
+        "originality": 8,
+        "trailer": 8.33,
+        "standards": 6
+      },
+      "total": 37.33,
+      "minStandards": 5,
+      "notes": [
+        "Judge K: Strongest is a door opening on a room of stopped clocks and a birthday party for a coat, the purest 'wait, what' beats in the slate; weakest is a 12-year-old on a bike at night meeting a grown-up's van at strange houses, which sits right against item 6 no matter how many radios are on.",
+        "Judge P: Strongest is the moment before a wrong door opens, a built-in scare every week, and a trailer that lands cold open, turn, and coat-sleeve button cleanly; weakest is a 12-year-old on a bike at strange houses at night, which sits directly on hard rule 6 and needs the mitigation in every scene.",
+        "Judge X: Risk: a 12-year-old on a bike alone in headlights at strange houses every night is the closest thing to an item 6 FAIL on the slate even with her mother on the radio, the van must not resemble any real courier, and a new porch each week is a location per episode that also collides with the block's porch wrapper; advantage: a single adult lead, night porches, and headlight shots are AI-consistent and cheap."
+      ],
+      "disqualified": false
+    },
+    {
+      "id": "L5",
+      "slot": "L",
+      "slotName": "Lights Out",
+      "title": "Local Creatures",
+      "logline": "A nature documentary about the mild monsters of one county, narrated by a 13-year-old cryptozoologist and her skeptical little brother, in which every creature turns out to be misunderstood.",
+      "engineYields100": true,
+      "productionFormat": "mixed: live action with 2D animated creatures",
+      "ipRiskNote": "Could be mistaken for cryptid-hunting reality formats. The creatures are original, named, and harmless. No real cryptid or legend is used.",
+      "mean": {
+        "engine": 7,
+        "hook": 9,
+        "originality": 6.67,
+        "trailer": 7,
+        "standards": 7.67
+      },
+      "total": 37.34,
+      "minStandards": 7,
+      "notes": [
+        "Judge K: Strongest is a 13-year-old with a monster field guide and a 9-year-old who says 'it's a duck,' one lead per age band, and named creatures a kid will draw and collect; weakest is that 'Danger: none' flips up inside the trailer, so the 11-year-old who wanted to be a little scared gets the safety before the scare.",
+        "Judge P: Strongest is the sibling pair, 'It's not a monster, it's a guy, he waved,' which is my two kids exactly, plus a mom with a secret field guide; weakest is that 'it was friendly' is predictable by episode four, and the field-guide card beat uses text cards the trailer spec forbids.",
+        "Judge X: Risk: a sibling pair keeping a field guide of a small town's creatures with a skeptical brother sits near a very well-known animated series, and compositing 2D creatures onto live night exteriors is a two-pipeline build with two child actors; advantage: nice monsters with a Danger: none card is the most kid-marketable sentence in the slot and creature design and field-guide cards are easy AI assets."
+      ],
+      "disqualified": false
+    }
+  ]
+}

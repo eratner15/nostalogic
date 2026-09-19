@@ -1,4 +1,5 @@
-# Default deploy: workers.dev preview with D1. The GitHub workflow fills database_id from `wrangler d1 list`.
+# Default deploy: workers.dev preview. The GitHub workflow appends a [[d1_databases]] block when the token has
+# D1 permission. Without it the worker runs on the in-memory store (review mode). For local dev, wrangler.local.toml adds D1.
 name = "streetlights-guide"
 main = "src/index.ts"
 compatibility_date = "2026-09-01"
@@ -9,12 +10,6 @@ workers_dev = true
 directory = "public"
 binding = "ASSETS"
 run_worker_first = true
-
-[[d1_databases]]
-binding = "DB"
-database_name = "porchlight-guide-db"
-database_id = "REPLACE_WITH_ID_FROM_wrangler_d1_list"
-migrations_dir = "migrations"
 
 [vars]
 SITE_ENV = "production"

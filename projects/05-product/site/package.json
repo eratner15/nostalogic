@@ -4,14 +4,14 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "wrangler dev",
+    "dev": "wrangler dev --config wrangler.local.toml",
     "deploy": "wrangler deploy",
     "typecheck": "tsc --noEmit",
     "test": "vitest run",
     "db:generate": "drizzle-kit generate",
-    "db:migrate:local": "wrangler d1 migrations apply porchlight-guide-db --local",
+    "db:migrate:local": "wrangler d1 migrations apply porchlight-guide-db --local --config wrangler.local.toml",
     "db:migrate:remote": "wrangler d1 migrations apply porchlight-guide-db --remote",
-    "seed:local": "wrangler d1 execute porchlight-guide-db --local --file=./seed/seed.sql",
+    "seed:local": "wrangler d1 execute porchlight-guide-db --local --file=./seed/seed.sql --config wrangler.local.toml",
     "seed:remote": "wrangler d1 execute porchlight-guide-db --remote --file=./seed/seed.sql",
     "seed:build": "node scripts/build-seed.mjs",
     "export:static": "node --import tsx scripts/export-static.mjs"

@@ -84,3 +84,20 @@ The container that built this site cannot reach the Cloudflare or Netlify APIs (
 1. `npx wrangler login`
 2. `npx wrangler deploy --config wrangler.preview.toml`
 3. Wrangler prints a `workers.dev` URL. The preview has no database, so votes and sign-ups last only as long as the worker instance.
+
+## 9. GitHub Actions deploy (the path in use)
+
+`.github/workflows/deploy-tv.yml` runs on every push that touches the site. It needs repository secrets:
+
+| Secret | Required | Token permissions |
+|---|---|---|
+| `CLOUDFLARE_API_TOKEN` | Yes | Account > Workers Scripts > Edit. For saved votes and sign-ups: Account > D1 > Edit. For ratlinks.com/tv: Zone > Workers Routes > Edit on the ratlinks.com zone. |
+| `CLOUDFLARE_ACCOUNT_ID` | Yes | The account that holds the ratlinks.com zone. |
+| `ADMIN_TOKEN` | Optional | Any long random string. Unlocks `/admin?token=...`. |
+
+Outcomes:
+1. Preview at `https://streetlights-guide.evan-ratner.workers.dev/` (and the earlier `streetlights-preview` worker from the first run).
+2. If the token has D1 Edit, the workflow creates `porchlight-guide-db`, migrates, seeds, and binds it. Otherwise the site runs in review mode: pages and trailers work, votes and sign-ups are not saved.
+3. If the ratlinks.com zone is on the account and the token has Workers Routes Edit, `https://ratlinks.com/tv/` goes live. Otherwise the step warns and the preview URL stands.
+
+To add a permission: Cloudflare dashboard, My Profile, API Tokens, edit the token, add the permission, save. Then re-run the workflow from the Actions tab.

@@ -1,4 +1,6 @@
-# Routed deploy at ratlinks.com/tv. Same D1 database as wrangler.toml. Requires the ratlinks.com zone on the account.
+# Routed deploy at ratlinks.com/tv. Requires the ratlinks.com zone on the account and Workers Routes edit on the token.
+# The GitHub workflow appends a [[d1_databases]] block when the token has D1 permission. Without it the worker
+# runs on the in-memory store (review mode).
 name = "streetlights-tv"
 main = "src/index.ts"
 compatibility_date = "2026-09-01"
@@ -13,12 +15,6 @@ routes = [
 directory = "public"
 binding = "ASSETS"
 run_worker_first = true
-
-[[d1_databases]]
-binding = "DB"
-database_name = "porchlight-guide-db"
-database_id = "REPLACE_WITH_ID_FROM_wrangler_d1_list"
-migrations_dir = "migrations"
 
 [vars]
 SITE_ENV = "production"

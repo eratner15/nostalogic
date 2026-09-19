@@ -41,42 +41,45 @@ jobs:
       - run: npm test
       - name: Build seed and posters
         run: npm run seed:build
-      - name: Resolve or create the D1 database
+      - name: Resolve or create the D1 database (needs D1 Edit on the token)
         id: d1
         continue-on-error: true
         run: |
           set -e
           NAME=porchlight-guide-db
-          ID=$(npx wrangler d1 list --json | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);const r=j.find(x=>x.name===process.argv[1]);process.stdout.write(r?(r.uuid||r.id||""):"")})' "$NAME")
+          LIST=$(npx wrangler d1 list --json 2>/dev/null | sed -n '/^\[/,$p')
+          ID=$(printf '%s' "$LIST" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{let j=[];try{j=JSON.parse(s)}catch(e){}const r=j.find(x=>x.name===process.argv[1]);process.stdout.write(r?(r.uuid||r.id||""):"")})' "$NAME")
           if [ -z "$ID" ]; then
             npx wrangler d1 create "$NAME" >/dev/null
-            ID=$(npx wrangler d1 list --json | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{const j=JSON.parse(s);const r=j.find(x=>x.name===process.argv[1]);process.stdout.write(r?(r.uuid||r.id||""):"")})' "$NAME")
+            LIST=$(npx wrangler d1 list --json 2>/dev/null | sed -n '/^\[/,$p')
+            ID=$(printf '%s' "$LIST" | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{let j=[];try{j=JSON.parse(s)}catch(e){}const r=j.find(x=>x.name===process.argv[1]);process.stdout.write(r?(r.uuid||r.id||""):"")})' "$NAME")
           fi
           [ -n "$ID" ] || { echo "no database id"; exit 1; }
           echo "id=$ID" >> "$GITHUB_OUTPUT"
-          sed -i "s/REPLACE_WITH_ID_FROM_wrangler_d1_list/$ID/" wrangler.toml wrangler.tv.toml
+          for f in wrangler.toml wrangler.tv.toml; do
+            printf '\n[[d1_databases]]\nbinding = "DB"\ndatabase_name = "%s"\ndatabase_id = "%s"\nmigrations_dir = "migrations"\n' "$NAME" "$ID" >> "$f"
+          done
           npx wrangler d1 migrations apply "$NAME" --remote
           npx wrangler d1 execute "$NAME" --remote --file=./seed/seed.sql
-      - name: Deploy workers.dev preview (with D1)
-        if: steps.d1.outcome == 'success'
-        run: npx wrangler deploy
-      - name: Deploy workers.dev preview (no D1, in-memory fallback)
+      - name: Note on D1
         if: steps.d1.outcome != 'success'
-        run: |
-          echo "::warning::D1 step failed (token may lack D1 permissions). Deploying the in-memory preview instead."
-          npx wrangler deploy --config wrangler.preview.toml
+        run: echo "::warning::D1 step failed. The API token needs Account > D1 > Edit. Deploying in review mode (in-memory store, votes and sign-ups are not saved)."
+      - name: Deploy workers.dev preview
+        run: npx wrangler deploy
       - name: Set ADMIN_TOKEN secret
-        if: steps.d1.outcome == 'success' && env.ADMIN_TOKEN != ''
+        if: env.ADMIN_TOKEN != ''
         env:
           ADMIN_TOKEN: ${{ secrets.ADMIN_TOKEN }}
         run: echo "$ADMIN_TOKEN" | npx wrangler secret put ADMIN_TOKEN
-      - name: Deploy ratlinks.com/tv route
-        if: steps.d1.outcome == 'success'
+      - name: Deploy ratlinks.com/tv route (needs the zone on this account and Workers Routes Edit)
+        id: route
         continue-on-error: true
-        run: |
-          npx wrangler deploy --config wrangler.tv.toml || { echo "::warning::Route deploy failed. The ratlinks.com zone must be on this Cloudflare account and the token needs Workers Routes edit."; exit 1; }
+        run: npx wrangler deploy --config wrangler.tv.toml
+      - name: Note on route
+        if: steps.route.outcome != 'success'
+        run: echo "::warning::Route deploy failed. The ratlinks.com zone must be on this Cloudflare account and the token needs Zone > Workers Routes > Edit."
       - name: Set ADMIN_TOKEN on the routed worker
-        if: steps.d1.outcome == 'success' && env.ADMIN_TOKEN != ''
+        if: steps.route.outcome == 'success' && env.ADMIN_TOKEN != ''
         continue-on-error: true
         env:
           ADMIN_TOKEN: ${{ secrets.ADMIN_TOKEN }}
@@ -84,6 +87,6 @@ jobs:
       - name: Summary
         run: |
           echo "## Trailer site deploy" >> "$GITHUB_STEP_SUMMARY"
-          echo "- Preview: the workers.dev URL printed by the deploy step above (streetlights-guide or streetlights-preview)." >> "$GITHUB_STEP_SUMMARY"
+          echo "- Preview: https://streetlights-guide.evan-ratner.workers.dev/ (memory mode unless the D1 step succeeded)" >> "$GITHUB_STEP_SUMMARY"
           echo "- Route: https://ratlinks.com/tv/ if the route step succeeded." >> "$GITHUB_STEP_SUMMARY"
           echo "- Dashboard: append /admin?token=ADMIN_TOKEN to either URL." >> "$GITHUB_STEP_SUMMARY"
