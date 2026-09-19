@@ -2,18 +2,20 @@
 
 Project: Porchlight (internal research). Prepared: 2026-09-19. Agent: market-analyst.
 
+Orchestrator revision 2026-09-19 (after red team memo). Changes: the 2018 revival is reclassified as "label only, mechanics untested" (R1-12). Wikipedia-only load-bearing claims are marked [unverified] (R1-10). The Kids' WB end cites Variety 2007 (R1-10d). Edits are marked "[rev]".
+
 Method note. Web search summaries supplied most evidence. The proxy blocked direct page fetches for most publishers. Each item therefore cites the publisher, title, URL and date as returned by search. Items marked "secondary" rely on Wikipedia or fan wikis. Treat those as leads, not proof. The "Could not verify" list names every gap.
 
 ## 1. Summary table
 
 | Hypothesis | Verdict | Confidence | One-line reason |
 |---|---|---|---|
-| H2. Format mechanics made the blocks work, not only the shows. | WEAKENED | Medium | Mechanics built habit and audience flow, but hit shows carried ratings. Branding without hits failed twice (2003, 2018). |
+| H2. Format mechanics made the blocks work, not only the shows. | WEAKENED | Medium | Mechanics built habit and audience flow, but hit shows carried ratings. A label without hits failed in 2003. The 2018 revival tested a label only, with no hosts or interstitials, so it says nothing about the mechanics [rev]. |
 | H4. Networks left the format for cost and ad economics, not because demand ended. | CONFIRMED (with a split) | Medium | Kids' blocks and SNICK ended on economics or strategy while demand held. ABC's Friday block ended on a mix: real audience erosion plus a cheaper, hotter format. |
 
 ### H2 reasoning
 
-The blocks used fixed nights, fixed times, four half-hour slots, cast hosts, interstitials and crossovers. Evidence shows these mechanics mattered for habit and flow. Family Matters and Step by Step fell after leaving ABC's block for a CBS clone in 1997. Academic work finds strong lead-in inheritance in adjacent programs. But the same evidence cuts the other way. Full House posted its best season after leaving Friday for Tuesday. Adams (1997) found lead-in and block tactics did not lift ratings, only renewals. Disney dropped One Saturday Morning's hosts and shorts in 2000 for low ratings. ABC revived the TGIF brand in 2003 and 2018 with weak shows and no hosted format. Both revivals failed. The shows, not the wrapper, set the ceiling. The wrapper raised the floor and built loyalty. Verdict: WEAKENED, medium confidence.
+The blocks used fixed nights, fixed times, four half-hour slots, cast hosts, interstitials and crossovers. Evidence shows these mechanics mattered for habit and flow. Family Matters and Step by Step fell after leaving ABC's block for a CBS clone in 1997. Academic work finds strong lead-in inheritance in adjacent programs. But the same evidence cuts the other way. Full House posted its best season after leaving Friday for Tuesday. Adams (1997) found lead-in and block tactics did not lift ratings, only renewals. Disney dropped One Saturday Morning's hosts and shorts in 2000 for low ratings. ABC revived the brand in 2003 with new shows and no hosted format, and it failed on ratings. ABC revived the label in 2018 around relocated shows with no hosts, no interstitials, and minimal promotion. That run tested a label, not the mechanics, so it counts only as evidence that a label alone fails [rev]. The shows, not the wrapper, set the ceiling. The wrapper raised the floor and built loyalty. Verdict: WEAKENED, medium confidence.
 
 ### H4 reasoning
 
@@ -40,7 +42,7 @@ The kids' blocks show the cleanest economics story. The CW said in 2007 it ended
 15. Shows leaving the block. CBS bought Family Matters and Step by Step in a $40 million deal in early 1997. ABC executives were "stunned." Source: Deseret News, "CBS steals Steve Urkel away from ABC", https://www.deseret.com/1997/2/5/19293357/cbs-steals-steve-urkel-away-from-abc/, February 5, 1997.
 16. Cost signal. ABC had promised Miller-Boyett $1.5 million per episode for seasons nine and ten of Family Matters. Source: Wikipedia, "Family Matters", https://en.wikipedia.org/wiki/Family_Matters, accessed 2026-09-19 (secondary).
 17. Outcome of the move. Both shows fell in ratings on CBS. CBS canceled both after one season. Source: Wikipedia, "CBS Block Party", https://en.wikipedia.org/wiki/CBS_Block_Party, accessed 2026-09-19 (secondary). Corroboration: Deseret News, "Freaky Friday: CBS clones ABC lineup", https://www.deseret.com/1997/9/19/19334937/freaky-friday-cbs-clones-abc-lineup/, September 19, 1997.
-18. Audience fracture. CBS's 1997-98 clone split the Friday family audience. That harm proved permanent for TGIF. Source: Wikipedia, "CBS Block Party", https://en.wikipedia.org/wiki/CBS_Block_Party, accessed 2026-09-19 (secondary).
+18. Audience fracture [unverified editorial judgment, rev]. CBS's 1997-98 clone split the Friday family audience. That harm proved permanent for TGIF. Source: Wikipedia, "CBS Block Party", https://en.wikipedia.org/wiki/CBS_Block_Party, accessed 2026-09-19 (secondary).
 19. Decline. Ratings fell in the late 1990s as Friday social outings grew and signature shows aged or left. Source: Wikipedia, "TGIF (TV programming block)", https://en.wikipedia.org/wiki/TGIF_(TV_programming_block), accessed 2026-09-19 (secondary).
 20. End date. The original block ended on September 8, 2000. Source: Looper, "The Untold Truth Of TGIF", https://www.looper.com/308922/the-untold-truth-of-tgif/, n.d.
 
@@ -50,7 +52,7 @@ The kids' blocks show the cleanest economics story. The CW said in 2007 it ended
 2. Slots. Four half-hours filled the block. Launch shows: Clarissa Explains It All, Roundhouse, The Ren & Stimpy Show, Are You Afraid of the Dark? Source: Wikipedia, "SNICK", https://en.wikipedia.org/wiki/SNICK, accessed 2026-09-19 (secondary).
 3. Premise. President Geraldine Laybourne set out to disprove the belief that kids did not watch on Saturday nights. Quote: "In theory, the audience who would most likely watch SNICK would be too young to be out on the town and too old to be in bed by eight." Source: Wikipedia, "SNICK", https://en.wikipedia.org/wiki/SNICK, accessed 2026-09-19 (secondary). Wikipedia cites Broadcasting & Cable, August 17, 1992, and Los Angeles Times, June 19, 1994. Neither could be fetched.
 4. Audience forecast. Laybourne expected original shows to add 650,000 to one million Saturday night viewers. Source: Wikipedia, "SNICK", https://en.wikipedia.org/wiki/SNICK, accessed 2026-09-19 (secondary).
-5. Peak rating. By early 1993 Nickelodeon led all networks among kids 6-11 on Saturday nights. It drew a 6.4 age-group rating against Fox 5.5, NBC 5.2, CBS 4.8 and ABC 3.2. Source: Wikipedia, "SNICK", https://en.wikipedia.org/wiki/SNICK, accessed 2026-09-19 (secondary, citing A.C. Nielsen).
+5. Peak rating [unverified, rev]. By early 1993 Nickelodeon led all networks among kids 6-11 on Saturday nights. It drew a 6.4 age-group rating against Fox 5.5, NBC 5.2, CBS 4.8 and ABC 3.2. Source: Wikipedia, "SNICK", https://en.wikipedia.org/wiki/SNICK, accessed 2026-09-19 (secondary, citing A.C. Nielsen). The red team could not find this rating in any other source. Do not build a score band on it.
 6. Home base and interstitials. The Big Orange Couch served as mascot in bumpers and promos. "SNICK Snack" shorts ran between shows. Source: Wikipedia, "SNICK", https://en.wikipedia.org/wiki/SNICK, accessed 2026-09-19 (secondary).
 7. Viewer participation. In June 1999 Nickelodeon gave the couch, stuffed with $25,000 and 6,000 cookies, to a viewer in a contest. Source: Nickelodeon Wiki (Fandom), "The Big Orange Couch", https://nickelodeon.fandom.com/wiki/The_Big_Orange_Couch, n.d. (secondary).
 8. Rebrand. On September 4, 2004 the block became "Saturday Night Nickelodeon" with new Beehive bumpers. Source: Wikipedia, "SNICK", https://en.wikipedia.org/wiki/SNICK, accessed 2026-09-19 (secondary).
@@ -82,13 +84,13 @@ The kids' blocks show the cleanest economics story. The CW said in 2007 it ended
 
 1. Launch. Kids' WB launched September 9, 1995. Source: Wikipedia, "Kids' WB", https://en.wikipedia.org/wiki/Kids%27_WB, accessed 2026-09-19 (secondary).
 2. Peak. Pokémon drew a 7.2 rating and 26 share among kids 2-11 in fourth-quarter 1999. Kids' WB beat Nickelodeon on Saturday morning for the first time in ten quarters. Source: Variety, "'Poke' powers WB", https://variety.com/2000/tv/news/poke-powers-wb-1117760542/, 2000.
-3. End. On October 2, 2007 The CW said it would end Kids' WB because of children's advertising limits and cable competition. It sold the time to 4Kids. Last airing: May 17, 2008. Source: Wikipedia, "Kids' WB", https://en.wikipedia.org/wiki/Kids%27_WB, accessed 2026-09-19 (secondary).
+3. End. On October 2, 2007 The CW said it would end Kids' WB after the 2007-08 season and turn Saturday mornings over to 4Kids under a five-year pact for five hours a week, citing children's advertising limits and cable competition. Last airing: May 17, 2008. Source [rev]: Variety, "CW turns to 4Kids on Saturdays", https://variety.com/2007/digital/markets-festivals/cw-turns-to-4kids-on-saturdays-1117973235/, October 2007. Corroboration: TVWeek, "CW Turns Over Saturday Morning Kids Block to 4Kids", https://www.tvweek.com/in-depth/2007/10/cw-turns-over-saturday-morning/, October 2007. Wikipedia, "Kids' WB" (secondary).
 
 ### 2.7 Disney's One Saturday Morning, 1997 to 2002
 
 1. Launch and hosts. It premiered September 13, 1997 as a two-hour hosted block. Hosts Charlie (1997) and MeMe (1998 to 2000) appeared with Jelly Roll the elephant. Source: Wikipedia, "ABC Kids (TV programming block)", https://en.wikipedia.org/wiki/ABC_Kids_(TV_programming_block), accessed 2026-09-19 (secondary).
 2. Peak. It beat Fox Kids in its first season as the most-watched broadcast Saturday block. Source: Wikipedia, "ABC Kids (TV programming block)", https://en.wikipedia.org/wiki/ABC_Kids_(TV_programming_block), accessed 2026-09-19 (secondary).
-3. Hosts dropped. Disney cut the shorts and hosted segments in 2000 because of low ratings. Source: Wikipedia, "ABC Kids (TV programming block)", https://en.wikipedia.org/wiki/ABC_Kids_(TV_programming_block), accessed 2026-09-19 (secondary).
+3. Hosts dropped [unverified, rev: only wiki sources found]. Disney cut the shorts and hosted segments in 2000 because of low ratings. Source: Wikipedia, "ABC Kids (TV programming block)", https://en.wikipedia.org/wiki/ABC_Kids_(TV_programming_block), accessed 2026-09-19 (secondary).
 4. End. The block ended September 7, 2002. ABC Kids replaced it on September 14, 2002. Source: Wikipedia, "ABC Kids (TV programming block)", https://en.wikipedia.org/wiki/ABC_Kids_(TV_programming_block), accessed 2026-09-19 (secondary).
 
 ### 2.8 TNBC (NBC Saturday morning), 1992 to 2002
@@ -183,7 +185,7 @@ Cause table.
 2. Ad limits. The CTA caps ads in children's programs at 10.5 minutes per hour on weekends and 12 minutes on weekdays. Source: FCC, "Children's Educational Television", https://www.fcc.gov/consumers/guides/childrens-educational-television, current.
 3. Cable competition. Nickelodeon, Cartoon Network and Disney Channel ran animation all day. Advertisers followed the ratings. Source: AOL, "Saturday Morning Cartoons Used to Be a Whole Ritual", https://www.aol.com/articles/saturday-morning-cartoons-used-whole-100243055.html, n.d.
 4. Networks farmed out blocks. Fox to 4Kids (2002, $25.3 million a year). NBC to Discovery (2002, about $8 million a year). Source: Variety, "4Kids buys 4 hours from Fox Kids", 2002.
-5. The CW ended Kids' WB in 2007, citing ad limits and cable competition. Source: Wikipedia, "Kids' WB" (secondary).
+5. The CW ended Kids' WB in 2007, citing ad limits and cable competition. Source [rev]: Variety, "CW turns to 4Kids on Saturdays", October 2007 (see section 2.6 item 3).
 6. Last block. Vortexx aired last on September 27, 2014. Litton's One Magnificent Morning replaced it on October 4, 2014 to meet FCC educational rules. Source: Wikipedia, "Vortexx", https://en.wikipedia.org/wiki/Vortexx, accessed 2026-09-19 (secondary). Corroboration: The Washington Post, "Saturday morning cartoons are no more", https://www.washingtonpost.com/news/morning-mix/wp/2014/09/30/saturday-morning-cartoons-are-no-more/, September 30, 2014; NPR, "That's All Folks: Saturday Morning Cartoons Bid Farewell", https://www.npr.org/2014/09/29/352538416/thats-all-folks-saturday-morning-cartoons-bid-farewell, September 29, 2014.
 
 | Cause type | Evidence | Weight |

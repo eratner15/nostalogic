@@ -1,13 +1,17 @@
 {
-  "asOf": "2026-09-19",
+  "asOf": "2026-09-19 rev2 (after red team R1-06, R1-07, R1-20)",
   "evidence": "projects/01-market/out/evidence-h2-h4-history.md",
   "mechanics": [
     {
       "name": "Fixed night",
-      "peakYear": 1996, "memorySalience": 92, "reproducibility": 95, "expressionRisk": 5, "ownerEffort": 10,
+      "peakYear": 1996,
+      "memorySalience": 85,
+      "reproducibility": 95,
+      "expressionRisk": 5,
+      "ownerEffort": 10,
       "reasons": {
-        "peakYear": "Every block in the evidence ran on a fixed night at once in 1996: ABC Friday, Nickelodeon Saturday, Fox Kids, Kids' WB, Nick at Nite (evidence sections 2.1 to 2.9).",
-        "memorySalience": "Named in every retrospective source as the defining feature. Nickelodeon led kids 6 to 11 on Saturday nights by early 1993 on this bet alone (section 2.2 items 3 to 5).",
+        "peakYear": "Every evening block in the evidence ran on a fixed night in 1996: ABC Friday, Nickelodeon Saturday, Nick at Nite nightly (sections 2.1, 2.2, 2.9). Fox Kids and Kids' WB ran fixed Saturday morning slots, which supports fixed slot, not fixed night.",
+        "memorySalience": "Named as a defining feature by the retrospective press in the evidence (Looper, Deadline 2025, TV Insider 2022, Collider) for both evening blocks. Band 70 to 89 with a high placement. The 1993 kids 6 to 11 Saturday rating (section 2.2 item 5) is Wikipedia-only and unverified, so it does not lift the band to 90 plus.",
         "reproducibility": "A weekly premiere on a fixed night needs no partner and no spectrum. Mechanics table row 1.",
         "expressionRisk": "Pure structure. A day of the week cannot be owned.",
         "ownerEffort": "Set once. Runs itself."
@@ -15,7 +19,11 @@
     },
     {
       "name": "Fixed time",
-      "peakYear": 1996, "memorySalience": 80, "reproducibility": 70, "expressionRisk": 5, "ownerEffort": 15,
+      "peakYear": 1996,
+      "memorySalience": 80,
+      "reproducibility": 70,
+      "expressionRisk": 5,
+      "ownerEffort": 15,
       "reasons": {
         "peakYear": "ABC and Nickelodeon both held 8 to 10 p.m. across 1996 (sections 2.1 and 2.2).",
         "memorySalience": "Named often. The 8 p.m. start is part of the recall for both blocks (section 2.2 item 1, section 2.1).",
@@ -26,10 +34,14 @@
     },
     {
       "name": "Four slots",
-      "peakYear": 1996, "memorySalience": 75, "reproducibility": 90, "expressionRisk": 10, "ownerEffort": 25,
+      "peakYear": 1996,
+      "memorySalience": 70,
+      "reproducibility": 90,
+      "expressionRisk": 10,
+      "ownerEffort": 25,
       "reasons": {
         "peakYear": "Both ABC and Nickelodeon ran four half-hours in 1996 (sections 2.1 and 2.2).",
-        "memorySalience": "Named for two blocks. Shows fell after leaving the four-slot block in 1997 (section 2.1 items 15 to 18).",
+        "memorySalience": "Named for two blocks. Two shows fell after leaving the four-slot block in 1997 (section 2.1 items 15 to 18). Counter-evidence: one show posted its best season after leaving the block for a Tuesday slot (section 2.1 item 9). Band 70 to 89, low placement.",
         "reproducibility": "A four-episode playlist is native to streaming. Adams (1997) shows block tactics raise renewal, not rating, so the value is retention (section 2.10).",
         "expressionRisk": "Pure structure with a count.",
         "ownerEffort": "Four pieces of content per week. Light scheduling work once the content exists."
@@ -37,18 +49,26 @@
     },
     {
       "name": "Shared hosts",
-      "peakYear": 1997, "memorySalience": 78, "reproducibility": 85, "expressionRisk": 45, "ownerEffort": 65,
+      "peakYear": 1997,
+      "memorySalience": 78,
+      "reproducibility": 70,
+      "expressionRisk": 45,
+      "ownerEffort": 65,
       "reasons": {
         "peakYear": "Disney launched a hosted Saturday block in 1997 while ABC cast members still hosted Friday (sections 2.1 item 5, 2.7 item 1).",
         "memorySalience": "The hosted wrap defined the ABC brand in retrospectives (section 2.1 item 5). Mixed evidence: Disney cut hosts in 2000 for low ratings (section 2.7 item 3).",
-        "reproducibility": "Creator-hosted intros are standard on video platforms (mechanics table row 4).",
+        "reproducibility": "Creator-hosted intros are standard on video platforms. But made-for-kids rules disable the host's engagement tools: comments, live chat, memberships (landscape.md section 4 and section 8). Hosting works as a recorded wrap without those tools. Band 70 to 89, low placement.",
         "expressionRisk": "The host style is an expressive surface that must be designed fresh. In-character cast hosting is a known device.",
         "ownerEffort": "A weekly production task with talent."
       }
     },
     {
       "name": "Interstitials and bumpers",
-      "peakYear": 1994, "memorySalience": 70, "reproducibility": 90, "expressionRisk": 40, "ownerEffort": 45,
+      "peakYear": 1994,
+      "memorySalience": 70,
+      "reproducibility": 90,
+      "expressionRisk": 40,
+      "ownerEffort": 45,
       "reasons": {
         "peakYear": "Nick at Nite's branded interstitial model coincided with a 60 percent prime-time rise from Q1 1994 to Q1 1995 (section 2.9 item 2).",
         "memorySalience": "Named for two blocks: Nickelodeon shorts and couch bumpers, ABC animation and skits (mechanics table row 5).",
@@ -59,7 +79,11 @@
     },
     {
       "name": "Crossover events",
-      "peakYear": 1997, "memorySalience": 72, "reproducibility": 70, "expressionRisk": 30, "ownerEffort": 70,
+      "peakYear": 1997,
+      "memorySalience": 72,
+      "reproducibility": 70,
+      "expressionRisk": 30,
+      "ownerEffort": 70,
       "reasons": {
         "peakYear": "The 1997 stunt sent one character through every show in the lineup (section 2.1 item 12).",
         "memorySalience": "Named for two blocks: ABC 1991, 1996, 1997 and NBC 1991 (mechanics table row 6). No ratings link found.",
@@ -70,18 +94,26 @@
     },
     {
       "name": "Stay up late feeling",
-      "peakYear": 1995, "memorySalience": 85, "reproducibility": 55, "expressionRisk": 10, "ownerEffort": 10,
+      "peakYear": 1995,
+      "memorySalience": 60,
+      "reproducibility": 55,
+      "expressionRisk": 10,
+      "ownerEffort": 10,
       "reasons": {
         "peakYear": "Nickelodeon's 8 to 10 p.m. premise for kids too old for bed at eight held through the mid-1990s (section 2.2 item 3).",
-        "memorySalience": "The premise is quoted in most retrospectives. Kids, tweens, and their parents co-viewed until 10 p.m. (mechanics table row 7).",
-        "reproducibility": "Timing can signal an event. Devices remove the parental gate that made the late slot special (mechanics table row 7). The ritual kit must rebuild the gate.",
+        "memorySalience": "One block's premise, cited by one secondary source (Wikipedia quoting the network president) and one retrospective phrase (Looper). Band 40 to 69.",
+        "reproducibility": "Timing can signal an event. The evidence file's mechanics table (row 7) says devices remove the parental gate. That is the analyst's judgment, not a sourced finding. The ritual kit must rebuild the gate. Band 40 to 69.",
         "expressionRisk": "A feeling, not a surface.",
         "ownerEffort": "Set by the schedule. Runs itself."
       }
     },
     {
       "name": "Home base set",
-      "peakYear": 1997, "memorySalience": 80, "reproducibility": 85, "expressionRisk": 60, "ownerEffort": 30,
+      "peakYear": 1997,
+      "memorySalience": 80,
+      "reproducibility": 85,
+      "expressionRisk": 60,
+      "ownerEffort": 30,
       "reasons": {
         "peakYear": "Nickelodeon's couch ran 1992 to 1999 and Disney's hosted studio set launched in 1997 (sections 2.2 item 6, 2.7 item 1).",
         "memorySalience": "The couch anchored bumpers for seven years and drove a 1999 giveaway (section 2.2 items 6 and 7).",
@@ -92,9 +124,13 @@
     },
     {
       "name": "Viewer participation",
-      "peakYear": 1998, "memorySalience": 40, "reproducibility": 55, "expressionRisk": 10, "ownerEffort": 35,
+      "peakYear": 1998,
+      "memorySalience": 40,
+      "reproducibility": 55,
+      "expressionRisk": 10,
+      "ownerEffort": 35,
       "reasons": {
-        "peakYear": "The couch contest ran in 1999 and TEENick's viewer countdown followed. 1998 is the last window year with evidence of build-up (section 2.2 item 7).",
+        "peakYear": "No in-window event verified. The cited contest (1999) and countdown (2001) fall outside 1993 to 1998. Peak year is not used in the score after decision D-008.",
         "memorySalience": "Rarely named. Present but not recalled (mechanics table row 9).",
         "reproducibility": "Live chat, polls, and votes are native to digital. But made-for-kids rules disable comments and live chat. Participation must route through the parent account.",
         "expressionRisk": "Pure structure.",
@@ -103,7 +139,11 @@
     },
     {
       "name": "Seasonal stunts",
-      "peakYear": 1994, "memorySalience": 65, "reproducibility": 90, "expressionRisk": 20, "ownerEffort": 50,
+      "peakYear": 1994,
+      "memorySalience": 65,
+      "reproducibility": 90,
+      "expressionRisk": 20,
+      "ownerEffort": 50,
       "reasons": {
         "peakYear": "Nick at Nite's Block Party Summer began in 1994 (section 2.9 item 3).",
         "memorySalience": "Named for two blocks: the 1994 summer stunt and ABC's 1996 theme park episodes (mechanics table row 10).",
@@ -114,10 +154,14 @@
     },
     {
       "name": "Sonic ID",
-      "peakYear": 1995, "memorySalience": 85, "reproducibility": 95, "expressionRisk": 55, "ownerEffort": 5,
+      "peakYear": 1995,
+      "memorySalience": 60,
+      "reproducibility": 95,
+      "expressionRisk": 55,
+      "ownerEffort": 5,
       "reasons": {
         "peakYear": "The ABC jingle and the Nick at Nite radio-style format both ran through the mid-1990s (sections 2.1 item 6, 2.9 item 1).",
-        "memorySalience": "The jingle carried the brand meaning for decades (mechanics table row 11). No ratings evidence.",
+        "memorySalience": "One verified block jingle (section 2.1 item 6, Looper and Deadline 2025). Nick at Nite's radio-style format is a programming metaphor, not a sonic ident. One block puts this in the 40 to 69 band, high placement.",
         "reproducibility": "Audio idents are cheap and persist across clips (mechanics table row 11).",
         "expressionRisk": "Known mainly through one block's jingle and lyric. The new ident must share nothing with it.",
         "ownerEffort": "Compose once."

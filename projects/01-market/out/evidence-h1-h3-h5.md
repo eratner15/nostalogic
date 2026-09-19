@@ -2,19 +2,24 @@
 
 Prepared by: market-analyst agent. Date: 2026-09-19. Internal research only.
 
+Orchestrator revision 2026-09-19 (after red team memo `projects/08-compliance/out/red-team/phase-1-risk-memo.md`). Changes: H1 restated and downgraded to PARTIAL (R1-01, R1-02). H3 split into H3a and H3b (R1-11). H5 confidence cut to Medium with terms defined (R1-04). Market size section rebuilt with bounds and a bottom-up revenue range (R1-08). Comparables table corrected (R1-14, R1-16, R1-19). Tubi figure corrected (R1-17). Co-viewing age bands added (R1-18). Nielsen inference removed (R1-13). The $17 billion row removed (C-3). Edits are marked "[rev]".
+
 Method note. Web search returned publisher excerpts for every source below. Direct page fetches were blocked by the network proxy. Each number therefore comes from a search excerpt of the named source. Numbers marked "estimate" are my arithmetic. Inputs appear next to each estimate.
 
 ## 1. Summary table
 
 | Hypothesis | Verdict | Confidence | One-line reason |
 |---|---|---|---|
-| H1. Appointment co-viewing for families is underserved | CONFIRMED | Medium | Co-viewing is high and measured. Appointment viewing returns via live and weekly drops. No US streamer, FAST channel, or network runs a weekly fixed-night family comedy block. |
-| H3. The audience is two generations | CONFIRMED | Medium | 33.3 million US families have children under 18. Millennial parents are the majority of new parents. The 30-year cycle is a popular claim with weak evidence. |
-| H5. A small studio can prove audience at low cost | CONFIRMED | High | Ten comparable cases started with home gear, a pilot, or a Patreon. Audience signal came before capital in each case. |
+| H1. Appointment co-viewing for families is underserved | PARTIAL [rev] | Medium | Supply gap confirmed in narrow form: no US service runs a hosted, original, scripted comedy block for ages 6 to 14 on a fixed night. Demand for a scheduled ritual is untested. A public broadcaster runs a weekly Friday family movie night, so the literal "no one programs a family night" claim is false. |
+| H3a. Two generations overlap demographically | CONFIRMED [rev] | Medium | 33.3 million US families have children under 18. Parents of today's 6 to 14 year olds were born mostly in the 1980s. |
+| H3b. A 30-year nostalgia cycle drives timing | NOT SUPPORTED [rev] | Medium | Proponents disagree on the period (20, 30, 40 years). The 30-year proponent's own data averages 23 years. No controlled evidence. |
+| H5. A small studio can prove audience at low cost | CONFIRMED [rev] | Medium | Nine comparable cases started with home gear, a pilot, or a crowdfund. None is a scripted family comedy block. Survivorship bias. "Low cost" and "prove audience" are defined in the revision note below. |
 
 ## 2. H1. Appointment co-viewing for families is underserved
 
-Verdict: CONFIRMED. Confidence: medium.
+Verdict: PARTIAL [rev]. Confidence: medium.
+
+Revision note [rev]. The red team (R1-01) found a public broadcaster's weekly "Family Night": every Friday 7 to 9 p.m. on its free 24/7 kids channel and stream, launched April 21, 2017, with encores Saturday and Sunday evenings. It carries movies, specials, and themed marathons of existing preschool and early-elementary shows. It has no hosts, no original comedy, and no 6 to 14 target. Source: PBS KIDS for Parents, "PBS KIDS Family Night", https://www.pbs.org/parents/family-night, accessed 2026-09-19; Arizona PBS, "Check out PBS KIDS Family Nights!", https://azpbs.org/2020/09/check-out-pbs-kids-family-nights/, September 2020. The red team also found a university-owned network that streams a clean family sketch comedy free with no ads, one new episode each week, taped before a studio audience, with 3.45 million YouTube subscribers as of June 2026. Source: PR Newswire, "BYUtv's Viral Sketch Comedy 'Studio C' Premieres Season 22", https://www.prnewswire.com/news-releases/byutvs-viral-sketch-comedy-studio-c-premieres-season-22-with-special-guest-star-rainn-wilson-302736592.html, 2026. The narrow gap that survives: no US service runs a hosted, original, scripted comedy block for families with children age 6 to 14 on a fixed night. The demand half of "underserved" is untested (see "What weakens H1"). H1 is therefore PARTIAL, not CONFIRMED. The kill threshold for the demand test is proposed in `DECISIONS.md` D-009.
 
 Reason. Families co-view often, and measurement firms now count it. Live events and weekly drops prove that appointment viewing survives on streaming. The nearest scheduled family comedy products are Nick at Nite (nightly acquired sitcoms) and Fox Animation Domination (adult animation). Neither is a weekly fixed-night block built for parents and kids age 6 to 14. The gap is real. Confidence is medium because no source measures parent demand for a scheduled ritual directly. Nick at Nite also occupies part of the space every night.
 
@@ -27,11 +32,11 @@ Reason. Families co-view often, and measurement firms now count it. Live events 
 2. Nielsen reports Americans watch TV with other people 47% of the time on average.
    Source: Nielsen, "Need to Know: What is co-viewing, and why should you care?", https://www.nielsen.com/insights/2024/what-is-coviewing-and-why-you-should-care/, 2024.
 
-3. Nielsen changed its co-viewing measurement for the 2026 to 2027 season. The change signals that advertisers now price shared viewing.
+3. Nielsen changed its co-viewing measurement for the 2026 to 2027 season. [rev] The change came from a wearable-meter pilot on live sports. It does not by itself show that advertisers price family co-viewing. Nielsen's 2024 note says 47 percent of both linear and connected TV is watched by more than one person, with no material gap between them. A 2017 Nielsen and Roku study had found 48 percent on linear versus 34 percent on streaming. Source (in addition to the two below): Nielsen, "What is co-viewing", 2024.
    Source: Variety, "Nielsen Makes New Bid to Capture 'Co-Viewing' as TV Season Approaches", https://variety.com/2026/tv/news/nielsen-co-viewing-tv-ratings-1236838209/, September 2026.
    Source: Soap Opera Network, "Nielsen Ratings Changes For The 2026-2027 Television Season", https://www.soapoperanetwork.com/2026/09/nielsen-ratings-changes-2026-2027-season, September 2026.
 
-4. A late 2023 Precise TV and Giraffe Insights survey found over 90% of US parents co-view with their children. The rate is 94% for ages 2 to 5 and for ages 6 to 9. Daily family co-viewing held at 44%.
+4. A late 2023 Precise TV and Giraffe Insights survey of 2,000 children age 2 to 12 and their parents found over 90% co-view. The rate is 94% for ages 2 to 5 and for ages 6 to 9. [rev] The survey excerpt does not give a separate rate for ages 10 to 12. Ages 13 to 14 are outside the survey. The 2024 edition reports 95% of families co-view and nearly 50% co-view daily. Daily family co-viewing in the 2023 edition held at 44%.
    Source: MediaPost, "Advanced TV Insider: Daily Family Co-Viewing Steady At 44%, YouTube Is Kids' Top Platform", https://www.mediapost.com/publications/article/393900/daily-family-co-viewing-at-44-kids-top-platform.html, 2024.
    Source: Statista, "Share of kids who co-view content with parents in the U.S.", https://www.statista.com/statistics/1488612/kids-parents-co-view-us, accessed 2026-09-19.
 
@@ -95,7 +100,9 @@ Reason. Families co-view often, and measurement firms now count it. Live events 
 
 ## 3. H3. The audience is two generations
 
-Verdict: CONFIRMED. Confidence: medium.
+Verdict: H3a CONFIRMED, H3b NOT SUPPORTED [rev]. Confidence: medium.
+
+Revision note [rev]. The red team (R1-11) split H3 into its parts. H3a (parents born in the 1980s now have children 6 to 14) holds on the Census and CDC arithmetic below. H3b (a 30-year cycle) fails on its own evidence (items 10 to 13). The parent birth window narrows to 1981 to 1990 (decision D-006). The arithmetic uses mean age at first birth, so the true parent cohort skews a few years older than the window. Fathers and later births push it older still.
 
 Reason. The Census counts 33.3 million families with children under 18 in 2024. Children age 6 to 14 are about half of all children. Millennial women were 55% mothers by 2018 and the share rises each year. The mean age of first birth was 26.6 in 2016 and 27.5 in 2023. Parents of today's 6 to 14 year olds were therefore born mostly in the 1980s. The owner's 1981 to 1992 window fits the core. The 30-year nostalgia cycle is a popular framing with anecdotal evidence and public critiques. Confidence is medium for that reason.
 
@@ -161,7 +168,9 @@ Reason. The Census counts 33.3 million families with children under 18 in 2024. 
 
 ## 4. H5. A small studio can prove audience at low cost
 
-Verdict: CONFIRMED. Confidence: high.
+Verdict: CONFIRMED. Confidence: medium [rev].
+
+Revision note [rev]. The red team (R1-04) found "High" incompatible with the admitted survivorship bias and with the absence of any comparable in scripted family comedy for ages 6 to 14. Confidence is now Medium. Definitions for the Phase 5 test, proposed in `DECISIONS.md` D-009: "low cost" means a v0 content and product spend under a dollar ceiling the owner sets at Fork A. "Prove audience" means a stated minimum number of parent households that watch block 1 and a week 4 household return rate at or above a stated line. The comparables below prove that audience can precede capital. They do not prove a schedule, a block, or a 6 to 14 target. The closest scripted family comparables in the files are a creator studio's live-action morality shorts (now a 200-person operation), a university network's free weekly sketch comedy, and three streaming-era nostalgia sitcoms that ended (see `landscape.md` section 7a). Studio71 is removed from the comparable count. The count is nine.
 
 Reason. Every comparable case below started with cheap gear, a pilot, or a fan pledge. Each showed an audience signal before it raised capital or scaled. Cost benchmarks put micro-budget live action, simple 2D animation, and audio fiction within a small studio's reach. The caveat is survivorship bias. The cases are the winners. Kids-directed YouTube content also earns 65% to 85% less per sponsored video under COPPA rules.
 
@@ -189,7 +198,7 @@ Reason. Every comparable case below started with cheap gear, a pilot, or a fan p
    Source: Forbes, "How Top Creator Dhar Mann Built The Hollywood Studio Of The Future", https://www.forbes.com/sites/stevenbertoni/2026/06/23/how-top-creator-dhar-mann-built-the-hollywood-studio-of-the-future/, 2026-06-23.
    Source: Wikipedia, "Dhar Mann", https://en.wikipedia.org/wiki/Dhar_Mann, accessed 2026-09-19.
 
-6. The Chosen grew from a church short film. A concept pilot posted in late 2017 drew 20 million views. The equity crowdfund then raised about $10.3 million from about 15,000 investors by January 2019, a record.
+6. The Chosen grew from a church short film. A concept pilot posted in late 2017 drew 15 million views [rev, corrected from 20 million per Washington Times 2019 and Fox News 2019]. The equity crowdfund then raised about $10.3 million from about 15,000 investors by January 2019, a record.
    Source: PR Newswire, "'The Chosen', #1 Crowdfunded Media Project in History, Releases Official Trailer and First Episode for Free", https://www.prnewswire.com/news-releases/the-chosen1-crowdfunded-media-project-in-historyreleases-official-trailer-and-first-episode-for-free-300833311.html, April 2019.
    Source: Faith Driven Investor, "The Funding Behind The Chosen", https://faithdriveninvestor.org/the-funding-behind-the-chosen/, accessed 2026-09-19.
 
@@ -255,7 +264,8 @@ Reason. Every comparable case below started with cheap gear, a pilot, or a fan p
 | Population under 18 (2024) | 73.1 million | Census Vintage 2024 | Census press kit (see H3 item 3) |
 | Population age 5 to 17 (2024) | 53.3 million | Census Vintage 2024 | Census press kit (see H3 item 3) |
 | Children age 6 to 14 (estimate) | 36.9 million | 53.3 / 13 x 9 (even spread assumed) | My arithmetic |
-| Families with at least one child age 6 to 14 (estimate) | 18 to 21 million | 36.9 million children / 1.8 to 2.0 children per family (assumed, not sourced). Upper bound is 33.3 million. | My arithmetic. Treat as low confidence. |
+| Families with at least one child age 6 to 14 (bounded estimate) [rev] | 18 to 33 million | Lower bound: 36.9 million children divided by 2.0 children age 6 to 14 per family, the most such children a typical family holds. Upper bound: 33.3 million, every family with a child under 18. The true figure sits between. The exact count is in Census ACS table B11003 (rows "6 to 17 years only" and "under 6 years and 6 to 17 years") or CPS Table F1. Both were blocked by the research proxy. Owner action: one lookup on data.census.gov resolves it. | My arithmetic. Bounds only. |
+| Reach filter [rev] | Not applied | No sourced figure for connected TV or broadband among families with children was retrievable. Phase 5 measures reach directly through parent sign-ups. | Open item |
 
 ### 5.2 US advertising spend aimed at kids and family audiences
 
@@ -266,26 +276,37 @@ Reason. Every comparable case below started with cheap gear, a pilot, or a fan p
 | Global kids digital ad spend $1.2 billion by 2019, 28% of kid-focused ad spend | 2019 forecast, global, digital | The Drum, "Marketers will spend $1.2bn by 2019 to reach kids on their tablets", https://www.thedrum.com/news/2017/09/08/marketers-will-spend-12bn-2019-reach-kids-their-tablets, 2017-09-08 |
 | North America kids digital ad revenue about $1.2 billion; global $3.4 billion | 2023, digital only | Market.us, "Kids Digital Advertising Market Size, Share", https://market.us/report/kids-digital-advertising-market/, accessed 2026-09-19 |
 | Global kids digital ad market $8.24 billion | 2025, global, digital (methodology differs from Market.us) | Cognitive Market Research, "Kid Digital Advertising Market Report", https://www.cognitivemarketresearch.com/kid-digital-advertising-market-report, accessed 2026-09-19 |
-| "About $17 billion annually marketing to children in the US" | Year unstated, US, all marketing. Provenance unclear. Use with caution. | ENX2 Legal Marketing, "The Truth About Marketing to Children: Facts and Figures", https://enx2marketing.com/facts-about-marketing-to-children/, accessed 2026-09-19 |
 
-Note. Vendor market reports disagree by a factor of two or more. The SuperAwesome and PwC figure is the most cited primary estimate. It is dated.
+Note. Vendor market reports disagree by a factor of two or more. The SuperAwesome and PwC figure is the most cited primary estimate. It is dated. [rev] No credible US-only kids and family ad spend figure for 2024 or 2025 was found. Phase 1 step 6 (sponsor budgets) is met only in part. Phase 7 must source it from a media agency or from sponsor conversations.
+
+### 5.2a Bottom-up revenue range (ad revenue only) [rev]
+
+Inputs from this file: integration CPM $15 to $80 per 1,000 views (section 5.4); made-for-kids discount 65 to 85 percent (section 5.4). Effective made-for-kids CPM: $15 x 0.15 = $2.25 to $80 x 0.35 = $28. Rounded to $2 to $28 per 1,000 plays. Plays per household per week: 4 (one per slot). Weeks: 52.
+
+| Households | Plays per year | Ad revenue at $2 CPM | Ad revenue at $28 CPM |
+|---|---|---|---|
+| 10,000 | 2,080,000 | $4,160 | $58,240 |
+| 100,000 | 20,800,000 | $41,600 | $582,400 |
+| 1,000,000 | 208,000,000 | $416,000 | $5,824,000 |
+
+Reading. Ad revenue on made-for-kids inventory cannot fund a four-show slate at proof scale. Revenue must come from parents (membership, goods, ritual kits) and from sponsors who buy the parent audience. The values-based studio in `landscape.md` section 7 earns 81 percent of revenue from 2.61 million paying members, which is the model to test, not ad CPM.
 
 ### 5.3 Comparable channel revenues (public figures only)
 
 | Channel or company | Figure | Year | Source |
 |---|---|---|---|
-| Pluto TV (Paramount) | Passed $1 billion annual revenue | 2021 | Deadline, "Pluto TV Reaches $1 Billion Annual Revenue Milestone A Year Ahead Of Schedule", https://deadline.com/2021/08/pluto-tv-reaches-1-billion-annual-revenue-milestone-streaming-advertising-1234809600/, August 2021 |
-| Tubi (Fox) | About $1 billion revenue in fiscal 2025, up from $150 million at the $440 million acquisition. First profitable quarter ended September 30, 2025. | FY2025 | Media Play News, "Fox CFO: Tubi Driving Digital Revenue Growth to $1 Billion", https://www.mediaplaynews.com/fox-cfo-tubi-driving-digital-growth-to-1-billion-in-revenue/, 2025. The Desk, "Fox CEO: Tubi reaches profitability earlier than expected", https://thedesk.net/2025/10/fox-tubi-now-profitable/, October 2025 |
-| Fox Corp (parent) | $16.30 billion revenue | FY2025 | Fox Corp, Form 8-K Q4 FY2025 earnings release, https://www.sec.gov/Archives/edgar/data/1754301/000162828025037611/foxq42025earningsrelease.htm, August 2025 |
-| The Roku Channel (Roku) | Platform revenue $4.145 billion for 2025. Roku Channel at 6.3% of US TV streaming in December 2025. 145.6 billion streaming hours. | 2025 | Roku, "Q4 and Full Year 2025 Shareholder Letter", https://image.roku.com/bWFya2V0aW5n/4Q25-Shareholder-Letter.pdf, 2026-02-12 |
+| Pluto TV (Paramount) [rev: stale, no public figure after 2021] | Passed $1 billion annual revenue | 2021 | Deadline, "Pluto TV Reaches $1 Billion Annual Revenue Milestone A Year Ahead Of Schedule", https://deadline.com/2021/08/pluto-tv-reaches-1-billion-annual-revenue-milestone-streaming-advertising-1234809600/, August 2021 |
+| Tubi (Fox) | Over $1.1 billion revenue in fiscal 2025, up 29 percent, over 100 million monthly active users [rev, Fox Q4 FY2025 release]. Up from $150 million at the $440 million acquisition. First profitable quarter ended September 30, 2025. | FY2025 | Media Play News, "Fox CFO: Tubi Driving Digital Revenue Growth to $1 Billion", https://www.mediaplaynews.com/fox-cfo-tubi-driving-digital-growth-to-1-billion-in-revenue/, 2025. The Desk, "Fox CEO: Tubi reaches profitability earlier than expected", https://thedesk.net/2025/10/fox-tubi-now-profitable/, October 2025 |
+| Fox Corp (parent) [rev: not a comparable, parent company] | $16.30 billion revenue | FY2025 | Fox Corp, Form 8-K Q4 FY2025 earnings release, https://www.sec.gov/Archives/edgar/data/1754301/000162828025037611/foxq42025earningsrelease.htm, August 2025 |
+| The Roku Channel (Roku) [rev: platform revenue, not channel revenue] | Platform revenue $4.145 billion for 2025. Roku Channel at 6.3% of US TV streaming in December 2025. 145.6 billion streaming hours. | 2025 | Roku, "Q4 and Full Year 2025 Shareholder Letter", https://image.roku.com/bWFya2V0aW5n/4Q25-Shareholder-Letter.pdf, 2026-02-12 |
 | Kartoon Channel (Kartoon Studios) | $39.35 million total revenue, $24.7 million net loss. Production services $26.8 million. | 2025 | Kartoon Studios, Form 10-K FY2025, https://www.sec.gov/Archives/edgar/data/1355848/000168316826002452/kartoon_i10k-123125.htm, 2026-03-31 |
 | Kidoodle.TV (A Parent Media Co) | $11.5 million revenue, 118 staff, $76.6 million raised. Private company, third-party estimate. | 2024 | GetLatka, "How Kidoodle hit $11.5M revenue with a 118 person team in 2024", https://getlatka.com/companies/kidoodle, accessed 2026-09-19 |
 | Moonbug Entertainment | 253 million pounds revenue (2023). 56.7 million pounds operating profit (2022). | 2022 to 2023 | Tracxn and Music Ally (see H5 item 13) |
-| Cocomelon | About $120 million per year in ad revenue (WSJ estimate) | 2019 to 2021 | Newsweek and Wikipedia citing WSJ (see H5 item 13; Wikipedia, "Cocomelon", https://en.wikipedia.org/wiki/Cocomelon, accessed 2026-09-19) |
+| Cocomelon [rev: stale, predates the 2025 platform move] | About $120 million per year in ad revenue (WSJ estimate) | 2019 to 2021 | Newsweek and Wikipedia citing WSJ (see H5 item 13; Wikipedia, "Cocomelon", https://en.wikipedia.org/wiki/Cocomelon, accessed 2026-09-19) |
 | Ms. Rachel | $11.9 million (2024). $23 million (2025). Forbes estimates. | 2024 to 2025 | Fortune and Forbes via Yahoo (see H5 item 2) |
 | Ryan's World | $22 million (2018). $35 million (2025). Forbes estimates. | 2018 and 2025 | Forbes (see H5 item 12) |
 | Dhar Mann Studios | About $65 million revenue. Forbes estimate. | 2025 | Forbes (see H5 item 5) |
-| Studio71 US | 246 million euros revenue | 2025 | Deadline and ProSiebenSat.1 (see H5 item 11) |
+| Studio71 US [rev: not a comparable, a creator network owned by a broadcaster] | 246 million euros revenue | 2025 | Deadline and ProSiebenSat.1 (see H5 item 11) |
 | Blippi | No public revenue figure found. See "Could not verify". | | |
 
 ### 5.4 Sponsorship benchmarks for family content
@@ -306,16 +327,15 @@ Note. Rate guides come from creator-economy vendors, not audited data. Treat the
 | Case | How it started and what it cost | First audience signal | What it became | Source |
 |---|---|---|---|---|
 | Ms. Rachel | 2019, parents' basement, stacked books for a tripod, pop-up green screen | Parents of toddlers with speech delays shared videos | 20M+ subscribers, Netflix license, $23M 2025 earnings | Wikipedia; NPR 2026-09-18; Forbes 2025-01-14 |
-| Blippi | February 2014, one man filmed, edited, and did graphics | Nephew-age viewers on YouTube | Sold to Moonbug in 2020, now under Candle Media | Wikipedia; Variety July 2020 |
-| Cocomelon | 2006, a commercial director and a children's author made ABC videos for their sons | Growth after 2018 rebrand | Sold to Moonbug July 2020; Moonbug sold for about $3B in 2021; about $120M a year ad revenue | Time 2022; THR July 2020; Wikipedia Candle Media |
+| Blippi | February 2014, one man filmed, edited, and did graphics | No dated first signal in the sources [rev] | Sold to Moonbug in 2020, now under Candle Media | Wikipedia; Variety July 2020 |
+| Cocomelon | 2006, a commercial director and a children's author made ABC videos for their sons | No signal for twelve years. Growth came after a 2018 rebrand [rev] | Sold to Moonbug July 2020; Moonbug sold for about $3B in 2021; about $120M a year ad revenue | Time 2022; THR July 2020; Wikipedia Candle Media |
 | Dhar Mann | 2018, 100 self-shot motivational videos, then skits in a studio apartment | One skit passed 1M Facebook views | About $65M revenue, about 200 staff | Forbes 2026-06-23; Wikipedia |
-| The Chosen | A church short film, then a concept pilot posted to social in late 2017 | 20M pilot views | $10.3M equity crowdfund from about 15,000 investors, multi-season series | PR Newswire April 2019; Faith Driven Investor |
+| The Chosen | A church short film, then a concept pilot posted to social in late 2017 | 15M pilot views [rev] | $10.3M equity crowdfund from about 15,000 investors, multi-season series | PR Newswire April 2019; Faith Driven Investor |
 | Critical Role | Livestreamed tabletop game, then a Kickstarter with a $750K goal | Goal met in 45 minutes; $11.3M from 88,000 backers | Amazon ordered 24 episodes; premiered February 4, 2022 | CNBC 2019-04-19; Tubefilter 2019-11-05 |
 | Dropout | Reich bought CollegeHumor for $0 in 2020 | Subscribers doubled in 2023 | Profitable, profit sharing, paid subs up 31% in 2025 | Fast Company 2024; Variety Nov 2023; Yahoo 2025 |
 | Kinda Funny | Patreon in September 2014 while still at IGN | $10,000 pledged in 24 hours | Founders left IGN in January 2015; ongoing independent network | Tubefilter 2015-01-05 |
-| Smosh | Two friends posting videos in 2005 | Early YouTube popularity | Survived Defy collapse; founders bought it back June 2023 | Variety June 2023; Forbes 2023-10-02 |
+| Smosh | Two friends posting videos in 2005 | No dated first signal in the sources [rev] | Survived Defy collapse; founders bought it back June 2023 | Variety June 2023; Forbes 2023-10-02 |
 | Ryan's World | March 2015, mother filmed a toy unboxing | Views drove mother to quit teaching | $22M (2018), $35M (2025), toys, theatrical film | Forbes 2018-12-03; Wikipedia; Forbes 2025-06-16 |
-| Studio71 | 2011 as Collective Digital Studio (creator network) | Aggregated creator views | 246M euros 2025 revenue; sold to Fixated April 2026 | Deadline April 2026; ProSiebenSat.1 |
 
 ## 7. Could not verify
 

@@ -1,7 +1,19 @@
 # Mechanics Scoring Model
 
-Agent: `nostalgia-scorer`. Decision D-004 in `DECISIONS.md`.
+Agent: `nostalgia-scorer`. Decisions D-004 and D-008 in `DECISIONS.md`.
 This model adapts the NostalDamus Revival Readiness formula to score block format mechanics instead of properties.
+
+## 0. Revision 2 (after red team item R1-06)
+
+The red team showed that the per-mechanic window term rewards the scorer's choice of peak year, not any property of the mechanic. Every mechanic sits inside the same 1993 to 1998 window by construction. Revision 2 therefore:
+
+1. Removes the window term from the mechanic score.
+2. Applies window alignment once at block level as a constant. Midpoint 1995: audience age 2026 - 1995 + 12 = 43. Alignment = 100 - |43 - 40| * 8 = 76. Sweet Spot. This states that the block as a whole is in its window. It does not rank mechanics.
+3. Re-weights salience and reproducibility at 0.50 each. Reason: both terms carried 0.30 in the source model. With the window term gone, neither has a sourced claim to more weight than the other.
+4. Recalibrates the bands so the bottom quartile can drop (red team item R1-09).
+5. Adds a sensitivity table to the scorecard. Most recommendations flip under a 10-point salience shift. Treat the ranking as directional. Only the top and bottom rows are stable.
+
+Section 2 below shows revision 1 for the record and revision 2 as the live formula.
 
 ## 1. Source model (NostalDamus, unchanged)
 
@@ -17,6 +29,26 @@ riskScore        = rightsComplexity * 0.45
 ```
 
 ## 2. Adapted model for mechanics
+
+### 2a. Revision 2 (live)
+
+```
+memorySalience     = 0..100  (replaces socialBuzz)
+reproducibility    = 0..100  (replaces modernRelevance)
+mechanicScore      = memorySalience * 0.50 + reproducibility * 0.50
+
+blockWindow        = max(0, 100 - |(2026 - 1995 + 12) - 40| * 8) = 76   (block-level constant, reported, not summed)
+
+expressionRisk     = 0..100  (replaces rightsComplexity)
+ownerEffort        = 0..100  (replaces 100 - creatorAvailability)
+riskScore          = expressionRisk * 0.45
+                   + max(0, 80 - reproducibility) * 0.25
+                   + max(0, ownerEffort - 30) * 0.30
+```
+
+Bands (revision 2): Reproduce if score >= 85 and risk < 45. Adapt if score >= 75. Test if score >= 60. Drop for v1 below 60.
+
+### 2b. Revision 1 (superseded, kept for the record)
 
 A mechanic has no single release year. It has a peak year: the year inside the 1993 to 1998 window when the most blocks used it at the most weight. The window arithmetic stays the same.
 
@@ -80,14 +112,18 @@ Recurring effort the owner or a small team spends per block to run the mechanic.
 - 51 to 80: a weekly production task.
 - 81 to 100: a weekly production with talent and crew.
 
-## 4. Recommendation bands (adapted from NostalDamus)
+## 4. Recommendation bands
+
+Revision 2 (live):
 
 | Condition | Recommendation |
 |---|---|
-| score >= 88 and risk < 45 | Reproduce. Core of the block. |
-| score >= 78 | Adapt. Keep the mechanic, redesign the expression. |
-| score >= 68 | Test. Try in one stunt before you commit. |
-| below 68 | Drop for v1. |
+| score >= 85 and risk < 45 | Reproduce. Core of the block. |
+| score >= 75 | Adapt. Keep the mechanic, redesign the expression. |
+| score >= 60 | Test. Try in one stunt before you commit. |
+| below 60 | Drop for v1. |
+
+Revision 1 used 88, 78, 68 (the NostalDamus property bands). Those bands dropped nothing. Revision 2 lowers each cut by 3 to 8 points because the 0.50 and 0.50 weights remove the window term that added 27 to 40 points to every revision 1 score.
 
 ## 5. Reproducibility
 

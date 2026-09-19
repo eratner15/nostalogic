@@ -40,10 +40,26 @@ Format: date, decision, options, choice, reason. Counsel gates carry the tag `CO
 - Fork B: Option 1 for proof, Option 2 for scale, Option 3 as a revenue layer, Option 4 as the Phase 7 pitch.
 - Status: recommendation only. Waits on the owner.
 
+### D-008. 2026-09-19. Scoring model revision 2
+- Options: (1) keep the per-mechanic window term; (2) remove it and apply window alignment once at block level.
+- Choice: option 2. Weights salience 0.50 and reproducibility 0.50. Bands 85, 75, 60.
+- Reason: red team R1-06 showed the term rewarded the scorer's peak-year choice, not the mechanic. Inputs re-scored per R1-07 and R1-20. Result: Reproduce fixed night; Adapt home base set, four slots, interstitials, seasonal stunts, sonic ID, fixed time; Test shared hosts, crossovers; Drop for v1 stay-up-late feeling, viewer participation. Sensitivity: only the top and bottom rows are stable under a 10-point shift.
+
+### D-009. 2026-09-19. H1 and H5 restated with proposed kill thresholds
+- H1 restated: the supply gap is confirmed in narrow form (no hosted, original, scripted comedy block for families with children 6 to 14 on a fixed night). Demand for a scheduled ritual is untested. Verdict PARTIAL.
+- H5 restated: audience can precede capital in creator media (nine cases). No case is a scripted family comedy block. Confidence Medium.
+- Proposed kill thresholds for the owner to ratify at Fork A. Demand smoke test before v0 production: a parent landing page with the promise and a fixed night, and a sign-up floor of 500 parent households from organic and low-cost traffic. Proof of audience at Phase 8: at least 1,000 parent households watch block 1, and at least 35 percent of them watch block 4. Cost ceiling for v0 content plus product: set by the owner at Fork A. If any line is missed, stop or pivot at the Phase 8 memo.
+- Reason: the master prompt says stop if H1 or H5 fails. Neither has failed. Neither can be called confirmed without a demand number. The thresholds make the next test falsifiable.
+
+### D-010. 2026-09-19. Ruling on constraint finding C-5 (block trademark inside a cited title in a public deliverable)
+- Options: (1) treat cited article titles as analysis and allow them; (2) shorten cited titles in human-facing deliverables so the mark does not appear.
+- Choice: option 2.
+- Reason: Section 3.1 allows the marks only in internal research files. `deliverables/` is not an internal research file. The evidence files keep full titles.
+
 ## Open forks
 
-- Fork A (after Phase 1): go, pivot, or kill. Status: presented in `deliverables/01-gap-memo.html`. Waits on owner.
-- Fork B (after Phase 1): primary distribution path. Status: presented in `deliverables/01-gap-memo.html`. Waits on owner.
+- Fork A (after Phase 1): go, pivot, or kill. Status: presented in `deliverables/01-gap-memo.html` with the D-009 thresholds. Waits on owner.
+- Fork B (after Phase 1): primary distribution path. Status: presented in `deliverables/01-gap-memo.html` with a per-option mechanics survival table. Waits on owner.
 - Fork C (after Phase 3): production format for v0 content. Not open yet.
 - Fork D (end of Phase 2): final brand name. Not open yet.
 - Fork E (end of Phase 4): lead show and slate order. Not open yet.

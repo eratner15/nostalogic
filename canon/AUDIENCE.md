@@ -11,8 +11,8 @@ The unit of measurement is the household: one parent account plus the people who
 |---|---|---|
 | US families with own children under 18 (2024) | 33.3 million | E1, H3 item 1 (Census FM-1 via FRED) |
 | Children age 6 to 14 (estimate) | 36.9 million | E1, H3 item 4 (Census Vintage 2024, even-spread arithmetic) |
-| Families with at least one child age 6 to 14 (estimate, low confidence) | 18 to 21 million | E1, section 5.1 |
-| Parents who co-view with their children | over 90 percent | E1, H1 item 4 (Precise TV and Giraffe Insights, 2023) |
+| Families with at least one child age 6 to 14 (bounded estimate) | 18 to 33 million | E1, section 5.1. Exact count sits in Census ACS table B11003, blocked by the research proxy. Owner lookup resolves it. |
+| Parents of children 2 to 12 who co-view | over 90 percent (94 percent for ages 6 to 9; no separate 10 to 12 figure; 13 to 14 not surveyed) | E1, H1 item 4 (Precise TV and Giraffe Insights, 2023 and 2024) |
 | Parents who say kids co-view at least half the time | 73 percent | E1, H1 item 5 (Kids Industries, 5,000 families, 2023) |
 | Daily family co-viewing | 44 percent | E1, H1 item 4 |
 
@@ -23,7 +23,7 @@ Name for internal use: the Porch Parent.
 - Born 1981 to 1990. The 1991 to 1992 tail was too young for most of the 1993 to 1998 window (E1, H3 item 15).
 - Age 36 to 45 in 2026. Mean age of mothers at first birth was 26.6 in 2016 and 27.5 in 2023, so parents of today's 6 to 14 year olds were born mostly in the 1980s (E1, H3 items 5 and 6).
 - Watched a fixed-night family comedy block as a child. Recalls the night, the hosts, the late bedtime, and the jingle more than any one plot (E2, section 4 mechanics table).
-- Co-views already. Over 90 percent of parents co-view. 62 percent co-view YouTube at least sometimes. Only 17 percent co-view short-form video (E1, H1 items 4 and 6).
+- Co-views already. Over 90 percent of parents of children 2 to 12 co-view. 62 percent of parents of children 0 to 8 co-view YouTube at least sometimes. Only 17 percent co-view short-form video (E1, H1 items 4 and 6). No source measures co-viewing for ages 13 to 14.
 - Feels behind on screen time. 42 percent say they could manage it better. 65 percent say they spend too much time on their own phone (E1, H1 item 7, Pew 2025).
 - Names nostalgia as a driver of shared content time (E1, H1 item 8, WildBrain).
 - Holds the account. Holds the remote. Decides the night. Pays or consents to ads.
@@ -41,7 +41,7 @@ Name for internal use: the Stay-Up Kid.
 - Age 6 to 14. Two sub-bands: 6 to 9 (watches with a parent almost always, 94 percent co-view) and 10 to 14 (starts to pull toward feeds and games) (E1, H1 item 4; L, section 4).
 - Competes for attention with YouTube (13.8 percent of all TV viewing in May 2026), Roblox (123 million daily users), and short-form feeds (L, sections 4 and 9).
 - Cannot hold an account, comment, chat, or receive notifications on made-for-kids platforms (L, section 4). The product never asks the child for anything.
-- Wants the stay-up-late feeling. The late slot on a fixed night once signaled "you are old enough for this" (E2, section 2.2 item 3; mechanics scorecard row 10).
+- May want the stay-up-late feeling. One 1990s block was built on that premise (E2, section 2.2 item 3, secondary source). The scorecard drops this mechanic for v1 because the evidence is thin and devices removed the parental gate (mechanics scorecard, revision 2).
 - Wants a mild scare with a safe landing. Slot 4 is the reward for the older band.
 
 Jobs to be done:
@@ -60,11 +60,12 @@ The moment the block serves: one fixed night, one screen, one couch, both genera
 
 Constraints on the moment:
 - No native watch-together feature exists on any major US streamer (L, section 2). The block is designed for a single shared screen.
-- A fixed time matters less on demand. A fixed night still builds habit (mechanics scorecard rows 1 and 6).
-- The parental gate that made the late slot special no longer exists on devices. The ritual kit rebuilds it (mechanics scorecard row 10).
+- A fixed time matters less on demand. A fixed night still builds habit (mechanics scorecard, revision 2, rows 1 and 7).
+- Three streaming-era nostalgia sitcoms drew both generations on night one and lost the child by the third season (L, section 7a). The week 4 return rate is the test for that failure.
 
 ## 5. What the evidence does not show
 
-- No source measures parent demand for a scheduled weekly ritual directly (E1, section 2, what weakens H1). Phase 5 measures it with the week 4 return rate.
+- No source measures parent demand for a scheduled weekly ritual directly (E1, section 2, what weakens H1). H1 is PARTIAL. The demand smoke test and the week 4 return rate in `DECISIONS.md` D-009 measure it.
+- A public broadcaster already runs a weekly family movie night on Fridays (L, section 5). The gap is hosted, original, scripted comedy for ages 6 to 14, not "family night" as such.
 - No source gives the exact count of households with a child age 6 to 14 (E1, section 7 item 4).
 - The nostalgia cycle has no controlled evidence. The window fits the arithmetic, not a law (E1, H3 items 10 to 13).
