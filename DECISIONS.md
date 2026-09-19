@@ -25,6 +25,21 @@ Format: date, decision, options, choice, reason. Counsel gates carry the tag `CO
 - Choice: option 2.
 - Reason: mechanics have no release year. The adapted model keeps the window alignment logic (audience age 12 at exposure, peak at age 40) and swaps property inputs for mechanic inputs. See `projects/01-market/out/mechanics-scorecard.md`.
 
+### D-005. 2026-09-19. Phase 1 verdicts recorded
+- Options: accept the analysts' verdicts as filed, or override any of them.
+- Choice: accepted as filed. H1 confirmed (medium), H2 weakened (medium), H3 confirmed (medium), H4 confirmed with a split (medium), H5 confirmed (high).
+- Reason: neither kill hypothesis (H1, H5) failed. The red team memo in `projects/08-compliance/out/red-team/phase-1-risk-memo.md` was answered item by item in `deliverables/01-gap-memo.html` section 7.
+
+### D-006. 2026-09-19. Parent birth window narrows to 1981 to 1990
+- Options: keep 1981 to 1992, or narrow to 1981 to 1990.
+- Choice: narrow.
+- Reason: a person born 1992 was age 1 to 6 during 1993 to 1998. The window fits births 1981 to about 1990 (`evidence-h1-h3-h5.md`, H3 item 15).
+
+### D-007. 2026-09-19. Orchestrator recommendation at Fork A and Fork B
+- Fork A: Go, with two conditions (the slate is the ceiling; the kill line is set before Phase 5 launch).
+- Fork B: Option 1 for proof, Option 2 for scale, Option 3 as a revenue layer, Option 4 as the Phase 7 pitch.
+- Status: recommendation only. Waits on the owner.
+
 ## Open forks
 
 - Fork A (after Phase 1): go, pivot, or kill. Status: presented in `deliverables/01-gap-memo.html`. Waits on owner.
