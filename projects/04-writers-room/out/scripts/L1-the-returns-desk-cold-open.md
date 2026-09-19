@@ -39,35 +39,16 @@ A shadow crosses it. The dock INTERCOM clicks.
                     INES
           Desk.
 
-The intercom clicks off. Ines goes back to the worksheet.
-
-                    INES (CONT'D)
-          She always checks.
-
-                    MARGUERITE
-          It's a good policy.
-
-TEDDY VANCE, 16, crosses behind them with a push broom,
-headed upstage to AISLE 12, where the overheads stop and
-the paint cans go on into the dark.
+The intercom clicks off. TEDDY VANCE, 16, crosses behind
+them with a push broom, headed upstage to AISLE 12, where
+the overheads stop and the paint cans go on into the dark.
 
                     TEDDY
               (to himself)
           Aisle 12 is paint. Paint is a
           liquid. Liquids sit there.
 
-He goes in. The ICE MACHINE by the front door drops a
-load: a bucket of gravel on a tin roof, no louder than
-anyone has spoken. In Aisle 12, a case of light bulbs
-meets the floor. Softly.
-
-                    TEDDY (O.S.)
-          That was ice. I know what ice
-          sounds like.
-
-                    INES
-              (not looking up)
-          It's ice.
+He goes in. His flashlight beam goes with him, slow.
 
 The FRONT DOOR BELL rings at talking volume. DESMOND
 NUNES, 41, comes in out of the dark in a raincoat over a
@@ -77,9 +58,6 @@ carry a pie.
                     MARGUERITE
               (not looking up)
           Returns?
-
-                    DESMOND
-          I hope so.
 
 He sets the box beside the service bell and lifts the
 lid. SETUP B: a white WIRELESS DOORBELL CHIME and its
@@ -112,9 +90,6 @@ unfolds it flat with both hands and reads every line.
           story required. Start where you
           were standing.
 
-                    DESMOND
-          Kitchen.
-
 Ines shuts the worksheet, opens a green cloth LEDGER,
 and uncaps a pen. Four columns: ITEM. CLAIM. CLUE. CAUSE.
 
@@ -146,12 +121,6 @@ and uncaps a pen. Four columns: ITEM. CLAIM. CLUE. CAUSE.
           a thing I can check.
 
                     DESMOND
-          Like what?
-
-                    MARGUERITE
-          Like the doorbell ringing.
-
-                    DESMOND
           It won't ring here. I took the
           battery out.
 
@@ -175,21 +144,15 @@ CELL. The indicator glows once. The DOORBELL RINGS. Two
 notes. No louder than anyone in the room.
 
 SETUP A. Nobody moves. The stamp stays in the air. In
-Aisle 12, a second case of light bulbs meets the floor.
+Aisle 12, a case of light bulbs meets the floor, softly.
+Teddy backs out of the aisle, broom held in front of him
+like a railing, until he is standing next to Ines.
 
-                    TEDDY (O.S.)
-          Was that the door?
+                    TEDDY
+          Okay. Okay. Okay. That wasn't ice.
 
-                    MARGUERITE
-          No.
-
-                    TEDDY (O.S.)
-          Okay. Okay. Okay. Coming out.
-
-Teddy backs out of Aisle 12, broom held in front of him
-like a railing, until he is standing next to Ines. Ines
-looks at the coin battery. Then at the chime. She leans
-over it without touching it and reads.
+Ines looks at the coin battery. Then at the chime. She
+leans over it without touching it and reads.
 
                     INES
           Chime unit. Two double-A. Button.
@@ -227,7 +190,9 @@ tag and writes: DOORBELL. CLAIM: RINGS. Her pen stops.
                     MARGUERITE
           Then this is new.
 
-The ICE MACHINE drops. Teddy jumps.
+The ICE MACHINE by the front door drops a load, a bucket
+of gravel on a tin roof, no louder than anyone has
+spoken. Teddy jumps.
 
                     TEDDY
           I know it's ice. But now there's
