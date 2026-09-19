@@ -143,6 +143,13 @@ Format: date, decision, options, choice, reason. Counsel gates carry the tag `CO
 - Kept with conditions: "The Judge" as a role label only, never a segment title, product name, or handle. Cal Whitlock stays on watch.
 - Reason: same as D-024. No flagged name carried meaning the show needs.
 
+### D-027. 2026-09-19. Returns Desk 60-second adult-only sizzle cut, held from release
+- Finding: the owner supplied a private, external, adult-only 60 to 90 second sizzle package (script, image-generation prompts, seven review-candidate stills) for The Returns Desk, built in a separate tool outside the writers' room. Its own review notes already flag seven unresolved image defects (a house-number text artifact, a pencil-side continuity error on Marguerite, an unlit doorbell indicator, tape that does not visibly grip the button, faint marks on a blank receipt) and state the 120-second package's 12-point gate has not passed for this cut.
+- Screen requested: the ad hoc character name "Desmond" (no surname, described as married), used in the supplied 80-second draft. `projects/08-compliance/out/ip-checks/adhoc-desmond-name-screen.md` finds this is not a fresh name: "Desmond Nunes" is already canon and already cleared (spot-check log item 19, `04-slate-scripts.md`). The bare first name alone is REVIEW, closer to Desmond Hume (Lost) and the title character of Desmond's (Channel 4). "Married" is not yet in the character sheet.
+- Choice: the new 60-second cut written at `projects/04-writers-room/out/scripts/L1-the-returns-desk-sizzle-60.md` keeps the full cleared name "Desmond Nunes" in every cast and description line, using bare "DESMOND" only as a dialogue speaker tag, matching the convention already used in the locked 120-second script. No new attribute is adopted as canon; the "wife" reference carries over unchanged from a line already in the locked 120-second script, not from the external draft.
+- Status: this cut and the external image set are private review material only. They are not the public trailer, do not replace the 120-second package, and are held from any release. Before release: a normal `standards` pass (not just the self-read in the script file), resolution of the seven logged image defects, and no video generation, per the source package's own stated status.
+- Separate open item, not fixed here: `projects/04-writers-room/out/scripts/L1-the-returns-desk-trailer-v2.md` and ten other files still read "Ines Ruiz" or "INES" in cast lists and dialogue tags. D-026 renamed this character to "Nieves Ruiz" and states the change applied everywhere; it did not reach these files. Flagged for a follow-up cleanup pass, out of scope for this decision.
+
 ## Open forks
 
 - Fork A: decided, Go (D-011).
