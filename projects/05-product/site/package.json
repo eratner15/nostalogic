@@ -1,0 +1,29 @@
+{
+  "name": "porchlight-guide",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev",
+    "deploy": "wrangler deploy",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 migrations apply porchlight-guide-db --local",
+    "db:migrate:remote": "wrangler d1 migrations apply porchlight-guide-db --remote",
+    "seed:local": "wrangler d1 execute porchlight-guide-db --local --file=./seed/seed.sql",
+    "seed:remote": "wrangler d1 execute porchlight-guide-db --remote --file=./seed/seed.sql",
+    "seed:build": "node scripts/build-seed.mjs"
+  },
+  "dependencies": {
+    "drizzle-orm": "^0.45.2",
+    "hono": "^4.13.8"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "^5.20260919.1",
+    "drizzle-kit": "^0.31.0",
+    "typescript": "^5.9.0 || ^7.0.0",
+    "vitest": "^5.0.1",
+    "wrangler": "^4.135.0"
+  }
+}

@@ -1,0 +1,181 @@
+import { html, raw, layout, esc } from "./layout";
+import { SITE } from "../config";
+import type { Show, SiteStats } from "../store";
+
+const slotName = (slot: number) => SITE.slotLabels[slot - 1] ?? `Slot ${slot}`;
+const slotTime = (slot: number) => SITE.slotTimes[slot - 1] ?? "";
+const mmss = (s: number | null) => (s == null ? "" : `${Math.floor(s / 60)}:${String(s % 60).padStart(2, "0")}`);
+
+function posterSvg(show: Show, size: "card" | "hero" = "card") {
+  // Original generated poster art: a color field, a film-band, a title. No borrowed imagery.
+  const h = show.posterHue;
+  const w = size === "hero" ? 1280 : 640;
+  const ht = size === "hero" ? 720 : 360;
+  const title = esc(show.title.toUpperCase());
+  return `<svg class="poster" viewBox="0 0 ${w} ${ht}" role="img" aria-label="${esc(show.title)} title card" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<linearGradient id="g${show.id}" x1="0" y1="0" x2="1" y2="1">
+<stop offset="0" stop-color="hsl(${h} 55% 28%)"/><stop offset="1" stop-color="hsl(${(h + 40) % 360} 60% 14%)"/>
+</linearGradient>
+<pattern id="s${show.id}" width="6" height="6" patternUnits="userSpaceOnUse"><rect width="6" height="6" fill="hsl(${h} 30% 10% / 0.18)"/><rect width="6" height="1" fill="hsl(${h} 30% 90% / 0.05)"/></pattern>
+</defs>
+<rect width="${w}" height="${ht}" fill="url(#g${show.id})"/>
+<rect width="${w}" height="${ht}" fill="url(#s${show.id})"/>
+<circle cx="${w * 0.78}" cy="${ht * 0.38}" r="${ht * 0.32}" fill="hsl(${(h + 180) % 360} 70% 62% / 0.28)"/>
+<circle cx="${w * 0.82}" cy="${ht * 0.34}" r="${ht * 0.12}" fill="hsl(${(h + 180) % 360} 80% 80% / 0.55)"/>
+<rect x="0" y="${ht - 64}" width="${w}" height="64" fill="hsl(${h} 30% 8% / 0.55)"/>
+<text x="36" y="${ht - 24}" font-family="Barlow Condensed, Impact, sans-serif" font-weight="800" font-size="${size === "hero" ? 64 : 40}" letter-spacing="1" fill="hsl(${h} 20% 96%)">${title}</text>
+<text x="36" y="44" font-family="Barlow Condensed, sans-serif" font-weight="600" font-size="${size === "hero" ? 26 : 18}" letter-spacing="3" fill="hsl(${h} 20% 96% / 0.85)">${esc(slotName(show.slot).toUpperCase())} · ${esc(SITE.nightShort)} ${esc(slotTime(show.slot))}</text>
+</svg>`;
+}
+
+export function guidePage(shows: Show[]) {
+  const rows = shows
+    .map(
+      (s) => html`<li class="listing" style="--hue:${s.posterHue}">
+  <a class="listing-link" href="/show/${s.id}">
+    <div class="listing-time"><span class="t">${slotTime(s.slot)}</span><span class="slot">${slotName(s.slot)}</span></div>
+    <div class="listing-art">${raw(posterSvg(s))}</div>
+    <div class="listing-body">
+      <h2 class="listing-title">${s.title} <span class="tag">${s.genreLabel}</span> <span class="tag tag-quiet">${s.ratingLabel}</span></h2>
+      <p class="listing-logline">${s.logline}</p>
+      <p class="listing-blurb">${s.blurb}</p>
+      <p class="listing-cta">${s.trailerUrl ? html`<span class="cta">Watch the trailer</span> <span class="dur">${mmss(s.trailerSeconds)}</span>` : html`<span class="cta cta-soon">Trailer in production</span>`}</p>
+    </div>
+  </a>
+</li>`
+    )
+    .join("");
+  const body = html`
+<section class="guide-head">
+  <div class="guide-head-inner">
+    <p class="eyebrow">This week's listings</p>
+    <h1 class="guide-title">${SITE.nightLabel} night, ${SITE.firstAirTime} to 10:00</h1>
+    <p class="guide-dek">${SITE.tagline} Four original comedies, one after another, made for the whole couch. Watch a trailer. If you would watch more, say so. The shows you pick get made.</p>
+  </div>
+  <div class="grid-block" aria-label="Tonight's schedule">
+    <div class="grid-times" aria-hidden="true"><span>${SITE.nightShort} tonight</span>${raw(SITE.slotTimes.map((t) => `<span>${t}</span>`).join(""))}</div>
+    <div class="grid-strip">
+      <div class="grid-strip-ch"><span class="ch-num">${SITE.channelNumber}</span><span class="ch-name">${SITE.name}</span></div>
+      ${raw(shows.map((s) => `<a class="grid-cell" href="/show/${s.id}" style="--hue:${s.posterHue}"><span class="grid-time">${esc(slotTime(s.slot))}</span><span class="grid-title">${esc(s.title)}</span></a>`).join(""))}
+    </div>
+  </div>
+</section>
+<section class="listings-wrap">
+  <ol class="listings">${raw(rows)}</ol>
+</section>
+<section class="signup-band" id="signup">
+  <div class="signup-inner">
+    <h2>Save your seat for ${SITE.nightLabel} night</h2>
+    <p>One email a week, to a parent. When the block premieres, and which show your household picked. Nothing else.</p>
+    <form class="signup-form" method="post" action="/api/signup" data-signup>
+      <label class="sr-only" for="email">Parent email</label>
+      <input id="email" name="email" type="email" required autocomplete="email" placeholder="parent@example.com">
+      <label class="check"><input type="checkbox" name="parent" required> I am a parent or guardian, age 18 or over.</label>
+      <button type="submit">Save my seat</button>
+      <p class="form-note" data-note aria-live="polite"></p>
+    </form>
+  </div>
+</section>`;
+  return layout(`${SITE.name}: ${SITE.nightLabel} night listings`, body, { bodyClass: "page-guide" });
+}
+
+export function showPage(show: Show, all: Show[]) {
+  const others = all.filter((s) => s.id !== show.id);
+  const player = show.trailerUrl
+    ? html`<div class="player" data-player data-show="${show.id}">
+  <video controls playsinline preload="metadata" poster="/posters/${show.id}.svg" data-video>
+    <source src="${show.trailerUrl}" type="video/mp4">
+    Your browser cannot play this video.
+  </video>
+</div>`
+    : html`<div class="player player-soon" aria-label="Trailer in production">${raw(posterSvg(show, "hero"))}<div class="soon-badge">Trailer in production</div></div>`;
+  const body = html`
+<article class="show" style="--hue:${show.posterHue}">
+  <nav class="crumbs"><a href="/">${SITE.nightLabel} night listings</a> <span aria-hidden="true">/</span> <span>${slotTime(show.slot)} ${slotName(show.slot)}</span></nav>
+  <header class="show-head">
+    <p class="eyebrow">${SITE.nightShort} ${slotTime(show.slot)} · ${slotName(show.slot)} · ${show.genreLabel} · ${show.ratingLabel} · ${show.runtimeLabel}</p>
+    <h1 class="show-title">${show.title}</h1>
+    <p class="show-logline">${show.logline}</p>
+  </header>
+  ${player}
+  <section class="show-body">
+    <h2 class="sr-only">About the show</h2>
+    <p class="show-blurb">${show.blurb}</p>
+  </section>
+  <section class="verdict" data-vote data-show="${show.id}">
+    <h2>Would your family watch a full season?</h2>
+    <div class="verdict-buttons">
+      <button type="button" class="vote vote-up" data-value="up">Yes. Make more.</button>
+      <button type="button" class="vote vote-down" data-value="down">Not for us.</button>
+    </div>
+    <p class="form-note" data-note aria-live="polite">One vote per household. You can change it.</p>
+  </section>
+  <section class="signup-band signup-band-inline">
+    <div class="signup-inner">
+      <h2>Tell me when ${show.title} airs</h2>
+      <form class="signup-form" method="post" action="/api/signup" data-signup>
+        <label class="sr-only" for="email2">Parent email</label>
+        <input id="email2" name="email" type="email" required autocomplete="email" placeholder="parent@example.com">
+        <label class="check"><input type="checkbox" name="parent" required> I am a parent or guardian, age 18 or over.</label>
+        <button type="submit">Save my seat</button>
+        <p class="form-note" data-note aria-live="polite"></p>
+      </form>
+    </div>
+  </section>
+  <nav class="up-next">
+    <h2>Also on ${SITE.nightLabel} night</h2>
+    <ul>${raw(others.map((s) => `<li style="--hue:${s.posterHue}"><a href="/show/${s.id}"><span class="up-time">${esc(slotTime(s.slot))}</span> <span class="up-title">${esc(s.title)}</span> <span class="up-slot">${esc(slotName(s.slot))}</span></a></li>`).join(""))}</ul>
+  </nav>
+</article>`;
+  return layout(`${show.title}: ${SITE.name}`, body, { description: show.logline, bodyClass: "page-show" });
+}
+
+export function aboutPage() {
+  const body = html`
+<article class="prose">
+  <p class="eyebrow">For parents</p>
+  <h1>What this is</h1>
+  <p>${SITE.name} is a weekly family comedy block in development. One fixed night. Four original shows, one after another. A host who carries you between them. The kind of night a family plans around.</p>
+  <p>Right now the shows are trailers. We put them here so families can tell us which ones deserve full seasons. Your plays and your votes are the greenlight.</p>
+  <h2>How we handle children and privacy</h2>
+  <ul>
+    <li>The account holder is always a parent or guardian. There is no child login and no child account.</li>
+    <li>We collect no personal information from children. The only thing we ask for is a parent's email, and only if you offer it.</li>
+    <li>We measure with a random household number stored in a cookie on your browser. It holds no name, no address, and no device identity.</li>
+    <li>There are no comments and no personalized ads.</li>
+  </ul>
+  <p class="fine">Privacy policy and terms are in review with counsel and will appear here before public launch.</p>
+  <h2>How the trailers were made</h2>
+  <p class="fine">Disclosure text about production methods is in review with counsel and will appear here before public launch.</p>
+</article>`;
+  return layout(`For parents: ${SITE.name}`, body);
+}
+
+export function notFoundPage() {
+  return layout(`Not found: ${SITE.name}`, html`<article class="prose"><p class="eyebrow">Off air</p><h1>Nothing on this channel</h1><p><a href="/">Back to ${SITE.nightLabel} night listings</a>.</p></article>`);
+}
+
+export function statsPage(s: SiteStats) {
+  const pct = (n: number) => `${Math.round(n * 100)}%`;
+  const rows = s.shows
+    .map(
+      (r) => `<tr><td>${r.slot}</td><td>${esc(r.title)}</td><td>${r.households}</td><td>${r.plays}</td><td>${r.reached25}</td><td>${r.reached50}</td><td>${r.reached75}</td><td>${r.completed}</td><td>${pct(r.completionRate)}</td><td>${r.votesUp}</td><td>${r.votesDown}</td><td>${r.voteRatio == null ? "n/a" : r.voteRatio.toFixed(1)}</td><td>${r.developFurther ? "YES" : "no"}</td></tr>`
+    )
+    .join("");
+  const body = html`
+<article class="prose stats">
+  <p class="eyebrow">Owner view</p>
+  <h1>Demand dashboard</h1>
+  <table class="stats-table">
+    <thead><tr><th>Slot</th><th>Show</th><th>Households</th><th>Plays</th><th>25%</th><th>50%</th><th>75%</th><th>100%</th><th>Completion</th><th>Yes</th><th>No</th><th>Ratio</th><th>Develop further</th></tr></thead>
+    <tbody>${raw(rows)}</tbody>
+  </table>
+  <ul>
+    <li>Parent sign-ups: ${s.signups} (floor 500: ${s.signupFloorMet ? "met" : "not met"})</li>
+    <li>Households seen: ${s.householdsTotal}. Returning in a later week: ${s.householdsReturning} (${pct(s.returnRate)})</li>
+    <li>Develop-further line (D-013): completion at or above 40 percent and a yes-to-no ratio at or above 3 to 1.</li>
+  </ul>
+</article>`;
+  return layout(`Stats: ${SITE.name}`, body);
+}
