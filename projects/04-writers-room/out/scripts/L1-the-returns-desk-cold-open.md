@@ -1,13 +1,13 @@
 # The Returns Desk. Episode 101, "Two Receipts." Cold open.
 
-Slot 4, Lights Out. Staff-writer output against `projects/04-writers-room/out/bibles/L1-the-returns-desk.md` sections 3, 4, and 7. The cold open runs long by design: Episode 1 sets the rules of the desk on screen, and the bible asks that Ines's supervision be stated on screen in this episode. Every later cold open runs under one minute.
+Slot 4, Lights Out. Staff-writer output against `projects/04-writers-room/out/bibles/L1-the-returns-desk.md` sections 3, 4, and 7. Three pages. Episode 1's cold open runs longer than the format's one minute by design: the bible asks that the rules of the desk and Ines's supervision be stated on screen in this episode. Every later cold open runs under one minute.
 
 Format notes.
 
 - Every effect is mixed at or below the dialogue peak: door bell, ice drop, doorbell chime, dropped boxes.
 - The chime's indicator glows once per ring. No other blinking light. No strobe.
 - Ines never leaves the desk area. Marguerite is in every frame with her. Dolores is on the intercom and behind the porthole.
-- The fair clue for the cold open's mini-turn (the chime has its own batteries) is on screen, printed on the chime, before Ines reads it. The pilot's main cause (a transmitter across the street) is not revealed here. Its clue is planted in the insert in Act One.
+- The fair clue for the cold open's mini-turn (the chime has its own batteries) is on screen, printed on the chime in Setup B, before Ines reads it aloud. The pilot's main cause (a transmitter across the street) is not revealed here. Its clue is planted in the insert in Act One.
 
 ---
 
@@ -24,21 +24,13 @@ FADE IN:
 INT. HARDISON'S HARDWARE, RETURNS DESK, NIGHT
 
 SETUP A. The gooseneck lamp is the warmest thing in the
-room. MARGUERITE SALCEDO, 63, sits at the long leg of an
-L-shaped counter, writing a manila tag in a slow hand.
-Behind her, floor to ceiling, THE SHELF OF RETURNED
-THINGS: a wind-up timer, a rain gauge, a push broom, a
-bath plug, a rake. Each has a paper tag. Above the shelf,
-a round shop clock reads a time it will never read again.
-
-At the far end of the counter, INES RUIZ, 12, has a math
-worksheet, a clipboard, and a green cloth ledger, closed.
-She does the worksheet the way other people do a
-crossword. To pass the time until something better.
-
-Frame right, a SWINGING DOOR with a porthole and a STAFF
-sign. Through the porthole, a shadow moves on the dock.
-The dock INTERCOM on the wall clicks.
+room. MARGUERITE SALCEDO, 63, writes a manila tag in a
+slow hand. Behind her, THE SHELF OF RETURNED THINGS: a
+timer, a rain gauge, a rake, a bath plug, each on a
+paper tag. At the far end of the counter, INES RUIZ, 12,
+does a math worksheet the way other people do a
+crossword. Frame right, a SWINGING DOOR with a porthole.
+A shadow crosses it. The dock INTERCOM clicks.
 
                     DOLORES (V.O.)
               (through the intercom)
@@ -47,85 +39,40 @@ The dock INTERCOM on the wall clicks.
                     INES
           Desk.
 
-                    DOLORES (V.O.)
-          Marguerite. Is she at the desk.
+The intercom clicks off. Ines goes back to the worksheet.
 
-                    MARGUERITE
-          She's at the desk.
-
-                    DOLORES (V.O.)
-          Is the homework at the desk.
-
-                    INES
-          The homework is at the desk.
-
-                    DOLORES (V.O.)
-          Is it getting done at the desk.
-
-Ines looks at the worksheet. The worksheet looks back.
-
-                    INES
-          It's at the desk.
-
-The intercom clicks off. Marguerite has not looked up.
-
-                    MARGUERITE
-          She'll check again.
-
-                    INES
-          She always checks again.
+                    INES (CONT'D)
+          She always checks.
 
                     MARGUERITE
           It's a good policy.
 
-TEDDY VANCE, 16, crosses behind the counter with a push
-broom in one hand and a case of light bulbs under the
-other arm, headed upstage to AISLE 12, where the
-overhead lights stop and the paint cans go on into the
-dark.
+TEDDY VANCE, 16, crosses behind them with a push broom,
+headed upstage to AISLE 12, where the overheads stop and
+the paint cans go on into the dark.
 
                     TEDDY
-              (to himself, at walking pace)
+              (to himself)
           Aisle 12 is paint. Paint is a
-          liquid. Liquids don't do anything.
-          Liquids sit there.
+          liquid. Liquids sit there.
 
-He stops at the mouth of the aisle and looks into it.
-
-                    TEDDY (CONT'D)
-              (calling back)
-          Marguerite. Did the back lights go
-          out, or is that the plan.
-
-                    MARGUERITE
-          That's the plan.
-
-                    TEDDY
-          Okay. Great. Good plan.
-
-He goes in. His flashlight beam goes with him, slow.
-
-The ICE MACHINE, against the wall by the front door,
-drops a load. A bucket of gravel on a tin roof, mixed no
-louder than anyone has spoken. Inside Aisle 12, a case
-of light bulbs meets the floor. Softly.
+He goes in. The ICE MACHINE by the front door drops a
+load: a bucket of gravel on a tin roof, no louder than
+anyone has spoken. In Aisle 12, a case of light bulbs
+meets the floor. Softly.
 
                     TEDDY (O.S.)
-          That's ice. That was ice. I know
-          what ice sounds like.
+          That was ice. I know what ice
+          sounds like.
 
                     INES
               (not looking up)
           It's ice.
 
-                    TEDDY (O.S.)
-          Thank you.
-
-The FRONT DOOR opens. The spring bell rings at talking
-volume. DESMOND NUNES, 41, comes in out of the dark in a
-raincoat over a pajama top, carrying a shoebox in both
-hands the way you carry a pie. His hair has made its own
-decisions.
+The FRONT DOOR BELL rings at talking volume. DESMOND
+NUNES, 41, comes in out of the dark in a raincoat over a
+pajama top, carrying a shoebox in both hands the way you
+carry a pie.
 
                     MARGUERITE
               (not looking up)
@@ -134,14 +81,10 @@ decisions.
                     DESMOND
           I hope so.
 
-He sets the shoebox on the short leg of the counter,
-beside the brass service bell, and lifts the lid.
-
-SETUP B. Straight down. On a bed of tissue: a white
-plastic WIRELESS DOORBELL CHIME and its BUTTON, taped to
-each other with painter's tape like something that might
-get away. Marguerite's hands stay on her side of the
-laminate.
+He sets the box beside the service bell and lifts the
+lid. SETUP B: a white WIRELESS DOORBELL CHIME and its
+BUTTON, taped together with painter's tape like
+something that might get away.
 
                     MARGUERITE (O.S.)
           What does it do.
@@ -160,40 +103,23 @@ SETUP A. Marguerite's pen stops. That is all it does.
                     MARGUERITE
           Receipt?
 
-Desmond produces one from the raincoat, folded into
-eighths. She unfolds it flat with both hands and reads
-every line of it.
+He hands over a receipt folded into eighths. She
+unfolds it flat with both hands and reads every line.
 
                     MARGUERITE (CONT'D)
-          This is ours.
-
-                    DESMOND
-          Great.
-
-                    MARGUERITE
-          Store policy says receipt required.
-          My policy says story required.
-          Start where you were standing.
-
-                    DESMOND
-          Where I was standing?
-
-                    MARGUERITE
-          When it did it.
+          This is ours. Store policy says
+          receipt required. My policy says
+          story required. Start where you
+          were standing.
 
                     DESMOND
           Kitchen.
 
-                    MARGUERITE
-          Go on.
-
-At the far end, Ines closes the worksheet, opens the
-ledger, and uncaps a pen. Four columns in her hand:
-ITEM. CLAIM. CLUE. CAUSE.
+Ines shuts the worksheet, opens a green cloth LEDGER,
+and uncaps a pen. Four columns: ITEM. CLAIM. CLUE. CAUSE.
 
                     INES
-          Item. Doorbell, wireless. Chime and
-          button. One set.
+          Item. Doorbell, wireless. Claim?
 
                     DESMOND
           Who's that?
@@ -202,53 +128,22 @@ ITEM. CLAIM. CLUE. CAUSE.
           Ledger.
 
                     INES
-          I'm the ledger. Claim?
+          I'm the ledger. One sentence.
 
                     DESMOND
-          I just told her.
-
-                    INES
-          You told her a feeling. I need a
-          claim. One sentence.
-
-Desmond looks to Marguerite for help. Marguerite is on
-his side. It does not help.
-
-                    DESMOND
-          It rings when there is nobody on
-          the porch.
-
-                    INES
-              (writing)
-          Rings unattended.
-
-                    DESMOND
-          Eleven times tonight. I counted. I
+          It rings when nobody is on the
+          porch. Eleven times tonight. I
           looked through the peephole. I
           looked through the window. I looked
           under the mat.
 
                     MARGUERITE
-          Good. That's thorough.
-
-                    DESMOND
-          My wife said I was being ridiculous
-          under the mat.
-
-                    MARGUERITE
-          Your wife hasn't heard four hundred
-          and twelve of these. Yours is a
+          Good. That's thorough. Yours is a
           good one.
-
-Marguerite holds up the paper receipt.
-
-                    MARGUERITE (CONT'D)
-          Here's how it works. Every return
-          with a story needs two receipts.
-          This is one. The other is something
-          I can check. A thing I can hold, or
-          a thing I can see, or a thing I can
-          call.
+              (holds up the receipt)
+          Every return with a story needs two
+          receipts. This is one. The other is
+          a thing I can check.
 
                     DESMOND
           Like what?
@@ -257,43 +152,30 @@ Marguerite holds up the paper receipt.
           Like the doorbell ringing.
 
                     DESMOND
-          You want it to ring.
-
-                    MARGUERITE
-          I'd like that very much.
-
-                    DESMOND
           It won't ring here. I took the
           battery out.
 
-He sets a small COIN BATTERY on the counter beside the
-box, the way people set down evidence.
+He sets a COIN BATTERY on the counter, like evidence.
 
                     INES
               (writing under CLUE)
           Battery removed.
-
-                    DESMOND
-          So it can't ring.
 
                     MARGUERITE
           Then it's not haunted here. Then
           it's a doorbell. Then I can process
           it.
 
-She takes the RETURNED stamp from the tray. Inks it.
-Raises it over the form. Holds it there.
+She takes the RETURNED stamp from the tray, inks it, and
+raises it over the form. Holds it there.
 
-SETUP B. The chime on its tissue, under the lamp. Printed
-on its face, in focus, small: CHIME UNIT: 2 x AA
-INCLUDED. BUTTON: 1 x COIN CELL. The chime's indicator
-glows once. The DOORBELL RINGS. Two notes. No louder
-than anyone in the room has spoken.
+SETUP B. The chime under the lamp. Printed on its face,
+in focus: CHIME UNIT: 2 x AA INCLUDED. BUTTON: 1 x COIN
+CELL. The indicator glows once. The DOORBELL RINGS. Two
+notes. No louder than anyone in the room.
 
-SETUP A. Nobody moves. The stamp stays in the air.
-
-Inside Aisle 12, a second case of light bulbs meets the
-floor.
+SETUP A. Nobody moves. The stamp stays in the air. In
+Aisle 12, a second case of light bulbs meets the floor.
 
                     TEDDY (O.S.)
           Was that the door?
@@ -302,40 +184,16 @@ floor.
           No.
 
                     TEDDY (O.S.)
-          Was it the ice?
-
-                    MARGUERITE
-          No.
-
-                    TEDDY (O.S.)
-              (a pause)
           Okay. Okay. Okay. Coming out.
 
-Teddy comes out of Aisle 12 walking backward, the broom
-held in front of him like a railing, and keeps going
-until he is standing next to Ines. She slides her
-clipboard over so he has somewhere to put his hands.
-
-Ines looks at the coin battery. Then at the chime.
+Teddy backs out of Aisle 12, broom held in front of him
+like a railing, until he is standing next to Ines. Ines
+looks at the coin battery. Then at the chime. She leans
+over it without touching it and reads.
 
                     INES
-          Which battery is that?
-
-                    DESMOND
-          The battery.
-
-                    INES
-          The button's, or the chime's?
-
-                    DESMOND
-          There's one battery.
-
-Ines does not touch the chime. She leans over it and
-reads the printing on its face out loud.
-
-                    INES
-          Chime unit. Two double-A. Included.
-          Button. One coin cell.
+          Chime unit. Two double-A. Button.
+          One coin cell.
 
                     DESMOND
           Those are two different things.
@@ -344,57 +202,27 @@ reads the printing on its face out loud.
           Those are two different things.
 
                     DESMOND
-              (a small, hollow laugh)
-          So it can ring.
+          So it can ring. Then why is it
+          ringing?
+
+Silence. Ines has nothing. She hates having nothing.
 
                     INES
-          It can ring.
-
-                    DESMOND
-          Then why is it ringing?
-
-Silence. Ines has nothing. She hates having nothing. She
-writes anyway.
-
-                    INES
-              (writing under CLUE)
-          Chime still powered.
-              (under CAUSE)
+              (writing under CAUSE)
           Pending.
 
                     MARGUERITE
               (slowly, to the chime)
-          Did it follow you here.
-
-                    DESMOND
-          I don't know what that means.
-
-                    MARGUERITE
           It rang at your house. Now it's
-          ringing at mine.
+          ringing at mine. Thirty-one years
+          at this counter. Nothing has ever
+          once rung in here.
 
-                    DESMOND
-          Is that bad?
-
-                    MARGUERITE
-          I've been at this counter thirty-one
-          years. Four hundred and twelve
-          stories. Nothing has ever once rung
-          in here.
-
-She lowers the RETURNED stamp into the tray, unused. She
-takes a fresh manila tag off the string and writes across
-the top, slow: DOORBELL. Under it: CLAIM: RINGS. Under
-that, her pen stops.
+She lowers the RETURNED stamp, unused. She takes a fresh
+tag and writes: DOORBELL. CLAIM: RINGS. Her pen stops.
 
                     INES
-          What are you putting for cause?
-
-                    MARGUERITE
-          Nothing yet.
-
-                    INES
-          You always put something.
+          You always put something for cause.
 
                     MARGUERITE
           Then this is new.
@@ -402,15 +230,11 @@ that, her pen stops.
 The ICE MACHINE drops. Teddy jumps.
 
                     TEDDY
-          I know. I know it's ice. But now
-          there's two things.
-
-SETUP C. Over Marguerite's shoulder. Past Desmond, past
-the door, through the window with its reversed gold
-letters: Ambler Street. One streetlight. The spur.
-Nothing else. Nobody.
+          I know it's ice. But now there's
+          two things.
 
                     MARGUERITE
+              (to Desmond)
           Sign there.
 
                     DESMOND
@@ -419,12 +243,8 @@ Nothing else. Nobody.
                     MARGUERITE
           That I heard it.
 
-He signs. She takes the other stamp from the tray, the
-hand-cut one, and brings it down on the form: STORY
-HEARD.
-
-On the down beat of the stamp, the DOORBELL RINGS.
-
+He signs. She brings the hand-cut stamp down on the form:
+STORY HEARD. On the down beat, the DOORBELL RINGS.
 Marguerite does not look at it. She looks at Ines.
 
                     MARGUERITE (CONT'D)
@@ -450,4 +270,4 @@ Marguerite does not look at it. She looks at Ines.
 
 ## Standards self-read
 
-Walked against `canon/STANDARDS.md` section 2, items 1 to 15: none present. Section 3: the scare (a chime ringing on the counter) is an object doing one thing at talking volume, and Teddy's fear lands with a laugh he is in on (1); Ines to Dolores on the intercom is dry and lands as a routine they both like (2); no body jokes (3); the talk-after moment is Marguerite writing a tag with no cause (4); no screen-time joke (5); Desmond's wife is mentioned and Ines has one parent on screen, neither is a joke (6); no food (7); every effect under dialogue peak (8); one indicator glow per ring, no strobe (9). Section 4: no em dashes. Hard rule 6 in particular: Ines is at the desk with Marguerite in every frame, her mother checks in on the intercom on screen, and she never enters an aisle. Passes on my read. Not a substitute for the `standards` agent's pass.
+Walked against `canon/STANDARDS.md` section 2, items 1 to 15: none present. Section 3: the scare (a chime ringing on the counter) is one object doing one thing at talking volume, and Teddy's fear lands with a laugh he is in on (1); Ines to Dolores on the intercom is dry and lands as a routine they both like (2); no body jokes (3); the talk-after moment is Marguerite writing a tag with no cause (4); no screen-time joke (5); Desmond's wife is mentioned and Ines has one parent on screen, neither is a joke (6); no food (7); every effect under dialogue peak (8); one indicator glow per ring, no strobe (9). Section 4: no em dashes. Hard rule 6 in particular: Ines is at the desk with Marguerite in every frame, her mother checks in on the intercom on screen, and she never enters an aisle. Passes on my read. Not a substitute for the `standards` agent's pass.
