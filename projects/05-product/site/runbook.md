@@ -56,3 +56,31 @@ Put finished MP4 files on Cloudflare R2 with a public bucket domain, or on Cloud
 - CG-03: any AI-generated performance, voice, or image in a trailer must clear counsel, and the About page must carry the disclosure text, before public launch.
 - Standards: every trailer needs a PASS report in `projects/08-compliance/out/standards/` before it goes into `content/shows.json`.
 - `<meta name="robots" content="noindex">` stays on until both counsel gates clear.
+
+## 8. Review deploy at ratlinks.com/tv
+
+The container that built this site cannot reach the Cloudflare or Netlify APIs (egress policy), so the deploy is an owner step. Where ratlinks.com is hosted decides the path. Both paths keep the code unchanged.
+
+### 8a. If ratlinks.com is on Cloudflare (recommended, keeps D1, votes, and sign-ups)
+
+1. `cd projects/05-product/site`
+2. `npx wrangler login`
+3. `npx wrangler d1 create porchlight-guide-db` and paste the `database_id` into `wrangler.toml`.
+4. In `wrangler.toml` set `BASE_PATH = "/tv"` and add a route: `routes = [{ pattern = "ratlinks.com/tv*", zone_name = "ratlinks.com" }]`.
+5. `npm run db:migrate:remote` then `npm run seed:build` then `npm run seed:remote`.
+6. `npx wrangler secret put ADMIN_TOKEN`
+7. `npm run deploy`
+8. Open `https://ratlinks.com/tv/`. The dashboard is `https://ratlinks.com/tv/admin?token=<ADMIN_TOKEN>`.
+
+### 8b. If ratlinks.com is elsewhere (static review only, no votes or sign-ups saved)
+
+1. `cd projects/05-product/site`
+2. `BASE_PATH=/tv npm run export:static`
+3. Upload the `dist/` folder to the host so that `dist/index.html` serves at `https://ratlinks.com/tv/`.
+4. Every button works but shows "Review build: nothing is saved here."
+
+### 8c. Fastest public preview with no domain work
+
+1. `npx wrangler login`
+2. `npx wrangler deploy --config wrangler.preview.toml`
+3. Wrangler prints a `workers.dev` URL. The preview has no database, so votes and sign-ups last only as long as the worker instance.

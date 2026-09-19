@@ -1,7 +1,12 @@
 (function () {
   "use strict";
   var base = (document.body && document.body.getAttribute("data-base")) || "";
+  var isStatic = !!(document.body && document.body.getAttribute("data-static"));
   var send = function (path, payload) {
+    if (isStatic) {
+      // Review export: no worker behind the page. Pretend success so the buttons demonstrate the flow.
+      return Promise.resolve({ ok: true, json: function () { return Promise.resolve({ ok: true, status: "created", review: true }); } });
+    }
     try {
       return fetch(base + path, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload), keepalive: true, credentials: "same-origin" });
     } catch (e) { return Promise.reject(e); }
@@ -38,7 +43,7 @@
         box.querySelectorAll(".vote").forEach(function (b) { b.classList.remove("is-on"); });
         btn.classList.add("is-on");
         send("/api/vote", { showId: showId, value: value }).then(function (r) {
-          if (note) note.textContent = r && r.ok ? (value === "up" ? "Counted. Thank you." : "Counted. Thanks for the honesty.") : "Could not record that. Try again.";
+          if (note) note.textContent = r && r.ok ? (isStatic ? "Review build: votes are not saved here." : value === "up" ? "Counted. Thank you." : "Counted. Thanks for the honesty.") : "Could not record that. Try again.";
         }).catch(function () { if (note) note.textContent = "Could not record that. Try again."; });
       });
     });
@@ -54,7 +59,7 @@
       send("/api/signup", { email: email ? email.value : "", parent: !!(parent && parent.checked) })
         .then(function (r) { return r.json().then(function (j) { return { ok: r.ok, j: j }; }); })
         .then(function (x) {
-          if (note) note.textContent = x.ok ? (x.j.status === "exists" ? "You are already on the list." : "Seat saved. See you on the night.") : (x.j.error || "Could not save that.");
+          if (note) note.textContent = x.ok ? (x.j.review ? "Review build: nothing is saved here." : x.j.status === "exists" ? "You are already on the list." : "Saved. See you on the night.") : (x.j.error || "Could not save that.");
           if (x.ok) form.classList.add("is-done");
         })
         .catch(function () { if (note) note.textContent = "Could not save that. Try again."; });

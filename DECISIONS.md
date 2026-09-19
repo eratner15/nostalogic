@@ -97,6 +97,12 @@ Format: date, decision, options, choice, reason. Counsel gates carry the tag `CO
 ### D-018. 2026-09-19. Format canon merged
 - The canon proposal in `projects/03-block-format/out/canon-proposal.md` is merged into `canon/CANON.md` sections 2, 2a, and 5, and `canon/GLOSSARY.md`. Item 27 is decided by D-017. Item 15 adds a note: host casting triggers CG-04 (human) or CG-03 (AI-assisted).
 
+### D-019. 2026-09-19. Review deployment path
+- Facts: the build container cannot reach api.cloudflare.com, workers.cloudflare.com, api.netlify.com, or ratlinks.com (egress policy). No Cloudflare or Netlify credentials exist here. The Netlify connector lists the owner's team but has no ratlinks project and cannot upload local files.
+- Options: (1) wait for the owner to deploy; (2) publish a static export as a private review page now and hand the owner a five-command deploy for ratlinks.com/tv; (3) create a new Netlify project through the connector.
+- Choice: option 2. Option 3 cannot upload files from this container, and it would create a site the owner did not ask for.
+- Consequence: the site supports `BASE_PATH=/tv`, a preview config without D1, and a static export. Runbook section 8 holds the ratlinks.com/tv steps for both Cloudflare and non-Cloudflare hosts.
+
 ## Open forks
 
 - Fork A: decided, Go (D-011).
