@@ -121,7 +121,7 @@ Standards section 2 self-check: pass.
 
 ## A3. Shift Change
 
-**Logline.** With Mom on night shift at the hospital and Dad on morning radio, the three Abernathy kids live under three different governments every day, and Nana runs the biggest one.
+**Logline.** With Mom on night shift at the hospital and Dad on morning radio, the three Abernathy kids live under three governments every day, and Nana runs the biggest one.
 
 **World.** A brick rowhouse in Pellston, a small city with one hospital and one AM station. Lorraine Abernathy is an emergency room nurse, seven at night to seven in the morning. Curtis Abernathy is the morning traffic reporter, on air from 4:30 to 9. Nana Velma, Lorraine's mother, moved in two years ago and runs the house from 3 in the afternoon to 8 in the morning under rules she invents. Each day has three handoffs. Each handoff loses information. The whiteboard in the hallway is the constitution, and it is always out of date.
 
@@ -419,7 +419,7 @@ Standards section 2 self-check: pass.
 
 ## H4. All Twelve
 
-**Logline.** At a school so small that the twelve eighth graders are the entire eighth grade, every kid has to be on every team, in every club, and in every play.
+**Logline.** At a school so small that twelve kids are the entire eighth grade, every kid has to be on every team, in every club, and in every play.
 
 **World.** Cotter's Bend is a mountain town with a K-8 school of 71 students. The eighth grade is twelve kids. District rule: every activity needs a full roster, so everyone does everything. Basketball on Monday. Debate on Tuesday. Band on Wednesday. Robotics on Thursday. Drama on Friday. The same twelve faces in different uniforms. The principal also coaches four teams. The gym is the theater, the cafeteria, and the polling place. The town shows up for all of it.
 
@@ -770,7 +770,7 @@ Standards section 2 self-check: pass.
 
 ## L1. The Night Desk
 
-**Logline.** The overnight clerk at a 24-hour hardware store hears the story behind every item that comes back to the returns desk, and every item came back for a spooky reason.
+**Logline.** The overnight clerk at a 24-hour hardware store hears the story behind every item that comes back to the returns desk, and every return has a spooky reason.
 
 **World.** Hardison's Hardware, open all night in a town that seems to need a lot of hardware at three in the morning. Marguerite runs the returns desk from midnight to six. People bring things back: a doorbell that rings on its own, a ladder that is taller in the morning, a paint color that is not on the chart. She hears the story, and the audience sees it. Every story ends safe. The doorbell was a kid's science project. The ladder was a grandfather's prank. Marguerite's dry closer sends the customer home. The store is home base. The stories are the anthology.
 

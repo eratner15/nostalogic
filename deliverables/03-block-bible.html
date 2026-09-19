@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Porchlight Block Bible</title>
+<meta name="description" content="Phase 3 deliverable for Project Porchlight: the block as a product, from the fixed night and four slots to the porch, the host, the guide, the ritual, the trailer spec, and the measurement hooks.">
+<style>
+  :root{
+    --bg:#faf7f2;--ink:#1f1b16;--muted:#5d554b;--line:#e2dbd0;--card:#ffffff;
+    --accent:#b5541c;--go:#1f7a4d;--go-bg:#e6f4ec;--warn:#9a6b00;--warn-bg:#fbf1d6;--kill:#a3302a;--kill-bg:#f9e4e2;
+    --table-head:#f1ebe2;
+    --glow:#ffc46b;--glow-soft:#fff1d2;--flag:#c9391e;--sky:#e9eef5;--night:#2c3e5c;--door:#2f6b4a;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#17150f;--ink:#f0ebe3;--muted:#b8ae9f;--line:#332e26;--card:#201d16;
+      --accent:#e78a4e;--go:#6fd19a;--go-bg:#16301f;--warn:#e6b84a;--warn-bg:#332a10;--kill:#f08a82;--kill-bg:#3a1d1a;
+      --table-head:#2a261e;
+      --glow:#ffb84d;--glow-soft:#4a3a16;--flag:#f08a82;--sky:#1d2433;--night:#8fa3c4;--door:#6fd19a;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#17150f;--ink:#f0ebe3;--muted:#b8ae9f;--line:#332e26;--card:#201d16;
+    --accent:#e78a4e;--go:#6fd19a;--go-bg:#16301f;--warn:#e6b84a;--warn-bg:#332a10;--kill:#f08a82;--kill-bg:#3a1d1a;
+    --table-head:#2a261e;
+    --glow:#ffb84d;--glow-soft:#4a3a16;--flag:#f08a82;--sky:#1d2433;--night:#8fa3c4;--door:#6fd19a;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 Georgia,"Times New Roman",serif}
+  main{max-width:960px;margin:0 auto;padding:32px 16px 64px}
+  h1{font-size:2rem;line-height:1.15;margin:0 0 8px}
+  h2{font-size:1.4rem;margin:40px 0 12px;padding-top:12px;border-top:2px solid var(--line)}
+  h3{font-size:1.1rem;margin:24px 0 8px}
+  h4{font-size:1rem;margin:18px 0 6px;font-family:system-ui,sans-serif}
+  p{margin:0 0 12px}
+  .kicker{color:var(--muted);font-family:system-ui,sans-serif;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase}
+  .verdict{display:grid;grid-template-columns:1fr;gap:12px;margin:24px 0}
+  @media(min-width:700px){.verdict{grid-template-columns:1fr 1fr 1fr}}
+  .slots{display:grid;grid-template-columns:1fr;gap:12px;margin:16px 0}
+  @media(min-width:700px){.slots{grid-template-columns:1fr 1fr}}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:16px}
+  .card .label{font-family:system-ui,sans-serif;font-size:.8rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+  .card .big{font-size:1.5rem;font-weight:700;margin:4px 0 6px}
+  .card h4{margin-top:0}
+  .go{background:var(--go-bg);border-color:var(--go)} .go .big{color:var(--go)}
+  .warn{background:var(--warn-bg);border-color:var(--warn)} .warn .big{color:var(--warn)}
+  .kill{background:var(--kill-bg);border-color:var(--kill)} .kill .big{color:var(--kill)}
+  table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-family:system-ui,sans-serif;font-size:.9rem}
+  th,td{border:1px solid var(--line);padding:8px 10px;vertical-align:top;text-align:left}
+  th{background:var(--table-head)}
+  .wrap{overflow-x:auto}
+  .pill{display:inline-block;padding:2px 8px;border-radius:999px;font-family:system-ui,sans-serif;font-size:.75rem;font-weight:700}
+  .p-go{background:var(--go-bg);color:var(--go)} .p-warn{background:var(--warn-bg);color:var(--warn)} .p-kill{background:var(--kill-bg);color:var(--kill)}
+  ol,ul{padding-left:22px} li{margin-bottom:6px}
+  .src{font-family:system-ui,sans-serif;font-size:.82rem;color:var(--muted)}
+  .rec{border-left:4px solid var(--accent);padding:8px 14px;background:var(--card);margin:12px 0}
+  .tag{font-family:system-ui,sans-serif;font-size:.75rem;font-weight:700;color:var(--accent);letter-spacing:.03em}
+  .lede{font-size:1.08rem}
+  code{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:.9em;background:var(--table-head);padding:1px 5px;border-radius:4px}
+  figure{margin:16px 0;background:var(--card);border:1px solid var(--line);border-radius:10px;padding:12px}
+  figure svg{width:100%;height:auto;display:block}
+  figcaption{font-family:system-ui,sans-serif;font-size:.85rem;color:var(--muted);margin-top:8px}
+  .key{display:grid;grid-template-columns:1fr;gap:4px 16px;font-family:system-ui,sans-serif;font-size:.85rem;margin:8px 0 0;padding:0;list-style:none}
+  @media(min-width:600px){.key{grid-template-columns:1fr 1fr 1fr}}
+  .key li{margin:0}
+  .key b{color:var(--accent)}
+  a{color:var(--accent)}
+  footer{margin-top:48px;color:var(--muted);font-size:.85rem;font-family:system-ui,sans-serif}
+  @media print{body{background:#fff;color:#000} .card,figure{break-inside:avoid} h2{break-after:avoid}}
+</style>
+</head>
+<body>
+<main>
+<p class="kicker">Project Porchlight, Phase 3 deliverable, 2026-09-19. Codename only. Internal.</p>
+<h1>Block Bible</h1>
+<p class="lede">This bible designs the block as a product. It works at trailer stage (decision D-013) and scales to full episodes without a redesign. It uses only the mechanics the Phase 1 scorecard allows, and each mechanic carries its scorecard row. Every set, character, sound, and line here is original expression. Source: <code>projects/03-block-format/out/block-bible.md</code> and <code>family-ritual.md</code>, as merged into <code>canon/CANON.md</code> sections 2, 2a, and 5.</p>
+<p><strong>Brand placeholder.</strong> The brand name is not set. Fork D is open. The brand-strategist recommends "Streetlights" as the provisional name, held as a single config constant and marked counsel gate CG-01. This page writes <code>[NAME]</code> wherever the name goes.</p>
+
+<div class="verdict">
+  <div class="card go"><div class="label">The night</div><div class="big">Friday, with a weekend encore</div><p>The one mechanic the scorecard says to reproduce. Premieres unlock on Friday. Saturday and Sunday hold the encore, and an encore play counts as a household return.</p></div>
+  <div class="card"><div class="label">The wrapper</div><div class="big">A porch, a lamp, a card, a host</div><p>Four slots in a fixed order, wrapped by a recorded host on a front porch at dusk. A pull chain clicks, a lamp comes on, four notes play. Nothing on the porch asks a child for anything.</p></div>
+  <div class="card warn"><div class="label">The product at v1</div><div class="big">A listings grid with four trailers</div><p>One channel, one night filled in. Each slot opens to a trailer, a parent vote, and a parent sign-up. All four trailers are live from launch (decision D-017). No child data, no comments.</p></div>
+</div>
+
+<p class="src"><strong>Traceability key.</strong> [SC-1] fixed night, Reproduce. [SC-2] home base set, Adapt. [SC-3] four slots, Adapt. [SC-4] interstitials and bumpers, Adapt. [SC-5] seasonal stunts, Adapt. [SC-6] sonic ID, Adapt. [SC-7] fixed time, Adapt. [SC-8] shared hosts, Test. [SC-9] crossover events, Test. [SC-10] stay-up-late feeling and [SC-11] viewer participation are dropped for v1 and appear only where this page says what replaces them. Scorecard: <code>projects/01-market/out/mechanics-scorecard.md</code>, revision 2.</p>
+
+<h2>1. The block in one paragraph</h2>
+<p>On the fixed night a family opens <code>[NAME]</code> and sees a printed listings grid, the kind that came folded inside a newspaper. One channel. One night filled in. They press the night. A front porch appears at dusk. A pull chain clicks, a brass lamp comes on, and four notes play. The host steps onto the porch, pulls a hand-lettered card from the mailbox, and reads tonight's four shows in order. The host opens the screen door and the first show begins. Between shows the family comes back to the porch for a short bit, a game with no equipment, or a look at what is next. The fourth show starts with the lamp going off and the host lighting a hand-crank lantern. When it ends, the lamp comes back on, the host asks the household one question to talk about, says goodnight, and puts next week's card in the mailbox. At trailer stage the same porch, lamp, card, and host wrap four trailers instead of four episodes. Nothing on the porch ever asks a child to do anything.</p>
+
+<h2>2. The fixed night <span class="tag">[SC-1, Reproduce]</span> with a fixed time <span class="tag">[SC-7, Adapt]</span></h2>
+<h3>Choice: Friday</h3>
+<p>The block premieres every Friday. At full-episode stage the premiere goes live at one clock time that the owner sets once and never moves, held as the config constant <code>PREMIERE_TIME</code>. This bible does not pick the hour. At trailer stage no clock time is set or printed; the Friday row shows ordinals First to Last (canon section 5).</p>
+<h3>The case</h3>
+<ol>
+<li><strong>Friday is the night the parent persona remembers.</strong> The 1990s broadcast family block ran four half-hour sitcoms with a hosted wrap on Friday, and retrospectives name the night as a defining feature. The Porch Parent was born 1981 to 1990 and was age 3 to 17 across that window. The memory the block sells is a Friday memory. <span class="src">Evidence file E2 section 2.1; canon/AUDIENCE.md section 2.</span></li>
+<li><strong>A public broadcaster already programs a family night on Friday</strong>, with encores on Saturday and Sunday evenings, since 2017. That is proof a family audience accepts Friday as family night. It is not a competitor: no hosts, no original comedy, no 6 to 14 target. Its encore pattern is copied here as a mechanic, not as expression. <span class="src">Landscape section 5, source S87.</span></li>
+<li><strong>Friday's "death slot" reputation concerns the wrong audience.</strong> The evidence says young adults went out on Fridays; only 25.9 percent of adults 18 to 49 watched TV on one 2016 Friday night. Families with children 6 to 14 are a different unit. Broadcast networks retreating from Friday leaves less competition for the household screen. This is an inference from the cited items, not a measured fact. <span class="src">E2 section 3.1 items 11 and 12.</span></li>
+<li><strong>School-week rhythm.</strong> Assumption, not sourced: Friday is the last school day for most US households, so the household can sit for a full block without a school morning next. The demand smoke test (D-009) and the week 4 return rate (D-013) are where this assumption gets tested.</li>
+<li><strong>Lead-in effects survive only inside one sitting.</strong> A single night with all four slots in one sitting keeps that effect. Spreading slots across nights would lose it. <span class="src">Webster 2006, E2 section 2.10 item 3; scorecard row 7.</span></li>
+</ol>
+<h3>Risk on Friday</h3>
+<p>The late 1990s decline of the Friday broadcast block is attributed in part to Friday social outings among tweens and teens. The block answers this with an on-demand encore all weekend, so a 13-year-old who is out on Friday can still watch with the household on Saturday. The household return rate counts any play inside the encore window as a return. <span class="src">E2 section 2.1 item 19, secondary source.</span></p>
+<h3>Runner-up: Saturday</h3>
+<p>Saturday was the night of the 1990s cable kids' block, built on the bet that children 6 to 14 were too young to be out and too old to be in bed early. That premise fits the Stay-Up Kid. It loses to Friday for three reasons. First, the premise rests on the stay-up-late feeling, which the scorecard drops for v1 (row 10). Second, the parent persona's family sitcom memory is a Friday memory, and the family sitcom is the Anchor slot. Third, the public broadcaster's pattern already trains families to expect Friday premieres and weekend encores. Saturday stays in the design as the first encore night. <span class="src">E2 section 2.2 items 1 and 3, secondary source.</span></p>
+<p><strong>Sunday</strong> is noted and rejected. A kids' network used Sunday night as a tween destination. Sunday leads into a school morning for both generations, and the encore window would collapse to one day.</p>
+<h3>What the fixed time means on an owned site</h3>
+<p>On demand dilutes the fixed time (scorecard row 7, reproducibility 70). So the fixed time does three narrow jobs at full-episode stage. The premiere unlocks at that clock time and not before. The Listing email lands the morning of the fixed night with the clock time in the subject. The listings grid prints the clock time once, at the Sign-On cell. Nothing else depends on the hour.</p>
+
+<h2>3. Slot architecture <span class="tag">[SC-3, Adapt]</span></h2>
+<p>Four slots, in a fixed order, in one sitting. The labels are glossary terms and do not change. Total full-episode block: about 74 minutes of shows plus up to 8 minutes of connective tissue. Total trailer-stage block: about 6 minutes of trailers plus about 2 minutes of wrap. Both fit one sitting for a 6-year-old.</p>
+<div class="wrap"><table>
+<tr><th>Field</th><th>1. Anchor</th><th>2. Hangout</th><th>3. Wildcard</th><th>4. Lights Out</th></tr>
+<tr><td>Format</td><td>Multi-generation family sitcom</td><td>Tween and teen ensemble comedy</td><td>Sketch, variety, or odd animated comedy. Two or three segments per episode.</td><td>Mild spooky anthology. One story per episode, a different corner of the town each week.</td></tr>
+<tr><td>Full-episode run time</td><td>22 minutes</td><td>22 minutes</td><td>12 minutes</td><td>18 minutes</td></tr>
+<tr><td>v1 trailer length</td><td>90 seconds</td><td>90 seconds</td><td>60 to 75 seconds</td><td>90 to 120 seconds</td></tr>
+<tr><td>Tone band</td><td>Warm and fast. The whole house is in on the joke.</td><td>Quick, loud, loyal. Friends against the afternoon.</td><td>Silly, absurd, structure-breaking.</td><td>Hush, then relief. A little scared, then a laugh.</td></tr>
+<tr><td>Age lean</td><td>Both generations, tilting to the parent</td><td>10 to 14. Watchable by 6 to 9.</td><td>6 to 9 for the first laugh. The parent for the logic underneath.</td><td>10 to 14. Safe for 6 to 9 by design.</td></tr>
+<tr><td>Lamp color</td><td>Warm amber</td><td>A string of small multicolor bulbs along the railing</td><td>Flickers through three colors and settles on one at random each week</td><td>The lamp stays off. The lantern lights.</td></tr>
+</table></div>
+
+<div class="slots">
+<div class="card"><h4>Slot 1. Anchor</h4>
+<p><strong>Must give the parent.</strong> One laugh per scene at the parent's own life: the house, the job, the group chat, the school form, written without contempt. A parent character who is competent and still funny.</p>
+<p><strong>Must give the child.</strong> A kid character who is right at least once per episode and wins on their own logic. A running bit the child can repeat at school.</p>
+<p><strong>Rule.</strong> Nobody on screen is the fool for a full episode.</p>
+<p class="src"><strong>Must-nots that bite hardest.</strong> Soft 2 (child sarcasm to a parent lands as affection). Soft 5 (screen time inside the story is neutral, never a "kids these days" punchline). Soft 6 (no family shape is a joke). Soft 7 (ordinary food, no diet talk). Hard 8 (no real-world hate, politics, or religion as a target).</p></div>
+<div class="card"><h4>Slot 2. Hangout</h4>
+<p><strong>Must give the parent.</strong> Recognition of their own tween years through situation, never through a reference to any 1990s show. One adult character who is neither clueless nor the enemy.</p>
+<p><strong>Must give the child.</strong> Characters to talk about at school. A group the child would want to join. One running bit per episode.</p>
+<p><strong>Rule.</strong> Competence humor: these kids are good at something odd.</p>
+<p class="src"><strong>Must-nots that bite hardest.</strong> Hard 1 (romance stops at a first crush or a hand hold). Hard 5 (no bullying that the story rewards or leaves unanswered). Soft 3 (body jokes stay at gross, never shame). Soft 2.</p></div>
+<div class="card"><h4>Slot 3. Wildcard</h4>
+<p><strong>Must give the parent.</strong> One bit that is clever on a second viewing. A premise that escalates by rule.</p>
+<p><strong>Must give the child.</strong> Physical and visual comedy. Repetition with variation. Something to imitate in the living room.</p>
+<p><strong>Rule.</strong> The one slot allowed to break its own frame.</p>
+<p class="src"><strong>Must-nots that bite hardest.</strong> Hard 12 (parody targets are generic types, never a named show). Hard 3 (no substitute words that read as profanity). Hard 8. Soft 8 (no sudden loud effect above the dialogue peak). Soft 9 (no strobe faster than 3 flashes per second).</p></div>
+<div class="card"><h4>Slot 4. Lights Out</h4>
+<p><strong>Must give the parent.</strong> The campfire-story pleasure: a twist the parent sees coming and enjoys anyway. A last line worth repeating.</p>
+<p><strong>Must give the child.</strong> The reward slot. Permission to be scared with a parent in the room. The safe landing every time.</p>
+<p><strong>Rule.</strong> The scare is always a misunderstanding, a prank, a creature that turns out to be shy, or a rule the characters got wrong. The landing is visible before the end.</p>
+<p class="src"><strong>Must-nots that bite hardest.</strong> Hard 7 (no gore, no jump scares with real threat, no possession, no self-harm). Hard 6 (an adult or an older sibling is always reachable in the story). Hard 2. Soft 1 (the scare resolves with safety and humor before the end). Soft 8 and Soft 9.</p></div>
+</div>
+
+<h3>Slot order rule</h3>
+<p>The order never changes: Anchor, Hangout, Wildcard, Lights Out. The order is the lead-in. The broadest show carries the household in. The scare comes last so the lamp-off ritual has meaning and so a 6-year-old who is done can leave before it. The label "Lights Out" stays. The stay-up-late framing is dropped from all v1 copy [SC-10 dropped]. No page, bumper, email, or host line says "stay up," "bedtime," or "past your bedtime."</p>
+<h3>The single lead show case</h3>
+<p>The gap memo requires a wrapper that works with one lead show and scales to four. It does. If only the Anchor has full episodes, the block runs Anchor full episode, Hangout trailer, Wildcard short, Lights Out trailer, under the same porch wrap. The grid marks the three others "coming to this slot." The slot order and the lamp ritual do not change.</p>
+
+<h2>4. Connective tissue at trailer stage</h2>
+
+<h3>4.1 The host <span class="tag">[SC-8, Test]</span></h3>
+<p>One adult host who keeps the porch. The host is an original character with a light persona, not a broad one. Working role name: the Porch Host. The character's name and casting come in Phase 4 with the slate. The host is not a cast member of any show. The host lives on the porch and treats each show as a house on the street.</p>
+<h4>Seven rules that make the host work with no child on camera and no child data</h4>
+<ol>
+<li>The host addresses the household in the second person plural. "All of you." Never "kids." Never a child by name.</li>
+<li>No child appears on the porch. No viewer video, mail, drawing, or name is ever read or shown. [SC-11 dropped.]</li>
+<li>Every host line is a recorded wrap. No live segment. No chat. No poll. No "tell us." The host never asks a question that needs an answer online (Standards hard 10).</li>
+<li>The host may ask a question the household answers out loud in the room. That is a ritual, not participation. It generates no data.</li>
+<li>The host never enters a show's story. The host does not appear inside any episode or trailer.</li>
+<li>Performance. A human performer triggers counsel gate CG-04 (talent agreement). An AI-assisted host under D-014 triggers counsel gate CG-03, which blocks public release until disclosure is signed off. The host design does not depend on which path the owner picks.</li>
+<li>Test status. Hosts are a Test mechanic (scorecard row 8, mixed evidence). At trailer stage the site records Sign-On plays against trailer plays. If households skip the Sign-On at a high rate, the full-episode stage cuts the host to bumpers only. See section 9.</li>
+</ol>
+<h4>What the host does at trailer stage</h4>
+<ul>
+<li><strong>The Sign-On.</strong> One recorded wrap of about 30 seconds on the fixed night row of the grid. The lamp clicks on. The host pulls the card from the mailbox and reads the four shows, one line each, in slot order. The host opens the screen door.</li>
+<li><strong>The Porch Intro.</strong> One 8-second bumper per show (section 4.3). The host says the show's name and one line.</li>
+<li><strong>The Host's Note.</strong> A mid-week page and parent email (the Listing), text with an optional 20-second clip. It carries the week's conversation prompt and next Friday's card. It is parent-facing and lives outside any made-for-kids surface.</li>
+</ul>
+
+<h3>4.2 The home base <span class="tag">[SC-2, Adapt]</span></h3>
+<p>A front porch at dusk. The porch is a threshold, the place a family gathers before going in. It is not a couch, a bed, a stage, a desk, or any seating object. The scorecard flags expression risk on this row because the mechanic is known through one old block's prop. The porch shares nothing with it.</p>
+
+<figure>
+<svg viewBox="0 0 640 420" role="img" aria-labelledby="porch-title porch-desc" xmlns="http://www.w3.org/2000/svg">
+  <title id="porch-title">The home base porch, line drawing</title>
+  <desc id="porch-desc">A front porch seen from the walk at blue hour: three steps, a left railing with spindles, a green screen door on a spring, a curtained window glowing warm, a hanging brass lamp with a pull chain and bead, a tin mailbox with its red flag up, a hand-lettered card, a milk crate on its side, and a doormat with the brand word. A streetlamp and a low town sit beyond.</desc>
+  <!-- sky and horizon -->
+  <rect x="0" y="0" width="640" height="300" fill="var(--sky)"/>
+  <rect x="0" y="300" width="640" height="120" fill="var(--bg)"/>
+  <g stroke="var(--night)" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- town silhouette beyond -->
+    <path d="M0 300 H40 V286 H62 V296 H84 V282 H98 V300 H580 V290 H596 V300 H640"/>
+    <!-- distant streetlamp -->
+    <path d="M608 300 V232 H600"/>
+    <rect x="594" y="222" width="12" height="10" rx="2"/>
+    <!-- one lit far window -->
+    <rect x="46" y="289" width="6" height="6" fill="var(--glow)" stroke="none"/>
+  </g>
+  <g stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <!-- porch ceiling, posts and floor -->
+    <path d="M120 78 H560"/>
+    <path d="M120 78 V262"/>
+    <path d="M560 78 V262"/>
+    <path d="M100 262 H580"/>
+    <path d="M100 262 V270 H580 V262"/>
+    <!-- steps, three, center front -->
+    <path d="M220 270 V296 H340 V270"/>
+    <path d="M208 296 V322 H352 V296"/>
+    <path d="M196 322 V348 H364 V322"/>
+    <!-- railing, left side only, with turned spindles -->
+    <path d="M120 196 H222"/>
+    <path d="M222 196 V262"/>
+    <path d="M140 200 V262 M160 200 V262 M180 200 V262 M200 200 V262"/>
+    <circle cx="140" cy="222" r="3"/><circle cx="160" cy="222" r="3"/><circle cx="180" cy="222" r="3"/><circle cx="200" cy="222" r="3"/>
+    <!-- window, left of door, curtain drawn, warm light -->
+    <rect x="250" y="120" width="76" height="82" fill="var(--glow-soft)"/>
+    <path d="M250 161 H326 M288 120 V202"/>
+    <path d="M254 124 Q262 160 254 198 M322 124 Q314 160 322 198"/>
+    <!-- screen door, center right, on a spring, solid door open behind -->
+    <rect x="410" y="104" width="84" height="158" fill="none" stroke="var(--door)" stroke-width="3"/>
+    <path d="M410 104 L398 112 V262" stroke="var(--door)" stroke-width="3"/>
+    <path d="M418 112 H486 V254 H418 Z" stroke="var(--door)"/>
+    <path d="M418 160 H486 M452 112 V254" stroke="var(--door)"/>
+    <path d="M426 128 L478 246 M478 128 L426 246" stroke="var(--door)" stroke-width="1" stroke-dasharray="2 4"/>
+    <circle cx="480" cy="186" r="3" fill="currentColor"/>
+    <path d="M494 118 q10 4 0 8 q10 4 0 8 q10 4 0 8" stroke-width="1.5"/>
+    <!-- hanging brass lamp with pull chain and bead -->
+    <path d="M362 78 V96"/>
+    <path d="M346 96 H378 L390 126 H334 Z" fill="var(--glow-soft)"/>
+    <circle cx="362" cy="134" r="8" fill="var(--glow)" stroke="none"/>
+    <path d="M362 126 V178"/>
+    <circle cx="362" cy="182" r="4" fill="currentColor"/>
+    <!-- moths -->
+    <path d="M382 110 q-4 -6 0 -8 q4 2 0 8 M340 140 q-4 -6 0 -8 q4 2 0 8" stroke-width="1.5"/>
+    <path d="M386 104 q-6 -4 -8 0 q2 4 8 0 q6 -4 8 0 q-2 4 -8 0" stroke-width="1.5" fill="currentColor"/>
+    <!-- mailbox on post at top of steps, red flag up -->
+    <path d="M356 262 V224"/>
+    <path d="M336 224 H376 V206 A10 10 0 0 0 366 196 H346 A10 10 0 0 0 336 206 Z"/>
+    <path d="M346 224 V208" stroke-width="1"/>
+    <path d="M376 210 V184" stroke="var(--flag)" stroke-width="3"/>
+    <rect x="376" y="184" width="10" height="14" fill="var(--flag)" stroke="none"/>
+    <!-- milk crate on its side, top step, left -->
+    <rect x="140" y="288" width="44" height="34"/>
+    <path d="M154 288 V322 M170 288 V322 M140 300 H184 M140 311 H184" stroke-width="1"/>
+    <!-- jar of pencils and small radio on the crate -->
+    <path d="M148 288 V276 H160 V288 M150 276 L146 268 M154 276 L154 266 M158 276 L161 268" stroke-width="1.5"/>
+    <rect x="166" y="278" width="16" height="10" stroke-width="1.5"/>
+    <path d="M178 278 L184 270" stroke-width="1.5"/>
+    <!-- hand-lettered card leaning on the crate -->
+    <path d="M190 322 L194 296 L226 300 L222 326 Z" fill="var(--card)"/>
+    <path d="M198 305 H218 M197 311 H217 M196 317 H216" stroke-width="1"/>
+    <!-- doormat with the brand word -->
+    <rect x="400" y="248" width="104" height="14" fill="var(--table-head)"/>
+    <text x="452" y="259" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="700" fill="currentColor" stroke="none">[NAME]</text>
+  </g>
+  <!-- key numbers -->
+  <g font-family="system-ui,sans-serif" font-size="11" font-weight="700" fill="var(--accent)">
+    <text x="392" y="140">1</text>
+    <text x="304" y="112">2</text>
+    <text x="500" y="100">3</text>
+    <text x="388" y="232">4</text>
+    <text x="228" y="332">5</text>
+    <text x="128" y="284">6</text>
+    <text x="508" y="272">7</text>
+    <text x="110" y="190">8</text>
+    <text x="372" y="358">9</text>
+    <text x="612" y="216">10</text>
+  </g>
+</svg>
+<figcaption>The home base, drawn from the description below. Original drawing. Key:</figcaption>
+<ul class="key">
+<li><b>1</b> Brass lamp, pull chain, bead, the Moth on the shade</li>
+<li><b>2</b> Curtained window, lit from inside</li>
+<li><b>3</b> Screen door on a spring, solid door open behind</li>
+<li><b>4</b> Tin mailbox, red flag up</li>
+<li><b>5</b> Hand-lettered card</li>
+<li><b>6</b> Milk crate on its side, radio, jar of pencils</li>
+<li><b>7</b> Coir doormat with the brand word</li>
+<li><b>8</b> Railing with turned spindles, left side only</li>
+<li><b>9</b> Three steps</li>
+<li><b>10</b> Streetlamp and the town beyond</li>
+</ul>
+</figure>
+
+<h4>Description for an artist</h4>
+<ul>
+<li><strong>Camera.</strong> Seen from the front walk, slightly low, so the porch floor is at chest height. Blue hour. The sky is deep blue with one streak of orange at the bottom.</li>
+<li><strong>Structure.</strong> A wooden porch, three steps up. A railing with turned spindles runs along the left side only. The right side is open. The porch ceiling is painted pale blue.</li>
+<li><strong>Door.</strong> A screen door, center right, on a visible spring. Behind it a solid door stands open, so the screen door is the only thing between the porch and the inside. The screen door is painted one saturated color. Default: deep green. The brand agent may change it.</li>
+<li><strong>Window.</strong> Left of the door. A curtain is drawn. Warm light glows through it. The shows live "inside." The audience never sees inside from the porch.</li>
+<li><strong>Lamp.</strong> A brass lamp with a frosted glass shade hangs from the ceiling on a short chain, above and left of the door. A pull chain with a wooden bead hangs from it. This lamp is the block's visual identity. On means the block is live.</li>
+<li><strong>Mailbox.</strong> A tin mailbox on the post at the top of the steps, with a red flag. The flag is up when a new card is inside. The host pulls the week's card from it.</li>
+<li><strong>Card.</strong> A hand-lettered index card with the four shows in order. It is the same card that appears printed in the ritual kit.</li>
+<li><strong>Crate.</strong> A wooden milk crate on the top step, on its side, holding a small radio, a jar of pencils, and a stack of cards. The host sets things on it. Nobody sits on it.</li>
+<li><strong>Doormat.</strong> Coir. The brand word woven in. Placeholder until Fork D.</li>
+<li><strong>Moths.</strong> Small moths drift toward the lamp. One is drawn rounder and fuzzier than the rest and always lands on the shade. This is the Moth, the block's animated ident figure. The Moth has no lines at v1. It reacts. It is not a co-host.</li>
+<li><strong>Beyond.</strong> The dark street, one streetlamp, and the low silhouette of the block's town, where all four shows are set. A few windows are lit. During Lights Out, one window that was dark is now lit.</li>
+<li><strong>Lights Out state.</strong> The lamp is off. The host holds a hand-crank lantern with a green glass. The curtain glow drops to a faint line. The Moth sleeps on the shade. The streetlamp hums.</li>
+<li><strong>Palette.</strong> Night blue, warm amber, the door color, and the red of the mailbox flag. Nothing orange except the sky streak.</li>
+</ul>
+<p><strong>Dependency on the brand.</strong> The porch concept was designed under the codename. It works under any name because the object is the lamp and the threshold, not the word "porch." If Fork D produces a name that fights the image, the fallback is the same threshold logic with a different object: a garage with the door half up and a work light on a hook. The lamp, the card, the mailbox, and the Moth transfer unchanged.</p>
+
+<h3>4.3 Bumpers <span class="tag">[SC-4, Adapt]</span></h3>
+<p>Two lengths. Both original. Both silent about any child.</p>
+<div class="slots">
+<div class="card"><h4>The Click, 3 seconds</h4>
+<ol>
+<li>Black. The pull-chain click.</li>
+<li>The lamp comes on, framed tight on the shade. Four notes.</li>
+<li>The <code>[NAME]</code> word appears on the doormat below the frame. Cut.</li>
+</ol>
+<p class="src">Used out of every slot, on the Sign-Off, and as the pre-roll on any mirrored video platform clip.</p></div>
+<div class="card"><h4>The Porch Intro, 8 seconds</h4>
+<ol>
+<li>The porch at blue hour, wide. The Moth drifts in.</li>
+<li>The pull-chain click. The lamp comes on in the slot's color. Four notes.</li>
+<li>The mailbox flag drops. The slot label appears on the mailbox in hand lettering.</li>
+<li>The host, in frame from the shoulders up, says the show's name and one line.</li>
+<li>The screen door swings open toward camera. Cut to the show.</li>
+</ol>
+<p class="src">Used into every slot. Lamp color by slot is in the section 3 table.</p></div>
+</div>
+
+<h3>4.4 Sonic ID <span class="tag">[SC-6, Adapt]</span></h3>
+<p>A click, then four notes. The click is a real pull-chain sound, recorded, not synthesized. The four notes are played on one plucked instrument with a soft attack (nylon-string guitar or kalimba). The figure rises and ends unresolved on the way in. It resolves on the way out. No lyric at v1. The known example from the old blocks is a jingle with a lyric; a wordless figure shares nothing with it. Compose once. Total length under 2 seconds.</p>
+<div class="wrap"><table>
+<tr><th>Variant</th><th>Shape</th><th>Cue point</th></tr>
+<tr><td>In</td><td>Rising four notes, unresolved</td><td>The Sign-On when the lamp comes on. Into each slot, inside the Porch Intro.</td></tr>
+<tr><td>Out</td><td>Same four notes, last note resolved down</td><td>Out of each slot, inside the Click.</td></tr>
+<tr><td>Lights Out</td><td>Same notes, slowed, an octave lower, ending on the click of the lamp going off</td><td>Into slot 4.</td></tr>
+<tr><td>Sign-off</td><td>The out variant, then the lamp click, then silence</td><td>After the host's goodnight.</td></tr>
+<tr><td>Printed</td><td>A drawing of the lamp with four dots under it</td><td>The ritual kit card. A parent who hums it is the whole point.</td></tr>
+</table></div>
+<p class="src">Sound rule: the click and the four notes never exceed the dialogue peak (Standards soft 8).</p>
+
+<h3>4.5 How these appear on the trailer site</h3>
+<ul>
+<li>The grid is the home page. The Friday row is highlighted. Its four cells are the four slots in order, marked First to Last. A fifth thin cell at the start of the row is the Sign-On.</li>
+<li>Pressing the Sign-On plays the host's 30-second wrap, then lands on the first slot cell.</li>
+<li>Pressing a slot cell plays, in one continuous player: the 8-second Porch Intro, the trailer, the 3-second Click. The parent-only vote appears after the Click, never over the trailer.</li>
+<li>The porch is the player's background frame. The video sits inside the "window" of the porch art when the page is wide, and full-bleed when narrow.</li>
+<li>The Host's Note has its own row in the grid on a mid-week day and is also sent as the Listing email.</li>
+<li>The ritual kit is a printable single page linked from the Thursday cell.</li>
+<li>No page carries comments, chat, a child login, or personalized ads. Every page states that the account holder is a parent. The site is <code>noindex</code> until CG-02 and CG-03 clear.</li>
+</ul>
+
+<h2>5. Connective tissue at full-episode stage</h2>
+
+<h3>5.1 Interstitials <span class="tag">[SC-4, Adapt]</span></h3>
+<p>Six recurring formats. Each is short, cheap, and produced from a template. Each runs at the porch. None involves a child on camera or any viewer submission.</p>
+<div class="wrap"><table>
+<tr><th>Interstitial</th><th>Length</th><th>Where</th><th>What happens</th></tr>
+<tr><td>1. The Sign-On</td><td>About 45 seconds</td><td>Opens the block</td><td>Lamp on. The host reads the card, one line per show. The screen door opens into the Anchor.</td></tr>
+<tr><td>2. The Screen Door</td><td>About 20 seconds</td><td>Between slots</td><td>The host opens the screen door and we hear the first line of the next show through it before we cut. A pure handoff.</td></tr>
+<tr><td>3. Porch Games</td><td>About 60 seconds</td><td>Between Hangout and Wildcard</td><td>A game the household plays in the room with no equipment and no prize. Freeze when the lamp flickers. Say the next show's name in a whisper, then a shout. Guess which color Wildcard will land on. Nothing is sent anywhere. A ritual, not participation [SC-11 dropped].</td></tr>
+<tr><td>4. The Moth Short</td><td>30 to 45 seconds</td><td>Before Wildcard, or filler on the encore</td><td>Silent comedy with the Moth and the lamp. Can be mirrored on a video platform as a standalone clip.</td></tr>
+<tr><td>5. The Lantern</td><td>About 20 seconds</td><td>Before Lights Out</td><td>The host turns the lamp off, lights the lantern, and says one line about tonight's story. The 6 to 9 household gets a clear exit cue here.</td></tr>
+<tr><td>6. The After Porch</td><td>About 60 seconds</td><td>Closes the block</td><td>Lamp back on. The host asks the week's one question (Standards soft 4), says goodnight, and puts next week's card in the mailbox with the flag up. The Next Week's Light tease, 15 seconds, sits inside this segment.</td></tr>
+</table></div>
+
+<h3>5.2 Crossover rules <span class="tag">[SC-9, Test]</span></h3>
+<p>Crossovers are a Test mechanic. They need multiple shows with shared talent and carry high effort in crossover weeks. These rules keep them rare and safe.</p>
+<div class="slots">
+<div class="card"><h4>When a crossover is allowed</h4>
+<ol>
+<li>Only after each show involved has played a full season of its own episodes on the block.</li>
+<li>Only inside a stunt week. Never in an ordinary week.</li>
+<li>At most two crossovers per season across the whole block.</li>
+<li>Both showrunners sign the crossover page. The character keeps the rules of its home show in the visiting show.</li>
+<li>All four shows are set in the same town. Setting may cross freely at any time: a street, a shop, a school, a weather event. A character crossing is what these rules govern.</li>
+</ol></div>
+<div class="card"><h4>What never crosses</h4>
+<ol>
+<li>Lights Out characters and creatures never enter Anchor, Hangout, or Wildcard. The scare stays in slot 4 so the first three slots stay fear-free for a 6-year-old. Characters from the first three slots may appear in a Lights Out story, because the safe landing rule applies there.</li>
+<li>The host never enters any show's story. The Moth may appear as a silent background gag in any show's bumper, never inside an episode.</li>
+<li>Wildcard sketch performers never play their sketch characters inside Anchor or Hangout plots.</li>
+<li>No sponsor, product, or label crosses into any story (Standards hard 9).</li>
+<li>No character from any existing show, ever (Standards hard 12).</li>
+</ol></div>
+</div>
+<p><strong>Measurement.</strong> A crossover week is compared with the ordinary week before it on household return and slot completion. If two crossovers show no lift, the mechanic drops to setting-only.</p>
+
+<h3>5.3 Seasonal stunts <span class="tag">[SC-5, Adapt]</span></h3>
+<p>Four per season. Each changes the block for one night. Each is a structure with a new theme every year, so expression risk stays low.</p>
+<div class="wrap"><table>
+<tr><th>Stunt</th><th>When in the season</th><th>What changes</th></tr>
+<tr><td>Lamp On</td><td>Season premiere</td><td>All four shows premiere. The Sign-On runs long, about 3 minutes, and the host walks the street and points at each show's house. The ritual kit ships a "welcome mat" edition with a four-week card the family fills in. Under D-017 this stunt absorbs the bible's option B: at full-episode stage the shows can premiere one per fixed night in slot order across the Lamp On window, with the close-up box, a still, a logline, and the premiere marker holding each unpremiered slot.</td></tr>
+<tr><td>The Long Dusk</td><td>Autumn</td><td>Lights Out runs a double, two stories. Each of the other three shows plays an episode set at night in the town. The lamp is off for the whole block and the lantern carries every interstitial. Every scare still lands safe (Standards soft 1).</td></tr>
+<tr><td>Snow Night</td><td>Midwinter</td><td>One snow day hits the whole town. All four shows play a snow-day episode. A setting crossover, not a character crossover, so it is allowed for every show at any age of the slate. The porch is snowed in. The Moth wears a scarf.</td></tr>
+<tr><td>Whole Street Night</td><td>Season finale</td><td>The one sanctioned character crossover window if the slate qualifies under 5.2. The card has one long line instead of four. The host's After Porch turns the lamp off for the season and says the encore window is open.</td></tr>
+<tr><td>The Rerun Window</td><td>Summer</td><td>The fixed night carries a rerun of the season in an order the host picks. No new production. The Moth Short can mirror on a video platform to keep the discovery feed warm.</td></tr>
+</table></div>
+
+<h3>5.4 Event calendar by phase</h3>
+<p>No dates. No durations. Each phase begins when the one before it closes.</p>
+<div class="wrap"><table>
+<tr><th>Phase</th><th>Block state</th><th>Events</th></tr>
+<tr><td>T1. Trailer launch</td><td>Four trailers live, porch wrap, listings grid</td><td>Lamp On at trailer scale: the Sign-On plus all four trailers on the Friday row (D-017). Votes and sign-ups start collecting on night one.</td></tr>
+<tr><td>T2. Trailer run</td><td>Weekly fixed night with a new wrap each week</td><td>A new Sign-On, a new card, a new Host's Note and Listing each week. Ritual kit weekly. Votes and sign-ups counted against the D-013 lines.</td></tr>
+<tr><td>T3. Develop-further call</td><td>Metrics against the D-013 line</td><td>Shows that pass go to full episodes. Shows that fail stay as trailers or leave the grid.</td></tr>
+<tr><td>F1. Lead show block</td><td>One full show plus three trailers or shorts</td><td>Lamp On for the lead show. Interstitials 1, 2, 5, and 6 live. Host test measured.</td></tr>
+<tr><td>F2. Two to four shows</td><td>Full block</td><td>Interstitials 3 and 4 added. First Long Dusk. First Snow Night.</td></tr>
+<tr><td>F3. First full season</td><td>Full block plus stunts</td><td>Whole Street Night without a character crossover. Rerun Window.</td></tr>
+<tr><td>F4. Second season</td><td>Full block plus stunts plus crossovers if qualified</td><td>First character crossover on Whole Street Night, if the 5.2 rules are met.</td></tr>
+</table></div>
+
+<h2>6. The guide as a format</h2>
+<h3>6.1 What the site is</h3>
+<p>The site is a listings grid in the style of a folded paper guide from the years the parent remembers. Paper stock texture, a tight serif for the listings, a boxed close-up for the featured item, and a channel column on the left. That look is generic to printed listings and is not the expression of any one publication or show. The site never uses the name of any listings magazine.</p>
+<h3>6.2 The channel, honestly</h3>
+<p>There is one channel: <code>[NAME]</code>. The grid does not fake other networks, other channels, or other listings. The left column has one channel row. At trailer stage the Friday row holds the Sign-On cell and four slot cells, marked First to Last, with no clock time. At full-episode stage the top row has the seven weekdays and the other six days carry three kinds of item and nothing else.</p>
+<div class="wrap"><table>
+<tr><th>Day</th><th>Cell</th><th>Content</th><th>Stage</th></tr>
+<tr><td>Friday (fixed night)</td><td>Sign-On, Anchor, Hangout, Wildcard, Lights Out</td><td>The premiere. Trailer at v1. Full episode later.</td><td>Both</td></tr>
+<tr><td>Saturday</td><td>Encore</td><td>The same block again, on demand. Counts as a return.</td><td>Both</td></tr>
+<tr><td>Sunday</td><td>Encore</td><td>Same. Last encore cell.</td><td>Both</td></tr>
+<tr><td>Monday</td><td>Rerun</td><td>Any past block or trailer, on demand. At v1 the four trailers.</td><td>Both</td></tr>
+<tr><td>Tuesday</td><td>Rerun and the Moth Short</td><td>Rerun cell, plus one Moth Short at full-episode stage.</td><td>Full</td></tr>
+<tr><td>Wednesday</td><td>The Host's Note</td><td>Text and optional clip. Conversation prompt. Next week's card.</td><td>Both</td></tr>
+<tr><td>Thursday</td><td>Ritual kit</td><td>Printable one page for tomorrow night.</td><td>Both</td></tr>
+</table></div>
+<p class="src">Grid header placeholder until the brand agent writes it: "One channel. One night. The rest of the week is the porch light left on."</p>
+<h3>6.3 Guide conventions that become navigation</h3>
+<ul>
+<li><strong>Premiere marker.</strong> A small filled circle before a show name means "premieres tonight." Printed guides used symbols for new episodes. This is a generic convention.</li>
+<li><strong>Close-up box.</strong> One boxed cell per week carries a still, a two-line description, and the show's slot. At v1 it rotates through the four shows. It is the only editorial voice on the grid besides the host.</li>
+<li><strong>The card.</strong> The four-line hand-lettered card is the same object on the porch, in the kit, and in the email. Pressing it on the site expands the fixed night row.</li>
+<li><strong>Off-air honesty.</strong> Empty cells stay empty. They print a light dotted rule and nothing else. No fake late-night movies, no fake infomercials.</li>
+<li><strong>Clock.</strong> At full-episode stage the fixed night row prints <code>PREMIERE_TIME</code> once, at the Sign-On cell. Other cells print "any time." At trailer stage no clock prints.</li>
+</ul>
+<h3>6.4 What the guide never does</h3>
+<p>No comments. No child login. No personalized ads. No autoplay across days. No infinite scroll. The grid ends at Thursday. The only calls to action on any page are aimed at the parent: Save the night (sign up for the Listing), print the kit, and the vote (I'd watch this, Not for us). Every page states that the account holder is a parent.</p>
+
+<h2>7. Family ritual</h2>
+<p>One household, invented for this page. The Amadi-Kowalczyk household: one parent, Rosa, and two children, Tomasz, age 7, and Ify, age 12. Any resemblance to a real family is accidental. Rosa is the account holder. The site never learns Tomasz or Ify exist.</p>
+<div class="slots">
+<div class="card"><h4>Trailer stage (v1)</h4>
+<p><strong>Before.</strong> Wednesday, the Host's Note lands in Rosa's email with the four-line card, one question, and which show the host is featuring this Friday. It is the only reminder. Thursday, Rosa opens the ritual kit from the Thursday cell: the card with a box to tick per show, a snack card (popcorn in a mixing bowl), and the question. Ify tapes the card to the fridge. Friday morning, the Listing lands.</p>
+<p><strong>During.</strong> After dinner, Rosa opens <code>[NAME]</code> in the living room TV browser. One channel. Friday is full. Tomasz presses the Sign-On. The pull chain clicks. The lamp comes on. Four notes. The host reads the card. The screen door opens. The family watches the four trailers in slot order, each inside its Porch Intro and its Click. After each Click, the vote appears, addressed to Rosa: "Parents: would your house watch this?" Tomasz and Ify argue. Rosa holds the remote and taps what the house decides. One tap. No name. The whole sitting is short.</p>
+<p><strong>After.</strong> The Sign-Off gives the question: "Which house on that street would you knock on first?" They answer out loud. Ify says Lights Out. Tomasz says Wildcard. Rosa says the Anchor and gets booed. Rosa signs up for the Listing with her email. Saturday, Ify's friend missed Friday, so that household watches the encore cell. It counts as a return. Wednesday, the note. The ritual restarts.</p></div>
+<div class="card"><h4>Full-episode stage</h4>
+<p><strong>Before.</strong> Wednesday, the note: the card, the question, and a still from the close-up box. Thursday, the kit. Ify ticks the show she is waiting for. Tomasz draws the lamp with four dots under it, which is the sonic ID printed as a doodle. Friday morning, the Listing with <code>PREMIERE_TIME</code>. Friday dinner is whatever it is. The snack waits for the Anchor credits.</p>
+<p><strong>During.</strong> The Sign-On. Anchor, and Rosa laughs first; Tomasz laughs at the kid who turns out to be right. The Screen Door into Hangout, and Ify sits up as the multicolor bulbs come on along the railing. Porch Games: freeze when the lamp flickers. Tomasz cheats. Nobody sends anything anywhere. The Moth Short. Wildcard, and the lamp lands on a color; Tomasz repeats the bit for the rest of the night. The Lantern: the lamp goes off. Rosa asks Tomasz if he is in or out. He is in, on her lap. Lights Out. The hush. The scare. The safe landing. The laugh. The lamp comes back on.</p>
+<p><strong>After.</strong> The After Porch question. The family talks, then everybody moves. Rosa taps "we watched" on the grid, the strongest return signal the site ever gets from this household. The host puts next week's card in the mailbox. The flag goes up. Saturday and Sunday, the encore cells hold the block for any household that missed Friday. Wednesday, the note. The card. Again.</p></div>
+</div>
+<h4>What the ritual never includes</h4>
+<ul>
+<li>A child login, a child name, a child photo, a child comment, or a child vote.</li>
+<li>A platform notification. The only reminder is the parent email.</li>
+<li>A "stay up late" or "past your bedtime" line anywhere.</li>
+<li>A prize, a contest, a mail-in, or a submission. Porch Games stay in the room.</li>
+<li>Any set, prop, song, catchphrase, or character from any existing show.</li>
+</ul>
+<div class="wrap"><table>
+<tr><th>Object</th><th>Where it lives</th><th>Job</th></tr>
+<tr><td>The card</td><td>Porch mailbox, kit, email, grid</td><td>The same four lines everywhere. The family's checklist.</td></tr>
+<tr><td>The lamp</td><td>Porch, bumpers, kit doodle</td><td>On means live. Off means Lights Out.</td></tr>
+<tr><td>The four notes</td><td>Sign-On, bumpers, Sign-Off, kit doodle</td><td>The thing a parent hums on Thursday.</td></tr>
+<tr><td>The question</td><td>After Porch, note, kit</td><td>The one thing to talk about after (Standards soft 4).</td></tr>
+<tr><td>The snack card</td><td>Kit</td><td>Ordinary food. No diet talk (Standards soft 7).</td></tr>
+<tr><td>The "we watched" tap</td><td>Grid, full-episode stage</td><td>The household return signal. Parent only.</td></tr>
+</table></div>
+
+<h2>8. Trailer format spec</h2>
+<p>Each of the four v1 trailers is a teaser with plot, dialogue, and a hook. It is not a sizzle reel. It plays like the first three minutes of an episode cut down to 90 seconds. The Wildcard trailer compresses each beat proportionally to 60 to 75 seconds. The Lights Out trailer may extend the turn and the button to reach 120 seconds.</p>
+<div class="wrap"><table>
+<tr><th>Beat</th><th>Seconds</th><th>What it does</th><th>Rule</th></tr>
+<tr><td>1. Cold open beat</td><td>0 to 12</td><td>One joke or one image from the middle of the story, no context. Ends on a laugh or a gasp.</td><td>No title, no brand, no music bed. Dialogue only. The viewer must want to know what they walked into.</td></tr>
+<tr><td>2. World beat</td><td>12 to 30</td><td>Where we are and who lives here. The show's engine in one visual. The rule of the world in one line.</td><td>The town is named. The house or the place is shown. No narration.</td></tr>
+<tr><td>3. Character beat</td><td>30 to 55</td><td>Two or three characters talking, each with a clear want. Contains the parent-laugh line and the child-laugh line.</td><td>Every line is a character speaking to another character. No text cards.</td></tr>
+<tr><td>4. Turn</td><td>55 to 75</td><td>The complication. The question the trailer will not answer.</td><td>Must be statable in one sentence by a viewer.</td></tr>
+<tr><td>5. Button</td><td>75 to 85</td><td>The last joke. A callback to the cold open.</td><td>The cold open now makes sense. That is the reward for watching to the end.</td></tr>
+<tr><td>6. Title card</td><td>85 to 90</td><td>Show title. Slot label. "Premieres Friday on <code>[NAME]</code>." Small line: "The account holder is a parent."</td><td>No call to action aimed at a child. No "subscribe." No "comment."</td></tr>
+</table></div>
+<p>The site wraps the file with the 8-second Porch Intro before and the 3-second Click after. The trailer file itself contains neither, so it can be mirrored on a video platform with the Click as pre-roll.</p>
+<h3>What makes a trailer feel like you want more</h3>
+<ol>
+<li>An unanswered question. The turn asks it. Nothing answers it.</li>
+<li>A character with a clear want, stated in dialogue, that the viewer can root for in 20 seconds.</li>
+<li>Rhythm. Setup, setup, payoff. The button pays off the cold open. A viewer feels the shape close and wants another one.</li>
+<li>Dialogue, not narration. People talking to each other is the show. Narration is a sales pitch.</li>
+<li>One specific world detail that could belong to no other show: an object, a rule, a place. Specificity reads as depth.</li>
+<li>Restraint. The trailer shows one story, not the whole season. Montage kills want.</li>
+</ol>
+<h3>Five tests every trailer must pass</h3>
+<div class="wrap"><table>
+<tr><th>Test</th><th>Pass condition</th></tr>
+<tr><td>1. The Question test</td><td>Three people who have never seen the show each write the unanswered question in one sentence. All three write the same question.</td></tr>
+<tr><td>2. The Two-Laugh test</td><td>Name the line a 35-year-old laughs at that a 6-year-old does not need. Name the moment a 6-year-old laughs at on sight. Both exist. Neither depends on the other.</td></tr>
+<tr><td>3. The Cold test</td><td>Play the first 12 seconds to someone with no title, no brand, and no context. They ask "what is this?" in a good way. If they ask it in a bored way, cut a new cold open.</td></tr>
+<tr><td>4. The Dialogue test</td><td>At least 60 percent of running time is a character speaking to another character on screen. Count it with a stopwatch.</td></tr>
+<tr><td>5. The Standards test</td><td>The <code>standards</code> agent returns PASS with zero FAIL and zero WARN. The title card carries no child call to action. Nothing in the trailer copies the expression of any existing show.</td></tr>
+</table></div>
+<div class="rec"><strong>A trailer that fails any test is recut. It does not go on the grid.</strong></div>
+
+<h2>9. Measurement hooks</h2>
+<p>Every metric is per household or per anonymous session. No child data. The parent is the only account holder. The site records events server-side in D1 through the Hono worker. Counsel gate CG-02 reviews the event list before public launch.</p>
+<h3>Per trailer</h3>
+<div class="wrap"><table>
+<tr><th>Event</th><th>Definition</th></tr>
+<tr><td><code>play</code></td><td>The player reaches 10 seconds of the trailer file, past the cold open. Presses that stop before 10 seconds are counted separately as <code>bounce</code>.</td></tr>
+<tr><td><code>q25</code>, <code>q50</code>, <code>q75</code></td><td>The player reaches 25, 50, and 75 percent of the trailer file.</td></tr>
+<tr><td><code>complete</code></td><td>The player reaches the last frame of the title card, 100 percent.</td></tr>
+<tr><td>completion rate</td><td><code>complete</code> divided by <code>play</code>. This is the D-013 completion number.</td></tr>
+<tr><td><code>vote_watch</code>, <code>vote_skip</code></td><td>A single tap after the Click. Parent-facing copy: "Parents: would your house watch this?" Two buttons: "I'd watch this" and "Not for us." One vote per session per trailer. The vote stores no personal data.</td></tr>
+<tr><td>vote ratio</td><td><code>vote_watch</code> divided by <code>vote_skip</code>. This is the D-013 ratio.</td></tr>
+<tr><td><code>signup</code></td><td>A parent enters an email on the Listing sign-up. Stored with a consent timestamp and the statement that the account holder is a parent.</td></tr>
+<tr><td>signup source</td><td>Which cell the parent was on when they signed up: Sign-On, a slot, the note, or the kit.</td></tr>
+</table></div>
+<h3>Per block night</h3>
+<div class="wrap"><table>
+<tr><th>Event</th><th>Definition</th></tr>
+<tr><td><code>signon_play</code></td><td>The Sign-On plays past 10 seconds. Compared with slot plays to measure the host (scorecard row 8, Test).</td></tr>
+<tr><td>order adherence</td><td>Share of sessions that play the four slots in slot order. Tests the four-slot lead-in claim (scorecard row 3).</td></tr>
+<tr><td><code>encore_play</code></td><td>Any play inside the Saturday or Sunday encore cells.</td></tr>
+<tr><td>household return</td><td>A signed-up household that plays any slot on the fixed night or an encore cell in week N and again in week N plus 1. The week 4 return rate is the Phase 5 primary metric.</td></tr>
+<tr><td><code>we_watched</code></td><td>An optional parent tap on the After Porch at full-episode stage. A stronger return signal than a play.</td></tr>
+</table></div>
+<h3>The develop-further line (D-013)</h3>
+<p>A show develops further only if all three hold.</p>
+<ol>
+<li><strong>Overall floor:</strong> at least 500 parent sign-ups from organic and low-cost traffic (D-009 carried into D-013).</li>
+<li><strong>Per show:</strong> trailer completion rate at or above 40 percent.</li>
+<li><strong>Per show:</strong> vote ratio at or above 3 to 1 in favor.</li>
+</ol>
+<p>A show that misses line 2 or 3 stays as a trailer on the grid or leaves it. A block that misses line 1 pivots or stops per D-009.</p>
+
+<h2>10. Decisions logged</h2>
+<div class="verdict">
+  <div class="card go"><div class="label">D-013</div><div class="big">v1 is the trailer site</div><p>The Phase 5 scope is a retro listings grid for the block. Each of the four shows opens to a watchable trailer, a parent vote, and a parent sign-up. Metrics per trailer: plays, completion, votes, sign-ups. No child data. No comments. The develop-further line above is the D-013 line.</p></div>
+  <div class="card go"><div class="label">D-017</div><div class="big">All four trailers live from launch</div><p>The bible offered two cadences. Option A: all four live from launch. Option B: one premieres per Friday in slot order. The Orchestrator chose A. The demand test compares four shows against each other, so week 1 visitors must be able to compare. The fixed night still carries a new wrap and the Listing email each week.</p></div>
+  <div class="card warn"><div class="label">Where option B lives now</div><div class="big">The Lamp On stunt</div><p>Option B is not lost. It becomes the full-episode premiere stunt in section 5.3: the Lamp On window can premiere shows one per Friday in slot order, with the close-up box, a still, a logline, and the premiere marker holding each unpremiered slot. Fork D (the brand name) stays open. The site uses Streetlights as a provisional constant under CG-01.</p></div>
+</div>
+
+<h2>Appendix A. Mechanic to scorecard trace</h2>
+<div class="wrap"><table>
+<tr><th>Mechanic used here</th><th>Scorecard row and call</th><th>Where it appears</th></tr>
+<tr><td>Fixed night</td><td>1, <span class="pill p-go">Reproduce</span></td><td>Section 2</td></tr>
+<tr><td>Home base set</td><td>2, <span class="pill p-warn">Adapt</span></td><td>Section 4.2</td></tr>
+<tr><td>Four slots</td><td>3, <span class="pill p-warn">Adapt</span></td><td>Section 3</td></tr>
+<tr><td>Interstitials and bumpers</td><td>4, <span class="pill p-warn">Adapt</span></td><td>Sections 4.3 and 5.1</td></tr>
+<tr><td>Seasonal stunts</td><td>5, <span class="pill p-warn">Adapt</span></td><td>Section 5.3</td></tr>
+<tr><td>Sonic ID</td><td>6, <span class="pill p-warn">Adapt</span></td><td>Section 4.4</td></tr>
+<tr><td>Fixed time</td><td>7, <span class="pill p-warn">Adapt</span></td><td>Section 2, <code>PREMIERE_TIME</code></td></tr>
+<tr><td>Shared hosts</td><td>8, <span class="pill p-warn">Test</span></td><td>Section 4.1, measured in section 9</td></tr>
+<tr><td>Crossover events</td><td>9, <span class="pill p-warn">Test</span></td><td>Section 5.2, gated to phase F4</td></tr>
+<tr><td>Stay up late feeling</td><td>10, <span class="pill p-kill">Drop for v1</span></td><td>Not used. The label "Lights Out" stays. The framing does not.</td></tr>
+<tr><td>Viewer participation</td><td>11, <span class="pill p-kill">Drop for v1</span></td><td>Not used. Porch Games generate no data. The parent vote is a measurement, not participation.</td></tr>
+</table></div>
+
+<h2>Appendix B. Original expression checklist</h2>
+<p>Every named element below is new to this bible. None is taken from any existing show, block, or publication.</p>
+<ul>
+<li>The porch, the lamp, the pull chain, the mailbox with the red flag, the hand-lettered card, the milk crate, the screen door, the lantern.</li>
+<li>The Porch Host (role, unnamed until Phase 4).</li>
+<li>The Moth.</li>
+<li>The Click, the Porch Intro, the Sign-On, the Screen Door, Porch Games, the Moth Short, the Lantern, the After Porch.</li>
+<li>Lamp On, the Long Dusk, Snow Night, Whole Street Night, the Rerun Window.</li>
+<li>Click and four notes.</li>
+<li>All copy lines on this page are placeholders for the brand agent and are original.</li>
+</ul>
+
+<h2>Appendix C. Open items for other agents</h2>
+<ol>
+<li><strong>Brand agent (Phase 2):</strong> confirm the porch image survives the name, or trigger the garage fallback in 4.2. Write the grid header copy.</li>
+<li><strong>Showrunner (Phase 4):</strong> name and cast the Porch Host. Set the town name shared by all four shows.</li>
+<li><strong>Compliance gate:</strong> review the event list in section 9 under CG-02. Confirm the parent vote copy is not a child call to action.</li>
+<li><strong>Product builder (Phase 5):</strong> <code>PREMIERE_TIME</code> and <code>[NAME]</code> are config constants. One channel. The Friday row at v1 uses ordinals, not clock times.</li>
+</ol>
+
+<footer>Project Porchlight. Phase 3 block bible. Codename only. This document names no existing block, show, jingle, or catchphrase. Old blocks appear only as analysis, cited by evidence file item. Every set, character, sound, and line is original expression. The brand name is open at Fork D.</footer>
+</main>
+</body>
+</html>

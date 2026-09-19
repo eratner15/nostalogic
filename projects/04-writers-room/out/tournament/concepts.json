@@ -1,7 +1,8 @@
 [
   {
     "id": "A1",
-    "slot": "Anchor",
+    "slot": "A",
+    "slotName": "Anchor",
     "title": "Stop Fourteen",
     "logline": "Three generations of the Okonkwo-Reyes family live in the only house in town whose front porch is a legal city bus stop, and the whole town waits there.",
     "engineYields100": true,
@@ -10,7 +11,8 @@
   },
   {
     "id": "A2",
-    "slot": "Anchor",
+    "slot": "A",
+    "slotName": "Anchor",
     "title": "Kitchen Court",
     "logline": "In the Delacroix-Huang house every family dispute goes to trial at the kitchen table, because Mom is a real small claims judge and Grandma is a retired referee.",
     "engineYields100": true,
@@ -19,16 +21,18 @@
   },
   {
     "id": "A3",
-    "slot": "Anchor",
+    "slot": "A",
+    "slotName": "Anchor",
     "title": "Shift Change",
-    "logline": "With Mom on night shift at the hospital and Dad on morning radio, the three Abernathy kids live under three different governments every day, and Nana runs the biggest one.",
+    "logline": "With Mom on night shift at the hospital and Dad on morning radio, the three Abernathy kids live under three governments every day, and Nana runs the biggest one.",
     "engineYields100": true,
     "productionFormat": "live action, one set",
     "ipRiskNote": "Could be mistaken for a generic working-family sitcom. The three-government structure, the traffic-report device, and the backdated-rules grandmother belong to no existing show."
   },
   {
     "id": "A4",
-    "slot": "Anchor",
+    "slot": "A",
+    "slotName": "Anchor",
     "title": "Lot One",
     "logline": "The Farrow-Batiste family bought the model home of a subdivision that never got built, and now they live alone on a street with forty mailboxes and one house.",
     "engineYields100": true,
@@ -37,7 +41,8 @@
   },
   {
     "id": "A5",
-    "slot": "Anchor",
+    "slot": "A",
+    "slotName": "Anchor",
     "title": "Revised Edition",
     "logline": "When two families merge into one house, Grandpa Ray, a retired appliance-manual writer, writes the operating manual for the new family and updates it every week.",
     "engineYields100": true,
@@ -46,7 +51,8 @@
   },
   {
     "id": "H1",
-    "slot": "Hangout",
+    "slot": "H",
+    "slotName": "Hangout",
     "title": "Unclaimed",
     "logline": "Five seventh graders inherit the school lost and found and run it like a detective agency, because every lost thing has a story and someone who wants it back.",
     "engineYields100": true,
@@ -55,7 +61,8 @@
   },
   {
     "id": "H2",
-    "slot": "Hangout",
+    "slot": "H",
+    "slotName": "Hangout",
     "title": "Long Route",
     "logline": "Six kids at the far end of the county's last long school bus route spend 48 minutes together twice a day, and that bus is where everything happens.",
     "engineYields100": true,
@@ -64,7 +71,8 @@
   },
   {
     "id": "H3",
-    "slot": "Hangout",
+    "slot": "H",
+    "slotName": "Hangout",
     "title": "Showroom",
     "logline": "When their middle school runs out of room, the whole seventh grade moves into a closed furniture store across the parking lot, and the bedroom section becomes homeroom.",
     "engineYields100": true,
@@ -73,16 +81,18 @@
   },
   {
     "id": "H4",
-    "slot": "Hangout",
+    "slot": "H",
+    "slotName": "Hangout",
     "title": "All Twelve",
-    "logline": "At a school so small that the twelve eighth graders are the entire eighth grade, every kid has to be on every team, in every club, and in every play.",
+    "logline": "At a school so small that twelve kids are the entire eighth grade, every kid has to be on every team, in every club, and in every play.",
     "engineYields100": true,
     "productionFormat": "live action, one set (gym, re-dressed)",
     "ipRiskNote": "Could be mistaken for the small-town school genre. No existing series has the everyone-does-everything roster rule."
   },
   {
     "id": "H5",
-    "slot": "Hangout",
+    "slot": "H",
+    "slotName": "Hangout",
     "title": "Both Ends",
     "logline": "Budget cuts put Hadley Middle School and the Hadley Senior Center in the same building, and the kids and the seniors share the gym, the cafeteria, and the drama.",
     "engineYields100": true,
@@ -91,7 +101,8 @@
   },
   {
     "id": "W1",
-    "slot": "Wildcard",
+    "slot": "W",
+    "slotName": "Wildcard",
     "title": "Minor Matters",
     "logline": "An animated workplace comedy about the Department of Small Things, the town office for the tiniest problems, from a balloon on a wire to a gate squeaking in B-flat.",
     "engineYields100": true,
@@ -100,7 +111,8 @@
   },
   {
     "id": "W2",
-    "slot": "Wildcard",
+    "slot": "W",
+    "slotName": "Wildcard",
     "title": "The Hall of Nearly",
     "logline": "A sketch show in the Museum of Things That Almost Happened, where a night guard and a half-broken animatronic docent tour exhibits of near misses, one sketch per exhibit.",
     "engineYields100": true,
@@ -109,7 +121,8 @@
   },
   {
     "id": "W3",
-    "slot": "Wildcard",
+    "slot": "W",
+    "slotName": "Wildcard",
     "title": "Pigeon Council",
     "logline": "The pigeons of one city block govern themselves through a council that meets on a ledge, and every crumb, statue, and window box is a matter of state.",
     "engineYields100": true,
@@ -118,7 +131,8 @@
   },
   {
     "id": "W4",
-    "slot": "Wildcard",
+    "slot": "W",
+    "slotName": "Wildcard",
     "title": "Suds Night",
     "logline": "A variety show from a 24-hour laundromat, where the night attendant hosts an open mic for whoever waits on a dryer, including puppets, a beatboxer, and the lost socks.",
     "engineYields100": true,
@@ -127,7 +141,8 @@
   },
   {
     "id": "W5",
-    "slot": "Wildcard",
+    "slot": "W",
+    "slotName": "Wildcard",
     "title": "Recent History Society",
     "logline": "A sketch show about a historical reenactment society that only reenacts things that happened last week, in full costume, with total seriousness.",
     "engineYields100": true,
@@ -136,16 +151,18 @@
   },
   {
     "id": "L1",
-    "slot": "Lights Out",
+    "slot": "L",
+    "slotName": "Lights Out",
     "title": "The Night Desk",
-    "logline": "The overnight clerk at a 24-hour hardware store hears the story behind every item that comes back to the returns desk, and every item came back for a spooky reason.",
+    "logline": "The overnight clerk at a 24-hour hardware store hears the story behind every item that comes back to the returns desk, and every return has a spooky reason.",
     "engineYields100": true,
     "productionFormat": "live action, one set (returns desk) with story inserts",
     "ipRiskNote": "Could be mistaken for hosted spooky anthologies as a mechanic. No existing anthology uses a hardware returns desk, and no story crosses into real threat."
   },
   {
     "id": "L2",
-    "slot": "Lights Out",
+    "slot": "L",
+    "slotName": "Lights Out",
     "title": "The Lakeshore Rest",
     "logline": "At a family-run lakeside motel, something odd checks into Room Six every week, and the teen night manager and her grandfather have until checkout to figure out what.",
     "engineYields100": true,
@@ -154,7 +171,8 @@
   },
   {
     "id": "L3",
-    "slot": "Lights Out",
+    "slot": "L",
+    "slotName": "Lights Out",
     "title": "The Late Line",
     "logline": "A late-night radio host takes calls from listeners who saw something strange in town, and each call becomes an animated story that ends safe before midnight.",
     "engineYields100": true,
@@ -163,7 +181,8 @@
   },
   {
     "id": "L4",
-    "slot": "Lights Out",
+    "slot": "L",
+    "slotName": "Lights Out",
     "title": "Wrong Address",
     "logline": "A cheerful delivery driver keeps delivering to the wrong house at night, and every wrong house has something odd behind the door that turns out to be fine.",
     "engineYields100": true,
@@ -172,7 +191,8 @@
   },
   {
     "id": "L5",
-    "slot": "Lights Out",
+    "slot": "L",
+    "slotName": "Lights Out",
     "title": "Local Creatures",
     "logline": "A nature documentary about the mild monsters of one county, narrated by a 13-year-old cryptozoologist and her skeptical little brother, in which every creature turns out to be misunderstood.",
     "engineYields100": true,
