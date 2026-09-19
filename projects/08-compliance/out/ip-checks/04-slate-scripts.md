@@ -23,9 +23,11 @@ Assets under check (base versions only; any `-v2` file is out of scope):
 | A2 | Kitchen Court | CLEAR (one condition) | "Judge Mom" is the name of a live court show (2021, three seasons). Keep it out of every public asset. Internal handle only, or replace with "the Judge." | 5 of 5 met |
 | H2 | Long Route | REVIEW | Four name changes: Frances Dukes (matches actress Jessica Frances Dukes), the Villanueva family with Mateo and Abuela (matches Jane the Virgin), Priya Anand-Coker (contains actress Priya Anand's full name), the twins Beck and Rue (Beck, 12, sits next to Noah Beckett, 12, the lead of the CBBC bus sitcom; Rue, 12, dark-skinned, on an orchard route, echoes the Hunger Games tribute). No prop, set, line, or plot beat must change. | 6 of 6 met |
 | L1 | The Returns Desk | CLEAR (guardrails) | None. | 6 of 6 met, one refined (the shelf keeps items; see L1 item 1) |
-| W5 | Recent History Society | CLEAR (guardrails) | None. Watch item: "Harlan Voss" is a small online persona name. | 5 of 5 met, one refined (the opener; see W5 item 3) |
+| W5 | Recent History Society | CLEAR (guardrails) | None. Watch item: "Harlan Voss" is a small online persona name. | 5 of 5 met |
 
 Four ratings: 3 CLEAR, 1 REVIEW, 0 BLOCK. Nine named elements must change, all in Long Route except the Kitchen Court nickname. Every one is a name. No costume piece, prop, set detail, catchphrase, joke, or plot beat in any of the twelve files was found to copy an existing show.
+
+Status note: D-024 applied the name changes. The section "Re-check after D-024" at the end of this file supersedes the name findings in the table above. The Long Route REVIEW is lifted. Five other names now hold REVIEW; see that section.
 
 ## Method
 
@@ -275,3 +277,114 @@ Internal:
 - `projects/04-writers-room/out/bibles/*.md` section 10 (each show's IP distance statement)
 - `canon/STANDARDS.md` items 12, 13, 14; `canon/CANON.md` section 4
 - `DECISIONS.md` D-015, D-020, D-022, D-023
+
+---
+
+## Re-check after D-024
+
+Agent: compliance-gate. Date: 2026-09-19. Trigger: D-024 applied the name changes proposed above. This section re-checks every replacement name and the new role label, and runs the same full-name search on the thirteen regulars the first pass searched only as a batch (spot checks 15 and 19). Twenty names and one label. This section supersedes the name findings in the summary table.
+
+### Comparison set
+
+Each name was compared against three classes:
+
+1. Real people: performers with a credit list, public figures with press coverage, and active online personas (channels, handles, artist pages, author names).
+2. Television and film characters, any era, with the 1993 to 1998 window read first.
+3. Book characters, including public-domain fiction.
+
+### Method
+
+1. Each full name was web searched as an exact phrase. Where the first pass was ambiguous the name was searched again with "actress OR character" or "actor OR character" (Ines Ruiz, Teddy Vance, Cal Whitlock, Nieves Ruiz).
+2. Every hit was sorted into one of the three classes above or into noise. Noise is a private individual in a people-search listing, a staff directory, a sports roster, or an obituary. Noise does not move a rating.
+3. Four hits were re-searched to confirm the excerpt (Inés Ruiz, Dale Pruitt, Piper Voss, Harlan Voss).
+4. Each REVIEW carries one proposed replacement, searched the same way before it was proposed.
+5. The label "The Judge" was searched as a title and as a role word.
+
+Rating rule. CLEAR: no performer, public figure with press coverage, active persona, or published character shares the exact name. REVIEW: one does, and counsel decides whether the show can carry it. BLOCK: the match is a well-known character or performer whose likeness or story the show could be read to trade on. No name met the BLOCK bar.
+
+Limits. Direct pages on IMDb, Apple Music, and YouTube were blocked by the proxy. Those four hits rest on search excerpts and the linked page titles. Counsel confirms them from the primary pages in the CG-01 pass. No trademark database was reachable.
+
+### Results
+
+| # | Name | Show | Role | Rating | Reason | Source where a hit exists | Proposed replacement |
+|---|---|---|---|---|---|---|---|
+| 1 | Frances Keel | H2 | Driver, regular | CLEAR | Only private professionals (a state program officer, a university events director) and a fan-fiction wiki entry for a "Fran Keel." No performer, no published character. | https://www.njcsit.gov/frances-keel/ (noise) | none |
+| 2 | Hollis Keel | H2 | Grandson, regular | CLEAR | Only people-search listings and obituaries for deceased private individuals. No performer, no character. | https://www.ussearch.com/people-search/hollis-keel/ (noise) | none |
+| 3 | Mateo Arriaga | H2 | Speaker, regular | CLEAR | A software developer and a youth academy soccer player (a minor). Neither is a performer, public figure, or character. No story or likeness link. Counsel notes the minor athlete. | https://prepsoccer.com/player/mateo-arriaga/ (noise) | none |
+| 4 | Priya Coker | H2 | Rulebook author, regular | CLEAR | No exact match. Results are other people named Priya and the designer Tolu Coker, a different name. | none | none |
+| 5 | Dele Oyelaran | H2 | Twin, regular | CLEAR | No exact match. Results are other Oyelarans (an academic, an economist) and other Deles. | none | none |
+| 6 | Tola Oyelaran | H2 | Twin, regular | CLEAR | A memorial page for a private individual (Omotola Oyelaran, 1987 to 2021) and a lecturer's handle (Tolulope Oyelaran). Neither is a performer, public figure, or character. | https://www.forevermissed.com/omotola-oyelaran/ (noise) | none |
+| 7 | "The Judge" (label for Renata Delacroix) | A2 | Role label | CLEAR, one condition | A generic role word. "The Judge" is also a syndicated court show (1986 to 1993) and a 2014 film title. Condition: use it only as a role label inside the show and in canon; never as a segment title, product name, handle, or standalone mark. | https://en.wikipedia.org/wiki/The_Judge_(TV_series) | none |
+| 8 | Renata Delacroix | A2 | Mother, regular | CLEAR | No exact match. Results are unrelated Delacroix entries (René, Henri, Eugène). | none | none |
+| 9 | Wendell Huang | A2 | Father, regular | REVIEW | Exact match to the Chief Financial Officer of Taiwan Semiconductor Manufacturing Company, a public figure with a Bloomberg profile and television appearances. No likeness or story link, and the surname is common, but an exact match to a covered public figure goes to counsel. | https://www.bloomberg.com/profile/person/18242139 | Wendell Liang. Searched: no exact match; results are unrelated Liangs. |
+| 10 | Toni Delacroix | A2 | Grandmother, regular | CLEAR | No exact match. Results are disambiguation pages and unrelated Delacroix entries. | none | none |
+| 11 | Marguerite Salcedo | L1 | Clerk, regular | CLEAR | No exact match. Near names (Margaux Salcedo, a Filipino analyst; Margarita Birriel Salcedo, a professor) are different names and not performers or characters. | none | none |
+| 12 | Ines Ruiz | L1 | Desk kid, 12, regular | REVIEW | Exact match to Inés Ruiz, a Spanish actress with an IMDb page (nm6367957), credited as the young Alma in The Olive Tree (2016) and Wiki Tech España (2008). A young performer's exact name on a 12-year-old regular is the same class of collision as Frances Dukes, at smaller scale. Counsel decides. | https://www.imdb.com/name/nm6367957/ and https://www.themoviedb.org/movie/366505-el-olivo/cast | Nieves Ruiz. Searched with "actress OR character": no exact match; results are actresses surnamed Nieves and the actress Teresa Ruiz, both different names. This change also removes the cross-show duplicate "Ines" (Ines Arriaga, 6, in Long Route). |
+| 13 | Teddy Vance | L1 | Aisle teen, regular | CLEAR | No exact match. Results are other Teddys (90210, EastEnders, Powerless) and other Vances (actor Chris Vance, narrator Simon Vance). | none | none |
+| 14 | Ambrose Quayle | L1 | Customer, recurring | CLEAR | No exact match. Results are unrelated Quayles and a housing charity named for St. Ambrose. | none | none |
+| 15 | Harlan Voss | W5 | Chair, regular | REVIEW | Raised from WATCH. The name is in active use as an entertainment and author brand by at least one persona: a YouTube channel described as "Here to entertain," a YouTube "Topic" channel (auto-generated for distributed audio), an X handle, an Instagram handle (@vosswritess), a Quora profile, a TuneIn stream, and an audiobook author credit. Not a known character or a performer with a public likeness. Counsel decides. | https://www.youtube.com/@HarlanVoss/shorts and https://x.com/TheHarlanVoss and https://www.chirpbooks.com/audiobooks/six-sigma-green-belt-cssgb-certification-by-harlan-voss | Harlan Mabry. Searched: no exact match; results are unrelated Mabrys. Changing the surname clears item 16 as well. |
+| 16 | Piper Voss | W5 | Child lead, 10, regular | REVIEW | Raised from WATCH. Piper Voss is a recording artist who released a sixteen-track album, The Simple Things, on March 14, 2026 (Second Mile Records), listed on Apple Music, Spotify, and Amazon. A working performer with the exact name. Counsel decides. | https://www.amazon.com/Simple-Things-Piper-Voss/dp/B0GSHPVF15 and https://music.apple.com/us/artist/piper-voss/1858556145 | Piper Mabry. Searched: no exact match; one youth sports profile under a different spelling (Mabrey) is noise. |
+| 17 | Imani Beale | W5 | Archivist, regular | CLEAR | No exact match. Nearest is a production assistant with a different name (Beal-Ampah). | none | none |
+| 18 | Dale Pruitt | W5 and H2 | Mail carrier, regular; Route 4 driver | REVIEW | Exact match to a real public figure: Dale Pruitt, a long-serving Alabama high school football coach with a 307 to 152 record, statewide press coverage, an X handle (@CoachDPruitt), and an IMDb entry (nm4549846, a Deadliest Catch credit, which may be a second person of the same name). The first pass read this name as noise; the coverage is wider than a name-generator hit. No likeness or story link. Counsel decides. | https://yellowhammernews.com/the-inspiring-story-of-plainview-head-coach-dale-pruitt-and-former-sec-son-jeremy/ and https://www.imdb.com/name/nm4549846/ | Dale Renfro. Searched twice: only private individuals (an engineer, a cook, two obituaries). No performer or character. The late actor Brad Renfro shares the surname only. |
+| 19 | Lorraine Tulliver | W5 | Costumer, regular | CLEAR | No exact match. "Tulliver" is the family name in The Mill on the Floss (George Eliot, 1860), public domain, with no Lorraine. The surname reads as literary; no rule bars it. | https://www.britannica.com/topic/Tulliver-family | none |
+| 20 | Cal Whitlock | H2 | Ledger keeper, regular | CLEAR, watch | A Twitch handle (cal_whitlock) and a fan-fiction wiki entry for a "Calvin Whitlock." Neither is a published character or a performer with a public likeness. Same class as the first pass's Voss watch item. | https://m.twitch.tv/cal_whitlock | none |
+| 21 | Ines Arriaga, Abuela Arriaga | H2 | Recurring | CLEAR | Covered by the Arriaga surname search (item 3). No character or performer. | none | none, unless the room renames Ines Ruiz; then the duplicate resolves itself |
+
+Totals: 21 items. 16 CLEAR (two with a condition or watch), 5 REVIEW, 0 BLOCK.
+
+### Effect on the show ratings
+
+- Long Route: the REVIEW in the summary table is lifted. All six D-024 replacements are CLEAR. The show holds CLEAR at expression level, with the Dale Pruitt REVIEW shared with Recent History Society (the Route 4 driver in the bible carries the same name).
+- Kitchen Court: CLEAR, with one REVIEW name (Wendell Huang) and the label condition.
+- The Returns Desk: CLEAR, with one REVIEW name (Ines Ruiz) and the three guardrails.
+- Recent History Society: CLEAR, with three REVIEW names (Harlan Voss, Piper Voss, Dale Pruitt) and the two guardrails.
+
+A REVIEW name does not block the script. It blocks the name from any public asset, image prompt, or casting notice until counsel clears it or the room takes the replacement.
+
+### What the room and counsel do next
+
+1. Room: decide, for each of the five REVIEW names, whether to take the proposed replacement or send the name to counsel. The replacements are pre-searched: Wendell Liang, Nieves Ruiz, Harlan Mabry, Piper Mabry, Dale Renfro. Any different pick comes back to this agent for a re-check.
+2. Room: if Ines Ruiz changes, close cross-show note 1 (two characters named Ines).
+3. Orchestrator: log the picks as a decision. If a pick changes canon (the W5 and A2 regulars are in `canon/CANON.md` section 4), that is a canon edit by the Orchestrator.
+4. Counsel (CG-01 pass): confirm from primary pages the four hits the proxy blocked (Inés Ruiz on IMDb, Dale Pruitt on IMDb, Piper Voss on Apple Music, the Harlan Voss YouTube channel).
+5. All: "The Judge" stays a role label only. Never a segment title, product name, handle, or mark.
+
+### Sources for the re-check
+
+Hits and near hits:
+- New Jersey CSIT, Frances Keel (private professional): https://www.njcsit.gov/frances-keel/
+- US Search, Hollis Keel listings (private individuals): https://www.ussearch.com/people-search/hollis-keel/
+- Prep Soccer, Mateo Arriaga (youth player): https://prepsoccer.com/player/mateo-arriaga/
+- ForeverMissed, Omotola Oyelaran memorial (private individual): https://www.forevermissed.com/omotola-oyelaran/
+- Wikipedia, The Judge (TV series): https://en.wikipedia.org/wiki/The_Judge_(TV_series)
+- Bloomberg, Wendell Huang profile: https://www.bloomberg.com/profile/person/18242139
+- TSMC executives page: https://www.tsmc.com/english/aboutTSMC/executives
+- IMDb, Inés Ruiz: https://www.imdb.com/name/nm6367957/
+- TMDB, The Olive Tree (2016) cast: https://www.themoviedb.org/movie/366505-el-olivo/cast
+- YouTube, Harlan Voss channel: https://www.youtube.com/@HarlanVoss/shorts
+- YouTube, Harlan Voss Topic channel: https://www.youtube.com/channel/UCbM9UBfOaMkB4ZXNyGDIaPg
+- X, Harlan Voss: https://x.com/TheHarlanVoss
+- Instagram, Harlan Voss (@vosswritess): https://www.instagram.com/vosswritess/
+- Chirp, audiobook by Harlan Voss: https://www.chirpbooks.com/audiobooks/six-sigma-green-belt-cssgb-certification-by-harlan-voss
+- Amazon, Piper Voss, The Simple Things: https://www.amazon.com/Simple-Things-Piper-Voss/dp/B0GSHPVF15
+- Apple Music, Piper Voss: https://music.apple.com/us/artist/piper-voss/1858556145
+- Spotify, Piper Voss: https://open.spotify.com/artist/7EVigbGmOfB4xEtRLOQnds
+- Yellowhammer News, coach Dale Pruitt: https://yellowhammernews.com/the-inspiring-story-of-plainview-head-coach-dale-pruitt-and-former-sec-son-jeremy/
+- WDEF, Dale Pruitt steps down: https://www.wdef.com/dale-pruitt-steps-down-as-marion-co-football-coach/
+- X, Dale Pruitt (@CoachDPruitt): https://x.com/coachdpruitt
+- IMDb, Dale Pruitt: https://www.imdb.com/name/nm4549846/
+- Britannica, Tulliver family: https://www.britannica.com/topic/Tulliver-family
+- Twitch, cal_whitlock: https://m.twitch.tv/cal_whitlock
+- Arrow Fanon Wiki, Calvin Whitlock (fan fiction): https://arrow-fanon.fandom.com/wiki/Calvin_Whitlock
+
+Replacement screens (no exact match found):
+- "Harlan Mabry": Wikipedia, Mabry (surname): https://en.wikipedia.org/wiki/Mabry
+- "Piper Mabry": Hudl, Piper Mabrey (different spelling, youth sports): https://www.hudl.com/profile/23529317
+- "Dale Renfro": ZoomInfo listing (private individual): https://www.zoominfo.com/p/Dale-Renfro/1126864461
+- "Wendell Liang": Wikipedia, Liang (surname): https://en.wikipedia.org/wiki/Liang_(surname)
+- "Nieves Ruiz": IMDb, Nieves (actress, single name, different person): https://www.imdb.com/name/nm8387992/
+
+Internal:
+- `DECISIONS.md` D-024
+- `projects/04-writers-room/out/bibles/H2-long-route.md` (Dale Pruitt as the Route 4 driver, line 34)
+- `projects/04-writers-room/out/scripts/H2-long-route-character-sheet.md` (the D-024 names as applied)
