@@ -1,6 +1,62 @@
 [
-  {"id":"anchor","slot":1,"title":"Anchor slot","logline":"The winning multi-generation family sitcom takes this slot after the tournament.","blurb":"Placeholder until the writers room names the four shows.","genreLabel":"Comedy","ratingLabel":"Family","runtimeLabel":"30 min","trailerUrl":null,"trailerSeconds":null,"posterHue":28,"status":"trailer","sortOrder":1},
-  {"id":"hangout","slot":2,"title":"Hangout slot","logline":"The winning tween and teen ensemble comedy takes this slot after the tournament.","blurb":"Placeholder until the writers room names the four shows.","genreLabel":"Comedy","ratingLabel":"Family","runtimeLabel":"30 min","trailerUrl":null,"trailerSeconds":null,"posterHue":200,"status":"trailer","sortOrder":2},
-  {"id":"wildcard","slot":3,"title":"Wildcard slot","logline":"The winning sketch, variety, or odd animated comedy takes this slot after the tournament.","blurb":"Placeholder until the writers room names the four shows.","genreLabel":"Variety","ratingLabel":"Family","runtimeLabel":"30 min","trailerUrl":null,"trailerSeconds":null,"posterHue":320,"status":"trailer","sortOrder":3},
-  {"id":"lights-out","slot":4,"title":"Lights Out slot","logline":"The winning mild spooky anthology takes this slot after the tournament.","blurb":"Placeholder until the writers room names the four shows.","genreLabel":"Anthology","ratingLabel":"Family","runtimeLabel":"30 min","trailerUrl":null,"trailerSeconds":null,"posterHue":260,"status":"trailer","sortOrder":4}
+  {
+    "id": "kitchen-court",
+    "slot": 1,
+    "title": "Kitchen Court",
+    "logline": "In the Delacroix-Huang house every family dispute goes to trial at the kitchen table, because Mom is a real small claims judge and Grandma is a retired referee.",
+    "blurb": "Every dispute in this house goes to trial at the kitchen table. Mom presides. Grandma referees. The six-year-old is the bailiff. Verdicts end in dessert.",
+    "genreLabel": "Comedy",
+    "ratingLabel": "Family",
+    "runtimeLabel": "22 min",
+    "trailerUrl": null,
+    "trailerSeconds": 90,
+    "posterHue": 28,
+    "status": "trailer",
+    "sortOrder": 1
+  },
+  {
+    "id": "long-route",
+    "slot": 2,
+    "title": "Long Route",
+    "logline": "Six kids at the far end of the county's last long school bus route spend 48 minutes together twice a day, and that bus is where everything happens.",
+    "blurb": "Six kids, one bus, forty-eight minutes each way. The back row runs a parliament. The driver hears everything. School is the thing that happens between rides.",
+    "genreLabel": "Comedy",
+    "ratingLabel": "Family",
+    "runtimeLabel": "22 min",
+    "trailerUrl": null,
+    "trailerSeconds": 90,
+    "posterHue": 205,
+    "status": "trailer",
+    "sortOrder": 2
+  },
+  {
+    "id": "recent-history-society",
+    "slot": 3,
+    "title": "Recent History Society",
+    "logline": "A sketch show about a historical reenactment society that only reenacts things that happened last week, in full costume, with total seriousness.",
+    "blurb": "A society of reenactors who only reenact last week. Full costume. Total seriousness. A ten-year-old plays the fire hydrant with too much feeling.",
+    "genreLabel": "Variety",
+    "ratingLabel": "Family",
+    "runtimeLabel": "12 min",
+    "trailerUrl": null,
+    "trailerSeconds": 70,
+    "posterHue": 330,
+    "status": "premiere",
+    "sortOrder": 3
+  },
+  {
+    "id": "the-night-desk",
+    "slot": 4,
+    "title": "The Night Desk",
+    "logline": "The overnight clerk at a 24-hour hardware store hears the story behind every item that comes back to the returns desk, and every return has a spooky reason.",
+    "blurb": "After hours at the hardware store, the returns desk takes back the things nobody wants. Some of them hum. Some of them ring. Marguerite needs two receipts.",
+    "genreLabel": "Anthology",
+    "ratingLabel": "Family",
+    "runtimeLabel": "18 min",
+    "trailerUrl": null,
+    "trailerSeconds": 110,
+    "posterHue": 262,
+    "status": "trailer",
+    "sortOrder": 4
+  }
 ]

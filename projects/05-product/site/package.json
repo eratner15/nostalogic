@@ -14,7 +14,8 @@
     "seed:local": "wrangler d1 execute porchlight-guide-db --local --file=./seed/seed.sql --config wrangler.local.toml",
     "seed:remote": "wrangler d1 execute porchlight-guide-db --remote --file=./seed/seed.sql",
     "seed:build": "node scripts/build-seed.mjs",
-    "export:static": "node --import tsx scripts/export-static.mjs"
+    "export:static": "node --import tsx scripts/export-static.mjs",
+    "export:artifact": "node --import tsx scripts/export-artifact.mjs"
   },
   "dependencies": {
     "drizzle-orm": "^0.45.2",
