@@ -56,12 +56,53 @@ Format: date, decision, options, choice, reason. Counsel gates carry the tag `CO
 - Choice: option 2.
 - Reason: Section 3.1 allows the marks only in internal research files. `deliverables/` is not an internal research file. The evidence files keep full titles.
 
+### D-011. 2026-09-19. Fork A decided by the owner: Go, through a trailer demand test
+- Options: go to a demand test, pivot to one show, kill.
+- Choice: go. The owner's words: build a site that looks like an old TV guide, click into a show, watch a trailer or teaser. Develop a show further only if demand proves out.
+- Reason: owner decision. It matches the Phase 1 recommendation with a sharper test object: trailers instead of a bare landing page.
+
+### D-012. 2026-09-19. Fork B decided by the owner: owned site
+- Options: owned site plus video platform channel, FAST partnership, single sponsor, sell to a streamer.
+- Choice: option 1, owned site. The trailer site is the product. A video platform channel can mirror trailers for discovery later.
+- Reason: owner decision. Matches the Phase 1 recommendation.
+
+### D-013. 2026-09-19. Phase 5 v1 scope replaced by the trailer site
+- Options: keep the master prompt v1 scope (landing page, premiere page, ritual kit, parent accounts), or replace it with the owner's trailer site.
+- Choice: replace. v1 is a retro TV guide listing for the block. Each of the four shows opens to a watchable trailer. Metrics per trailer: plays, completion rate, "I would watch this" votes, parent email sign-ups. No child data. No comments. Parent-facing only.
+- Reason: the owner set the definition of done: the site plus watchable videos that have good dialogue, plot, and make a viewer want more. The D-009 thresholds carry over: 500 parent sign-ups is the floor for developing any show further. Per-show develop-further line, proposed: at least 40 percent trailer completion and a vote ratio at or above 3 to 1 in favor.
+- Stack stays fixed: Cloudflare Workers, Hono, TypeScript, D1, Drizzle, wrangler. The site lives in `projects/05-product/site/` so the NostalDamus app is untouched.
+
+### D-014. 2026-09-19. Fork C decided in substance: AI-assisted production for trailers. `COUNSEL_GATE` CG-03 is now TRIGGERED
+- Options: audio with animatics, micro-budget live action, 2D animation, AI-assisted production.
+- Choice: option 4. The owner names Codex for images and video and Opus for multi-style builds. The style reference the owner gave (kengoworks.com) could not be fetched through the research proxy.
+- Consequence: no trailer ships publicly until an attorney signs off on AI-generated performance, voice, or image, and a disclosure policy is written. The site can run privately for the owner and testers before that. The compliance-gate agent holds the register.
+- Reason: owner decision. The gate is binding under Section 3.3.
+
+### D-015. 2026-09-19. Slate selection by tournament
+- Method: the showrunner writes 20 concepts, 5 per slot. Three judge agents score every concept on a fixed rubric (engine, two-generation hook, originality and IP distance, trailer strength, standards fit). Scores aggregate by a script. The top 2 per slot go to a head-to-head. One winner per slot. Only the Orchestrator can override, with a logged reason.
+- Reason: the owner asked for a tournament. A fixed rubric and a script keep it reproducible.
+
+### D-016. 2026-09-19. Census gap closed by the owner
+- The owner supplied ACS 2021 5-year table B11003. Families with own children 6 to 17 only: 19,840,568. Families with children under 6 and 6 to 17: 6,714,759. Families with any own child 6 to 17: 26,555,327. Families with own children under 18: 33,700,465. Share with a child 6 to 17: 78.8 percent.
+- Effect: the households range for a child age 6 to 14 tightens to 18.5 to 26.6 million. The upper bound is now sourced.
+
+### Fork D note. Brand name
+- The brand-strategist shortlist is produced in this session. The site build uses a provisional name as a single config constant. The owner picks at Fork D. CG-01 stays open until counsel clears the pick.
+
+### D-017. 2026-09-19. Trailer release cadence: all four live from launch
+- Options: (A) all four trailers live from launch; (B) one premieres per fixed night in slot order.
+- Choice: A.
+- Reason: the demand test compares four shows against each other. Week 1 visitors must be able to compare. The format-architect's option B becomes the full-episode premiere stunt (Lamp On) instead. The fixed night still carries the wrap and the Listing email.
+
+### D-018. 2026-09-19. Format canon merged
+- The canon proposal in `projects/03-block-format/out/canon-proposal.md` is merged into `canon/CANON.md` sections 2, 2a, and 5, and `canon/GLOSSARY.md`. Item 27 is decided by D-017. Item 15 adds a note: host casting triggers CG-04 (human) or CG-03 (AI-assisted).
+
 ## Open forks
 
-- Fork A (after Phase 1): go, pivot, or kill. Status: presented in `deliverables/01-gap-memo.html` with the D-009 thresholds. Waits on owner.
-- Fork B (after Phase 1): primary distribution path. Status: presented in `deliverables/01-gap-memo.html` with a per-option mechanics survival table. Waits on owner.
-- Fork C (after Phase 3): production format for v0 content. Not open yet.
-- Fork D (end of Phase 2): final brand name. Not open yet.
+- Fork A: decided, Go (D-011).
+- Fork B: decided, owned site (D-012).
+- Fork C: decided in substance, AI-assisted (D-014). CG-03 triggered.
+- Fork D (end of Phase 2): final brand name from the shortlist of 5. Open. Site uses a provisional name.
 - Fork E (end of Phase 4): lead show and slate order. Not open yet.
 - Fork F (end of Phase 6): first two franchise lines. Not open yet.
 
@@ -69,10 +110,10 @@ Format: date, decision, options, choice, reason. Counsel gates carry the tag `CO
 
 | ID | Item | Phase | Status |
 |---|---|---|---|
-| CG-01 `COUNSEL_GATE` | Final brand name and trademark filing | 2 | Open. Not started. |
+| CG-01 `COUNSEL_GATE` | Final brand name and trademark filing | 2 | Open. Shortlist of 5 screened in `projects/02-brand/out/names-5.md`. Recommendation: Streetlights. Counsel runs the direct USPTO search; the proxy blocked it. |
 | CG-02 `COUNSEL_GATE` | Privacy policy, terms, and COPPA compliance design | 5 | Open. Not started. |
-| CG-03 `COUNSEL_GATE` | AI-generated performance, voice, or image in released content | 3 (Fork C) and 5 | Open. Not started. |
-| CG-04 `COUNSEL_GATE` | Talent, writer, or guild-related agreement | 4 | Open. Not started. |
+| CG-03 `COUNSEL_GATE` | AI-generated performance, voice, or image in released content | 3 (Fork C) and 5 | TRIGGERED by D-014. Blocks public release of any trailer. Disclosure policy required. |
+| CG-04 `COUNSEL_GATE` | Talent, writer, or guild-related agreement | 4 | Open. Triggers on host casting or any voice talent for trailers. |
 | CG-05 `COUNSEL_GATE` | Sponsor or licensing contract | 7 | Open. Not started. |
 
 The `compliance-gate` agent keeps the detailed register in `projects/08-compliance/out/gate-register.md`.

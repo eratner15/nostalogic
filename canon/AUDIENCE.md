@@ -11,7 +11,8 @@ The unit of measurement is the household: one parent account plus the people who
 |---|---|---|
 | US families with own children under 18 (2024) | 33.3 million | E1, H3 item 1 (Census FM-1 via FRED) |
 | Children age 6 to 14 (estimate) | 36.9 million | E1, H3 item 4 (Census Vintage 2024, even-spread arithmetic) |
-| Families with at least one child age 6 to 14 (bounded estimate) | 18 to 33 million | E1, section 5.1. Exact count sits in Census ACS table B11003, blocked by the research proxy. Owner lookup resolves it. |
+| Families with any own child age 6 to 17 (ACS 2021 5-year, B11003) | 26.6 million | E1, section 5.1 (owner-supplied table) |
+| Families with at least one child age 6 to 14 (bounded estimate) | 18.5 to 26.6 million | E1, section 5.1 |
 | Parents of children 2 to 12 who co-view | over 90 percent (94 percent for ages 6 to 9; no separate 10 to 12 figure; 13 to 14 not surveyed) | E1, H1 item 4 (Precise TV and Giraffe Insights, 2023 and 2024) |
 | Parents who say kids co-view at least half the time | 73 percent | E1, H1 item 5 (Kids Industries, 5,000 families, 2023) |
 | Daily family co-viewing | 44 percent | E1, H1 item 4 |

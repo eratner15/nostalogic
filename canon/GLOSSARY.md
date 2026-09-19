@@ -39,3 +39,12 @@ One word per concept. Use these words. Do not swap synonyms.
 | Line | One franchise extension category. Examples: books, goods, music, games. |
 | Window | The 1993 to 1998 span of the source nostalgia era. |
 | Owner | Evan Ratner. Decides at forks. |
+| Encore | The Saturday and Sunday on-demand window after the fixed night. A play in it counts as a return. |
+| Card | The hand-lettered four-line listing for one block night. Appears on the porch, in the kit, in the email, and on the grid. |
+| Lamp | The porch lamp. The block's visual identity. On means live. Off means Lights Out. |
+| Sign-On | The host's opening wrap on the fixed night. |
+| Sign-Off | The host's closing wrap, with the question and next week's card. |
+| Grid | The one-channel listings that serve as the site's navigation. |
+| Note | The Host's Note. The mid-week parent email and page. |
+| Porch Host | The working role name for the one adult host. An original character. |
+| Moth | The silent animated ident figure that lands on the lamp. Never inside an episode. |
