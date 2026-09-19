@@ -44,7 +44,7 @@ Palette source and adaptation. The identity brief gives one paper, one ink, one 
 |---|---|---|
 | Paper (light) | #F3ECDD | The tone of sunlit cream piping, a white shirt, the dairy house, morning sky at the horizon. Highlights lean this way, never pure white. |
 | Ink (light) | #1C1A16 | Shadow tone. Shadows are warm dark brown, never blue, never crushed black. |
-| Accent | #C9391E | Brick red. Appears once per frame at most: the rear emergency handle, the mailbox flag, Dele's sneakers, Ines's raincoat is yellow so it does not compete. |
+| Accent | #C9391E | Brick red. Appears once per frame at most: the rear emergency handle, the mailbox flag, Dele's sneakers, Nieves's raincoat is yellow so it does not compete. |
 | On-air glow | #FFC46B | Warm amber. This is the dawn and late-afternoon light itself: on the ridge, on the chrome, on the side of a face. It is never a lamp inside the bus. |
 | Paper (dark) | #15130F | The tone of the pre-dawn sky and the shadow side of the bus barn. |
 | Glow (dark) | #FFD08A | The one sodium light at the barn, the school's lit windows in the afternoon. |
@@ -159,9 +159,9 @@ Turnaround note: front, three-quarter, profile on gray, then the door frame. She
 
 Constant tokens: [ODUM: woman in her 40s, brown skin, brown hair in a low ponytail, tired kind smile, green quilted jacket, plain lanyard with a blank card, clipboard with blank paper, standing on the bus step]
 
-#### Ines Arriaga and Abuela Arriaga, distance only
+#### Nieves Arriaga and Abuela Arriaga, distance only
 
-Ines: a girl of 6, small and solid, round face, huge dark eyes, black hair in two short pigtails, warm medium brown skin, a yellow raincoat, a purple backpack bigger than her torso, on tiptoe at a mailbox with both arms up. Abuela: a woman in her 70s, short and round, silver hair in a low bun, a cardigan over a housedress, warm brown skin, a mug in one hand, on a deep porch. Generate one reference of each at half figure on gray. In the trailer they appear only in the far-end lane wide shot and through the windshield, small in frame. Never generate a close-up of either. Under CG-03 a small figure at distance is still an AI child likeness and is named in the disclosure.
+Nieves: a girl of 6, small and solid, round face, huge dark eyes, black hair in two short pigtails, warm medium brown skin, a yellow raincoat, a purple backpack bigger than her torso, on tiptoe at a mailbox with both arms up. Abuela: a woman in her 70s, short and round, silver hair in a low bun, a cardigan over a housedress, warm brown skin, a mug in one hand, on a deep porch. Generate one reference of each at half figure on gray. In the trailer they appear only in the far-end lane wide shot and through the windshield, small in frame. Never generate a close-up of either. Under CG-03 a small figure at distance is still an AI child likeness and is named in the disclosure.
 
 Constant tokens: [INES: girl of 6, small and solid, two short black pigtails, yellow raincoat, purple backpack bigger than her torso, on tiptoe at a mailbox with both arms up, seen small at a distance] and [ABUELA: woman in her 70s, short and round, silver hair in a low bun, cardigan over a housedress, a mug in one hand, on a farmhouse porch, seen small at a distance]
 
@@ -264,8 +264,8 @@ Music enters at S07, low. Road bed under everything.
 - Motion prompt: The bus moves slowly away down the road. Dust lifts a little behind it. Leaves stir. Camera fixed.
 
 **S08. 00:14.0 to 00:16.0. 2.0 s. LETTERING IN POST (the 12).**
-- Frame: wide exterior. Camera: STATIC. Who: Ines, Abuela, tiny in frame.
-- Action: the bus sits at the top of a long gravel lane, engine running, not moving. At the lane's end a white dairy house with a deep porch. On the porch, Abuela with a mug. At the mailbox, Ines waving with her whole arm.
+- Frame: wide exterior. Camera: STATIC. Who: Nieves, Abuela, tiny in frame.
+- Action: the bus sits at the top of a long gravel lane, engine running, not moving. At the lane's end a white dairy house with a deep porch. On the porch, Abuela with a mug. At the mailbox, Nieves waving with her whole arm.
 - Line: none.
 - Sound: engine idle at a distance, a rooster far off, music low.
 - Mouth: none.
@@ -791,7 +791,7 @@ Two sentences for the About page. Counsel edits and approves before the trailer 
 
 > The Long Route trailer was made with AI-assisted production: every image and every moving picture in it, including the bus, the road, and all of the people on screen, was generated from written descriptions of original characters, and no real person, actor, or place was used as a source or a model. The voices were performed by [hired voice actors / hired voice actors, except the voice of NAME, which was synthesized] and the words were written by people; the finished trailer was edited, mixed, and reviewed by people before it was posted.
 
-Companion log entry for the compliance register (not public): CG-03, Long Route trailer v1. AI-generated elements: all picture, shots S01 to S44, including likenesses of characters written as children (Hollis 13, Mateo 14, Dele 12, Tola 12, Cal 13, Priya 11, Ines 6). Human elements: script, voices (path per section 4), edit, mix, standards review. Tools: [image tool and version], [video tool and version]. Reference sheets and prompts archived at `projects/04-writers-room/out/production/long-route/`.
+Companion log entry for the compliance register (not public): CG-03, Long Route trailer v1. AI-generated elements: all picture, shots S01 to S44, including likenesses of characters written as children (Hollis 13, Mateo 14, Dele 12, Tola 12, Cal 13, Priya 11, Nieves 6). Human elements: script, voices (path per section 4), edit, mix, standards review. Tools: [image tool and version], [video tool and version]. Reference sheets and prompts archived at `projects/04-writers-room/out/production/long-route/`.
 
 ---
 

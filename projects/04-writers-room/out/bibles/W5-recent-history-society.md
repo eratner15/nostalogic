@@ -95,7 +95,7 @@ Every meeting opens the same way. The Commodore rings the bell. He asks: "Who re
 
 Five regulars. Each is original. None resembles a named character from any existing show.
 
-### 3.1 Harlan Voss, 61. The Commodore.
+### 3.1 Harlan Mabry, 61. The Commodore.
 
 - **Who he is.** Founder of the Society. Retired tender of the Kettle Street lift bridge, which is now automatic and which he still visits. He kept the bridge bell and the bridge cap. He gave himself the title Commodore because the bridge was technically a maritime post. He lives with his daughter's family and is Piper's grandfather.
 - **Want.** For last week to be remembered. Underneath: for someone to ask him what he did today, and mean it.
@@ -108,7 +108,7 @@ Five regulars. Each is original. None resembles a named character from any exist
 - **What the parent sees.** A man who retired and built the one room where he still matters. The only person who believes in it completely is ten years old. He knows that. He has decided that is enough, and he is right.
 - **What the kid sees.** The grandpa in the big hat who rings the bell, lets you fall down on purpose, and treats it like it counts.
 
-### 3.2 Piper Voss, 10. Youngest member. Best actor.
+### 3.2 Piper Mabry, 10. Youngest member. Best actor.
 
 - **Who she is.** Harlan's granddaughter. She joined the Society on the first day and has not missed a meeting. She learned the word "process" from a library book about acting and uses it as a weapon. She is the only member who rehearses.
 - **Want.** A lead role. Any lead role. She has played the hydrant, the soup, a puddle, the ice, a pencil mark, and the beep on a voicemail. She has never played a person.
@@ -134,7 +134,7 @@ Five regulars. Each is original. None resembles a named character from any exist
 - **What the parent sees.** The person at every meeting they have ever attended who is right and alone. She is the parent's proxy in the room, and the show is kind to her.
 - **What the kid sees.** The lady with the red card who can stop everything. Kids want that card.
 
-### 3.4 Dale Pruitt, 45. Member. All the horses.
+### 3.4 Dale Renfro, 45. Member. All the horses.
 
 - **Who he is.** The neighborhood mail carrier. He walks every street in Bell Hollow every day, so he is the witness to most of its history and the reason the Society knows anything. He played a horse in the first reenactment because a horse was needed. He has played the horse ever since. There has not always been a horse in the event. There is always a horse in the reenactment.
 - **Want.** To play something other than a horse.
@@ -385,7 +385,7 @@ One line each. Each names the recent event. Seeds 1 to 10 are the Season 1 order
 75. The Band That Turned Left: the school band ended up on the canal path; reenacted with kazoos and one drum.
 76. The Mixed Seed Packets: everyone who planted radishes got sunflowers; the Society schedules a reenactment in eight weeks and cannot, by rule.
 77. The Bridge That Went Up for Nothing: Harlan's old lift bridge rose for a boat that never came; the Society waits with him.
-78. The Missing Cereal Prize: a Voss kitchen mystery; Piper investigates, and the panel rules it "domestic history."
+78. The Missing Cereal Prize: a Mabry kitchen mystery; Piper investigates, and the panel rules it "domestic history."
 79. The Handshake That Lasted Too Long: forty seconds at the market; staged in real time, with narration.
 80. The Goose in the Crosswalk: a goose crossed correctly and waited for the light; Dale petitions and is cast as the crosswalk.
 81. The Printer Jam: the library printer ate an entire report; the printer is played by three members and a scarf.

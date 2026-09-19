@@ -37,7 +37,7 @@ Draw it as one wide stage with the desk at center-right and the front door at fa
 - **The counter.** An L-shaped counter, waist high, yellowed laminate with a chipped front edge and a brass edge strip worn to silver where forty years of elbows rest. The short leg of the L faces the door. The long leg faces the camera. A gooseneck lamp on the long leg is the key light. It is the warmest light in the room.
 - **On the counter.** A domed brass service bell. A spindle spike of receipts. A tape dispenser chained to the counter. Two rubber stamps in a tray: RETURNED, and one Marguerite cut herself that says STORY HEARD. A cardboard box of manila tags on string. A cup of pens, all from other businesses.
 - **The bell.** The service bell sits on the short leg of the L, at the customer's left hand. It is the one item on the desk with no tag and no story, and that matters in Season 1.
-- **The ledger.** A green cloth ledger, Ines's, kept in the drawer under the counter. Columns in her handwriting: ITEM, CLAIM, CLUE, CAUSE. The last column is never blank for long.
+- **The ledger.** A green cloth ledger, Nieves's, kept in the drawer under the counter. Columns in her handwriting: ITEM, CLAIM, CLUE, CAUSE. The last column is never blank for long.
 - **The Shelf of Returned Things.** Behind the counter, floor to ceiling, industrial metal shelving on a pegboard wall. Every item that comes back with a story goes on the shelf with a manila tag in Marguerite's handwriting. Doorbell. Stepladder. Wind chime. Gnome. The shelf is the show's only recurring "creepy" image, and it is a warehouse shelf with paper tags. It grows one item per episode. It is the show's memory.
 - **The ice machine.** Left of the desk, against the wall between the desk and the door. A chest-style commercial ice machine, older than Teddy, with a hand-lettered sign: ICE. HONOR JAR. It drops a load of ice at irregular intervals with a sound like a bucket of gravel on a tin roof. It is mixed at dialogue level, never louder. It is the show's clock, its drum, and Teddy's enemy.
 - **The back room door.** Right of the desk, at the end of the counter. A swinging door with a porthole window and a STAFF sign. Behind it is the loading dock and Dolores Ruiz. The door swings both ways and never latches, so anyone on the dock is one push away.
@@ -52,7 +52,7 @@ Three fixed setups carry ninety percent of every episode.
 
 - **Setup A, the desk two-shot.** From the customer's side, slightly low, wide enough for the counter, the lamp, and the shelf behind. Marguerite frame right, seated. Customer frame left, standing. The item on the counter between them. This is the show.
 - **Setup B, the item close-up.** Straight down on the counter from above the lamp. The item, Marguerite's hands, the tag. The lamp gives it a warm, shadowed look. This is the poster.
-- **Setup C, the reverse.** Over Marguerite's shoulder from behind the desk, showing the customer, the front door, and the window. Ines sits at the far end of the counter in this frame with her ledger. Teddy crosses behind the customer on his way to Aisle 12.
+- **Setup C, the reverse.** Over Marguerite's shoulder from behind the desk, showing the customer, the front door, and the window. Nieves sits at the far end of the counter in this frame with her ledger. Teddy crosses behind the customer on his way to Aisle 12.
 - **Inserts.** The customer's story, shot in the customer's own place. Always night. Always lit by one source: a flashlight, a porch light, a lamp, a phone screen. Handheld or locked off, never fast. The insert is the only place the show leaves the store.
 
 ### The town's night
@@ -78,9 +78,9 @@ Four regulars. One supervising adult who is heard more than seen. No character r
 - **What the parent sees.** The coworker who has seen everything and still cares. The person at every counter they have ever stood at, if that person had been on their side. The parent laughs at the paperwork.
 - **What the kid sees.** An adult who takes a scary story seriously and does not laugh at you for being scared. The safest person in the room, because she is never in a hurry.
 
-### Ines Ruiz, 12. The ledger.
+### Nieves Ruiz, 12. The ledger.
 
-- **Why she is here.** Her mother owns the store and runs the loading dock at night. Ines comes in after dinner, does her homework at the far end of the returns counter, and goes home with her mother at the shift break. She never leaves the desk area. Marguerite is at the desk. Her mother is through one swinging door with the dock intercom on. This is stated on screen in Episode 1 and shown in every episode's button, when Dolores comes through the door to collect her. It is the show's answer to hard rule 6, and it is written into the set.
+- **Why she is here.** Her mother owns the store and runs the loading dock at night. Nieves comes in after dinner, does her homework at the far end of the returns counter, and goes home with her mother at the shift break. She never leaves the desk area. Marguerite is at the desk. Her mother is through one swinging door with the dock intercom on. This is stated on screen in Episode 1 and shown in every episode's button, when Dolores comes through the door to collect her. It is the show's answer to hard rule 6, and it is written into the set.
 - **Want.** One real one. Just one. A haunting nobody can explain, so she can write "real" in the CAUSE column and be right.
 - **Flaw.** She cannot leave anything unexplained. She asks the third question. She solves every one. So she never gets her wish, and she knows it, and she keeps trying.
 - **What she is funny about.** She interrogates grown adults about their garages with total seriousness. She has a clipboard. She reads the fine print on the packaging. She is twelve and she is the most competent person on the show, and Marguerite lets her be.
@@ -96,7 +96,7 @@ Four regulars. One supervising adult who is heard more than seen. No character r
 - **Job.** Night stock. Restocks, sweeps, and fetches whatever Marguerite sends him for. It is always in Aisle 12.
 - **Want.** To reach the end of the shift. That is the whole want. Every night is a mountain.
 - **Flaw.** He jumps at the ice machine. Every time. Including when he is looking straight at it and waiting for it. He knows it is ice. His body has not been told.
-- **What he is funny about.** Brave in speech, not in body. He explains to Ines, calmly, why nothing in the store is scary, while walking backward away from Aisle 12. He is the audience's fear, and the show lets him have it with dignity. He is never humiliated. He is always the first to laugh at himself once the ice settles.
+- **What he is funny about.** Brave in speech, not in body. He explains to Nieves, calmly, why nothing in the store is scary, while walking backward away from Aisle 12. He is the audience's fear, and the show lets him have it with dignity. He is never humiliated. He is always the first to laugh at himself once the ice settles.
 - **How he speaks.** Reassuring himself out loud. Lists. Three lines:
   1. "Aisle 12 is fine. Aisle 12 is paint. Paint doesn't watch you. Paint has never watched anybody."
   2. "I'm not scared of the ice machine. I'm scared of the moment before the ice machine. That's a different thing. That's a scheduling issue."
@@ -119,15 +119,15 @@ Four regulars. One supervising adult who is heard more than seen. No character r
 
 ### Supervising adult: Dolores Ruiz, 41. The dock.
 
-Owner of the store, night manager, Ines's mother. She works the loading dock through the swinging door. She is a voice on the dock intercom and a shadow in the porthole for most of every episode. She comes through the door at the end of every episode to collect Ines, and she has a line every time. She is competent, tired, funny, and completely in charge of her daughter's whereabouts. She is not a regular in the count. She is the show's hard rule 6 in a work apron. Sample line: "Ines. Ledger. Coat. Marguerite, if that gnome faces me one more time I'm charging it rent."
+Owner of the store, night manager, Nieves's mother. She works the loading dock through the swinging door. She is a voice on the dock intercom and a shadow in the porthole for most of every episode. She comes through the door at the end of every episode to collect Nieves, and she has a line every time. She is competent, tired, funny, and completely in charge of her daughter's whereabouts. She is not a regular in the count. She is the show's hard rule 6 in a work apron. Sample line: "Nieves. Ledger. Coat. Marguerite, if that gnome faces me one more time I'm charging it rent."
 
 ### Character rules
 
 1. No regular is ever the fool for a full episode. The customer is scared, but the customer is not stupid. What they saw would have scared anyone.
-2. Marguerite believes. Ines explains. Neither one wins. Both are right. That is the show's argument, and it never resolves.
+2. Marguerite believes. Nieves explains. Neither one wins. Both are right. That is the show's argument, and it never resolves.
 3. Teddy is scared and is never punished for it. The show never lets a customer or a regular mock him past one line, and someone always follows him to Aisle 12.
 4. Mr. Quayle is never the punchline. His returns are.
-5. Ines does not go into the aisles at night alone. If a clue is in an aisle, Teddy or Marguerite walks it with her, and she narrates from the flashlight.
+5. Nieves does not go into the aisles at night alone. If a clue is in an aisle, Teddy or Marguerite walks it with her, and she narrates from the flashlight.
 
 ---
 
@@ -140,11 +140,11 @@ Anthology inside a frame. The frame is the desk. The anthology is the customer's
 | Block | Minutes | What happens | Camera |
 |---|---|---|---|
 | Cold open | 0 to 1 | Door bell. Marguerite, not looking up: "Returns?" The item lands on the counter. The customer makes the claim in one sentence. The item does its one thing, on screen, small. Title. | A, then B |
-| The desk | 1 to 3 | Marguerite takes the story. Story required. Ines opens the ledger and writes ITEM and CLAIM. Teddy is sent to Aisle 12 for something related. | A, C |
+| The desk | 1 to 3 | Marguerite takes the story. Story required. Nieves opens the ledger and writes ITEM and CLAIM. Teddy is sent to Aisle 12 for something related. | A, C |
 | The insert | 3 to 7 | The customer's story as they tell it, played in their space at night. The spooky version. Every fair clue is planted here, in focus, on screen. The audience sees the clue before anyone names it. | Insert |
-| The desk investigates | 7 to 13 | Ines asks three questions. Marguerite believes and fills out the form. Teddy's B-story: his own small scare in the store, which resolves first, with a laugh, so the youngest viewer has seen a safe landing before the main one. Mr. Quayle arrives with a return, and it rhymes with the main story or contradicts it. | A, C, B |
-| The fair reveal | 13 to 16 | Ines names the cause. The insert replays the exact shot, and now the clue is lit. No new information. The customer sees it. The cause is mundane and, more often than not, kind. | Insert replay, then A |
-| The landing and the button | 16 to 18 | The customer goes home lighter. The item goes on the shelf with a tag, or back in the customer's hands. Dolores comes through the door for Ines. Ines writes CAUSE. Marguerite has the last line at the desk. Ice drops. Lamp off. | A, B, C |
+| The desk investigates | 7 to 13 | Nieves asks three questions. Marguerite believes and fills out the form. Teddy's B-story: his own small scare in the store, which resolves first, with a laugh, so the youngest viewer has seen a safe landing before the main one. Mr. Quayle arrives with a return, and it rhymes with the main story or contradicts it. | A, C, B |
+| The fair reveal | 13 to 16 | Nieves names the cause. The insert replays the exact shot, and now the clue is lit. No new information. The customer sees it. The cause is mundane and, more often than not, kind. | Insert replay, then A |
+| The landing and the button | 16 to 18 | The customer goes home lighter. The item goes on the shelf with a tag, or back in the customer's hands. Dolores comes through the door for Nieves. Nieves writes CAUSE. Marguerite has the last line at the desk. Ice drops. Lamp off. | A, B, C |
 
 ### The rules of the scare
 
@@ -189,7 +189,7 @@ A hardware store stocks tens of thousands of items, and any of them can come bac
 
 ## 5. Tone and comedy
 
-**The spine.** Deadpan desk against escalating customer. The customer arrives at a seven and climbs. Marguerite stays at a two. Ines is at a four and rising for a different reason: she is excited. Teddy is at a nine and is not involved.
+**The spine.** Deadpan desk against escalating customer. The customer arrives at a seven and climbs. Marguerite stays at a two. Nieves is at a four and rising for a different reason: she is excited. Teddy is at a nine and is not involved.
 
 **Three rules the room follows.**
 
@@ -205,7 +205,7 @@ A hardware store stocks tens of thousands of items, and any of them can come bac
 - No self-harm, no reference to it, no joke near it.
 - No child in the dark alone. No child in a car, a basement, a shed, or an aisle without an adult reachable in the frame or on the intercom.
 - No cruelty rewarded. Pranks are always by someone who loves the customer, and the prankster is always caught and always sorry, or always thanked.
-- No "kids these days" joke. Ines's phone is a flashlight and a calculator and it is not a punchline.
+- No "kids these days" joke. Nieves's phone is a flashlight and a calculator and it is not a punchline.
 - No real brand, real person, real show, or real block name anywhere in the story.
 
 ---
@@ -214,11 +214,11 @@ A hardware store stocks tens of thousands of items, and any of them can come bac
 
 **The parent laugh.** Procedure. Receipts. The tag with the item number. Marguerite asking whether the ladder is haunted "as purchased." The customer who has the receipt for a different item. The two-receipt rule. The look Marguerite gives a customer who says "I don't have the box." The parent has stood at this counter and has been this customer. Also: Dolores, a working parent whose kid does homework at work, which is a whole parent life in one image.
 
-**The kid thrill.** The object, close up, doing its one thing. The insert, which is the kid's permission to be a little scared with a parent right there. The reveal, which the kid can beat the desk to if they were watching. Teddy at the ice machine. Ines being right.
+**The kid thrill.** The object, close up, doing its one thing. The insert, which is the kid's permission to be a little scared with a parent right there. The reveal, which the kid can beat the desk to if they were watching. Teddy at the ice machine. Nieves being right.
 
 **What the 7-year-old can take.** The object does one thing. The sound is never louder than talking. The thing that made the sound is on screen within ten seconds. Teddy's B-story lands safely before the main story does, so the youngest viewer has a model for "scared, then fine" early in every episode. No face at the window. Dolores comes through the door at the end. If the 7-year-old leaves before the end of the block, they leave with a mop that was a shadow.
 
-**What the 11-year-old wants.** To be scared a little more than the 7-year-old, and the insert delivers it. To solve it before Ines does. To have a character to quote at school: Marguerite's flat lines, Teddy's lists, Ines's threes. To feel that the show trusts them, which it does by never explaining a joke and never saying "it was just a dream."
+**What the 11-year-old wants.** To be scared a little more than the 7-year-old, and the insert delivers it. To solve it before Nieves does. To have a character to quote at school: Marguerite's flat lines, Teddy's lists, Nieves's threes. To feel that the show trusts them, which it does by never explaining a joke and never saying "it was just a dream."
 
 **The talk-after moment (soft rule 4).** Every episode ends with a cause that is a person doing something for someone. The conversation prompt writes itself: who do you think turned the gnome, and why didn't they say so.
 
@@ -226,18 +226,18 @@ A hardware store stocks tens of thousands of items, and any of them can come bac
 
 ## 7. Season 1 arc, ten episodes
 
-**The season question.** The Shelf of Returned Things has one tag with no cause on it. It is the oldest tag on the shelf, in Marguerite's handwriting, from thirty-one years ago, and it is blank. Ines wants to know what it was for. Marguerite will not say. The answer is on the counter the whole time: the service bell, which has rung on its own, once, in the button of every episode, a beat after the ice drops.
+**The season question.** The Shelf of Returned Things has one tag with no cause on it. It is the oldest tag on the shelf, in Marguerite's handwriting, from thirty-one years ago, and it is blank. Nieves wants to know what it was for. Marguerite will not say. The answer is on the counter the whole time: the service bell, which has rung on its own, once, in the button of every episode, a beat after the ice drops.
 
-1. **Two Receipts.** A father returns a doorbell that rings when the porch is empty. Cause: the kid across the street built a science-project transmitter with a range problem. Ines's first solve. Marguerite's first stamp. Dolores through the door. The rules of the desk are set on screen.
-2. **As Installed.** A grandmother returns a stepladder that is one rung taller every morning. Cause: her husband is adding rungs at night so their grandson can reach the treehouse, and did not want the credit. Ines meets her first kindness and hates it.
-3. **Aisle 12.** Teddy's own return: his flashlight, which shows eyes at the end of the paint aisle. Marguerite walks him down. Cause: reflective safety stickers on the top shelf. Ines is not allowed to go, and does the math from the desk. Mr. Quayle returns a rake with a receipt for a hose.
+1. **Two Receipts.** A father returns a doorbell that rings when the porch is empty. Cause: the kid across the street built a science-project transmitter with a range problem. Nieves's first solve. Marguerite's first stamp. Dolores through the door. The rules of the desk are set on screen.
+2. **As Installed.** A grandmother returns a stepladder that is one rung taller every morning. Cause: her husband is adding rungs at night so their grandson can reach the treehouse, and did not want the credit. Nieves meets her first kindness and hates it.
+3. **Aisle 12.** Teddy's own return: his flashlight, which shows eyes at the end of the paint aisle. Marguerite walks him down. Cause: reflective safety stickers on the top shelf. Nieves is not allowed to go, and does the math from the desk. Mr. Quayle returns a rake with a receipt for a hose.
 4. **Still Air.** A night-shift nurse returns a wind chime that chimes with no wind. Cause: a very patient cat on the porch rail. The insert is the show's quietest and the reveal is its sweetest: the cat is waiting for her to come home.
-5. **Not On The Chart.** A couple returns a paint chip that glows after dark. Cause: glow primer, mislabeled, by Teddy, on his first night. Teddy confesses. Marguerite processes him as a return. The blank tag is noticed by Ines for the first time.
+5. **Not On The Chart.** A couple returns a paint chip that glows after dark. Cause: glow primer, mislabeled, by Teddy, on his first night. Teddy confesses. Marguerite processes him as a return. The blank tag is noticed by Nieves for the first time.
 6. **Faces The House.** A widower returns a garden gnome that turns to face his house every night. Cause: the neighbor's kid, every night, on purpose, because the man once said it looked lonely facing the street. Dolores has a line about the gnome. The kid is caught and thanked.
-7. **Wrong Door.** A renter returns a key that opens the wrong door. Cause: it opens every door in the building. It is the landlord's master key, picked up from the mailroom by mistake, and the landlord has been sleeping badly for a week. Ines asks Marguerite about the blank tag directly. Marguerite: "Pending."
-8. **The Hum.** A father returns a light bulb that hums a tune. Cause: the dimmer is picking up the dock intercom, and the tune is Dolores humming while she works. Ines hears her mother in a stranger's ceiling. The one episode where the reveal is in the store.
-9. **Nobody's Mail.** A new homeowner returns a mailbox that gets letters addressed to nobody. Cause: they are for the previous owner's dog, from a pen pal, a kid in another neighborhood who does not know the dog moved. Ines writes back, on the desk's letterhead. The bell rings on its own in the button and, this once, Ines looks at it.
-10. **The Bell.** Mr. Quayle buys something. The store does not know how to process it. While Marguerite finds the form, Ines audits the shelf with her ledger and proves every tag has a cause but one. She proves the bell rings from the ice machine's drop through the counter, every time, all season, and replays it. Marguerite admits the blank tag is the bell: her first return, thirty-one years ago, a customer who said it rang on its own, and she kept it, and left the tag blank because she wanted one to stay a story. Then the bell rings with no ice. Setup C shows Marguerite's knee under the counter. Ines writes CAUSE: MARGUERITE. Marguerite: "Then I'll need two receipts." Ice drops. Lamp off.
+7. **Wrong Door.** A renter returns a key that opens the wrong door. Cause: it opens every door in the building. It is the landlord's master key, picked up from the mailroom by mistake, and the landlord has been sleeping badly for a week. Nieves asks Marguerite about the blank tag directly. Marguerite: "Pending."
+8. **The Hum.** A father returns a light bulb that hums a tune. Cause: the dimmer is picking up the dock intercom, and the tune is Dolores humming while she works. Nieves hears her mother in a stranger's ceiling. The one episode where the reveal is in the store.
+9. **Nobody's Mail.** A new homeowner returns a mailbox that gets letters addressed to nobody. Cause: they are for the previous owner's dog, from a pen pal, a kid in another neighborhood who does not know the dog moved. Nieves writes back, on the desk's letterhead. The bell rings on its own in the button and, this once, Nieves looks at it.
+10. **The Bell.** Mr. Quayle buys something. The store does not know how to process it. While Marguerite finds the form, Nieves audits the shelf with her ledger and proves every tag has a cause but one. She proves the bell rings from the ice machine's drop through the counter, every time, all season, and replays it. Marguerite admits the blank tag is the bell: her first return, thirty-one years ago, a customer who said it rang on its own, and she kept it, and left the tag blank because she wanted one to stay a story. Then the bell rings with no ice. Setup C shows Marguerite's knee under the counter. Nieves writes CAUSE: MARGUERITE. Marguerite: "Then I'll need two receipts." Ice drops. Lamp off.
 
 **Season shape.** The customers are new every week. The desk is the same. The blank tag is the spine. The bell in every button is the season's fair clue, on screen from Episode 1, so the finale does not cheat.
 
@@ -285,7 +285,7 @@ Each line names the returned object and the claimed haunting. The cause is in pa
 36. A clothesline that hangs laundry nobody hung (the neighbor's wash blown over, all the same size).
 37. A wall clock that runs backward (mounted behind a glass shelf; the customer has been reading its reflection).
 38. A paint roller that leaves small handprints on the wall (a toddler, and a roller left within reach).
-39. A sump pump that laughs (air in the check valve; Ines plays it slow and it is a burp).
+39. A sump pump that laughs (air in the check valve; Nieves plays it slow and it is a burp).
 40. A bag of potting soil that grows a plant overnight (a fast sprouter, and a label that says so in tiny type).
 41. A doorknob that is warm every night (the dryer vent runs behind that wall).
 42. A weather vane that always points at the customer's house (it is stuck; the customer moved last month).
@@ -314,7 +314,7 @@ Each line names the returned object and the claimed haunting. The cause is in pa
 65. A tarp that flaps with no wind (the neighbor's dryer vent).
 66. A push broom that sweeps the garage at night (Mr. Quayle's brother-in-law, too embarrassed to say he is helping).
 67. A fence post that walks toward the house each year (frost heave, with a photo from last spring).
-68. A candle that will not stay lit in one room (a draft under one door; Ines proves it with a tissue).
+68. A candle that will not stay lit in one room (a draft under one door; Nieves proves it with a tissue).
 69. A house key that is always warm when found (the customer's kid keeps it with a hand warmer as a hiding game).
 70. A basement light that turns off when spoken to (a sound-activated switch from the previous owner, tripped by a hard T).
 71. A hammer that is in a different room every morning (the customer's father, fixing things at night to feel useful).
@@ -327,7 +327,7 @@ Each line names the returned object and the claimed haunting. The cause is in pa
 78. A plug-in scent that smells like the customer's grandmother's house (it is lilac, and so was her house).
 79. A stud finder that finds a stud in midair (it finds the customer's belt buckle every time).
 80. Bungee cords that stretch overnight (heat in a metal shed).
-81. String lights that blink a pattern (one bad bulb making a rhythm; Ines proves the rhythm spells nothing).
+81. String lights that blink a pattern (one bad bulb making a rhythm; Nieves proves the rhythm spells nothing).
 82. Deck screws that back out overnight (wood expansion; Teddy explains it and is right for the first time).
 83. A birdhouse that whistles (wind through the hole at one angle, shown with a leaf).
 84. A shed door that locks from the inside (the latch drops on a slam; Teddy demonstrates it on the paint closet and is briefly locked in, with Marguerite outside the door the whole time).
@@ -342,9 +342,9 @@ Each line names the returned object and the claimed haunting. The cause is in pa
 93. A pet door that lets in a cat that is not theirs (a stranger's cat, with a whole life, and a collar with a phone number).
 94. A shop vacuum that turns on by itself (a switched outlet tied to the light).
 95. Window film that shows a face at dusk (the customer's own reflection in the tint, at one angle).
-96. A bag of gravel that rearranges into circles (a dog turning before lying down; Ines: "circles are what dogs do").
+96. A bag of gravel that rearranges into circles (a dog turning before lying down; Nieves: "circles are what dogs do").
 97. Fireplace bellows that breathe on their own (a downdraft when the neighbor's furnace kicks on).
-98. A dehumidifier that harmonizes with the fridge (two motors beating against each other; Ines demonstrates with two fans).
+98. A dehumidifier that harmonizes with the fridge (two motors beating against each other; Nieves demonstrates with two fans).
 99. A receipt that lists an item nobody bought (the desk printer double-fed; the ghost is Marguerite's stamp).
 100. Nothing. Mr. Quayle arrives with no item and says the store is haunted by a friendly clerk (Marguerite; he buys a bell).
 
@@ -361,7 +361,7 @@ Walked against `canon/STANDARDS.md`. Showrunner's own read. The `standards` agen
 3. Profanity or substitute words. None. Marguerite's vocabulary is forms. Teddy says "okay." Pass.
 4. Alcohol, tobacco, vaping, drugs, gambling. None. The honor jar is for ice. Pass.
 5. Bullying or humiliation rewarded or unanswered. Teddy's fear is never mocked past one line, and someone always walks the aisle with him. Pranks are by people who love the customer and are always caught. Pass.
-6. Adults who threaten children, or children in unsupervised danger for laughs. Ines is at the desk with Marguerite, one door from her mother, with the intercom on. She never enters an aisle alone. Every episode ends with Dolores collecting her. Seed 84 puts Teddy, 16, behind a latched door with Marguerite outside it and the fix in her hand. Pass.
+6. Adults who threaten children, or children in unsupervised danger for laughs. Nieves is at the desk with Marguerite, one door from her mother, with the intercom on. She never enters an aisle alone. Every episode ends with Dolores collecting her. Seed 84 puts Teddy, 16, behind a latched door with Marguerite outside it and the fix in her hand. Pass.
 7. Horror beyond mild spooky. No gore, no possession, no self-harm, no jump scare with real threat. Nothing supernatural is confirmed. The one-thing rule caps every scare. No face at the window. Pass.
 8. Hate, politics, religion as a joke target. None. Pass.
 9. Product placement without a label. No real brand. Hardison's is fictional. Every item is generic. Pass.
@@ -375,11 +375,11 @@ Walked against `canon/STANDARDS.md`. Showrunner's own read. The `standards` agen
 ### Section 3, soft rules
 
 1. Scares resolve with safety and humor by the end of the segment. Built into the format: the landing block is mandatory, Dolores comes through the door, and Marguerite has the last line. Teddy's B-story lands first. Pass.
-2. Child sarcasm to a parent lands as affection. Ines to Dolores is dry but warm. Ines to Marguerite is a partnership. Pass.
+2. Child sarcasm to a parent lands as affection. Nieves to Dolores is dry but warm. Nieves to Marguerite is a partnership. Pass.
 3. Body jokes at gross, never shame. Seed 39 (the sump pump burp) is gross. No shame jokes anywhere. Pass.
 4. One moment a parent and child can talk about. Every cause is a person doing something for someone. The prompt writes itself. Pass.
-5. Screen time neutral. Ines's phone is a tool. No "kids these days." Pass.
-6. Families vary in shape, no shape is a joke. Ines has one parent on screen. Customers include a widower, a grandmother, a renter, a couple, a nurse. Pass.
+5. Screen time neutral. Nieves's phone is a tool. No "kids these days." Pass.
+6. Families vary in shape, no shape is a joke. Nieves has one parent on screen. Customers include a widower, a grandmother, a renter, a couple, a nurse. Pass.
 7. Ordinary food, no diet talk. Ice, and whatever Dolores brings from the dock. Pass.
 8. Sound levels. The ice machine, the door bell, the service bell, and every insert sound are mixed at or below dialogue peak. Written into the production note. Pass.
 9. Flashing lights. Flashlight sweeps are slow. String lights in seed 81 blink at a rate under three per second and the script says so. No strobe anywhere. Pass.
@@ -402,14 +402,14 @@ Walked against `canon/STANDARDS.md`. Showrunner's own read. The `standards` agen
 
 1. **Nothing is ever haunted.** The show never confirms anything supernatural. Every episode ends with an ordinary cause on screen. Haunted-object shows depend on the object being real. This show depends on it not being.
 2. **The frame is a returns desk with procedure as the joke.** No host, no fire, no chair, no narrator. The story enters as a return with a receipt problem. The Shelf of Returned Things is a warehouse shelf with manila tags. The comedy is forms, stamps, and the two-receipt rule, which no anthology has ever used as its spine.
-3. **The kid solves and the adult believes.** The skeptic-versus-believer pair is inverted by age and never resolves. Ines is twelve and right. Marguerite is sixty-three and believes. Neither converts the other.
+3. **The kid solves and the adult believes.** The skeptic-versus-believer pair is inverted by age and never resolves. Nieves is twelve and right. Marguerite is sixty-three and believes. Neither converts the other.
 4. **One set, one lamp, one window, and the scariest thing on the show is an ice machine.** No creature design, no ghost design, no mascot, no effects. The look is a hardware store at night lit by a gooseneck lamp. It can be confused with nothing.
 5. **The customer is new every week and the reveal is kind.** The cause is a neighbor, a grandparent, a pet, or a kid. The emotional engine is small-town kindness discovered by accident, not fear.
 
 **Three expressive choices that differ from cursed-shop and museum anthologies.** Some haunted-object anthologies run on a cursed antique shop or a museum that returns objects to their owners, where the object carries a real curse and the episode is the price of owning it. The Returns Desk differs on the page in three ways.
 
 1. **The objects are ordinary hardware-store goods.** A doorbell, a stepladder, a bag of rock salt, a plunger. Nothing is an antique, an artifact, or a relic. Nothing has a history older than the receipt. The object came off a shelf in Aisle 12 and is going back on one.
-2. **The desk investigates with receipts and fair clues, not lore.** No ledger of cursed items, no keeper who knows the object's secret, no bargain with the buyer. Ines asks three questions, the clue was on screen in the insert, and the reveal is a replay. The show's authority is a rubber stamp and a twelve-year-old's ledger.
+2. **The desk investigates with receipts and fair clues, not lore.** No ledger of cursed items, no keeper who knows the object's secret, no bargain with the buyer. Nieves asks three questions, the clue was on screen in the insert, and the reveal is a replay. The show's authority is a rubber stamp and a twelve-year-old's ledger.
 3. **Every reveal lands safe and funny.** The cause is a neighbor, a pet, a grandparent, a timer, or a mislabeled can. The customer goes home lighter and gets the second-to-last line. Nobody pays a price. Marguerite gets the last word, and it is a joke about paperwork.
 
 **Name check.** "Hardison's Hardware" is fictional and chosen because it is plain. Before any public asset, counsel checks the store name, the show title, and the character names against live marks and real businesses in the same class (CG-01 process). If any collide, the room renames without changing the design.
@@ -434,7 +434,7 @@ Walked against `canon/STANDARDS.md`. Showrunner's own read. The `standards` agen
 - Insert stills for the world beat: an empty porch at night, a gnome facing a house, a ladder in a yard. No moving people.
 - The shelf: a plate of the Shelf of Returned Things with tags.
 
-**What needs a human.** Every voice. Marguerite, Ines, Teddy, Mr. Quayle, Dolores, and the customer are recorded by human performers. The trailer is dialogue-first by spec (60 percent minimum), so the performances are the trailer. If any AI-generated voice, face, or performance is used anywhere in the trailer, it is logged at CG-03 and disclosed on the asset before release. The recommendation is none. Ines in particular is played by a human, cast under CG-04, and no likeness of any real child is generated for any reason.
+**What needs a human.** Every voice. Marguerite, Nieves, Teddy, Mr. Quayle, Dolores, and the customer are recorded by human performers. The trailer is dialogue-first by spec (60 percent minimum), so the performances are the trailer. If any AI-generated voice, face, or performance is used anywhere in the trailer, it is logged at CG-03 and disclosed on the asset before release. The recommendation is none. Nieves in particular is played by a human, cast under CG-04, and no likeness of any real child is generated for any reason.
 
 **Sound design limits.**
 
@@ -462,7 +462,7 @@ Walked against `canon/STANDARDS.md`. Showrunner's own read. The `standards` agen
 - The 35-year-old's laugh: "I have the receipt. It's for a rake. I feel it's the same spirit." And the STORY HEARD stamp, seen in close-up.
 - The 6-year-old's laugh on sight: Teddy jumps at the ice machine while looking straight at it.
 
-**The safe landing.** Dolores comes through the swinging door and says "Ines. Ledger. Coat." Ines closes the ledger. The customer leaves lighter. The lamp is warm. The door bell rings for an exit, not an entrance.
+**The safe landing.** Dolores comes through the swinging door and says "Nieves. Ledger. Coat." Nieves closes the ledger. The customer leaves lighter. The lamp is warm. The door bell rings for an exit, not an entrance.
 
 ### The six beats
 
@@ -474,30 +474,30 @@ Customer: "When nobody's there."
 The doorbell rings. A modest ding, at dialogue level. Off screen, a box drops. Teddy: "That's fine. That's fine."
 Cut.
 
-**2. World (12 to 30 seconds).** Setup C, wide. The store at night, the window, the reversed gold letters, the shelf behind the desk with its tags. Marguerite writes a tag. Ines at the far end of the counter with the ledger. The Flats outside the window: streetlight, spur.
+**2. World (12 to 30 seconds).** Setup C, wide. The store at night, the window, the reversed gold letters, the shelf behind the desk with its tags. Marguerite writes a tag. Nieves at the far end of the counter with the ledger. The Flats outside the window: streetlight, spur.
 Marguerite: "Hardison's. Open all night. Everything comes back eventually."
-Ines: "Item. Claim. Clue. Cause."
+Nieves: "Item. Claim. Clue. Cause."
 Marguerite: "She has a system."
-Ines: "You have a stamp."
+Nieves: "You have a stamp."
 Close on the STORY HEARD stamp coming down.
 
-**3. Character (30 to 60 seconds).** Setup A. One scene. The customer, a tired father, stands at the counter with the doorbell. Marguerite seated. Ines leans in.
+**3. Character (30 to 60 seconds).** Setup A. One scene. The customer, a tired father, stands at the counter with the doorbell. Marguerite seated. Nieves leans in.
 Customer: "It rang eleven times. I counted. Nobody on the porch. I looked through the peephole. I looked through the window. I looked under the mat."
 Marguerite: "Good. That's thorough."
-Ines: "Three questions. Where's the porch. Where's the street. Who lives across it."
+Nieves: "Three questions. Where's the porch. Where's the street. Who lives across it."
 Customer: "A kid. Why?"
-Ines writes something down.
+Nieves writes something down.
 Marguerite: "Store policy says receipt required. My policy says story required."
 The front door bell. Mr. Quayle enters with a flashlight.
 Mr. Quayle: "I'd like to return this flashlight. It's showing me things."
 Marguerite: "What things?"
 Mr. Quayle: "Mostly the garage. But at night."
-Ines, without looking up: "Cause pending."
+Nieves, without looking up: "Cause pending."
 
-**4. Turn (60 to 85 seconds).** Setup C, then Setup B. Ines walks to the shelf with the ledger. She reads tags. Doorbell, ladder, chime, gnome, key. Every tag has a cause written under the item in Marguerite's hand. She stops at the oldest tag. It is blank.
-Ines: "This one doesn't say."
+**4. Turn (60 to 85 seconds).** Setup C, then Setup B. Nieves walks to the shelf with the ledger. She reads tags. Doorbell, ladder, chime, gnome, key. Every tag has a cause written under the item in Marguerite's hand. She stops at the oldest tag. It is blank.
+Nieves: "This one doesn't say."
 Marguerite: "No."
-Ines: "What was it?"
+Nieves: "What was it?"
 Marguerite: "Pending."
 The ice machine drops. Teddy, in frame, looking straight at it, jumps anyway.
 Teddy: "I saw it. I saw it coming. It doesn't help."
@@ -509,8 +509,8 @@ Marguerite: "Do you have the receipt?"
 Customer: "It's haunted."
 Marguerite: "Then I'll need two receipts."
 Hold on the customer. Hold on Marguerite. She does not explain. The swinging door opens. Dolores, in a work apron.
-Dolores: "Ines. Ledger. Coat."
-Ines closes the ledger. Ice drops. Nobody jumps. Teddy, off: "See. Fine."
+Dolores: "Nieves. Ledger. Coat."
+Nieves closes the ledger. Ice drops. Nobody jumps. Teddy, off: "See. Fine."
 
 **6. Title card (110 to 120 seconds).** The gooseneck lamp clicks off. The shelf goes dark except the tags. Show title: The Returns Desk. Slot label: Lights Out. "Premieres Friday on [BRAND]." Small line: "The account holder is a parent." No call to action. No music bed until the block's Click bumper, which the site adds outside the file.
 
@@ -522,7 +522,7 @@ Ines closes the ledger. Ice drops. Nobody jumps. Teddy, off: "See. Fine."
 - Two-Laugh test: the rake receipt for the parent, Teddy and the ice for the kid. Neither depends on the other.
 - Cold test: a doorbell on a counter, two voices, one ring. "What is this?" in the good way.
 - Dialogue test: every beat is people talking to each other. The only non-dialogue seconds are the tag inserts and the title card. Well above 60 percent.
-- Standards test: no child call to action, no copied expression, no sound above dialogue peak, no strobe, an adult reachable in every frame with Ines. The `standards` agent has the final word.
+- Standards test: no child call to action, no copied expression, no sound above dialogue peak, no strobe, an adult reachable in every frame with Nieves. The `standards` agent has the final word.
 
 ---
 
@@ -531,4 +531,4 @@ Ines closes the ledger. Ice drops. Nobody jumps. Teddy, off: "See. Fine."
 - The town name is not set in canon. This bible names only the neighborhood (the Flats, Ambler Street, the rail spur). The town name goes in `slate-ranking.md` once all four bibles exist.
 - Lights Out characters never enter the other three slots (canon 2a). The Flats can be seen from any other show. The desk cannot.
 - The Wildcard winner uses a "three receipts" line in its concept. Receipts belong to The Returns Desk's button and title-line. Recommend the Wildcard bible give that character a different form of evidence so the two shows do not share a joke.
-- Counsel: CG-01 name check for "Hardison's Hardware" and "The Returns Desk" before any public asset. CG-03 if any AI-assisted asset in the trailer carries a performance, voice, or face. CG-04 for the casting of Ines.
+- Counsel: CG-01 name check for "Hardison's Hardware" and "The Returns Desk" before any public asset. CG-03 if any AI-assisted asset in the trailer carries a performance, voice, or face. CG-04 for the casting of Nieves.

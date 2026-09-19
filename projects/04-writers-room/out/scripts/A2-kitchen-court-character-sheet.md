@@ -26,7 +26,7 @@ Rules for anyone using this sheet:
 - **Posture.** Sits the way she sits downtown: feet flat, hands folded on the table, chin level. On the Stool she keeps her knees together and her back straight and is a full head above everyone, which she knows looks ridiculous.
 - **Fixed frame.** F2, Stool Single: low angle from the gallery side, looking up at her on the top step, the fridge soft behind. Off the Stool she sits in the near chair closest to the head, right of center, turned three-quarters to camera. When she is a party under Rule Four she sits on the gallery bench, center, between her children, and looks small there.
 
-### Wendell Huang, 45. Father. "Facilities."
+### Wendell Liang, 45. Father. "Facilities."
 
 - **Age and build.** 45. Medium height, broad shoulders, thick forearms, a soft middle. Built by carrying chairs.
 - **Face.** Round and warm. Heavy eyelids. Deep smile lines. A small chip in one front tooth from a rental accident he tells differently every time. Eyes dark, kind, a little tired.
@@ -48,7 +48,7 @@ Rules for anyone using this sheet:
 - **Posture.** Referee stance: feet shoulder-width, hands loose and ready to signal. She never touches the table. She never touches evidence. Her signals are real basketball signals repurposed: fists rolling for Traveling, a slap of the wrist for Hands, a wrist grab for Holding, a hand on the hip for Offside, a wind-up of one arm for Delay of game.
 - **Fixed frame.** F1, far right, at the stair rail: the whistle rises into frame, then her face, waist up. At the table she takes the middle near chair and turns it sideways to the table so her left profile is to camera, treating the table as a sideline. Her calls are always played in F1 wide so the whole signal reads.
 
-### Marisol Delacroix-Huang, 13. Eldest. "Counsel."
+### Marisol Delacroix-Liang, 13. Eldest. "Counsel."
 
 - **Age and build.** 13. Tall for her age, all elbows, mid-growth, not yet used to her own reach.
 - **Face.** Long. Her mother's brow, her father's round chin. Braces, unhidden, and she does not cover her mouth. A serious resting face that breaks fast when she forgets to hold it.
@@ -59,7 +59,7 @@ Rules for anyone using this sheet:
 - **Posture.** Sits forward with forearms on the table and the folder open. Stands to speak, one hand on the folder. Sits down the moment she asks about a sleepover.
 - **Fixed frame.** F3, Cross-Table Two-Shot: the gallery bench, camera left position, the side nearest the fridge. Her single is a push-in from F3.
 
-### Ansel Delacroix-Huang, 10. Middle. "The Filer."
+### Ansel Delacroix-Liang, 10. Middle. "The Filer."
 
 - **Age and build.** 10. Small, compact, restless, a leg always bouncing under the table.
 - **Face.** Round. Big dark eyes. Expressive eyebrows that do most of his acting. A gap between the front teeth. Everything he feels is on his face at once, and he is usually feeling three things.
@@ -70,7 +70,7 @@ Rules for anyone using this sheet:
 - **Posture.** Stands to speak with one hand flat on the table, a gesture he saw once and kept. Sits down too fast. Slides a plate of evidence across the table with two fingers.
 - **Fixed frame.** F3, Cross-Table Two-Shot: the gallery bench, camera right position, the side nearest the garage door. On the Stool (rare) he is F2 and he freezes.
 
-### Philippa "Pip" Delacroix-Huang, 6. Youngest. "Bailiff."
+### Philippa "Pip" Delacroix-Liang, 6. Youngest. "Bailiff."
 
 - **Age and build.** 6. Small, sturdy, square shoulders. Stands like a fence post.
 - **Face.** Round. A chin she juts when she announces. Straight, thick brows. Wide-set dark eyes that do not blink when she is counting. A missing top front tooth, left side.

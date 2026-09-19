@@ -106,7 +106,7 @@ Short entries for continuity only. These are not regulars.
 
 - 50s. Tall and thin, so the back-row seat folds him. A long neutral face, pale, clean-shaven, thinning gray-brown hair combed flat. Wire glasses. A plain tie (maroon), a white short-sleeve shirt, a county lanyard, gray slacks, black shoes that were shined this morning. The prop: a silver stopwatch on a black cord around his neck. Posture: knees up, elbows in, taking up as little room as a tall man can. He is never drawn as a threat. He looks like a man who would like to be told where to sit.
 
-### Ines Arriaga. Mateo's sister.
+### Nieves Arriaga. Mateo's sister.
 
 - 6. Small and solid. Round face, Mateo's eyebrows in miniature, huge dark eyes, a gap where a front tooth was. Black hair in two short pigtails. Warm medium brown skin. A purple backpack bigger than her torso, a yellow raincoat in every weather. No prop; her whole body is the wave. Posture: on tiptoe at the mailbox, both arms up. She is only ever framed from the bus, through the windshield or the door, at the mailbox.
 
@@ -136,7 +136,7 @@ Short entries for continuity only. These are not regulars.
 1. **The mirror shot.** From above and behind Frances, as if through the convex mirror: a wide, slightly bent view down the aisle, every rider in one image, the rear door small at the end. The show's signature frame.
 2. **The stairwell shot.** From the door steps looking back up the aisle, low, at kid height. Hollis nearest, the back row far.
 3. **The seat rigs.** Six fixed portrait frames, one per assigned seat, described above under each regular. The road plate behind the window changes with the stop and the season. Nothing else in the frame changes.
-4. **The door shot.** From inside the bus at the top of the steps, looking out the open door at whatever the stop brings: Ines, Ms. Odum, the coffee, the dog at the property line.
+4. **The door shot.** From inside the bus at the top of the steps, looking out the open door at whatever the stop brings: Nieves, Ms. Odum, the coffee, the dog at the property line.
 
 A handheld covers parliament in session from the aisle at row 10.
 

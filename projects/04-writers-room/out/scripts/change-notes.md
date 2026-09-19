@@ -108,14 +108,14 @@ Standards read: section 2, items 1 to 15, walked after the changes. None trigger
 
 ## 5. `L1-the-returns-desk-trailer-v2.md` (Lights Out, 120 seconds). 3 changes.
 
-1. Ines, Turn, about 01:03.
+1. Nieves, Turn, about 01:03.
    Before: "Timer. Grandmother wound it. Rain gauge. Neighbor's sprinkler. Rake. (reads) Gate. Wind."
    After: "Timer. Grandmother wound it. Rain gauge. Neighbor's sprinkler. Bath plug. Cat. Rake. (reads) Gate. Wind."
    Reason: JD. The bath plug was already on the shelf in the World beat with no cause. "Cat" gives it one in one word. A 6-year-old laughs at a cat taking a bath plug. The parent laughs at the list. The Turn carried about 16 seconds of speech in 26, so two words fit, and the blank-tag hold is untouched.
 2. Dolores, Button, about 01:33.
    Before: "Coat pending."
    After: "Coat's not."
-   Reason: CL, CV. "Coat pending" could read as Dolores agreeing to wait. "Coat's not" is a mother answering her daughter's ledger voice in kind and closing it. The bible's sample line for Dolores is "Ines. Ledger. Coat." This is the same person.
+   Reason: CL, CV. "Coat pending" could read as Dolores agreeing to wait. "Coat's not" is a mother answering her daughter's ledger voice in kind and closing it. The bible's sample line for Dolores is "Nieves. Ledger. Coat." This is the same person.
 3. Desmond, Button, about 01:39.
    Before: "So is it haunted or not?"
    After: "So is it haunted or not? I have to tell my wife something."
@@ -125,7 +125,7 @@ Already tight and left alone: the whole cold open, "It's on the shelf," "You hav
 
 Two-Laugh verdict: PASS. Parent laugh at 00:59 ("It's for a rake. I feel it's the same spirit") and at 01:39 (a man who needs a ruling to bring home). Kid laugh on sight at 01:22 (Teddy jumps at the ice machine while staring at it) and at 01:03 ("Bath plug. Cat."). Neither depends on the other.
 
-Standards read: section 2, items 1 to 15, walked after the changes. None triggered. Section 3: the scare still resolves with safety and humor; Ines is never in a frame without Marguerite; the wife line is a marriage joke a 6-year-old can hear. PASS on my read.
+Standards read: section 2, items 1 to 15, walked after the changes. None triggered. Section 3: the scare still resolves with safety and humor; Nieves is never in a frame without Marguerite; the wife line is a marriage joke a 6-year-old can hear. PASS on my read.
 
 ---
 
@@ -138,7 +138,7 @@ Standards read: section 2, items 1 to 15, walked after the changes. None trigger
 2. Desmond, page two.
    Before: "It rings when nobody is on the porch. Eleven times tonight. I looked through the peephole. I looked through the window. I looked under the mat."
    After: "It rings when nobody is on the porch, eleven times tonight, and I looked through the peephole and the window and under the mat."
-   Reason: JD, RH. Ines just said "One sentence." He obeys her to the letter by cramming five into one. Marguerite's "Good. That's thorough" now lands as a joke about the sentence as much as the search.
+   Reason: JD, RH. Nieves just said "One sentence." He obeys her to the letter by cramming five into one. Marguerite's "Good. That's thorough" now lands as a joke about the sentence as much as the search.
 3. Marguerite, page three.
    Before: "It rang at your house. Now it's ringing at mine. Thirty-one years at this counter. Nothing has ever once rung in here."
    After: "It rang at your house. Now it's ringing at mine. Thirty-one years at this counter. Nothing has ever once rung in here. Not even the phone."
@@ -146,7 +146,7 @@ Standards read: section 2, items 1 to 15, walked after the changes. None trigger
 
 Already tight and left alone: "They do," "Start where you were standing," "I'm the ledger. One sentence," "Then it's not haunted here. Then it's a doorbell. Then I can process it," "That wasn't ice," "Those are two different things," "Then this is new," "But now there's two things," and "Underline 'here.'"
 
-Standards read: section 2, items 1 to 15, walked after the changes. None triggered. Section 3: one object at talking volume, Teddy laughs at himself, Ines stays at the desk with Marguerite in frame. PASS on my read.
+Standards read: section 2, items 1 to 15, walked after the changes. None triggered. Section 3: one object at talking volume, Teddy laughs at himself, Nieves stays at the desk with Marguerite in frame. PASS on my read.
 
 ---
 

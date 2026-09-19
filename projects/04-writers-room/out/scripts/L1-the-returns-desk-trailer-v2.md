@@ -12,7 +12,7 @@ Format notes.
 - Every effect (door bell, doorbell chime, ice drop, lamp click, box drop) is mixed at or below the dialogue peak. The mix reference is Desmond's loudest line. Nothing on the effects bus exceeds it.
 - No strobe. The only blinking light in the trailer is the chime's small indicator, which glows once per ring, at most one ring every four seconds.
 - The town name is not yet in canon. The world beat names the store and the street. No line depends on the town name.
-- Ines, 12, is never in a frame without Marguerite in it or the swinging door with Dolores behind it. Setup C keeps both. Setup A keeps Marguerite. Ines is never in Setup B alone.
+- Nieves, 12, is never in a frame without Marguerite in it or the swinging door with Dolores behind it. Setup C keeps both. Setup A keeps Marguerite. Nieves is never in Setup B alone.
 
 Cast in this trailer: MARGUERITE SALCEDO, 63. INES RUIZ, 12. TEDDY VANCE, 16. AMBROSE QUAYLE, 74. DOLORES RUIZ, 41 (voice, then on screen). DESMOND NUNES, 41, the customer.
 
@@ -97,12 +97,12 @@ the dock. The dock INTERCOM clicks.
 
                     DOLORES (V.O.)
               (through the intercom)
-          Ines. Desk?
+          Nieves. Desk?
 
                     INES
           Desk.
 
-The intercom clicks off. Ines taps the ledger's four
+The intercom clicks off. Nieves taps the ledger's four
 columns with the pen, one each.
 
                     INES (CONT'D)
@@ -126,7 +126,7 @@ form. Wet red ink, hand-cut letters: STORY HEARD.
 INT. HARDISON'S HARDWARE, RETURNS DESK, NIGHT
 
 SETUP A. Desmond leans on the counter with both hands.
-Marguerite has not moved. Ines has leaned in at the far
+Marguerite has not moved. Nieves has leaned in at the far
 edge of frame.
 
                     DESMOND
@@ -171,7 +171,7 @@ stays empty. Hold one second.
                     DESMOND
           A kid. Why?
 
-Ines writes something down. Desmond watches her do it.
+Nieves writes something down. Desmond watches her do it.
 
                     DESMOND (CONT'D)
           Why did she write that down?
@@ -219,9 +219,9 @@ He sets a receipt on the counter and smooths it flat.
 
 INT. HARDISON'S HARDWARE, RETURNS DESK, NIGHT
 
-SETUP C. Ines, ledger against her chest, walks the staff
+SETUP C. Nieves, ledger against her chest, walks the staff
 side of the counter to the shelf. Marguerite stays in
-frame, seated, a pen's length away. Ines reads the tags
+frame, seated, a pen's length away. Nieves reads the tags
 under each item. Every tag has the item on top and a
 cause underneath in Marguerite's hand.
 
@@ -238,7 +238,7 @@ cause underneath in Marguerite's hand.
                     MR. QUAYLE (O.S.)
           I still feel it was the gate.
 
-[01:10]  SETUP B. Ines's hand stops at the top corner of
+[01:10]  SETUP B. Nieves's hand stops at the top corner of
 the shelf. The oldest tag. Brown at the edges. The
 string has gone gray. Marguerite's handwriting, younger,
 across the top: nothing. The tag is blank.
@@ -274,7 +274,7 @@ Teddy jumps anyway. All of him. The broom does not.
           I saw it. I saw it coming. It
           doesn't help.
 
-Nobody at the desk turns around. Ines is still looking
+Nobody at the desk turns around. Nieves is still looking
 at the blank tag.
 
                     INES
@@ -296,9 +296,9 @@ SWINGING DOOR opens. DOLORES, 41, in a canvas work apron,
 one glove on, holds the door with her shoulder.
 
                     DOLORES
-          Ines. Ledger. Coat.
+          Nieves. Ledger. Coat.
 
-Ines closes the ledger.
+Nieves closes the ledger.
 
                     INES
           Cause pending.
@@ -306,7 +306,7 @@ Ines closes the ledger.
                     DOLORES
           Coat's not.
 
-[01:35]  The ICE MACHINE drops. Nobody jumps. Not Ines,
+[01:35]  The ICE MACHINE drops. Nobody jumps. Not Nieves,
 not Marguerite, not Dolores, not Desmond.
 
                     TEDDY (O.S.)
@@ -371,12 +371,12 @@ No music. No voice. No call to action.
 1. **Question test.** A viewer writes: "What is the blank tag on the shelf, and why won't she say?" Three viewers write the same sentence because the turn holds on the tag, asks it out loud three times, and the only answer is "Pending."
 2. **Two-Laugh test.** The 35-year-old laughs at Mr. Quayle's "I have the receipt. It's for a rake. I feel it's the same spirit," and at the STORY HEARD stamp in close-up. The 6-year-old laughs at Teddy jumping at the ice machine while staring straight at it, then at nobody jumping the second time. Neither laugh needs the other.
 3. **Cold test.** A doorbell on a counter, two voices, one ring, one box dropping, "That's fine." No title, no brand, no music. The viewer asks "what is this?" because a doorbell should not be on a counter and should not ring there.
-4. **Dialogue test.** Non-dialogue seconds: the stamp close-up (3), the blank tag hold before Ines speaks (1), the exit hold (7), the title card (8). Nineteen seconds of 120. The peephole insert runs under Desmond's voice. Dialogue is 84 percent of running time.
-5. **Standards test.** No child call to action on the card. No copied expression. No effect above dialogue peak. No strobe. Ines has Marguerite in every frame she is in, and Dolores is behind the porthole or in the doorway. The doorbell does one thing and never a second. The `standards` agent has the final word.
+4. **Dialogue test.** Non-dialogue seconds: the stamp close-up (3), the blank tag hold before Nieves speaks (1), the exit hold (7), the title card (8). Nineteen seconds of 120. The peephole insert runs under Desmond's voice. Dialogue is 84 percent of running time.
+5. **Standards test.** No child call to action on the card. No copied expression. No effect above dialogue peak. No strobe. Nieves has Marguerite in every frame she is in, and Dolores is behind the porthole or in the doorway. The doorbell does one thing and never a second. The `standards` agent has the final word.
 
 ## The fair clue
 
-The cause of the doorbell is a kid across the street with a science project. The clue is on screen at [00:36] in the peephole insert: the poster board that reads HOW FAR CAN MY SIGNAL GO? and the coat-hanger antenna on the sill, in focus, before Ines asks "Who lives across it." The trailer never names the cause. A parent who pauses can. That is the show's fair-clue rule, kept in the trailer.
+The cause of the doorbell is a kid across the street with a science project. The clue is on screen at [00:36] in the peephole insert: the poster board that reads HOW FAR CAN MY SIGNAL GO? and the coat-hanger antenna on the sill, in focus, before Nieves asks "Who lives across it." The trailer never names the cause. A parent who pauses can. That is the show's fair-clue rule, kept in the trailer.
 
 ## The mild scare and its landing
 
@@ -384,4 +384,4 @@ The scare is a doorbell that rings on an empty porch, seen through a peephole, a
 
 ## Standards self-read
 
-Walked against `canon/STANDARDS.md` section 2, items 1 to 15: none present. Section 3: scare resolves with safety and humor (1), Ines's "Cause pending" to Dolores lands as affection and Dolores answers in kind (2), no body jokes (3), the talk-after moment is the blank tag (4), no screen-time joke (5), Desmond mentions a wife and Ines has one parent on screen, neither is a joke (6), no food (7), every effect under dialogue peak (8), one indicator glow per ring, no strobe (9). Section 4: no em dashes, the card states the account holder is a parent, no call to action. Passes on my read. Not a substitute for the `standards` agent's pass.
+Walked against `canon/STANDARDS.md` section 2, items 1 to 15: none present. Section 3: scare resolves with safety and humor (1), Nieves's "Cause pending" to Dolores lands as affection and Dolores answers in kind (2), no body jokes (3), the talk-after moment is the blank tag (4), no screen-time joke (5), Desmond mentions a wife and Nieves has one parent on screen, neither is a joke (6), no food (7), every effect under dialogue peak (8), one indicator glow per ring, no strobe (9). Section 4: no em dashes, the card states the account holder is a parent, no call to action. Passes on my read. Not a substitute for the `standards` agent's pass.

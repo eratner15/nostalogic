@@ -35,3 +35,7 @@ Agent: `compliance-gate`. Updated 2026-09-19 (Phase 4, slate script expression c
 4. D-024 applied the four Long Route name changes and the "The Judge" label. The re-check in `ip-checks/04-slate-scripts.md` clears all of them and lifts the Long Route REVIEW.
 5. Five names now hold REVIEW after the full-name sweep: Wendell Huang, Ines Ruiz, Harlan Voss, Piper Voss, Dale Pruitt. The image model and casting must not use these names. The room takes the pre-searched replacement or sends the name to counsel; any other pick comes back to this agent for a re-check.
 6. Internal naming collisions across the shared town (two characters named Ines, two named Dale, Pip beside Piper, Tull beside Tulliver, Lorna beside Lorraine) are listed in that file for the Orchestrator. They are continuity notes, not IP findings. Renaming Ines Ruiz to Nieves Ruiz would close the Ines collision.
+
+## Phase 4 name checks
+
+- D-024 and D-026 applied ten renames after `ip-checks/04-slate-scripts.md`. All regulars now rate CLEAR on the last search pass, with "The Judge" as a role label only and Cal Whitlock on watch. Counsel confirms the four titles, the town name, and every regular's name in the CG-01 pass from primary pages (IMDb, USPTO), which the proxy blocked.

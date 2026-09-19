@@ -85,13 +85,13 @@ Each prompt is `[ANCHOR]` plus the token block below plus "Portrait on a plain m
 
 `[DOLORES]` = "Dolores, a woman of 41, medium height, strong through the arms and back, light brown skin, black hair pulled back hard into a bun with a pencil pushed through it, level dark eyebrows, tired quick eyes, a smear of box dust on one cheekbone. Wearing a canvas work apron with deep pockets over a rolled-sleeve flannel shirt, one work glove on and one in the apron pocket, a dock headset around her neck, steel-toe boots, a roll of packing tape on her wrist like a bracelet. Holding a swinging door open with her shoulder, never fully through it. In charge of the room from its edge."
 
-`[INES]`. Ines is 12. Read section 2.6 before generating anything with this token. It is a reference for the art department and for back-view framing only. It is never rendered as a front-facing photoreal child portrait.
+`[INES]`. Nieves is 12. Read section 2.6 before generating anything with this token. It is a reference for the art department and for back-view framing only. It is never rendered as a front-facing photoreal child portrait.
 
 `[INES]` = "A slight 12-year-old girl, clearly a child and not a small adult: a child's proportions, small for twelve, straight up and down, all elbows and knees, no makeup, no jewelry, no styling. One long black braid down the back with a yellow pencil pushed through it. Wearing a mustard yellow hooded sweatshirt two sizes too big with the sleeves pushed past the elbow and sliding down, a striped long-sleeve shirt showing at the cuffs, jeans, sneakers with one lace double-knotted and one untied, a lanyard with a laminated card. Perched on a tall wooden stool at the far end of the counter, one foot hooked on the rung, the other swinging. A green cloth ledger open in front of her with a small clip-on reading light. Seen from behind and to the side, face turned down to the ledger or away to the shelf. Her face is not visible."
 
 ### 2.3 Turnaround note
 
-For each adult and for Desmond, generate three views from the gold portrait as reference: front, three-quarter left, profile left. Setup A sees Marguerite in three-quarter right and the customer in three-quarter left, so add three-quarter right for Marguerite and profile right for Desmond and Mr. Quayle. Setup C sees Marguerite from behind, so add a back view of Marguerite: the blunt gray hair, the tucked side, the pencil, the vest collar. Dolores needs front and three-quarter only; she is always in the door. Teddy needs front, three-quarter, and a profile facing left toward the ice machine. Ines needs back and back three-quarter only.
+For each adult and for Desmond, generate three views from the gold portrait as reference: front, three-quarter left, profile left. Setup A sees Marguerite in three-quarter right and the customer in three-quarter left, so add three-quarter right for Marguerite and profile right for Desmond and Mr. Quayle. Setup C sees Marguerite from behind, so add a back view of Marguerite: the blunt gray hair, the tucked side, the pencil, the vest collar. Dolores needs front and three-quarter only; she is always in the door. Teddy needs front, three-quarter, and a profile facing left toward the ice machine. Nieves needs back and back three-quarter only.
 
 Every turnaround view is checked against the front gold with the three-point test before it enters the reference set.
 
@@ -101,10 +101,10 @@ Plan of the room, as the camera sees it.
 
 - The counter's long leg runs parallel to the camera in Setup A. The gooseneck lamp is clamped at its right end. Marguerite's stool is at the lamp. Her frame is right.
 - The counter's short leg turns toward the front door at the left. The customer's mark is at the corner of the two legs, on the customer side, with the domed service bell at the customer's left hand. The customer's frame is left.
-- Ines's tall stool is at the far end of the long leg, staff side, past the lamp. In Setup C (over Marguerite's left shoulder) she is frame right, and beyond her on the same wall is the swinging door with the porthole and the intercom box.
+- Nieves's tall stool is at the far end of the long leg, staff side, past the lamp. In Setup C (over Marguerite's left shoulder) she is frame right, and beyond her on the same wall is the swinging door with the porthole and the intercom box.
 - The ice machine is on the wall between the counter's short leg and the front door. In a wide Setup C that pans toward the door, it is frame left.
 - The front door and the window are the far left of the room. Aisle 12 is upstage center, behind everything, running away into the dark.
-- Setup A: camera on the customer side, slightly low, so the counter top is at chest height and Marguerite's face is the calm half of the frame. Setup B: camera above the counter, straight down or slightly angled, at the lamp. Setup C: camera behind Marguerite's left shoulder, high enough to see over it, looking toward Ines's end, with the door and window in the background at the left.
+- Setup A: camera on the customer side, slightly low, so the counter top is at chest height and Marguerite's face is the calm half of the frame. Setup B: camera above the counter, straight down or slightly angled, at the lamp. Setup C: camera behind Marguerite's left shoulder, high enough to see over it, looking toward Nieves's end, with the door and window in the background at the left.
 
 These positions never change between shots. The gold plates carry them. Any still that contradicts a gold plate is rejected on sight.
 
@@ -118,19 +118,19 @@ A face has drifted when any one of three points fails against the gold portrait 
 
 When a face drifts, regenerate the whole still from the gold references. Never repair a drifted face by editing the drifted frame. Never blend two references. Never use a photograph of any real person as a reference or as a face source (STANDARDS hard rule 14). If two reviewers disagree on a drift, the frame is drifted.
 
-### 2.6 Ines: age cues and supervision framing
+### 2.6 Nieves: age cues and supervision framing
 
 Rules, in order of authority.
 
 1. The bible (section 11) says no likeness of any real child is generated for any reason. The character sheet (rule 3) says do not generate a photoreal child; draw her, or frame her stool and ledger with the seat empty.
-2. The tournament ruling (D-020) says the show needs a kid at the desk to root for, and the trailer script gives Ines fourteen lines.
+2. The tournament ruling (D-020) says the show needs a kid at the desk to root for, and the trailer script gives Nieves fourteen lines.
 3. This package reconciles the two with two modes. The Orchestrator picks the mode. Counsel confirms it under CG-03 before public release.
 
-Mode A (recommended for v1). Ines is present as a figure whose face is never resolved. She is seen from behind or from a back three-quarter angle, face turned to the ledger or the shelf, never front-on, never in profile closer than a full figure, never larger than one third of frame height, never in a close-up. Her hands may enter a Setup B frame with a pen when Marguerite's hand is already in the frame. Her voice is a performer's (section 4). The age cues that make her read as 12 without a face: the child's proportions, the oversized hoodie, the braid with the pencil, the swinging foot on the stool, the untied lace, the clip light on the ledger, the small hand beside Marguerite's large one.
+Mode A (recommended for v1). Nieves is present as a figure whose face is never resolved. She is seen from behind or from a back three-quarter angle, face turned to the ledger or the shelf, never front-on, never in profile closer than a full figure, never larger than one third of frame height, never in a close-up. Her hands may enter a Setup B frame with a pen when Marguerite's hand is already in the frame. Her voice is a performer's (section 4). The age cues that make her read as 12 without a face: the child's proportions, the oversized hoodie, the braid with the pencil, the swinging foot on the stool, the untied lace, the clip light on the ledger, the small hand beside Marguerite's large one.
 
 Mode B (fallback if counsel rejects any generated child figure). The stool is empty in every frame, the ledger is open with the clip light on, and her lines play off screen from the far end of the counter. Marguerite's eyeline carries her. Shots S07, S13, S20, S21, S22, S27, and S29 change to the empty stool and the ledger, with her hand allowed in S14 and S23 only. The edit and the sound do not change.
 
-Supervision framing, both modes (STANDARDS hard rule 6, the script's own rule). Every frame that contains Ines or her stool also contains Marguerite (her seated figure or her shoulder and pencil) or the swinging door with the porthole shadow or Dolores in it. Ines is never framed with the mouth of Aisle 12 behind her alone. She is never in a Setup B frame alone. She never leaves the desk area; her longest walk is the staff side of the counter to the shelf, with Marguerite a pen's length away and in frame.
+Supervision framing, both modes (STANDARDS hard rule 6, the script's own rule). Every frame that contains Nieves or her stool also contains Marguerite (her seated figure or her shoulder and pencil) or the swinging door with the porthole shadow or Dolores in it. Nieves is never framed with the mouth of Aisle 12 behind her alone. She is never in a Setup B frame alone. She never leaves the desk area; her longest walk is the staff side of the counter to the shelf, with Marguerite a pen's length away and in frame.
 
 ## 3. Shot list
 
@@ -177,15 +177,15 @@ Sound: room tone.
 Image prompt: "[ANCHOR] [SET, Setup A view, tighter] [MARGUERITE] frame right, pen paused on the tag, eyes lifting over her reading glasses. [DESMOND] frame left, head turned a few degrees toward the front window. The shelf soft behind her. Same lighting as the wide."
 Motion prompt: "Static camera. Desmond's head turns slightly toward the window then back to her. Marguerite's eyes come up over the glasses without her head moving; her lips move slightly. 3 seconds."
 
-**S06.** 0:17.0 to 0:19.5 (2.5 s). Setup C, wide. Static. Marguerite (shoulder), Ines (Mode A, from behind), Dolores (shadow only).
+**S06.** 0:17.0 to 0:19.5 (2.5 s). Setup C, wide. Static. Marguerite (shoulder), Nieves (Mode A, from behind), Dolores (shadow only).
 Action: the intercom clicks. A shadow crosses behind the porthole. The intercom's red indicator glows steadily during the line, then off.
-Dialogue: DOLORES (V.O., through the intercom) "Ines. Desk?" INES "Desk."
+Dialogue: DOLORES (V.O., through the intercom) "Nieves. Desk?" INES "Desk."
 Sound: intercom click on, the line with a small speaker's color, click off, all at talking volume.
 Image prompt: "[ANCHOR] [SET, Setup C view] Over the left shoulder of [MARGUERITE], her gray hair, tucked side, and yellow pencil soft in the lower right corner. Across the room the glass front door and the plate-glass window with soft-focus reversed gold-leaf shapes, one streetlight outside. At the far end of the counter, frame right, [INES] on her tall stool from behind, ledger open, pen up, the clip light on the page. Beyond her the gray swinging door with its round porthole, a soft shadow behind the glass, and the small gray intercom box with a red indicator on the wall beside it."
-Motion prompt: "Static camera. Behind the porthole a soft shadow crosses once, left to right, at walking pace. The intercom's red indicator glows steadily for two seconds then goes dark; it does not blink. Ines's pen hand lifts a few centimeters. Nothing else moves. 4 seconds."
+Motion prompt: "Static camera. Behind the porthole a soft shadow crosses once, left to right, at walking pace. The intercom's red indicator glows steadily for two seconds then goes dark; it does not blink. Nieves's pen hand lifts a few centimeters. Nothing else moves. 4 seconds."
 
-**S07.** 0:19.5 to 0:23.5 (4 s). Setup C, Ines end. Static. Marguerite (shoulder), Ines (Mode A).
-Action: Ines taps the ledger's four columns with the pen, one per word.
+**S07.** 0:19.5 to 0:23.5 (4 s). Setup C, Nieves end. Static. Marguerite (shoulder), Nieves (Mode A).
+Action: Nieves taps the ledger's four columns with the pen, one per word.
 Dialogue: INES "Item. Claim. Clue. Cause." MARGUERITE (O.S.) "She has a system." INES "You have a stamp."
 Sound: four soft pen taps.
 Image prompt: "[ANCHOR] [SET, Setup C view, tighter on the far end of the counter] [MARGUERITE]'s left shoulder, vest collar, and pencil behind the ear soft in the lower right corner. [INES] from behind at a back three-quarter angle, face turned down to the green cloth ledger, the braid with the pencil down her back, the oversized mustard hoodie sleeve slid to the elbow, the pen tip resting on the page, the clip light on the ledger. The ledger's ruled columns visible but unreadable. The swinging door and porthole beyond her."
@@ -201,7 +201,7 @@ Note: if the generated letters misspell, composite a real impression from a real
 
 ### Beat 3. Character. 0:26.0 to 1:07.0
 
-**S09.** 0:26.0 to 0:30.5 (4.5 s). Setup A. Static. Marguerite, Desmond, Ines (sleeve and pen at the far left edge only).
+**S09.** 0:26.0 to 0:30.5 (4.5 s). Setup A. Static. Marguerite, Desmond, Nieves (sleeve and pen at the far left edge only).
 Action: Desmond leans on the counter with both hands. Marguerite has not moved. A mustard sleeve and a pen at the far left edge of frame.
 Dialogue: DESMOND "It rang eleven times. I counted. Nobody on the porch. I looked through the peephole."
 Sound: room tone.
@@ -229,15 +229,15 @@ Sound: room tone.
 Image prompt: "[ANCHOR] [SET, Setup A view, tight] [MARGUERITE] in a medium close-up, frame right, seated, looking over her reading glasses, mouth nearly closed, the pencil behind her ear, the lamp warm on the left side of her face. [DESMOND]'s raincoat shoulder soft at the left edge of frame."
 Motion prompt: "Static camera. Her eyes hold on him; her lips move slightly; a small breath. Nothing else. 3 seconds."
 
-**S13.** 0:41.5 to 0:45.5 (4 s). Setup C, Ines end. Static. Ines (Mode A), Marguerite (shoulder).
-Action: Ines comes up off the stool onto both forearms and leans across the counter toward the customer, seen from behind.
+**S13.** 0:41.5 to 0:45.5 (4 s). Setup C, Nieves end. Static. Nieves (Mode A), Marguerite (shoulder).
+Action: Nieves comes up off the stool onto both forearms and leans across the counter toward the customer, seen from behind.
 Dialogue: INES "Three questions. Where's the porch. Where's the street. Who lives across it." DESMOND (O.S.) "A kid. Why?"
 Sound: the stool creaks.
 Image prompt: "[ANCHOR] [SET, Setup C view, far end] [MARGUERITE]'s left shoulder and pencil soft in the lower right corner. [INES] from behind, up off the stool on both forearms, leaning across the counter toward the customer side, the braid down her back, the hood bunched at her neck, one sneaker with an untied lace on the stool rung, the pen in her hand. Face away from camera. The swinging door beyond her."
 Motion prompt: "Static camera. In the first second she rises onto her forearms and holds there. The pen turns in her fingers. The sleeve slides. Her face stays away. 4 seconds."
 
-**S14.** 0:45.5 to 0:48.0 (2.5 s). Setup B, hands. Static. Marguerite's hand, Ines's hand.
-Action: Marguerite's hand lies flat on the counter beside the shoebox, already in frame. Ines's smaller hand with the pen enters from the top of frame and writes three short strokes in the ledger.
+**S14.** 0:45.5 to 0:48.0 (2.5 s). Setup B, hands. Static. Marguerite's hand, Nieves's hand.
+Action: Marguerite's hand lies flat on the counter beside the shoebox, already in frame. Nieves's smaller hand with the pen enters from the top of frame and writes three short strokes in the ledger.
 Dialogue: DESMOND (O.S.) "Why did she write that down?"
 Sound: pen on paper.
 Image prompt: "[ANCHOR, Setup B lens] [SET, counter top only] [MARGUERITE]'s large weathered right hand with the silver band lying flat on the laminate beside the open shoebox. From the top of frame a child's smaller hand in a mustard yellow sleeve holds a pen over the open green cloth ledger. The ledger's ruled columns visible, handwriting unreadable. Warm lamp light."
@@ -278,8 +278,8 @@ Sound: room tone.
 Image prompt: "[ANCHOR, Setup B lens] [SET, counter top only] An elderly man's long, careful brown hands folded on top of the base of a plain upright metal flashlight standing on yellowed laminate, a tweed coat cuff and a cardigan sleeve visible, a small paper receipt smoothed flat beside the flashlight, its print unreadable. Warm lamp light from the right."
 Motion prompt: "Static camera. The fingers tighten once and relax. Nothing else. 4 seconds."
 
-**S20.** 1:05.0 to 1:07.0 (2 s). Setup C, Ines end. Static. Ines (Mode A), Marguerite (shoulder).
-Action: Ines finishes a stroke without looking up, hugs the ledger to her chest, and drops off the stool to the floor.
+**S20.** 1:05.0 to 1:07.0 (2 s). Setup C, Nieves end. Static. Nieves (Mode A), Marguerite (shoulder).
+Action: Nieves finishes a stroke without looking up, hugs the ledger to her chest, and drops off the stool to the floor.
 Dialogue: INES "Cause pending."
 Sound: the stool rung, sneakers on the floor.
 Image prompt: "[ANCHOR] [SET, Setup C view, far end] [MARGUERITE]'s shoulder and pencil soft in the lower right. [INES] from behind, sliding off the tall stool with the green ledger hugged against her chest, one sneaker reaching the floor, the braid swinging, face turned toward the shelf and away from camera."
@@ -287,21 +287,21 @@ Motion prompt: "Static camera. She slides off the stool onto both feet and turns
 
 ### Beat 4. Turn. 1:07.0 to 1:29.0
 
-**S21.** 1:07.0 to 1:11.0 (4 s). Setup C, wide on the shelf side. Static. Ines (Mode A), Marguerite.
-Action: Ines walks the staff side of the counter to the shelf, from behind. Marguerite stays seated, a pen's length away, in frame, and turns her head to follow. Ines stops at the shelf and tilts her head up to read the tags.
+**S21.** 1:07.0 to 1:11.0 (4 s). Setup C, wide on the shelf side. Static. Nieves (Mode A), Marguerite.
+Action: Nieves walks the staff side of the counter to the shelf, from behind. Marguerite stays seated, a pen's length away, in frame, and turns her head to follow. Nieves stops at the shelf and tilts her head up to read the tags.
 Dialogue: INES "Timer. Grandmother wound it. Rain gauge. Neighbor's sprinkler. Rake."
 Sound: sneakers on tile.
 Image prompt: "[ANCHOR] [SET, Setup C view widened to the shelf] [MARGUERITE] seated at the lamp, frame right, head turned to watch. [INES] from behind, three steps away along the staff side of the counter, stopped at the foot of the tall shelving, ledger against her chest, head tilted up to read the handwritten tags on the timer, the rain gauge, and the rake. The tags' handwriting unreadable at this distance. Lamp warm on the low shelves, streetlight on the top."
 Motion prompt: "Static camera. She takes three slow steps and stops at the shelf; her head tilts up. Marguerite's head turns to follow her. 5 seconds."
 
-**S22.** 1:11.0 to 1:14.0 (3 s). Setup C, tighter on the shelf. Static. Ines (Mode A), Marguerite (shoulder).
+**S22.** 1:11.0 to 1:14.0 (3 s). Setup C, tighter on the shelf. Static. Nieves (Mode A), Marguerite (shoulder).
 Action: her finger touches the rake's tag. The tag swings once on its string.
 Dialogue: INES (reads) "Gate. Wind." MARGUERITE "Mr. Quayle's." QUAYLE (O.S.) "I still feel it was the gate."
 Sound: the tag's string.
 Image prompt: "[ANCHOR] [SET, the shelf] [INES] from behind at a back three-quarter, face away, one small hand in a mustard sleeve touching the manila tag tied to a rake on the middle shelf. [MARGUERITE]'s shoulder and pencil soft in the lower corner. Other tagged items around: a bath plug, a coil of rope, house numbers. Handwriting unreadable."
 Motion prompt: "Static camera. The finger touches the tag; the tag swings once on its string and settles. Nothing else. 3 seconds."
 
-**S23.** 1:14.0 to 1:18.5 (4.5 s). Setup B, the blank tag. Lens override: macro. Static. Ines's hand.
+**S23.** 1:14.0 to 1:18.5 (4.5 s). Setup B, the blank tag. Lens override: macro. Static. Nieves's hand.
 Action: her hand stops at the top corner of the shelf. The oldest tag: brown at the edges, string gone gray, blank. Hold one second before the first line.
 Dialogue: INES (O.S.) "This one doesn't say." MARGUERITE (O.S.) "No." INES (O.S.) "What was it?" MARGUERITE (O.S.) "Pending."
 Sound: room tone only.
@@ -315,7 +315,7 @@ Sound: room tone only.
 Image prompt: "[ANCHOR, Setup B lens] The old blank manila tag fills a third of the frame, hanging on its gray string from the top corner of the metal shelf, brown at the edges, no writing, lit by a sliver of cool streetlight with warm lamp falloff below. Pegboard soft behind. No hands."
 Motion prompt: "Static camera. The tag completes one slow settle on its string and hangs still. 3 seconds."
 
-**S25.** 1:21.0 to 1:24.0 (3 s). Setup C, wide enough to take in the ice machine at frame left. Static. Teddy, with the desk soft behind (Marguerite seated, Ines from behind at the shelf).
+**S25.** 1:21.0 to 1:24.0 (3 s). Setup C, wide enough to take in the ice machine at frame left. Static. Teddy, with the desk soft behind (Marguerite seated, Nieves from behind at the shelf).
 Action: Teddy stands beside the ice machine, both hands on the push broom, staring straight at it, waiting. The ice machine drops a load. Teddy jumps, all of him. The broom does not.
 Dialogue: none.
 Sound: at 1:22.0 the ice machine drops: a bucket of gravel on a tin roof, at or below dialogue level.
@@ -329,31 +329,31 @@ Sound: room tone.
 Image prompt: "[ANCHOR] [SET, the ice machine wall] [TEDDY] in a medium shot, the ice machine's lid at the left edge of frame, both hands on the broom, ears red, the smile arriving late, one eyebrow higher than the other. Cool fluorescent from above, warm spill from the right."
 Motion prompt: "Static camera. His shoulders come down; the smile arrives; his lips move slightly as he speaks. The broom stays still. 3 seconds."
 
-**S27.** 1:26.5 to 1:29.0 (2.5 s). Setup C. Static. Marguerite, Ines (Mode A).
-Action: nobody at the desk has turned around. Marguerite seated, pen still. Ines still at the top corner of the shelf, from behind.
+**S27.** 1:26.5 to 1:29.0 (2.5 s). Setup C. Static. Marguerite, Nieves (Mode A).
+Action: nobody at the desk has turned around. Marguerite seated, pen still. Nieves still at the top corner of the shelf, from behind.
 Dialogue: INES "Marguerite." MARGUERITE "Pending."
 Sound: room tone. The pen resumes.
 Image prompt: "[ANCHOR] [SET, Setup C view widened to the shelf] [MARGUERITE] seated at the lamp, frame right, facing her tag, back to the ice machine. [INES] from behind, standing at the foot of the shelving with her face turned up to the top corner tag, ledger against her chest. Neither has turned toward the ice machine."
-Motion prompt: "Static camera. Marguerite's pen resumes writing. Ines does not move. 3 seconds."
+Motion prompt: "Static camera. Marguerite's pen resumes writing. Nieves does not move. 3 seconds."
 
 ### Beat 5. Button. 1:29.0 to 1:52.0
 
 **S28.** 1:29.0 to 1:32.5 (3.5 s). Setup A, wide enough to take in the swinging door at frame right. Static. Desmond, Marguerite, Dolores.
 Action: Desmond puts the lid back on the shoebox. The swinging door opens toward camera and Dolores fills the gap: apron, one glove, headset, pencil in the bun, shoulder on the door.
-Dialogue: DOLORES "Ines. Ledger. Coat."
+Dialogue: DOLORES "Nieves. Ledger. Coat."
 Sound: the door's spring hinge, soft.
 Image prompt: "[ANCHOR] [SET, Setup A view widened right to the swinging door] [DESMOND] frame left, settling the lid onto the shoebox with both hands. [MARGUERITE] center right, seated, head turned toward the door. At the far right the gray swinging door open about forty degrees toward camera, [DOLORES] filling the gap with her shoulder on the door, one gloved hand free, the dock lit cool behind her."
 Motion prompt: "Static camera. The swinging door completes its swing and stops on her shoulder. Her free hand points once toward the far end of the counter. Her lips move slightly. Desmond's hands settle the lid. 4 seconds."
 
-**S29.** 1:32.5 to 1:35.5 (3 s). Setup C, Ines end. Static. Ines (Mode A), Dolores, Marguerite (shoulder).
-Action: Ines, back on the stool, closes the green ledger. Dolores behind her in the open door.
+**S29.** 1:32.5 to 1:35.5 (3 s). Setup C, Nieves end. Static. Nieves (Mode A), Dolores, Marguerite (shoulder).
+Action: Nieves, back on the stool, closes the green ledger. Dolores behind her in the open door.
 Dialogue: INES "Cause pending." DOLORES "Coat pending."
 Sound: the ledger's cloth cover closing.
 Image prompt: "[ANCHOR] [SET, Setup C view, far end] [INES] in the foreground from behind on the tall stool, both hands closing the green cloth ledger, face down to it. Beyond her, in the open swinging door, [DOLORES] with her shoulder on the door, head tilted, the pencil in her bun catching the lamp. [MARGUERITE]'s shoulder and pencil soft in the lower right corner."
 Motion prompt: "Static camera. The ledger closes. Dolores's head tilts; her gloved hand taps the door frame once; her lips move slightly. 3 seconds."
 
-**S30.** 1:35.5 to 1:38.0 (2.5 s). Setup C, wide with the ice machine at frame left, no Teddy. Static. Ines (Mode A), Marguerite, Dolores, Desmond.
-Action: the ice machine drops. Nobody jumps. Not Ines, not Marguerite, not Dolores, not Desmond.
+**S30.** 1:35.5 to 1:38.0 (2.5 s). Setup C, wide with the ice machine at frame left, no Teddy. Static. Nieves (Mode A), Marguerite, Dolores, Desmond.
+Action: the ice machine drops. Nobody jumps. Not Nieves, not Marguerite, not Dolores, not Desmond.
 Dialogue: TEDDY (O.S.) "See. Fine."
 Sound: the ice drop, at or below dialogue level.
 Image prompt: "[ANCHOR] [SET, Setup C view panned wide from the ice machine to the swinging door] The ice machine at frame left with nobody beside it. Along the counter: [DESMOND] with the closed shoebox in both hands, [MARGUERITE] seated at the lamp, [INES] from behind on her stool with the closed ledger, and [DOLORES] in the open swinging door at frame right. Everyone still."
@@ -447,12 +447,12 @@ Every line below is performed by a human voice. Record dry, close, in one sessio
 - "I looked through the window. I looked under the mat." Voice-over, quieter, to himself.
 - "My wife said I was being ridiculous under the mat." He agrees with her.
 - "A kid. Why?" Answer first, then suspicion.
-- "Why did she write that down?" To Marguerite, not to Ines. A little alarmed.
+- "Why did she write that down?" To Marguerite, not to Nieves. A little alarmed.
 - "I have the receipt." The one thing he is sure of.
 - "So is it haunted or not?" The real question, asked plainly.
 - "It's haunted." A decision, not a fear.
 
-**Ines.** Fast, precise, speaks in threes. A clerk asking questions and a scientist stating answers. Never cute.
+**Nieves.** Fast, precise, speaks in threes. A clerk asking questions and a scientist stating answers. Never cute.
 - "Desk." A check-in, a routine she likes.
 - "Item. Claim. Clue. Cause." Four taps, four words, even.
 - "You have a stamp." A peer to a peer.
@@ -473,8 +473,8 @@ Every line below is performed by a human voice. Record dry, close, in one sessio
 - "I still feel it was the gate." Off screen. Mild. A man who accepts the ruling and disagrees.
 
 **Dolores.** Competent, tired, funny, in charge from the edge. A working parent's lines.
-- "Ines. Desk?" Through the intercom. A check, not a worry.
-- "Ines. Ledger. Coat." Three items, three beats, no rise.
+- "Nieves. Desk?" Through the intercom. A check, not a worry.
+- "Nieves. Ledger. Coat." Three items, three beats, no rise.
 - "Coat pending." She plays her daughter's game once, deadpan, and then means it.
 
 ### 4.2 Synthesized versus hired, per character
@@ -486,11 +486,11 @@ Every line below is performed by a human voice. Record dry, close, in one sessio
 | Mr. Quayle | CG-03 entry. | Adult performer aged 60 or older. CG-04. No age imitation. | Recommended: hired. |
 | Teddy | CG-03 entry. | Adult performer aged 18 or older who reads 16. CG-04. No minor. | Recommended: hired. |
 | Dolores | CG-03 entry. | Adult performer. CG-04. | Recommended: hired. |
-| Ines | CG-03 flag: a synthesized child voice is a generated child performance on a family block. Standards will read it as hard rule 15 territory. Not recommended. | Hired child: CG-04 plus minor labor law (work permit, hours limits, a set teacher where required, a trust account in some states, parental consent on file). Hired adult with a young timbre voicing a 12-year-old, the standard animation practice: CG-04 only. | Recommended: hired adult performer. |
+| Nieves | CG-03 flag: a synthesized child voice is a generated child performance on a family block. Standards will read it as hard rule 15 territory. Not recommended. | Hired child: CG-04 plus minor labor law (work permit, hours limits, a set teacher where required, a trust account in some states, parental consent on file). Hired adult with a young timbre voicing a 12-year-old, the standard animation practice: CG-04 only. | Recommended: hired adult performer. |
 
 ### 4.3 Recommended path for v1
 
-Hire six adult voice performers, remote sessions, one short session each, with a one-page release that names the AI-assisted picture process (counsel reviews the release under CG-04). An adult performer with a young timbre voices Ines. Why:
+Hire six adult voice performers, remote sessions, one short session each, with a one-page release that names the AI-assisted picture process (counsel reviews the release under CG-04). An adult performer with a young timbre voices Nieves. Why:
 
 1. The bible's production note says every voice is human, and the trailer is dialogue by spec (60 percent minimum). The performances are the trailer. A synthesized voice is the first thing a parent hears as generated.
 2. One choice removes two flags at once: no synthesized child voice (CG-03) and no minor performer (labor law).
@@ -548,7 +548,7 @@ The scare is two objects doing one thing each at talking volume: a doorbell ring
 2. Hold at least one second after the ring in S10. Nothing enters. Nothing approaches. The cut out of S10 lands on an adult, calm: Marguerite, "Good. That's thorough."
 3. Teddy's jump in S25 is followed within 2 seconds by his smile (S26). The joke is on the jump, never on Teddy.
 4. The landing is S28 to S30: the parent in the door, the ledger closing, the second ice drop with nobody jumping, "See. Fine." Then S35, the lamp warm on the empty counter. After S24 (the question), no new uneasy image enters the file (STANDARDS soft rule 1).
-5. The fair clue (the poster board and the antenna in S10) is in focus before Ines asks "Who lives across it" in S13. The trailer never names the cause.
+5. The fair clue (the poster board and the antenna in S10) is in focus before Nieves asks "Who lives across it" in S13. The trailer never names the cause.
 
 ### 6.4 Title card and end card
 
@@ -568,7 +568,7 @@ One card, S37, 5.5 seconds, the layout in section 3. The show title, the slot la
 
 2,880 frames at 24 frames per second. First frame is picture, not black. Dialogue occupies about 81 of 120 seconds by this plan (68 percent), above the 60 percent floor. Count it with a stopwatch on the locked cut.
 
-The plan assumes a brisk read: Marguerite's lines dry with no air before them, Ines fast, overlaps allowed where the script implies them. A natural, unhurried read of the full script runs about 135 to 140 seconds. If the locked cut with real performances runs over 120, apply the trim ladder in order and stop when it fits:
+The plan assumes a brisk read: Marguerite's lines dry with no air before them, Nieves fast, overlaps allowed where the script implies them. A natural, unhurried read of the full script runs about 135 to 140 seconds. If the locked cut with real performances runs over 120, apply the trim ladder in order and stop when it fits:
 
 1. Cut S05 ("Is that on the sign?" and "It's on the shelf."). Saves 2.5.
 2. Cut S24 ("Since when?" and "Since before the stamp."). Saves 2.5. The question survives in S23.
@@ -593,7 +593,7 @@ A file that fails any point goes back to the step named. Two reviewers on every 
 1. Length. Exactly 120.0 seconds, 2,880 frames at 24 frames per second. First frame is picture. Last 12 frames fade to black. Fails to section 6.5.
 2. Every line. Every line of the script is in the file, in order, verbatim, as performed. A second reader checks against the script with a pen. Fails to section 6.1.
 3. Faces. Every frame of every adult and of Desmond passes the three-point drift check (section 2.5) against the gold portrait at that angle. No frame resembles a real person. If either reviewer names a real person, the frame is out. Fails to section 2.
-4. Ines. Her face is never resolved in any frame (Mode A) or she is off screen (Mode B). Marguerite or the swinging door with Dolores or the porthole shadow is in every frame she or her stool is in. She is never against Aisle 12 alone. The mode is logged. Fails to section 2.6.
+4. Nieves. Her face is never resolved in any frame (Mode A) or she is off screen (Mode B). Marguerite or the swinging door with Dolores or the porthole shadow is in every frame she or her stool is in. She is never against Aisle 12 alone. The mode is logged. Fails to section 2.6.
 5. Text in frame. The only generated lettering is the STORY HEARD stamp, spelled correctly. The poster board's text is a composited real element. The window lettering, the tags, the ledger, the name tag, and the ICE sign are unreadable or blank. No stray characters anywhere. Frame-step the whole file. Fails to section 1.4.
 6. Marks and expression. No logo, product brand, or real signage in any frame. The compliance IP check confirms no set, prop, costume, or sound copies the expression of any existing show or ident. Fails to section 1.4 and the compliance agent.
 7. Sound. Every effect (doorbell twice, ice twice, stamp, front door bell twice, box drop, intercom, lamp click) peaks at or below the metered dialogue peak. Integrated loudness minus 16 LUFS, true peak minus 1 dBTP. No music inside the file. Fails to section 5.
@@ -601,7 +601,7 @@ A file that fails any point goes back to the step named. Two reviewers on every 
 9. Mild-spooky check by a 6-year-old proxy reading. An adult reviewer watches once as a 6-year-old would, with four questions: Is anyone alone? Is anyone in danger? Does anything come toward me? Did a sound make me jump more than the people on screen did? All four must be "no." Then S10 alone, then S25 alone, same four questions. Then the whole file with a parent reviewer watching for the two laughs and the landing. Any "yes" recuts the shot. Only after the proxy passes may a real child aged 6 watch, once, the whole file, with their parent in the room and reporting; never a cut-down, never alone, and nothing about the child is recorded. Fails to section 6.3.
 10. The five trailer tests (block bible section 8). Three cold viewers write the unanswered question in one sentence; all three name the blank tag. The two laughs are named (the rake line for the parent, Teddy and the ice for the child). The first 10 seconds play cold to someone new and get "what is this?" in the good way. Dialogue timed at or above 60 percent. Fails to the writers' room for a recut.
 11. Standards. The `standards` agent returns PASS with zero FAIL and zero WARN on the file and on the card. Fails to the item named in the report.
-12. Gates and metadata. The CG-03 log is complete for every generated still and clip (asset name, prompt, references, seed, tool and version, mode for Ines). CG-04 releases are on file for all six voices. The section 8 disclosure is placed on the About page in place of the current placeholder. Only then update `projects/05-product/site/content/shows.json` for `the-returns-desk`: set `trailerUrl` to the hosted file and change `trailerSeconds` from 110 to 120. The site stays in private review until counsel signs CG-03 (D-014).
+12. Gates and metadata. The CG-03 log is complete for every generated still and clip (asset name, prompt, references, seed, tool and version, mode for Nieves). CG-04 releases are on file for all six voices. The section 8 disclosure is placed on the About page in place of the current placeholder. Only then update `projects/05-product/site/content/shows.json` for `the-returns-desk`: set `trailerUrl` to the hosted file and change `trailerSeconds` from 110 to 120. The site stays in private review until counsel signs CG-03 (D-014).
 
 ## 8. Disclosure draft for CG-03
 
@@ -613,8 +613,8 @@ If the owner departs from the section 4.3 path and uses any synthesized voice, t
 
 ## 9. Flags for the Orchestrator and counsel
 
-1. Ines mode. Section 2.6 asks the Orchestrator to pick Mode A or Mode B. Mode A stretches the character sheet's rule 3 (no photoreal child) to "no photoreal child face." Counsel confirms under CG-03 before public release.
+1. Nieves mode. Section 2.6 asks the Orchestrator to pick Mode A or Mode B. Mode A stretches the character sheet's rule 3 (no photoreal child) to "no photoreal child face." Counsel confirms under CG-03 before public release.
 2. CG-03 log. Every still and clip in section 3 is a generated image and goes in the log. The adult faces are generated performances under hard rule 15; the disclosure in section 8 covers them once counsel signs.
-3. CG-04. Six voice releases, including the adult performer voicing Ines.
+3. CG-04. Six voice releases, including the adult performer voicing Nieves.
 4. CG-01. "Hardison's Hardware," "The Returns Desk," and the provisional masthead are all still under the name check. The card is built from a config constant so it re-renders without a recut.
 5. `shows.json` currently lists `trailerSeconds` as 110 for this show. The script and this package run 120. Point 12 of the gate corrects it.

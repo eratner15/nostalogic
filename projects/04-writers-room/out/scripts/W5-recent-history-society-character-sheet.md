@@ -23,7 +23,7 @@ The fixed frames are the four compositions every regular is shot in, so the stil
 
 ---
 
-## 1. Harlan Voss, the Commodore
+## 1. Harlan Mabry, the Commodore
 
 | Field | Description |
 |---|---|
@@ -45,7 +45,7 @@ Prompt line. A tall broad man of sixty-one with thick white hair flattened by a 
 
 ---
 
-## 2. Piper Voss, the youngest member
+## 2. Piper Mabry, the youngest member
 
 | Field | Description |
 |---|---|
@@ -89,7 +89,7 @@ Prompt line. A slim woman of thirty-eight with deep brown skin, black shoulder-l
 
 ---
 
-## 4. Dale Pruitt, all the horses
+## 4. Dale Renfro, all the horses
 
 | Field | Description |
 |---|---|

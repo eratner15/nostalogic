@@ -119,7 +119,7 @@ All master portraits use the same setup so lighting matches across the cast.
 
 Prompt = `{ANCHOR}` + `{PORTRAIT_SETUP}` + character token + `{NEG}`.
 
-### 2.3 Harlan Voss, the Commodore
+### 2.3 Harlan Mabry, the Commodore
 
 > `{HARLAN}` = "Harlan, a tall broad man of sixty-one, heavy through the middle, long face with a square jaw and deep lines from nose to mouth, heavy gray eyebrows, pale blue eyes that hold a stare, a nose set slightly to the left, large ears, clean shaven, thick white hair flattened at the sides by a navy wool bridge tender's cap with a short black brim and a small brass bell pinned to its front, pale weathered skin pink across the cheeks and nose, a navy cardigan with wooden buttons over a white shirt buttoned to the collar with no tie, khaki trousers with a pressed crease, polished brown leather work boots, a folded paper program in the cardigan pocket, chin up, chest out, standing very straight, never leaning"
 
@@ -127,7 +127,7 @@ Prompt = `{ANCHOR}` + `{PORTRAIT_SETUP}` + character token + `{NEG}`.
 - Constant costume tokens: navy cap with brass bell pin, navy cardigan with wooden buttons, white shirt buttoned to collar, khaki trousers, brown boots, folded program in pocket.
 - The one prop: the small brass gavel bell on a wooden handle. In his right hand or on the lectern. Never anywhere else.
 
-### 2.4 Piper Voss, the soup
+### 2.4 Piper Mabry, the soup
 
 > `{PIPER}` = "Piper, a small wiry girl of ten, straight-backed, round face with wide-set gray-green eyes and a serious mouth that stays closed, eyebrows that rise in the middle, light brown skin with freckles across the nose and cheeks, thick dark brown hair in two braids pinned up over the crown so no hair falls loose, a straight fringe cut across the forehead, a green corduroy jumper over a striped long-sleeve shirt, red canvas high-top sneakers with the laces double-knotted, a small spiral notebook on a string around her neck with a pencil stub through the spiral, feet together, arms at her sides, chin level, not blinking"
 
@@ -144,7 +144,7 @@ Prompt = `{ANCHOR}` + `{PORTRAIT_SETUP}` + character token + `{NEG}`.
 - Constant costume tokens: camel blazer with pushed sleeves, white shirt buttoned to the top, dark trousers, flat black shoes, pen behind right ear, manila folder.
 - The one prop: `{RED_CARD}` = "an index-card-sized laminated red card worn soft at one corner, held straight up from the elbow at full extension like a line judge"
 
-### 2.6 Dale Pruitt, all the horses
+### 2.6 Dale Renfro, all the horses
 
 > `{DALE}` = "Dale, a kind-faced man of forty-five, medium height, long-limbed with a slight forward stoop, broad face with heavy-lidded brown eyes, a wide mouth resting in a small hopeful smile, a short dark beard with gray coming in at the chin, short straight black hair lighter at the tips from the sun, warm tan skin darker on the forearms and paler across the forehead where a hat sits, a plain light blue short-sleeve uniform shirt with no patches and no badge tucked into navy knee-length shorts, black crew socks, worn gray walking shoes, an empty canvas satchel worn across the chest, a broad-brimmed canvas sun hat hanging down his back on a cord"
 

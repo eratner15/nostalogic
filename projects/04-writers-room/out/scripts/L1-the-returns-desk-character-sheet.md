@@ -6,7 +6,7 @@ Rules for anyone using this sheet.
 
 1. Every person here is original. No description points at a real actor, a real person, or a character from any existing show. If a generated image resembles a real person, discard it.
 2. Any generated image that carries a face or a performance is logged at counsel gate CG-03 and disclosed before public use. The bible's recommendation stands: generated frames for the trailer carry objects, aisles, the window, the shelf, and insert stills with no people in them.
-3. Ines is a child. The bible forbids generating any real child's likeness for any reason. Use her entry for casting (CG-04) and for the art department. If concept art needs her, draw her, or frame her stool and ledger with the seat empty. Do not generate a photoreal child.
+3. Nieves is a child. The bible forbids generating any real child's likeness for any reason. Use her entry for casting (CG-04) and for the art department. If concept art needs her, draw her, or frame her stool and ledger with the seat empty. Do not generate a photoreal child.
 4. The "one prop" is the object the character is holding when a viewer pictures them. It appears in every key art frame that character is in.
 5. Frame names follow the bible. Setup A is the desk two-shot. Setup B is the item close-up. Setup C is the reverse over Marguerite's shoulder. The insert is the customer's story, shot away from the store. The swinging door is Dolores's frame.
 
@@ -38,7 +38,7 @@ Rules for anyone using this sheet.
 
 ---
 
-## 2. Ines Ruiz, 12. The ledger.
+## 2. Nieves Ruiz, 12. The ledger.
 
 **Age and build.** 12. Small for twelve. Straight up and down, all elbows and knees, in the last year before she grows.
 
@@ -58,7 +58,7 @@ Rules for anyone using this sheet.
 - Setup C: far end of the counter, frame right, ledger open, lit by lamp spill and her own clip light. Marguerite's shoulder is always in the same frame. This is her home frame.
 - Setup A: she enters at the far left edge of frame when she leans in, half a face and a pen. She is never framed alone here.
 - Setup B: never alone. Her hand may enter the top of frame with a pen, pointing at a clue on the item, with Marguerite's hand already in the frame.
-- The swinging door: she is in the foreground when it opens. Dolores is behind her. Ines does not turn around. She closes the ledger.
+- The swinging door: she is in the foreground when it opens. Dolores is behind her. Nieves does not turn around. She closes the ledger.
 - Rule for every frame: Marguerite in it, or the swinging door with the porthole shadow in it. Never the mouth of Aisle 12 behind her alone.
 
 **Casting note.** Fast, precise, speaks in threes. She should sound like a clerk asking questions and a scientist stating answers. Cast a child who can be still and serious and let the adults be funny around her. CG-04 applies.
@@ -121,7 +121,7 @@ Rules for anyone using this sheet.
 
 **Age and build.** 41. Medium height, strong through the arms and back. Moves fast and stops fast.
 
-**Face.** Ines's face with twenty-nine more years on it. The same level eyebrows. Tired eyes that are still quick. A mouth that is already halfway into the next thing.
+**Face.** Nieves's face with twenty-nine more years on it. The same level eyebrows. Tired eyes that are still quick. A mouth that is already halfway into the next thing.
 
 **Hair.** Black, pulled back hard into a bun. A pencil through the bun. The family trait started here.
 
@@ -135,7 +135,7 @@ Rules for anyone using this sheet.
 
 **Frames.**
 - The porthole: a shadow crossing behind the round window, several times an episode. Never a face pressed to the glass.
-- The swinging door: the door opens toward camera and she fills the gap, apron, glove, headset, pencil. She says her line. Ines closes the ledger. This frame ends every episode.
+- The swinging door: the door opens toward camera and she fills the gap, apron, glove, headset, pencil. She says her line. Nieves closes the ledger. This frame ends every episode.
 - Setup A: once a season, at most. When she comes all the way to the counter, something has happened.
 - The intercom: a voice from a small gray speaker box on the wall beside the door, with a red indicator that glows steadily while she talks. It does not blink.
 

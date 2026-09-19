@@ -21,13 +21,13 @@ Placeholders: `[TOWN]` is the shared town name, left to the Orchestrator. `[BRAN
 
 ### The neighborhood
 
-The Pinwheel. A subdivision on the edge of `[TOWN]` laid out in a ring road with cul-de-sacs off it, so the map looks like a pinwheel. Every street is a Court: Spoke Court, Hub Court, Vane Court. The Delacroix-Huang house is the last split-level at the dead end of Spoke Court. The kids know the joke. "We're Kitchen Court on Spoke Court." Nobody in the family finds it as funny as the mail carrier does.
+The Pinwheel. A subdivision on the edge of `[TOWN]` laid out in a ring road with cul-de-sacs off it, so the map looks like a pinwheel. Every street is a Court: Spoke Court, Hub Court, Vane Court. The Delacroix-Liang house is the last split-level at the dead end of Spoke Court. The kids know the joke. "We're Kitchen Court on Spoke Court." Nobody in the family finds it as funny as the mail carrier does.
 
 The Pinwheel is a place where everyone's driveway faces everyone else's. Families vary in shape on the loop: a grandfather raising a grandson at the top of Hub Court, two moms with a tandem bike on Vane, a single dad who runs the block party. No family shape is a punchline, ever. The neighborhood matters to the engine because the Pinwheel learns, over Season 1, that there is a court at the end of Spoke, and starts bringing cases to the back door.
 
 ### The family's economics
 
-Two incomes, neither big. Renata is a county small claims judge on a public salary. Wendell owns Huang Party Rental, a one-van business that is rich in June and broke in February. The house was bought before the kids. The living room is full of rental inventory half the year, so the family lives in the kitchen. That is not a design choice. It is a storage problem that became a home. Grandma Toni lives in the converted den a half-flight down, rent-free, and points that out only when losing.
+Two incomes, neither big. Renata is a county small claims judge on a public salary. Wendell owns Liang Party Rental, a one-van business that is rich in June and broke in February. The house was bought before the kids. The living room is full of rental inventory half the year, so the family lives in the kitchen. That is not a design choice. It is a storage problem that became a home. Grandma Toni lives in the converted den a half-flight down, rent-free, and points that out only when losing.
 
 Money is specific and never sad. The kids know what a deposit is because their father says the word forty times a week. Renata's job is stable and unglamorous. The show does not do money worry. It does money logistics, which is funnier and truer.
 
@@ -85,9 +85,9 @@ Six regulars. Nobody else is a regular. Neighbors, litigants, and Wendell's teen
 - **What the parent sees.** A competent adult who is good at her job and cannot win at home, and is fine with that. The parent's own week, made procedural.
 - **What the kid sees.** A mom who has to follow the rules too. Proof that grown-ups lose sometimes and everybody still eats.
 
-### Wendell Huang, 45. Father. "Facilities."
+### Wendell Liang, 45. Father. "Facilities."
 
-- **Job.** Owner, driver, and entire staff of Huang Party Rental. Every party in `[TOWN]` runs through his garage. Two teenage helpers in summer.
+- **Job.** Owner, driver, and entire staff of Liang Party Rental. Every party in `[TOWN]` runs through his garage. Two teenage helpers in summer.
 - **Want.** One dinner with no case. He has never had one.
 - **Flaw.** He cannot say no to a rental request, so the house fills with things. He also cannot stand a dispute, so he proposes "split it" in every case and is overruled in every case.
 - **What he is funny about.** The least legal person in a legal house. He supplies the furniture and has no standing. He accepts service on behalf of objects ("The house cannot be served. I'll take it."). He is secretly the court's biggest fan, because it is the only time everyone sits down at once.
@@ -111,7 +111,7 @@ Six regulars. Nobody else is a regular. Neighbors, litigants, and Wendell's teen
 - **What the parent sees.** Their own parent, the one who lives with them, with a job to do in the house that is neither babysitter nor burden. Every hand signal is a laugh for an adult who once played anything.
 - **What the kid sees.** The whistle. A grandmother who can end any fight with one sound and never takes a side, which means she is always on yours.
 
-### Marisol Delacroix-Huang, 13. Eldest. "Counsel."
+### Marisol Delacroix-Liang, 13. Eldest. "Counsel."
 
 - **History.** Founded Kitchen Court at seven with a napkin. Wrote most of the Binder. Represents herself and, for a fee in snacks, her siblings.
 - **Want.** To be taken seriously as an advocate. To win a big one. To have a friend sleep over.
@@ -124,7 +124,7 @@ Six regulars. Nobody else is a regular. Neighbors, litigants, and Wendell's teen
 - **What the parent sees.** The kid who found her thing early and is a little too good at it. The parent laughs because Marisol's cross-examination sounds exactly like their own work email.
 - **What the kid sees.** The big sister who can argue anyone into a corner and will do it for you, for a snack.
 
-### Ansel Delacroix-Huang, 10. Middle. "The Filer."
+### Ansel Delacroix-Liang, 10. Middle. "The Filer."
 
 - **History.** Files more cases than anyone. Has won two. Keeps count.
 - **Want.** To win one outright, clean, on the merits, with no snack pity.
@@ -137,7 +137,7 @@ Six regulars. Nobody else is a regular. Neighbors, litigants, and Wendell's teen
 - **What the parent sees.** Their own middle kid, the one who needs a fair shot and a win. The parent laughs at the drama and roots for him every week.
 - **What the kid sees.** The kid who sues his sister over a waffle and sometimes wins. Judge K's note, exactly. Ansel is the ten-year-old's way in.
 
-### Philippa "Pip" Delacroix-Huang, 6. Youngest. "Bailiff."
+### Philippa "Pip" Delacroix-Liang, 6. Youngest. "Bailiff."
 
 - **History.** Appointed bailiff by Marisol at four, when she could not yet read the docket and announced it from memory, wrong. Now reads it. Wears a tea towel as a sash, folded and pinned, always the same towel, blue stripe.
 - **Want.** For things to be in order. For everyone to be announced. She takes the job with total seriousness and no ambition.
@@ -363,7 +363,7 @@ Seeds 1 to 10 are Season 1. Seeds marked (out) step outside the kitchen set and 
 77. A neighbor girl sues her brother in Kitchen Court, and the brother is Ansel's best friend, so Ansel must choose witness or friend.
 78. The block party pie contest ties, the street asks Renata to rule, she refuses, Pip rules, and nobody argues with the bailiff. (out)
 79. Neighbor kids open a rival court in a garage with a whisk for a gavel; Marisol infiltrates; the utensil war begins.
-80. Two Pinwheel families in a hedge dispute invite the Delacroix-Huangs to dinner on the same night, and the court hears The Case of Two Dinners.
+80. Two Pinwheel families in a hedge dispute invite the Delacroix-Liangs to dinner on the same night, and the court hears The Case of Two Dinners.
 81. A kid from the far loop brings a case with no opposing party, just wanting a ruling that she was right, and the court invents the Declaration.
 82. Snow day: the Pinwheel hill, first-run rights, and a case heard in boots at the table with the door open. (out)
 83. The neighbors organize a "Kitchen Court Night" and expect a show; the family refuses to perform and holds a real case anyway, which is better.
@@ -401,7 +401,7 @@ Walk of `canon/STANDARDS.md`. Showrunner's own read. The `standards` agent's pas
 6. **Adults threatening children, or unsupervised danger for laughs.** Never. Three adults are always in the house. The bounce house and snow hill seeds have a parent or Ref present.
 7. **Horror beyond mild spooky.** Not applicable. The show has no scares.
 8. **Real-world hate, politics, or religion as a joke.** Never. Renata is an appointed county judge; the show never mentions an election, a party, or a law with a real-world name. The Household Constitution is a family document, not a civics joke. Thanksgiving is a dinner.
-9. **Product placement or sponsor mention.** None. Huang Party Rental is fictional. No brand appears on any inventory item. The toaster, the cart, and the fridge carry no marks.
+9. **Product placement or sponsor mention.** None. Liang Party Rental is fictional. No brand appears on any inventory item. The toaster, the cart, and the fridge carry no marks.
 10. **Call to action aimed at a child.** None in any script. The trailer title card carries only the show title, slot, premiere line, and the parent-account line.
 11. **Request for a child's name, age, location, image, or contact.** None. The show has no participation element.
 12. **Copied expression.** See Section 10. Every set element, ritual, line, and character in this bible is new to this file.
@@ -503,4 +503,4 @@ Consistency rules: character sheets lock each regular's hair, clothes, and one s
 
 ## Appendix. New expression introduced by this bible
 
-For the IP check and the Orchestrator's canon entry. All new to this file: the Pinwheel, Spoke Court, Huang Party Rental, the Docket (freezer door), the Rota, the Fridge Rules (five), the Stool, the Masher, the Cart and the toaster rule, the Wobble, the Binder, Roberta, the Filer and the Filed, the Say, snack-hug-whistle-done, "Who's hungry and who's mad?", "Court's closed. Dinner.", "Facilities," "Ref," the household fouls (Traveling, Hands, Holding, Offside, Delay of game, Using a voice), the courtesy blow, the Full Table and the fork vote, the Declaration, the Long Table, and the six characters as written.
+For the IP check and the Orchestrator's canon entry. All new to this file: the Pinwheel, Spoke Court, Liang Party Rental, the Docket (freezer door), the Rota, the Fridge Rules (five), the Stool, the Masher, the Cart and the toaster rule, the Wobble, the Binder, Roberta, the Filer and the Filed, the Say, snack-hug-whistle-done, "Who's hungry and who's mad?", "Court's closed. Dinner.", "Facilities," "Ref," the household fouls (Traveling, Hands, Holding, Offside, Delay of game, Using a voice), the courtesy blow, the Full Table and the fork vote, the Declaration, the Long Table, and the six characters as written.

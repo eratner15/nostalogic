@@ -137,6 +137,12 @@ Format: date, decision, options, choice, reason. Counsel gates carry the tag `CO
 - Reason: this removes the likeliest CG-03 refusal and the likeliest "slop" tell at once, and it avoids minor labor law at trailer stage. Counsel confirms under CG-03. If counsel clears photoreal children, the packages already carry the prompts.
 - Effect: each package's shot list keeps its no-face fallback for every child shot as the default, not the fallback.
 
+### D-026. 2026-09-19. Second round of character renames after the re-check
+- Finding: `projects/08-compliance/out/ip-checks/04-slate-scripts.md`, section "Re-check after D-024". Five names matched a covered public figure, a working performer, or an active persona: Wendell Huang, Ines Ruiz, Harlan Voss, Piper Voss, Dale Pruitt.
+- Changes applied everywhere: Wendell Liang; Nieves Ruiz; Harlan Mabry; Piper Mabry; Dale Renfro. The compliance-gate pre-screened each replacement with no exact match.
+- Kept with conditions: "The Judge" as a role label only, never a segment title, product name, or handle. Cal Whitlock stays on watch.
+- Reason: same as D-024. No flagged name carried meaning the show needs.
+
 ## Open forks
 
 - Fork A: decided, Go (D-011).

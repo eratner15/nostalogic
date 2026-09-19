@@ -31,10 +31,10 @@ The Long Route is the shared town's countryside. The other three shows live in i
 Each stop is a place with its own rule and its own faces. Stops are numbered in morning order. Boarding order sets seat rank, so stop numbers matter.
 
 **Stop 0. The bus barn.**
-Rule: the bus does not leave until Lorna on dispatch says "Twelve, go." Faces: Lorna, the dispatcher, never seen, only heard on the radio. Dale Pruitt, driver of the Short Route (Route 4), Frances's rival in everything. Hollis Keel boards here, because Frances is his grandmother and he rides with her from the barn. He would rather have a stop.
+Rule: the bus does not leave until Lorna on dispatch says "Twelve, go." Faces: Lorna, the dispatcher, never seen, only heard on the radio. Dale Renfro, driver of the Short Route (Route 4), Frances's rival in everything. Hollis Keel boards here, because Frances is his grandmother and he rides with her from the barn. He would rather have a stop.
 
 **Stop 1. Pennock Hollow, the far end.**
-The Arriaga dairy, at the top of a long gravel lane. Rule: the bus waits for the wave. Mateo's abuela waves from the porch every morning and the bus does not move until she does. Faces: Abuela Arriaga, who waves. Ines Arriaga, age 6, Mateo's sister, who is not old enough to ride and stands at the mailbox every morning to prove she is ready. The far end is the show's named neighborhood. It is four farms, a lane, and a view.
+The Arriaga dairy, at the top of a long gravel lane. Rule: the bus waits for the wave. Mateo's abuela waves from the porch every morning and the bus does not move until she does. Faces: Abuela Arriaga, who waves. Nieves Arriaga, age 6, Mateo's sister, who is not old enough to ride and stands at the mailbox every morning to prove she is ready. The far end is the show's named neighborhood. It is four farms, a lane, and a view.
 
 **Stop 2. Hale Orchard stand.**
 The Oyelaran family orchard. The stand has a chalkboard that faces the road. Rule: no fruit boards the bus unless it is paid for or gifted on the board. Faces: Adaeze Oyelaran, the twins' mother, who writes the board and is the funniest person on the route the kids never hear. The orchard dog, Sergeant, who chases the bus to the property line and stops exactly there.
@@ -62,7 +62,7 @@ North Union Consolidated, kindergarten through eighth grade. Everyone calls it C
 The Orchestrator note is the design rule: school is on screen, not retold. Four devices carry it.
 
 1. **The loop.** Every episode has at least one loop scene: the bus sits at Consolidated with the door open, and school comes to the door. Teachers hand things in. The principal asks questions. Other kids ask to see the back row. A tuba needs a ride. The four-minute wait in the loop is a stage.
-2. **The windshield.** From Position 3 the bus sees the marquee sign with its missing letters, the gym doors, the eighth-grade window where Mateo's class is, and the playground where Ines will be next year. Things happen in those windows during the loop scene and the kids react through glass.
+2. **The windshield.** From Position 3 the bus sees the marquee sign with its missing letters, the gym doors, the eighth-grade window where Mateo's class is, and the playground where Nieves will be next year. Things happen in those windows during the loop scene and the kids react through glass.
 3. **Tola's notebook.** Tola draws what she saw through the school windows that day. The drawings are on screen. They are the show's way to show a school day in one image without a classroom set.
 4. **Field trips and stunts.** Frances drives the field trips. When the whole school rides, the whole school is on the set. The science fair volcano rides to the county. The eighth grade rides to the high school. Picture day comes to the loop.
 
@@ -123,7 +123,7 @@ Seven regulars: six kids and one driver. All original. None modeled on any chara
 - "I'm not listening. I'm driving. I just drive with my ears."
 - "Rule nineteen. No motions about a person. Rule four. Sit down, Dele."
 - "Obliged." (To Pop Whitlock, every morning, about the coffee, and never a word more.)
-**The life the kids only glimpse.** She plays upright bass in the community orchestra and some mornings the bass has a seat. She and Lorna on dispatch have a radio friendship that is thirty years old and mostly insults. She and Dale Pruitt race the Short Route to the loop by rules nobody else knows. Her daughter Denise, Hollis's mother, works nights, which is why Hollis rides from the barn. There is a letter from the county in her visor with the word "retire" in it, and she has not opened it. She was a rider on this route once. She knows which seat.
+**The life the kids only glimpse.** She plays upright bass in the community orchestra and some mornings the bass has a seat. She and Lorna on dispatch have a radio friendship that is thirty years old and mostly insults. She and Dale Renfro race the Short Route to the loop by rules nobody else knows. Her daughter Denise, Hollis's mother, works nights, which is why Hollis rides from the barn. There is a letter from the county in her visor with the word "retire" in it, and she has not opened it. She was a rider on this route once. She knows which seat.
 **What the parent sees.** The adult who is neither clueless nor the enemy. Competent, tired, funny on purpose, running a small nation from a driver's seat. The secret lead.
 **What the kid sees.** The adult who pretends not to listen and always hears. The one you can push, who never breaks, and who never leaves anyone at a stop.
 
@@ -202,9 +202,9 @@ Seven regulars: six kids and one driver. All original. None modeled on any chara
 ### Recurring faces (not regulars)
 
 - **Lorna.** Dispatch. Voice only. Frances's oldest friend and sparring partner.
-- **Dale Pruitt.** Short Route driver. Frances's rival. The substitute when she is out. Drives the route in the wrong order.
+- **Dale Renfro.** Short Route driver. Frances's rival. The substitute when she is out. Drives the route in the wrong order.
 - **Abuela Arriaga.** Waves. The bus waits.
-- **Ines Arriaga, 6.** Mateo's sister. Not yet a rider. Learning the code from the mailbox. The show's six-year-old on screen.
+- **Nieves Arriaga, 6.** Mateo's sister. Not yet a rider. Learning the code from the mailbox. The show's six-year-old on screen.
 - **Adaeze Oyelaran.** Writes the orchard chalkboard.
 - **Pop Whitlock.** Hands the coffee through the door.
 - **Marcus Coker.** Priya's dad. Does the crossword at the Fieldstone sign.
@@ -301,7 +301,7 @@ Per scene type: the laugh for the parent and the laugh for the kid. Neither depe
 | The mirror | Frances's eyes and one dry line. | The kids trying to find the blind spot. There is no blind spot. |
 | The afternoon drop-off | Frances not leaving until the parent is visible. Every parent has been late to the stop once. | Priya off first, furious about it every time. |
 | Breakdown | Frances on the radio, calm, running a morning from the driver's seat. | The whole bus turned sideways in a story that was going somewhere else. |
-| The last stop (Mateo off) | Mateo waving without looking. The parent knows that wave. | Ines at the mailbox, waving at everything. |
+| The last stop (Mateo off) | Mateo waving without looking. The parent knows that wave. | Nieves at the mailbox, waving at everything. |
 
 Soft rule 4 (one moment to talk about after) is designed in: the afternoon ride always contains a scene where someone admits the thing they denied in the morning. That is the conversation prompt in the ritual kit.
 
@@ -321,7 +321,7 @@ The county has a limit on route length. Route 12 runs over it. Mr. Tull rides wi
 6. **Wrong Order.** Frances is out for the orchestra audition the kids only hear about. Dale subs and drives the route backwards. Hollis must navigate for a man who will not listen to him.
 7. **Chains.** First snow. The ride runs double. A full session of parliament passes eleven motions and repeals ten. Mr. Tull's clock is now catastrophic, and the kids find out he is not the enemy: he rode a long route once too.
 8. **The Detour.** The creek bridge closes. The route runs through town for the first time. The kids see the town from the bus. The detour is nine minutes shorter. The county likes it. The kids do not.
-9. **Ines.** Mateo's sister gets a trial ride and sits in the back row and nobody dares move her. The county's proposal arrives: a van for Pennock Hollow. Mateo would ride alone. He says he wants that. Nobody believes him.
+9. **Nieves.** Mateo's sister gets a trial ride and sits in the back row and nobody dares move her. The county's proposal arrives: a van for Pennock Hollow. Mateo would ride alone. He says he wants that. Nobody believes him.
 10. **Board Meeting on Wheels.** The county board rides the route to decide. Parliament presents. Priya cites. Dele stands. Tola reads the minutes of the year, one page. Mateo, who wanted out, is the one who says, out loud, in front of everyone, that it is not a long route, it is the whole way. The route stays. The bridge reopens. The last ride runs in reverse and Mateo gives Priya the Tuesday window without a vote.
 
 **How it lands.** The route survives because a kid who spent ten episodes denying he loved it says so to a room full of adults. The season's last line is Frances's, to the mirror, with the door closed on the county: "Twelve, go."
@@ -359,7 +359,7 @@ The county has a limit on route length. Route 12 runs over it. Mr. Tull rides wi
 27. Priya loses her voice. The code has no provision for a silent author.
 28. Hollis's mother rides the route on her day off. Hollis dies inside for 48 minutes.
 29. The Short Route beats them into the loop three rides straight. Frances and Dale race by the rules.
-30. Ines gets a trial ride. She sits in the back row. Nobody dares move her.
+30. Nieves gets a trial ride. She sits in the back row. Nobody dares move her.
 31. The county repaints the stop signs. The far end is now Stop 1. Mateo was always Stop 6 before.
 32. Bus inspection. A clipboard measures the aisle. Parliament holds session in the barn parking lot.
 33. A wasp. Frances pulls over. Six kids, one wasp, one rule: nobody swats.
@@ -418,11 +418,11 @@ The county has a limit on route length. Route 12 runs over it. Mr. Tull rides wi
 86. A Short Route kid calls Hollis "the driver's baby." Parliament answers it. So does Frances. So does Dale.
 87. Priya is elected to student council through the door of the bus. Her first act is a bus resolution.
 88. The bus takes the eighth grade to the high school for a visit. Mateo sees the future. He rides home quiet.
-89. Ines learns the bus code by heart from the mailbox. She corrects Priya.
+89. Nieves learns the bus code by heart from the mailbox. She corrects Priya.
 90. The county adds a fair-grounds stop for one week. The bus smells like sugar.
 91. Tola has kept minutes all year. She reads them on the last ride. They are one page.
 92. Mr. Tull comes back. He rides. He does not time it. He wanted to see the heron.
-93. Mateo teaches Ines to wave. She waves at everything, including the goat.
+93. Mateo teaches Nieves to wave. She waves at everything, including the goat.
 94. Storm damage at the orchard. The twins board late from the wrong end of the property. The whole ride is a rescue that turns out not to be one.
 95. Talent show. Frances is asked to play. Hollis must ride with the rehearsals.
 96. The school paper interviews the bus at the loop. Dele gives all the quotes. The article prints Tola's.
@@ -488,7 +488,7 @@ Walked against `canon/STANDARDS.md`.
 
 **One set.** A rented full-size school bus interior, dressed as in section 2.5, on a stage or a lot. Exteriors are road plates through the windows. The loop, the stops, and the door shots are the same bus with a different plate and a different face at the door. A second bus is not needed: the Short Route is heard on the radio and seen only as a plate.
 
-**Cast size.** Seven regulars: six child performers and one adult. Recurring adults and Ines appear at the door and through the glass. Child performers trigger CG-04 (talent and guild agreements). Ines is a small role designed so a six-year-old performer works short days at the door and the mailbox only.
+**Cast size.** Seven regulars: six child performers and one adult. Recurring adults and Nieves appear at the door and through the glass. Child performers trigger CG-04 (talent and guild agreements). Nieves is a small role designed so a six-year-old performer works short days at the door and the mailbox only.
 
 **What AI-assisted production can carry for the trailer.**
 - The six fixed seat frames, each kid against a window with a road plate behind, because assigned seats lock each face into one framing.

@@ -140,13 +140,13 @@ the window. Looks at the stopwatch.
                          HOLLIS
           Not his wave.
 
-Through the windshield, Ines waves harder. Mateo passes her.
+Through the windshield, Nieves waves harder. Mateo passes her.
 
                          INES
           Section one. Board with respect.
 
                          MATEO
-          You're not on the bus, Ines.
+          You're not on the bus, Nieves.
 
                          INES
           Not yet.
@@ -234,7 +234,7 @@ Mateo looks at the window. Then back.
           over.
 
 Mateo looks out his window. The lane going away. The mailbox.
-Ines, still waving, at the back of a bus that cannot see her.
+Nieves, still waving, at the back of a bus that cannot see her.
 
 Row 1. Hollis grabs the seat back.
 
@@ -278,6 +278,6 @@ TITLE: LONG ROUTE
 
 ## Standards read
 
-Walked against `canon/STANDARDS.md` section 2, items 1 to 15. No romance, no violence (the pothole is called, not suffered; the stopwatch lands in a lap), no profanity, no substances, no bullying (Tull is an inconvenience and a guest; Ines is corrected, not mocked), a licensed adult driver present in every shot on the road, no scare, no politics (a county transportation clerk with a stopwatch), no brand (the bus has no maker's name; the store is not in this cold open), no call to action, no child data, no borrowed expression, neither block trademark, no real actor, and no AI performance. Section 3: Hollis's apologies for Frances are mortification, not contempt, and Frances answers with a joke; no body jokes; the moment to talk about after is Mateo saying "I'm not saying I care" and then sitting one row from the seat he lost; no phones; no food; no loud effect; no flashing lights.
+Walked against `canon/STANDARDS.md` section 2, items 1 to 15. No romance, no violence (the pothole is called, not suffered; the stopwatch lands in a lap), no profanity, no substances, no bullying (Tull is an inconvenience and a guest; Nieves is corrected, not mocked), a licensed adult driver present in every shot on the road, no scare, no politics (a county transportation clerk with a stopwatch), no brand (the bus has no maker's name; the store is not in this cold open), no call to action, no child data, no borrowed expression, neither block trademark, no real actor, and no AI performance. Section 3: Hollis's apologies for Frances are mortification, not contempt, and Frances answers with a joke; no body jokes; the moment to talk about after is Mateo saying "I'm not saying I care" and then sitting one row from the seat he lost; no phones; no food; no loud effect; no flashing lights.
 
 Staff-writer read: PASS on section 2, no WARN on section 3.
