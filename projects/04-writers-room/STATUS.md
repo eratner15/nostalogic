@@ -3,17 +3,15 @@
 Updated 2026-09-19.
 
 ## State
-- Tournament (D-015) in progress. `out/tournament/score-tournament.mjs` aggregates judge scores deterministically.
-- Showrunner writing 20 concepts, 5 per slot, to `out/tournament/concepts.md` and `concepts.json`.
+- Tournament done (D-015, D-020): 20 concepts, three judges, deterministic aggregator. Winners: Kitchen Court (Anchor), Long Route (Hangout), Recent History Society (Wildcard, lead by score), The Returns Desk (Lights Out, retitled by D-022, co-lead for production).
+- Per show in `out/bibles/`, `out/scripts/`, `out/production/`: a green-light bible (100 seeds, standards walk, IP distance), a trailer script (v2 after punch-up; Recent History Society v3 after a recut), a pilot cold open plus six loglines, a character sheet for image models, and an AI-assisted production package (shot list with image and motion prompts, voice plan, sound plan, edit plan, 12-point quality gate, CG-03 disclosure draft).
+- Reviews: standards PASS on all eight v2 scripts; expression-level IP check CLEAR after two rename rounds (D-024, D-026); punch-up change notes in `out/scripts/change-notes.md`.
+- Town: Carrow Bend (D-023). Children in trailers: faces never resolved, adult voices (D-025).
 
 ## Next
-1. Three judge agents score every concept (parent lens, kid lens, producer lens).
-2. Run the aggregator. Top 2 per slot, head-to-head, one winner per slot.
-3. Bibles for the four winners. Trailer scripts. Punch-up. Standards. IP check.
-4. Trailer production package per show for AI-assisted production (CG-03).
+- Owner (Fork E): confirm the lead show and the slate order, and the Returns Desk title versus "Two Receipts".
+- Produce the four trailers from the packages under CG-03 and CG-04, then load MP4 URLs into `projects/05-product/site/content/shows.json`.
+- Standards re-check of the Recent History Society v3 recut.
 
 ## Blockers
-None.
-
-## Production packages (Phase 4, CG-03)
-- Kitchen Court: `out/production/A2-kitchen-court-package.md` written. 35 shots, every script line covered, voice path recommendation Path C (adult performers for all six voices). Awaits Orchestrator read, standards pass, and the CG-03 counsel packet (three fictional child likenesses flagged).
+- Counsel gates CG-01 (names, titles, town), CG-03 (generated picture), CG-04 (voice performers) before any trailer goes public.

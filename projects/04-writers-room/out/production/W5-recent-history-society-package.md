@@ -205,6 +205,8 @@ Conventions.
 
 Music for every shot: none. The trailer file carries no music bed by script note 3. The sonic ID lives in the site wrap, not in this file (Section 5).
 
+> Shot list follows trailer v3 (`W5-recent-history-society-trailer-v3.md`). Recut changes: S01, S02, S28 dialogue; S28 to S30 retimed; new S30b.
+
 ### Beat 1 of 6: Cold open (00:00.0 to 00:09.0)
 
 **S01** 00:00.0 to 00:03.0 (3.0 s)
@@ -212,7 +214,7 @@ Music for every shot: none. The trailer file carries no music bed by script note
 - Camera: Static.
 - Who: Wren (left cart), Oscar (right cart), Piper in the pyramid.
 - Action: Slow motion. The carts enter from each side and roll toward the pyramid. Piper's face is dead center, eyes forward.
-- Dialogue: MEMBER TWELVE (V.O.): "Tuesday. Twelve minutes past four."
+- Dialogue: PIPER (inside the cans, mouth barely moving): "Slower. It was slower than this."
 - Sound: Hall room tone from frame 1. Caster wheels on wood, low and slow. No music.
 - LETTERING: the hanging sign reads AISLE 5 in black marker, hand-lettered. Composite onto the blank sign.
 - Image prompt: `{ANCHOR}` `{STAGE_AISLE}` A held tableau. `{WREN}` pushing a cardboard shopping cart in from the left edge of the stage, `{OSCAR}` pushing a cardboard shopping cart in from the right edge, both carts about four feet from the center, `{PIPER_SOUP}` dead center between them, the blank cardboard sign hanging on its wire above the shelf, wide shot from the third row, the stage filling the lower two thirds of frame, the blank cream banner and the bronze bell visible above. `{NEG}`
@@ -223,7 +225,7 @@ Music for every shot: none. The trailer file carries no music bed by script note
 - Camera: Slow push, 2 percent.
 - Who: Piper.
 - Action: She holds. Eyes forward. The expression of a witness who knows what is coming.
-- Dialogue: MEMBER TWELVE (V.O.): "The soup never stood a chance."
+- Dialogue: OSCAR (O.S., from behind his cart): "This is as slow as it goes."
 - Sound: Room tone. Caster rumble continues, closer. No music.
 - LETTERING: none.
 - Image prompt: `{ANCHOR}` `{STAGE_AISLE}` Close shot, 85mm, of `{PIPER_SOUP}`, her face filling the cut hole in the pyramid, painted cardboard cans surrounding her face on every side and filling the frame, eyes open and forward, serious mouth closed, the painted canal backdrop soft behind, deep focus. `{NEG}`
@@ -512,18 +514,18 @@ Music for every shot: none. The trailer file carries no music bed by script note
 
 ### Beat 5 of 6: Button (00:57.0 to 01:08.0)
 
-**S28** 00:57.0 to 01:00.0 (3.0 s)
+**S28** 00:57.0 to 00:59.0 (2.0 s)
 - Frame: Wide, 35mm. Same framing as S01. The same cardboard aisle. The sign now shows a 5 crossed out in marker and a 6 written beside it by hand.
 - Camera: Static.
 - Who: Wren (left cart), Dale in the full horse head behind the right cart, Piper in a rebuilt pyramid.
 - Action: Slow motion. The carts roll in again. Behind the right-hand cart, pushing it with total dignity, is Dale, in a full cloth horse head.
-- Dialogue: MEMBER TWELVE (V.O.): "Tuesday. Aisle six. Corrected."
+- Dialogue: IMANI (O.S., from the panel table, reading a card): "Aisle six. For the record."
 - Sound: Caster wheels on wood, slow. Room tone. No music.
 - LETTERING: the sign reads AISLE 5 with the 5 struck through in black marker and a 6 written beside it in the same hand. Composite onto the blank sign in the same position as S01.
 - Image prompt: `{ANCHOR}` `{STAGE_AISLE}` A held tableau, wide shot from the third row, the same stage and the same cardboard aisle. `{WREN}` pushing a cardboard shopping cart in from the left. `{DALE_HORSE}` pushing a cardboard shopping cart in from the right with both hands, horse head lowered with dignity. `{PIPER_SOUP}` dead center in a rebuilt pyramid of painted cardboard soup cans, eyes forward. The blank cardboard sign hanging above the shelf. `{NEG}`
-- Motion prompt: `{MOTION_BASE}` `{SLOWMO}` 5 seconds. Both carts roll slowly toward the center. The horse head stays lowered and steady. Piper does not move and does not blink.
+- Motion prompt: `{MOTION_BASE}` `{SLOWMO}` 4 seconds. Both carts roll slowly toward the center. The horse head stays lowered and steady. Piper does not move and does not blink.
 
-**S29** 01:00.0 to 01:03.0 (3.0 s)
+**S29** 00:59.0 to 01:01.5 (2.5 s)
 - Frame: Wide, 35mm. Same as S28.
 - Camera: Static.
 - Who: Wren, Dale in the horse head, Piper.
@@ -534,7 +536,7 @@ Music for every shot: none. The trailer file carries no music bed by script note
 - Image prompt: `{ANCHOR}` `{STAGE_AISLE}` A held tableau at the exact instant of the event, wide shot from the third row. The two cardboard carts touching front to front at center stage, `{WREN}` behind the left cart, `{DALE_HORSE}` behind the right cart with the horse head bowed, the pyramid of painted cardboard soup cans mid-collapse with several cans in the air, `{PIPER_SOUP}` leaning back with the pyramid, arms opening wide, head tipping back, eyes still open, the picture of grief. `{NEG}`
 - Motion prompt: `{MOTION_BASE}` `{SLOWMO}` 6 seconds at one-fifth speed, slower than the first fall. The carts finish meeting with a soft bump. The pyramid comes apart. Piper falls backward with arms open and eyes closing last and lands gently among bouncing hollow cans. The horse head bows lower. Wren holds her position.
 
-**S30** 01:03.0 to 01:04.5 (1.5 s)
+**S30** 01:01.5 to 01:03.0 (1.5 s)
 - Frame: Close, 85mm, from the stage floor level looking across Piper's face toward the ceiling rafters. Camera is still level, not tilted; she is lying on her back and the frame is her profile from the side.
 - Camera: Static.
 - Who: Piper, cans settled around her.
@@ -544,6 +546,17 @@ Music for every shot: none. The trailer file carries no music bed by script note
 - LETTERING: none.
 - Image prompt: `{ANCHOR}` `{STAGE_AISLE}` Close shot, 85mm, at stage floor level, of `{PIPER}` lying on her back on the low wooden stage in profile, eyes open, looking straight up, painted cardboard soup cans settled around her head and shoulders, the timber rafters soft above, warm window light across her face. `{NEG}`
 - Motion prompt: `{MOTION_BASE}` 3 seconds. One can beside her head rocks and stops. Piper speaks three words with the smallest possible mouth movement, eyes on the ceiling. Nothing else moves.
+
+**S30b** 01:03.0 to 01:04.5 (1.5 s)
+- Frame: Medium, 50mm. The horse head in profile at stage right, the panel table soft in the background with Imani turning her head toward the Archive.
+- Camera: Static.
+- Who: Dale in the horse head; Imani in the background.
+- Action: The horse head turns from the fallen pyramid toward the panel table. Imani looks at the Archive. Nothing else moves.
+- Dialogue: DALE (muffled, inside the cloth head): "It was seven."
+- Sound: The cloth head muffles the line; keep it intelligible. Room tone. No music.
+- LETTERING: none.
+- Image prompt: `{ANCHOR}` `{STAGE_AISLE}` Medium shot, 50mm, of `{DALE_HORSE}` standing behind the cardboard cart at stage right, the full cloth horse head turned in profile toward the panel table, both hands still on the cart handle, the panel table soft in the background with `{IMANI}` seated and turned toward the green filing cabinet. `{NEG}`
+- Motion prompt: `{MOTION_BASE}` 3 seconds. The horse head turns slowly a quarter turn toward the panel table and holds. In the soft background Imani turns her head toward the cabinet. No mouth is visible; the line plays over the turn.
 
 **S31** 01:04.5 to 01:08.0 (3.5 s)
 - Frame: Medium, 50mm. Harlan at the lectern, hand on the bell rope, the bell above.
@@ -571,7 +584,7 @@ Music for every shot: none. The trailer file carries no music bed by script note
 
 ### Shot count and reuse
 
-32 shots. 31 picture shots plus 1 card. Of the 31, four reuse an approved still: S08 reuses S06, S13 and S15 reuse S11, and S16 reuses S14. That leaves 27 unique stills to generate and 31 clips to animate. Total cut: 73.0 seconds. Dialogue seconds (character to character): about 48, or 66 percent. The Member Twelve lines total about 6 seconds and count as narration.
+33 shots. 32 picture shots plus 1 card. Of the 32, four reuse an approved still: S08 reuses S06, S13 and S15 reuse S11, and S16 reuses S14. That leaves 28 unique stills to generate and 32 clips to animate. Total cut: 73.0 seconds. Dialogue seconds (character to character): about 55, or 75 percent. Member Twelve has no line in v3.
 
 ---
 
@@ -583,7 +596,8 @@ Music for every shot: none. The trailer file carries no music bed by script note
 
 | Line | Character | Shot | Read |
 |---|---|---|---|
-| "Tuesday. Twelve minutes past four. The soup never stood a chance." | Member Twelve (V.O.) | S01 to S02 | Calm, unhurried, the tone of a documentary about a war, applied to soup. Three full stops. No irony in the voice. |
+| "Slower. It was slower than this." | Piper | S01 | From inside the cans, mouth barely moving, a director's note delivered as testimony. |
+| "This is as slow as it goes." | Oscar (O.S.) | S02 | Flat, solemn, a teenager doing his best. |
 | "The Recent History Society of Bell Hollow is called to order." | Harlan | S05 | Proclamation cadence. Warm bass. Every word given its weight. |
 | "Who remembers?" | Harlan | S06 | A ritual question. He knows the answer. |
 | "We do." | All (ten voices) | S07 | Plain, together, no enthusiasm, no dragging. Petrakis is in it, asleep. |
@@ -607,13 +621,14 @@ Music for every shot: none. The trailer file carries no music bed by script note
 | "I felt it." | Piper | S25 | After the beat. The heart of the trailer. Quiet, certain, no smile. |
 | "The Archive says six." | Imani | S26 | The authority named. Slight slowing on "Archive." |
 | "Sustained. Restage it." | Harlan | S27 | A ruling. The bell lands on "it." |
-| "Tuesday. Aisle six. Corrected." | Member Twelve (V.O.) | S28 | Same voice as the first narration. "Corrected" with no satisfaction. |
+| "Aisle six. For the record." | Imani (O.S.) | S28 | Reading a card. Procedure, no satisfaction. |
 | "Still felt it." | Piper | S30 | From the floor. Same certainty as before, a little breathless from the fall. |
+| "It was seven." | Dale | S30b | Muffled by the cloth horse head. Certain. He was there. |
 | "Adjourned. Same time next week. Something will have happened by then." | Harlan | S31 | The promise. Slowest line in the trailer. He means it as comfort. |
 
 ### 4.2 Member Twelve as narrator voice
 
-Member Twelve is a member of the Society who reads the program, never seen, never addressing the viewer. The voice reads like a narrator of a serious historical documentary, unhurried, with no wink, applied to soup. Two lines, about six seconds total. Both sit over slow motion with no other voice under them.
+Member Twelve is a member of the Society who reads the program, never seen, never addressing the viewer. In trailer v3 Member Twelve has no line; the character is present only as the lit booth window in the hall wide. The narrator voice returns at full-episode stage, where it speaks as a character in the world beat, never in a cold open. No synthesized voice is needed for the trailer.
 
 Voice spec for casting or synthesis: adult, any gender, mid-to-low range, plain accent with no regional marker, dry room with no reverb, close-miked, slower than conversational speech, full stops honored as silence. The voice must not resemble any known narrator, announcer, or actor. If a synthesized voice is built from a preset that imitates a named person, it fails standards item 14. Use a stock voice with no named source or a voice designed from parameters.
 
@@ -621,7 +636,7 @@ Voice spec for casting or synthesis: adult, any gender, mid-to-low range, plain 
 
 | Character | Lines | Lip sync on screen | Option A: synthesized | Option B: hired voice | Gate |
 |---|---|---|---|---|---|
-| Member Twelve | 2 | No (voice over only) | Natural fit. The character is designed as a voice with no body. | Possible, but adds a hire for six seconds. | A: CG-03. B: CG-04. |
+| Member Twelve | 0 in v3 | No | Not needed for the trailer. | Not needed for the trailer. | None at trailer stage. |
 | Harlan | 10 | Yes | Risky. Proclamation cadence and comic gravity are timing, and synthesis flattens timing. | Recommended. A warm bass with a straight face carries the show. | A: CG-03. B: CG-04. |
 | Imani | 6 | Yes | Risky. "That's how weeks work" is the parent laugh and depends on flatness that reads as human, not machine. | Recommended. | A: CG-03. B: CG-04. |
 | Piper | 5 | Yes | Not recommended. A synthesized child voice is the hardest thing in the trailer to make sound real, and the heart line "I felt it" cannot be flat by accident. | Recommended. A voice-only session with a parent present, under the CG-04 child protections. | A: CG-03. B: CG-04 with child protections. |
@@ -633,17 +648,17 @@ CG-03 covers any generated performance, voice, or image. CG-04 covers any talent
 
 ### 4.4 Recommended path for v1
 
-Hired human voices for the five on-screen speakers. A synthesized voice for Member Twelve. Generated picture throughout. Both gates: CG-03 for the picture and the narrator, CG-04 for the voice cast.
+Hired human voices for the six speakers in v3 (Harlan, Piper, Imani, Dale, Lorraine, Oscar). No synthesized voice. Generated picture throughout. Gates: CG-03 for the picture, CG-04 for the voice cast. Under D-025, Piper's voice is an adult performer with a young timbre.
 
 Why.
 
 1. Voice is where "slop" is heard first. A viewer forgives a held cardboard tableau. A viewer does not forgive a machine reading "Is there a horse?" without the beat.
 2. The show's grammar helps the picture and hurts the audio. Held poses and slow motion hide the limits of generated motion, but nothing hides a flat line.
 3. The child's voice is the trailer's heart. It should be a child, recorded once, with a parent in the room. That is a smaller undertaking than a child performer on a set, and the CG-04 protections are written for it.
-4. Member Twelve is the one place synthesis is the right creative answer, because the character was designed as a voice with no body and the script already carries the disclosure.
+4. Member Twelve has no line in v3, so the trailer needs no synthesized voice at all.
 5. Twenty-seven short lines is one recording session per voice. The cost is small next to the cost of a trailer that reads as machine-made on the lead show.
 
-Sequence. Phase A: a scratch pass with synthesized voices for every line, used only to time the cut and test lip motion in private. Phase B: hired voices replace every scratch line except Member Twelve. Phase C: regenerate any dialogue clip whose mouth motion no longer matches the human timing. Nothing from Phase A reaches the public site.
+Sequence. Phase A: a scratch pass with synthesized voices for every line, used only to time the cut and test lip motion in private. Phase B: hired voices replace every scratch line. Phase C: regenerate any dialogue clip whose mouth motion no longer matches the human timing. Nothing from Phase A reaches the public site.
 
 If the owner chooses the one-gate path (all synthesized), this package still works. Record the scratch pass with the best available voices, keep the tableau fallback (held frame, line over, cut to listener) for every shot where the mouth fails review, and change the disclosure in Section 8 to the all-synthesized variant.
 
@@ -745,7 +760,7 @@ The brand word is provisional until Fork D and CG-01 clear. Keep the card on its
 
 - Total: 73.0 seconds. At 24 frames per second that is 1,752 frames. Floor 60, ceiling 75.
 - Count with a stopwatch on the exported file, not on the timeline.
-- Count dialogue seconds (a character speaking to another character on screen). Target 48. Floor 44 (60 percent of 73). Member Twelve's six seconds do not count.
+- Count dialogue seconds (a character speaking to another character on screen). Target 55. Floor 44 (60 percent of 73).
 - If the file exceeds 75.0 seconds, cut from the World beat. If dialogue drops below 44 seconds, restore the gaps in the Character beat before touching anything else.
 
 ### 6.5 Export settings
