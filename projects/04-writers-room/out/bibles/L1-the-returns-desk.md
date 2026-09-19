@@ -1,6 +1,6 @@
-# The Night Desk
+# The Returns Desk
 
-Series bible. Slot 4, Lights Out. Showrunner output for decision D-020.
+Series bible. Slot 4, Lights Out. Showrunner output for decision D-020. Retitled under decision D-022.
 Status: green-light draft. A producer can order episodes from this document.
 Source concept: `projects/04-writers-room/out/tournament/concepts.md`, L1. Judge notes: `results.md`, Lights Out table.
 
@@ -8,7 +8,11 @@ Source concept: `projects/04-writers-room/out/tournament/concepts.md`, L1. Judge
 
 ## 1. Title, logline, pitch
 
-**Title.** The Night Desk.
+**Title.** The Returns Desk.
+
+**Alternate title.** Two Receipts. Held in reserve if counsel finds a conflict on the primary title. The trailer's last line does not change under either title.
+
+**Retitle note (D-022).** The tournament concept was called The Night Desk. The compliance check found an active video channel using that name, so the show is now The Returns Desk everywhere. The old title appears in no asset, handle, domain, or metadata.
 
 **Logline.** At the all-night returns desk of a neighborhood hardware store, every item comes back with a ghost story, and the desk always finds the ordinary truth.
 
@@ -53,7 +57,7 @@ Three fixed setups carry ninety percent of every episode.
 
 ### The town's night
 
-The Flats at night is quiet and specific. The cannery hum. The spur, with one freight train per night that shakes the shelf. A diner that is closed with its lights on. A bus that does not stop here after dark. Sprinklers. Dogs that know each other. Everyone who comes to the desk lives within a short walk, because who else is up and near a hardware store. The other three shows in the block live in the same town, in other neighborhoods. The Night Desk never shows the porch, the school bus route, the kitchen, or the community hall. The town is shared. The Flats is ours.
+The Flats at night is quiet and specific. The cannery hum. The spur, with one freight train per night that shakes the shelf. A diner that is closed with its lights on. A bus that does not stop here after dark. Sprinklers. Dogs that know each other. Everyone who comes to the desk lives within a short walk, because who else is up and near a hardware store. The other three shows in the block live in the same town, in other neighborhoods. The Returns Desk never shows the porch, the school bus route, the kitchen, or the community hall. The town is shared. The Flats is ours.
 
 ---
 
@@ -402,6 +406,12 @@ Walked against `canon/STANDARDS.md`. Showrunner's own read. The `standards` agen
 4. **One set, one lamp, one window, and the scariest thing on the show is an ice machine.** No creature design, no ghost design, no mascot, no effects. The look is a hardware store at night lit by a gooseneck lamp. It can be confused with nothing.
 5. **The customer is new every week and the reveal is kind.** The cause is a neighbor, a grandparent, a pet, or a kid. The emotional engine is small-town kindness discovered by accident, not fear.
 
+**Three expressive choices that differ from cursed-shop and museum anthologies.** Some haunted-object anthologies run on a cursed antique shop or a museum that returns objects to their owners, where the object carries a real curse and the episode is the price of owning it. The Returns Desk differs on the page in three ways.
+
+1. **The objects are ordinary hardware-store goods.** A doorbell, a stepladder, a bag of rock salt, a plunger. Nothing is an antique, an artifact, or a relic. Nothing has a history older than the receipt. The object came off a shelf in Aisle 12 and is going back on one.
+2. **The desk investigates with receipts and fair clues, not lore.** No ledger of cursed items, no keeper who knows the object's secret, no bargain with the buyer. Ines asks three questions, the clue was on screen in the insert, and the reveal is a replay. The show's authority is a rubber stamp and a twelve-year-old's ledger.
+3. **Every reveal lands safe and funny.** The cause is a neighbor, a pet, a grandparent, a timer, or a mislabeled can. The customer goes home lighter and gets the second-to-last line. Nobody pays a price. Marguerite gets the last word, and it is a joke about paperwork.
+
 **Name check.** "Hardison's Hardware" is fictional and chosen because it is plain. Before any public asset, counsel checks the store name, the show title, and the character names against live marks and real businesses in the same class (CG-01 process). If any collide, the room renames without changing the design.
 
 **What the room may not do.** No parody of a named show. No customer who is a recognizable version of a real person. No prop, catchphrase, or set detail lifted from any existing anthology or workplace comedy. Any writer who cannot say where a joke came from cuts the joke.
@@ -502,7 +512,7 @@ Hold on the customer. Hold on Marguerite. She does not explain. The swinging doo
 Dolores: "Ines. Ledger. Coat."
 Ines closes the ledger. Ice drops. Nobody jumps. Teddy, off: "See. Fine."
 
-**6. Title card (110 to 120 seconds).** The gooseneck lamp clicks off. The shelf goes dark except the tags. Show title: The Night Desk. Slot label: Lights Out. "Premieres Friday on [BRAND]." Small line: "The account holder is a parent." No call to action. No music bed until the block's Click bumper, which the site adds outside the file.
+**6. Title card (110 to 120 seconds).** The gooseneck lamp clicks off. The shelf goes dark except the tags. Show title: The Returns Desk. Slot label: Lights Out. "Premieres Friday on [BRAND]." Small line: "The account holder is a parent." No call to action. No music bed until the block's Click bumper, which the site adds outside the file.
 
 **The last line.** "Then I'll need two receipts." Do not improve it. Do not explain it. The line works because Marguerite means it.
 
@@ -520,5 +530,5 @@ Ines closes the ledger. Ice drops. Nobody jumps. Teddy, off: "See. Fine."
 
 - The town name is not set in canon. This bible names only the neighborhood (the Flats, Ambler Street, the rail spur). The town name goes in `slate-ranking.md` once all four bibles exist.
 - Lights Out characters never enter the other three slots (canon 2a). The Flats can be seen from any other show. The desk cannot.
-- The Wildcard winner uses a "three receipts" line in its concept. Receipts belong to The Night Desk's button and title-line. Recommend the Wildcard bible give that character a different form of evidence so the two shows do not share a joke.
-- Counsel: CG-01 name check for "Hardison's Hardware" and "The Night Desk" before any public asset. CG-03 if any AI-assisted asset in the trailer carries a performance, voice, or face. CG-04 for the casting of Ines.
+- The Wildcard winner uses a "three receipts" line in its concept. Receipts belong to The Returns Desk's button and title-line. Recommend the Wildcard bible give that character a different form of evidence so the two shows do not share a joke.
+- Counsel: CG-01 name check for "Hardison's Hardware" and "The Returns Desk" before any public asset. CG-03 if any AI-assisted asset in the trailer carries a performance, voice, or face. CG-04 for the casting of Ines.
