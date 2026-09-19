@@ -131,6 +131,12 @@ Format: date, decision, options, choice, reason. Counsel gates carry the tag `CO
 - Reason: none of the flagged names carried meaning the show needs. Renaming is cheaper than a later dispute. The compliance-gate re-checks the new names before any public asset.
 - Watch items kept as internal notes: "Harlan Voss" is a small online persona; two characters named Ines and two named Dale exist across the shared town; Pip and Piper sit in adjacent slots. The showrunners resolve these at full-episode stage.
 
+### D-025. 2026-09-19. Children in AI-assisted trailers
+- Finding: the production packages disagree on generated child likenesses. Character sheets forbade a photoreal child; two packages need child characters on screen (Pip, Ansel, Marisol in Kitchen Court; Ines in The Returns Desk; six kids in Long Route; Piper in Recent History Society).
+- Choice for v1 trailers: no photoreal generated child face is resolved on screen. Children appear as figures with faces unresolved (The Returns Desk package "Mode A"), in profile, from behind, above the frame edge, or off screen. All child voices are performed by adult voice performers with a young timbre under CG-04. No synthesized child voice.
+- Reason: this removes the likeliest CG-03 refusal and the likeliest "slop" tell at once, and it avoids minor labor law at trailer stage. Counsel confirms under CG-03. If counsel clears photoreal children, the packages already carry the prompts.
+- Effect: each package's shot list keeps its no-face fallback for every child shot as the default, not the fallback.
+
 ## Open forks
 
 - Fork A: decided, Go (D-011).
