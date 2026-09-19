@@ -153,7 +153,7 @@ Standards read: section 2, items 1 to 15, walked after the changes. None trigger
 ## 7. `W5-recent-history-society-trailer-v2.md` (Wildcard, 73 seconds). 2 changes.
 
 1. Member Twelve, Button, about 00:59.
-   Before: "Tuesday. Aisle six. Corrected. "
+   Before: "Tuesday. Aisle six. Corrected."
    After: "Tuesday. Aisle six. Corrected. Same soup."
    Reason: JD. Two words in the one beat with slack. The narrator's flat documentary voice notes that the Society fixed the aisle and not the casting. A kid laughs at the soup going over again. A parent laughs at "Same soup."
 2. Action line, Button, about 00:58.
