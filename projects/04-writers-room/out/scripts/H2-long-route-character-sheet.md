@@ -12,7 +12,7 @@ Format for each regular: age, build, face, hair, skin, constant costume pieces, 
 
 ## The regulars
 
-### Frances Dukes. The driver.
+### Frances Keel. The driver.
 
 - **Age.** 58.
 - **Build.** Medium height. Sturdy. Broad in the shoulders from thirty years of a wheel and an upright bass. Not slim, not heavy. Strong forearms.
@@ -24,7 +24,7 @@ Format for each regular: age, build, face, hair, skin, constant costume pieces, 
 - **Posture.** Upright. Both hands on the wheel at nine and three. Chin level. Eyes up to the mirror, not to the road, when she speaks. She never turns her head to talk to a rider.
 - **Fixed frame.** The driver's seat. Her portrait is the mirror: a tight reverse shot of her eyes in the wide convex mirror above the windshield, the aisle bent small behind them. She is the only regular whose frame contains all the others.
 
-### Hollis Dukes. Row 1, door side. The driver's grandson.
+### Hollis Keel. Row 1, door side. The driver's grandson.
 
 - **Age.** 13. Small for it.
 - **Build.** Slight. Narrow shoulders. All elbows. Sits low in the seat and takes up less room than his backpack.
@@ -36,7 +36,7 @@ Format for each regular: age, build, face, hair, skin, constant costume pieces, 
 - **Posture.** Braced. Both hands on the chrome rail of the seat back in front of him, feet flat, shoulders up around his ears, whether the bus is moving or not.
 - **Fixed frame.** Row 1, door side. Framed against the door glass and the folding door, so the stop is always behind him. Camera from the stairwell, low, at his eye height, looking slightly up. Frances's shoulder and the thermos are visible at the left edge of frame.
 
-### Mateo Villanueva. Row 12, driver side. Speaker of the parliament.
+### Mateo Arriaga. Row 12, driver side. Speaker of the parliament.
 
 - **Age.** 14.
 - **Build.** Tall and lanky, the tallest on the bus by a head, all wrists and knees. Grew over the summer and has not caught up to it.
@@ -48,7 +48,7 @@ Format for each regular: age, build, face, hair, skin, constant costume pieces, 
 - **Posture.** Sideways across the back-row seat, back to the window, one knee up on the vinyl, arms folded, head against the glass. He does not sit facing forward unless something has gone wrong.
 - **Fixed frame.** Row 12, driver side. Framed against the rear driver-side window with the road falling away behind him. Camera from the aisle at seat height, a hair below his eyeline, so the back row looks like the top of something.
 
-### Beck Oyelaran. Row 12, door side. The whip.
+### Dele Oyelaran. Row 12, door side. The whip.
 
 - **Age.** 12.
 - **Build.** Medium height, compact, springy. Never fully still. Leans forward from the hips.
@@ -60,17 +60,17 @@ Format for each regular: age, build, face, hair, skin, constant costume pieces, 
 - **Posture.** Half-standing, one foot in the aisle, one hand on the grab rail of the seat in front like a podium. When he is seated all the way it is because Priya said so.
 - **Fixed frame.** Row 12, door side. Framed against the rear door-side window. Camera from the aisle, low, so that when he stands he fills the frame to the roof.
 
-### Rue Oyelaran. Row 11, door side. The swing vote.
+### Tola Oyelaran. Row 11, door side. The swing vote.
 
-- **Age.** 12. Beck's twin.
-- **Build.** Same height as Beck, thinner, and completely still. Long neck. Sits with her weight over the sketchbook.
-- **Face.** A long oval. Beck's eyebrows, held flat. Deep brown eyes that look up before the head does. A small mouth that moves only for the one line.
+- **Age.** 12. Dele's twin.
+- **Build.** Same height as Dele, thinner, and completely still. Long neck. Sits with her weight over the sketchbook.
+- **Face.** A long oval. Dele's eyebrows, held flat. Deep brown eyes that look up before the head does. A small mouth that moves only for the one line.
 - **Hair.** Shoulder-length two-strand twists pulled back with a single black elastic, a few twists loose at the temples.
-- **Skin.** Dark brown, the same tone as Beck. The two are clearly twins and clearly not the same person.
+- **Skin.** Dark brown, the same tone as Dele. The two are clearly twins and clearly not the same person.
 - **Costume.** An oversized olive cardigan with the sleeves pulled over her hands. A plain T-shirt under it, any muted color. A canvas messenger bag worn across her chest that does not come off on the bus. The cardigan and the bag are the constant.
 - **Prop.** A hardbound black sketchbook with a wide rubber band around it and a mechanical pencil clipped to the band.
 - **Posture.** Turned toward the window, sketchbook on her knees, chin down, eyes up. She draws the school through the glass without looking at the page.
-- **Fixed frame.** Row 11, door side. Framed in three-quarter profile against her window, the road plate sharp behind her and Beck's shoulder soft in the foreground. Camera from the aisle at seat height.
+- **Fixed frame.** Row 11, door side. Framed in three-quarter profile against her window, the road plate sharp behind her and Dele's shoulder soft in the foreground. Camera from the aisle at seat height.
 
 ### Cal Whitlock. Row 7, driver side. The market.
 
@@ -84,7 +84,7 @@ Format for each regular: age, build, face, hair, skin, constant costume pieces, 
 - **Posture.** Feet up on the wheel hump, ledger on his knees, leaning out into the aisle so he can see both ends of the bus at once.
 - **Fixed frame.** Row 7, driver side. Framed against the mid-bus window, slightly wider than the others to show the hump and his feet on it. Camera from the aisle at seat height. The middle of the market.
 
-### Priya Anand-Coker. Row 2, door side. Author of the bus code.
+### Priya Coker. Row 2, door side. Author of the bus code.
 
 - **Age.** 11.
 - **Build.** Small. The smallest person on the bus. Sits with a straight back that adds an inch.
@@ -106,11 +106,11 @@ Short entries for continuity only. These are not regulars.
 
 - 50s. Tall and thin, so the back-row seat folds him. A long neutral face, pale, clean-shaven, thinning gray-brown hair combed flat. Wire glasses. A plain tie (maroon), a white short-sleeve shirt, a county lanyard, gray slacks, black shoes that were shined this morning. The prop: a silver stopwatch on a black cord around his neck. Posture: knees up, elbows in, taking up as little room as a tall man can. He is never drawn as a threat. He looks like a man who would like to be told where to sit.
 
-### Ines Villanueva. Mateo's sister.
+### Ines Arriaga. Mateo's sister.
 
 - 6. Small and solid. Round face, Mateo's eyebrows in miniature, huge dark eyes, a gap where a front tooth was. Black hair in two short pigtails. Warm medium brown skin. A purple backpack bigger than her torso, a yellow raincoat in every weather. No prop; her whole body is the wave. Posture: on tiptoe at the mailbox, both arms up. She is only ever framed from the bus, through the windshield or the door, at the mailbox.
 
-### Abuela Villanueva.
+### Abuela Arriaga.
 
 - 70s. Short, round, a cardigan over a housedress, silver hair in a low bun, warm brown skin, a mug in one hand. Seen on the porch at the far end, through the windshield. One wave.
 
@@ -123,7 +123,7 @@ Short entries for continuity only. These are not regulars.
 ## The bus interior, for an artist
 
 - **Vehicle.** A full-size county school bus, yellow, with a single black stripe along both sides and a stenciled black 12 on both sides and on the rear emergency door. No maker's name anywhere.
-- **Layout.** Twelve rows. Two seats per row. A center aisle wide enough for one kid and Beck's foot. Green vinyl seats with cracked cream piping. Chrome grab rails along every seat back. Black rubber floor with a raised ribbed strip down the center of the aisle.
+- **Layout.** Twelve rows. Two seats per row. A center aisle wide enough for one kid and Dele's foot. Green vinyl seats with cracked cream piping. Chrome grab rails along every seat back. Black rubber floor with a raised ribbed strip down the center of the aisle.
 - **Fixtures.** A heater box under row 3, door side, painted the same green as the seats. Wheel humps under rows 6 and 7, both sides. A rear emergency door with a red handle and a stenciled warning that nobody touches. A wide convex mirror above the windshield with a chrome rim.
 - **Row 1, the kitchen.** Driver side: the thermos, the clipboard, a laminated route card clipped to the seat back, a coffee can of pencils, and on some days an upright bass in a canvas case with the seat belt around it. Door side: Hollis.
 - **Seats with value.** Row 3, door side: the heater seat. Rows 6 and 7: the hump seats. Row 9, door side: the Tuesday window, the only window latch that slides smooth. Row 9, driver side: the crack seat, a split in the vinyl holding folded notes. Row 12: the back row and the aisle between the two seats, where parliament sits.

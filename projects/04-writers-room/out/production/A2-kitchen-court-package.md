@@ -166,3 +166,274 @@ Toni, 73. Image models drift older women toward smoothing (a 55-year-old) or tow
 Marisol, 13, and Ansel, 10, get the same age-drift check with a one-year tolerance. Marisol must not read as a young woman: no makeup, mid-growth arms, a kid's hands, braces visible when the mouth opens. Ansel must not read as a toddler: a ten-year-old's proportions, the leg bouncing under the table.
 
 ---
+
+## 3. Shot list
+
+35 shots. Timecodes are seconds from the first frame of picture. Every line of the script appears once, in order. Prompt expansion rule: every image prompt below is `{STYLE}` plus the named plate plus the named character tokens plus the shot's action line plus the negative list, in that order. The plate still and the master portraits of every named regular are attached as image references on every generation. Motion prompts are for image-to-video from the approved still. Generate every clip at 4 seconds unless the shot says otherwise; the editor trims. "Gen" is the generated clip length.
+
+Beat markers: Beat 1 Cold open 0.0 to 12.0. Beat 2 World 12.0 to 30.5. Beat 3 Character 30.5 to 53.5. Beat 4 Turn 53.5 to 79.0. Beat 5 Button 79.0 to 86.0. Beat 6 Title card 86.0 to 90.0.
+
+Music and sound shorthand: RT = room tone (fridge hum, a faint clock, the toaster's coil tick when it is down). Music cues are in section 5.
+
+### Beat 1. Cold open (0.0 to 12.0). No music. No title.
+
+**S01** | In 0.0 | Out 3.5 | 3.5 s | Frame F1 court state | Camera static | Ansel; Renata's legs on the Stool, head above frame; Pip's hand at the Cart edge
+Action: Ansel, standing at the bench, leans across and sets a plate with one waffle, one bite gone, on the exact center of the table, then straightens his tie. His head is down, eyes on the plate, at wide scale.
+Dialogue: ANSEL "I'd like to enter into evidence the waffle."
+Sound: RT only. The plate ticks on laminate.
+Image prompt: `{STYLE}` `{F1-COURT}` `{ANSEL}` `{RENATA}` `{PIP}` "Ansel stands at the far bench leaning over the table, both hands setting a white plate with a single round waffle missing one bite onto the exact center of the table, his eyes down on the plate, a woman's navy trouser legs and flat loafers on the top step of the red step stool at frame right with her body cut off by the top edge of frame, a small child's hand and striped sash edge at the toaster cart beside the stool, the cutting board and the red-handled masher at the head"
+Motion prompt: "Static camera. The boy sets the plate down, releases it, and straightens his tie with one hand while his eyes stay on the plate. His mouth moves lightly on a few words. The pendant light does not flicker. 4 seconds."
+
+**S02** | In 3.5 | Out 6.0 | 2.5 s | Frame F5 | Camera static | Pip's hand; no face
+Action: Pip's hand rests on the toaster lever. The lever is down. A finger taps once.
+Dialogue: PIP (O.S.) "The waffle is entered." RENATA (O.S.) "Is that the waffle?"
+Sound: RT. Coil tick. Gen 3 s.
+Image prompt: `{STYLE}` `{F5}` `{PIP}` "a six-year-old's small hand resting on the black toaster lever which is pushed down, the child's chin and the striped sash edge at the very top of frame with the mouth above the frame edge, bread down in the slots, faint orange glow inside the slots"
+Motion prompt: "Static camera, 85 mm insert. One small finger lifts and taps the lever once. Faint heat shimmer above the slots. Nothing else moves. 3 seconds."
+
+**S03** | In 6.0 | Out 9.5 | 3.5 s | Frame F3 | Camera static | Ansel, Marisol
+Action: Ansel stands, one hand flat on the table, turns to the Stool at frame right: right profile. Marisol sits beside him, forearms on the closed folder, watching him with her serious face. Ansel talks fast.
+Dialogue: ANSEL "It's a waffle. Somebody bit it. That's my whole case, and I have more."
+Sound: RT.
+Image prompt: `{STYLE}` `{F3}` `{ANSEL}` `{MARISOL}` "Ansel standing at the bench with his right hand flat on the table, head turned to frame right in right profile addressing someone out of frame, mouth slightly open mid-word, eyebrows up, Marisol seated at his left with her forearms on a closed fat white folder, serious face, one hair clip slipping, the plate with the bitten waffle at the bottom center of frame"
+Motion prompt: "Static camera. The boy in profile speaks quickly with small mouth movements and one short chop of his free hand toward the plate. The girl's eyes move from him to the plate and back. 4 seconds."
+
+**S04** | In 9.5 | Out 10.3 | 0.8 s | Frame F5 | Camera static | Insert, no face
+Action: The toast POPS. Two slices jump and settle.
+Dialogue: none.
+Sound: TOAST POP, at or below dialogue peak (section 5.3). Gen 3 s, use the 0.8 s around the pop.
+Image prompt: `{STYLE}` `{F5}` "the black lever of the toaster snapped up, two slices of golden toast caught in mid-air a hand's width above the chrome slots, no hand in frame, the striped sash edge at the top of frame"
+Motion prompt: "Static camera, 85 mm insert. The lever snaps up and two slices of toast pop, rise, and drop back into the slots with a small bounce. No light flash. 3 seconds."
+
+**S05** | In 10.3 | Out 12.0 | 1.7 s | Frame F3 | Camera static | Ansel, Marisol
+Action: Ansel, still in profile, mouth open on his next word. It stays open. His eyes go to the toaster (frame right), then down to the waffle. He closes his mouth. Cut to black at 12.0.
+Dialogue: PIP (O.S.) "Time." at 11.0.
+Sound: RT. Then hard cut to silence at 12.0. Gen 3 s.
+Image prompt: `{STYLE}` `{F3}` `{ANSEL}` `{MARISOL}` "Ansel standing in right profile with his mouth held open mid-word, frozen, eyes turned toward frame right, Marisol seated beside him with her eyebrows raised, the bitten waffle on its plate at bottom center"
+Motion prompt: "Static camera. The boy's mouth stays open. Only his eyes move: to frame right, then down to the plate. Then his mouth closes slowly. The girl does not move. 3 seconds."
+
+### Beat 2. World (12.0 to 30.5). Music enters at 12.0, low, plucked.
+
+**S06** | In 12.0 | Out 14.5 | 2.5 s | Frame AERIAL | Camera slow push | No people
+Action: The Pinwheel from above at dusk. Porch lights come on one by one, each once, and stay on.
+Dialogue: none.
+Sound: Music in at 12.0. Distant evening exterior: one dog, a screen door far away. Gen 4 s.
+Image prompt: `{STYLE}` `{AERIAL}` "six porch lights lit and the rest dark, warm amber points in blue dusk"
+Motion prompt: "Very slow push in from above, 2 percent over the clip. Porch lights come on one at a time, four more in sequence, each one on and staying on, no flicker, no flashing. 4 seconds."
+
+**S07** | In 14.5 | Out 16.0 | 1.5 s | Frame VAN | Camera static | No people
+Action: The last split-level on Spoke Court. The van, side door open, chairs inside. The side panel is blank; the editor composites HUANG PARTY RENTAL and CARROW BEND (D-023) in a plain sign-painter's letter.
+Dialogue: none.
+Sound: Music. Exterior. Gen 3 s.
+Image prompt: `{STYLE}` `{VAN}`
+Motion prompt: "Static camera. The porch light glows steady. A moth crosses the frame once. A curtain moves slightly in the front window. 3 seconds."
+
+**S08** | In 16.0 | Out 17.5 | 1.5 s | Frame F4 | Camera static | A hand only
+Action: A hand clips a slip under a clothespin magnet at the top of the column. Slip is blank; the editor composites ANSEL v. MARISOL. RE: THE WAFFLE. in a child's marker capitals, and DOCKET on the tape.
+Dialogue: none.
+Sound: Music. The clothespin's small click. Gen 3 s.
+Image prompt: `{STYLE}` `{F4}` "a ten-year-old boy's hand pressing a blank torn paper slip under the top wooden clothespin magnet, one other blank slip already below it"
+Motion prompt: "Static camera, 85 mm insert. The hand presses the slip flat, releases the clothespin, and withdraws downward out of frame. The slip settles. 3 seconds."
+
+**S09** | In 17.5 | Out 21.0 | 3.5 s | Frame F1 kitchen state to court state | Camera static | Pip; Toni rising at the rail; Marisol and Ansel on the bench
+Action: Pip drags the red Stool from the fridge (frame left) along the floor to the head of the table (frame right). It SCRAPES. At the stair rail frame right, a brass whistle on a red lanyard rises into view, then Toni follows it up, waist up. Toni's line begins at 19.5 and runs into S10.
+Dialogue: TONI "Five dollars or five minutes. Anything bigger goes to the table. It's on the fridge." (19.5 to 24.0)
+Sound: STOOL SCRAPE 17.5 to 19.0, under dialogue peak. Music holds low. Gen 5 s.
+Image prompt: `{STYLE}` `{F1-KITCHEN}` `{PIP}` `{TONI}` `{MARISOL}` `{ANSEL}` "Pip walking backward toward the head of the table dragging the red step stool by its folding handle with both hands, the stool tilted on two feet, halfway along the table, Toni's head and shoulders just risen above the wooden stair rail at frame right with the brass whistle on its red lanyard visible on her chest, left profile to camera, Marisol and Ansel seated on the far bench watching Pip, the rolling cart still by the garage door"
+Motion prompt: "Static camera. The small girl drags the stool the last stretch to the head of the table and sets it down. The older woman at the rail rises the final step and stops, upright, hands loose, her mouth moving a little in profile. 5 seconds."
+
+**S10** | In 21.0 | Out 25.0 | 4.0 s | Frame F1 court state | Camera static | Renata; Pip; Toni at the rail; Marisol, Ansel
+Action: Renata crosses from the range with the masher lifted off its nail, climbs the Stool one step at a time, straight-backed, until her head passes the top of frame. Pip wheels the Cart to the Stool's right hand and takes her post, hand on the lever. Two taps at 24.5. Toni finishes her line at 24.0.
+Dialogue: TONI (cont'd, ends 24.0).
+Sound: MASHER TWO TAPS at 24.5, under dialogue peak. Music holds. Gen 5 s.
+Image prompt: `{STYLE}` `{F1-COURT}` `{RENATA}` `{PIP}` `{TONI}` `{MARISOL}` `{ANSEL}` "Renata with one foot on the first step of the red step stool at the head of the table, rising, the red-handled wire masher in her right hand, her head near the top edge of frame, back straight, blazer on, Pip standing at attention beside the rolling cart at the stool's right hand with one hand on the toaster lever, Toni at the stair rail waist up in left profile, Marisol and Ansel on the far bench"
+Motion prompt: "Static camera. The tall woman climbs to the top step and her head rises out of the top of frame. Her hand brings the masher down twice on the cutting board. The child at the cart does not move. 5 seconds."
+
+**S11** | In 25.0 | Out 28.0 | 3.0 s | Frame F5 | Camera static | Pip's hand and chin; no mouth
+Action: Pip at her post. Her hand on the lever. Her chin lifts on the announcement. The mouth stays above frame.
+Dialogue: PIP "Kitchen Court is open. Feet on the floor. Hands on the table."
+Sound: RT. Music low. Gen 4 s.
+Image prompt: `{STYLE}` `{F5}` `{PIP}` "Pip's small hand flat on the toaster lever, her chin jutted forward and the striped sash and safety pin at the top of frame, mouth above the frame edge, bread down in the slots"
+Motion prompt: "Static camera, 85 mm insert. The chin lifts a little and holds. The fingers on the lever spread and settle. Nothing else moves. 4 seconds."
+
+**S12** | In 28.0 | Out 30.5 | 2.5 s | Frame F3 | Camera static | Ansel, Marisol
+Action: Ansel says his word down at his tie as he straightens it. Marisol says hers down at the folder as she opens it.
+Dialogue: RENATA (O.S.) "Who's hungry and who's mad?" ANSEL "Mad." MARISOL "Hungry."
+Sound: RT. Music low. Gen 3 s.
+Image prompt: `{STYLE}` `{F3}` `{ANSEL}` `{MARISOL}` "Ansel seated, chin down, both hands straightening his dotted clip-on tie, Marisol seated, eyes down, opening the fat white folder with both hands, the thick folder standing open, the bitten waffle on its plate at bottom center"
+Motion prompt: "Static camera. The boy tugs his tie straight and says one word to it. The girl opens the folder flat and says one word to the page. Neither looks up. 3 seconds."
+
+### Beat 3. Character (30.5 to 53.5)
+
+**S13** | In 30.5 | Out 34.0 | 3.5 s | Frame F3 push-in on Marisol | Camera slow push | Marisol, Ansel
+Action: Marisol stands, one hand on the open folder, turns to the Stool: right profile. Ansel, seated, looks at the folder's thickness.
+Dialogue: MARISOL "I didn't bite the waffle. I have a folder that says so."
+Sound: RT. Music low. Gen 4 s.
+Image prompt: `{STYLE}` `{F3}` `{MARISOL}` `{ANSEL}` "Marisol standing at the bench with her right hand flat on a fat open folder, head turned to frame right in right profile addressing someone out of frame, braces visible as her mouth opens on a word, Ansel seated at her right looking at the thickness of the folder with his eyebrows up"
+Motion prompt: "Slow push in toward the girl, 4 percent over the clip. She speaks in profile with small mouth movements and lifts the folder an inch to show its thickness. The boy's eyebrows climb. 4 seconds."
+
+**S14** | In 34.0 | Out 36.5 | 2.5 s | Frame F3 | Camera static | Ansel, Marisol
+Action: Ansel stands fast, hand flat, right profile, one word. A pause for the O.S. reply. Four more words. He points at the folder without looking at it.
+Dialogue: ANSEL "Objection." RENATA (O.S.) "To what?" ANSEL "She has a folder."
+Sound: RT. Music low. Gen 3 s.
+Image prompt: `{STYLE}` `{F3}` `{ANSEL}` `{MARISOL}` "Ansel standing bolt upright with his right hand flat on the table, head in right profile toward frame right, left index finger pointing sideways at the open folder without looking at it, Marisol standing beside him with one hand on the folder, mouth closed, unimpressed"
+Motion prompt: "Static camera. The boy speaks one word in profile, waits, then three more words with a jab of his pointing finger at the folder. The girl's eyes roll upward once and come back. 3 seconds."
+
+**S15** | In 36.5 | Out 39.5 | 3.0 s | Frame F2 | Camera static | Renata
+Action: Renata on the top step, a head above everyone. She says the first word to the board, then turns her head to her right toward the Cart and Toni's sideline, so we hold her in three-quarter to profile for the rest.
+Dialogue: RENATA "Overruled. Downtown I've never been reversed."
+Sound: RT. Music low. Gen 4 s.
+Image prompt: `{STYLE}` `{F2}` `{RENATA}` "Renata seated on the top step of the red step stool, knees together, back straight, a full head above the room, both hands folded around the red handle of the masher with its wire head resting on the cutting board, glasses pushed up in her hair, head turning to her right so the face is in three-quarter toward profile, the half-smile"
+Motion prompt: "Static low camera. The woman says one word downward, then turns her head to her right into three-quarter profile and continues with small mouth movements. Her hands stay folded on the masher. 4 seconds."
+
+**S16** | In 39.5 | Out 43.5 | 4.0 s | Frame F5 | Camera static | Pip's hand and chin; no mouth
+Action: Pip at her post. On "first-grader" one finger lifts off the lever, a small wave. The chin turns a little toward the Stool.
+Dialogue: RENATA (O.S.) "In this kitchen I'm 0 and 4 this week, and one of those was a first-grader." PIP "Hi." (43.0)
+Sound: RT. Music low. Gen 4 s.
+Image prompt: `{STYLE}` `{F5}` `{PIP}` "Pip's small hand on the toaster lever with the index finger lifted in a tiny wave, her chin and the striped sash at the top of frame, mouth above the frame edge"
+Motion prompt: "Static camera, 85 mm insert. Nothing moves for a beat, then one small finger lifts off the lever, wags once, and settles. 4 seconds."
+
+**S17** | In 43.5 | Out 48.5 | 5.0 s | Frame F1 court state | Camera static | Wendell behind chairs; Renata's legs on the Stool; Toni; Marisol, Ansel; Pip at the Cart
+Action: The garage door swings wide. Wendell backs in carrying a stack of folding chairs taller than he is. His face is behind the stack for his whole line. He sets them down at the end and we see him, a little out of breath, as the whole table answers.
+Dialogue: WENDELL "Can we not split it? We could split it. It's a waffle. It comes with lines." RENATA, TONI, MARISOL, ANSEL, PIP (together, 48.0) "No."
+Sound: RT. The garage door. Chair frames knock. Music low. Gen 6 s.
+Image prompt: `{STYLE}` `{F1-COURT}` `{WENDELL}` `{RENATA}` `{TONI}` `{MARISOL}` `{ANSEL}` `{PIP}` "the garage door at frame right swung wide, Wendell stepping backward into the kitchen hugging a stack of plain folding chairs taller than his head so that only his forearms, green polo, cargo shorts, and sneakers show, his face fully hidden behind the stack, the clipboard in his back pocket, Renata's legs on the top step of the stool cut off by the top of frame, Toni seated sideways in the middle near chair in left profile, Marisol and Ansel on the far bench, Pip at the cart with her hand on the lever, every visible head turned toward the chairs"
+Motion prompt: "Static camera. The man backs in two steps with the stack of chairs hiding his face, stops, and lowers the stack to the floor with a small knock, revealing his face, out of breath. Every head at the table turns to him at once. 6 seconds."
+
+**S18** | In 48.5 | Out 52.0 | 3.5 s | Frame F1 court state | Camera static | Toni; Wendell; all
+Action: Toni rises from her chair, lifts the whistle, one short low blow. Her fists roll over each other in front of her chest. She points at the chair with arms. Left profile, the full signal in wide.
+Dialogue: TONI "Traveling. You picked up the chairs and moved. That's traveling. Sit."
+Sound: WHISTLE, one short low blow at 48.7, at least 3 dB under dialogue peak (section 5.3). Music low. Gen 5 s.
+Image prompt: `{STYLE}` `{F1-COURT}` `{TONI}` `{WENDELL}` `{RENATA}` `{MARISOL}` `{ANSEL}` `{PIP}` "Toni standing beside the middle near chair in left profile, feet shoulder-width, the brass whistle at her lips held by two fingers, her other hand already beginning to roll a fist in front of her chest, Wendell standing beside the lowered stack of chairs at frame right looking at her, the rest of the family at their places, Renata's legs on the stool at the top of frame"
+Motion prompt: "Static camera. The small older woman blows the whistle once, drops it to her chest, rolls both fists over each other twice in front of her, then points one finger at the armchair at the left end of the table. Her mouth moves a little in profile. 5 seconds."
+
+**S19** | In 52.0 | Out 53.5 | 1.5 s | Frame F1, slow pan left to Wendell's single | Camera slow pan | Wendell
+Action: Wendell crosses to the chair with arms and sits, fully, properly. Nobody told him which one.
+Dialogue: none.
+Sound: RT. The chair takes his weight. Music low. Gen 4 s.
+Image prompt: `{STYLE}` `{F1-COURT}` `{WENDELL}` "framed as a slow pan from F1 to the left end of the table, Wendell lowering himself into the wooden chair with arms, both hands on the armrests, clipboard in his back pocket, the fridge behind him at frame left"
+Motion prompt: "Slow pan left, 5 percent, settling on the armchair. The man sits down all the way and puts both hands on the armrests. He exhales. 4 seconds."
+
+### Beat 4. Turn (53.5 to 79.0)
+
+**S20** | In 53.5 | Out 56.0 | 2.5 s | Frame F3 push-in on Marisol | Camera slow push | Marisol, Ansel
+Action: Marisol closes the folder with one hand. Stands. Right profile to the Stool.
+Dialogue: MARISOL "I call one witness. I call Mom."
+Sound: RT. Music holds, then thins. Gen 3 s.
+Image prompt: `{STYLE}` `{F3}` `{MARISOL}` `{ANSEL}` "Marisol standing with her right hand flat on the closed fat white folder, head in right profile toward frame right, mouth just opening, Ansel seated beside her looking up at her"
+Motion prompt: "Slow push in, 3 percent. The girl closes the folder flat with one hand and speaks in profile with small mouth movements. The boy's head turns from her toward frame right. 3 seconds."
+
+**S21** | In 56.0 | Out 58.5 | 2.5 s | Frame F1 court state | Camera static | Renata; all
+Action: A pause at the table. Renata climbs down from the Stool one step at a time, straight-backed, and sits on the Wobble at the head. It tips. She steadies it with one hand and puts the other on the fat white binder. The Stool stands empty behind her.
+Dialogue: none.
+Sound: RT. The Wobble's short leg knocks the floor once. Music thin. Gen 5 s.
+Image prompt: `{STYLE}` `{F1-COURT}` `{RENATA}` `{WENDELL}` `{TONI}` `{MARISOL}` `{ANSEL}` `{PIP}` "Renata stepping down from the second step of the red step stool with one hand on its handle, the masher left on the cutting board, a plain wooden stool with one short leg now placed at the head of the table in front of the step stool, a fat plain white binder on the table beside it, Wendell in the armchair, Toni sideways in the middle chair, Marisol and Ansel on the bench, Pip at the cart, every face turned to Renata"
+Motion prompt: "Static camera. The tall woman steps down to the floor, sits on the small wooden stool, which tips an inch and is steadied by her hand on the table. Her other hand comes to rest on the binder. 5 seconds."
+
+**S22** | In 58.5 | Out 61.5 | 3.0 s | Frame F2b | Camera static | Renata
+Action: Renata at table height on the Wobble, eyes down on the binder under her hand, as if reading an oath she knows.
+Dialogue: RENATA "I promise to say what happened, not what it meant."
+Sound: RT. Music thin. Gen 4 s.
+Image prompt: `{STYLE}` `{F2b}` `{RENATA}` "Renata seated at table height on the plain wooden stool with one short leg, her right hand flat on the fat white binder, eyes down on the binder, glasses pushed up in her hair, back straight, the empty red step stool behind her, the masher resting on the cutting board in the foreground"
+Motion prompt: "Static low camera. The woman keeps her eyes on the binder and speaks with small mouth movements, chin down. Her hand presses the binder slightly. 4 seconds."
+
+**S23** | In 61.5 | Out 64.0 | 2.5 s | Frame F3 push-in on Marisol | Camera slow push | Marisol, Ansel
+Action: Marisol standing, one hand on the folder, right profile, cross-examining her mother.
+Dialogue: MARISOL "Where were you at seven-fifteen this morning?"
+Sound: RT. Music thin. Gen 3 s.
+Image prompt: `{STYLE}` `{F3}` `{MARISOL}` `{ANSEL}` "Marisol standing in right profile with one hand on the closed folder and the pencil in her other hand held like a pointer, Ansel seated, leaning forward on his forearms, watching frame right"
+Motion prompt: "Slow push in, 3 percent. The girl speaks in profile and taps the pencil once on the folder. The boy leans in. 3 seconds."
+
+**S24** | In 64.0 | Out 66.0 | 2.0 s | Frame F2b | Camera static | Renata
+Action: A beat. Renata lifts her eyes from the binder to Marisol (frame left), three-quarter. Four words. The half-smile holds.
+Dialogue: RENATA (beat) "Alone. With the waffle."
+Sound: RT. Music thin. Gen 3 s.
+Image prompt: `{STYLE}` `{F2b}` `{RENATA}` "Renata seated at table height, hand on the binder, eyes lifted to frame left in three-quarter view, the half-smile, glasses in her hair, the empty step stool behind"
+Motion prompt: "Static low camera. The woman holds still for a beat, lifts her eyes to frame left, and says four words with small mouth movements and no other motion. 3 seconds."
+
+**S25** | In 66.0 | Out 67.0 | 1.0 s | Frame F3 | Camera static | Marisol, Ansel
+Action: Marisol, profile, unmoved, four words.
+Dialogue: MARISOL "Let the record show."
+Sound: RT. Gen 3 s, use 1.0 s.
+Image prompt: `{STYLE}` `{F3}` `{MARISOL}` `{ANSEL}` "Marisol standing in right profile, hand on the folder, face flat and serious, Ansel seated with both eyebrows up as high as they go"
+Motion prompt: "Static camera. The girl speaks four words in profile. The boy's eyebrows stay up. 3 seconds."
+
+**S26** | In 67.0 | Out 68.5 | 1.5 s | Frame F2b | Camera static | Renata
+Action: Renata's eyes go back down to the binder. Five words to the binder.
+Dialogue: RENATA "It was a quality check."
+Sound: RT. Gen 3 s.
+Image prompt: `{STYLE}` `{F2b}` `{RENATA}` "Renata seated at table height, eyes back down on the binder under her hand, chin down, the half-smile a little wider"
+Motion prompt: "Static low camera. The woman's eyes drop to the binder and she speaks five words downward with small mouth movements. 3 seconds."
+
+**S27** | In 68.5 | Out 73.0 | 4.5 s | Frame F3 | Camera static | Marisol, Ansel
+Action: Marisol's serious face breaks, then she catches it and holds it again. Ansel stands, slowly, and straightens his tie, grave. Renata's line plays over them, off screen.
+Dialogue: RENATA (O.S.) "Let the record also show that I am very proud of you, and I would like a lawyer."
+Sound: RT. Music thin. Gen 5 s.
+Image prompt: `{STYLE}` `{F3}` `{MARISOL}` `{ANSEL}` "Marisol standing with her hand on the folder, facing frame right, her serious mouth breaking into the start of a smile with braces showing, Ansel beginning to rise from the bench with one hand already on his tie, eyebrows level and grave, the bitten waffle on its plate at bottom center"
+Motion prompt: "Static camera. The girl's face breaks into a smile, she catches it and pulls it flat again. The boy rises to standing and straightens his tie with both hands, slowly. Neither speaks. 5 seconds."
+
+**S28** | In 73.0 | Out 75.0 | 2.0 s | Frame F3 | Camera static | Ansel, Marisol
+Action: Ansel, standing, hand flat, right profile, grave. Renata's two words off screen as the shot ends.
+Dialogue: ANSEL "Amended. Everyone versus Mom." RENATA (O.S.) "Rule Four."
+Sound: RT. Music thin. Gen 3 s.
+Image prompt: `{STYLE}` `{F3}` `{ANSEL}` `{MARISOL}` "Ansel standing bolt upright with his right hand flat on the table in right profile toward frame right, grave, Marisol standing beside him looking at him sideways"
+Motion prompt: "Static camera. The boy speaks four words in profile with small mouth movements, then holds perfectly still. The girl's eyes slide toward him. 3 seconds."
+
+**S29** | In 75.0 | Out 76.5 | 1.5 s | Frame F4, Rota detail | Camera static | A hand only
+Action: Tight on the three name magnets on the ring and the red arrow. A small hand turns the arrow. It stops on the third magnet. The editor composites MARISOL, ANSEL, PIP on the magnets.
+Dialogue: PIP (O.S.) "Kid on the Stool."
+Sound: RT. The magnet's small scrape on enamel. Music thin. Gen 3 s.
+Image prompt: `{STYLE}` `{F4}` `{PIP}` "framed on the fridge body left of the freezer door, three blank white name magnets arranged on a ring and a red arrow magnet, a six-year-old's small hand with fingertips on the red arrow turning it, no face"
+Motion prompt: "Static camera, 85 mm insert. The small hand rotates the red arrow a third of a turn and stops it on the lowest magnet, then withdraws. 3 seconds."
+
+**S30** | In 76.5 | Out 79.0 | 2.5 s | Frame F1 court state | Camera static | All six
+Action: Everyone turns and looks at the smallest person in the room. Pip looks at the Stool. She unpins the tea towel, folds it once, and sets it on the Cart. Nobody says anything.
+Dialogue: none.
+Sound: RT. Music drops out at 79.0. Gen 5 s.
+Image prompt: `{STYLE}` `{F1-COURT}` `{PIP}` `{RENATA}` `{WENDELL}` `{TONI}` `{MARISOL}` `{ANSEL}` "Pip standing beside the rolling cart at the head of the table with the safety pin open in her fingers and the striped tea towel sash half off her shoulder, looking at the empty red step stool, Renata seated at table height on the wobbly stool turned to look at her, Wendell in the armchair, Toni in the middle chair, Marisol and Ansel standing at the bench, every face turned to the small girl"
+Motion prompt: "Static camera. The small girl slides the sash off, folds it once against her chest, and lays it on the cart beside the toaster, squared to the edge. Nobody else moves. 5 seconds."
+
+### Beat 5. Button (79.0 to 86.0). No music.
+
+**S31** | In 79.0 | Out 81.5 | 2.5 s | Frame F2-Pip | Camera static | Pip
+Action: Pip stands on the second step. The fruit bowl hides the lower half of her face. She says her line half hidden. She slides the bowl aside with one hand. Now we see her. She takes the masher in both hands. Two taps at 81.0.
+Dialogue: PIP "The fruit bowl is moved."
+Sound: MASHER TWO TAPS at 81.0, under dialogue peak. No music. Gen 5 s.
+Image prompt: `{STYLE}` `{F2-PIP}` `{PIP}` "Pip standing on the second step of the red step stool, no sash, the yellow long-sleeve top, level with the table, a fruit bowl of apples and bananas in the near foreground hiding her mouth and chin so only her eyes, brows, and two hair puffs show above the fruit, her small hand reaching for the rim of the bowl"
+Motion prompt: "Static low camera. The child's eyes hold on the lens above the fruit bowl for a beat while her mouth, hidden, says a few words. Her hand slides the bowl to frame right until her whole face is clear. She lifts the red-handled masher in both hands and brings it down twice on the cutting board. 5 seconds."
+
+**S32** | In 81.5 | Out 83.0 | 1.5 s | Frame F2-Pip | Camera static | Pip
+Action: Chin down to the board, both hands on the masher, four words to the board. Then she looks up.
+Dialogue: PIP "Kitchen Court is open."
+Sound: RT only. Gen 3 s.
+Image prompt: `{STYLE}` `{F2-PIP}` `{PIP}` "Pip standing on the second step with both hands around the red masher handle, its wire head resting on the cutting board, her chin down toward the board and her eyes on it, the fruit bowl pushed to the far right edge of frame"
+Motion prompt: "Static low camera. The child speaks four words downward to the board with small mouth movements, then lifts her chin and looks straight ahead, jutting the chin. 3 seconds."
+
+**S33** | In 83.0 | Out 85.0 | 2.0 s | Frame F3 | Camera static | Renata between Ansel and Marisol
+Action: Renata on the gallery bench, the kids' side, between Ansel and Marisol, glasses still up in her hair. She looks small there. The three of them look up at the Stool. Pip's question plays off screen. Renata answers with one word.
+Dialogue: PIP (O.S.) "Kitchen Court is open. Who's hungry and who's mad?" (the first four words are the tail of S32, the question at 83.3). RENATA "Both." (84.3)
+Sound: RT only. Gen 4 s.
+Image prompt: `{STYLE}` `{F3}` `{RENATA}` `{ANSEL}` `{MARISOL}` "Renata seated on the pine bench between Ansel at her left and Marisol at her right, blazer off and hung behind her, glasses pushed up in her hair, hands folded on the table, looking small between her children, all three faces turned up toward frame right, the bitten waffle on its plate at bottom center"
+Motion prompt: "Static camera. The three of them hold still, looking up toward frame right. The woman's lips part on one word and close. The boy's leg bounces under the table. 4 seconds."
+
+**S34** | In 85.0 | Out 86.0 | 1.0 s | Frame F3, insert on the table | Camera static | A small hand
+Action: A small hand slides the evidence waffle on its plate from the head to the exact center of the table, halfway between Ansel and Marisol. Not one inch closer to either. Cut to black at 86.0.
+Dialogue: none.
+Sound: The plate slides on laminate. Cut to silence. Gen 3 s.
+Image prompt: `{STYLE}` `{F3}` `{PIP}` "tight on the wood-grain table top from just above table height, a six-year-old's small hand at frame right pushing a white plate with one bitten waffle across the laminate toward the center of the table, no faces"
+Motion prompt: "Static camera. The small hand slides the plate to the exact center of frame and stops it dead, then withdraws to frame right. 3 seconds."
+
+### Beat 6. Title card (86.0 to 90.0)
+
+**S35** | In 86.0 | Out 90.0 | 4.0 s | Title card, built by the editor, no generation | No people
+Action: Black. Then the card per section 6.3. The music resolves.
+Dialogue: none.
+Sound: Music resolves (section 5.5). Silence for the last 0.5 s.
+
+### Coverage check
+
+Every line in the script, in order: S01 (line 1), S02 (2, 3), S03 (4), S05 (5), S09 and S10 (6), S11 (7), S12 (8, 9, 10), S13 (11), S14 (12, 13, 14), S15 and S16 (15), S16 (16), S17 (17, 18), S18 (19), S20 (20), S22 (21), S23 (22), S24 (23), S25 (24), S26 and S27 (25), S28 (26, 27), S29 (28), S31 (29), S32 and S33 (30), S33 (31). 32 lines, 32 covered. Every scripted insert is covered: the toast pop (S04), the slip (S08), the scrape (S09), the taps (S10, S31), the whistle (S18), the Wobble (S21), the Rota (S29), the sash (S30), the fruit bowl (S31), the waffle slide (S34).
+
+Lip-sync exposure check: the longest on-camera line delivered straight toward the lens is four words ("Alone. With the waffle." and "Kitchen Court is open."). Every line over four words is in profile, behind an object, chin down, above the frame edge, or off screen.
+
+---

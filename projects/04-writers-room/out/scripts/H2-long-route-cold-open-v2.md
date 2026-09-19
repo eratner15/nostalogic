@@ -56,7 +56,7 @@ stopwatch on a cord around his neck, climbs the steps like
 the steps might be inspected too.
 
                          TULL
-          Ms. Dukes. Tull. County
+          Ms. Keel. Tull. County
           transportation. Don't mind me.
 
                          FRANCES
@@ -267,7 +267,7 @@ TITLE: LONG ROUTE
 
 ## Season 1 loglines, episodes 2 to 7
 
-2. **The Quiet.** The twins split on a vote for the first time in their lives, the fight has to be held in total silence at the rail crossing, and Rue seconds the wrong motion on purpose to see whether Beck notices.
+2. **The Quiet.** The twins split on a vote for the first time in their lives, the fight has to be held in total silence at the rail crossing, and Tola seconds the wrong motion on purpose to see whether Dele notices.
 3. **Position Six.** The county moves Bus 12 from Position 3 to Position 6 in the school loop, and the six run a campaign through the open door that pulls in half of Consolidated before the crossing guard gives the signal.
 4. **Harvest Seats.** Frances reassigns every seat for orchard season, Cal's ledger collapses under a hundred voided trades, and Priya gets row 5 for one week and is unbearable about it.
 5. **Stop Zero.** Hollis asks for a stop of his own at the mailbox one before the barn, Frances grants it without a word, and the county adds the extra stop to Mr. Tull's clock.

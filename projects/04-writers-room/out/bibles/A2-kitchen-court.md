@@ -72,7 +72,7 @@ One set. A split-level kitchen at the back of the house, an addition by a previo
 
 Six regulars. Nobody else is a regular. Neighbors, litigants, and Wendell's teenage helpers recur as guests.
 
-### Renata Delacroix, 44. Mother. "Judge Mom."
+### Renata Delacroix, 44. Mother. "The Judge."
 
 - **Job.** County small claims judge. She hears disputes between adults over deposits, fences, and cakes. The show never shows her courtroom. It comes home as stories and, sometimes, as people.
 - **Want.** Peace through process. She believes a fair rule, fairly applied, ends any fight.

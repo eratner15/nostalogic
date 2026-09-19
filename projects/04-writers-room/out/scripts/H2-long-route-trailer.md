@@ -79,7 +79,7 @@ Through the bus window, a chalkboard faces the road:
 
      APPLES BY THE BAG. BUS KIDS PAY LIKE EVERYBODY.
 
-Twins BECK and RUE, 12, climb aboard. Beck is talking. Rue is
+Twins BECK and RUE, 12, climb aboard. Dele is talking. Tola is
 not.
 
 INT. BUS 12, THE CREEK BRIDGE. MORNING.
@@ -100,9 +100,9 @@ the rails. Nothing at all.
 INT. BUS 12. CONTINUOUS.
 
 THE MIRROR SHOT: the whole aisle from above the driver, bent
-at the edges. Dead silent. Beck, in the back, is having a full
+at the edges. Dead silent. Dele, in the back, is having a full
 argument with CAL, 13, four rows up, using only his face. Cal
-answers with his eyebrows. Rue writes it down. Tull opens his
+answers with his eyebrows. Tola writes it down. Tull opens his
 mouth to ask. Hollis, without turning, holds up one finger.
 Tull closes his mouth.
 
@@ -117,8 +117,8 @@ FRANCES DUKES, 58, closes the door. Her eyes in the mirror.
 INT. BUS 12, THE BACK ROW. AFTERNOON.
 
 HANDHELD. MATEO, 14, lies sideways across the back row, driver
-side, one knee up. Beck across the aisle. Rue in front of
-Beck, sketchbook open. Cal on the wheel hump, a green ledger
+side, one knee up. Dele across the aisle. Tola in front of
+Dele, sketchbook open. Cal on the wheel hump, a green ledger
 on his knees. The road goes by behind all of them.
 
                          MATEO
@@ -135,7 +135,7 @@ on his knees. The road goes by behind all of them.
           Section three. No standing. I wrote
           section three. Sit.
 
-Beck sits.
+Dele sits.
 
                          BECK
           I move it sitting down.
@@ -279,9 +279,9 @@ FRANCES: "Sit down, sir. We're not there yet."
 ## The five tests
 
 1. **Question test.** A viewer with no context writes: "Will the county cut the Long Route?" Tull states the terms at 01:00 and nothing after answers them. Priya's motion moves him one seat, not the county.
-2. **Two-Laugh test.** Parent laugh at 00:52, Frances: "I'm not listening. I'm driving. I just drive with my ears." A 35-year-old needs no setup for a grown-up who has heard everything. Kid laugh on sight at 01:20: the county man votes himself out of his own seat and Priya says "Sir." Backup kid laugh at 00:24: the Quiet, Beck fighting Cal with his face, and Hollis shushing a grown man with one finger. Neither laugh depends on the other.
+2. **Two-Laugh test.** Parent laugh at 00:52, Frances: "I'm not listening. I'm driving. I just drive with my ears." A 35-year-old needs no setup for a grown-up who has heard everything. Kid laugh on sight at 01:20: the county man votes himself out of his own seat and Priya says "Sir." Backup kid laugh at 00:24: the Quiet, Dele fighting Cal with his face, and Hollis shushing a grown man with one finger. Neither laugh depends on the other.
 3. **Cold test.** The first 12 seconds are a man in a tie and a lanyard folded into the back row of a school bus, and a small girl citing a rulebook at him. No title, no brand, no music bed. The question it raises is "what is this?" in the good way, because the shot is wrong on purpose.
 4. **Dialogue test.** Estimated at the script stage: beat 1 carries about 9 seconds of speech, beat 2 about 8, beat 3 about 23, beat 4 about 15, beat 5 about 6, beat 6 about 3. Total about 64 of 90 seconds, or 71 percent, all of it a character speaking to a character on screen. The editor confirms with a stopwatch on the cut.
-5. **Standards test.** Walked against `canon/STANDARDS.md` section 2, items 1 to 15: no romance, no violence, no profanity, no substances, no bullying (the county man is inconvenienced, never mocked, and he votes with the kids), an adult driver present in every road shot, no scare, no politics (a county transportation clerk with a stopwatch, no office and no issue), no brand on the bus or in the store board, no call to action, no child data, no borrowed expression, neither block trademark, no real actor, and no AI performance without the CG-03 gate and disclosure (the road plates and composites behind human performers fall under CG-03 per the bible, section 11). Section 3 soft rules: Hollis's line to Tull is a shush, not sarcasm at a parent; no body jokes; the Mateo and Rue exchange at 01:10 is the moment a parent and a kid can talk about after; phones do not appear; ordinary food (apples); the crossing shot has no bell louder than dialogue and the bus flashers are not shown cycling.
+5. **Standards test.** Walked against `canon/STANDARDS.md` section 2, items 1 to 15: no romance, no violence, no profanity, no substances, no bullying (the county man is inconvenienced, never mocked, and he votes with the kids), an adult driver present in every road shot, no scare, no politics (a county transportation clerk with a stopwatch, no office and no issue), no brand on the bus or in the store board, no call to action, no child data, no borrowed expression, neither block trademark, no real actor, and no AI performance without the CG-03 gate and disclosure (the road plates and composites behind human performers fall under CG-03 per the bible, section 11). Section 3 soft rules: Hollis's line to Tull is a shush, not sarcasm at a parent; no body jokes; the Mateo and Tola exchange at 01:10 is the moment a parent and a kid can talk about after; phones do not appear; ordinary food (apples); the crossing shot has no bell louder than dialogue and the bus flashers are not shown cycling.
 
 Staff-writer read: PASS on section 2, no WARN on section 3.

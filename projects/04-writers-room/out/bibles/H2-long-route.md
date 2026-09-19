@@ -31,10 +31,10 @@ The Long Route is the shared town's countryside. The other three shows live in i
 Each stop is a place with its own rule and its own faces. Stops are numbered in morning order. Boarding order sets seat rank, so stop numbers matter.
 
 **Stop 0. The bus barn.**
-Rule: the bus does not leave until Lorna on dispatch says "Twelve, go." Faces: Lorna, the dispatcher, never seen, only heard on the radio. Dale Pruitt, driver of the Short Route (Route 4), Frances's rival in everything. Hollis Dukes boards here, because Frances is his grandmother and he rides with her from the barn. He would rather have a stop.
+Rule: the bus does not leave until Lorna on dispatch says "Twelve, go." Faces: Lorna, the dispatcher, never seen, only heard on the radio. Dale Pruitt, driver of the Short Route (Route 4), Frances's rival in everything. Hollis Keel boards here, because Frances is his grandmother and he rides with her from the barn. He would rather have a stop.
 
 **Stop 1. Pennock Hollow, the far end.**
-The Villanueva dairy, at the top of a long gravel lane. Rule: the bus waits for the wave. Mateo's abuela waves from the porch every morning and the bus does not move until she does. Faces: Abuela Villanueva, who waves. Ines Villanueva, age 6, Mateo's sister, who is not old enough to ride and stands at the mailbox every morning to prove she is ready. The far end is the show's named neighborhood. It is four farms, a lane, and a view.
+The Arriaga dairy, at the top of a long gravel lane. Rule: the bus waits for the wave. Mateo's abuela waves from the porch every morning and the bus does not move until she does. Faces: Abuela Arriaga, who waves. Ines Arriaga, age 6, Mateo's sister, who is not old enough to ride and stands at the mailbox every morning to prove she is ready. The far end is the show's named neighborhood. It is four farms, a lane, and a view.
 
 **Stop 2. Hale Orchard stand.**
 The Oyelaran family orchard. The stand has a chalkboard that faces the road. Rule: no fruit boards the bus unless it is paid for or gifted on the board. Faces: Adaeze Oyelaran, the twins' mother, who writes the board and is the funniest person on the route the kids never hear. The orchard dog, Sergeant, who chases the bus to the property line and stops exactly there.
@@ -63,7 +63,7 @@ The Orchestrator note is the design rule: school is on screen, not retold. Four 
 
 1. **The loop.** Every episode has at least one loop scene: the bus sits at Consolidated with the door open, and school comes to the door. Teachers hand things in. The principal asks questions. Other kids ask to see the back row. A tuba needs a ride. The four-minute wait in the loop is a stage.
 2. **The windshield.** From Position 3 the bus sees the marquee sign with its missing letters, the gym doors, the eighth-grade window where Mateo's class is, and the playground where Ines will be next year. Things happen in those windows during the loop scene and the kids react through glass.
-3. **Rue's notebook.** Rue draws what she saw through the school windows that day. The drawings are on screen. They are the show's way to show a school day in one image without a classroom set.
+3. **Tola's notebook.** Tola draws what she saw through the school windows that day. The drawings are on screen. They are the show's way to show a school day in one image without a classroom set.
 4. **Field trips and stunts.** Frances drives the field trips. When the whole school rides, the whole school is on the set. The science fair volcano rides to the county. The eighth grade rides to the high school. Picture day comes to the loop.
 
 ### 2.4 The seasons of the route
@@ -88,8 +88,8 @@ The six assigned seats and why:
 |---|---|---|
 | Hollis | Row 1, door side | Boards at the barn. Sits where his grandmother can reach him. Hates it. |
 | Mateo | Row 12, driver side (the back row) | Boards first. Rode alone for twenty minutes a day for three years before the others. Speaker of the parliament. |
-| Beck | Row 12, door side (the back row) | Boards second with Rue. Took the other back-row seat by winning a vote he ran himself. |
-| Rue | Row 11, door side | Boards second with Beck. Chose the row in front of the back row. Says it is not a political statement. |
+| Dele | Row 12, door side (the back row) | Boards second with Tola. Took the other back-row seat by winning a vote he ran himself. |
+| Tola | Row 11, door side | Boards second with Dele. Chose the row in front of the back row. Says it is not a political statement. |
 | Cal | Row 7, driver side (the wheel hump) | Boards third. Took the hump because it is the middle of the market and he can see both ends. |
 | Priya | Row 2, door side | Boards last. Assigned the front by Frances because she is the youngest. Her whole want is a seat farther back. |
 
@@ -114,20 +114,20 @@ A handheld covers the back row in session.
 
 Seven regulars: six kids and one driver. All original. None modeled on any character from any existing show.
 
-### Frances Dukes, 58. The driver.
+### Frances Keel, 58. The driver.
 
 **Want.** A quiet route, and to see these six through to the last day of eighth grade.
 **Flaw.** She cannot stop listening, and she cannot leave a problem unsolved past the ridge.
 **Funny about.** She has a rule for everything and the kids have never learned how many rules there are. She numbers them out of order on purpose. She solves things with the door, the mirror, and one word.
 **How she speaks.** To the mirror. Short. Dry. Rules stated as weather.
 - "I'm not listening. I'm driving. I just drive with my ears."
-- "Rule nineteen. No motions about a person. Rule four. Sit down, Beck."
+- "Rule nineteen. No motions about a person. Rule four. Sit down, Dele."
 - "Obliged." (To Pop Whitlock, every morning, about the coffee, and never a word more.)
 **The life the kids only glimpse.** She plays upright bass in the community orchestra and some mornings the bass has a seat. She and Lorna on dispatch have a radio friendship that is thirty years old and mostly insults. She and Dale Pruitt race the Short Route to the loop by rules nobody else knows. Her daughter Denise, Hollis's mother, works nights, which is why Hollis rides from the barn. There is a letter from the county in her visor with the word "retire" in it, and she has not opened it. She was a rider on this route once. She knows which seat.
 **What the parent sees.** The adult who is neither clueless nor the enemy. Competent, tired, funny on purpose, running a small nation from a driver's seat. The secret lead.
 **What the kid sees.** The adult who pretends not to listen and always hears. The one you can push, who never breaks, and who never leaves anyone at a stop.
 
-### Mateo Villanueva, 14. Stop 1. The back row, driver side. Speaker of the parliament.
+### Mateo Arriaga, 14. Stop 1. The back row, driver side. Speaker of the parliament.
 
 **Want.** A ride in anything that is not this bus. His cousin is getting a car. He talks about it daily.
 **Flaw.** He loves the bus and would rather be dropped at the creek than say so.
@@ -139,7 +139,7 @@ Seven regulars: six kids and one driver. All original. None modeled on any chara
 **What the parent sees.** Their own fourteen-year-old self, pretending not to need the thing they need.
 **What the kid sees.** The oldest kid on the bus, who is in charge without trying, and who might let you in.
 
-### Priya Anand-Coker, 11. Stop 7. Row 2, door side. Author of the bus code.
+### Priya Coker, 11. Stop 7. Row 2, door side. Author of the bus code.
 
 **Want.** A seat farther back, and the respect of the back row.
 **Flaw.** She trusts rules more than people, on a bus full of people who negotiate everything.
@@ -151,26 +151,26 @@ Seven regulars: six kids and one driver. All original. None modeled on any chara
 **What the parent sees.** The kid who reads the whole form. The kid who will be a judge, or a clerk, or the one who knows where the fire extinguisher is.
 **What the kid sees.** The one who wrote the rules and will use them for you if you ask nicely.
 
-### Beck Oyelaran, 12. Stop 2. The back row, door side. The whip.
+### Dele Oyelaran, 12. Stop 2. The back row, door side. The whip.
 
 **Want.** To be Speaker. Mateo has the job and does not want it, which is unbearable.
 **Flaw.** Cannot lose a vote. Demands a recount of everything, including things that were not votes.
 **Funny about.** Parliamentary procedure as theater. He makes motions about the weather. He stands to speak, which breaks section 3, which starts a trial, which he treats as a campaign.
 **How he speaks.** Speeches. Always standing when he should be sitting.
-- "I move that the creek was high. Second? Anyone? Rue. Rue, second it."
+- "I move that the creek was high. Second? Anyone? Tola. Tola, second it."
 - "The count was four to two. I request a recount. I request a recount of the recount."
 - "I'm not loud. The bus is quiet. That's a bus problem."
 **What the parent sees.** The kid who will run for everything and someday should.
 **What the kid sees.** The loudest, funniest person in the back, who makes every ride an event.
 
-### Rue Oyelaran, 12. Stop 2. Row 11, door side. The swing vote.
+### Tola Oyelaran, 12. Stop 2. Row 11, door side. The swing vote.
 
 **Want.** To be seen as her own person and not half of "the twins."
 **Flaw.** Says the true thing at the exact wrong moment.
-**Funny about.** Deadpan. She draws what she sees out the window in a notebook, keeps the parliament's minutes, and breaks the twin bloc when nobody expects it. Beck sometimes does not notice for days.
+**Funny about.** Deadpan. She draws what she sees out the window in a notebook, keeps the parliament's minutes, and breaks the twin bloc when nobody expects it. Dele sometimes does not notice for days.
 **How she speaks.** One line, late, accurate.
 - "I seconded it because you were going to keep saying my name."
-- "Minutes of the ride: Beck stood. Priya cited. Nothing passed. The heron was there."
+- "Minutes of the ride: Dele stood. Priya cited. Nothing passed. The heron was there."
 - "We're not a bloc. We're two people who get on at the same stop."
 **What the parent sees.** The quiet kid who is the smartest person in the room and lets the room find out slowly.
 **What the kid sees.** The one who draws the school through the window and sees what really happened.
@@ -187,7 +187,7 @@ Seven regulars: six kids and one driver. All original. None modeled on any chara
 **What the parent sees.** The kid who will run the store, or something bigger, and the kid who has to learn what not to sell.
 **What the kid sees.** The guy who can get you anything before the ridge.
 
-### Hollis Dukes, 13. Stop 0. Row 1, door side. The driver's grandson.
+### Hollis Keel, 13. Stop 0. Row 1, door side. The driver's grandson.
 
 **Want.** A stop of his own, like a normal kid. He rides from the bus barn with his grandmother, in the kitchen seat, and it mortifies him.
 **Flaw.** He apologizes for Frances. Constantly. She does not need it.
@@ -203,8 +203,8 @@ Seven regulars: six kids and one driver. All original. None modeled on any chara
 
 - **Lorna.** Dispatch. Voice only. Frances's oldest friend and sparring partner.
 - **Dale Pruitt.** Short Route driver. Frances's rival. The substitute when she is out. Drives the route in the wrong order.
-- **Abuela Villanueva.** Waves. The bus waits.
-- **Ines Villanueva, 6.** Mateo's sister. Not yet a rider. Learning the code from the mailbox. The show's six-year-old on screen.
+- **Abuela Arriaga.** Waves. The bus waits.
+- **Ines Arriaga, 6.** Mateo's sister. Not yet a rider. Learning the code from the mailbox. The show's six-year-old on screen.
 - **Adaeze Oyelaran.** Writes the orchard chalkboard.
 - **Pop Whitlock.** Hands the coffee through the door.
 - **Marcus Coker.** Priya's dad. Does the crossword at the Fieldstone sign.
@@ -230,7 +230,7 @@ The morning ride is about what is going to happen. The afternoon ride is about w
 
 ### 4.2 The parliament
 
-The back row calls itself a parliament. It has a Speaker (Mateo, who denies it), a whip (Beck), a clerk who keeps minutes (Rue), a treasurer of sorts (Cal), and a written code (Priya's composition book). Any rider can bring a motion. Motions are about seats, windows, the Creek Report, the order of boarding in the afternoon, whether a sneeze during the Quiet counts, and what to do about a wasp. The code forbids motions about a person. Frances's rule nineteen backs the code. Parliament is never used against anyone. It is used about things.
+The back row calls itself a parliament. It has a Speaker (Mateo, who denies it), a whip (Dele), a clerk who keeps minutes (Tola), a treasurer of sorts (Cal), and a written code (Priya's composition book). Any rider can bring a motion. Motions are about seats, windows, the Creek Report, the order of boarding in the afternoon, whether a sneeze during the Quiet counts, and what to do about a wasp. The code forbids motions about a person. Frances's rule nineteen backs the code. Parliament is never used against anyone. It is used about things.
 
 Parliament is the kid-side engine. Every episode has one session, and the session is where the six argue about the thing the episode is really about.
 
@@ -265,7 +265,7 @@ The judges' worry is right, so the show is built against it. Ten levers.
 
 ## 5. Tone and comedy
 
-**Character first.** The bus is never the joke. The people are. Priya's code, Mateo's denial, Beck's motions, Rue's timing, Cal's ledger, Hollis's bracing, and Frances's mirror are the seven engines. A situation is only funny here because of who is in it.
+**Character first.** The bus is never the joke. The people are. Priya's code, Mateo's denial, Dele's motions, Tola's timing, Cal's ledger, Hollis's bracing, and Frances's mirror are the seven engines. A situation is only funny here because of who is in it.
 
 **Tone band.** Quick, loud, loyal. Friends against the afternoon, and against the county. Competence humor: each of the six is good at something odd, and the show respects it. Small, funny, and honest about being eleven.
 
@@ -292,9 +292,9 @@ Per scene type: the laugh for the parent and the laugh for the kid. Neither depe
 |---|---|---|
 | The barn (Frances and Hollis alone) | Frances and Lorna's thirty-year radio insults. The unopened county letter. | Hollis apologizing for his grandmother while she is right there. |
 | Boarding at a stop | The parent at the stop: the crossword, the wave, the coffee handed through the door with one word. | The rule of the stop breaking. The dog stopping at the property line. |
-| The Creek Report | Beck delivering water levels as breaking news. | "There's the heron." A wrong report and its week of correction. |
+| The Creek Report | Dele delivering water levels as breaking news. | "There's the heron." A wrong report and its week of correction. |
 | The Quiet | Six kids holding a fight with their faces. The parent knows this silence. | The sneeze. Whether it counts. |
-| Parliament in session | Real procedure applied to a window seat. The recount of the recount. | Beck standing. Priya citing section 3. Rue's late second. |
+| Parliament in session | Real procedure applied to a window seat. The recount of the recount. | Dele standing. Priya citing section 3. Tola's late second. |
 | The seat economy | Cal's terms. Winter rates. "I don't have a seat. I have a position." | Winning the heater seat. Losing it to a granola bar. |
 | The ridge | A whole bus of kids going silent to read one minute of signal and Frances's rule that nobody reads it out loud. | The one phone that lights up first. |
 | The loop | Ms. Odum at the door with news the kids have already heard. Principal Greer's worse news. | The tuba. The marquee missing an S. Otis asking to see the back row. |
@@ -314,7 +314,7 @@ Soft rule 4 (one moment to talk about after) is designed in: the afternoon ride 
 The county has a limit on route length. Route 12 runs over it. Mr. Tull rides with a stopwatch in the pilot and the kids learn that the only way to save the ride they claim to hate is to make it shorter, which means losing the part of the day they actually want. Every episode moves the question a little. The answer lands in episode 10.
 
 1. **Timed.** First day of the year. Mr. Tull from the county boards with a stopwatch and sits in a contested seat. Priya files a petition to move back. The route runs nine minutes over the limit.
-2. **The Quiet.** The twins split on a vote for the first time, and the fight has to be held in silence at the rail crossing. Rue seconds the wrong motion on purpose.
+2. **The Quiet.** The twins split on a vote for the first time, and the fight has to be held in silence at the rail crossing. Tola seconds the wrong motion on purpose.
 3. **Position Six.** The bus is moved from Position 3 to Position 6 in the loop. The six campaign to get it back through the door, and half the school gets involved.
 4. **Harvest Seats.** Frances reassigns seats for orchard season. Cal's ledger collapses. Priya gets row 5 for a week and is unbearable about it.
 5. **Stop Zero.** Hollis asks for a stop of his own: the mailbox one before the barn. Frances grants it. The county notices the extra stop and adds it to the clock.
@@ -322,7 +322,7 @@ The county has a limit on route length. Route 12 runs over it. Mr. Tull rides wi
 7. **Chains.** First snow. The ride runs double. A full session of parliament passes eleven motions and repeals ten. Mr. Tull's clock is now catastrophic, and the kids find out he is not the enemy: he rode a long route once too.
 8. **The Detour.** The creek bridge closes. The route runs through town for the first time. The kids see the town from the bus. The detour is nine minutes shorter. The county likes it. The kids do not.
 9. **Ines.** Mateo's sister gets a trial ride and sits in the back row and nobody dares move her. The county's proposal arrives: a van for Pennock Hollow. Mateo would ride alone. He says he wants that. Nobody believes him.
-10. **Board Meeting on Wheels.** The county board rides the route to decide. Parliament presents. Priya cites. Beck stands. Rue reads the minutes of the year, one page. Mateo, who wanted out, is the one who says, out loud, in front of everyone, that it is not a long route, it is the whole way. The route stays. The bridge reopens. The last ride runs in reverse and Mateo gives Priya the Tuesday window without a vote.
+10. **Board Meeting on Wheels.** The county board rides the route to decide. Parliament presents. Priya cites. Dele stands. Tola reads the minutes of the year, one page. Mateo, who wanted out, is the one who says, out loud, in front of everyone, that it is not a long route, it is the whole way. The route stays. The bridge reopens. The last ride runs in reverse and Mateo gives Priya the Tuesday window without a vote.
 
 **How it lands.** The route survives because a kid who spent ten episodes denying he loved it says so to a room full of adults. The season's last line is Frances's, to the mirror, with the door closed on the county: "Twelve, go."
 
@@ -333,7 +333,7 @@ The county has a limit on route length. Route 12 runs over it. Mr. Tull rides wi
 1. Priya moves to abolish assigned seats. Anarchy by the creek. Order restored by the ridge.
 2. A new kid boards at a stop that never had a kid, and nobody knows which seat is theirs.
 3. The bus dies at the orchard. Frances runs the morning from the driver's seat with Lorna on the radio.
-4. Anonymous notes appear in the crack seat. Parliament investigates. Rue's handwriting goes on trial.
+4. Anonymous notes appear in the crack seat. Parliament investigates. Tola's handwriting goes on trial.
 5. Frances's upright bass gets a seat. The seat is Cal's.
 6. Dale subs and drives the route backwards. Priya boards first for the only time in her life.
 7. Snow chains. The ride runs double. Parliament passes eleven motions and repeals ten.
@@ -343,7 +343,7 @@ The county has a limit on route length. Route 12 runs over it. Mr. Tull rides wi
 11. The school marquee loses its S. The six read every sign on the route without it.
 12. Picture day. The photographer comes to the loop and shoots the six in their seats.
 13. The heater seat becomes the only warm place on the bus. Cal auctions it. Frances vetoes the sale.
-14. The creek is high. The Creek Report becomes a daily bulletin with Beck as anchor.
+14. The creek is high. The Creek Report becomes a daily bulletin with Dele as anchor.
 15. Hollis has carried the door's spare part in his pocket all year. Today it is needed.
 16. The band teacher boards at the loop with a tuba that needs a ride to the far end.
 17. Priya's code is challenged by an older document: Mateo's rules, written in crayon.
@@ -355,7 +355,7 @@ The county has a limit on route length. Route 12 runs over it. Mr. Tull rides wi
 23. Cal's ledger goes missing. Every debt on the bus is suddenly disputed.
 24. The orchard board reads "Free Apples for Bus Kids." The board is wrong. Adaeze is not amused.
 25. A phone gets signal before the ridge. Nobody knows what to do with the extra minute.
-26. Rue's drawing of the school window shows a teacher crying. The kids plan a rescue that is not needed.
+26. Tola's drawing of the school window shows a teacher crying. The kids plan a rescue that is not needed.
 27. Priya loses her voice. The code has no provision for a silent author.
 28. Hollis's mother rides the route on her day off. Hollis dies inside for 48 minutes.
 29. The Short Route beats them into the loop three rides straight. Frances and Dale race by the rules.
@@ -363,7 +363,7 @@ The county has a limit on route length. Route 12 runs over it. Mr. Tull rides wi
 31. The county repaints the stop signs. The far end is now Stop 1. Mateo was always Stop 6 before.
 32. Bus inspection. A clipboard measures the aisle. Parliament holds session in the barn parking lot.
 33. A wasp. Frances pulls over. Six kids, one wasp, one rule: nobody swats.
-34. Beck loses a vote and demands a recount every ride for a week.
+34. Dele loses a vote and demands a recount every ride for a week.
 35. The heron is gone. The Creek Report goes into mourning. It comes back with a mate.
 36. Frances teaches Hollis to check the tires. He turns it into a stop.
 37. A pothole at the ridge gets a name, a vote, and a birthday.
@@ -374,11 +374,11 @@ The county has a limit on route length. Route 12 runs over it. Mr. Tull rides wi
 42. Rain floods the crossroads. The route waits at the store. Pop Whitlock hands coffee through the door to everyone.
 43. The seat swap: everyone must ride one trip in someone else's seat and report to parliament.
 44. Cal invents seat insurance. Everyone buys. Nothing happens. Refunds are demanded.
-45. Beck makes a speech standing. Section 3 says no standing. The trial of Beck.
-46. Rue votes against Beck to see what happens. Beck does not notice for three rides.
+45. Dele makes a speech standing. Section 3 says no standing. The trial of Dele.
+46. Tola votes against Dele to see what happens. Dele does not notice for three rides.
 47. Frances's orchestra plays at school. The kids watch her through the gym window from the loop.
 48. The latch on the Tuesday window breaks. A constitutional crisis.
-49. Adaeze rides to town for a meeting and sits in Rue's seat. Rue sits up front with Priya and learns things.
+49. Adaeze rides to town for a meeting and sits in Tola's seat. Tola sits up front with Priya and learns things.
 50. First frost. The windows fog from the inside. Someone writes a word. The handwriting investigation.
 51. Hollis's stop gets an official county sign by mistake. He will not let them take it down.
 52. A substitute follows the route card exactly. The card is wrong. Hollis knows the way and must say so.
@@ -389,7 +389,7 @@ The county has a limit on route length. Route 12 runs over it. Mr. Tull rides wi
 57. Abuela does not wave. The bus waits. Mateo runs up the lane. She was on the phone.
 58. The bus carries the science fair volcano to the county. It must not tip at the ridge.
 59. Snow day is called while the bus is at the creek. Frances turns around. Six kids, a long ride, back home.
-60. Priya writes an amendment about noise. Beck writes an amendment about Priya. Frances rules both out of order.
+60. Priya writes an amendment about noise. Dele writes an amendment about Priya. Frances rules both out of order.
 61. The far-end lane is mud. Mateo walks to the orchard and learns what the twins' ride is like.
 62. Dale's bus breaks. The Short Route kids board the Long Route. Twelve kids, six seats, one parliament.
 63. Hollis hears his grandmother laugh on the radio with Lorna. He did not know she laughed.
@@ -397,13 +397,13 @@ The county has a limit on route length. Route 12 runs over it. Mr. Tull rides wi
 65. The county wants to name the route. The kids submit names. The county picks "12."
 66. The heater dies. The bus is a refrigerator. Frances distributes one blanket per rider under rule thirty.
 67. A goat on the road at the orchard. The bus waits. The goat will not decide.
-68. Rue's drawings go in the school display case. The kids see the case through the loop door.
+68. Tola's drawings go in the school display case. The kids see the case through the loop door.
 69. Pop Whitlock is sick and the store opens late. Frances stops anyway and waits. Cal rides in silence and is allowed to.
 70. Fieldstone gets a second rider. Priya is no longer last on. She is furious and thrilled.
 71. The window seat vote ties. The code has no tiebreaker. Frances refuses to break it.
 72. The route is timed again. This time it runs short. The county is suspicious.
 73. Blossom at the orchard. The twins are embarrassed by how pretty their stop is.
-74. Beck discovers parliament has no constitution, only a code. He drafts one. It is forty pages.
+74. Dele discovers parliament has no constitution, only a code. He drafts one. It is forty pages.
 75. Through the window, the eighth grade is doing a dance in the gym. Mateo is in it. Nobody speaks. Everyone remembers.
 76. Mr. Ferrante retires. The kids plan a send-off from the door of the bus, in the loop, in four minutes.
 77. Priya's birthday. The rule is no parties on the bus. There is a party on the bus.
@@ -411,7 +411,7 @@ The county has a limit on route length. Route 12 runs over it. Mr. Tull rides wi
 79. Power outage at school. The bus is the warmest room. Teachers ride along and sit in parliament.
 80. The county times Hollis's stop. He must justify it. He cannot. Frances can.
 81. Thaw. The creek covers the bridge. The route runs through town for a week. The kids see the town.
-82. The Quiet is broken by a sneeze. Priya rules it did not count. Beck appeals.
+82. The Quiet is broken by a sneeze. Priya rules it did not count. Dele appeals.
 83. Frances's bass goes missing from the barn. Six seats, one investigation. Dale had it. He was fixing the bridge on it.
 84. Cal sells the same window seat to two people. Both show up.
 85. The ridge tower is down. The phones stay asleep all week. Nobody minds. Nobody says.
@@ -420,12 +420,12 @@ The county has a limit on route length. Route 12 runs over it. Mr. Tull rides wi
 88. The bus takes the eighth grade to the high school for a visit. Mateo sees the future. He rides home quiet.
 89. Ines learns the bus code by heart from the mailbox. She corrects Priya.
 90. The county adds a fair-grounds stop for one week. The bus smells like sugar.
-91. Rue has kept minutes all year. She reads them on the last ride. They are one page.
+91. Tola has kept minutes all year. She reads them on the last ride. They are one page.
 92. Mr. Tull comes back. He rides. He does not time it. He wanted to see the heron.
 93. Mateo teaches Ines to wave. She waves at everything, including the goat.
 94. Storm damage at the orchard. The twins board late from the wrong end of the property. The whole ride is a rescue that turns out not to be one.
 95. Talent show. Frances is asked to play. Hollis must ride with the rehearsals.
-96. The school paper interviews the bus at the loop. Beck gives all the quotes. The article prints Rue's.
+96. The school paper interviews the bus at the loop. Dele gives all the quotes. The article prints Tola's.
 97. Denise takes a day job. Hollis could stop riding from the barn. He asks to keep his seat.
 98. A late teacher holds the loop. Frances teaches the six to check a tire while the whole school watches.
 99. Priya and Mateo trade seats for one ride. The front is quiet. The back is lawless.
@@ -441,7 +441,7 @@ Walked against `canon/STANDARDS.md`.
 
 1. **Sexual content or romance beyond a first crush.** None. The show has no romance thread among the kids. If a crush ever appears it stops at a hand hold in the loop and never on the bus.
 2. **Graphic violence, weapons, injury for realism.** None. The wasp is the most dangerous thing on the route and nobody swats it. Potholes are called, not suffered.
-3. **Profanity or substitute words.** None. Frances's strongest word is "Obliged." Beck's is "Recount."
+3. **Profanity or substitute words.** None. Frances's strongest word is "Obliged." Dele's is "Recount."
 4. **Alcohol, tobacco, vaping, drugs, gambling.** None. Cal's seat economy is barter and ledgers, never chance. No lottery, no betting, no dice. The rule in the room: Cal sells, he never wagers.
 5. **Bullying or humiliation the story rewards or leaves unanswered.** The nearest risk and the one the show is built against. Priya's code forbids motions about a person. Frances's rule nineteen backs it. Parliament is only ever about things. Seed 86, the "driver's baby" line from a Short Route kid, is written so the story answers it three times: by the kids, by Frances, and by Dale, the other kid's own driver. No episode ends with a kid humiliated. Losing a vote is always paid back on the same ride.
 6. **Adults who threaten children, or unsupervised danger for laughs.** Frances is present in every episode and in every scene set on the road. In the breakdown seeds (3, 66) she is calm, in charge, and on the radio with dispatch. In the substitute seeds (6, 52) an adult is driving and the comedy is navigation, not danger. Snow (7, 59) is delay, never peril. No kid is ever alone on the road. The rule "nobody is stranded" is a room rule, not a hope. Mr. Tull, the county man, is a stopwatch, not a threat, and the season ends with him wanting to see the heron.
@@ -516,13 +516,13 @@ Any AI-generated child likeness in released material requires the CG-03 gate and
 A grown man in a tie sits in the back row of a school bus holding a stopwatch. Priya, small, beside him, composition book open. Priya: "You're in a contested seat." Mr. Tull: "I'm from the county." Priya: "Then you should know better." Cut on his face.
 
 **Beat 2. World (12 to 30).**
-Dawn on the orchard road. The bus at the top of the Pennock Hollow lane, not moving. Abuela waves. The bus moves. The orchard chalkboard through the window. The bus crawling the creek bridge, and a voice from inside: "There's the heron." The rail crossing: door open, six kids silent, Beck's face fighting someone in total quiet. Frances closes the door. Frances, to the mirror: "Rule of the crossing. That didn't count."
+Dawn on the orchard road. The bus at the top of the Pennock Hollow lane, not moving. Abuela waves. The bus moves. The orchard chalkboard through the window. The bus crawling the creek bridge, and a voice from inside: "There's the heron." The rail crossing: door open, six kids silent, Dele's face fighting someone in total quiet. Frances closes the door. Frances, to the mirror: "Rule of the crossing. That didn't count."
 
 **Beat 3. Character (30 to 55).**
-Back row in session. Mateo: "The day my cousin gets that car I'm gone. Anyway, who's got the window Tuesday?" Beck, standing: "I move that it's me." Priya, from the front, without turning around: "Section 3. No standing. I wrote section 3. Sit." Beck sits. Cal, from the hump: "Window's been sold. Twice." Hollis, in the kitchen seat, braced: "Left. Left. Big one." The bus drops. Everyone lifts an inch. Frances, to the mirror, dry: "I'm not listening. I'm driving. I just drive with my ears." (Parent laugh.)
+Back row in session. Mateo: "The day my cousin gets that car I'm gone. Anyway, who's got the window Tuesday?" Dele, standing: "I move that it's me." Priya, from the front, without turning around: "Section 3. No standing. I wrote section 3. Sit." Dele sits. Cal, from the hump: "Window's been sold. Twice." Hollis, in the kitchen seat, braced: "Left. Left. Big one." The bus drops. Everyone lifts an inch. Frances, to the mirror, dry: "I'm not listening. I'm driving. I just drive with my ears." (Parent laugh.)
 
 **Beat 4. Turn (55 to 75).**
-The loop. Ms. Odum at the door. Mr. Tull clicks the stopwatch and stands in the aisle. Mr. Tull: "Route 12 runs nine minutes over the county limit. Cut nine minutes or the county splits the route." Silence. Beck, small: "Which nine?" Mateo, looking out the window: "I said I wanted off." Rue: "You said it to the window." The turn is not the vote. The turn is that the kids can save the route only by making it shorter, and the ride is the thing they want.
+The loop. Ms. Odum at the door. Mr. Tull clicks the stopwatch and stands in the aisle. Mr. Tull: "Route 12 runs nine minutes over the county limit. Cut nine minutes or the county splits the route." Silence. Dele, small: "Which nine?" Mateo, looking out the window: "I said I wanted off." Tola: "You said it to the window." The turn is not the vote. The turn is that the kids can save the route only by making it shorter, and the ride is the thing they want.
 
 **Beat 5. Button (75 to 85).**
 Back row. Mr. Tull is still in the contested seat. Priya has moved next to him. Priya: "All in favor of the county sitting somewhere else." Six hands. Mr. Tull's hand goes up too, slowly. Priya: "Motion carries. Sir." The cold open now makes sense. (Kid laugh.)
@@ -532,7 +532,7 @@ Over the door closing on the county man's stopwatch, Frances's last line, to the
 
 **The two laughs.**
 - Parent: "I'm not listening. I'm driving. I just drive with my ears." A 35-year-old does not need context for a grown-up who has heard everything.
-- Kid: The Quiet, Beck's silent fight face at the crossing, and the button where the county man votes himself out of a seat. Both land on sight.
+- Kid: The Quiet, Dele's silent fight face at the crossing, and the button where the county man votes himself out of a seat. Both land on sight.
 
 **Tests to pass.** Question test: "Will the county cut the route?" Two-laugh test: above. Cold test: a man in a tie with a stopwatch in the back row of a school bus, and a small girl telling him he is in a contested seat. Dialogue test: every beat is a character speaking to a character; the world beat carries the Creek Report and the crossing rule as spoken lines. Standards test: no call to action, no brand on the bus, no scare, Frances present in every road shot.
 

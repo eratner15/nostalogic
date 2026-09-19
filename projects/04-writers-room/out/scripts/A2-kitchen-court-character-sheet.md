@@ -15,7 +15,7 @@ Rules for anyone using this sheet:
 
 ## 1. The regulars
 
-### Renata Delacroix, 44. Mother. "Judge Mom."
+### Renata Delacroix, 44. Mother. "The Judge."
 
 - **Age and build.** 44. Tall, long-limbed, straight-backed. She takes up vertical space and knows it.
 - **Face.** Oval. High forehead, strong brow, wide mouth that rests in a half-smile as if she is waiting for the end of your sentence. A small mole above the left eyebrow. Eyes dark brown, steady.

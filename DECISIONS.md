@@ -125,6 +125,12 @@ Format: date, decision, options, choice, reason. Counsel gates carry the tag `CO
 - Choice: Carrow Bend. A web search found no town, show, novel, or film of that name. Counsel confirms under CG-01 with the four titles.
 - Reason: two syllables plus one, sayable by a kid, a river bend for the Long Route plates and the Flats.
 
+### D-024. 2026-09-19. Character renames after the expression-level IP check
+- Finding: `projects/08-compliance/out/ip-checks/04-slate-scripts.md`. Five names matched real people, a live court show, or known characters.
+- Changes applied across bibles, scripts, character sheets, production packages, and canon: "Judge Mom" becomes "The Judge" (label only); Frances and Hollis Dukes become Keel; Mateo Arriaga replaces the Villanueva surname; Priya Coker replaces Priya Anand-Coker; the twins Beck and Tola Oyelaran become Dele and Tola Oyelaran.
+- Reason: none of the flagged names carried meaning the show needs. Renaming is cheaper than a later dispute. The compliance-gate re-checks the new names before any public asset.
+- Watch items kept as internal notes: "Harlan Voss" is a small online persona; two characters named Ines and two named Dale exist across the shared town; Pip and Piper sit in adjacent slots. The showrunners resolve these at full-episode stage.
+
 ## Open forks
 
 - Fork A: decided, Go (D-011).

@@ -79,7 +79,7 @@ Standards read: section 2, items 1 to 15, walked after the changes. None trigger
 3. Frances, World beat, about 00:28.
    Before: "Rule of the crossing. That didn't count."
    After: "Rule of the crossing. Nobody talked. Nothing happened."
-   Reason: CL, JD. "That didn't count" needed the viewer to guess what "that" was. The new line states the rule as weather, which is her voice, and it is funnier because the viewer just watched Beck and Cal have a full argument with their faces.
+   Reason: CL, JD. "That didn't count" needed the viewer to guess what "that" was. The new line states the rule as weather, which is her voice, and it is funnier because the viewer just watched Dele and Cal have a full argument with their faces.
 
 Already tight and left alone: "Then you should know better," "That's between me and both of them," "I just drive with my ears," "The county's on the bus," "Which nine?", "You said it to the window," "Motion carries. Sir," and the last line.
 
