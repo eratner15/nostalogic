@@ -14,3 +14,6 @@ Updated 2026-09-19.
 
 ## Blockers
 None.
+
+## Production packages (Phase 4, CG-03)
+- Kitchen Court: `out/production/A2-kitchen-court-package.md` written. 35 shots, every script line covered, voice path recommendation Path C (adult performers for all six voices). Awaits Orchestrator read, standards pass, and the CG-03 counsel packet (three fictional child likenesses flagged).

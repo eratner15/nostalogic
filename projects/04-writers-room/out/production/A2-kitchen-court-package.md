@@ -101,7 +101,7 @@ Six faces at one table is the whole production risk. The kit holds it three ways
 
 ### 2.2 Character tokens
 
-Paste verbatim. Do not paraphrase. Do not add adjectives.
+Paste verbatim. Do not paraphrase. Do not add adjectives. Labels: Renata is "The Judge" (D-024), never any other nickname; Wendell is "Facilities"; Toni is "Ref"; Marisol is "Counsel"; Ansel is "The Filer"; Pip is "Bailiff". Labels are for notes only and never go into a prompt.
 
 `{RENATA}`:
 > Renata, a 44-year-old woman, tall, long-limbed, straight-backed, deep brown skin with a warm undertone, oval face, high forehead, strong brow, wide mouth resting in a half-smile, one small mole above the left eyebrow, steady dark brown eyes, dark brown tightly coiled hair pulled back into a low twist held with a plain band, reading glasses pushed up into her hair, navy work blazer over a plain black crew-neck top, a thin gold watch on the left wrist, dark trousers, flat loafers, no makeup beyond natural
@@ -437,3 +437,207 @@ Every line in the script, in order: S01 (line 1), S02 (2, 3), S03 (4), S05 (5), 
 Lip-sync exposure check: the longest on-camera line delivered straight toward the lens is four words ("Alone. With the waffle." and "Kitchen Court is open."). Every line over four words is in profile, behind an object, chin down, above the frame edge, or off screen.
 
 ---
+
+### Punch-up note (v2 lines)
+
+`A2-kitchen-court-trailer-v2.md` and `change-notes.md` swap four lines and change no shot: Toni in S09 and S10 gains "Laminated."; Pip in S11 gains "Mom's feet don't count."; Marisol in S13 gains "It's tabbed."; Wendell in S17 ends "The lines are a hint." The shot list above follows the v1 file as instructed. All four swaps land in shots where the mouth is already off screen or in profile, so the picture does not change. The voice session records both versions of those four lines (section 4.4). The Orchestrator picks before the final mix.
+
+---
+
+## 4. Voice and dialogue plan
+
+### 4.1 Every line needs a performed voice
+
+There is no narration. All 32 lines are character to character. The comedy is timing across six voices at one table: the pop landing mid-word, "Time" arriving before the mouth closes, the pause before "Both." None of that comes from a text-to-speech read. Every line below is performed, then cut to picture.
+
+Reads, by line. The read is the note the voice director gives. Pace is fast family talk: people finish each other's thoughts, and cues overlap by a syllable where marked (+).
+
+| # | Shot | Character | Line | The read |
+|---|---|---|---|---|
+| 1 | S01 | Ansel | I'd like to enter into evidence the waffle. | Formal, rehearsed, a phrase he practiced in the mirror. Head down. |
+| 2 | S02 | Pip (O.S.) | The waffle is entered. | Flat, official, a weather report. No pride. |
+| 3 | S02 | Renata (O.S.) | Is that the waffle? | Dry. She already knows. The question is for the record. |
+| 4 | S03 | Ansel | It's a waffle. Somebody bit it. That's my whole case, and I have more. | Fast, building, the last clause a boast. Cut off hard by the pop on "more." |
+| 5 | S05 | Pip (O.S.) | Time. | One syllable, level, no emotion. A stopwatch that can talk. |
+| 6 | S09, S10 | Toni | Five dollars or five minutes. Anything bigger goes to the table. It's on the fridge. | Scoreboard voice. Each sentence the same weight. No warmth on purpose; the warmth is that she says it every day. |
+| 7 | S11 | Pip | Kitchen Court is open. Feet on the floor. Hands on the table. | Announced, chin out, each phrase a separate command. Slight emphasis on "floor." |
+| 8 | S12 | Renata (O.S.) | Who's hungry and who's mad? | A ritual question, said a thousand times, tired and fond. |
+| 9 | S12 | Ansel | Mad. (+) | Immediate, to his tie. |
+| 10 | S12 | Marisol | Hungry. (+) | Immediate, to the folder. A work-email voice. |
+| 11 | S13 | Marisol | I didn't bite the waffle. I have a folder that says so. | Calm, over-prepared, the second sentence is the closing argument. |
+| 12 | S14 | Ansel | Objection. | Too fast, too loud, he stood before he thought. |
+| 13 | S14 | Renata (O.S.) | To what? | Patient. Genuinely curious. |
+| 14 | S14 | Ansel | She has a folder. | As if that settles it. He believes it. |
+| 15 | S15, S16 | Renata | Overruled. Downtown I've never been reversed. In this kitchen I'm 0 and 4 this week, and one of those was a first-grader. | "Overruled" to the board, quick. Then the rest as a confession to Toni, level, a little rueful, the last clause slower. The parent laugh: do not push it. |
+| 16 | S16 | Pip | Hi. (+) | Tiny, polite, on cue, as if answering roll call. |
+| 17 | S17 | Wendell | Can we not split it? We could split it. It's a waffle. It comes with lines. | Out of breath, hopeful, from behind the chairs. Rising on "lines" like it might work this time. |
+| 18 | S17 | All five | No. (+) | Together, one beat, flat. Record each voice separately and stack them; the editor aligns to one frame. |
+| 19 | S18 | Toni | Traveling. You picked up the chairs and moved. That's traveling. Sit. | The call. Clipped, certain, "Sit" is the kindest word in it. |
+| 20 | S20 | Marisol | I call one witness. I call Mom. | The first sentence is procedure. The second is the turn. A small drop in pitch, no drama. |
+| 21 | S22 | Renata | I promise to say what happened, not what it meant. | Level, an oath she wrote herself. The half-smile audible. |
+| 22 | S23 | Marisol | Where were you at seven-fifteen this morning? | Precise, courteous, deadly. |
+| 23 | S24 | Renata | (beat) Alone. With the waffle. | Hold the beat a full second. Then two short admissions. Dry. |
+| 24 | S25 | Marisol | Let the record show. | Not a question. Not a triumph. A clerk. |
+| 25 | S26, S27 | Renata | It was a quality check. Let the record also show that I am very proud of you, and I would like a lawyer. | The first sentence is a bad defense and she knows it. "Very proud of you" is real. "And I would like a lawyer" is the same warm voice, no comic push. |
+| 26 | S28 | Ansel | Amended. Everyone versus Mom. | Grave, slow, the biggest words he owns. |
+| 27 | S28 | Renata (O.S.) | Rule Four. (+) | Instant. She cites it against herself without hesitation. |
+| 28 | S29 | Pip (O.S.) | Kid on the Stool. | Quiet. The first time she has said it about herself. |
+| 29 | S31 | Pip | The fruit bowl is moved. | Half muffled by the bowl for the first three words, clear on "moved." Official. |
+| 30 | S32, S33 | Pip | Kitchen Court is open. Who's hungry and who's mad? | First sentence to the board, small. Second sentence up and out, her mother's exact ritual cadence, in a six-year-old's voice. |
+| 31 | S33 | Renata | Both. | After a real pause. Soft. Not a joke. The last word of the trailer. |
+
+### 4.2 The three paths
+
+**Path A. Synthesized voices, all six.** Every adult voice is a CG-03 item. The three child voices are the CG-03 item most likely to be refused: a synthesized child voice in a public asset raises questions counsel has not yet answered (source of the voice model, consent, the appearance of a real child). Timing quality is also the weakest: synthesized reads do not overlap, interrupt, or land a pause. Suitable only for the private animatic scratch track, never for the released file.
+
+**Path B. Hired child talent for the three children, hired adults for the three adults.** Best possible reads. Triggers CG-04 for every performer and adds a labor-law flag for the minors: work permits, hour limits, a guardian on set, a set-aside of earnings, and rules that vary by state. That is a full production apparatus for a 90-second demand test. It is the right path for the series, not for the trailer.
+
+**Path C. Adult voice performers for all six voices, including the three children.** Adult performers voicing children is a standard practice in animation and radio. It triggers CG-04 once, for a short voice agreement per performer, and no minor is involved. The child voices are performed, not synthesized, so the CG-03 child-voice flag never arises. Reads can be re-recorded in the same session until the timing is right. Marisol at 13 can be a young adult performer near her own register; Ansel and Pip are character voices from performers who specialize in them.
+
+### 4.3 Recommendation for v1: Path C
+
+Reason: the trailer is a timing problem, and Path C is the only path that solves timing without a minor and without a synthesized child voice. Six performers, one session, one director, one CG-04 agreement template. It also makes the disclosure (section 8) short and true: pictures are synthetic, voices are human, no child took part. If counsel later clears Path B for the series, the trailer voices can be recast without recutting a single shot, because no lip is on camera for longer than four words.
+
+Scratch track: the editor may cut the animatic to a synthesized scratch track under Path A for timing only. The scratch track is logged in the gate register as a private working file and is never exported into any file that leaves the repo.
+
+### 4.4 Session notes
+
+1. Record each performer alone, then the "No." from all five in one pass with everyone on their own mic.
+2. Record the four v2 swap lines (Toni 6, Pip 7, Marisol 11, Wendell 17) as alternates in the same session.
+3. Record Renata's line 15 both ways: as one take, and as two halves with a clean cut point after "reversed," so the editor can bridge S15 to S16.
+4. Record Ansel's line 4 with the last word left hanging, since the pop cuts it.
+5. Record room tone from the kitchen mix stem (section 5) and play it in the performers' headphones so the reads sit in the space.
+6. Slate every take with line number and shot number. Deliver 48 kHz 24-bit WAV, one file per take, named `A2_L##_S##_take##.wav`.
+
+---
+
+## 5. Sound plan
+
+### 5.1 Head and tail: where the sonic ID lives
+
+The block bible (section 8) is explicit: the trailer file contains neither the Porch Intro nor the Click. The site wraps the file with the 8-second Porch Intro before (sonic ID, in variant, unresolved) and the 3-second Click after (sonic ID, out variant, resolved). So:
+
+- **Head of file.** 0.5 seconds of black with room tone at the head, then picture at 0.0. No music, no ident, no logo. The block's four rising notes have just ended, unresolved, in the wrapper; the cold open plays in the silence they leave. The trailer's first sound is a plate touching laminate.
+- **Tail of file.** The music resolves under the title card (5.5) and ends with 0.5 seconds of silence before the last frame, so the Click's pull-chain and resolved four notes land cleanly in the wrapper.
+- **Mirror version.** For any mirrored video platform post, the editor prepends the 3-second Click as pre-roll per the block bible. Two exports (section 6.6).
+
+### 5.2 Signature sounds
+
+Four signature sounds, all recorded or built from recordings, none synthesized from a library of another show's effects:
+
+1. **The Stool scrape.** Steel feet dragged on vinyl floor, S09, 1.5 seconds, low and dry.
+2. **The two taps.** A heavy wire masher on a wooden board, S10 and S31. Two taps, never three. The second tap slightly softer.
+3. **The toast pop.** A real four-slot toaster lever release, S04. Spring, metal, the slices landing. No comedy boing.
+4. **The whistle.** A brass pea whistle, one short low blow, S18. Recorded at a distance, not close-miked, so it reads as across a room.
+
+Also: the clothespin click (S08), the Wobble's short leg (S21), the magnet on enamel (S29), the plate slides (S01, S34), the garage door and chair frames (S17), the chair taking Wendell's weight (S19).
+
+### 5.3 Levels (STANDARDS soft rule 8)
+
+- Reference: the dialogue peak is the loudest sample in any dialogue line in the mix. Measure it on the final dialogue stem.
+- The toast pop, the whistle, the scrape, and the taps each peak at least 3 dB below the dialogue peak. Nothing in the effects stem exceeds the dialogue peak at any point.
+- Music sits under dialogue by at least 12 dB in any second where dialogue is present, and never exceeds the dialogue peak even in the title card.
+- Integrated loudness for the file: -16 LUFS, true peak -1.0 dBTP. The Porch Intro, the Click, and all four trailers are mastered to this same target so the wrapper and the file match (identity brief section 6).
+- The mixer logs the measured dialogue peak and the measured peak of each signature sound in the gate checklist (section 7, item 9).
+
+### 5.4 No strobe (STANDARDS soft rule 9)
+
+- The aerial (S06): porch lights come on once each and stay on. No light changes state more than once. At most one light change per second.
+- The toast pop (S04): no light flash, no brightness change in the frame.
+- The title card (S35): fades only. No flicker, no flashing amber dot.
+- Any generated clip with a light that pulses or flickers is rejected at the contact sheet stage.
+
+### 5.5 Music brief
+
+- Enters at 12.0 under the aerial. Low, plucked, one instrument, in the same family as the block's sonic ID (nylon-string guitar or kalimba), so the trailer sounds related to the wrapper without quoting it. Mid tempo, major key, no swing, no drums, no pad, no strings, no riser.
+- Holds low and simple through Beat 2 and Beat 3. Thins to a single held note or sparse plucks under Beat 4 from 53.5.
+- Drops out at 79.0 as Pip steps onto the Stool. The button (79.0 to 86.0) plays in room tone only.
+- Resolves under the title card: a short figure of three to five notes, 86.0 to 89.5, resolving downward, then silence. It must not quote or resolve into the block's four-note ID; that belongs to the Click in the wrapper.
+- What it must not sound like: no orchestral swell, no comedy pizzicato with a tuba, no ukulele-and-whistling advertising cue, no sitcom sting, no theme from any existing show, no melody that resolves like a commercial (identity brief section 6).
+- Deliverable: one stem, 48 kHz 24-bit, with a marker at 12.0, 53.5, 79.0, and 86.0.
+
+---
+
+## 6. Edit plan
+
+### 6.1 Stitch order
+
+S01 through S35 in numerical order. No reordering. The clips are trimmed to the in and out points in section 3. Where a generated clip is longer than the shot, the editor picks the window that contains the action described, and prefers the window where the face is steadiest.
+
+### 6.2 Cut rhythm per beat
+
+- **Beat 1, cold open.** Five cuts in 12 seconds. Long-short-long-very short-short. The pop (S04) is a 0.8 second insert that interrupts a sentence; cut in on the lever, cut out as the slices land. Hard cut to black at 12.0. No fade.
+- **Beat 2, world.** Three fast exteriors and an insert (2.5, 1.5, 1.5, 1.5), then the kitchen settles into two longer wides. Toni's line bridges the cut from S09 to S10 so the audio ties the two plates together. Cut to the F5 insert exactly on the first word of Pip's announcement.
+- **Beat 3, character.** Cross-table rhythm: Marisol, Ansel, Renata, Pip's hand. Cut on the first syllable of each new speaker, never before. Hold S15 to S16 across Renata's line so the parent laugh plays over Pip's small wave: the joke lands on a hand, not a face. Wendell's entrance is the longest shot in the trailer (5.0). Let it breathe. Toni's call is one unbroken wide.
+- **Beat 4, turn.** Ping-pong: F3, F2b, F3, F2b, F3, F2b, F3. Cuts tighten from 2.5 to 1.0 through the cross-examination (S23 to S26), then S27 opens back out to 4.5 as the joke turns to feeling. The Rota insert (S29) is a 1.5 second stab. S30 is silent and is not to be shortened.
+- **Beat 5, button.** Three shots and an insert. S31 holds for the reveal. S32 is short. S33 is the last look. S34 is one second of a hand and a plate, then a hard cut to black at 86.0.
+- **Beat 6, title.** Fades only.
+
+### 6.3 Title card and end card (one card, two states, 86.0 to 90.0)
+
+Built by the editor at 1920 by 1080 from the identity brief, dark set ("late edition"): paper #15130F, ink #EFE6D3, accent #E8583A unused on this card, amber #FFD08A for the dot only.
+
+- 86.0 to 86.3: black.
+- 86.3: fade up (12 frames) line 1 and 2, centered. Line 1: KITCHEN COURT in Archivo, width 75, weight 800, all capitals, tracked tight. Line 2: ANCHOR in Archivo width 100 weight 500 small capitals with tabular numerals off.
+- 88.0: fade up (12 frames) below them: "Premieres Friday on" in Newsreader, then the masthead block: STREETLIGHTS in Archivo condensed all capitals with a single amber dot as the period after the name, a hairline rule in ink 20 under it, and FRIDAY NIGHT in small capitals under the rule. Below, in Newsreader at small size: "The account holder is a parent."
+- 89.5 to 90.0: hold, then cut to black on the last frame.
+- Nothing on the card moves except the two fades. No kinetic type. The amber dot does not breathe on video.
+- The brand is provisional (Fork D, CG-01). STREETLIGHTS is a single text constant in the editor's card template so it can be swapped without a recut.
+- No other text, no URL, no call to action, no social handle.
+
+### 6.4 Compositing the lettering
+
+All readable text is added in the edit over blank generated surfaces, tracked to the plate, with a slight shadow so it sits on the surface:
+
+- S07: HUANG PARTY RENTAL, CARROW BEND on the van's blank side panel, sign-painter block capitals, two lines.
+- S08: DOCKET on the black tape in silver marker capitals, a child's hand; the new slip reads ANSEL v. MARISOL. RE: THE WAFFLE. in black marker capitals.
+- S29: MARISOL, ANSEL, PIP on the three name magnets, printed capitals.
+- Nowhere else. The binder spine, the polo patch, the fridge cards, and the school calendar stay blank at this scale.
+
+### 6.5 Running time check
+
+Picture 0.0 to 90.0 exactly. Head black 0.5 and tail silence are inside the 90.0, so the file is 90.0 seconds and `trailerSeconds` in `content/shows.json` stays 90. The check is done twice: once on the animatic with the scratch track, once on the final mix. If the animatic runs long, the trim ladder, in order, each step taken only if the previous one was not enough, and each step logged with the writers: (1) S06 to 2.0 and S07 to 1.2; (2) S21 to 2.0; (3) S17 to 4.5 by starting the line before the door is fully open; (4) S27 to 4.0. Never trim: the pop and the held mouth (S04, S05), Renata's line 15, the sash (S30), the button (S31 to S34), the title card below 4.0. If the ladder is exhausted and the cut is still long, the writers cut a line; the editor does not.
+
+### 6.6 Export settings
+
+- Master: 1920 by 1080, 16:9, 24 frames per second constant, ProRes 422 HQ, 48 kHz 24-bit stereo, archived to the owner's storage, not the repo.
+- Site file: `kitchen-court-trailer.mp4`, H.264 High profile, 8-bit 4:2:0, two-pass, target 10 Mbps, max 14 Mbps, keyframe every 48 frames, AAC-LC 48 kHz stereo 192 kbps, -16 LUFS integrated, -1.0 dBTP, moov atom at the head (fast start). Same settings for the poster frame source.
+- Poster frame: `kitchen-court-poster.jpg`, 1920 by 1080, quality 85, taken from S30 (the sash on the cart, all six in frame, nobody's mouth open).
+- Captions: `kitchen-court-trailer.vtt`, every line, speaker labels in capitals, sound cues in brackets (for example [toast pops], [whistle]).
+- Mirror file: `kitchen-court-trailer-mirror.mp4`, the site file with the 3-second Click prepended, same encode.
+- Filenames and paths are for the product builder; the URL that goes into `trailerUrl` is set by the site's asset host, not by this package.
+
+---
+
+## 7. Quality gate: 12 points before `content/shows.json`
+
+The file does not get a `trailerUrl` until every item is checked and initialed by the person who checked it. Items 1 to 3 are the standards and counsel gates; a fail on any of them stops everything else.
+
+1. **CG-03 signed.** Counsel sign-off on synthetic likenesses (six, three of them fictional children) and on the voice path is logged in `projects/08-compliance/out/gate-register.md` with a date and the attorney's name.
+2. **Disclosure live.** The two-sentence disclosure (section 8), in the form counsel approved, is on the About page and the page is deployed before the trailer URL is set.
+3. **Standards PASS.** The `standards` agent's report on the final file reads PASS with zero FAIL and zero WARN, using the report format in `canon/STANDARDS.md` section 5.
+4. **Five tests logged.** Question, Two-Laugh, Cold, Dialogue (stopwatch percentage recorded), and Standards, per block bible section 8, with the names of the three cold readers and the sentence each wrote.
+5. **Running time.** 90.0 seconds by the container's duration field, plus or minus 0.1. Title card holds at least 4.0 seconds.
+6. **No generated text.** Every frame stepped through at the cut points: no generated glyph anywhere. All lettering is on the composite list in 6.4 and nowhere else.
+7. **Face consistency.** Contact sheet of all face shots beside the six master portraits, reviewed by two people. Every face passes the five-landmark drift rule (2.6). Ages read: 44, 45, 73, 13, 10, 6. Log the shots that were regenerated.
+8. **No real-person resemblance.** Each master portrait was checked by two reviewers and by a reverse image search. No match, no "reminds me of" note left unresolved.
+9. **Sound levels measured.** Dialogue peak, toast pop peak, whistle peak, scrape peak, tap peak, and music maximum recorded in dB. Each effect at least 3 dB under dialogue peak. -16 LUFS integrated, -1.0 dBTP.
+10. **No strobe.** The aerial, the pop, and the title card checked frame by frame: no light changes state more than once per second. No flicker in any generated clip.
+11. **Never-appear list and IP.** No brand, no logo, no courtroom object, no block trademark, no existing show's expression, no real person, no readable text beyond 6.4. Hands checked: five fingers on every visible hand. The compliance IP re-check on the final cut is filed.
+12. **Text and metadata exact.** Title card reads KITCHEN COURT, ANCHOR, Premieres Friday on STREETLIGHTS (or the Fork D name), FRIDAY NIGHT, "The account holder is a parent." The brand constant matches the site config. `trailerSeconds` is 90. The captions file matches the script word for word. The file has no metadata tags naming a tool, a person, or a location.
+
+---
+
+## 8. Disclosure draft for CG-03 (About page, two sentences)
+
+Under the recommended voice path (section 4.3, Path C):
+
+> The trailers on [BRAND] were made with AI image and video tools, directed shot by shot by our writers and editor, and every person on screen is an invented character: no real person's face was used, copied, or imitated. Every voice is a performance by an adult actor we hired, no child took part in or was recorded for any trailer, and no voice was synthesized.
+
+If counsel clears a different voice path, the second sentence changes: for Path B, "The voices are performed by actors we hired, including child actors working under their state's rules, and no voice was synthesized." For Path A, "The voices were synthesized under our direction, no real person's voice was cloned, and no child's voice was used as a source." Counsel picks the final wording. `[BRAND]` resolves at Fork D.
+
+---
+
+## Standards read
+
+Walked against `canon/STANDARDS.md` section 2, items 1 to 15, as a production document: no item triggered. Item 15 (AI performance without a gate and a disclosure) is the subject of this package and is addressed by sections 4, 7, and 8. Section 3: soft rule 8 in 5.3, soft rule 9 in 5.4. Section 4: no em dash in this file, and the title card carries the parent line. The `standards` agent's pass is still required on the finished file.
