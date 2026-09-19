@@ -264,3 +264,252 @@ Sample dialogue. Nova: "I found a loophole." Ray: "I know. I left it there. It's
 
 Standards section 2 self-check: pass.
 
+---
+
+# SLOT 2: HANGOUT
+
+---
+
+## H1. Unclaimed
+
+**Logline.** Five seventh graders inherit the school lost and found and run it like a detective agency, because every lost thing has a story and someone who wants it back.
+
+**World.** Ferncliff Middle School, a 1960s brick building with a basement room whose door says UNCLAIMED in stencil. The custodian who ran it for thirty years retires and hands the keys to the five kids who kept showing up to help. The school calls it a leadership elective. The room has a claims counter, a tag system, bins by category, and a wall of unsolved items going back years. Nine hundred students lose things every day. Every item is a door to a kid the five have not met yet.
+
+**Characters.**
+- **Odalys Ferrer, 12.** Want: to clear the wall of unsolved items. Flaw: she cannot return an item without learning the whole story behind it. Line: "This retainer has been in the bin since October. Someone has been chewing carefully for five months. I need to meet them."
+- **Kwame Boateng-Hill, 13.** Runs the tag system. Want: efficiency. Flaw: he labels people the way he labels items. Line: "Item 44, blue hoodie. Owner category: 'sad about something.' We'll narrow it down."
+- **Tilly Marsh, 11.** Skipped a grade. Want: to be taken seriously. Flaw: she over-prepares and carries a briefcase. Line: "I have a theory, and a laminated version of the theory."
+- Also on the team: Ruben Ostrowski, 13, the biggest kid in the grade and the gentlest, who returns items by hand. Jaycee Sung, 12, who interviews every claimant like a talk show host.
+
+**Engine.** One item per episode leads to one owner and one story. The five kids' own lives run underneath. Sample seeds:
+1. A single left shoe, and the kid who has walked lopsided for a week rather than admit it.
+2. A library book from 1994 with a note inside. The owner is now a teacher at the school.
+3. A retainer nobody claims. The team runs a sting at lunch.
+4. The band director's baton. The concert is at seven.
+5. A phone. They cannot unlock it and will not try. They find the owner by the sticker on the back.
+6. A wallet with forty dollars. Kwame's system fails. The team argues about how to prove it was not more.
+7. A dog. Not technically an item. Odalys files it anyway.
+8. Fifty identical water bottles after field day. Tilly builds a scanner.
+9. An unsigned note that says "I like you." Three claimants. Two are lying.
+10. The school schedules a renovation and the room itself becomes unclaimed. The team has to claim it.
+
+Engine yields 100: yes. The bins never empty, and each item introduces a new kid with a new problem.
+
+**Two-generation hook.** The parent gets the deadpan process comedy, the earnest overreach, and a 1994 library book. The kid gets mysteries, a room of their own, and the feeling of having a real job at school.
+
+**Tone and comedy source.** Character and situation. The team treats a mitten like a missing person case, and the comedy is the gap between their seriousness and the smallness of the stakes, until the stakes turn out to be real for the kid who lost it. Odalys's curiosity, Kwame's labels, Tilly's preparation, Ruben's silence, and Jaycee's interviews are five distinct joke engines. Claimants are never mocked. The show is deadpan and kind.
+
+**Trailer hook (90 seconds, 4 beats).**
+1. A basement door. Stencil: UNCLAIMED. The lights buzz on.
+2. Odalys holds up one mitten. "Somebody out there is cold in one hand."
+3. Montage of tags, bins, and Kwame's label gun. Tilly's briefcase opens.
+4. Ruben hands a girl her shoe in the hallway. She hugs him. He nods once.
+
+Sample dialogue. Kwame: "We don't keep things. We hold them." Tilly: "I laminated that."
+
+**Production note.** Live action on one set: the basement room, with hallway inserts. AI-assisted production does well with the room, item close-ups, and the tag wall. A five-kid ensemble in one frame is the limit, so the trailer uses one-line beats and pairs.
+
+**Risk.**
+- IP distance: it might be mistaken for kid-detective shows, a broad genre. It is not any one show. No existing series is set in a lost and found, and none has these five characters or this tag-system engine.
+- Standards: nearest is 2.11, no child data. The phone episode is written so the team never tries to unlock it. Second nearest is 3.2.
+- Biggest creative risk: item-of-the-week formula. Mitigation: alternate item-driven episodes with claimant-driven episodes and the five kids' own losses.
+
+Standards section 2 self-check: pass.
+
+---
+
+## H2. Long Route
+
+**Logline.** Six kids who live at the far end of the last long school bus route in the county spend 48 minutes together twice a day, and that bus is where everything happens.
+
+**World.** Ashgrove County consolidated its schools, and Route 9 is the last long route: orchards, a creek, a grain elevator, one town, and a school. Ms. Frances Dukes has driven it for thirty years and has a rule for everything. The six kids board in order from the far end and have assigned seats they have renegotiated a hundred times. The back row calls itself a parliament. Each episode is a ride, sometimes both rides. School happens off screen. The bus is where it gets processed.
+
+**Characters.**
+- **Frances Dukes, 58.** Driver. Want: a quiet route and to see these six through to graduation. Flaw: she cannot stop eavesdropping. Line: "I'm not listening. I'm driving. I just drive with my ears."
+- **Mateo Villanueva, 14.** Last stop, longest ride. Want: to get his license and never ride again. Flaw: he loves the bus and will never admit it. Line: "The day I get my license I'm gone. Anyway, who's got the window Tuesday?"
+- **Priya Anand-Coker, 11.** Youngest rider. Want: to be respected by the back row. Flaw: a rulebook kid on a bus full of negotiators. Line: "Section 3 of the bus code says no standing. I wrote section 3. Sit."
+- Also on the bus: Beck and Rue Oyelaran, 12, twins who vote as a bloc until they do not. Hollis Dukes, 13, the driver's grandson, permanently mortified.
+
+**Engine.** Forty-eight minutes of contained time, twice a day. The school day arrives already happened and gets solved on the ride. The stops are recurring locations. Sample seeds:
+1. Assigned seats are abolished. Anarchy by the creek. Restored by the elevator.
+2. A new kid boards at a stop that never had a kid.
+3. The bus breaks down at the orchard. Frances runs school from the driver's seat.
+4. Someone is leaving anonymous notes in the seat cracks.
+5. Hollis's grandmother is asked to sing at the talent show. He must ride with the rehearsals.
+6. A substitute driver takes a different route and the kids see the county for the first time.
+7. Snow. The ride takes two hours. A full session of parliament is held.
+8. Mateo's license test. He drives the family car behind the bus the whole way and hates every minute.
+9. The county proposes a shorter route that splits the group in two.
+10. The last ride of the year, in reverse order, with Frances dropping off Mateo last.
+
+Engine yields 100: yes. Two rides a day for a school year, six kids, and one driver make more episodes than anyone can write.
+
+**Two-generation hook.** The parent gets Frances, who is the show's secret lead, and the memory of long bus rides. The kid gets the back-row parliament, seat politics, and an adult who pretends not to listen.
+
+**Tone and comedy source.** Character in a fixed situation. The bus never changes, so the comedy comes from six kids who have to be in the same 48 minutes whether they like each other or not. Priya's bus code, Mateo's denial, the twins' bloc, and Hollis's mortification are recurring engines. Frances's mirror comments are the show's dry counterpoint. The tone is small, funny, and honest about being eleven.
+
+**Trailer hook (90 seconds, 4 beats).**
+1. Dawn. A yellow bus on an orchard road. Six stops in four cuts.
+2. Frances in the mirror: "Seat check." Six kids freeze.
+3. Parliament in session over a single Tuesday window seat. A vote. A recount.
+4. The bus pulls away from the last stop. Mateo alone at the end of a long driveway. He waves without looking.
+
+Sample dialogue. Priya: "There's a bus code." Mateo: "You wrote the bus code." Priya: "So you know it's good."
+
+**Production note.** Live action on one set: the bus interior, with exterior road plates. This is the most AI-friendly concept in the slot: a static interior, a handful of faces, and generated exteriors through four seasons.
+
+**Risk.**
+- IP distance: it might be mistaken for a school-bus sketch or any school comedy. It is not any one show. No existing series lives on a long rural route with a driver-grandson pair and a back-row parliament.
+- Standards: nearest is 2.6, children in unsupervised danger. The breakdown episode keeps Frances present, calm, and in charge. Second nearest is 3.2.
+- Biggest creative risk: visual sameness. Mitigation: the stops, the seasons, and the substitute-route episode change the view.
+
+Standards section 2 self-check: pass.
+
+---
+
+## H3. Showroom
+
+**Logline.** When their middle school runs out of room, the whole seventh grade moves into a closed furniture store across the parking lot, and the bedroom section becomes homeroom.
+
+**World.** Grayson Middle School is overcrowded, so the district leased the former Hollenbeck's Home Furnishings across the lot. Sixty seventh graders and four teachers set up school in a showroom. The dining sets are the cafeteria. The sofas are the library. The mattress department is where nobody is allowed. The signs still say SALE. The kids call it the Annex. Everyone at the main building thinks the seventh grade got demoted. The seventh grade thinks it got a palace.
+
+**Characters.**
+- **Naomi Okafor, 12.** Want: to be class president of the Annex, which has no president. Flaw: she creates offices in order to fill them. Line: "I've appointed myself Minister of Sofas. It's a real job now because I said it in a meeting."
+- **Mr. Deshawn Ambrose, 34.** The one young teacher who volunteered. Want: for the Annex to be the best school in the district. Flaw: he takes the word "showroom" literally and stages everything. Line: "I want this classroom to look like a classroom someone would buy."
+- **Felix Grunwald, 13.** Want: to find the store's legendary hidden break room. Flaw: conspiracy brain. Line: "There's a door behind the recliners. There's always a door behind the recliners."
+- Also in the Annex: Ms. Petrakis, 60, who teaches math from a display kitchen. Dara Lindqvist, 12, Naomi's best friend and rival for offices that do not exist.
+
+**Engine.** School life in an absurd building. The store's leftover features supply set pieces. The rivalry with the main building supplies stakes. Sample seeds:
+1. First day. The kids must pick departments. Nobody wants Patio.
+2. Fire drill in a store with fourteen exits.
+3. The intercom still plays the store's hourly jingle. A contest to write a new one. (Original song.)
+4. A customer walks in to buy a couch. Nobody tells him it is a school.
+5. Picture day in a showroom. Every kid picks a different room.
+6. The mattress department ban is lifted for one day. It goes as expected.
+7. The main building challenges the Annex to a spirit contest. The Annex has no gym. It has a rug section.
+8. Felix finds the break room. It is a real break room. It is wonderful.
+9. A district inspector visits. Mr. Ambrose stages the school like a catalog.
+10. The lease ends. The kids fight to stay. They win one more year.
+
+Engine yields 100: yes. School comedy is bottomless, and the building is a joke machine with 400 chairs.
+
+**Two-generation hook.** The parent gets furniture-store jokes and Mr. Ambrose's earnest staging. The kid gets a school where you sit on couches and the mattress department is forbidden.
+
+**Tone and comedy source.** World and character. The building is funny every time the camera moves, but the engine is Naomi's ambition, Felix's quest, and Mr. Ambrose's belief that this is the best thing that has ever happened to him. The show is fond of everyone in it. The main building is a rival, not a villain.
+
+**Trailer hook (90 seconds, 4 beats).**
+1. Store exterior. Banner: GRAND CLOSING. A school bus pulls in.
+2. Homeroom in the bedroom department. Kids on beds. Ms. Petrakis at a display kitchen island.
+3. Felix knocking on walls behind the recliners.
+4. Naomi at a podium made of two end tables. "Welcome to the Annex. No, we don't have a gym. We have a rug section."
+
+Sample dialogue. Mr. Ambrose: "Everyone take a seat." Kid: "Which one? There are four hundred."
+
+**Production note.** Live action on one set: the showroom, which is highly dressable. AI-assisted production does well with the space itself and department signage. Sixty kids in one frame is out of reach, so the trailer uses six kids and wide showroom plates.
+
+**Risk.**
+- IP distance: it might be mistaken for the "weird school" genre. It is not any one show. No existing series puts a grade in a furniture store, and no character is lifted from one.
+- Standards: nearest is 3.3, body jokes. The mattress department stays at "gross" and never at "shame." Second nearest is 2.9, product placement. The store brand is fictional.
+- Biggest creative risk: the building outshines the characters. Mitigation: Naomi and Felix lead every episode, and the building serves them.
+
+Standards section 2 self-check: pass.
+
+---
+
+## H4. All Twelve
+
+**Logline.** At a school so small that the twelve eighth graders are the entire eighth grade, every kid has to be on every team, in every club, and in every play.
+
+**World.** Cotter's Bend is a mountain town with a K-8 school of 71 students. The eighth grade is twelve kids. District rule: every activity needs a full roster, so everyone does everything. Basketball on Monday. Debate on Tuesday. Band on Wednesday. Robotics on Thursday. Drama on Friday. The same twelve faces in different uniforms. The principal also coaches four teams. The gym is the theater, the cafeteria, and the polling place. The town shows up for all of it.
+
+**Characters.**
+- **Cassius "Cass" Ferrante, 13.** Want: to be good at one thing. Flaw: he is medium at everything and takes it personally. Line: "I'm the second-best goalie in the school. There are two."
+- **Winnie Halvorsen, 13.** Want: to leave for a big high school. Flaw: she secretly runs everything and cannot stop. Line: "I'm not the captain. I'm the person who tells the captain what to do. Which is captain."
+- **Principal Dolores Aurelio, 55.** Want: to keep the school open. Flaw: she schedules like a general. Line: "Debate is at three. Basketball is at three. You will debate at halftime."
+- Also in the grade: Ozzie Nakamura-Bell, 13, who is genuinely great at everything and hates attention. The Reyes triplets, who count as three rosters. Poppy, who joined every club to be near the snacks.
+
+**Engine.** A different activity every week, the same twelve kids recast in new roles, and a town that watches. Sample seeds:
+1. Robotics regional. The robot is also the mascot.
+2. Debate against a school with forty debaters. Cotter's Bend brings twelve, who are also the audience.
+3. The spring musical: twelve cast members, thirty roles, one quick-change tent.
+4. Soccer with no substitutes, in a snowstorm.
+5. Cass discovers the one thing he is great at: scorekeeping. He keeps score for everything, including debate.
+6. Winnie is elected to every office and tries to resign from all of them. Nobody accepts.
+7. Spelling bee. All twelve compete. All twelve spell each other's words.
+8. A thirteenth kid moves to town. He is good at everything. Ozzie finally has a rival.
+9. Yearbook: 200 photos of the same twelve kids.
+10. The district proposes a merger. The kids stage every activity at once to prove they exist.
+
+Engine yields 100: yes. Every activity a school has is an episode, and every combination of twelve kids is a subplot.
+
+**Two-generation hook.** The parent gets small-town logistics, Principal Aurelio's scheduling, and a town that shows up for all twelve kids. The kid gets the kid on every team and the arrival of the thirteenth.
+
+**Tone and comedy source.** Situation and character. The situation is that nobody can quit anything. The character comedy is how each kid handles being cast in a role they did not choose: Cass tries too hard, Winnie leads while denying it, Ozzie hides, Poppy eats. The tone is big-hearted and a little absurd. Losing is normal and never shameful.
+
+**Trailer hook (90 seconds, 4 beats).**
+1. A trophy case with one trophy. Engraved: "Participation. Everyone."
+2. Quick cuts of the same twelve kids in six uniforms.
+3. Winnie resigning at a lectern. The room applauds and does not accept.
+4. Halftime of a basketball game. Two kids in jerseys hold a formal debate at center court.
+
+Sample dialogue. Aurelio: "Who's in the band?" All twelve: "Us." Aurelio: "Who's on the team?" All twelve: "Us." Aurelio: "Who's in the stands?" Silence. Cass: "Our parents."
+
+**Production note.** Live action on one set: the gym that is everything, re-dressed per activity. AI-assisted production handles uniform swaps, banners, and gym dressing well. Twelve leads in one frame is the stretch, so the trailer leads with three.
+
+**Risk.**
+- IP distance: it might be mistaken for the small-town school genre. It is not any one show. No existing series has the everyone-does-everything rule, and no character is lifted from one.
+- Standards: nearest is 2.5, humiliation. Cass being medium at things must always be answered, and it is, by scorekeeping. Second nearest is 3.2.
+- Biggest creative risk: twelve leads is too many. Mitigation: three leads carry, the rest rotate as featured players.
+
+Standards section 2 self-check: pass.
+
+---
+
+## H5. Both Ends
+
+**Logline.** Budget cuts put Hadley Middle School and the Hadley Senior Center in the same building, and the kids and the seniors share the gym, the cafeteria, and the drama.
+
+**World.** A brick former high school in a river town. The middle school has the east wing. The senior center has the west wing. The gym, the cafeteria, and the auditorium are shared on a schedule that is always wrong. Teens and seniors cross paths at every bell. A Liaison Committee of two kids and two seniors settles disputes at a folding table in the main hall. Neither side wanted this. Both sides have started to like it and will not say so.
+
+**Characters.**
+- **Jada Whitlock, 13.** Kid liaison. Want: to be treated like a grown-up. Flaw: she overcorrects into bossing people five times her age. Line: "With respect, Mr. Feeney, the pickleball schedule is not a suggestion."
+- **Gus Feeney, 79.** Senior liaison. Retired machinist. Want: a purpose after his wife. Flaw: he treats every negotiation like a union contract. Line: "I've been on strike before. I can do it again. I've got time."
+- **Marcus Oduya, 12.** Want: to be popular. Flaw: he discovers he is only popular with the seniors, and he loves it. Line: "I'm a big deal in the west wing."
+- Also in the building: Principal Anh Tran, 48, and Center Director Ruth Abernathy, 66, who share one office and one coffee maker. Loretta Sims, 84, second senior liaison, who has never lost an argument.
+
+**Engine.** Shared space produces weekly conflict. Unlikely pairings produce weekly stories. A senior's story meets a kid's story every episode. Sample seeds:
+1. Pickleball versus dodgeball. One gym. One hour.
+2. The seniors' choir and the school band are both booked in the auditorium. They merge. (Original music.)
+3. Gus teaches Marcus to drive the riding mower. The field is mowed into a maze.
+4. The cafeteria serves both wings the same lunch. A joint petition.
+5. Gus's granddaughter enrolls. He is mortified. She is more mortified.
+6. A blackout. The seniors run the building by candlelight and card games.
+7. The kids open a tech help desk. The seniors open a life help desk across the hall.
+8. The Valentine's dance is shared. Hand holds only. Loretta chaperones both wings.
+9. Jada's science fair project uses seniors as subjects. Consent forms everywhere.
+10. The district proposes splitting the building. Both wings refuse.
+
+Engine yields 100: yes. Two populations, one building, one bell schedule.
+
+**Two-generation hook.** The parent gets the seniors, who are their own parents, and Gus's negotiating tactics. The kid gets Marcus's west-wing fame and kids running a building.
+
+**Tone and comedy source.** Character across generations. The comedy is two groups who assume the other is helpless and are wrong every time. Jada's formality, Gus's contract talk, Marcus's fame, and Loretta's undefeated record are the engines. The rule that keeps it honest: the seniors are as sharp as the kids, and the kids are as capable as the seniors. Nobody is a punchline for their age.
+
+**Trailer hook (90 seconds, 4 beats).**
+1. The building. Two signs. One door.
+2. The bell rings. The hall fills with walkers and backpacks.
+3. The Liaison Committee at a folding table. Jada and Gus, eye to eye, both holding clipboards.
+4. A shared talent show. Seniors and kids in one number. The song is original.
+
+Sample dialogue. Gus: "In my day, we had a gym." Jada: "In your day, this was the gym."
+
+**Production note.** Live action on one set: the shared main hall and gym, with two wings dressed differently. AI-assisted production does well with the hall, signage, and the folding table. Mixed-age crowd scenes are the stretch, so the trailer uses pairs.
+
+**Risk.**
+- IP distance: it might be mistaken for an intergenerational sitcom. It is not any one show. No existing series puts a middle school and a senior center in one building with a liaison committee.
+- Standards: nearest is 2.5, cruelty. No ageist jokes, in either direction. Second nearest is 3.2.
+- Biggest creative risk: seniors as punchlines. Mitigation: the rule above, applied in every script.
+
+Standards section 2 self-check: pass.
+
