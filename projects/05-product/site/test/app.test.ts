@@ -107,3 +107,21 @@ describe("stats", () => {
     expect(isoWeekKey(w1)).not.toBe(isoWeekKey(w2));
   });
 });
+
+describe("base path", () => {
+  it("serves routes and links under a prefix", async () => {
+    const store = new MemoryStore(shows);
+    const assets = { fetch: async (req: Request) => new Response(`asset:${new URL(req.url).pathname}`) };
+    const app = createApp({ store, basePath: "/tv", assets });
+    const home = await app.request("/tv/");
+    expect(home.status).toBe(200);
+    const html = await home.text();
+    expect(html).toContain('href="/tv/show/a"');
+    expect(html).toContain('href="/tv/guide.css"');
+    expect(html).toContain('data-base="/tv"');
+    expect((await app.request("/tv/show/a")).status).toBe(200);
+    expect(await (await app.request("/tv/guide.css")).text()).toBe("asset:/guide.css");
+    expect(await (await app.request("/tv/posters/a.svg")).text()).toBe("asset:/posters/a.svg");
+    expect((await app.request("/show/a")).status).toBe(404);
+  });
+});

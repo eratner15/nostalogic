@@ -1,8 +1,9 @@
 (function () {
   "use strict";
+  var base = (document.body && document.body.getAttribute("data-base")) || "";
   var send = function (path, payload) {
     try {
-      return fetch(path, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload), keepalive: true, credentials: "same-origin" });
+      return fetch(base + path, { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify(payload), keepalive: true, credentials: "same-origin" });
     } catch (e) { return Promise.reject(e); }
   };
 

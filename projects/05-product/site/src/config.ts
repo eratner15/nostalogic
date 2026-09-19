@@ -17,3 +17,16 @@ export const SITE = {
   emailName: "The Listing",
   footerLine: (name: string) => `${name} is for families. A parent holds every account. We collect nothing from children.`,
 };
+
+// Base path for hosting under a sub-path such as ratlinks.com/tv. Set at app creation from env BASE_PATH.
+let basePath = "";
+export function setBasePath(bp: string) {
+  basePath = bp.replace(/\/+$/, "");
+}
+export function getBasePath() {
+  return basePath;
+}
+/** Prefix an absolute site path with the base path. u("/show/x") -> "/tv/show/x" when BASE_PATH=/tv. */
+export function u(path: string) {
+  return `${basePath}${path}`;
+}

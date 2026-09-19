@@ -2,15 +2,34 @@ import { Hono } from "hono";
 import { getCookie, setCookie } from "hono/cookie";
 import { computeStats, type Store, type EventKind } from "./store";
 import { guidePage, showPage, aboutPage, notFoundPage, statsPage } from "./views/pages";
+import { setBasePath } from "./config";
 
-export type Deps = { store: Store; adminToken?: string; now?: () => number };
+export type Deps = { store: Store; adminToken?: string; now?: () => number; basePath?: string; assets?: { fetch: (req: Request) => Promise<Response> } };
 
 const HH = "hh";
 const isEmail = (s: string) => /^[^\s@]{1,64}@[^\s@]{1,255}\.[^\s@]{2,}$/.test(s);
 
 export function createApp(deps: Deps) {
   const now = deps.now ?? (() => Date.now());
-  const app = new Hono();
+  const bp = (deps.basePath ?? "").replace(/\/+$/, "");
+  setBasePath(bp);
+  const root = new Hono({ strict: false });
+  const app = bp ? root.basePath(bp) : root;
+
+  // Static assets under the base path: strip the prefix and hand the request to the assets binding.
+  if (deps.assets) {
+    const assets = deps.assets;
+    app.get("/:file{[a-zA-Z0-9_.-]+\\.(css|js|svg|png|jpg|webp|mp4|ico|txt)}", (c) => {
+      const url = new URL(c.req.url);
+      url.pathname = url.pathname.slice(bp.length);
+      return assets.fetch(new Request(url.toString(), c.req.raw));
+    });
+    app.get("/posters/:file", (c) => {
+      const url = new URL(c.req.url);
+      url.pathname = url.pathname.slice(bp.length);
+      return assets.fetch(new Request(url.toString(), c.req.raw));
+    });
+  }
 
   // Household id: a random first-party cookie. No PII. No child data. One per browser.
   app.use("*", async (c, next) => {
@@ -98,6 +117,6 @@ export function createApp(deps: Deps) {
     return c.html(statsPage(await computeStats(deps.store)));
   });
 
-  app.notFound((c) => c.html(notFoundPage(), 404));
-  return app;
+  root.notFound((c) => c.html(notFoundPage(), 404));
+  return root;
 }

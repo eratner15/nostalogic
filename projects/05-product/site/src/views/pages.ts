@@ -1,5 +1,5 @@
 import { html, raw, layout, esc } from "./layout";
-import { SITE } from "../config";
+import { SITE, u } from "../config";
 import type { Show, SiteStats } from "../store";
 
 const slotName = (slot: number) => SITE.slotLabels[slot - 1] ?? `Slot ${slot}`;
@@ -30,7 +30,7 @@ export function guidePage(shows: Show[]) {
   const rows = shows
     .map(
       (s, i) => html`<li class="listing ${s.status === "premiere" ? "listing-premiere" : ""}" style="--hue:${s.posterHue};--i:${i}">
-  <a class="listing-link" href="/show/${s.id}">
+  <a class="listing-link" href="${u(`/show/${s.id}`)}">
     <div class="listing-time"><span class="t">${s.slot}</span><span class="slot">${slotOrd(s.slot)} · ${slotName(s.slot)}</span></div>
     <div class="listing-art">${raw(posterSvg(s))}</div>
     <div class="listing-body">
@@ -54,7 +54,7 @@ export function guidePage(shows: Show[]) {
     <div class="grid-times" aria-hidden="true"><span>${SITE.nightShort} night</span>${raw(SITE.slotOrdinals.map((t) => `<span>${t}</span>`).join(""))}</div>
     <div class="grid-strip">
       <div class="grid-strip-ch"><span class="ch-num">${SITE.channelNumber}</span><span class="ch-name">${SITE.name}</span></div>
-      ${raw(shows.map((s) => `<a class="grid-cell" href="/show/${s.id}" style="--hue:${s.posterHue}"><span class="grid-time">${esc(slotName(s.slot))}</span><span class="grid-title">${esc(s.title)}</span></a>`).join(""))}
+      ${raw(shows.map((s) => `<a class="grid-cell" href="${u(`/show/${s.id}`)}" style="--hue:${s.posterHue}"><span class="grid-time">${esc(slotName(s.slot))}</span><span class="grid-title">${esc(s.title)}</span></a>`).join(""))}
     </div>
   </div>
 </section>
@@ -65,7 +65,7 @@ export function guidePage(shows: Show[]) {
   <div class="signup-inner">
     <h2>Save the night</h2>
     <p>${SITE.emailName} lands in a parent's inbox before the block. When it premieres, and which show your house picked. Nothing else.</p>
-    <form class="signup-form" method="post" action="/api/signup" data-signup>
+    <form class="signup-form" method="post" action="${u("/api/signup")}" data-signup>
       <label class="sr-only" for="email">Parent email</label>
       <input id="email" name="email" type="email" required autocomplete="email" placeholder="parent@example.com">
       <label class="check"><input type="checkbox" name="parent" required> I am a parent or guardian, age 18 or over.</label>
@@ -81,7 +81,7 @@ export function showPage(show: Show, all: Show[]) {
   const others = all.filter((s) => s.id !== show.id);
   const player = show.trailerUrl
     ? html`<div class="player" data-player data-show="${show.id}">
-  <video controls playsinline preload="metadata" poster="/posters/${show.id}.svg" data-video>
+  <video controls playsinline preload="metadata" poster="${u(`/posters/${show.id}.svg`)}" data-video>
     <source src="${show.trailerUrl}" type="video/mp4">
     Your browser cannot play this video.
   </video>
@@ -89,7 +89,7 @@ export function showPage(show: Show, all: Show[]) {
     : html`<div class="player player-soon" aria-label="Trailer in production">${raw(posterSvg(show, "hero"))}<div class="soon-badge">Trailer in production</div></div>`;
   const body = html`
 <article class="show" style="--hue:${show.posterHue}">
-  <nav class="crumbs"><a href="/">${SITE.nightLabel} night listings</a> <span aria-hidden="true">/</span> <span>${slotOrd(show.slot)}, the ${slotName(show.slot)}</span></nav>
+  <nav class="crumbs"><a href="${u("/")}">${SITE.nightLabel} night listings</a> <span aria-hidden="true">/</span> <span>${slotOrd(show.slot)}, the ${slotName(show.slot)}</span></nav>
   <header class="show-head">
     <p class="eyebrow">${SITE.nightLabel} night · ${slotOrd(show.slot)} · ${slotName(show.slot)} · ${show.genreLabel} · ${show.ratingLabel} · ${show.runtimeLabel}</p>
     <h1 class="show-title">${show.title}</h1>
@@ -113,7 +113,7 @@ export function showPage(show: Show, all: Show[]) {
     <div class="signup-inner">
       <h2>Save the night</h2>
       <p>${SITE.emailName} lands in a parent's inbox before ${show.title} premieres. Nothing else.</p>
-      <form class="signup-form" method="post" action="/api/signup" data-signup>
+      <form class="signup-form" method="post" action="${u("/api/signup")}" data-signup>
         <label class="sr-only" for="email2">Parent email</label>
         <input id="email2" name="email" type="email" required autocomplete="email" placeholder="parent@example.com">
         <label class="check"><input type="checkbox" name="parent" required> I am a parent or guardian, age 18 or over.</label>
@@ -124,7 +124,7 @@ export function showPage(show: Show, all: Show[]) {
   </section>
   <nav class="up-next">
     <h2>Also on ${SITE.nightLabel} night</h2>
-    <ul>${raw(others.map((s) => `<li style="--hue:${s.posterHue}"><a href="/show/${s.id}"><span class="up-time">${s.slot}</span> <span class="up-title">${esc(s.title)}</span> <span class="up-slot">${esc(slotOrd(s.slot))} · ${esc(slotName(s.slot))}</span></a></li>`).join(""))}</ul>
+    <ul>${raw(others.map((s) => `<li style="--hue:${s.posterHue}"><a href="${u(`/show/${s.id}`)}"><span class="up-time">${s.slot}</span> <span class="up-title">${esc(s.title)}</span> <span class="up-slot">${esc(slotOrd(s.slot))} · ${esc(slotName(s.slot))}</span></a></li>`).join(""))}</ul>
   </nav>
 </article>`;
   return layout(`${show.title}: ${SITE.name}`, body, { description: show.logline, bodyClass: "page-show", dark: true });
@@ -152,7 +152,7 @@ export function aboutPage() {
 }
 
 export function notFoundPage() {
-  return layout(`Not found: ${SITE.name}`, html`<article class="prose"><p class="eyebrow">Off air</p><h1>Nothing on this channel</h1><p><a href="/">Back to ${SITE.nightLabel} night listings</a>.</p></article>`);
+  return layout(`Not found: ${SITE.name}`, html`<article class="prose"><p class="eyebrow">Off air</p><h1>Nothing on this channel</h1><p><a href="${u("/")}">Back to ${SITE.nightLabel} night listings</a>.</p></article>`);
 }
 
 export function statsPage(s: SiteStats) {

@@ -8,6 +8,7 @@ compatibility_flags = ["nodejs_compat"]
 [assets]
 directory = "public"
 binding = "ASSETS"
+run_worker_first = true
 
 [[d1_databases]]
 binding = "DB"
@@ -17,4 +18,6 @@ migrations_dir = "migrations"
 
 [vars]
 SITE_ENV = "production"
+# Set BASE_PATH = "/tv" when the worker is routed at a sub-path such as ratlinks.com/tv.
+BASE_PATH = ""
 # ADMIN_TOKEN is a secret: wrangler secret put ADMIN_TOKEN
