@@ -71,9 +71,23 @@ Phase 1 complete, pending owner decisions at Fork A and Fork B. Canon holds only
 - Public ritual words: [NAME] Night, the block, Anchor, Hangout, Wildcard, Lights Out, the Wrap, Home Base, the Last Word, the Listing (parent email), Save the night (button), I'd watch this (vote).
 - Identity: Archivo (condensed width) plus Newsreader. Paper #F3ECDD, ink #1C1A16, accent #C9391E, glow #FFC46B, with a dark set. No textures, no shadows, no scan lines. Logo Direction 1: the masthead with one amber dot.
 
-## 4. Shows and characters
+## 4. Shows and characters (Phase 4, `projects/04-writers-room/out/bibles/`)
 
-Not set. Phase 4 output.
+Slate chosen by tournament (D-015, D-020). Town: Carrow Bend (D-023). Titles clear the IP check except as noted; counsel runs the direct USPTO search under CG-01.
+
+| Slot | Show | Logline | Neighborhood | Regulars |
+|---|---|---|---|---|
+| Anchor | Kitchen Court | In a house where Mom is a real judge, every family fight goes to trial at the kitchen table, and when the kids sue their parents, a kid presides. | The Pinwheel, Spoke Court | Renata Delacroix (44, Judge Mom), Wendell Huang (45, Facilities), Toni Delacroix (73, Ref), Marisol (13, Counsel), Ansel (10, the Filer), Pip (6, Bailiff) |
+| Hangout | Long Route | Six kids ride the county's last long school bus route for 48 minutes twice a day, and the bus is where everything that happens to them actually happens. | Pennock Hollow | Frances Dukes (58, driver), Mateo Villanueva (14), Priya Anand-Coker (11), Beck Oyelaran (12), Rue Oyelaran (12), Cal Whitlock (13), Hollis Dukes (13) |
+| Wildcard | Recent History Society | A neighborhood historical society reenacts only what happened last week, in full costume, with total seriousness, and a grandfather and his granddaughter run it. | Bell Hollow | Harlan Voss (61, the Commodore), Piper Voss (10), Dr. Imani Beale (38), Dale Pruitt (45), Mrs. Lorraine Tulliver (70), Member Twelve (narrator voice) |
+| Lights Out | The Returns Desk (retitled, D-022; alternate "Two Receipts") | At the all-night returns desk of a neighborhood hardware store, every item comes back with a ghost story, and the desk always finds the ordinary truth. | The Flats, Ambler Street | Marguerite Salcedo (63), Ines Ruiz (12, supervised by mother Dolores one door away), Teddy Vance (16), Ambrose Quayle (74) |
+
+Rules that came out of the bibles:
+- Kitchen Court's new expression: no gavel (a potato masher), the bench is a step stool, one toast per side as the timer, a child presides over any case with a grown-up in it, every verdict ends snack, hug, whistle.
+- Long Route keeps school on screen through the loop scene, the windshield, Rue's notebook, and field trips. Its premise sits near three bus-only kids' comedies; the bible's IP distance rules are mandatory.
+- Recent History Society escalates by rule: Article 7 (restaging) inside an episode, the seven-rung Scale Ladder across a season. No real news, people, politics, or religion.
+- The Returns Desk: fair-clue rule (cause written first, clue on screen, reveal is a replay), every reveal lands safe and funny, the receipts joke belongs to this show only.
+- Lead show by tournament total: Recent History Society. Co-lead for production: The Returns Desk. Fork E stays open for the owner.
 
 ## 5. Product (v1 trailer site, decision D-013)
 

@@ -120,6 +120,11 @@ Format: date, decision, options, choice, reason. Counsel gates carry the tag `CO
 - Reason: the premise reads in the title, the handle is likely free, and the last line stays as the show's signature. The owner can flip to the alternate at Fork E.
 - Also from the check: Long Route's premise is REVIEW (three bus-only kids' comedies exist). The bible's IP distance rules are mandatory, and the trailer script gets a compliance re-check before any public asset. Counsel runs the direct USPTO search on all four titles under CG-01.
 
+### D-023. 2026-09-19. The shared town is Carrow Bend
+- All four shows share one town (block bible, crossover rules). The bibles named neighborhoods and left the town to the Orchestrator: the Pinwheel and Spoke Court (Kitchen Court), Pennock Hollow (Long Route), Bell Hollow (Recent History Society), the Flats and Ambler Street (The Returns Desk).
+- Choice: Carrow Bend. A web search found no town, show, novel, or film of that name. Counsel confirms under CG-01 with the four titles.
+- Reason: two syllables plus one, sayable by a kid, a river bend for the Long Route plates and the Flats.
+
 ## Open forks
 
 - Fork A: decided, Go (D-011).
