@@ -65,7 +65,7 @@ p{margin:0 0 12px}
 .grid-cell:hover .grid-title{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
 .grid-time{font-size:.72rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-60);font-variation-settings:"wdth" 100}
 .grid-title{font-size:1.15rem;font-weight:700;text-transform:uppercase;line-height:1.05;font-variation-settings:"wdth" 78;overflow-wrap:anywhere}
-@media (max-width:760px){.grid-times{display:none}.grid-strip{grid-template-columns:76px 1fr 1fr}.grid-strip-ch{grid-row:span 2}.grid-cell{border-top:1px solid var(--ink-20)}.ch-num{font-size:1.6rem}}
+@media (max-width:760px){.grid-times{display:none}.grid-strip{grid-template-columns:76px 1fr 1fr}.grid-strip-ch{grid-row:span 2}.grid-cell{border-top:1px solid var(--ink-20)}.ch-num{font-size:1.6rem}.ch-name{font-size:.56rem;letter-spacing:.06em}}
 
 /* Listings: hairline rules, numerals left, art, run-in text */
 .listings-wrap{max-width:1100px;margin:0 auto;padding:0 16px}
@@ -109,12 +109,17 @@ p{margin:0 0 12px}
 .is-done input,.is-done button{opacity:.5;pointer-events:none}
 @media (max-width:560px){.signup-form{grid-template-columns:1fr}}
 
-/* Show page (late edition, dark by default) */
-.show{max-width:1000px;margin:0 auto;padding:22px 16px 40px}
+/* Show page: the same printed guide as the listings. Paper, the 1100px column, the slot numeral,
+   the tags, the order strip. The player is the only dark surface. */
+.show{max-width:1100px;margin:0 auto;padding:22px 16px 40px}
+.show-head{display:grid;grid-template-columns:96px minmax(0,1fr);gap:20px;align-items:start;margin-bottom:22px}
+.show-head>*{min-width:0}
+.show-head .listing-time .t{font-size:4.2rem}
+.show-tags{display:flex;gap:10px;flex-wrap:wrap;margin:0 0 12px}
 .crumbs{font-family:var(--f-head);font-variation-settings:"wdth" 100;font-weight:600;letter-spacing:.08em;text-transform:uppercase;font-size:.78rem;color:var(--ink-60);margin-bottom:26px}
 .crumbs a{text-decoration:none}
 .crumbs a:hover{color:var(--ink)}
-.show-title{font-size:clamp(2.6rem,7.5vw,5.4rem);text-transform:uppercase;max-width:14ch;overflow-wrap:anywhere}
+.show-title{font-size:clamp(2.6rem,7.5vw,5.4rem);text-transform:uppercase;max-width:14ch;overflow-wrap:anywhere;margin-bottom:12px}
 .show-logline{font-size:1.3rem;font-weight:600;max-width:58ch;margin:0 0 8px;overflow-wrap:anywhere}
 .show-prompt{color:var(--ink-60);margin:0 0 22px}
 .player{border:1px solid var(--ink-20);background:#000;position:relative;aspect-ratio:16/9;overflow:hidden}
@@ -137,20 +142,28 @@ p{margin:0 0 12px}
 .signup-band-inline{margin-top:22px;padding:0}
 .up-next{margin-top:36px;border-top:2px solid var(--ink);padding-top:14px}
 .up-next h2{font-size:.82rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-60);font-variation-settings:"wdth" 100}
+.up-next .grid-block{border-top:0}
+.grid-cell.is-current{background:var(--ink);color:var(--paper)}
+.grid-cell.is-current .grid-time{color:var(--glow)}
+.grid-cell.is-current:hover .grid-title{text-decoration:none}
+@media (max-width:760px){.show-head{grid-template-columns:56px minmax(0,1fr);gap:12px}.show-head .listing-time .t{font-size:2.6rem}}
 .up-next ul{list-style:none;margin:0;padding:0;display:grid;gap:0}
 .up-next li{border-bottom:1px solid var(--ink-20)}
-.up-next a{display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:baseline;text-decoration:none;font-family:var(--f-head);padding:12px 0}
-.up-next a:hover .up-title{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
+.up-next li a{display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:baseline;text-decoration:none;font-family:var(--f-head);padding:12px 0}
+.up-next li a:hover .up-title{text-decoration:underline;text-decoration-thickness:2px;text-underline-offset:3px}
 .up-time{font-weight:800;font-size:1.6rem;font-variation-settings:"wdth" 70;font-feature-settings:"tnum"}
 .up-title{font-weight:700;font-size:1.3rem;text-transform:uppercase;font-variation-settings:"wdth" 76}
 .up-slot{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-60);font-variation-settings:"wdth" 100}
 
 /* Prose pages */
-.prose{max-width:720px;margin:0 auto;padding:40px 16px 48px}
-.prose h1{font-size:clamp(2.2rem,5vw,3.6rem);text-transform:uppercase}
-.prose h2{font-size:1.5rem;margin-top:28px;font-variation-settings:"wdth" 80}
+/* Same left edge as the masthead and the listings; text keeps a readable measure. */
+.prose{max-width:1100px;margin:0 auto;padding:40px 16px 48px}
+.prose>*{max-width:720px}
+.prose h1{font-size:clamp(2.3rem,6.4vw,4.6rem);text-transform:uppercase}
+.prose h2{font-size:1.8rem;text-transform:uppercase;margin-top:32px;padding-top:14px;border-top:2px solid var(--ink)}
 .prose ul{padding-left:20px}
 .stats{max-width:1100px}
+.stats>*{max-width:none}
 .stats-table{width:100%;border-collapse:collapse;font-family:var(--f-head);font-variation-settings:"wdth" 100;font-size:.92rem;font-feature-settings:"tnum"}
 .stats-table th,.stats-table td{border-bottom:1px solid var(--ink-20);padding:8px;text-align:right}
 .stats-table th{border-bottom:2px solid var(--ink)}
