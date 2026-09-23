@@ -56,7 +56,7 @@ Format for each regular: age, build, face, hair, skin, constant costume pieces, 
 - **Hair.** Short high-top fade with a straight part shaved on the left side.
 - **Skin.** Dark brown, warm, with a glow that the road plates catch.
 - **Costume.** A bright striped long-sleeve rugby shirt, orange and navy. A navy puffer vest with hand-made pins on it. High-top sneakers, red. The vest and the pins are the constant. The shirt stripes may change color by episode but always stay bold.
-- **Prop.** A hand-lettered campaign button on the vest, the size of a jar lid, that changes each episode. Pilot: BECK FOR SPEAKER. He makes them himself and the lettering shows it.
+- **Prop.** A hand-lettered campaign button on the vest, the size of a jar lid, that changes each episode. Pilot: DELE FOR SPEAKER. He makes them himself and the lettering shows it.
 - **Posture.** Half-standing, one foot in the aisle, one hand on the grab rail of the seat in front like a podium. When he is seated all the way it is because Priya said so.
 - **Fixed frame.** Row 12, door side. Framed against the rear door-side window. Camera from the aisle, low, so that when he stands he fills the frame to the roof.
 

@@ -222,7 +222,7 @@ Image prompt: `{STYLE}` `{AERIAL}` "six porch lights lit and the rest dark, warm
 Motion prompt: "Very slow push in from above, 2 percent over the clip. Porch lights come on one at a time, four more in sequence, each one on and staying on, no flicker, no flashing. 4 seconds."
 
 **S07** | In 14.5 | Out 16.0 | 1.5 s | Frame VAN | Camera static | No people
-Action: The last split-level on Spoke Court. The van, side door open, chairs inside. The side panel is blank; the editor composites HUANG PARTY RENTAL and CARROW BEND (D-023) in a plain sign-painter's letter.
+Action: The last split-level on Spoke Court. The van, side door open, chairs inside. The side panel is blank; the editor composites LIANG PARTY RENTAL and CARROW BEND (D-023) in a plain sign-painter's letter.
 Dialogue: none.
 Sound: Music. Exterior. Gen 3 s.
 Image prompt: `{STYLE}` `{VAN}`
@@ -589,7 +589,7 @@ Built by the editor at 1920 by 1080 from the identity brief, dark set ("late edi
 
 All readable text is added in the edit over blank generated surfaces, tracked to the plate, with a slight shadow so it sits on the surface:
 
-- S07: HUANG PARTY RENTAL, CARROW BEND on the van's blank side panel, sign-painter block capitals, two lines.
+- S07: LIANG PARTY RENTAL, CARROW BEND on the van's blank side panel, sign-painter block capitals, two lines.
 - S08: DOCKET on the black tape in silver marker capitals, a child's hand; the new slip reads ANSEL v. MARISOL. RE: THE WAFFLE. in black marker capitals.
 - S29: MARISOL, ANSEL, PIP on the three name magnets, printed capitals.
 - Nowhere else. The binder spine, the polo patch, the fridge cards, and the school calendar stay blank at this scale.

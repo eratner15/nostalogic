@@ -29,7 +29,7 @@ SETUP A. The gooseneck lamp is the warmest thing in the
 room. MARGUERITE SALCEDO, 63, writes a manila tag in a
 slow hand. Behind her, THE SHELF OF RETURNED THINGS: a
 timer, a rain gauge, a rake, a bath plug, each on a
-paper tag. At the far end of the counter, INES RUIZ, 12,
+paper tag. At the far end of the counter, NIEVES RUIZ, 12,
 does a math worksheet the way other people do a
 crossword. Frame right, a SWINGING DOOR with a porthole.
 A shadow crosses it. The dock INTERCOM clicks.
@@ -38,7 +38,7 @@ A shadow crosses it. The dock INTERCOM clicks.
               (through the intercom)
           Nieves. Desk?
 
-                    INES
+                    NIEVES
           Desk.
 
 The intercom clicks off. TEDDY VANCE, 16, crosses behind
@@ -96,7 +96,7 @@ unfolds it flat with both hands and reads every line.
 Nieves shuts the worksheet, opens a green cloth LEDGER,
 and uncaps a pen. Four columns: ITEM. CLAIM. CLUE. CAUSE.
 
-                    INES
+                    NIEVES
           Item. Doorbell, wireless. Claim?
 
                     DESMOND
@@ -105,7 +105,7 @@ and uncaps a pen. Four columns: ITEM. CLAIM. CLUE. CAUSE.
                     MARGUERITE
           Ledger.
 
-                    INES
+                    NIEVES
           I'm the ledger. One sentence.
 
                     DESMOND
@@ -128,7 +128,7 @@ and uncaps a pen. Four columns: ITEM. CLAIM. CLUE. CAUSE.
 
 He sets a COIN BATTERY on the counter, like evidence.
 
-                    INES
+                    NIEVES
               (writing under CLUE)
           Battery removed.
 
@@ -156,14 +156,14 @@ like a railing, until he is standing next to Nieves.
 Nieves looks at the coin battery. Then at the chime. She
 leans over it without touching it and reads.
 
-                    INES
+                    NIEVES
           Chime unit. Two double-A. Button.
           One coin cell.
 
                     DESMOND
           Those are two different things.
 
-                    INES
+                    NIEVES
           Those are two different things.
 
                     DESMOND
@@ -172,7 +172,7 @@ leans over it without touching it and reads.
 
 Silence. Nieves has nothing. She hates having nothing.
 
-                    INES
+                    NIEVES
               (writing under CAUSE)
           Pending.
 
@@ -187,7 +187,7 @@ Silence. Nieves has nothing. She hates having nothing.
 She lowers the RETURNED stamp, unused. She takes a fresh
 tag and writes: DOORBELL. CLAIM: RINGS. Her pen stops.
 
-                    INES
+                    NIEVES
           You always put something for cause.
 
                     MARGUERITE

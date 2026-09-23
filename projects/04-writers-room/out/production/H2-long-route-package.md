@@ -57,7 +57,7 @@ Lens plan. Wide exteriors and the mirror shot: 24mm. Seat frames and two-shots: 
 
 ### The three things that must never appear
 
-1. Text in frame. No lettering, numerals, signs, labels, badges, book titles, stitched names, pins with words, license plates, or chalk writing. The script needs six lettered objects (the stenciled 12 on the bus, the chalkboard at the stand, the BUS CODE cover, the BECK FOR SPEAKER button, the store name on Cal's fleece, the school marquee). The generator makes every one of them blank. The editor adds lettering in post only where the shot list says LETTERING IN POST, and only the 12 on the bus and the chalkboard line are lettered at v1. Everything else stays blank or out of focus.
+1. Text in frame. No lettering, numerals, signs, labels, badges, book titles, stitched names, pins with words, license plates, or chalk writing. The script needs six lettered objects (the stenciled 12 on the bus, the chalkboard at the stand, the BUS CODE cover, the DELE FOR SPEAKER button, the store name on Cal's fleece, the school marquee). The generator makes every one of them blank. The editor adds lettering in post only where the shot list says LETTERING IN POST, and only the 12 on the bus and the chalkboard line are lettered at v1. Everything else stays blank or out of focus.
 2. Brand logos. No maker's name on the bus, no shoe logos, no backpack logos, no watch face brand, no drink cans. Describe objects generically.
 3. Real people. No name of any actor, public figure, or influencer in any prompt. No "in the style of" any photographer, director, or show. If a generated face resembles a known person, reject it and regenerate.
 
@@ -117,7 +117,7 @@ Master portrait prompt: A boy of 12, medium height, compact and springy, leaning
 
 Turnaround note: front, three-quarter, profile on gray, then two seat frames: seated fully, and half-standing. Dele is the most expressive face in the trailer and the one most likely to drift when animated. Approve a still of him with his mouth closed and one with a wide grin, and use the matching one as the reference for each shot.
 
-Constant tokens: [BECK: boy of 12, compact and springy, round open face, wide grin, big raised eyebrows, dark brown eyes, short high-top fade with a shaved part on the left, dark brown skin, orange and navy striped rugby shirt, navy puffer vest with small blank hand-made pins, red high-top sneakers, one hand on the seat rail in front like a podium]
+Constant tokens: [DELE: boy of 12, compact and springy, round open face, wide grin, big raised eyebrows, dark brown eyes, short high-top fade with a shaved part on the left, dark brown skin, orange and navy striped rugby shirt, navy puffer vest with small blank hand-made pins, red high-top sneakers, one hand on the seat rail in front like a podium]
 
 #### Tola Oyelaran, row 11, door side
 
@@ -125,7 +125,7 @@ Master portrait prompt: A girl of 12, the same height as her twin brother but th
 
 Turnaround note: front, three-quarter, profile on gray, then the seat frame. Generate Dele and Tola's masters in the same session, one after the other, and check them side by side: same skin tone, same eyebrows, clearly twins, clearly two people.
 
-Constant tokens: [RUE: girl of 12, thin and still, long neck, long oval face, flat eyebrows, deep brown eyes looking up, small closed mouth, shoulder-length two-strand twists pulled back with one black elastic, dark brown skin, oversized olive cardigan with sleeves over her hands, canvas messenger bag across her chest, black hardbound sketchbook with a rubber band on her knees, turned toward the window with chin down]
+Constant tokens: [TOLA: girl of 12, thin and still, long neck, long oval face, flat eyebrows, deep brown eyes looking up, small closed mouth, shoulder-length two-strand twists pulled back with one black elastic, dark brown skin, oversized olive cardigan with sleeves over her hands, canvas messenger bag across her chest, black hardbound sketchbook with a rubber band on her knees, turned toward the window with chin down]
 
 #### Cal Whitlock, row 7, driver side
 
@@ -305,16 +305,16 @@ Music enters at S07, low. Road bed under everything.
 - Line: none scripted. Dele's voice is a low unheard sentence under the engine (a voice-actor ad-lib, no words distinct).
 - Sound: door already open, gravel underfoot, Dele low, a dog somewhere, music low.
 - Mouth: Dele mid-sentence, small in frame, seen from above. Treat as OFF: his words are not meant to be heard.
-- Image prompt: From inside a school bus at the top of the steps looking down and out through the open folding door, 24mm, [BECK] on the second step mid-sentence with his eyebrows up and one five-fingered hand gesturing, [RUE] on the gravel behind him, still, sketchbook under one arm. Behind them a roadside orchard stand with a shingle roof, wooden bins of apples, a blank chalkboard on an easel facing the road, and a brown-and-white dog sitting exactly at a fence post. Long morning shadows across the gravel. No lettering on the board.
+- Image prompt: From inside a school bus at the top of the steps looking down and out through the open folding door, 24mm, [DELE] on the second step mid-sentence with his eyebrows up and one five-fingered hand gesturing, [TOLA] on the gravel behind him, still, sketchbook under one arm. Behind them a roadside orchard stand with a shingle roof, wooden bins of apples, a blank chalkboard on an easel facing the road, and a brown-and-white dog sitting exactly at a fence post. Long morning shadows across the gravel. No lettering on the board.
 - Motion prompt: The boy on the step talks and climbs one step. The girl behind him lifts her eyes to the camera and does not smile. The dog does not move.
 
 **S13. 00:23.0 to 00:25.0. 2.0 s.**
 - Frame: Tola's seat frame. Camera: ROLL. Who: Tola, Dele's shoulder.
 - Action: the bus crawls onto the one-lane bridge. Every head turns left. Through Tola's window: the creek, the gravel bar, the heron.
-- Line: BECK (off screen): "Creek's low." RUE: "There's the heron."
+- Line: DELE (off screen): "Creek's low." TOLA: "There's the heron."
 - Sound: the change in tire sound from gravel to wood planking. Music low. Water.
 - Mouth: OFF (Tola faces the window, away from camera; Dele is off screen).
-- Image prompt: [RUE] in row 11 door side, 50mm at f/2.8, three-quarter from behind so her face is turned fully to the window and only the line of her cheek shows, sketchbook open on her knees, a blurred striped shoulder in the near foreground, and through her window, sharp, a steel truss bridge girder passing, willows on the far bank, a wide slow brown-green creek with a gravel bar, and a gray heron standing on the bar. Morning light on the water.
+- Image prompt: [TOLA] in row 11 door side, 50mm at f/2.8, three-quarter from behind so her face is turned fully to the window and only the line of her cheek shows, sketchbook open on her knees, a blurred striped shoulder in the near foreground, and through her window, sharp, a steel truss bridge girder passing, willows on the far bank, a wide slow brown-green creek with a gravel bar, and a gray heron standing on the bar. Morning light on the water.
 - Motion prompt: The bridge girders pass slowly outside the window. The heron holds still. The girl's head tilts a fraction toward the glass. Her pencil lifts.
 
 **S14. 00:25.0 to 00:26.5. 1.5 s. PLATE. LETTERING IN POST (the 12).**
@@ -332,7 +332,7 @@ Music enters at S07, low. Road bed under everything.
 - Line: none.
 - Sound: nothing but the idle. Music drops out for the Quiet.
 - Mouth: none.
-- Image prompt: The signature frame, 16mm, from above and behind the driver's seat looking straight down the aisle of a [BUS INTERIOR], the chrome rim of the convex mirror at the very top of frame, slight barrel distortion so the aisle bends at the edges and the red-handled rear door is small at the end. Overhead interior lights on. In the seats, small in frame: [HOLLIS] nearest on the door side holding up one finger without turning; [PRIYA] in row 2 door side; [CAL] in row 7 driver side with his feet on the hump, eyebrows raised; [RUE] in row 11 door side writing; [BECK] in row 12 door side half standing with a furious silent face; [MATEO] in row 12 driver side sideways; [TULL] in row 12 driver side beside him with his mouth open. No one speaks. Flat morning light. If the tool cannot hold seven faces, generate the empty aisle first and place each seat frame into it as a composite.
+- Image prompt: The signature frame, 16mm, from above and behind the driver's seat looking straight down the aisle of a [BUS INTERIOR], the chrome rim of the convex mirror at the very top of frame, slight barrel distortion so the aisle bends at the edges and the red-handled rear door is small at the end. Overhead interior lights on. In the seats, small in frame: [HOLLIS] nearest on the door side holding up one finger without turning; [PRIYA] in row 2 door side; [CAL] in row 7 driver side with his feet on the hump, eyebrows raised; [TOLA] in row 11 door side writing; [DELE] in row 12 door side half standing with a furious silent face; [MATEO] in row 12 driver side sideways; [TULL] in row 12 driver side beside him with his mouth open. No one speaks. Flat morning light. If the tool cannot hold seven faces, generate the empty aisle first and place each seat frame into it as a composite.
 - Motion prompt: The boy at the back moves his eyebrows and jaw as if arguing without sound. The stocky boy in the middle answers with his eyebrows. The girl's pencil moves. The thin man's mouth closes. The boy in front lowers his finger. Everything else holds.
 
 **S16. 00:28.0 to 00:29.5. 1.5 s.**
@@ -341,7 +341,7 @@ Music enters at S07, low. Road bed under everything.
 - Line: none.
 - Sound: idle only.
 - Mouth: none (his mouth moves, but no sound: this is the joke).
-- Image prompt: Close-up, 50mm at f/2.8, of [BECK] half standing in the back row of a school bus with his mouth clamped shut and his eyebrows and eyes doing the whole argument, looking up the aisle, the rear door-side window behind him with a crossbuck and gate arm soft outside. Overhead interior lights on. Flat morning light.
+- Image prompt: Close-up, 50mm at f/2.8, of [DELE] half standing in the back row of a school bus with his mouth clamped shut and his eyebrows and eyes doing the whole argument, looking up the aisle, the rear door-side window behind him with a crossbuck and gate arm soft outside. Overhead interior lights on. Flat morning light.
 - Motion prompt: His eyebrows go up, down, up. His eyes widen and narrow. His mouth stays shut and works at the corners. His head does not move.
 
 **S17. 00:29.5 to 00:30.5. 1.0 s.**
@@ -372,16 +372,16 @@ The parliament in session. Longest takes in the trailer. Music under, warm, unhu
 - Line: MATEO: "The day my cousin gets that car I'm gone. Anyway, who's got the window Tuesday?"
 - Sound: road bed, music, four kids' small sounds.
 - Mouth: OFF (Mateo's head is against the glass facing across the bus, his mouth turned away from the camera at this angle; he speaks without moving his head).
-- Image prompt: Wide shot from the aisle at row 10 looking back, 24mm, late-afternoon light from the driver side. [MATEO] lying sideways across the back row driver side with one knee up and his head against the rear window, face turned toward the door side so his mouth is away from camera, turning an empty key ring on one finger. [BECK] across the aisle in the back row door side, leaning forward. [RUE] in row 11 door side over her sketchbook. [CAL] nearest, row 7 driver side, feet on the hump, ledger open. Through every window an orchard road passing, soft. [BUS INTERIOR].
+- Image prompt: Wide shot from the aisle at row 10 looking back, 24mm, late-afternoon light from the driver side. [MATEO] lying sideways across the back row driver side with one knee up and his head against the rear window, face turned toward the door side so his mouth is away from camera, turning an empty key ring on one finger. [DELE] across the aisle in the back row door side, leaning forward. [TOLA] in row 11 door side over her sketchbook. [CAL] nearest, row 7 driver side, feet on the hump, ledger open. Through every window an orchard road passing, soft. [BUS INTERIOR].
 - Motion prompt: The camera pushes forward very slowly, five percent of the frame. The road drifts past the windows. The key ring turns on the tall boy's finger. The stocky boy's pen moves. Nobody stands.
 
 **S20. 00:37.0 to 00:38.5. 1.5 s.**
 - Frame: Dele's seat frame, low. Camera: STATIC. Who: Dele.
 - Action: Dele stands. He fills the frame to the roof.
-- Line: BECK: "I move that it's me."
+- Line: DELE: "I move that it's me."
 - Sound: vinyl creak, music.
 - Mouth: SYNC. Fallback: play the line over S19 extended, with Dele rising small in the wide.
-- Image prompt: [BECK] in the back row door side, 50mm at f/2.8, camera low in the aisle, caught halfway to standing, one hand on the seat rail in front like a podium, eyebrows up, mouth open on a vowel, the rear door-side window behind him with the orchard road soft outside, the roof of the bus just above his head. Late-afternoon light from the driver side.
+- Image prompt: [DELE] in the back row door side, 50mm at f/2.8, camera low in the aisle, caught halfway to standing, one hand on the seat rail in front like a podium, eyebrows up, mouth open on a vowel, the rear door-side window behind him with the orchard road soft outside, the roof of the bus just above his head. Late-afternoon light from the driver side.
 - Motion prompt: He rises the rest of the way until his head nearly touches the roof and speaks the line, a formal motion delivered with full confidence, mouth movement matched to the audio, hand staying on the rail.
 
 **S21. 00:38.5 to 00:41.5. 3.0 s.**
@@ -390,16 +390,16 @@ The parliament in session. Longest takes in the trailer. Music under, warm, unhu
 - Line: PRIYA: "Section three. No standing. I wrote section three. Sit."
 - Sound: her voice flat and quick, music.
 - Mouth: OFF (camera behind her).
-- Image prompt: From above and behind [PRIYA] in row 2 door side, 24mm, her braid with the blue scrunchie and the top of the composition book in the near foreground, sharp, the aisle of the [BUS INTERIOR] running away from her to the back row where [BECK] stands small and then, soft, the rear door with its red handle. She faces forward. Late-afternoon light from the driver side.
+- Image prompt: From above and behind [PRIYA] in row 2 door side, 24mm, her braid with the blue scrunchie and the top of the composition book in the near foreground, sharp, the aisle of the [BUS INTERIOR] running away from her to the back row where [DELE] stands small and then, soft, the rear door with its red handle. She faces forward. Late-afternoon light from the driver side.
 - Motion prompt: The girl's pencil taps the page twice. At the far end of the aisle the standing boy sits down. Nothing else moves.
 
 **S22. 00:41.5 to 00:43.0. 1.5 s.**
 - Frame: Dele's seat frame. Camera: STATIC. Who: Dele.
 - Action: seated now.
-- Line: BECK: "I move it sitting down."
+- Line: DELE: "I move it sitting down."
 - Sound: music.
 - Mouth: SYNC. Fallback: LISTENER on Cal (S23 framing) with Cal's eyes lifting from the ledger.
-- Image prompt: [BECK] fully seated in the back row door side, 50mm at f/2.8, camera low in the aisle, one hand still on the seat rail in front, chin up, mouth closed, the rear door-side window behind him. Late-afternoon light from the driver side.
+- Image prompt: [DELE] fully seated in the back row door side, 50mm at f/2.8, camera low in the aisle, one hand still on the seat rail in front, chin up, mouth closed, the rear door-side window behind him. Late-afternoon light from the driver side.
 - Motion prompt: He speaks the line, dignified, mouth movement matched to the audio, and lifts his chin a fraction on the last word.
 
 **S23. 00:43.0 to 00:44.5. 1.5 s.**
@@ -414,10 +414,10 @@ The parliament in session. Longest takes in the trailer. Music under, warm, unhu
 **S24. 00:44.5 to 00:45.5. 1.0 s.**
 - Frame: Tola's seat frame. Camera: STATIC. Who: Tola.
 - Action: her eyes come up before her head does. The one line.
-- Line: RUE: "To who?"
+- Line: TOLA: "To who?"
 - Sound: music.
 - Mouth: SYNC, two syllables. Fallback: her line off camera over S23.
-- Image prompt: [RUE] in row 11 door side, 50mm at f/2.8, three-quarter profile, chin down over the sketchbook, deep brown eyes lifted toward the camera, mouth closed, the road sharp behind her window, a blurred striped shoulder in the near foreground. Late-afternoon light from the driver side.
+- Image prompt: [TOLA] in row 11 door side, 50mm at f/2.8, three-quarter profile, chin down over the sketchbook, deep brown eyes lifted toward the camera, mouth closed, the road sharp behind her window, a blurred striped shoulder in the near foreground. Late-afternoon light from the driver side.
 - Motion prompt: Her eyes come up first. Then her head lifts a fraction and she speaks two short syllables, small mouth movement matched to the audio.
 
 **S25. 00:45.5 to 00:47.5. 2.0 s.**
@@ -444,7 +444,7 @@ The parliament in session. Longest takes in the trailer. Music under, warm, unhu
 - Line: none.
 - Sound: the pothole: a thump under dialogue peak, vinyl, a shared inhale. Music holds.
 - Mouth: none.
-- Image prompt: The same signature frame as S15, 16mm, late-afternoon light from the driver side, overhead lights off, every rider seated as in S19 with [PRIYA] in row 2, [HOLLIS] in row 1, [CAL] in row 7, [RUE] in row 11, [BECK], [MATEO], and [TULL] in row 12, all upright and expectant, the stopwatch in the thin man's hand.
+- Image prompt: The same signature frame as S15, 16mm, late-afternoon light from the driver side, overhead lights off, every rider seated as in S19 with [PRIYA] in row 2, [HOLLIS] in row 1, [CAL] in row 7, [TOLA] in row 11, [DELE], [MATEO], and [TULL] in row 12, all upright and expectant, the stopwatch in the thin man's hand.
 - Motion prompt: One single vertical bump: the whole frame dips and returns once, and every rider lifts an inch and settles. The thin man's stopwatch hops out of his hand and drops back into it. No other motion.
 
 **S28. 00:50.5 to 00:54.5. 4.0 s.**
@@ -491,7 +491,7 @@ The parliament in session. Longest takes in the trailer. Music under, warm, unhu
 - Line: TULL: "Route 12 runs nine minutes over the county limit. Cut nine minutes, or the county splits the route."
 - Sound: the stopwatch click, dry and clear. Music drops to nothing on "splits."
 - Mouth: SYNC. This is the longest on-camera line. Fallback: split the line. First sentence SYNC on Tull; second sentence LISTENER over the mirror wide (S33 framing) so his face is small.
-- Image prompt: Medium shot, 50mm at f/2.8, camera in the aisle at row 3 looking back, of [TULL] standing in the aisle at row 6 with his head close to the roof, holding the stopwatch at his chest with five fingers, wire glasses, neutral face, a man stating a fact he did not write, the seats and small figures of [CAL] and [RUE] soft beyond him, the rear door soft at the end. Morning light from the door side.
+- Image prompt: Medium shot, 50mm at f/2.8, camera in the aisle at row 3 looking back, of [TULL] standing in the aisle at row 6 with his head close to the roof, holding the stopwatch at his chest with five fingers, wire glasses, neutral face, a man stating a fact he did not write, the seats and small figures of [CAL] and [TOLA] soft beyond him, the rear door soft at the end. Morning light from the door side.
 - Motion prompt: He clicks the stopwatch once and rises from off frame bottom into the standing position in the first second, then speaks the two sentences plainly, mouth movement matched to the audio, no gestures, the watch held still.
 
 **S33. 01:07.0 to 01:08.5. 1.5 s. COMPOSITE.**
@@ -506,10 +506,10 @@ The parliament in session. Longest takes in the trailer. Music under, warm, unhu
 **S34. 01:08.5 to 01:09.5. 1.0 s.**
 - Frame: Dele, close. Camera: STATIC. Who: Dele.
 - Action: seated, small for the first time.
-- Line: BECK (small): "Which nine?"
+- Line: DELE (small): "Which nine?"
 - Sound: idle only.
 - Mouth: SYNC, two words. Fallback: LISTENER on Tola.
-- Image prompt: Close-up, 50mm at f/2.8, of [BECK] seated all the way back in his seat for once, hands in his lap, eyebrows down, mouth closed, the rear door-side window behind him with the school's brick soft outside. Morning light from the door side.
+- Image prompt: Close-up, 50mm at f/2.8, of [DELE] seated all the way back in his seat for once, hands in his lap, eyebrows down, mouth closed, the rear door-side window behind him with the school's brick soft outside. Morning light from the door side.
 - Motion prompt: He speaks two quiet words, mouth movement matched to the audio, and his eyebrows come down further. No other motion.
 
 **S35. 01:09.5 to 01:11.5. 2.0 s.**
@@ -524,10 +524,10 @@ The parliament in session. Longest takes in the trailer. Music under, warm, unhu
 **S36. 01:11.5 to 01:13.0. 1.5 s.**
 - Frame: Tola's seat frame. Camera: STATIC. Who: Tola.
 - Action: she does not look up from the sketchbook.
-- Line: RUE: "You said it to the window."
+- Line: TOLA: "You said it to the window."
 - Sound: idle, the low note holds.
 - Mouth: SYNC, light (chin down, three-quarter profile). Fallback: LISTENER on Mateo's reflection in his window.
-- Image prompt: [RUE] in row 11 door side, 50mm at f/2.8, three-quarter profile, chin down over the sketchbook, eyes on the page, pencil moving, the road sharp behind her window. Morning light from the door side.
+- Image prompt: [TOLA] in row 11 door side, 50mm at f/2.8, three-quarter profile, chin down over the sketchbook, eyes on the page, pencil moving, the road sharp behind her window. Morning light from the door side.
 - Motion prompt: She speaks the line without lifting her head, small mouth movement matched to the audio, and the pencil keeps moving.
 
 ### Beat 5. Button. 01:13.0 to 01:20.5
@@ -547,7 +547,7 @@ The parliament in session. Longest takes in the trailer. Music under, warm, unhu
 - Line: none.
 - Sound: idle, music.
 - Mouth: none.
-- Image prompt: The signature frame as S15, 16mm, late-afternoon light from the driver side, [HOLLIS], [PRIYA] (now in the back row beside [TULL]), [CAL], [RUE], and [BECK] each with one five-fingered hand raised, [MATEO] in the back row with his hand still in his lap and his face turned to his window, [TULL] beside him with both hands on the stopwatch.
+- Image prompt: The signature frame as S15, 16mm, late-afternoon light from the driver side, [HOLLIS], [PRIYA] (now in the back row beside [TULL]), [CAL], [TOLA], and [DELE] each with one five-fingered hand raised, [MATEO] in the back row with his hand still in his lap and his face turned to his window, [TULL] beside him with both hands on the stopwatch.
 - Motion prompt: One motion only: the tall boy at the back raises his hand slowly without turning his head. The other five hands hold still.
 
 **S39. 01:17.0 to 01:19.0. 2.0 s.**

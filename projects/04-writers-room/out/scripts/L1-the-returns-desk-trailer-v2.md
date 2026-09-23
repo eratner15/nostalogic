@@ -14,7 +14,7 @@ Format notes.
 - The town name is not yet in canon. The world beat names the store and the street. No line depends on the town name.
 - Nieves, 12, is never in a frame without Marguerite in it or the swinging door with Dolores behind it. Setup C keeps both. Setup A keeps Marguerite. Nieves is never in Setup B alone.
 
-Cast in this trailer: MARGUERITE SALCEDO, 63. INES RUIZ, 12. TEDDY VANCE, 16. AMBROSE QUAYLE, 74. DOLORES RUIZ, 41 (voice, then on screen). DESMOND NUNES, 41, the customer.
+Cast in this trailer: MARGUERITE SALCEDO, 63. NIEVES RUIZ, 12. TEDDY VANCE, 16. AMBROSE QUAYLE, 74. DOLORES RUIZ, 41 (voice, then on screen). DESMOND NUNES, 41, the customer.
 
 ---
 
@@ -90,7 +90,7 @@ over a pajama top. His hair has made its own decisions.
 [00:19]  SETUP C. Over Marguerite's shoulder. The front
 door. The plate-glass window with HARDISON'S HARDWARE in
 reversed gold leaf. Outside: one streetlight, the spur.
-INES, 12, sits at the far end of the counter with a
+NIEVES, 12, sits at the far end of the counter with a
 green cloth ledger open and a pen up. Frame right, the
 SWINGING DOOR. Through its porthole, a shadow moves on
 the dock. The dock INTERCOM clicks.
@@ -99,19 +99,19 @@ the dock. The dock INTERCOM clicks.
               (through the intercom)
           Nieves. Desk?
 
-                    INES
+                    NIEVES
           Desk.
 
 The intercom clicks off. Nieves taps the ledger's four
 columns with the pen, one each.
 
-                    INES (CONT'D)
+                    NIEVES (CONT'D)
           Item. Claim. Clue. Cause.
 
                     MARGUERITE
           She has a system.
 
-                    INES
+                    NIEVES
           You have a stamp.
 
 [00:27]  SETUP B. The rubber stamp comes down on the
@@ -163,7 +163,7 @@ stays empty. Hold one second.
           Your wife hasn't heard four hundred
           and twelve of these.
 
-                    INES
+                    NIEVES
           Three questions. Where's the porch.
           Where's the street. Who lives across
           it.
@@ -207,7 +207,7 @@ He sets a receipt on the counter and smooths it flat.
           I have the receipt. It's for a rake.
           I feel it's the same spirit.
 
-                    INES
+                    NIEVES
               (without looking up)
           Cause pending.
 
@@ -225,7 +225,7 @@ frame, seated, a pen's length away. Nieves reads the tags
 under each item. Every tag has the item on top and a
 cause underneath in Marguerite's hand.
 
-                    INES
+                    NIEVES
           Timer. Grandmother wound it. Rain
           gauge. Neighbor's sprinkler. Bath
           plug. Cat. Rake.
@@ -243,19 +243,19 @@ the shelf. The oldest tag. Brown at the edges. The
 string has gone gray. Marguerite's handwriting, younger,
 across the top: nothing. The tag is blank.
 
-                    INES (O.S.)
+                    NIEVES (O.S.)
           This one doesn't say.
 
                     MARGUERITE (O.S.)
           No.
 
-                    INES (O.S.)
+                    NIEVES (O.S.)
           What was it?
 
                     MARGUERITE (O.S.)
           Pending.
 
-                    INES (O.S.)
+                    NIEVES (O.S.)
           Since when?
 
                     MARGUERITE (O.S.)
@@ -277,7 +277,7 @@ Teddy jumps anyway. All of him. The broom does not.
 Nobody at the desk turns around. Nieves is still looking
 at the blank tag.
 
-                    INES
+                    NIEVES
           Marguerite.
 
                     MARGUERITE
@@ -300,7 +300,7 @@ one glove on, holds the door with her shoulder.
 
 Nieves closes the ledger.
 
-                    INES
+                    NIEVES
           Cause pending.
 
                     DOLORES

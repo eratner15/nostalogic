@@ -19,7 +19,7 @@ The cold open runs about two and a half pages and ends on a hard turn into the t
 
 FADE IN:
 
-INT. DELACROIX-HUANG KITCHEN, EVENING
+INT. DELACROIX-LIANG KITCHEN, EVENING
 
 F1, TABLE WIDE. A split-level kitchen, bigger than the living room
 it was added onto. Paper-bag tan walls. Green tile. A yellow
@@ -27,7 +27,7 @@ ceiling light on a pull chain nobody uses. The garage door, frame
 right, stands a hand's width open. Through it: folding chairs
 stacked to the ceiling and one giant cardboard number 4.
 
-WENDELL HUANG, 45, works a waffle iron at the range like a man
+WENDELL LIANG, 45, works a waffle iron at the range like a man
 running a shift. A clipboard sticks out of his back pocket. Six
 plates in a row on the counter. Five waffles on five plates. The
 iron hisses.
