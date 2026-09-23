@@ -26,6 +26,24 @@ function posterSvg(show: Show, size: "card" | "hero" = "card") {
 </svg>`;
 }
 
+// The order strip: one channel, four slots. The listings page and every show page use it,
+// so the whole site reads as one printed guide. currentId marks the show being viewed.
+function orderStrip(shows: Show[], currentId?: string) {
+  const cells = shows
+    .map((s) => {
+      const on = s.id === currentId;
+      return `<a class="grid-cell${on ? " is-current" : ""}" href="${u(`/show/${s.id}`)}" style="--hue:${s.posterHue}"${on ? ' aria-current="page"' : ""}><span class="grid-time">${esc(slotName(s.slot))}</span><span class="grid-title">${esc(s.title)}</span></a>`;
+    })
+    .join("");
+  return `<div class="grid-block" aria-label="${esc(SITE.nightLabel)} night order">
+    <div class="grid-times" aria-hidden="true"><span>${esc(SITE.nightShort)} night</span>${SITE.slotOrdinals.map((t) => `<span>${t}</span>`).join("")}</div>
+    <div class="grid-strip">
+      <div class="grid-strip-ch"><span class="ch-num">${SITE.channelNumber}</span><span class="ch-name">${esc(SITE.name)}</span></div>
+      ${cells}
+    </div>
+  </div>`;
+}
+
 export function guidePage(shows: Show[]) {
   const rows = shows
     .map(
@@ -50,13 +68,7 @@ export function guidePage(shows: Show[]) {
     <h1 class="guide-title">${SITE.hero}</h1>
     <p class="guide-dek">Four original comedies, in order, on one night. Every show here is a trailer. Watch one. Then tell us one thing: would your house watch this? The shows parents pick get made.</p>
   </div>
-  <div class="grid-block" aria-label="${SITE.nightLabel} night order">
-    <div class="grid-times" aria-hidden="true"><span>${SITE.nightShort} night</span>${raw(SITE.slotOrdinals.map((t) => `<span>${t}</span>`).join(""))}</div>
-    <div class="grid-strip">
-      <div class="grid-strip-ch"><span class="ch-num">${SITE.channelNumber}</span><span class="ch-name">${SITE.name}</span></div>
-      ${raw(shows.map((s) => `<a class="grid-cell" href="${u(`/show/${s.id}`)}" style="--hue:${s.posterHue}"><span class="grid-time">${esc(slotName(s.slot))}</span><span class="grid-title">${esc(s.title)}</span></a>`).join(""))}
-    </div>
-  </div>
+  ${raw(orderStrip(shows))}
 </section>
 <section class="listings-wrap">
   <ol class="listings">${raw(rows)}</ol>
@@ -78,7 +90,6 @@ export function guidePage(shows: Show[]) {
 }
 
 export function showPage(show: Show, all: Show[]) {
-  const others = all.filter((s) => s.id !== show.id);
   const player = show.trailerUrl
     ? html`<div class="player" data-player data-show="${show.id}">
   <video controls playsinline preload="metadata" poster="${u(`/posters/${show.id}.svg`)}" data-video>
@@ -91,10 +102,14 @@ export function showPage(show: Show, all: Show[]) {
 <article class="show" style="--hue:${show.posterHue}">
   <nav class="crumbs"><a href="${u("/")}">${SITE.nightLabel} night listings</a> <span aria-hidden="true">/</span> <span>${slotOrd(show.slot)}, the ${slotName(show.slot)}</span></nav>
   <header class="show-head">
-    <p class="eyebrow">${SITE.nightLabel} night · ${slotOrd(show.slot)} · ${slotName(show.slot)} · ${show.genreLabel} · ${show.ratingLabel} · ${show.runtimeLabel}</p>
-    <h1 class="show-title">${show.title}</h1>
-    <p class="show-logline">${show.logline}</p>
-    <p class="show-prompt">Watch the trailer. Then tell us one thing: would your house watch this?</p>
+    <div class="listing-time"><span class="t">${show.slot}</span><span class="slot">${slotOrd(show.slot)} · ${slotName(show.slot)}</span></div>
+    <div class="show-head-body">
+      <p class="eyebrow">${SITE.nightLabel} night · ${show.runtimeLabel}</p>
+      <h1 class="show-title">${show.title}</h1>
+      <p class="show-tags"><span class="tag">${show.genreLabel}</span> <span class="tag tag-quiet">${show.ratingLabel}</span></p>
+      <p class="show-logline">${show.logline}</p>
+      <p class="show-prompt">Watch the trailer. Then tell us one thing: would your house watch this?</p>
+    </div>
   </header>
   ${player}
   <section class="show-body">
@@ -122,12 +137,12 @@ export function showPage(show: Show, all: Show[]) {
       </form>
     </div>
   </section>
-  <nav class="up-next">
+  <nav class="up-next" aria-label="Also on ${SITE.nightLabel} night">
     <h2>Also on ${SITE.nightLabel} night</h2>
-    <ul>${raw(others.map((s) => `<li style="--hue:${s.posterHue}"><a href="${u(`/show/${s.id}`)}"><span class="up-time">${s.slot}</span> <span class="up-title">${esc(s.title)}</span> <span class="up-slot">${esc(slotOrd(s.slot))} · ${esc(slotName(s.slot))}</span></a></li>`).join(""))}</ul>
+    ${raw(orderStrip(all, show.id))}
   </nav>
 </article>`;
-  return layout(`${show.title}: ${SITE.name}`, body, { description: show.logline, bodyClass: "page-show", dark: true });
+  return layout(`${show.title}: ${SITE.name}`, body, { description: show.logline, bodyClass: "page-show" });
 }
 
 export function aboutPage() {
