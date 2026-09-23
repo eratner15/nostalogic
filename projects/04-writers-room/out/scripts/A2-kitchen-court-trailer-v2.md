@@ -24,7 +24,7 @@ Production rules for this file:
 00:00   BEAT 1. COLD OPEN                                   (0 to 12)
 ======================================================================
 
-INT. DELACROIX-HUANG KITCHEN, DUSK
+INT. DELACROIX-LIANG KITCHEN, DUSK
 
 No music. No title. Court is in session. We do not know that yet.
 
@@ -73,7 +73,7 @@ Porch lights come on one by one. Music enters, low.
 EXT. SPOKE COURT, DEAD END, CONTINUOUS
 
 The last split-level on the loop. A white van in the driveway,
-side door open, folding chairs inside. On the van: HUANG PARTY
+side door open, folding chairs inside. On the van: LIANG PARTY
 RENTAL, [TOWN].
 
 INT. KITCHEN, CONTINUOUS

@@ -82,17 +82,17 @@ Through the bus window, a chalkboard faces the road:
 
      APPLES BY THE BAG. BUS KIDS PAY LIKE EVERYBODY.
 
-Twins BECK and RUE, 12, climb aboard. Dele is talking. Tola is
+Twins DELE and TOLA, 12, climb aboard. Dele is talking. Tola is
 not.
 
 INT. BUS 12, THE CREEK BRIDGE. MORNING.
 
 The bus crawls onto a one-lane bridge. Every head turns left.
 
-                         BECK
+                         DELE
           Creek's low.
 
-                         RUE
+                         TOLA
           There's the heron.
 
 EXT. RAIL CROSSING. AFTERNOON.
@@ -130,7 +130,7 @@ on his knees. The road goes by behind all of them.
           gone. Anyway, who's got the window
           Tuesday?
 
-                         BECK
+                         DELE
                (standing)
           I move that it's me.
 
@@ -141,13 +141,13 @@ on his knees. The road goes by behind all of them.
 
 Dele sits.
 
-                         BECK
+                         DELE
           I move it sitting down.
 
                          CAL
           Window's been sold. Twice.
 
-                         RUE
+                         TOLA
           To who?
 
                          CAL
@@ -200,7 +200,7 @@ tells him to sit. That is how they know.
 
 Silence. Not the Quiet. Worse.
 
-                         BECK
+                         DELE
                (small)
           Which nine?
 
@@ -210,7 +210,7 @@ Whichever nine it is.
                          MATEO
           I said I wanted off.
 
-                         RUE
+                         TOLA
           You said it to the window.
 
 

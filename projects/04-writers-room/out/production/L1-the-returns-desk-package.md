@@ -85,9 +85,9 @@ Each prompt is `[ANCHOR]` plus the token block below plus "Portrait on a plain m
 
 `[DOLORES]` = "Dolores, a woman of 41, medium height, strong through the arms and back, light brown skin, black hair pulled back hard into a bun with a pencil pushed through it, level dark eyebrows, tired quick eyes, a smear of box dust on one cheekbone. Wearing a canvas work apron with deep pockets over a rolled-sleeve flannel shirt, one work glove on and one in the apron pocket, a dock headset around her neck, steel-toe boots, a roll of packing tape on her wrist like a bracelet. Holding a swinging door open with her shoulder, never fully through it. In charge of the room from its edge."
 
-`[INES]`. Nieves is 12. Read section 2.6 before generating anything with this token. It is a reference for the art department and for back-view framing only. It is never rendered as a front-facing photoreal child portrait.
+`[NIEVES]`. Nieves is 12. Read section 2.6 before generating anything with this token. It is a reference for the art department and for back-view framing only. It is never rendered as a front-facing photoreal child portrait.
 
-`[INES]` = "A slight 12-year-old girl, clearly a child and not a small adult: a child's proportions, small for twelve, straight up and down, all elbows and knees, no makeup, no jewelry, no styling. One long black braid down the back with a yellow pencil pushed through it. Wearing a mustard yellow hooded sweatshirt two sizes too big with the sleeves pushed past the elbow and sliding down, a striped long-sleeve shirt showing at the cuffs, jeans, sneakers with one lace double-knotted and one untied, a lanyard with a laminated card. Perched on a tall wooden stool at the far end of the counter, one foot hooked on the rung, the other swinging. A green cloth ledger open in front of her with a small clip-on reading light. Seen from behind and to the side, face turned down to the ledger or away to the shelf. Her face is not visible."
+`[NIEVES]` = "A slight 12-year-old girl, clearly a child and not a small adult: a child's proportions, small for twelve, straight up and down, all elbows and knees, no makeup, no jewelry, no styling. One long black braid down the back with a yellow pencil pushed through it. Wearing a mustard yellow hooded sweatshirt two sizes too big with the sleeves pushed past the elbow and sliding down, a striped long-sleeve shirt showing at the cuffs, jeans, sneakers with one lace double-knotted and one untied, a lanyard with a laminated card. Perched on a tall wooden stool at the far end of the counter, one foot hooked on the rung, the other swinging. A green cloth ledger open in front of her with a small clip-on reading light. Seen from behind and to the side, face turned down to the ledger or away to the shelf. Her face is not visible."
 
 ### 2.3 Turnaround note
 
@@ -179,16 +179,16 @@ Motion prompt: "Static camera. Desmond's head turns slightly toward the window t
 
 **S06.** 0:17.0 to 0:19.5 (2.5 s). Setup C, wide. Static. Marguerite (shoulder), Nieves (Mode A, from behind), Dolores (shadow only).
 Action: the intercom clicks. A shadow crosses behind the porthole. The intercom's red indicator glows steadily during the line, then off.
-Dialogue: DOLORES (V.O., through the intercom) "Nieves. Desk?" INES "Desk."
+Dialogue: DOLORES (V.O., through the intercom) "Nieves. Desk?" NIEVES "Desk."
 Sound: intercom click on, the line with a small speaker's color, click off, all at talking volume.
-Image prompt: "[ANCHOR] [SET, Setup C view] Over the left shoulder of [MARGUERITE], her gray hair, tucked side, and yellow pencil soft in the lower right corner. Across the room the glass front door and the plate-glass window with soft-focus reversed gold-leaf shapes, one streetlight outside. At the far end of the counter, frame right, [INES] on her tall stool from behind, ledger open, pen up, the clip light on the page. Beyond her the gray swinging door with its round porthole, a soft shadow behind the glass, and the small gray intercom box with a red indicator on the wall beside it."
+Image prompt: "[ANCHOR] [SET, Setup C view] Over the left shoulder of [MARGUERITE], her gray hair, tucked side, and yellow pencil soft in the lower right corner. Across the room the glass front door and the plate-glass window with soft-focus reversed gold-leaf shapes, one streetlight outside. At the far end of the counter, frame right, [NIEVES] on her tall stool from behind, ledger open, pen up, the clip light on the page. Beyond her the gray swinging door with its round porthole, a soft shadow behind the glass, and the small gray intercom box with a red indicator on the wall beside it."
 Motion prompt: "Static camera. Behind the porthole a soft shadow crosses once, left to right, at walking pace. The intercom's red indicator glows steadily for two seconds then goes dark; it does not blink. Nieves's pen hand lifts a few centimeters. Nothing else moves. 4 seconds."
 
 **S07.** 0:19.5 to 0:23.5 (4 s). Setup C, Nieves end. Static. Marguerite (shoulder), Nieves (Mode A).
 Action: Nieves taps the ledger's four columns with the pen, one per word.
-Dialogue: INES "Item. Claim. Clue. Cause." MARGUERITE (O.S.) "She has a system." INES "You have a stamp."
+Dialogue: NIEVES "Item. Claim. Clue. Cause." MARGUERITE (O.S.) "She has a system." NIEVES "You have a stamp."
 Sound: four soft pen taps.
-Image prompt: "[ANCHOR] [SET, Setup C view, tighter on the far end of the counter] [MARGUERITE]'s left shoulder, vest collar, and pencil behind the ear soft in the lower right corner. [INES] from behind at a back three-quarter angle, face turned down to the green cloth ledger, the braid with the pencil down her back, the oversized mustard hoodie sleeve slid to the elbow, the pen tip resting on the page, the clip light on the ledger. The ledger's ruled columns visible but unreadable. The swinging door and porthole beyond her."
+Image prompt: "[ANCHOR] [SET, Setup C view, tighter on the far end of the counter] [MARGUERITE]'s left shoulder, vest collar, and pencil behind the ear soft in the lower right corner. [NIEVES] from behind at a back three-quarter angle, face turned down to the green cloth ledger, the braid with the pencil down her back, the oversized mustard hoodie sleeve slid to the elbow, the pen tip resting on the page, the clip light on the ledger. The ledger's ruled columns visible but unreadable. The swinging door and porthole beyond her."
 Motion prompt: "Static camera. The pen taps the page four times, evenly spaced. The braid shifts once. The hoodie sleeve slides down her forearm. Her face stays turned away. 4 seconds."
 
 **S08.** 0:23.5 to 0:26.0 (2.5 s). Setup B, the stamp. Static. Marguerite's hand only.
@@ -231,9 +231,9 @@ Motion prompt: "Static camera. Her eyes hold on him; her lips move slightly; a s
 
 **S13.** 0:41.5 to 0:45.5 (4 s). Setup C, Nieves end. Static. Nieves (Mode A), Marguerite (shoulder).
 Action: Nieves comes up off the stool onto both forearms and leans across the counter toward the customer, seen from behind.
-Dialogue: INES "Three questions. Where's the porch. Where's the street. Who lives across it." DESMOND (O.S.) "A kid. Why?"
+Dialogue: NIEVES "Three questions. Where's the porch. Where's the street. Who lives across it." DESMOND (O.S.) "A kid. Why?"
 Sound: the stool creaks.
-Image prompt: "[ANCHOR] [SET, Setup C view, far end] [MARGUERITE]'s left shoulder and pencil soft in the lower right corner. [INES] from behind, up off the stool on both forearms, leaning across the counter toward the customer side, the braid down her back, the hood bunched at her neck, one sneaker with an untied lace on the stool rung, the pen in her hand. Face away from camera. The swinging door beyond her."
+Image prompt: "[ANCHOR] [SET, Setup C view, far end] [MARGUERITE]'s left shoulder and pencil soft in the lower right corner. [NIEVES] from behind, up off the stool on both forearms, leaning across the counter toward the customer side, the braid down her back, the hood bunched at her neck, one sneaker with an untied lace on the stool rung, the pen in her hand. Face away from camera. The swinging door beyond her."
 Motion prompt: "Static camera. In the first second she rises onto her forearms and holds there. The pen turns in her fingers. The sleeve slides. Her face stays away. 4 seconds."
 
 **S14.** 0:45.5 to 0:48.0 (2.5 s). Setup B, hands. Static. Marguerite's hand, Nieves's hand.
@@ -280,37 +280,37 @@ Motion prompt: "Static camera. The fingers tighten once and relax. Nothing else.
 
 **S20.** 1:05.0 to 1:07.0 (2 s). Setup C, Nieves end. Static. Nieves (Mode A), Marguerite (shoulder).
 Action: Nieves finishes a stroke without looking up, hugs the ledger to her chest, and drops off the stool to the floor.
-Dialogue: INES "Cause pending."
+Dialogue: NIEVES "Cause pending."
 Sound: the stool rung, sneakers on the floor.
-Image prompt: "[ANCHOR] [SET, Setup C view, far end] [MARGUERITE]'s shoulder and pencil soft in the lower right. [INES] from behind, sliding off the tall stool with the green ledger hugged against her chest, one sneaker reaching the floor, the braid swinging, face turned toward the shelf and away from camera."
+Image prompt: "[ANCHOR] [SET, Setup C view, far end] [MARGUERITE]'s shoulder and pencil soft in the lower right. [NIEVES] from behind, sliding off the tall stool with the green ledger hugged against her chest, one sneaker reaching the floor, the braid swinging, face turned toward the shelf and away from camera."
 Motion prompt: "Static camera. She slides off the stool onto both feet and turns toward the shelf, the ledger against her chest. Face stays away. 3 seconds."
 
 ### Beat 4. Turn. 1:07.0 to 1:29.0
 
 **S21.** 1:07.0 to 1:11.0 (4 s). Setup C, wide on the shelf side. Static. Nieves (Mode A), Marguerite.
 Action: Nieves walks the staff side of the counter to the shelf, from behind. Marguerite stays seated, a pen's length away, in frame, and turns her head to follow. Nieves stops at the shelf and tilts her head up to read the tags.
-Dialogue: INES "Timer. Grandmother wound it. Rain gauge. Neighbor's sprinkler. Rake."
+Dialogue: NIEVES "Timer. Grandmother wound it. Rain gauge. Neighbor's sprinkler. Rake."
 Sound: sneakers on tile.
-Image prompt: "[ANCHOR] [SET, Setup C view widened to the shelf] [MARGUERITE] seated at the lamp, frame right, head turned to watch. [INES] from behind, three steps away along the staff side of the counter, stopped at the foot of the tall shelving, ledger against her chest, head tilted up to read the handwritten tags on the timer, the rain gauge, and the rake. The tags' handwriting unreadable at this distance. Lamp warm on the low shelves, streetlight on the top."
+Image prompt: "[ANCHOR] [SET, Setup C view widened to the shelf] [MARGUERITE] seated at the lamp, frame right, head turned to watch. [NIEVES] from behind, three steps away along the staff side of the counter, stopped at the foot of the tall shelving, ledger against her chest, head tilted up to read the handwritten tags on the timer, the rain gauge, and the rake. The tags' handwriting unreadable at this distance. Lamp warm on the low shelves, streetlight on the top."
 Motion prompt: "Static camera. She takes three slow steps and stops at the shelf; her head tilts up. Marguerite's head turns to follow her. 5 seconds."
 
 **S22.** 1:11.0 to 1:14.0 (3 s). Setup C, tighter on the shelf. Static. Nieves (Mode A), Marguerite (shoulder).
 Action: her finger touches the rake's tag. The tag swings once on its string.
-Dialogue: INES (reads) "Gate. Wind." MARGUERITE "Mr. Quayle's." QUAYLE (O.S.) "I still feel it was the gate."
+Dialogue: NIEVES (reads) "Gate. Wind." MARGUERITE "Mr. Quayle's." QUAYLE (O.S.) "I still feel it was the gate."
 Sound: the tag's string.
-Image prompt: "[ANCHOR] [SET, the shelf] [INES] from behind at a back three-quarter, face away, one small hand in a mustard sleeve touching the manila tag tied to a rake on the middle shelf. [MARGUERITE]'s shoulder and pencil soft in the lower corner. Other tagged items around: a bath plug, a coil of rope, house numbers. Handwriting unreadable."
+Image prompt: "[ANCHOR] [SET, the shelf] [NIEVES] from behind at a back three-quarter, face away, one small hand in a mustard sleeve touching the manila tag tied to a rake on the middle shelf. [MARGUERITE]'s shoulder and pencil soft in the lower corner. Other tagged items around: a bath plug, a coil of rope, house numbers. Handwriting unreadable."
 Motion prompt: "Static camera. The finger touches the tag; the tag swings once on its string and settles. Nothing else. 3 seconds."
 
 **S23.** 1:14.0 to 1:18.5 (4.5 s). Setup B, the blank tag. Lens override: macro. Static. Nieves's hand.
 Action: her hand stops at the top corner of the shelf. The oldest tag: brown at the edges, string gone gray, blank. Hold one second before the first line.
-Dialogue: INES (O.S.) "This one doesn't say." MARGUERITE (O.S.) "No." INES (O.S.) "What was it?" MARGUERITE (O.S.) "Pending."
+Dialogue: NIEVES (O.S.) "This one doesn't say." MARGUERITE (O.S.) "No." NIEVES (O.S.) "What was it?" MARGUERITE (O.S.) "Pending."
 Sound: room tone only.
 Image prompt: "[ANCHOR, Setup B lens] Close on the top corner of industrial metal shelving against a pegboard wall. A child's small hand in a mustard yellow sleeve stopped beside an old manila paper tag tied on with string that has gone gray. The tag is yellowed and brown at the edges and completely blank. The tag catches a sliver of cool streetlight from the window; the lamp's warmth falls off below. Nothing written anywhere."
 Motion prompt: "Static camera. The hand stops and holds. The tag turns a few degrees on its string and settles. The streetlight catches its edge. 5 seconds."
 
 **S24.** 1:18.5 to 1:21.0 (2.5 s). Setup B, closer on the blank tag, hand withdrawn. Static. Nobody.
 Action: nothing but the tag's last settle. This is the question. Nothing answers it.
-Dialogue: INES (O.S.) "Since when?" MARGUERITE (O.S.) "Since before the stamp."
+Dialogue: NIEVES (O.S.) "Since when?" MARGUERITE (O.S.) "Since before the stamp."
 Sound: room tone only.
 Image prompt: "[ANCHOR, Setup B lens] The old blank manila tag fills a third of the frame, hanging on its gray string from the top corner of the metal shelf, brown at the edges, no writing, lit by a sliver of cool streetlight with warm lamp falloff below. Pegboard soft behind. No hands."
 Motion prompt: "Static camera. The tag completes one slow settle on its string and hangs still. 3 seconds."
@@ -319,7 +319,7 @@ Motion prompt: "Static camera. The tag completes one slow settle on its string a
 Action: Teddy stands beside the ice machine, both hands on the push broom, staring straight at it, waiting. The ice machine drops a load. Teddy jumps, all of him. The broom does not.
 Dialogue: none.
 Sound: at 1:22.0 the ice machine drops: a bucket of gravel on a tin roof, at or below dialogue level.
-Image prompt: "[ANCHOR] [SET, Setup C view panned wide to the ice machine wall] [TEDDY] frame left beside the dented cream-enamel chest ice machine, both hands on the push broom held upright in front of him like a railing, staring straight at the machine's lid, shoulders up around his ears, the headlamp around his neck. Beyond him, soft, the desk: [MARGUERITE] seated at the lamp and [INES] from behind at the foot of the shelf. Cool fluorescent on the ice machine, warm lamp at the desk."
+Image prompt: "[ANCHOR] [SET, Setup C view panned wide to the ice machine wall] [TEDDY] frame left beside the dented cream-enamel chest ice machine, both hands on the push broom held upright in front of him like a railing, staring straight at the machine's lid, shoulders up around his ears, the headlamp around his neck. Beyond him, soft, the desk: [MARGUERITE] seated at the lamp and [NIEVES] from behind at the foot of the shelf. Cool fluorescent on the ice machine, warm lamp at the desk."
 Motion prompt: "Static camera. One second in, Teddy jumps: shoulders up, both feet leaving the floor a few centimeters, then landing. The broom does not move at all. By the end his shoulders are coming down and a wide easy smile is arriving. Nobody at the desk turns. 4 seconds."
 
 **S26.** 1:24.0 to 1:26.5 (2.5 s). Setup C, tighter on Teddy. Static. Teddy.
@@ -331,9 +331,9 @@ Motion prompt: "Static camera. His shoulders come down; the smile arrives; his l
 
 **S27.** 1:26.5 to 1:29.0 (2.5 s). Setup C. Static. Marguerite, Nieves (Mode A).
 Action: nobody at the desk has turned around. Marguerite seated, pen still. Nieves still at the top corner of the shelf, from behind.
-Dialogue: INES "Marguerite." MARGUERITE "Pending."
+Dialogue: NIEVES "Marguerite." MARGUERITE "Pending."
 Sound: room tone. The pen resumes.
-Image prompt: "[ANCHOR] [SET, Setup C view widened to the shelf] [MARGUERITE] seated at the lamp, frame right, facing her tag, back to the ice machine. [INES] from behind, standing at the foot of the shelving with her face turned up to the top corner tag, ledger against her chest. Neither has turned toward the ice machine."
+Image prompt: "[ANCHOR] [SET, Setup C view widened to the shelf] [MARGUERITE] seated at the lamp, frame right, facing her tag, back to the ice machine. [NIEVES] from behind, standing at the foot of the shelving with her face turned up to the top corner tag, ledger against her chest. Neither has turned toward the ice machine."
 Motion prompt: "Static camera. Marguerite's pen resumes writing. Nieves does not move. 3 seconds."
 
 ### Beat 5. Button. 1:29.0 to 1:52.0
@@ -347,16 +347,16 @@ Motion prompt: "Static camera. The swinging door completes its swing and stops o
 
 **S29.** 1:32.5 to 1:35.5 (3 s). Setup C, Nieves end. Static. Nieves (Mode A), Dolores, Marguerite (shoulder).
 Action: Nieves, back on the stool, closes the green ledger. Dolores behind her in the open door.
-Dialogue: INES "Cause pending." DOLORES "Coat pending."
+Dialogue: NIEVES "Cause pending." DOLORES "Coat pending."
 Sound: the ledger's cloth cover closing.
-Image prompt: "[ANCHOR] [SET, Setup C view, far end] [INES] in the foreground from behind on the tall stool, both hands closing the green cloth ledger, face down to it. Beyond her, in the open swinging door, [DOLORES] with her shoulder on the door, head tilted, the pencil in her bun catching the lamp. [MARGUERITE]'s shoulder and pencil soft in the lower right corner."
+Image prompt: "[ANCHOR] [SET, Setup C view, far end] [NIEVES] in the foreground from behind on the tall stool, both hands closing the green cloth ledger, face down to it. Beyond her, in the open swinging door, [DOLORES] with her shoulder on the door, head tilted, the pencil in her bun catching the lamp. [MARGUERITE]'s shoulder and pencil soft in the lower right corner."
 Motion prompt: "Static camera. The ledger closes. Dolores's head tilts; her gloved hand taps the door frame once; her lips move slightly. 3 seconds."
 
 **S30.** 1:35.5 to 1:38.0 (2.5 s). Setup C, wide with the ice machine at frame left, no Teddy. Static. Nieves (Mode A), Marguerite, Dolores, Desmond.
 Action: the ice machine drops. Nobody jumps. Not Nieves, not Marguerite, not Dolores, not Desmond.
 Dialogue: TEDDY (O.S.) "See. Fine."
 Sound: the ice drop, at or below dialogue level.
-Image prompt: "[ANCHOR] [SET, Setup C view panned wide from the ice machine to the swinging door] The ice machine at frame left with nobody beside it. Along the counter: [DESMOND] with the closed shoebox in both hands, [MARGUERITE] seated at the lamp, [INES] from behind on her stool with the closed ledger, and [DOLORES] in the open swinging door at frame right. Everyone still."
+Image prompt: "[ANCHOR] [SET, Setup C view panned wide from the ice machine to the swinging door] The ice machine at frame left with nobody beside it. Along the counter: [DESMOND] with the closed shoebox in both hands, [MARGUERITE] seated at the lamp, [NIEVES] from behind on her stool with the closed ledger, and [DOLORES] in the open swinging door at frame right. Everyone still."
 Motion prompt: "Static camera. On the ice drop, nobody moves at all. The paper tags on the shelf sway by a millimeter. That is the whole clip. 3 seconds."
 
 **S31.** 1:38.0 to 1:41.0 (3 s). Setup A. Static. Desmond, Marguerite.

@@ -32,7 +32,7 @@ Rules for anyone using this sheet:
 - **Face.** Round and warm. Heavy eyelids. Deep smile lines. A small chip in one front tooth from a rental accident he tells differently every time. Eyes dark, kind, a little tired.
 - **Hair.** Black going gray at the temples, cut short, flattened on one side from a cap he has just taken off.
 - **Skin.** Light warm tan.
-- **Constant costume.** A faded green work polo. Over the pocket, small, stitched: HUANG PARTY RENTAL. Cargo shorts in every season. White sneakers with one black scuff. A canvas apron when he is at the range. A cap in his back pocket.
+- **Constant costume.** A faded green work polo. Over the pocket, small, stitched: LIANG PARTY RENTAL. Cargo shorts in every season. White sneakers with one black scuff. A canvas apron when he is at the range. A cap in his back pocket.
 - **The one prop.** A brown clipboard with a metal clip and a pen on a string. It lives in his back pocket or his hand.
 - **Posture.** Never fully sits. Perches on the arm of his chair, leans on the counter, keeps one foot ready. Enters every scene carrying something. Sits properly only when Ref tells him to.
 - **Fixed frame.** F1, Table Wide: the chair with arms at the left end of the table, frame left, nearest the fridge and the garage door traffic. His single is a slow pan from F1, never a new setup.
@@ -99,7 +99,7 @@ One room. A split-level kitchen at the back of a house, an addition by a previou
 - **Center.** An oval laminate table, long axis left to right, wood-grain top, chrome legs, a rental tag still stapled under the edge. On the far side, the gallery bench. On the near side, three mismatched wooden chairs. At the left end, one chair with arms. At the right end, the head, nothing, until the Stool arrives. A wooden cutting board lives at the head. A fruit bowl lives at the head too, until Pip presides.
 - **Rolling cart.** A metal kitchen cart on casters, two shelves, with a four-slot chrome toaster on top, dial set to 3. Parked by the garage door between cases.
 - **The Wobble.** A plain wooden stool with one leg a half-inch short, kept under the counter. The witness seat.
-- **Visible text on the set.** DOCKET (black tape, freezer door). HOUSE (binder spine). MARISOL, ANSEL, PIP (Rota magnets). Five handwritten Fridge Rule cards. Case slips in a child's hand. HUANG PARTY RENTAL and `[TOWN]` on the van outside. Nothing else.
+- **Visible text on the set.** DOCKET (black tape, freezer door). HOUSE (binder spine). MARISOL, ANSEL, PIP (Rota magnets). Five handwritten Fridge Rule cards. Case slips in a child's hand. LIANG PARTY RENTAL and `[TOWN]` on the van outside. Nothing else.
 
 ### The bench
 
