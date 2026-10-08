@@ -1,5 +1,26 @@
 # Handoff: finish and ship Revival Watch in NostalDamus
 
+> **Status update, 2026-10-08 (after this prompt was written):** Phase 1 is done.
+> PR #4 merged into `main` (commit `aa84c4e`) and carries all of PR #5. Skip
+> Phase 1 and start at Phase 2 on a branch from `origin/main`. What changed
+> versus the text below:
+>
+> - The Prophet search agent lives at `POST /api/prophet`. Revival Watch keeps
+>   `/api/agent/*` and `/api/admin/*` unchanged, so `agents/revival-watch.md`
+>   needs no path edit.
+> - `worker/schema.sql` is gone. The schema is three migrations in
+>   `worker/migrations/`: `0001_initial` (no-op on prod), `0002_ledger_signals`,
+>   `0003_briefs_agent_runs` (`brief_requests`, `agent_runs`). Phase 3 step 1
+>   applies all three.
+> - Checks: `npm test` (all suites), `npm run typecheck` (app and worker),
+>   `npm run build`. Local DB: `npm run db:local`.
+> - The year is read at call time through `currentYear()` in
+>   `src/lib/scoring.ts`; `worker/scoring.ts` delegates to it.
+> - The 13 Codex findings on PR #5 and 8 on PR #4 are fixed except one product
+>   decision: checkout redirects before the scope review.
+> - `/market-intelligence` now reads live data and says 1993-1998.
+> - Production activation is also summarized in `docs/AGENT-HANDOFF.md`.
+
 Paste everything below the line into a new Claude Code session started in `~/nostalogic`.
 
 ---
