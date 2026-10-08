@@ -49,7 +49,8 @@ export interface PropertyFilters {
   timing?: TimingStage | "All";
 }
 
-const CURRENT_YEAR = 2026;
+// The year of the visit, so the window score moves each year (matches worker/scoring.ts).
+const CURRENT_YEAR = new Date().getUTCFullYear();
 const PEAK_CHILDHOOD_AGE = 12;
 const SWEET_SPOT_CENTER = 40;
 
@@ -371,7 +372,7 @@ export function getNostalgiaCurve(property: PropertyScore) {
 export function getModernizationRecommendations(property: PropertyScore): string[] {
   return [
     `Preserve ${property.preserve[0]} as the emotional contract for original fans.`,
-    `Update ${property.update[0]} so the revival feels native to 2026 rather than costumed in 1995.`,
+    `Update ${property.update[0]} so the revival feels native to ${CURRENT_YEAR} rather than costumed in 1995.`,
     `Package as a ${property.revivalFormat} with a launch window of ${property.launchWindow}.`,
     `Use ${property.currentSignal.toLowerCase()} as the top-of-funnel marketing signal.`,
     `De-risk rights and execution early: current model risk is ${property.riskScore}/100.`,

@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=https://platform.claude.com/schemas/ant/beta/memory_store.json
+name: nostal-state
+description: Revival Watch working notes - a one-line log per committed digest and durable notes on how sources behave. Write only after the digest post returns ok.

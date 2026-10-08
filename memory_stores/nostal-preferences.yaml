@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=https://platform.claude.com/schemas/ant/beta/memory_store.json
+name: nostal-preferences
+description: Read-only rules for Revival Watch - the flag rule, what each score field means, excluded franchises, and the digest style. Read every file fresh at the start of each run.

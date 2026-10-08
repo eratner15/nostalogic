@@ -8,7 +8,9 @@
     "deploy": "npm run build && npx wrangler deploy",
     "start": "next start",
     "lint": "tsc --noEmit",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test:worker": "node --experimental-strip-types --test worker/scoring.test.ts",
+    "typecheck:worker": "tsc -p worker/tsconfig.json"
   },
   "dependencies": {
     "@radix-ui/react-accordion": "^1.2.3",

@@ -22,12 +22,17 @@ export default function PropertyLibrary() {
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
   const [page, setPage] = useState(1);
   const [apiSource, setApiSource] = useState<Property[] | null>(null);
+  const [history, setHistory] = useState<Record<string, number[]>>({});
 
   useEffect(() => {
     let alive = true;
     fetchPropertiesFromApi().then((list) => {
       if (alive && list) setApiSource(list);
     });
+    fetch("/api/score-history")
+      .then((res) => (res.ok ? res.json() : {}))
+      .then((h) => { if (alive) setHistory(h); })
+      .catch(() => {});
     return () => { alive = false; };
   }, []);
 
@@ -150,6 +155,7 @@ export default function PropertyLibrary() {
                     <div className="mt-1 h-1.5 w-24 rounded-full bg-white/10">
                       <div className="h-1.5 rounded-full bg-primary" style={{ width: `${property.revivalReadinessScore}%` }} />
                     </div>
+                    <Sparkline points={history[property.id]} />
                   </td>
                   <td className="px-4 py-4 text-muted-foreground">{property.riskScore}</td>
                   <td className="px-4 py-4 text-secondary">{property.timingStage}</td>
@@ -195,5 +201,23 @@ export default function PropertyLibrary() {
         </div>
       </section>
     </main>
+  );
+}
+
+/** Weekly snapshot scores, oldest first. Hidden until there are two weeks to compare. */
+function Sparkline({ points }: { points?: number[] }) {
+  if (!points || points.length < 2) return null;
+  const w = 96, h = 18, lo = Math.min(...points) - 2, hi = Math.max(...points) + 2;
+  const xy = points.map((v, i) => `${(i / (points.length - 1)) * w},${h - ((v - lo) / (hi - lo)) * h}`).join(" ");
+  const delta = points[points.length - 1] - points[0];
+  return (
+    <div className="mt-1.5 flex items-center gap-1.5" title={`Weekly scores: ${points.join(", ")}`}>
+      <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} aria-label={`Score history ${points.join(", ")}`}>
+        <polyline points={xy} fill="none" stroke="currentColor" strokeWidth="1.5" className="text-secondary" />
+      </svg>
+      <span className={`text-[11px] ${delta > 0 ? "text-emerald-300" : delta < 0 ? "text-rose-300" : "text-muted-foreground"}`}>
+        {delta > 0 ? "+" : ""}{delta}
+      </span>
+    </div>
   );
 }

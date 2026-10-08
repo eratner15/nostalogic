@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { BarChart3, Beaker, FileText, LibraryBig, MessageCircle, Radar, Sparkles } from "lucide-react";
+import { BarChart3, Beaker, FileText, LibraryBig, MessageCircle, Radar, Sparkles, Target } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const navItems = [
@@ -12,6 +12,7 @@ const navItems = [
   { href: "/remix-lab", label: "Remix Lab", icon: Beaker },
   { href: "/prophet-chat", label: "Prophet", icon: MessageCircle },
   { href: "/market-intelligence", label: "Market", icon: Radar },
+  { href: "/track-record", label: "Track record", icon: Target },
 ];
 
 export default function Navbar() {

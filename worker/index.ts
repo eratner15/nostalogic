@@ -9,8 +9,12 @@
  * the page.
  */
 import { Hono } from "hono";
+import { agentApi, type AgentEnv } from "./agent-api";
+import { loadTrackRecord, scoreHistory, weeklyLedger } from "./ledger";
+import { readiness } from "./scoring";
+import { runSignals } from "./signals";
 
-type Env = {
+type Env = AgentEnv & {
   DB: D1Database;
   ASSETS: Fetcher;
   ANTHROPIC_API_KEY?: string;
@@ -19,16 +23,8 @@ type Env = {
 
 const app = new Hono<{ Bindings: Env }>().basePath("/api");
 
-const CURRENT_YEAR = 2026;
-const PEAK_CHILDHOOD_AGE = 12;
-const SWEET_SPOT_CENTER = 40;
-
-/** Deterministic score from the original spec: buzz .30, window .40, relevance .30. */
-function readiness(p: { social_buzz: number; modern_relevance: number; year: number }) {
-  const fanAgeNow = CURRENT_YEAR - p.year + PEAK_CHILDHOOD_AGE;
-  const windowAlignment = Math.max(0, 100 - Math.abs(fanAgeNow - SWEET_SPOT_CENTER) * 8);
-  return Math.round(p.social_buzz * 0.3 + windowAlignment * 0.4 + p.modern_relevance * 0.3);
-}
+// readiness() lives in scoring.ts: buzz .30, window .40, relevance .30, with
+// the year taken from the date of the score instead of a fixed constant.
 
 function rowToProperty(r: Record<string, unknown>) {
   const base = {
@@ -188,8 +184,21 @@ app.post("/chat", async (c) => {
 
 app.get("/health", async (c) => {
   const n = await c.env.DB.prepare("SELECT COUNT(*) AS n FROM properties").first<{ n: number }>();
-  return c.json({ ok: true, properties: n?.n ?? 0, ai: Boolean(c.env.ANTHROPIC_API_KEY) });
+  // Revival Watch freshness. Null before the migration or the first digest.
+  const last = await c.env.DB.prepare("SELECT MAX(created_at) AS t FROM digests").first<{ t: string | null }>().catch(() => null);
+  const ageDays = last?.t ? Math.floor((Date.now() - Date.parse(`${last.t.replace(" ", "T")}Z`)) / 86_400_000) : null;
+  return c.json({
+    ok: true,
+    properties: n?.n ?? 0,
+    ai: Boolean(c.env.ANTHROPIC_API_KEY),
+    digest: { last: last?.t ?? null, age_days: ageDays, overdue: ageDays !== null && ageDays > 8 },
+  });
 });
+
+app.get("/track-record", async (c) => c.json(await loadTrackRecord(c.env, new Date())));
+app.get("/score-history", async (c) => c.json(await scoreHistory(c.env, 8)));
+
+app.route("/", agentApi);
 
 app.post("/brief-requests", async (c) => {
   const body = await c.req.json<{
@@ -230,5 +239,21 @@ export default {
     }
     if (url.pathname.startsWith("/api")) return app.fetch(req, env, ctx);
     return env.ASSETS.fetch(req);
+  },
+
+  /**
+   * Hourly cron (wrangler.toml). Signals every hour; the weekly ledger on
+   * Monday in the 06:00 UTC hour. The day check is here, not in the cron
+   * string: in Cloudflare cron, day-of-week 1 is Sunday.
+   */
+  async scheduled(event: ScheduledController, env: Env, ctx: ExecutionContext) {
+    const now = new Date(event.scheduledTime);
+    const work = async () => {
+      if (now.getUTCDay() === 1 && now.getUTCHours() === 6) {
+        console.log("weekly ledger", JSON.stringify(await weeklyLedger(env, now)));
+      }
+      console.log("signals", JSON.stringify(await runSignals(env, now)));
+    };
+    ctx.waitUntil(work());
   },
 };
