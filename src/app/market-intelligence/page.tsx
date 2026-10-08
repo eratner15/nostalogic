@@ -1,7 +1,7 @@
 import { Activity, AlertCircle, ArrowUpRight, Brain, Radio } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { getCategoryStats, platformPrompt, scoredProperties } from "@/services/property-data";
+import Link from "next/link";
+import { getCategoryStats, scoredProperties } from "@/services/property-data";
 
 const stats = getCategoryStats();
 const topRisks = [...scoredProperties].sort((a, b) => b.riskScore - a.riskScore).slice(0, 5);
@@ -21,10 +21,10 @@ export default function MarketIntelligence() {
   return (
     <main className="mx-auto max-w-7xl px-4 py-10 md:px-6">
       <section className="mb-8">
-        <Badge className="border-secondary/40 bg-secondary/10 text-secondary hover:bg-secondary/10">Market Intelligence</Badge>
-        <h1 className="mt-4 text-4xl font-semibold tracking-normal md:text-5xl">Nostalgia market command center.</h1>
+        <p className="eyebrow flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" />Market Intelligence</p>
+        <h1 className="mt-4 display text-4xl leading-[1.05] md:text-5xl">Nostalgia market command center.</h1>
         <p className="mt-4 max-w-3xl text-muted-foreground">
-          Category-level readiness, high-conviction watchlists, and known risk clusters for the 1994-1996 revival window.
+          Category-level readiness, high-conviction watchlists, and known risk clusters for the 1993-1998 revival window.
         </p>
       </section>
 
@@ -35,15 +35,15 @@ export default function MarketIntelligence() {
               <p className="text-sm text-muted-foreground">{label}</p>
               <Icon className="h-4 w-4 text-primary" />
             </div>
-            <div className="mt-4 text-4xl font-semibold">{value}</div>
+            <div className="mt-4 font-mono text-4xl font-semibold">{value}</div>
           </div>
         ))}
       </section>
 
       <section className="grid gap-6 lg:grid-cols-[0.95fr_1.05fr]">
         <div className="scan-card p-5">
-          <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Category heatmap</p>
-          <h2 className="mt-1 text-2xl font-semibold">Where the model is hottest</h2>
+          <p className="eyebrow">Category heatmap</p>
+          <h2 className="display mt-1 text-2xl">Where the model is hottest</h2>
           <div className="mt-5 space-y-4">
             {stats.map((stat) => (
               <div key={stat.category}>
@@ -51,8 +51,8 @@ export default function MarketIntelligence() {
                   <span>{stat.category}</span>
                   <span className="text-muted-foreground">{stat.average} avg / {stat.count} signals</span>
                 </div>
-                <div className="h-2 rounded-full bg-white/10">
-                  <div className="h-2 rounded-full bg-gradient-to-r from-primary via-secondary to-accent" style={{ width: `${stat.average}%` }} />
+                <div className="h-2 rounded-full bg-muted">
+                  <div className="h-2 rounded-full bg-primary" style={{ width: `${stat.average}%` }} />
                 </div>
               </div>
             ))}
@@ -60,9 +60,9 @@ export default function MarketIntelligence() {
         </div>
 
         <div className="scan-card p-5">
-          <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Watchlist</p>
-          <h2 className="mt-1 text-2xl font-semibold">High readiness, manageable risk</h2>
-          <div className="mt-5 divide-y divide-white/10">
+          <p className="eyebrow">Watchlist</p>
+          <h2 className="display mt-1 text-2xl">High readiness, manageable risk</h2>
+          <div className="mt-5 divide-y divide-border">
             {watchlist.map((property) => (
               <div key={property.id} className="grid gap-3 py-4 sm:grid-cols-[1fr_auto]">
                 <div>
@@ -70,7 +70,7 @@ export default function MarketIntelligence() {
                   <div className="mt-1 text-sm text-muted-foreground">{property.recommendation}</div>
                 </div>
                 <div className="text-left sm:text-right">
-                  <div className="font-semibold text-white">{property.revivalReadinessScore}</div>
+                  <div className="font-semibold text-foreground">{property.revivalReadinessScore}</div>
                   <div className="text-xs text-muted-foreground">risk {property.riskScore}</div>
                 </div>
               </div>
@@ -92,11 +92,19 @@ export default function MarketIntelligence() {
           </div>
         </div>
         <div className="scan-card p-5">
-          <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Master build prompt</p>
-          <h2 className="mt-1 text-xl font-semibold">System definition for future AI buildout</h2>
-          <p className="mt-4 rounded-md border border-white/10 bg-white/[0.025] p-4 text-sm leading-6 text-muted-foreground">
-            {platformPrompt}
-          </p>
+          <p className="eyebrow">Ask the market</p>
+          <h2 className="display mt-1 text-2xl">Go deeper with the Prophet</h2>
+          <div className="mt-4 grid gap-2">
+            {[
+              "Which category has the best readiness-to-risk balance?",
+              "Which 1993 and 1994 properties are aging out of the window?",
+              "What Pre-Peak properties should we option now for 2028?",
+            ].map((q) => (
+              <Link key={q} href={`/prophet-chat/?q=${encodeURIComponent(q)}`} className="rounded-md border border-border bg-muted/40 p-3 text-sm leading-6 text-muted-foreground transition hover:border-primary/50 hover:text-foreground">
+                {q}
+              </Link>
+            ))}
+          </div>
         </div>
       </section>
     </main>

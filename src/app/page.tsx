@@ -1,24 +1,16 @@
 import Link from "next/link";
-import {
-  ArrowRight,
-  BarChart3,
-  CheckCircle2,
-  Clock3,
-  Database,
-  FileText,
-  Gauge,
-  Layers3,
-  Scale,
-  ShieldCheck,
-  Sparkles,
-  Target,
-} from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Badge } from "@/components/ui/badge";
+import { ArrowRight, CheckCircle2, Clock3, LibraryBig, MessageSquareText, Scale, ShieldCheck, FileText } from "lucide-react";
+import { AskBar, ScoreBadge, scoreBand } from "@/components/brand";
 import { getFeaturedProperties, scoredProperties } from "@/services/property-data";
 
-const featured = getFeaturedProperties(4);
-const sweetSpotCount = scoredProperties.filter((property) => property.timingStage === "Sweet Spot").length;
+const shelf = getFeaturedProperties(6);
+const goCount = scoredProperties.filter((property) => property.revivalReadinessScore >= 78).length;
+
+const exampleQuestions = [
+  "Lowest-risk properties in the sweet spot",
+  "Best toy or fad for a 2027 comeback",
+  "Remix partners for Tamagotchi",
+];
 
 const deliverables = [
   "Revival Readiness Score with every input shown",
@@ -29,201 +21,188 @@ const deliverables = [
   "A concise go / investigate / pass recommendation",
 ];
 
+const weights = [
+  { label: "Nostalgia window", weight: 40, note: "Original 12-year-olds reaching 40, the peak buying age", tone: "bg-primary" },
+  { label: "Social buzz", weight: 30, note: "Live fan activity, memes, collector and streaming signals", tone: "bg-secondary" },
+  { label: "Modern relevance", weight: 30, note: "How well the themes travel to a 2026 audience", tone: "bg-accent" },
+];
+
 export default function Home() {
   return (
     <main>
-      <section className="mx-auto grid min-h-[calc(100vh-78px)] max-w-7xl items-center gap-12 px-4 py-14 md:px-6 lg:grid-cols-[1.08fr_0.92fr] lg:py-20">
-        <div>
-          <Badge className="border-primary/40 bg-primary/10 text-primary hover:bg-primary/10">
-            Decision intelligence for dormant IP
-          </Badge>
-          <h1 className="mt-6 max-w-4xl text-5xl font-semibold leading-[0.96] tracking-[-0.035em] text-white md:text-7xl">
-            Know which forgotten franchise is worth reviving.
-          </h1>
-          <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
-            NostalDamus helps producers, studios, rights holders, and investors pressure-test a property before
-            development spend. Start with the live 120-property model or order a manually reviewed opportunity brief.
-          </p>
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Button asChild size="lg">
-              <Link href="/order-report">
-                Order a $199 IP Brief
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
-            <Button asChild variant="outline" size="lg" className="border-white/15 bg-white/5">
-              <Link href="/property-library">Explore the Live Model</Link>
-            </Button>
-          </div>
-          <div className="mt-9 flex flex-wrap gap-x-7 gap-y-3 border-t border-white/10 pt-5 text-sm text-muted-foreground">
-            <span><strong className="text-white">120</strong> scored properties</span>
-            <span><strong className="text-white">{sweetSpotCount}</strong> in the current window</span>
-            <span><strong className="text-white">1993-1998</strong> launch cohort</span>
-            <span><strong className="text-white">No subscription</strong> required</span>
-          </div>
-        </div>
-
-        <div className="scan-card overflow-hidden">
-          <div className="border-b border-white/10 bg-white/[0.025] p-5">
-            <div className="flex items-center justify-between gap-4">
-              <div>
-                <p className="text-xs uppercase tracking-[0.2em] text-primary">Sample deliverable</p>
-                <h2 className="mt-1 text-2xl font-semibold">Revival Opportunity Brief</h2>
-              </div>
-              <FileText className="h-6 w-6 text-secondary" />
-            </div>
-          </div>
-          <div className="p-6">
-            <div className="flex items-end justify-between gap-6 border-b border-white/10 pb-6">
-              <div>
-                <p className="text-sm text-muted-foreground">Revival Readiness</p>
-                <p className="mt-1 text-5xl font-semibold text-white">81<span className="text-xl text-muted-foreground">/100</span></p>
-              </div>
-              <Badge variant="outline" className="border-accent/40 text-accent">Investigate now</Badge>
-            </div>
-            <div className="grid gap-4 py-6 sm:grid-cols-3">
-              <div><p className="text-xs text-muted-foreground">Timing</p><p className="mt-1 font-medium text-white">Sweet spot</p></div>
-              <div><p className="text-xs text-muted-foreground">Audience</p><p className="mt-1 font-medium text-white">High fit</p></div>
-              <div><p className="text-xs text-muted-foreground">Rights risk</p><p className="mt-1 font-medium text-white">Needs diligence</p></div>
-            </div>
-            <div className="rounded-md border border-white/10 bg-white/[0.025] p-4">
-              <p className="text-xs uppercase tracking-[0.16em] text-secondary">Decision question</p>
-              <p className="mt-2 leading-7 text-muted-foreground">
-                Is the audience window strong enough to justify rights diligence and concept development now?
-              </p>
-            </div>
-            <p className="mt-4 text-xs leading-5 text-muted-foreground">
-              Illustrative layout. Every paid brief uses the named property, visible scoring inputs, and a human review.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="border-y border-white/10 bg-white/[0.02]">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-14 md:grid-cols-[0.8fr_1.2fr] md:px-6">
+      {/* Hero: the agent is the front door. */}
+      <section className="scanlines border-b border-border">
+        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-16 md:px-6 lg:grid-cols-[1.15fr_0.85fr] lg:py-24">
           <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-primary">The $199 product</p>
-            <h2 className="mt-3 text-4xl font-semibold tracking-[-0.025em] md:text-5xl">One property. One decision-ready brief.</h2>
-            <p className="mt-5 max-w-xl leading-7 text-muted-foreground">
-              Tell us the IP and the decision in front of you. We run the property through the model, review the output,
-              and return a focused opportunity memo within two business days.
+            <p className="eyebrow flex items-center gap-2">
+              <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-destructive" /> Decision intelligence for dormant IP
             </p>
-          </div>
-          <div className="grid gap-3 sm:grid-cols-2">
-            {deliverables.map((item) => (
-              <div key={item} className="flex gap-3 rounded-md border border-white/10 bg-card/70 p-4">
-                <CheckCircle2 className="mt-0.5 h-5 w-5 shrink-0 text-accent" />
-                <span className="text-sm leading-6 text-muted-foreground">{item}</span>
+            <h1 className="display mt-6 text-5xl leading-[0.98] md:text-7xl">
+              Know which forgotten franchise is <em className="font-display italic text-primary">worth reviving.</em>
+            </h1>
+            <p className="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">
+              NostalDamus scores {scoredProperties.length} properties from 1993-1998 for audience timing, cultural relevance, and execution
+              risk. Ask the research agent a question, or pressure-test one property with a human-reviewed brief.
+            </p>
+            <div className="mt-8 max-w-2xl">
+              <AskBar size="lg" />
+              <div className="mt-3 flex flex-wrap gap-2">
+                {exampleQuestions.map((q) => (
+                  <Link key={q} href={`/prophet-chat/?q=${encodeURIComponent(q)}`} className="chip transition hover:border-primary/50 hover:text-foreground">
+                    {q}
+                  </Link>
+                ))}
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section className="mx-auto max-w-7xl px-4 py-20 md:px-6">
-        <div className="grid gap-10 lg:grid-cols-[0.78fr_1.22fr]">
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-secondary">How it works</p>
-            <h2 className="mt-3 text-4xl font-semibold tracking-[-0.025em] md:text-5xl">A transparent screen, not a black-box promise.</h2>
-            <p className="mt-5 leading-7 text-muted-foreground">
-              The score is a reproducible decision heuristic. It is not presented as validated prediction accuracy.
-              The brief makes the assumptions visible so your team can challenge them.
-            </p>
-          </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {[
-              { icon: Database, n: "01", title: "Select", text: "Name the dormant property and the commercial question you need answered." },
-              { icon: BarChart3, n: "02", title: "Score", text: "Assess audience timing, cultural relevance, current signals, and execution risk." },
-              { icon: Target, n: "03", title: "Decide", text: "Receive the recommendation, modernization map, and next diligence steps." },
-            ].map((item) => {
-              const Icon = item.icon;
-              return (
-                <div key={item.n} className="scan-card p-5">
-                  <div className="flex items-center justify-between">
-                    <Icon className="h-5 w-5 text-primary" />
-                    <span className="font-mono text-xs text-muted-foreground">{item.n}</span>
-                  </div>
-                  <h3 className="mt-8 text-xl font-semibold">{item.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-muted-foreground">{item.text}</p>
+            </div>
+            <dl className="mt-10 grid max-w-2xl grid-cols-3 gap-4 border-t border-border pt-6">
+              {[
+                [String(scoredProperties.length), "scored properties"],
+                [String(goCount), "in the Go band"],
+                ["1993-98", "launch cohort"],
+              ].map(([value, label]) => (
+                <div key={label}>
+                  <dt className="font-mono text-2xl font-semibold text-foreground">{value}</dt>
+                  <dd className="mt-1 text-xs text-muted-foreground">{label}</dd>
                 </div>
-              );
-            })}
+              ))}
+            </dl>
           </div>
-        </div>
-      </section>
 
-      <section className="mx-auto max-w-7xl px-4 pb-20 md:px-6">
-        <div className="mb-7 flex flex-wrap items-end justify-between gap-4">
-          <div>
-            <p className="text-xs uppercase tracking-[0.2em] text-primary">Explore before you buy</p>
-            <h2 className="mt-3 text-3xl font-semibold md:text-4xl">Live candidates from the scored corpus</h2>
-          </div>
-          <Link href="/property-library" className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-white">
-            View all 120 properties <ArrowRight className="h-4 w-4" />
-          </Link>
-        </div>
-        <div className="grid gap-4 md:grid-cols-2">
-          {featured.map((property) => (
-            <Link key={property.id} href={"/analysis-tools?propertyId=" + property.id} className="scan-card group grid gap-5 p-5 transition hover:border-primary/35 sm:grid-cols-[1fr_auto]">
-              <div>
-                <div className="flex flex-wrap items-center gap-2">
-                  <h3 className="font-semibold text-white group-hover:text-primary">{property.name}</h3>
-                  <Badge variant="outline" className="border-white/15 text-muted-foreground">{property.category}</Badge>
-                </div>
-                <p className="mt-3 text-sm leading-6 text-muted-foreground">{property.briefDescription}</p>
-              </div>
-              <div className="sm:text-right">
-                <p className="text-4xl font-semibold text-white">{property.revivalReadinessScore}</p>
-                <p className="text-xs text-accent">{property.timingStage}</p>
-              </div>
-            </Link>
-          ))}
-        </div>
-      </section>
-
-      <section className="border-y border-white/10 bg-gradient-to-r from-primary/10 via-card to-secondary/10">
-        <div className="mx-auto grid max-w-7xl gap-8 px-4 py-16 md:px-6 lg:grid-cols-[1fr_auto] lg:items-center">
-          <div>
-            <Badge className="border-accent/40 bg-accent/10 text-accent hover:bg-accent/10">Available now</Badge>
-            <h2 className="mt-4 text-4xl font-semibold tracking-[-0.025em] md:text-5xl">Start with one property for $199.</h2>
-            <p className="mt-4 max-w-2xl leading-7 text-muted-foreground">
-              No contract and no subscription. Send the property and your decision question today. We confirm scope and payment before work begins.
-            </p>
-            <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
-              <span className="flex items-center gap-2"><Clock3 className="h-4 w-4 text-secondary" /> Two-business-day delivery</span>
-              <span className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-secondary" /> Human-reviewed</span>
-              <span className="flex items-center gap-2"><Scale className="h-4 w-4 text-secondary" /> Rights diligence flagged</span>
+          {/* The shelf: today's top-ranked tapes. */}
+          <div className="scan-card self-start overflow-hidden">
+            <div className="flex items-center justify-between border-b border-border px-5 py-4">
+              <p className="eyebrow">Top of the shelf</p>
+              <Link href="/property-library/" className="font-mono text-[11px] uppercase tracking-[0.16em] text-primary hover:text-foreground">Full library</Link>
             </div>
+            <ol>
+              {shelf.map((property) => {
+                const band = scoreBand(property.revivalReadinessScore);
+                return (
+                  <li key={property.id} className="border-b border-border last:border-0">
+                    <Link href={`/analysis-tools/?propertyId=${property.id}`} className="group grid grid-cols-[2.25rem_1fr_auto] items-center gap-3 px-5 py-3.5 transition hover:bg-muted/40">
+                      <span className="font-mono text-xs text-muted-foreground">#{property.rank}</span>
+                      <span className="min-w-0">
+                        <span className="block truncate font-medium text-foreground group-hover:text-primary">{property.name}</span>
+                        <span className="block truncate text-xs text-muted-foreground">{property.year} · {property.category} · {property.timingStage}</span>
+                      </span>
+                      <span className={`font-mono text-xl font-semibold tabular-nums ${band.text}`}>{property.revivalReadinessScore}</span>
+                    </Link>
+                  </li>
+                );
+              })}
+            </ol>
           </div>
-          <Button asChild size="lg" className="w-full lg:w-auto">
-            <Link href="/order-report">Order the $199 Brief <ArrowRight className="h-4 w-4" /></Link>
-          </Button>
         </div>
       </section>
 
-      <section className="mx-auto grid max-w-7xl gap-4 px-4 py-14 md:grid-cols-3 md:px-6">
+      {/* Three ways in. */}
+      <section className="mx-auto grid max-w-7xl gap-4 px-4 py-16 md:grid-cols-3 md:px-6">
         {[
-          { icon: Gauge, title: "For producers", text: "Prioritize which properties deserve development time and rights outreach." },
-          { icon: Layers3, title: "For rights holders", text: "Frame the modernization path without discarding the original audience contract." },
-          { icon: Sparkles, title: "For investors", text: "Pressure-test timing, audience fit, and execution risk before committing capital." },
+          { icon: MessageSquareText, title: "Ask the Prophet", text: "A research agent that searches, compares, and cites the scored library for you.", href: "/prophet-chat/", cta: "Ask a question" },
+          { icon: LibraryBig, title: "Explore the model", text: "Filter all properties by category, year, timing stage, readiness, and risk.", href: "/property-library/", cta: "Open the library" },
+          { icon: FileText, title: "Order a $199 brief", text: "One property, one decision-ready memo, human-reviewed within two business days.", href: "/order-report/", cta: "Start an order" },
         ].map((item) => {
           const Icon = item.icon;
           return (
-            <div key={item.title} className="p-5">
-              <Icon className="h-5 w-5 text-secondary" />
-              <h3 className="mt-4 font-semibold">{item.title}</h3>
-              <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.text}</p>
-            </div>
+            <Link key={item.title} href={item.href} className="scan-card group flex flex-col p-6 transition hover:border-primary/40">
+              <Icon className="h-5 w-5 text-primary" />
+              <h2 className="display mt-6 text-2xl">{item.title}</h2>
+              <p className="mt-2 flex-1 text-sm leading-6 text-muted-foreground">{item.text}</p>
+              <span className="mt-6 inline-flex items-center gap-2 text-sm font-medium text-primary">
+                {item.cta} <ArrowRight className="h-4 w-4 transition group-hover:translate-x-0.5" />
+              </span>
+            </Link>
           );
         })}
       </section>
 
-      <footer className="border-t border-white/10">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-4 py-8 text-xs leading-5 text-muted-foreground md:flex-row md:items-center md:justify-between md:px-6">
-          <span>NostalDamus · A Cafecito AI project</span>
-          <span>Decision support only. Scores are model outputs, not guarantees of commercial performance or legal clearance.</span>
+      {/* Methodology: transparent, not a black box. */}
+      <section className="border-y border-border bg-card/40">
+        <div className="mx-auto grid max-w-7xl gap-12 px-4 py-20 md:px-6 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <p className="eyebrow">How the score works</p>
+            <h2 className="display mt-4 text-4xl leading-tight md:text-5xl">A transparent screen, not a black-box promise.</h2>
+            <p className="mt-5 leading-7 text-muted-foreground">
+              Revival Readiness is a reproducible weighted formula over hand-authored inputs. Every property carries its rubric version,
+              so a score can be audited. It is a ranking heuristic. It is not presented as validated prediction accuracy.
+            </p>
+          </div>
+          <div className="space-y-6">
+            {weights.map((w) => (
+              <div key={w.label}>
+                <div className="flex items-baseline justify-between gap-4">
+                  <span className="font-medium text-foreground">{w.label}</span>
+                  <span className="font-mono text-sm text-muted-foreground">× {(w.weight / 100).toFixed(2)}</span>
+                </div>
+                <div className="mt-2 h-2 rounded-full bg-muted">
+                  <div className={`h-2 rounded-full ${w.tone}`} style={{ width: `${w.weight * 2.5}%` }} />
+                </div>
+                <p className="mt-2 text-sm text-muted-foreground">{w.note}</p>
+              </div>
+            ))}
+            <p className="rounded-md border border-border bg-background/60 p-4 font-mono text-xs leading-6 text-muted-foreground">
+              readiness = buzz × 0.30 + window × 0.40 + relevance × 0.30<br />
+              risk = rights × 0.45 + sensitivity drag × 0.25 + creator gap × 0.30
+            </p>
+          </div>
         </div>
-      </footer>
+      </section>
+
+      {/* The $199 product. */}
+      <section className="mx-auto grid max-w-7xl gap-10 px-4 py-20 md:px-6 lg:grid-cols-[0.85fr_1.15fr]">
+        <div>
+          <p className="eyebrow">The $199 product</p>
+          <h2 className="display mt-4 text-4xl leading-tight md:text-5xl">One property. One decision-ready brief.</h2>
+          <p className="mt-5 max-w-xl leading-7 text-muted-foreground">
+            Tell us the IP and the decision in front of you. We run it through the model, review the output by hand, and return a focused
+            opportunity memo within two business days. No contract and no subscription.
+          </p>
+          <div className="mt-6 flex flex-wrap gap-x-6 gap-y-2 text-sm text-muted-foreground">
+            <span className="flex items-center gap-2"><Clock3 className="h-4 w-4 text-primary" /> Two-business-day delivery</span>
+            <span className="flex items-center gap-2"><ShieldCheck className="h-4 w-4 text-primary" /> Human-reviewed</span>
+            <span className="flex items-center gap-2"><Scale className="h-4 w-4 text-primary" /> Rights diligence flagged</span>
+          </div>
+          <Link href="/order-report/" className="mt-8 inline-flex h-12 items-center gap-2 rounded bg-primary px-6 font-medium text-primary-foreground transition hover:bg-primary/90">
+            Order the $199 Brief <ArrowRight className="h-4 w-4" />
+          </Link>
+        </div>
+        <div className="scan-card overflow-hidden">
+          <div className="flex items-center justify-between border-b border-border px-6 py-4">
+            <p className="eyebrow">Sample deliverable</p>
+            <span className="chip">Illustrative</span>
+          </div>
+          <div className="grid gap-6 p-6 sm:grid-cols-[auto_1fr]">
+            <div className="border-border sm:border-r sm:pr-6">
+              <p className="text-xs text-muted-foreground">Revival Readiness</p>
+              <div className="mt-2"><ScoreBadge score={81} size="lg" showBand /></div>
+            </div>
+            <ul className="grid gap-2.5">
+              {deliverables.map((item) => (
+                <li key={item} className="flex gap-3 text-sm leading-6 text-muted-foreground">
+                  <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-accent" /> {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+          <p className="border-t border-border px-6 py-4 text-xs leading-5 text-muted-foreground">
+            Every paid brief uses the named property, visible scoring inputs, and a human review.
+          </p>
+        </div>
+      </section>
+
+      {/* Who it is for. */}
+      <section className="mx-auto grid max-w-7xl gap-8 border-t border-border px-4 pt-14 md:grid-cols-3 md:px-6">
+        {[
+          { title: "For producers", text: "Prioritize which properties deserve development time and rights outreach." },
+          { title: "For rights holders", text: "Frame the modernization path without breaking the original audience contract." },
+          { title: "For investors", text: "Pressure-test timing, audience fit, and execution risk before committing capital." },
+        ].map((item) => (
+          <div key={item.title}>
+            <h3 className="font-display text-xl text-foreground">{item.title}</h3>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">{item.text}</p>
+          </div>
+        ))}
+      </section>
     </main>
   );
 }

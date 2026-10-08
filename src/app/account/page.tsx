@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { Bell, FileText, ListChecks } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
 const planned = [
@@ -25,11 +24,11 @@ export default function Account() {
   return (
     <main className="mx-auto max-w-6xl px-4 py-10 md:px-6">
       <section className="mb-8">
-        <Badge className="border-secondary/40 bg-secondary/10 text-secondary hover:bg-secondary/10">Workspace Roadmap</Badge>
-        <h1 className="mt-4 text-4xl font-semibold tracking-normal md:text-5xl">Account features are staged for phase two.</h1>
+        <p className="eyebrow flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" />Workspace Roadmap</p>
+        <h1 className="mt-4 display text-4xl leading-[1.05] md:text-5xl">Account features are staged for phase two.</h1>
         <p className="mt-4 max-w-3xl leading-7 text-muted-foreground">
-          The Cloudflare MVP is intentionally static: fast to deploy, easy to share, and safe to review. Workspace
-          features come after the demo validates the scoring and pitch workflows.
+          The library, the Prophet research agent, and the $199 brief work today without an account. Workspace features
+          come after the one-time brief shows repeat demand.
         </p>
       </section>
       <section className="grid gap-4 md:grid-cols-3">

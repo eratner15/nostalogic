@@ -1,115 +1,78 @@
 /**
  * NostalDamus API worker. Serves the static Next export as assets and the
- * product API under /nostaldamus/api/*.
+ * product API under /api/*.
  *
- * Two-layer scoring, per the original spec's standing rule: the deterministic
- * Revival Readiness Score always works with no API key, and Claude features
- * (Remix Lab generation, Prophet Chat) fail closed to a clear "not
- * configured" response when ANTHROPIC_API_KEY is absent rather than breaking
- * the page.
+ * Two-layer design, per the original spec's standing rule: the deterministic
+ * Revival Readiness Score always works with no API key, and the Claude
+ * features (the Prophet search agent, Remix Lab deep pitches) fail closed to a
+ * clear "not configured" response when ANTHROPIC_API_KEY is absent rather than
+ * breaking the page.
  */
+import Anthropic from "@anthropic-ai/sdk";
 import { Hono } from "hono";
+import { scoreAll, type Property, type PropertyScore } from "../src/lib/scoring";
+import { DEFAULT_AGENT_MODEL, runAgent, type AgentEvent, type HistoryTurn } from "./agent/run";
 
 type Env = {
   DB: D1Database;
   ASSETS: Fetcher;
   ANTHROPIC_API_KEY?: string;
+  /** Optional overrides; defaults live in worker/agent/run.ts. */
+  AGENT_MODEL?: string;
+  AGENT_EFFORT?: "low" | "medium" | "high" | "xhigh" | "max";
   REPORT_CHECKOUT_URL?: string;
 };
 
 const app = new Hono<{ Bindings: Env }>().basePath("/api");
 
-const CURRENT_YEAR = 2026;
-const PEAK_CHILDHOOD_AGE = 12;
-const SWEET_SPOT_CENTER = 40;
+const NOT_CONFIGURED = "AI features are not configured yet. The library and deterministic scores work without them.";
 
-/** Deterministic score from the original spec: buzz .30, window .40, relevance .30. */
-function readiness(p: { social_buzz: number; modern_relevance: number; year: number }) {
-  const fanAgeNow = CURRENT_YEAR - p.year + PEAK_CHILDHOOD_AGE;
-  const windowAlignment = Math.max(0, 100 - Math.abs(fanAgeNow - SWEET_SPOT_CENTER) * 8);
-  return Math.round(p.social_buzz * 0.3 + windowAlignment * 0.4 + p.modern_relevance * 0.3);
-}
-
-function rowToProperty(r: Record<string, unknown>) {
-  const base = {
-    id: r.id,
-    name: r.name,
-    year: r.year,
-    category: r.category,
-    genre: r.genre,
-    originalImpact: r.original_impact,
-    modernRelevance: r.modern_relevance,
-    socialBuzz: r.social_buzz,
-    rightsComplexity: r.rights_complexity,
-    creatorAvailability: r.creator_availability,
-    briefDescription: r.brief_description,
-    coreAudience: r.core_audience,
-    currentSignal: r.current_signal,
-    revivalFormat: r.revival_format,
+function rowToProperty(r: Record<string, unknown>): Property {
+  return {
+    id: String(r.id),
+    name: String(r.name),
+    year: Number(r.year),
+    category: r.category as Property["category"],
+    genre: String(r.genre),
+    originalImpact: Number(r.original_impact),
+    modernRelevance: Number(r.modern_relevance),
+    socialBuzz: Number(r.social_buzz),
+    rightsComplexity: Number(r.rights_complexity),
+    creatorAvailability: Number(r.creator_availability),
+    briefDescription: String(r.brief_description),
+    coreAudience: String(r.core_audience),
+    currentSignal: String(r.current_signal),
+    revivalFormat: String(r.revival_format),
     tags: JSON.parse(String(r.tags ?? "[]")),
     preserve: JSON.parse(String(r.preserve ?? "[]")),
     update: JSON.parse(String(r.update_recs ?? "[]")),
-    rubricVersion: r.rubric_version,
-    scoredAt: r.scored_at,
+    rubricVersion: String(r.rubric_version),
   };
-  return {
-    ...base,
-    revivalReadinessScore: readiness({
-      social_buzz: Number(r.social_buzz),
-      modern_relevance: Number(r.modern_relevance),
-      year: Number(r.year),
-    }),
-  };
+}
+
+/** The whole scored, ranked library. Small enough to load per request. */
+async function loadLibrary(env: Env): Promise<PropertyScore[]> {
+  const { results } = await env.DB.prepare("SELECT * FROM properties").all();
+  return scoreAll(results.map((r) => rowToProperty(r as Record<string, unknown>)));
 }
 
 app.get("/properties", async (c) => {
   const cat = c.req.query("category");
   const year = c.req.query("year");
-  const q = c.req.query("q");
-  let sql = "SELECT * FROM properties WHERE 1=1";
-  const binds: unknown[] = [];
-  if (cat && cat !== "All") { sql += " AND category = ?"; binds.push(cat); }
-  if (year && year !== "All") { sql += " AND year = ?"; binds.push(Number(year)); }
-  if (q) { sql += " AND (name LIKE ? OR brief_description LIKE ? OR tags LIKE ?)"; const like = `%${q}%`; binds.push(like, like, like); }
-  sql += " ORDER BY name";
-  const { results } = await c.env.DB.prepare(sql).bind(...binds).all();
-  const items = results.map(rowToProperty).sort(
-    (a, b) => (b.revivalReadinessScore as number) - (a.revivalReadinessScore as number),
-  ).map((p, i) => ({ ...p, rank: i + 1 }));
+  const q = c.req.query("q")?.toLowerCase();
+  // Rank across the full library first, so a filtered row keeps its global rank.
+  const items = (await loadLibrary(c.env)).filter((p) =>
+    (!cat || cat === "All" || p.category === cat) &&
+    (!year || year === "All" || p.year === Number(year)) &&
+    (!q || `${p.name} ${p.briefDescription} ${p.tags.join(" ")}`.toLowerCase().includes(q)));
   return c.json({ count: items.length, properties: items });
 });
 
 app.get("/properties/:id", async (c) => {
-  const row = await c.env.DB.prepare("SELECT * FROM properties WHERE id = ?")
-    .bind(c.req.param("id")).first();
-  if (!row) return c.json({ error: "not found" }, 404);
-  return c.json(rowToProperty(row as Record<string, unknown>));
+  const property = (await loadLibrary(c.env)).find((p) => p.id === c.req.param("id"));
+  if (!property) return c.json({ error: "not found" }, 404);
+  return c.json(property);
 });
-
-/** Shared Claude caller. Fails closed with a helpful 503 when unconfigured. */
-async function claude(env: Env, system: string, user: string): Promise<{ ok: true; text: string } | { ok: false; status: number; error: string }> {
-  if (!env.ANTHROPIC_API_KEY) {
-    return { ok: false, status: 503, error: "AI features are not configured yet. The library and deterministic scores work without them." };
-  }
-  const res = await fetch("https://api.anthropic.com/v1/messages", {
-    method: "POST",
-    headers: {
-      "content-type": "application/json",
-      "x-api-key": env.ANTHROPIC_API_KEY,
-      "anthropic-version": "2023-06-01",
-    },
-    body: JSON.stringify({
-      model: "claude-sonnet-5",
-      max_tokens: 1200,
-      system,
-      messages: [{ role: "user", content: user }],
-    }),
-  });
-  if (!res.ok) return { ok: false, status: 502, error: `model call failed (${res.status})` };
-  const j = (await res.json()) as { content?: { type: string; text?: string }[] };
-  const text = (j.content ?? []).filter((b) => b.type === "text").map((b) => b.text ?? "").join("\n");
-  return { ok: true, text };
-}
 
 /** Daily counter; limits enforced loosely until Phase 3 defines tiers. */
 async function bumpUsage(env: Env, bucket: string, actor: string, limit: number): Promise<boolean> {
@@ -129,25 +92,40 @@ app.post("/remix", async (c) => {
   const ids = (body?.propertyIds ?? []).slice(0, 4);
   const actor = (body?.sessionKey ?? "anon").slice(0, 64);
   if (ids.length < 2) return c.json({ error: "pick at least two properties" }, 400);
+  if (!c.env.ANTHROPIC_API_KEY) return c.json({ error: NOT_CONFIGURED }, 503);
   if (!(await bumpUsage(c.env, "remix", actor, 20))) return c.json({ error: "daily remix limit reached" }, 429);
 
-  const marks = "?,".repeat(ids.length).slice(0, -1);
-  const { results } = await c.env.DB.prepare(`SELECT * FROM properties WHERE id IN (${marks})`).bind(...ids).all();
-  if (results.length < 2) return c.json({ error: "unknown properties" }, 400);
-  const props = results.map(rowToProperty);
+  const props = (await loadLibrary(c.env)).filter((p) => ids.includes(p.id));
+  if (props.length < 2) return c.json({ error: "unknown properties" }, 400);
 
-  const out = await claude(
-    c.env,
-    "You are NostalDamus, a nostalgia-IP revival strategist. Blend the given properties into ONE revival concept. Output markdown: a title line, a two-sentence logline, format, target audience, what to preserve from each source, what to modernize, and one risk. Be specific and concise. Never invent facts about the original properties beyond what is provided.",
-    JSON.stringify(props.map((p) => ({ name: p.name, year: p.year, category: p.category, genre: p.genre, description: p.briefDescription, preserve: p.preserve, update: p.update }))),
-  );
-  if (!out.ok) return c.json({ error: out.error }, out.status as 503);
+  const model = c.env.AGENT_MODEL || DEFAULT_AGENT_MODEL;
+  const client = new Anthropic({ apiKey: c.env.ANTHROPIC_API_KEY, maxRetries: 1 });
+  let concept: string;
+  try {
+    const response = await client.beta.messages.create({
+      model,
+      max_tokens: 16000,
+      betas: ["server-side-fallback-2026-07-01"],
+      fallbacks: "default",
+      output_config: { effort: "low" },
+      system: "You are NostalDamus, a nostalgia-IP revival strategist. Blend the given properties into ONE original revival concept. Output markdown: a title line, a two-sentence logline, format, target audience, what to preserve from each source, what to modernize, and one risk. Be specific and concise. Never invent facts about the original properties beyond what is provided.",
+      messages: [{
+        role: "user",
+        content: JSON.stringify(props.map((p) => ({ name: p.name, year: p.year, category: p.category, genre: p.genre, readiness: p.revivalReadinessScore, description: p.briefDescription, preserve: p.preserve, update: p.update }))),
+      }],
+    });
+    if (response.stop_reason === "refusal") return c.json({ error: "The model declined this blend. Try different sources." }, 422);
+    concept = response.content.filter((b): b is Anthropic.Beta.BetaTextBlock => b.type === "text").map((b) => b.text).join("\n").trim();
+  } catch (error) {
+    const status = error instanceof Anthropic.APIError ? error.status : undefined;
+    return c.json({ error: `model call failed (${status ?? "network"})` }, 502);
+  }
 
   const id = crypto.randomUUID();
   await c.env.DB.prepare(
     "INSERT INTO remixes (id, property_ids, concept, model) VALUES (?, ?, ?, ?)",
-  ).bind(id, JSON.stringify(ids), out.text, "claude-sonnet-5").run();
-  return c.json({ id, concept: out.text, propertyIds: ids });
+  ).bind(id, JSON.stringify(ids), concept, model).run();
+  return c.json({ id, concept, propertyIds: ids });
 });
 
 app.get("/remixes/:id", async (c) => {
@@ -156,39 +134,69 @@ app.get("/remixes/:id", async (c) => {
   return c.json({ id: row.id, propertyIds: JSON.parse(String(row.property_ids)), concept: row.concept, createdAt: row.created_at });
 });
 
-app.post("/chat", async (c) => {
-  const body = await c.req.json<{ message?: string; sessionKey?: string }>().catch(() => null);
-  const msg = (body?.message ?? "").trim().slice(0, 1000);
+/**
+ * The Prophet search agent. Streams Server-Sent Events: one `step` per tool
+ * call, then `answer`, then `done` (or a single `error`).
+ */
+app.post("/agent", async (c) => {
+  const body = await c.req.json<{ message?: string; sessionKey?: string; history?: HistoryTurn[] }>().catch(() => null);
+  const question = (body?.message ?? "").trim().slice(0, 1000);
   const session = (body?.sessionKey ?? "anon").slice(0, 64);
-  if (!msg) return c.json({ error: "empty message" }, 400);
-  if (!(await bumpUsage(c.env, "chat", session, 40))) return c.json({ error: "daily chat limit reached" }, 429);
+  if (!question) return c.json({ error: "empty message" }, 400);
+  if (!c.env.ANTHROPIC_API_KEY) return c.json({ error: NOT_CONFIGURED }, 503);
+  if (!(await bumpUsage(c.env, "agent", session, 40))) return c.json({ error: "daily question limit reached" }, 429);
 
-  // Retrieval: cheap LIKE match over names/tags/descriptions, top 8 by score.
-  const like = `%${msg.split(/\s+/).slice(0, 4).join("%")}%`;
-  const { results } = await c.env.DB.prepare(
-    `SELECT * FROM properties WHERE name LIKE ?1 OR tags LIKE ?1 OR brief_description LIKE ?1 LIMIT 8`,
-  ).bind(like).all();
-  const pool = results.length ? results : (await c.env.DB.prepare("SELECT * FROM properties").all()).results;
-  const ranked = pool.map(rowToProperty)
-    .sort((a, b) => (b.revivalReadinessScore as number) - (a.revivalReadinessScore as number)).slice(0, 8);
+  // Prior turns as plain text only; the agent re-searches rather than trusting old tool output.
+  const history = (Array.isArray(body?.history) ? body.history : [])
+    .filter((t): t is HistoryTurn => (t?.role === "user" || t?.role === "assistant") && typeof t.content === "string" && t.content.trim().length > 0)
+    .slice(-8)
+    .map((t) => ({ role: t.role, content: t.content.slice(0, 2000) }));
+  // The API requires the first message to be from the user.
+  while (history[0]?.role === "assistant") history.shift();
 
-  const out = await claude(
-    c.env,
-    "You are the Prophet, NostalDamus's chat analyst for 1993-1998 IP revival. Answer ONLY from the provided scored properties. Cite each property you use as Name (year, score N). If the library cannot answer, say so and suggest the closest properties it has. Two short paragraphs maximum.",
-    `Library slice (top-ranked matches): ${JSON.stringify(ranked.map((p) => ({ name: p.name, year: p.year, category: p.category, score: p.revivalReadinessScore, signal: p.currentSignal })))}\n\nQuestion: ${msg}`,
-  );
-  if (!out.ok) return c.json({ error: out.error }, out.status as 503);
+  const library = await loadLibrary(c.env);
+  const { readable, writable } = new TransformStream();
+  const writer = writable.getWriter();
+  const encoder = new TextEncoder();
+  const emit = (event: AgentEvent) => writer.write(encoder.encode(`data: ${JSON.stringify(event)}\n\n`));
 
-  const cited = ranked.map((p) => p.id);
-  await c.env.DB.prepare(
-    "INSERT INTO chat_messages (session_key, role, content, cited_ids) VALUES (?, 'user', ?, '[]'), (?, 'assistant', ?, ?)",
-  ).bind(session, msg, session, out.text, JSON.stringify(cited)).run();
-  return c.json({ answer: out.text, cited });
+  const work = (async () => {
+    try {
+      const result = await runAgent(question, history, library, {
+        apiKey: c.env.ANTHROPIC_API_KEY!,
+        model: c.env.AGENT_MODEL,
+        effort: c.env.AGENT_EFFORT,
+      }, emit);
+      if (result) {
+        await c.env.DB.prepare(
+          `INSERT INTO agent_runs (id, session_key, question, answer, cited_ids, steps, model, input_tokens, output_tokens, cache_read_tokens)
+           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+        ).bind(
+          crypto.randomUUID(), session, question, result.answer, JSON.stringify(result.cited), JSON.stringify(result.steps),
+          result.model, result.usage.input, result.usage.output, result.usage.cacheRead,
+        ).run();
+      }
+    } catch {
+      await emit({ type: "error", message: "The agent failed unexpectedly. Try again." }).catch(() => {});
+    } finally {
+      await writer.close().catch(() => {});
+    }
+  })();
+  c.executionCtx.waitUntil(work);
+
+  return new Response(readable, {
+    headers: { "content-type": "text/event-stream; charset=utf-8", "cache-control": "no-cache, no-transform" },
+  });
 });
 
 app.get("/health", async (c) => {
   const n = await c.env.DB.prepare("SELECT COUNT(*) AS n FROM properties").first<{ n: number }>();
-  return c.json({ ok: true, properties: n?.n ?? 0, ai: Boolean(c.env.ANTHROPIC_API_KEY) });
+  return c.json({
+    ok: true,
+    properties: n?.n ?? 0,
+    ai: Boolean(c.env.ANTHROPIC_API_KEY),
+    agentModel: c.env.AGENT_MODEL || DEFAULT_AGENT_MODEL,
+  });
 });
 
 app.post("/brief-requests", async (c) => {

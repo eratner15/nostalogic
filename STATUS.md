@@ -1,6 +1,23 @@
 # STATUS - NostalDamus
 
-Updated 2026-08-15 (Yosemite batch, session 2: re-platform LIVE)
+Updated 2026-10-08 (agent search + design overhaul, branch claude/agent-search-overhaul)
+
+## Agent search + design overhaul (2026-10-08)
+- Merged the Codex revenue branch ($199 brief funnel); fixed "$199" strings that had lost the "$1".
+- Prophet Chat is now a tool-using Claude agent over D1 (worker/agent/): search, open,
+  compare, overview, find-similar. Streams its research trail, cites [[property-id]],
+  logs to agent_runs. /api/chat replaced by /api/agent. Default model claude-opus-5-5.
+- Scoring unified in src/lib/scoring.ts (worker and browser had drifted on rounding).
+- Browser bundles the real 120-property corpus (data/corpus.json) instead of the old
+  hand-coded 106-property list, so every page matches the API.
+- Full design overhaul: "broadcast archive" system (Fraunces / Inter / IBM Plex Mono,
+  amber signal color, go/watch/hold score bands), new home, library, Prophet, nav, footer.
+- Tests: npm test (12 passing). NEEDS EVAN to activate: docs/AGENT-HANDOFF.md
+  (db:migrate, wrangler secret put ANTHROPIC_API_KEY, deploy).
+- Finding: every 1993-1998 property is in the "Sweet Spot" stage in 2026 (audience
+  ages 40-45), so the timing-stage filter does not separate anything yet.
+
+## Earlier: Yosemite batch, session 2 (re-platform LIVE, 2026-08-15)
 
 ## Live surface (session 2)
 - LIVE at https://nostalogic.cafecito-ai.com (canonical). The old

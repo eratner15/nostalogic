@@ -1,19 +1,17 @@
 # NostalDamus
 
-Predictive analytics for dormant 1994-1996 IP revival.
+Revival intelligence for dormant 1993-1998 IP.
 
 NostalDamus scores movies, TV, music, games, toys, tech, and pop-culture properties against a nostalgia-readiness model, then turns the strongest candidates into timing forecasts, modernization recommendations, and revival pitches.
 
 ## What Works Now
 
-- Next.js app with a polished modern retro-futurist UI.
-- 106-property seed library covering 1994-1996 movies, TV, music, games, toys/fads, tech, and sports/media.
-- Deterministic Revival Readiness Score:
+- 120-property library (1993-1998) in Cloudflare D1, snapshot committed at `data/corpus.json`.
+- Deterministic Revival Readiness Score, shared by the worker, the agent, and the browser (`src/lib/scoring.ts`):
   `Social Buzz * 0.30 + Nostalgia Window Alignment * 0.40 + Modern Cultural Relevance * 0.30`.
-- Searchable/filterable/sortable discovery engine.
-- Deep-dive analysis page with score breakdowns, nostalgia curve, risk score, and preserve/update strategy.
-- Remix Lab that generates a development pitch locally without requiring an AI key.
-- Market Intelligence page with category heatmap, watchlist, and build prompt.
+- The Prophet: a Claude research agent that searches the library with tools and cites every property it uses (`/prophet-chat`, `worker/agent/`). Needs `ANTHROPIC_API_KEY`; see `docs/AGENT-HANDOFF.md`.
+- Library, deep-dive analysis, Remix Lab, and Market pages in the "broadcast archive" design system.
+- $199 Revival Opportunity Brief intake at `/order-report` (see `docs/REVENUE-TODAY.md`).
 
 ## Run Locally
 
@@ -27,11 +25,12 @@ Open `http://localhost:3000`.
 ## Verification
 
 ```bash
+npm test
 npm run typecheck
 npm run build
 ```
 
-`npm run lint` currently opens Next.js' interactive ESLint setup because this starter repo did not include an ESLint config.
+To run the full worker with a local database: `npm run db:local`, then `npm run dev:worker`.
 
 ## Cloudflare Worker Deployment
 
