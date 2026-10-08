@@ -12,8 +12,11 @@ import Anthropic from "@anthropic-ai/sdk";
 import { Hono } from "hono";
 import { scoreAll, type Property, type PropertyScore } from "../src/lib/scoring";
 import { DEFAULT_AGENT_MODEL, runAgent, type AgentEvent, type HistoryTurn } from "./agent/run";
+import { agentApi, type AgentEnv } from "./agent-api";
+import { loadTrackRecord, scoreHistory, weeklyLedger } from "./ledger";
+import { runSignals } from "./signals";
 
-type Env = {
+type Env = AgentEnv & {
   DB: D1Database;
   ASSETS: Fetcher;
   ANTHROPIC_API_KEY?: string;
@@ -135,10 +138,11 @@ app.get("/remixes/:id", async (c) => {
 });
 
 /**
- * The Prophet search agent. Streams Server-Sent Events: one `step` per tool
+ * The Prophet search agent (POST /api/prophet). Kept apart from /api/agent/*,
+ * which is the token-guarded Revival Watch API. Streams Server-Sent Events: one `step` per tool
  * call, then `answer`, then `done` (or a single `error`).
  */
-app.post("/agent", async (c) => {
+app.post("/prophet", async (c) => {
   const body = await c.req.json<{ message?: string; sessionKey?: string; history?: HistoryTurn[] }>().catch(() => null);
   const question = (body?.message ?? "").trim().slice(0, 1000);
   const session = (body?.sessionKey ?? "anon").slice(0, 64);
@@ -191,13 +195,22 @@ app.post("/agent", async (c) => {
 
 app.get("/health", async (c) => {
   const n = await c.env.DB.prepare("SELECT COUNT(*) AS n FROM properties").first<{ n: number }>();
+  // Revival Watch freshness. Null before the migration or the first digest.
+  const last = await c.env.DB.prepare("SELECT MAX(created_at) AS t FROM digests").first<{ t: string | null }>().catch(() => null);
+  const ageDays = last?.t ? Math.floor((Date.now() - Date.parse(`${last.t.replace(" ", "T")}Z`)) / 86_400_000) : null;
   return c.json({
     ok: true,
     properties: n?.n ?? 0,
     ai: Boolean(c.env.ANTHROPIC_API_KEY),
     agentModel: c.env.AGENT_MODEL || DEFAULT_AGENT_MODEL,
+    digest: { last: last?.t ?? null, age_days: ageDays, overdue: ageDays !== null && ageDays > 8 },
   });
 });
+
+app.get("/track-record", async (c) => c.json(await loadTrackRecord(c.env, new Date())));
+app.get("/score-history", async (c) => c.json(await scoreHistory(c.env, 8)));
+
+app.route("/", agentApi);
 
 app.post("/brief-requests", async (c) => {
   const body = await c.req.json<{
@@ -238,5 +251,21 @@ export default {
     }
     if (url.pathname.startsWith("/api")) return app.fetch(req, env, ctx);
     return env.ASSETS.fetch(req);
+  },
+
+  /**
+   * Hourly cron (wrangler.toml). Signals every hour; the weekly ledger on
+   * Monday in the 06:00 UTC hour. The day check is here, not in the cron
+   * string: in Cloudflare cron, day-of-week 1 is Sunday.
+   */
+  async scheduled(event: ScheduledController, env: Env, ctx: ExecutionContext) {
+    const now = new Date(event.scheduledTime);
+    const work = async () => {
+      if (now.getUTCDay() === 1 && now.getUTCHours() === 6) {
+        console.log("weekly ledger", JSON.stringify(await weeklyLedger(env, now)));
+      }
+      console.log("signals", JSON.stringify(await runSignals(env, now)));
+    };
+    ctx.waitUntil(work());
   },
 };

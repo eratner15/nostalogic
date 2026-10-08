@@ -1,6 +1,7 @@
 // Seed loader: JSON corpus -> D1 INSERT OR REPLACE statements -> wrangler.
 // Usage: node scripts/load-seed.mjs <seed.json> <rubric_version> [--local]
 // The committed snapshot is data/corpus.json (rubric r2-claude-2026-08-15).
+// Needs the migrations applied first (social_buzz_hand comes from 0002).
 import { readFileSync, writeFileSync } from "node:fs";
 import { tmpdir } from "node:os";
 import { join } from "node:path";
@@ -19,8 +20,8 @@ const stmts = rows.map((p) => {
     if (p[k] === undefined || p[k] === null) throw new Error(`${p.id ?? p.name}: missing ${k}`);
   }
   if (p.year < 1993 || p.year > 1998) throw new Error(`${p.id}: year ${p.year} outside window`);
-  return `INSERT OR REPLACE INTO properties (id,name,year,category,genre,original_impact,modern_relevance,social_buzz,rights_complexity,creator_availability,brief_description,core_audience,current_signal,revival_format,tags,preserve,update_recs,rubric_version)
-VALUES ('${esc(p.id)}','${esc(p.name)}',${p.year},'${esc(p.category)}','${esc(p.genre)}',${p.originalImpact},${p.modernRelevance},${p.socialBuzz},${p.rightsComplexity},${p.creatorAvailability},'${esc(p.briefDescription)}','${esc(p.coreAudience)}','${esc(p.currentSignal)}','${esc(p.revivalFormat)}',${j(p.tags)},${j(p.preserve)},${j(p.update)},'${esc(rubric)}');`;
+  return `INSERT OR REPLACE INTO properties (id,name,year,category,genre,original_impact,modern_relevance,social_buzz,rights_complexity,creator_availability,brief_description,core_audience,current_signal,revival_format,tags,preserve,update_recs,rubric_version,social_buzz_hand)
+VALUES ('${esc(p.id)}','${esc(p.name)}',${p.year},'${esc(p.category)}','${esc(p.genre)}',${p.originalImpact},${p.modernRelevance},${p.socialBuzz},${p.rightsComplexity},${p.creatorAvailability},'${esc(p.briefDescription)}','${esc(p.coreAudience)}','${esc(p.currentSignal)}','${esc(p.revivalFormat)}',${j(p.tags)},${j(p.preserve)},${j(p.update)},'${esc(rubric)}',${p.socialBuzz});`;
 });
 const out = join(tmpdir(), "nostaldamus-seed.sql");
 writeFileSync(out, stmts.join("\n") + "\n");

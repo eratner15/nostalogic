@@ -1,0 +1,3 @@
+# The credential itself (NOSTAL_AGENT_TOKEN) is added with scripts/agent-setup.sh,
+# never written in this file.
+display_name: NostalDamus Revival Watch

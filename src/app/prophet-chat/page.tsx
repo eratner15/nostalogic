@@ -98,7 +98,7 @@ function ProphetContent() {
     setTurns([...prior, { role: "user", content: message }, { role: "assistant", content: "", steps: [], cited: [], status: "working" }]);
 
     try {
-      const res = await fetch("/api/agent", {
+      const res = await fetch("/api/prophet", {
         method: "POST",
         headers: { "content-type": "application/json" },
         body: JSON.stringify({ message, sessionKey: getSessionKey(), history }),

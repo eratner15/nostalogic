@@ -1,0 +1,9 @@
+# yaml-language-server: $schema=https://platform.claude.com/schemas/ant/beta/environment.json
+name: nostaldamus-revival-watch
+description: Cloud container for Revival Watch. Egress only to the NostalDamus API.
+config:
+  type: cloud
+  networking:
+    type: limited
+    allowed_hosts:
+      - nostalogic.cafecito-ai.com

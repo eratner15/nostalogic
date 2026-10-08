@@ -1,4 +1,17 @@
-# Prophet search agent: handoff and activation
+# Agents: handoff and activation
+
+NostalDamus runs two Claude agents. They share the database but nothing else.
+
+| Agent | Runs where | Trigger | Writes |
+|---|---|---|---|
+| **Prophet** (this doc, first half) | In the worker, Messages API tool loop | A visitor asks a question | `agent_runs` log only |
+| **Revival Watch** (PR #5) | Claude Managed Agents, via `ant` | Weekly deployment, or `ant beta:deployments run` | Digests and proposals; a person approves every change at `/admin` |
+
+The Prophet answers questions on demand. Revival Watch is the `ant` agent you
+call when needed: it scans trade press weekly and proposes outcomes for the
+track record.
+
+# Prophet search agent
 
 Updated 2026-10-08.
 
@@ -37,7 +50,8 @@ or ROI claims (see `docs/DECK-RECONCILIATION.md`).
 Run these from the repository root, logged in to the Cloudflare account that
 owns the `nostaldamus` worker.
 
-1. Apply the schema. It is idempotent and adds the `agent_runs` table:
+1. Apply the D1 migrations (`worker/migrations/`). This adds the Revival Watch
+   tables, `brief_requests`, and `agent_runs`:
 
    ```bash
    npm run db:migrate
@@ -67,7 +81,7 @@ owns the `nostaldamus` worker.
 
 | Setting | Where | Default | Notes |
 |---|---|---|---|
-| `ANTHROPIC_API_KEY` | worker secret | none | Without it, `/api/agent` and `/api/remix` return a clear 503. The library still works. |
+| `ANTHROPIC_API_KEY` | worker secret | none | Without it, `/api/prophet` and `/api/remix` return a clear 503. The library still works. |
 | `AGENT_MODEL` | worker var or secret | `claude-opus-5-5` | Set `claude-sonnet-5-5` or `claude-haiku-5-5` to lower cost per question. |
 | `AGENT_EFFORT` | worker var or secret | `medium` | `low` is faster and cheaper; `high` researches harder. |
 
@@ -112,3 +126,17 @@ For live answers locally, put `ANTHROPIC_API_KEY=...` in `.dev.vars`
   truth; new data sources (social listening, box office) belong in D1 first.
 - The corpus snapshot `data/corpus.json` must match D1. After a re-score, load
   the new JSON with `node scripts/load-seed.mjs <file> <rubric> ` and commit it.
+
+## Full production activation (both agents)
+
+Run in order from the repository root:
+
+1. Apply the migrations: `npm run db:migrate`.
+2. Set the worker secrets, one at a time: `npx wrangler secret put ANTHROPIC_API_KEY`,
+   then `ADMIN_TOKEN`. (`scripts/agent-setup.sh` creates `AGENT_TOKEN` for you.)
+3. Deploy: `npm run deploy`. The hourly signal cron starts with this deploy.
+4. Load the signal sources after a human review of
+   `docs/revival-watch/sources-proposed.csv`: `node scripts/load-sources.mjs docs/revival-watch/sources-proposed.csv --remote`.
+5. Create the Revival Watch managed agent: `scripts/agent-setup.sh`. It needs
+   `ant` logged in, and it asks before each change.
+6. Run it on demand at any time: `ant beta:deployments run --deployment-id <id>`.

@@ -19,9 +19,20 @@ run_worker_first = true
 binding = "DB"
 database_name = "nostaldamus-db"
 database_id = "1c94c92c-5013-413a-83d3-97207f122309"
+migrations_dir = "worker/migrations"
 
 # Secret (wrangler secret put, never here): ANTHROPIC_API_KEY. Without it the
 # library and deterministic scoring work; Remix/Chat return a clear 503.
 
 # Optional secret: REPORT_CHECKOUT_URL. When configured, successful $199
 # brief intake redirects to hosted checkout; otherwise the team follows up manually.
+
+# Revival Watch. Hourly: signal fetch. Monday 06:00 UTC hour: weekly ledger.
+# The day check is in worker/index.ts scheduled(), not here (CF cron DOW 1 = Sunday).
+[triggers]
+crons = ["17 * * * *"]
+
+# Secrets for Revival Watch (wrangler secret put, never here):
+#   AGENT_TOKEN  - the Revival Watch agent; the same value lives in its vault.
+#   ADMIN_TOKEN  - the /admin review page.
+#   RESEND_API_KEY + DIGEST_EMAIL_TO - optional digest email.

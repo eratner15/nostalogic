@@ -49,7 +49,8 @@ export interface PropertyScore extends Property {
   recommendation: string;
 }
 
-export const CURRENT_YEAR = 2026;
+/** The year of the score, so the window moves each year (PR #5 removed the fixed 2026). */
+export const CURRENT_YEAR = new Date().getUTCFullYear();
 export const PEAK_CHILDHOOD_AGE = 12;
 export const SWEET_SPOT_CENTER = 40;
 

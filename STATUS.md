@@ -6,7 +6,7 @@ Updated 2026-10-08 (agent search + design overhaul, branch claude/agent-search-o
 - Merged the Codex revenue branch ($199 brief funnel); fixed "$199" strings that had lost the "$1".
 - Prophet Chat is now a tool-using Claude agent over D1 (worker/agent/): search, open,
   compare, overview, find-similar. Streams its research trail, cites [[property-id]],
-  logs to agent_runs. /api/chat replaced by /api/agent. Default model claude-opus-5-5.
+  logs to agent_runs. /api/chat replaced by /api/prophet. Default model claude-opus-5-5.
 - Scoring unified in src/lib/scoring.ts (worker and browser had drifted on rounding).
 - Browser bundles the real 120-property corpus (data/corpus.json) instead of the old
   hand-coded 106-property list, so every page matches the API.
@@ -18,6 +18,41 @@ Updated 2026-10-08 (agent search + design overhaul, branch claude/agent-search-o
   ages 40-45), so the timing-stage filter does not separate anything yet.
 
 ## Earlier: Yosemite batch, session 2 (re-platform LIVE, 2026-08-15)
+
+
+## Revival Watch (2026-10-08, PR #5, merged into PR #4)
+Plan: docs/plans/revival-watch.html (all five defaults accepted). Built and
+tested locally; NOT deployed. Prod D1 migration not applied.
+
+Built:
+- Weekly score snapshots + public /track-record (flag at 80, hit = news within
+  24 months, hit rate hidden until 20 calls resolve). A call stays open even
+  if the score falls (withdrawing would hide misses).
+- Hourly signal cron (worker/signals.ts): Wikipedia pageviews + posts in the
+  property's own subreddit via Arctic Shift (global title search is blocked).
+  Per-pair bookmarks; a failed read writes a gap row, never a zero.
+- Rubric r3 buzz: percentile of signals, quantile-mapped onto the r2 hand
+  scale (22-80), only once 30+ properties have coverage. Hand scores kept in
+  properties.social_buzz_hand.
+- Agent API (/api/agent/*, AGENT_TOKEN) + admin review (/admin, ADMIN_TOKEN).
+  Digest, proposals and cursor commit in one transaction or not at all.
+- Managed Agents files: agents/ environments/ memory_stores/ vaults/
+  deployments/ + scripts/agent-setup.sh. `ant apply --dry-run` validated.
+- Fixed the fixed-2026 year in worker and client scoring.
+- Tests: npm run test:worker (11 pass); npm run typecheck:worker; next build OK.
+
+Next (in order, each needs Evan where marked):
+1. Review docs/revival-watch/sources-proposed.csv (wrong rows exist, e.g. All
+   That -> All-American Girl). Save as sources-reviewed.csv.
+2. EVAN: apply migration to prod: `npx wrangler d1 migrations apply nostaldamus-db --remote`.
+3. EVAN: set secrets ADMIN_TOKEN (and optional RESEND_API_KEY, DIGEST_EMAIL_TO); deploy.
+4. node scripts/load-sources.mjs docs/revival-watch/sources-reviewed.csv --remote;
+   then POST /api/admin/run/signals until backfill settles; POST /api/admin/run/weekly.
+5. EVAN: scripts/agent-setup.sh (ant apply, memory seed, AGENT_TOKEN, manual run).
+   Uses the $200 promo credit (expires 2026-10-22; auto-reload off).
+
+
+Updated 2026-08-15 (Yosemite batch, session 2: re-platform LIVE)
 
 ## Live surface (session 2)
 - LIVE at https://nostalogic.cafecito-ai.com (canonical). The old

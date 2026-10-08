@@ -1,0 +1,442 @@
+<!doctype html>
+<html lang="en">
+<meta charset="utf-8">
+<title>Revival Watch Plan</title>
+<link rel="stylesheet" href="/home/eratner/.claude/plugins/cache/claude-community/html-plan/1.0.0/skills/html-plan/runtime/htmlplan.css">
+<script src="/home/eratner/.claude/plugins/cache/claude-community/html-plan/1.0.0/skills/html-plan/runtime/htmlplan.js" defer></script>
+<style data-mock-shared>
+  .ui { font: 14px/1.4 -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: #1c1b19; background: #fff; border: 1px solid #ddd8cc; border-radius: 10px; overflow: hidden; }
+  .ui .hd { padding: 9px 14px; border-bottom: 1px solid #eee9dd; font-weight: 650; display: flex; gap: 8px; align-items: baseline; } .ui .hd small { color: #8a8578; font-weight: 400; }
+  .ui .row { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; padding: 9px 14px; border-bottom: 1px solid #f3efe6; } .ui .row small { color: #8a8578; }
+  .ui .ln { padding: 7px 14px; border-bottom: 1px solid #f3efe6; color: #5f5a4f; } .ui .ln b { color: #1c1b19; font-weight: 600; }
+  .ui .ft { display: flex; gap: 8px; align-items: center; padding: 10px 14px; border-top: 1px solid #eee9dd; background: #faf8f3; font-size: 12.5px; color: #5f5a4f; }
+  .ui .btn { font-weight: 600; font-size: 12.5px; padding: 5px 10px; border-radius: 7px; border: 1px solid #ddd8cc; background: #fff; } .ui .btn.pri { background: #1c1b19; color: #fff; border-color: #1c1b19; }
+  .ui .score { font-weight: 700; font-variant-numeric: tabular-nums; }
+  .ui .spark { font-family: ui-monospace, monospace; letter-spacing: 1px; color: #b8412c; }
+  .ui .ok { color: #1f7a52; font-weight: 650; } .ui .bad { color: #b42318; font-weight: 650; } .ui .warn { color: #a15c07; font-weight: 650; } .ui .dim { color: #8a8578; }
+  .ui .tag { font-size: 11.5px; padding: 1px 7px; border-radius: 99px; background: #f3efe6; color: #5f5a4f; }
+</style>
+<body>
+
+<header>
+  <h1>Revival Watch and Prediction Ledger for NostalDamus</h1>
+  <doc-changes new="13" changed="5"></doc-changes>
+  <details class="thread"><summary>Why · 4 sources</summary>
+    <doc-quote via="prompt" from="Evan">review this document https://claude.dev/blog/building-effective-agent-automations/ and we want to build out nostaldamus much further</doc-quote>
+    <doc-quote via="prompt" from="Evan">lets work through nostalogic and turn this into a detailed plan</doc-quote>
+    <doc-quote via="doc" from="Building effective agent automations" href="https://claude.dev/blog/building-effective-agent-automations/">For every item you will report, re-check its live source just before posting.</doc-quote>
+    <doc-quote via="doc" from="docs/DECK-RECONCILIATION.md">The number is a target that the roadmap says still needs validating, printed elsewhere as an achieved result.</doc-quote>
+  </details>
+</header>
+
+<main>
+<doc-plan>
+
+<!-- ═════ 1 · score history ═════ -->
+<doc-claim>
+  <p>Each property shows its weekly score history, not one frozen number.</p>
+  <doc-mock frame="none" w="440"><template>
+<div class="ui">
+  <div class="hd">Starship Troopers <small>1997 · Movie</small></div>
+  <div class="row"><span>Revival Readiness</span><span class="score" data-ref="score">82</span>
+    <small class="spark" data-ref="spark">▅▅▆▆▆▇▇▆</small><small>8 weeks</small></div>
+  <div class="ln">Buzz <b>71</b> <span class="dim">· from signals, 2 Oct</span></div>
+  <div class="ln">Rubric <b>r3</b> <span class="dim">· snapshot 2026-10-12</span></div>
+</div></template>
+    <doc-pin ref="spark" anchor="r" title="New">One mark for each weekly snapshot.</doc-pin>
+  </doc-mock>
+
+  <doc-claim>
+    <p>The Worker cron saves every score once a week.</p>
+    <doc-calls title="Weekly snapshot" caption="The cron also runs the signal fetch. See claim 3.">
+<script type="text/plain">
+~ export default { fetch }                         @ worker/index.ts:222
++   **scheduled**(event, env, ctx)                 @ worker/index.ts:234   -- new handler
++     if UTC Monday → **snapshotScores**(env)      @ worker/ledger.ts:12
++       SELECT * FROM properties                   @ worker/ledger.ts:14
++       readiness(p, now)                          @ worker/index.ts:27
++       INSERT OR IGNORE INTO score_snapshots      @ worker/ledger.ts:22
+</script>
+    </doc-calls>
+    <doc-claim at="worker/index.ts:234">
+      <p><b>index.ts:234</b> · scheduled()</p>
+      <doc-code title="index.ts · sketch" lang="ts" start="234">
+<script type="text/plain">
+async scheduled(event: ScheduledController, env: Env, ctx: ExecutionContext) {
+  const now = new Date(event.scheduledTime);
+  ctx.waitUntil(runSignals(env, now));          // claim 3, every hour
+  if (now.getUTCDay() === 1 && now.getUTCHours() === 6) {
+    ctx.waitUntil(snapshotScores(env, now));    // once a week
+  }
+},
+</script>
+        <doc-pin line="237" tone="warn" title="Day check in JS, not in cron">In Cloudflare cron, 1 is Sunday. tril-pnl lost Fridays to this.</doc-pin>
+      </doc-code>
+    </doc-claim>
+  </doc-claim>
+
+  <doc-claim>
+    <p>The score uses the year of the snapshot, not a fixed 2026.</p>
+    <doc-code src="worker/index.ts" lines="22-31" hl="22,28">
+      <doc-pin line="22" tone="risk" title="Fixed year">On 1 January 2027 every window score moves by 8 points.</doc-pin>
+    </doc-code>
+  </doc-claim>
+
+  <doc-claim>
+    <p>A snapshot row never changes after the cron writes it.</p>
+    <doc-code title="ledger.ts · sketch" lang="sql">
+<script type="text/plain">
+INSERT OR IGNORE INTO score_snapshots
+  (property_id, week, score, social_buzz, modern_relevance,
+   window_alignment, rubric_version)
+VALUES (?, ?, ?, ?, ?, ?, ?);
+-- PRIMARY KEY (property_id, week): a second run in the same week does nothing
+</script>
+    </doc-code>
+  </doc-claim>
+</doc-claim>
+
+<!-- ═════ 2 · track record ═════ -->
+<doc-claim>
+  <p>A public track record compares past flags to real revival news.</p>
+  <doc-machine name="flag" caption="Each property moves through these states. The page shows one row for each flag.">
+<script type="text/plain">
+machine flag initial watching
+state watching          # Score under the flag line. No call.
+state flagged           # Score at or over the line. The call is open.
+state hit       final   # Revival news came inside the window.
+state miss      final   # The window closed with no news.
+state surprise  final   # News came while the score was under the line.
+
+| watching | flagged | hit |
+| surprise | miss    | .   |
+
+watching -rise->     flagged  : score >= 80
+flagged  -fall->     watching : score < 80
+flagged  -news->     hit      : outcome
+flagged  -expire->   miss     : 24 months
+watching -news->     surprise : outcome
+</script>
+    <div data-state="watching"><doc-mock frame="none" w="420"><template><div class="ui"><div class="row"><b>Daria</b><span class="dim">watching</span><small>Score 76 · under the line</small></div></div></template></doc-mock></div>
+    <div data-state="flagged"><doc-mock frame="none" w="420"><template><div class="ui"><div class="row"><b>Banjo-Kazooie</b><span class="warn">open</span><small>Flagged 2026-10-12 at 81 · closes 2028-10-12</small></div></div></template></doc-mock></div>
+    <div data-state="hit"><doc-mock frame="none" w="420"><template><div class="ui"><div class="row"><b>Example property</b><span class="ok">hit</span><small>Flagged at 83 · news 7 months later · deadline.com</small></div></div></template></doc-mock></div>
+    <div data-state="miss"><doc-mock frame="none" w="420"><template><div class="ui"><div class="row"><b>Example property</b><span class="bad">miss</span><small>Flagged at 80 · no news in 24 months</small></div></div></template></doc-mock></div>
+    <div data-state="surprise"><doc-mock frame="none" w="420"><template><div class="ui"><div class="row"><b>Example property</b><span class="bad">surprise</span><small>News at score 64 · the model missed it</small></div></div></template></doc-mock></div>
+  </doc-machine>
+  <doc-ask id="hitrule">
+    <p>What counts as a flag and a hit?</p>
+    <label><input type="radio" name="hitrule" value="80-24" checked> Score 80 or more, news inside 24 months</label>
+    <label><input type="radio" name="hitrule" value="75-36"> Score 75 or more, news inside 36 months <small>more flags, slower to resolve</small></label>
+    <label><input type="radio" name="hitrule" value="top10-24"> Top 10 by score, news inside 24 months <small>flags stay a fixed count</small></label>
+  </doc-ask>
+
+  <doc-claim>
+    <p>The page shows no hit rate until 20 flags resolve.</p>
+    <doc-mock frame="none" w="440"><template>
+<div class="ui">
+  <div class="hd">Track record <small>rubric r3 · since 2026-10-12</small></div>
+  <div class="row"><span>Open flags</span><span class="score">14</span></div>
+  <div class="row"><span>Resolved (hit or miss)</span><span class="score">0</span></div>
+  <div class="row" data-ref="rate"><span>Hit rate</span><span class="dim">shown after 20 resolve</span></div>
+  <div class="ft">Every flag, outcome and source link is listed below.</div>
+</div></template>
+      <doc-pin ref="rate" anchor="r" title="No number yet">This replaces the 87% claim with a real count.</doc-pin>
+    </doc-mock>
+  </doc-claim>
+
+  <doc-claim>
+    <p>Only an approved outcome with a source link changes a flag state.</p>
+    <doc-calls title="Outcomes" caption="The state is a query over snapshots and outcomes. No state column is stored.">
+<script type="text/plain">
++ GET /api/track-record                            @ worker/ledger.ts:40
++   **flagStates**(env, rule)                      @ worker/ledger.ts:48
++     SELECT … FROM score_snapshots s LEFT JOIN outcomes o   @ worker/ledger.ts:55
++ POST /api/admin/proposals/:id/approve            @ worker/agent-api.ts:88
++   kind = 'outcome' → INSERT INTO outcomes        @ worker/agent-api.ts:97
++ <**TrackRecord**/>                               @ src/app/track-record/page.tsx:1
+</script>
+    </doc-calls>
+  </doc-claim>
+</doc-claim>
+
+<!-- ═════ 3 · signals ═════ -->
+<doc-claim>
+  <p>An hourly cron reads public signals and keeps one bookmark for each source.</p>
+  <doc-mock frame="terminal" title="wrangler tail nostaldamus" w="470"><template><span class="dim">06:17</span> runSignals  batch 20 of 240 pairs
+<span class="dim">06:17</span> <span class="g">ok</span>   wikipedia  daria-1997       2026-10-07 → 10-08
+<span class="dim">06:17</span> <span class="g">ok</span>   arcticshift daria-1997       +3 posts
+<span class="dim">06:17</span> <span class="r">gap</span>  arcticshift banjo-kazooie   HTTP 503, bookmark kept
+<span class="dim">06:17</span> <span class="g">ok</span>   wikipedia  banjo-kazooie   2026-10-07 → 10-08
+<span class="dim">06:18</span> done  19 ok · 1 gap · 41 subrequests</template></doc-mock>
+  <doc-ask id="sources">
+    <p>Which sources go into version 1?</p>
+    <label><input type="checkbox" name="sources" value="wikipedia" checked> Wikipedia pageviews <small>free, no key, daily counts</small></label>
+    <label><input type="checkbox" name="sources" value="arcticshift" checked> Reddit mentions through Arctic Shift <small>reddit.com blocks this host</small></label>
+    <label><input type="checkbox" name="sources" value="news" checked> Trade news, read by the agent <small>claim 4; not in the cron</small></label>
+    <label><input type="checkbox" name="sources" value="youtube"> YouTube views <small>needs a Google API key</small></label>
+  </doc-ask>
+
+  <doc-claim>
+    <p>Each run takes the 20 stalest pairs, ordered by bookmark.</p>
+    <doc-calls title="Signal fetch" caption="No LLM call in this path. Fetch, parse and store only.">
+<script type="text/plain">
++ **runSignals**(env, now)                          @ worker/signals.ts:10
++   SELECT … FROM signal_bookmarks ORDER BY read_to LIMIT 20   @ worker/signals.ts:14
++   **fetchWikipedia**(title, from, to)             @ worker/signals.ts:40   -- wikimedia.org pageviews API
++   **fetchArcticShift**(query, after)              @ worker/signals.ts:70
++   env.DB.batch([reading, bookmark])               @ worker/signals.ts:28
+~ wrangler.toml  [triggers] crons = ["17 * * * *"]  @ wrangler.toml:24
+</script>
+    </doc-calls>
+    <doc-note tone="warn"><strong>Deploy risk</strong> A route-sync error aborts the deploy before triggers apply. The cron then does not run, and nothing reports it. After deploy, read the cron list in the dashboard.</doc-note>
+  </doc-claim>
+
+  <doc-claim>
+    <p>A failed read writes a gap row and keeps the old bookmark.</p>
+    <doc-code title="signals.ts · sketch" lang="ts" start="20">
+<script type="text/plain">
+const res = await fetchOne(pair, bm.read_to, now);
+if (!res.ok) {
+  await env.DB.prepare(
+    "INSERT INTO signal_readings (property_id, source, status, detail, read_at) VALUES (?, ?, 'gap', ?, ?)",
+  ).bind(pair.property_id, pair.source, res.error, now.toISOString()).run();
+  return;                                     // bookmark unchanged: next run covers the same span
+}
+await env.DB.batch([
+  insertReading(pair, res.value, now),        // status 'ok'
+  advanceBookmark(pair, res.readTo),          // only after the reading is in
+]);
+</script>
+      <doc-pin line="25" tone="ok" title="A gap is not a zero">Buzz never falls because a source was down.</doc-pin>
+    </doc-code>
+  </doc-claim>
+
+  <doc-claim>
+    <p>Buzz becomes a fixed formula over 30 days of signals.</p>
+    <doc-code title="ledger.ts · sketch (rubric r3)" lang="ts">
+<script type="text/plain">
+// Percentile rank across the corpus, so one viral week cannot reach 100.
+export function signalBuzz(p: Readings, corpus: Readings[]): number | null {
+  const wiki = growth(p.wiki30, p.wiki90prior);          // 30d mean vs prior 90d mean
+  const reddit = p.redditMentions30;
+  if (wiki === null && reddit === null) return null;     // no fresh data: keep last buzz
+  return Math.round(
+    0.6 * pctile(wiki, corpus.map(c => growth(c.wiki30, c.wiki90prior))) +
+    0.4 * pctile(reddit, corpus.map(c => c.redditMentions30)),
+  );
+}
+</script>
+    </doc-code>
+    <doc-ask id="buzz">
+      <p>Where does the buzz score come from?</p>
+      <label><input type="radio" name="buzz" value="formula" checked> The formula above, as rubric r3 <small>reproducible; hand scores kept as r2 history</small></label>
+      <label><input type="radio" name="buzz" value="hand"> Hand scores stay; the agent proposes changes <small>slower; a person reads each one</small></label>
+    </doc-ask>
+  </doc-claim>
+
+  <doc-claim>
+    <p>A one-time script maps each property to a Wikipedia title.</p>
+    <doc-code title="scripts/map-wiki-titles.mjs · sketch" lang="js">
+<script type="text/plain">
+// Writes wiki-titles.csv for a person to read before load. No D1 write here.
+for (const p of properties) {
+  const hit = await search(`${p.name} ${p.year} ${p.category}`);   // MediaWiki search API
+  rows.push([p.id, hit?.title ?? "", hit ? confidence(hit, p) : 0]);
+}
+// After review: node scripts/load-wiki-titles.mjs wiki-titles.csv
+</script>
+    </doc-code>
+  </doc-claim>
+</doc-claim>
+
+<!-- ═════ 4 · Revival Watch agent ═════ -->
+<doc-claim>
+  <p>Each Monday the Revival Watch agent posts a digest of what changed.</p>
+  <doc-mock frame="none" w="460"><template>
+<div class="ui">
+  <div class="hd">Revival Watch <small>week of 12 Oct 2026</small></div>
+  <div class="row"><b>Banjo-Kazooie crossed the flag line</b><span class="score">81</span><small>Wikipedia views +38% in 30 days</small></div>
+  <div class="row"><b>News: Daria spin-off in talks</b><span class="tag">proposal</span><small>variety.com · re-checked 07:41</small></div>
+  <div class="row"><b>Rights note: Rocko's Modern Life</b><span class="tag">proposal</span><small>deadline.com · rights_complexity 6 → 4</small></div>
+  <div class="ft" data-ref="gaps"><span class="warn">Not read:</span> Arctic Shift for 3 properties (HTTP 503).</div>
+</div></template>
+    <doc-pin ref="gaps" anchor="r" title="Last line names every gap">The article's rule for failed reads.</doc-pin>
+  </doc-mock>
+  <doc-ask id="dest">
+    <p>Where does the digest go?</p>
+    <label><input type="radio" name="dest" value="private-email" checked> A private page plus an email to Evan <small>until a buyer is chosen</small></label>
+    <label><input type="radio" name="dest" value="public"> A public page at /revival-watch <small>a sales asset; mistakes are public</small></label>
+    <label><input type="radio" name="dest" value="email"> Email to Evan only</label>
+  </doc-ask>
+
+  <doc-claim>
+    <p>The agent runs as a scheduled deployment with two memory stores.</p>
+    <doc-code title="deployments/revival-watch-weekly.md · sketch" lang="yaml">
+<script type="text/plain">
+---
+name: revival-watch-weekly
+agent: ../agents/revival-watch.md
+environment_id: ../environments/revival-watch.yaml
+vault_ids: [vlt_nostal]                # NOSTAL_AGENT_TOKEN, header only, one host
+resources:
+  - {type: memory_store, memory_store_id: ../memory_stores/nostal-preferences.yaml, access: read_only}
+  - {type: memory_store, memory_store_id: ../memory_stores/nostal-state.yaml, access: read_write}
+schedule: {type: cron, expression: "32 7 * * 1", timezone: America/New_York}
+budget: {type: limit, max_list_cost: {amount: "500", currency: USD}}
+---
+Run this week's Revival Watch. Follow your instructions in order.
+</script>
+      <doc-pin line="9" title="POSIX cron here">In this cron, 1 is Monday. Cloudflare differs.</doc-pin>
+    </doc-code>
+    <doc-ask id="model">
+      <p>Which model and budget cap for each run?</p>
+      <label><input type="radio" name="model" value="opus-500" checked> Opus 5.5, cap $5 <small>approximately 3x a run, by estimate</small></label>
+      <label><input type="radio" name="model" value="sonnet-300"> Sonnet 5.5, cap $3 <small>half the token price</small></label>
+    </doc-ask>
+    <doc-claim at="agents/revival-watch.md:1">
+      <p><b>agents/revival-watch.md</b> · the instructions</p>
+      <doc-code title="agents/revival-watch.md · sketch" lang="markdown">
+<script type="text/plain">
+1. Read /mnt/memory/nostal-preferences/ fresh. If you cannot read it, stop and say so.
+2. GET /api/agent/changes?since=<cursor> with header x-agent-token: $NOSTAL_AGENT_TOKEN.
+3. Search trade news for each flagged property and each property with a buzz jump.
+4. For every item you will report, fetch its source again just before you post.
+   Drop the item if the page does not name the property and a revival.
+5. POST /api/agent/digest once, with cursor_from, cursor_to, items and unread_sources.
+6. If the response is not {"ok": true, "digest_id": ...}, stop. Do not write state.
+7. Then append one line to /mnt/memory/nostal-state/run-log.md.
+</script>
+      </doc-code>
+    </doc-claim>
+  </doc-claim>
+
+  <doc-claim>
+    <p>The agent reads and proposes through the Worker. It writes no property.</p>
+    <doc-calls title="Agent API" caption="AGENT_TOKEN opens only these three routes.">
+<script type="text/plain">
++ **requireAgent**(c)                              @ worker/agent-api.ts:10   -- x-agent-token vs AGENT_TOKEN secret
++ GET  /api/agent/changes?since=cursor             @ worker/agent-api.ts:24   -- readings, gaps, crossings since cursor
++ POST /api/agent/digest                           @ worker/agent-api.ts:52
++   **commitDigest**(env, body)                    @ worker/agent-api.ts:60
++ GET  /api/agent/property/:id                     @ worker/agent-api.ts:80
+- write to properties                              @ worker/agent-api.ts:1    -- no route exists for this
+</script>
+    </doc-calls>
+  </doc-claim>
+
+  <doc-claim>
+    <p>The digest, its proposals and the new cursor commit in one batch.</p>
+    <doc-code title="agent-api.ts · sketch" lang="ts" start="60">
+<script type="text/plain">
+export async function commitDigest(env: Env, b: DigestBody) {
+  const id = crypto.randomUUID();
+  const run = await env.DB.prepare("SELECT cursor FROM agent_cursor WHERE agent = 'revival-watch'").first();
+  if (run?.cursor !== b.cursor_from) return { ok: false, error: "stale cursor" };
+  await env.DB.batch([
+    insertDigest(id, b),
+    ...b.items.map(i => insertProposalOrIgnore(id, i)),   // UNIQUE(item_key): no repeat across weeks
+    setCursor("revival-watch", b.cursor_to),
+  ]);
+  return { ok: true, digest_id: id };
+}
+</script>
+      <doc-pin line="64" tone="ok" title="All or nothing">If the post fails, the next run covers the same span.</doc-pin>
+    </doc-code>
+  </doc-claim>
+
+  <doc-claim>
+    <p>The page says “digest overdue” if no digest arrives in 8 days.</p>
+    <doc-mock frame="none" w="420"><template>
+<div class="ui"><div class="row"><span class="bad">Digest overdue</span><span class="dim">last: 28 Sep</span><small>The Monday run did not post. Check deployment runs.</small></div></div></template>
+    </doc-mock>
+  </doc-claim>
+</doc-claim>
+
+<!-- ═════ 5 · human approval ═════ -->
+<doc-claim>
+  <p>A person approves each proposal before the library changes.</p>
+  <doc-mock frame="none" w="460"><template>
+<div class="ui">
+  <div class="hd">Proposals <small>3 open</small></div>
+  <div class="row"><b>Daria · outcome: spin-off in talks</b><span><span class="btn pri" data-ref="ok">Approve</span> <span class="btn">Reject</span></span>
+    <small>variety.com/2026/… · fetched 07:41 · agent quote shown below</small></div>
+  <div class="row"><b>Rocko's Modern Life · rights_complexity 6 → 4</b><span><span class="btn pri">Approve</span> <span class="btn">Reject</span></span>
+    <small>deadline.com/2026/… · reason: rights moved to one holder</small></div>
+</div></template>
+    <doc-pin ref="ok" anchor="tl" title="Writes with provenance">The change keeps the proposal id and the source link.</doc-pin>
+  </doc-mock>
+
+  <doc-claim>
+    <p>Approve writes the change, the source and the time in one batch.</p>
+    <doc-calls title="Review" caption="ADMIN_TOKEN guards these routes. The page asks for it once and keeps it in sessionStorage.">
+<script type="text/plain">
++ <**ProposalsPage**/>                             @ src/app/admin/proposals/page.tsx:1
++   GET  /api/admin/proposals?status=open          @ worker/agent-api.ts:84
++   POST /api/admin/proposals/:id/approve          @ worker/agent-api.ts:88
++     kind = 'field' → UPDATE properties SET …, scored_at   @ worker/agent-api.ts:104
++     kind = 'outcome' → INSERT INTO outcomes      @ worker/agent-api.ts:97
++   POST /api/admin/proposals/:id/reject           @ worker/agent-api.ts:120
+</script>
+    </doc-calls>
+  </doc-claim>
+</doc-claim>
+
+<!-- ═════ shared ═════ -->
+<doc-claim aux="shared">
+  <p>Shared: one migration with seven tables.</p>
+  <doc-schema id="migration" lang="sql" title="worker/migrations/0002_ledger_signals.sql" caption="All times are UTC ISO strings, as in schema.sql.">
+<script type="text/plain">
+CREATE TABLE score_snapshots (
+  property_id TEXT NOT NULL REFERENCES properties(id),
+  week TEXT NOT NULL,                       -- Monday date, YYYY-MM-DD
+  score INTEGER NOT NULL, social_buzz INTEGER NOT NULL,
+  modern_relevance INTEGER NOT NULL, window_alignment INTEGER NOT NULL,
+  rubric_version TEXT NOT NULL,
+  PRIMARY KEY (property_id, week)
+);
+CREATE TABLE outcomes (
+  id TEXT PRIMARY KEY, property_id TEXT NOT NULL REFERENCES properties(id),
+  kind TEXT NOT NULL CHECK (kind IN ('announced','released','denied')),
+  event_date TEXT NOT NULL, source_url TEXT NOT NULL, proposal_id TEXT,
+  approved_at TEXT NOT NULL
+);
+CREATE TABLE signal_bookmarks (
+  property_id TEXT NOT NULL, source TEXT NOT NULL,
+  query TEXT NOT NULL,                      -- wiki title or search phrase
+  read_to TEXT,                             -- null: never read
+  PRIMARY KEY (property_id, source)
+);
+CREATE TABLE signal_readings (
+  id INTEGER PRIMARY KEY AUTOINCREMENT, property_id TEXT NOT NULL, source TEXT NOT NULL,
+  status TEXT NOT NULL CHECK (status IN ('ok','gap')),
+  span_from TEXT, span_to TEXT, value REAL, detail TEXT, read_at TEXT NOT NULL
+);
+CREATE TABLE proposals (
+  id TEXT PRIMARY KEY, digest_id TEXT NOT NULL, item_key TEXT NOT NULL UNIQUE,
+  property_id TEXT NOT NULL, kind TEXT NOT NULL CHECK (kind IN ('outcome','field')),
+  payload TEXT NOT NULL,                    -- JSON: field, from, to, or outcome fields
+  source_url TEXT NOT NULL, status TEXT NOT NULL DEFAULT 'open'
+);
+CREATE TABLE digests (id TEXT PRIMARY KEY, week TEXT NOT NULL, body TEXT NOT NULL,
+  unread_sources TEXT NOT NULL DEFAULT '[]', created_at TEXT NOT NULL DEFAULT (datetime('now')));
+CREATE TABLE agent_cursor (agent TEXT PRIMARY KEY, cursor INTEGER NOT NULL DEFAULT 0);
+-- cursor = last signal_readings.id the agent covered
+</script>
+  </doc-schema>
+</doc-claim>
+
+<doc-claim aux="scope">
+  <p>Not changing: Remix Lab, Prophet Chat, the $199 funnel, the deck.</p>
+  <ul>
+    <li>The readiness weights stay 0.30 / 0.40 / 0.30. Only the buzz input can change (decision on 3.3).</li>
+    <li>Remix Lab and Prophet Chat stay off until Evan sets <code>ANTHROPIC_API_KEY</code>. The agent does not need that Worker secret.</li>
+    <li>The deck claims (87%, ROI, LTV:CAC) need a separate edit by Evan. This plan gives the honest count that replaces them.</li>
+    <li><code>/market-intelligence</code> still reads bundled data and says 1994-1996. That is a separate fix.</li>
+    <li>No accounts, no paywall, no tier pricing.</li>
+  </ul>
+</doc-claim>
+
+</doc-plan>
+</main>
+</body>
+</html>

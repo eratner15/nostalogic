@@ -11,6 +11,7 @@ const navItems = [
   { href: "/analysis-tools/", label: "Analysis" },
   { href: "/remix-lab/", label: "Remix Lab" },
   { href: "/market-intelligence/", label: "Market" },
+  { href: "/track-record/", label: "Track record" },
 ];
 
 const isActive = (pathname: string, href: string) => pathname.replace(/\/$/, "") === href.replace(/\/$/, "");

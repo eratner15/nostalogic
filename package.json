@@ -9,9 +9,9 @@
     "start": "next start",
     "lint": "npm run typecheck",
     "typecheck": "tsc --noEmit && tsc --noEmit -p worker/tsconfig.json",
-    "test": "tsx --test worker/agent/agent.test.ts",
-    "db:local": "wrangler d1 execute nostaldamus-db --local --file worker/schema.sql && node scripts/load-seed.mjs data/corpus.json r2-claude-2026-08-15 --local",
-    "db:migrate": "wrangler d1 execute nostaldamus-db --remote --file worker/schema.sql",
+    "test": "tsx --test worker/agent/agent.test.ts worker/scoring.test.ts worker/agent-api.test.ts",
+    "db:local": "wrangler d1 migrations apply nostaldamus-db --local && node scripts/load-seed.mjs data/corpus.json r2-claude-2026-08-15 --local",
+    "db:migrate": "wrangler d1 migrations apply nostaldamus-db --remote",
     "dev:worker": "npm run build && wrangler dev"
   },
   "dependencies": {
@@ -47,8 +47,7 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@cloudflare/workers-types": "^5.20261008.1",
-    "@types/node": "^20.17.32",
+    "@types/node": "^20.19.43",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "postcss": "8.5.10",

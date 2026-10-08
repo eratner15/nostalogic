@@ -21,12 +21,17 @@ export default function PropertyLibrary() {
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
   const [page, setPage] = useState(1);
   const [library, setLibrary] = useState<PropertyScore[]>(scoredProperties);
+  const [history, setHistory] = useState<Record<string, number[]>>({});
 
   useEffect(() => {
     let alive = true;
     fetchPropertiesFromApi().then((list) => {
       if (alive && list) setLibrary(scoreAll(list));
     });
+    fetch("/api/score-history")
+      .then((res) => (res.ok ? res.json() : {}))
+      .then((h) => { if (alive) setHistory(h); })
+      .catch(() => {});
     return () => { alive = false; };
   }, []);
 
@@ -158,7 +163,7 @@ export default function PropertyLibrary() {
                       <p className="mt-2 hidden max-w-xl text-xs leading-5 text-muted-foreground md:block">{property.briefDescription}</p>
                     </td>
                     <td className="hidden px-4 py-4 font-mono text-muted-foreground sm:table-cell">{property.year}</td>
-                    <td className="px-4 py-4"><ScoreBadge score={property.revivalReadinessScore} size="sm" /></td>
+                    <td className="px-4 py-4"><ScoreBadge score={property.revivalReadinessScore} size="sm" /><Sparkline points={history[property.id]} /></td>
                     <td className="hidden px-4 py-4 md:table-cell">
                       <span className={cn("font-mono font-semibold", risk.text)}>{property.riskScore}</span>
                       <Meter value={property.riskScore} tone={risk.bar} className="mt-1.5 w-12" />
@@ -190,5 +195,23 @@ export default function PropertyLibrary() {
         </div>
       </section>
     </main>
+  );
+}
+
+/** Weekly snapshot scores, oldest first. Hidden until there are two weeks to compare. */
+function Sparkline({ points }: { points?: number[] }) {
+  if (!points || points.length < 2) return null;
+  const w = 64, h = 16, lo = Math.min(...points) - 2, hi = Math.max(...points) + 2;
+  const xy = points.map((v, i) => `${(i / (points.length - 1)) * w},${h - ((v - lo) / (hi - lo)) * h}`).join(" ");
+  const delta = points[points.length - 1] - points[0];
+  return (
+    <span className="mt-2 flex items-center gap-1.5" title={`Weekly scores: ${points.join(", ")}`}>
+      <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} aria-label={`Score history ${points.join(", ")}`}>
+        <polyline points={xy} fill="none" stroke="currentColor" strokeWidth="1.25" className="text-muted-foreground" />
+      </svg>
+      <span className={cn("font-mono text-[11px]", delta > 0 ? "text-accent" : delta < 0 ? "text-destructive" : "text-muted-foreground")}>
+        {delta > 0 ? "+" : ""}{delta}
+      </span>
+    </span>
   );
 }
