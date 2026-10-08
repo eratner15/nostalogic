@@ -1,23 +1,27 @@
+"use client";
+
 import { Activity, AlertCircle, ArrowUpRight, Brain, Radio } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import Link from "next/link";
-import { getCategoryStats, scoredProperties } from "@/services/property-data";
-
-const stats = getCategoryStats();
-const topRisks = [...scoredProperties].sort((a, b) => b.riskScore - a.riskScore).slice(0, 5);
-const watchlist = scoredProperties.filter((property) => property.revivalReadinessScore >= 82 && property.riskScore < 50).slice(0, 8);
-const metrics: { label: string; value: number; icon: LucideIcon }[] = [
-  { label: "Tracked properties", value: scoredProperties.length, icon: Brain },
-  {
-    label: "Avg readiness",
-    value: Math.round(scoredProperties.reduce((sum, p) => sum + p.revivalReadinessScore, 0) / scoredProperties.length),
-    icon: Activity,
-  },
-  { label: "Greenlight pool", value: watchlist.length, icon: ArrowUpRight },
-  { label: "Risk flags", value: topRisks.length, icon: AlertCircle },
-];
+import { useLibrary } from "@/hooks/use-library";
+import { getCategoryStats } from "@/services/property-data";
 
 export default function MarketIntelligence() {
+  const library = useLibrary();
+  const stats = getCategoryStats(library);
+  const topRisks = [...library].sort((a, b) => b.riskScore - a.riskScore).slice(0, 5);
+  const watchlist = library.filter((property) => property.revivalReadinessScore >= 82 && property.riskScore < 50).slice(0, 8);
+  const metrics: { label: string; value: number; icon: LucideIcon }[] = [
+    { label: "Tracked properties", value: library.length, icon: Brain },
+    {
+      label: "Avg readiness",
+      value: Math.round(library.reduce((sum, p) => sum + p.revivalReadinessScore, 0) / library.length),
+      icon: Activity,
+    },
+    { label: "Greenlight pool", value: watchlist.length, icon: ArrowUpRight },
+    { label: "Risk flags", value: topRisks.length, icon: AlertCircle },
+  ];
+
   return (
     <main className="mx-auto max-w-7xl px-4 py-10 md:px-6">
       <section className="mb-8">

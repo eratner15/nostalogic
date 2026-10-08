@@ -14,7 +14,8 @@ import { scoreAll, type Property, type PropertyScore } from "../src/lib/scoring"
 import { DEFAULT_AGENT_MODEL, runAgent, type AgentEvent, type HistoryTurn } from "./agent/run";
 import { agentApi, type AgentEnv } from "./agent-api";
 import { loadTrackRecord, scoreHistory, weeklyLedger } from "./ledger";
-import { runSignals } from "./signals";
+import { mondayOf } from "./scoring";
+import { runSignals, yesterday } from "./signals";
 
 type Env = AgentEnv & {
   DB: D1Database;
@@ -23,6 +24,9 @@ type Env = AgentEnv & {
   /** Optional overrides; defaults live in worker/agent/run.ts. */
   AGENT_MODEL?: string;
   AGENT_EFFORT?: "low" | "medium" | "high" | "xhigh" | "max";
+  /** Questions per visitor IP per day (default 40) and across all visitors (default 400). */
+  AGENT_DAILY_PER_IP?: string;
+  AGENT_DAILY_TOTAL?: string;
   REPORT_CHECKOUT_URL?: string;
 };
 
@@ -148,7 +152,16 @@ app.post("/prophet", async (c) => {
   const session = (body?.sessionKey ?? "anon").slice(0, 64);
   if (!question) return c.json({ error: "empty message" }, 400);
   if (!c.env.ANTHROPIC_API_KEY) return c.json({ error: NOT_CONFIGURED }, 503);
-  if (!(await bumpUsage(c.env, "agent", session, 40))) return c.json({ error: "daily question limit reached" }, 429);
+  // Limits key on what the caller cannot choose: the connecting IP (set by
+  // Cloudflare) and a global daily cap that bounds total model spend. The
+  // client sessionKey is only a label for the run log.
+  const ip = c.req.header("cf-connecting-ip") ?? "unknown";
+  const perIp = Number(c.env.AGENT_DAILY_PER_IP ?? 40);
+  const total = Number(c.env.AGENT_DAILY_TOTAL ?? 400);
+  if (!(await bumpUsage(c.env, "agent-ip", ip, perIp))) return c.json({ error: "daily question limit reached" }, 429);
+  if (!(await bumpUsage(c.env, "agent-total", "all", total))) {
+    return c.json({ error: "The Prophet has reached today's question budget. Try again tomorrow." }, 429);
+  }
 
   // Prior turns as plain text only; the agent re-searches rather than trusting old tool output.
   const history = (Array.isArray(body?.history) ? body.history : [])
@@ -171,15 +184,14 @@ app.post("/prophet", async (c) => {
         model: c.env.AGENT_MODEL,
         effort: c.env.AGENT_EFFORT,
       }, emit);
-      if (result) {
-        await c.env.DB.prepare(
-          `INSERT INTO agent_runs (id, session_key, question, answer, cited_ids, steps, model, input_tokens, output_tokens, cache_read_tokens)
-           VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
-        ).bind(
-          crypto.randomUUID(), session, question, result.answer, JSON.stringify(result.cited), JSON.stringify(result.steps),
-          result.model, result.usage.input, result.usage.output, result.usage.cacheRead,
-        ).run();
-      }
+      // Failed runs are logged too: their tokens were billed.
+      await c.env.DB.prepare(
+        `INSERT INTO agent_runs (id, session_key, question, answer, cited_ids, steps, model, input_tokens, output_tokens, cache_read_tokens, status, error)
+         VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+      ).bind(
+        crypto.randomUUID(), session, question, result.answer, JSON.stringify(result.cited), JSON.stringify(result.steps),
+        result.model, result.usage.input, result.usage.output, result.usage.cacheRead, result.status, result.error ?? null,
+      ).run();
     } catch {
       await emit({ type: "error", message: "The agent failed unexpectedly. Try again." }).catch(() => {});
     } finally {
@@ -238,6 +250,26 @@ app.post("/brief-requests", async (c) => {
   return c.json({ ok: true, id, checkoutUrl: c.env.REPORT_CHECKOUT_URL ?? null });
 });
 
+/**
+ * The weekly ledger runs once per week, from Monday 06:00 UTC, but only after
+ * the hourly signal runs have read yesterday for every healthy source. A
+ * snapshot is insert-only, so taking it early would freeze stale buzz for the
+ * week. If the backlog has not drained by Tuesday 06:00, it runs anyway.
+ */
+async function ledgerDue(env: Env, now: Date): Promise<boolean> {
+  const daysSinceMonday = (now.getUTCDay() + 6) % 7;
+  const hoursIntoWeek = daysSinceMonday * 24 + now.getUTCHours();
+  if (hoursIntoWeek < 6) return false;
+  const taken = await env.DB.prepare("SELECT 1 FROM score_snapshots WHERE week = ? LIMIT 1").bind(mondayOf(now)).first();
+  if (taken) return false;
+  if (hoursIntoWeek >= 30) return true;
+  const pending = await env.DB.prepare(
+    `SELECT COUNT(*) AS n FROM signal_bookmarks
+     WHERE (read_to IS NULL OR read_to < ?) AND (last_error IS NULL OR last_error LIKE 'partial:%')`,
+  ).bind(yesterday(now)).first<{ n: number }>();
+  return (pending?.n ?? 0) === 0;
+}
+
 const CANONICAL = "https://nostalogic.cafecito-ai.com";
 
 export default {
@@ -261,10 +293,11 @@ export default {
   async scheduled(event: ScheduledController, env: Env, ctx: ExecutionContext) {
     const now = new Date(event.scheduledTime);
     const work = async () => {
-      if (now.getUTCDay() === 1 && now.getUTCHours() === 6) {
+      // Signals first, so the snapshot sees the freshest readings.
+      console.log("signals", JSON.stringify(await runSignals(env, now)));
+      if (await ledgerDue(env, now)) {
         console.log("weekly ledger", JSON.stringify(await weeklyLedger(env, now)));
       }
-      console.log("signals", JSON.stringify(await runSignals(env, now)));
     };
     ctx.waitUntil(work());
   },

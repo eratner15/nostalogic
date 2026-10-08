@@ -27,6 +27,8 @@ CREATE TABLE IF NOT EXISTS agent_runs (
   input_tokens      INTEGER NOT NULL DEFAULT 0,
   output_tokens     INTEGER NOT NULL DEFAULT 0,
   cache_read_tokens INTEGER NOT NULL DEFAULT 0,
+  status            TEXT NOT NULL DEFAULT 'ok' CHECK (status IN ('ok','error')),
+  error             TEXT,                          -- the message shown to the visitor on failure
   created_at        TEXT NOT NULL DEFAULT (datetime('now'))
 );
 CREATE INDEX IF NOT EXISTS idx_agent_runs_created ON agent_runs(created_at DESC);

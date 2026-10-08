@@ -22,6 +22,17 @@ export type Usage = { input: number; output: number; cacheRead: number; cacheWri
 
 export type HistoryTurn = { role: "user" | "assistant"; content: string };
 
+/** Every run returns its usage, failed or not, so the spend log is complete. */
+export type AgentResult = {
+  status: "ok" | "error";
+  answer: string;
+  cited: string[];
+  steps: { tool: string; input: unknown; summary: string }[];
+  usage: Usage;
+  model: string;
+  error?: string;
+};
+
 export type AgentOptions = {
   apiKey: string;
   model?: string;
@@ -38,7 +49,8 @@ How the numbers work, so you can explain them:
 - Revival Readiness (0-100) = Social Buzz x 0.30 + Nostalgia Window Alignment x 0.40 + Modern Relevance x 0.30.
 - Nostalgia Window Alignment peaks when the original 12-year-old audience is 40 today; the 35-45 band is the "Sweet Spot" timing stage, younger is "Pre-Peak", older is "Mature".
 - Risk (0-100) blends rights complexity, cultural-sensitivity drag, and creator availability. Lower is better.
-- Score inputs are hand-authored judgments under a versioned rubric. The score is a transparent ranking heuristic, not a validated predictor. Never claim prediction accuracy, ROI, or guaranteed outcomes.
+- Where the inputs come from: window alignment is calendar math from the release year. Modern relevance, rights complexity, creator availability, and original impact are hand-authored judgments. Social buzz is hand-authored under rubric r2; under rubric r3 it is derived weekly from Wikipedia pageview momentum and subreddit activity. Each record's rubricVersion says which applies.
+- The score is a transparent ranking heuristic, not a validated predictor. Never claim prediction accuracy, ROI, or guaranteed outcomes; the public track record at /track-record is where calls are measured.
 
 Research approach:
 - Translate the question into filters (category, years, timing stage, readiness and risk thresholds) plus a few distinctive query words. Run several searches when the question has parts, and use library_overview for market-level questions.
@@ -65,11 +77,16 @@ export async function runAgent(
   library: PropertyScore[],
   options: AgentOptions,
   emit: (event: AgentEvent) => void | Promise<void>,
-): Promise<{ answer: string; cited: string[]; steps: { tool: string; input: unknown; summary: string }[]; usage: Usage; model: string } | null> {
+): Promise<AgentResult> {
   const model = options.model || DEFAULT_AGENT_MODEL;
   const client = new Anthropic({ apiKey: options.apiKey, fetch: options.fetch, maxRetries: 1 });
   const usage: Usage = { input: 0, output: 0, cacheRead: 0, cacheWrite: 0 };
   const steps: { tool: string; input: unknown; summary: string }[] = [];
+  let servedBy = model;
+  const fail = async (message: string): Promise<AgentResult> => {
+    await emit({ type: "error", message });
+    return { status: "error", answer: "", cited: [], steps, usage, model: servedBy, error: message };
+  };
 
   const messages: Anthropic.Beta.BetaMessageParam[] = [
     ...history.map((turn) => ({ role: turn.role, content: turn.content })),
@@ -93,18 +110,17 @@ export async function runAgent(
         messages,
       });
     } catch (error) {
-      await emit({ type: "error", message: describeError(error) });
-      return null;
+      return fail(describeError(error));
     }
 
+    servedBy = response.model;
     usage.input += response.usage.input_tokens;
     usage.output += response.usage.output_tokens;
     usage.cacheRead += response.usage.cache_read_input_tokens ?? 0;
     usage.cacheWrite += response.usage.cache_creation_input_tokens ?? 0;
 
     if (response.stop_reason === "refusal") {
-      await emit({ type: "error", message: "The model declined this question. Try rephrasing it as a question about the library." });
-      return null;
+      return fail("The model declined this question. Try rephrasing it as a question about the library.");
     }
 
     messages.push({ role: "assistant", content: response.content });
@@ -119,7 +135,7 @@ export async function runAgent(
       const cited = extractCitations(answer, library);
       await emit({ type: "answer", text: answer || "I could not produce an answer from the library.", cited });
       await emit({ type: "done", turns: turn, usage, model: response.model });
-      return { answer, cited, steps, usage, model: response.model };
+      return { status: "ok", answer, cited, steps, usage, model: response.model };
     }
 
     // Run every tool call from this turn, then return all results in one user message.
@@ -133,8 +149,7 @@ export async function runAgent(
     messages.push({ role: "user", content: results });
   }
 
-  await emit({ type: "error", message: "The research ran out of steps before answering. Try a narrower question." });
-  return null;
+  return fail("The research ran out of steps before answering. Try a narrower question.");
 }
 
 function describeError(error: unknown): string {

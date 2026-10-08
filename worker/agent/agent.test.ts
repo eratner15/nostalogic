@@ -104,7 +104,7 @@ test("agent loop runs tools, returns results in one message, and filters citatio
   const events: AgentEvent[] = [];
   const result = await runAgent("Which toy should come back?", [], library, { apiKey: "test", fetch: fetchImpl }, (e) => { events.push(e); });
 
-  assert.ok(result);
+  assert.equal(result.status, "ok");
   assert.deepEqual(events.map((e) => e.type), ["step", "step", "answer", "done"]);
   assert.deepEqual(result.cited, ["tamagotchi-1996"]);
 
@@ -128,7 +128,8 @@ test("agent surfaces a refusal as an error event", async () => {
   const { fetchImpl } = fakeModel([message([], "refusal")]);
   const events: AgentEvent[] = [];
   const result = await runAgent("q", [], library, { apiKey: "test", fetch: fetchImpl }, (e) => { events.push(e); });
-  assert.equal(result, null);
+  assert.equal(result.status, "error");
+  assert.equal(result.usage.input, 100);            // the refused call still counts toward spend
   assert.equal(events[0].type, "error");
 });
 
@@ -140,4 +141,10 @@ test("agent explains a billing failure instead of a generic error", async () => 
   await runAgent("q", [], library, { apiKey: "test", fetch: fetchImpl }, (e) => { events.push(e); });
   assert.equal(events[0].type, "error");
   assert.match((events[0] as { message: string }).message, /credit/i);
+});
+
+test("scores use the clock at call time, not a module-load constant", () => {
+  // Workers report the 1970 epoch at module load; a frozen year would zero the window.
+  const daria = library.find((p) => p.id === "daria-1997")!;
+  assert.ok(daria.nostalgiaAlignment > 0);
 });

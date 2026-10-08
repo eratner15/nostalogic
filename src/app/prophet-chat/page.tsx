@@ -1,13 +1,16 @@
 "use client";
 
-import { Fragment, Suspense, useCallback, useEffect, useRef, useState, type ReactNode } from "react";
+import { Fragment, Suspense, useCallback, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { ArrowRight, BarChart3, BookOpen, GitCompareArrows, Loader2, Network, Search, Send, TriangleAlert } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { PageHeader, scoreBand } from "@/components/brand";
 import { cn } from "@/lib/utils";
-import { getProperty } from "@/services/property-data";
+import { useLibrary } from "@/hooks/use-library";
+import type { PropertyScore } from "@/services/property-data";
+
+type Lookup = Map<string, PropertyScore>;
 
 type Step = { tool: string; summary: string; ids: string[]; isError: boolean };
 type Turn =
@@ -70,6 +73,8 @@ async function* readEvents(body: ReadableStream<Uint8Array>): AsyncGenerator<Rec
 
 function ProphetContent() {
   const params = useSearchParams();
+  const library = useLibrary();
+  const lookup: Lookup = useMemo(() => new Map(library.map((p) => [p.id, p])), [library]);
   const [turns, setTurns] = useState<Turn[]>([]);
   const [input, setInput] = useState("");
   const [busy, setBusy] = useState(false);
@@ -173,7 +178,7 @@ function ProphetContent() {
                   <p className="max-w-[85%] rounded-md border border-primary/30 bg-primary/10 px-4 py-3 text-sm leading-6 text-foreground">{turn.content}</p>
                 </div>
               ) : (
-                <AssistantTurn key={index} turn={turn} />
+                <AssistantTurn key={index} turn={turn} lookup={lookup} />
               ),
             )}
             <div ref={endRef} />
@@ -240,7 +245,7 @@ function ProphetContent() {
   );
 }
 
-function AssistantTurn({ turn }: { turn: Extract<Turn, { role: "assistant" }> }) {
+function AssistantTurn({ turn, lookup }: { turn: Extract<Turn, { role: "assistant" }>; lookup: Lookup }) {
   return (
     <div className="scan-card overflow-hidden">
       {(turn.steps.length > 0 || turn.status === "working") && (
@@ -270,11 +275,11 @@ function AssistantTurn({ turn }: { turn: Extract<Turn, { role: "assistant" }> })
 
       {turn.status === "done" && (
         <div className="px-5 py-5">
-          <Answer text={turn.content} />
+          <Answer text={turn.content} lookup={lookup} />
           {turn.cited.length > 0 && (
             <div className="mt-5 flex flex-wrap gap-2 border-t border-border pt-4">
               <span className="eyebrow mr-1 self-center">Sources</span>
-              {turn.cited.map((id) => <Citation key={id} id={id} />)}
+              {turn.cited.map((id) => <Citation key={id} id={id} lookup={lookup} />)}
             </div>
           )}
         </div>
@@ -295,8 +300,8 @@ function AssistantTurn({ turn }: { turn: Extract<Turn, { role: "assistant" }> })
   );
 }
 
-function Citation({ id }: { id: string }) {
-  const property = getProperty(id);
+function Citation({ id, lookup }: { id: string; lookup: Lookup }) {
+  const property = lookup.get(id);
   if (!property) return <span className="chip">{id}</span>;
   const band = scoreBand(property.revivalReadinessScore);
   return (
@@ -308,24 +313,24 @@ function Citation({ id }: { id: string }) {
 }
 
 /** Inline renderer: **bold** and [[property-id]] citations. */
-function inline(text: string): ReactNode[] {
+function inline(text: string, lookup: Lookup): ReactNode[] {
   return text.split(/(\*\*.+?\*\*|\[\[[a-z0-9-]+\]\])/g).map((part, index) => {
     const cite = part.match(/^\[\[([a-z0-9-]+)\]\]$/);
     if (cite) {
-      const property = getProperty(cite[1]);
+      const property = lookup.get(cite[1]);
       return property ? (
         <Link key={index} href={`/analysis-tools/?propertyId=${cite[1]}`} className="mx-0.5 align-baseline font-mono text-[11px] text-primary hover:underline">
           [{property.revivalReadinessScore}]
         </Link>
       ) : null;
     }
-    if (part.startsWith("**") && part.endsWith("**")) return <strong key={index} className="font-semibold text-foreground">{inline(part.slice(2, -2))}</strong>;
+    if (part.startsWith("**") && part.endsWith("**")) return <strong key={index} className="font-semibold text-foreground">{inline(part.slice(2, -2), lookup)}</strong>;
     return <Fragment key={index}>{part}</Fragment>;
   });
 }
 
 /** Minimal markdown: headings, bullet and numbered lists, paragraphs. */
-function Answer({ text }: { text: string }) {
+function Answer({ text, lookup }: { text: string; lookup: Lookup }) {
   const blocks = text.split(/\n{2,}/).map((block) => block.trim()).filter(Boolean);
   return (
     <div className="space-y-4 text-[15px] leading-7 text-muted-foreground">
@@ -336,13 +341,13 @@ function Answer({ text }: { text: string }) {
           const List = ordered ? "ol" : "ul";
           return (
             <List key={index} className={cn("space-y-2 pl-5", ordered ? "list-decimal" : "list-disc marker:text-primary")}>
-              {lines.map((line, i) => <li key={i}>{inline(line.replace(/^\s*([-*]|\d+\.)\s+/, ""))}</li>)}
+              {lines.map((line, i) => <li key={i}>{inline(line.replace(/^\s*([-*]|\d+\.)\s+/, ""), lookup)}</li>)}
             </List>
           );
         }
         const heading = block.match(/^#{1,4}\s+(.*)$/);
-        if (heading && lines.length === 1) return <h3 key={index} className="font-display text-lg text-foreground">{inline(heading[1])}</h3>;
-        return <p key={index}>{lines.map((line, i) => <Fragment key={i}>{i > 0 && <br />}{inline(line)}</Fragment>)}</p>;
+        if (heading && lines.length === 1) return <h3 key={index} className="font-display text-lg text-foreground">{inline(heading[1], lookup)}</h3>;
+        return <p key={index}>{lines.map((line, i) => <Fragment key={i}>{i > 0 && <br />}{inline(line, lookup)}</Fragment>)}</p>;
       })}
     </div>
   );

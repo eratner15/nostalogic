@@ -135,8 +135,11 @@ Run in order from the repository root:
 2. Set the worker secrets, one at a time: `npx wrangler secret put ANTHROPIC_API_KEY`,
    then `ADMIN_TOKEN`. (`scripts/agent-setup.sh` creates `AGENT_TOKEN` for you.)
 3. Deploy: `npm run deploy`. The hourly signal cron starts with this deploy.
-4. Load the signal sources after a human review of
-   `docs/revival-watch/sources-proposed.csv`: `node scripts/load-sources.mjs docs/revival-watch/sources-proposed.csv --remote`.
+4. Review `docs/revival-watch/sources-proposed.csv` by hand (it has known wrong
+   rows, for example All That mapped to All-American Girl) and save the result
+   as `docs/revival-watch/sources-reviewed.csv`. Then load only the reviewed file:
+   `node scripts/load-sources.mjs docs/revival-watch/sources-reviewed.csv --remote`.
+   Never load the proposed file.
 5. Create the Revival Watch managed agent: `scripts/agent-setup.sh`. It needs
    `ant` logged in, and it asks before each change.
 6. Run it on demand at any time: `ant beta:deployments run --deployment-id <id>`.

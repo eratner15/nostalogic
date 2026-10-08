@@ -292,11 +292,14 @@ agentApi.post("/admin/proposals/:id/approve", async (c) => {
   const field = p.field as Field;
   if (!(field in PROPOSABLE_FIELDS)) return c.json({ error: "field is not proposable" }, 422);
   // Column name comes from the allowlist above, never from the request.
+  // Close first, then update only if this request won the open -> approved
+  // transition, so a concurrent reject can never be followed by the change.
   const res = await db.batch([
-    db.prepare(`UPDATE properties SET ${field} = ?, scored_at = datetime('now') WHERE id = ?`).bind(p.to, pr.property_id),
     close,
+    db.prepare(`UPDATE properties SET ${field} = ?, scored_at = datetime('now') WHERE id = ? AND changes() = 1`).bind(p.to, pr.property_id),
   ]);
-  return c.json({ ok: true, changed: res[0].meta.changes });
+  if (!res[0].meta.changes) return c.json({ error: "already decided" }, 409);
+  return c.json({ ok: true, changed: res[1].meta.changes });
 });
 
 agentApi.post("/admin/proposals/:id/reject", async (c) => {

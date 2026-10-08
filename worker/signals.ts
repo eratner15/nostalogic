@@ -25,7 +25,8 @@ export function yesterday(now: Date): string {
 }
 
 export async function runSignals(env: SignalEnv, now: Date, fetcher: typeof fetch = fetch) {
-  const limit = Math.max(1, Math.min(25, Number(env.SIGNAL_BATCH ?? 10)));
+  // About 240 pairs go stale every midnight; 20 an hour reads them all in ~12 hours.
+  const limit = Math.max(1, Math.min(25, Number(env.SIGNAL_BATCH ?? 20)));
   const y = yesterday(now);
   const { results } = await env.DB.prepare(
     `SELECT property_id, source, query, read_to FROM signal_bookmarks

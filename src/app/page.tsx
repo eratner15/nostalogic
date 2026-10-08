@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Clock3, LibraryBig, MessageSquareText, Scale, ShieldCheck, FileText } from "lucide-react";
-import { AskBar, ScoreBadge, scoreBand } from "@/components/brand";
-import { getFeaturedProperties, scoredProperties } from "@/services/property-data";
+import { AskBar, ScoreBadge } from "@/components/brand";
+import { currentYear } from "@/lib/scoring";
+import { LiveShelf, LiveStats } from "@/components/LiveHome";
+import { scoredProperties } from "@/services/property-data";
 
-const shelf = getFeaturedProperties(6);
-const goCount = scoredProperties.filter((property) => property.revivalReadinessScore >= 78).length;
 
 const exampleQuestions = [
   "Lowest-risk properties in the sweet spot",
@@ -24,7 +24,7 @@ const deliverables = [
 const weights = [
   { label: "Nostalgia window", weight: 40, note: "Original 12-year-olds reaching 40, the peak buying age", tone: "bg-primary" },
   { label: "Social buzz", weight: 30, note: "Live fan activity, memes, collector and streaming signals", tone: "bg-secondary" },
-  { label: "Modern relevance", weight: 30, note: "How well the themes travel to a 2026 audience", tone: "bg-accent" },
+  { label: "Modern relevance", weight: 30, note: `How well the themes travel to a ${currentYear()} audience`, tone: "bg-accent" },
 ];
 
 export default function Home() {
@@ -54,44 +54,11 @@ export default function Home() {
                 ))}
               </div>
             </div>
-            <dl className="mt-10 grid max-w-2xl grid-cols-3 gap-4 border-t border-border pt-6">
-              {[
-                [String(scoredProperties.length), "scored properties"],
-                [String(goCount), "in the Go band"],
-                ["1993-98", "launch cohort"],
-              ].map(([value, label]) => (
-                <div key={label}>
-                  <dt className="font-mono text-2xl font-semibold text-foreground">{value}</dt>
-                  <dd className="mt-1 text-xs text-muted-foreground">{label}</dd>
-                </div>
-              ))}
-            </dl>
+            <LiveStats />
           </div>
 
           {/* The shelf: today's top-ranked tapes. */}
-          <div className="scan-card self-start overflow-hidden">
-            <div className="flex items-center justify-between border-b border-border px-5 py-4">
-              <p className="eyebrow">Top of the shelf</p>
-              <Link href="/property-library/" className="font-mono text-[11px] uppercase tracking-[0.16em] text-primary hover:text-foreground">Full library</Link>
-            </div>
-            <ol>
-              {shelf.map((property) => {
-                const band = scoreBand(property.revivalReadinessScore);
-                return (
-                  <li key={property.id} className="border-b border-border last:border-0">
-                    <Link href={`/analysis-tools/?propertyId=${property.id}`} className="group grid grid-cols-[2.25rem_1fr_auto] items-center gap-3 px-5 py-3.5 transition hover:bg-muted/40">
-                      <span className="font-mono text-xs text-muted-foreground">#{property.rank}</span>
-                      <span className="min-w-0">
-                        <span className="block truncate font-medium text-foreground group-hover:text-primary">{property.name}</span>
-                        <span className="block truncate text-xs text-muted-foreground">{property.year} · {property.category} · {property.timingStage}</span>
-                      </span>
-                      <span className={`font-mono text-xl font-semibold tabular-nums ${band.text}`}>{property.revivalReadinessScore}</span>
-                    </Link>
-                  </li>
-                );
-              })}
-            </ol>
-          </div>
+          <LiveShelf />
         </div>
       </section>
 

@@ -6,12 +6,12 @@ import Link from "next/link";
 import { AlertTriangle, CalendarClock, Gauge, Layers3, MessageSquareText, Sparkles } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { PageHeader } from "@/components/brand";
+import { useLibrary } from "@/hooks/use-library";
+import { currentYear } from "@/lib/scoring";
 import { Button } from "@/components/ui/button";
 import {
   getModernizationRecommendations,
   getNostalgiaCurve,
-  getProperty,
-  scoredProperties,
   type PropertyScore,
 } from "@/services/property-data";
 
@@ -49,7 +49,7 @@ function CurveChart({ property }: { property: PropertyScore }) {
         <polygon points={area} fill="url(#curveFill)" />
         <polyline points={points} fill="none" stroke="hsl(var(--primary))" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
         {coordinates.map((point) => (
-          <circle key={point.year} cx={point.x} cy={point.y} r="1.6" fill={point.year === 2026 ? "hsl(var(--secondary))" : "hsl(var(--primary))"} />
+          <circle key={point.year} cx={point.x} cy={point.y} r="1.6" fill={point.year === currentYear() ? "hsl(var(--secondary))" : "hsl(var(--primary))"} />
         ))}
         <circle cx={peak.x} cy={peak.y} r="3.2" fill="hsl(var(--primary))" stroke="hsl(var(--background))" strokeWidth="0.9" />
       </svg>
@@ -83,10 +83,11 @@ function Metric({ label, value, icon: Icon }: { label: string; value: string | n
 
 function AnalysisContent() {
   const params = useSearchParams();
-  const initialId = params.get("propertyId") || scoredProperties[0].id;
+  const library = useLibrary();
+  const initialId = params.get("propertyId") || library[0].id;
   const [selectedId, setSelectedId] = useState(initialId);
 
-  const property = useMemo(() => getProperty(selectedId) || scoredProperties[0], [selectedId]);
+  const property = useMemo(() => library.find((p) => p.id === selectedId) || library[0], [library, selectedId]);
   const recommendations = getModernizationRecommendations(property);
 
   return (
@@ -99,7 +100,7 @@ function AnalysisContent() {
           <div className="scan-card w-full p-4 lg:w-[360px]">
             <label className="eyebrow mb-2 block" htmlFor="property-select">Select property</label>
             <select id="property-select" value={selectedId} onChange={(event) => setSelectedId(event.target.value)} className="field">
-              {[...scoredProperties].sort((a, b) => a.name.localeCompare(b.name)).map((item) => (
+              {[...library].sort((a, b) => a.name.localeCompare(b.name)).map((item) => (
                 <option key={item.id} value={item.id}>{item.name} ({item.year})</option>
               ))}
             </select>

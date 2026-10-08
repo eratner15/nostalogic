@@ -49,8 +49,14 @@ export interface PropertyScore extends Property {
   recommendation: string;
 }
 
-/** The year of the score, so the window moves each year (PR #5 removed the fixed 2026). */
-export const CURRENT_YEAR = new Date().getUTCFullYear();
+/**
+ * The year of the score, so the window moves each year (PR #5 removed the
+ * fixed 2026). A function, not a constant: Cloudflare Workers report the 1970
+ * epoch for any Date read at module load, which would zero every window score.
+ */
+export function currentYear(): number {
+  return new Date().getUTCFullYear();
+}
 export const PEAK_CHILDHOOD_AGE = 12;
 export const SWEET_SPOT_CENTER = 40;
 
@@ -58,11 +64,11 @@ export const CATEGORIES: PropertyCategory[] = ["Movie", "TV", "Music", "Video Ga
 export const TIMING_STAGES: TimingStage[] = ["Pre-Peak", "Sweet Spot", "Mature"];
 export const YEARS = [1993, 1994, 1995, 1996, 1997, 1998];
 
-export function getTargetAudienceAge(property: Pick<Property, "year">, atYear = CURRENT_YEAR): number {
+export function getTargetAudienceAge(property: Pick<Property, "year">, atYear = currentYear()): number {
   return atYear - property.year + PEAK_CHILDHOOD_AGE;
 }
 
-export function getNostalgiaAlignment(property: Pick<Property, "year">, atYear = CURRENT_YEAR): number {
+export function getNostalgiaAlignment(property: Pick<Property, "year">, atYear = currentYear()): number {
   const distance = Math.abs(getTargetAudienceAge(property, atYear) - SWEET_SPOT_CENTER);
   return Math.max(0, Math.round(100 - distance * 8));
 }
@@ -76,14 +82,15 @@ export function getTimingStage(property: Pick<Property, "year">): TimingStage {
 
 export function getLaunchWindow(property: Pick<Property, "year">): string {
   const age = getTargetAudienceAge(property);
-  if (age < 35) return `${CURRENT_YEAR + (35 - age)}-${CURRENT_YEAR + (38 - age)}`;
-  if (age <= 45) return `${CURRENT_YEAR}-${CURRENT_YEAR + Math.max(1, 45 - age)}`;
+  const now = currentYear();
+  if (age < 35) return `${now + (35 - age)}-${now + (38 - age)}`;
+  if (age <= 45) return `${now}-${now + Math.max(1, 45 - age)}`;
   return "Now, with legacy framing";
 }
 
 export function getRevivalReadinessScore(
   property: Pick<Property, "year" | "socialBuzz" | "modernRelevance">,
-  atYear = CURRENT_YEAR,
+  atYear = currentYear(),
 ): number {
   return Math.round(
     property.socialBuzz * 0.3 + getNostalgiaAlignment(property, atYear) * 0.4 + property.modernRelevance * 0.3,

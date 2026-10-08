@@ -5,7 +5,8 @@ import Link from "next/link";
 import { ArrowDown, ArrowUp, MessageSquareText, Search, X } from "lucide-react";
 import { Meter, PageHeader, ScoreBadge, riskBand } from "@/components/brand";
 import { cn } from "@/lib/utils";
-import { categories, fetchPropertiesFromApi, getPropertiesFrom, scoreAll, scoredProperties, years, type PropertyCategory, type PropertyScore, type TimingStage } from "@/services/property-data";
+import { useLibrary } from "@/hooks/use-library";
+import { categories, getPropertiesFrom, years, type PropertyCategory, type TimingStage } from "@/services/property-data";
 
 type SortKey = "rank" | "name" | "year" | "score" | "risk";
 
@@ -20,14 +21,11 @@ export default function PropertyLibrary() {
   const [sortKey, setSortKey] = useState<SortKey>("score");
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
   const [page, setPage] = useState(1);
-  const [library, setLibrary] = useState<PropertyScore[]>(scoredProperties);
+  const library = useLibrary();
   const [history, setHistory] = useState<Record<string, number[]>>({});
 
   useEffect(() => {
     let alive = true;
-    fetchPropertiesFromApi().then((list) => {
-      if (alive && list) setLibrary(scoreAll(list));
-    });
     fetch("/api/score-history")
       .then((res) => (res.ok ? res.json() : {}))
       .then((h) => { if (alive) setHistory(h); })

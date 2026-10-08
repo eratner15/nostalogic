@@ -6,7 +6,7 @@
  */
 import corpus from "../../data/corpus.json";
 import {
-  CURRENT_YEAR,
+  currentYear,
   getNostalgiaCurve as curve,
   scoreAll,
   type Property,
@@ -78,11 +78,11 @@ export function getProperties(filters: PropertyFilters = {}): PropertyScore[] {
   return getPropertiesFrom(scoredProperties, filters);
 }
 
-export function getCategoryStats() {
+export function getCategoryStats(list: PropertyScore[] = scoredProperties) {
   return categories
     .filter((category): category is PropertyCategory => category !== "All")
     .map((category) => {
-      const categoryProperties = scoredProperties.filter((property) => property.category === category);
+      const categoryProperties = list.filter((property) => property.category === category);
       const average =
         categoryProperties.reduce((sum, property) => sum + property.revivalReadinessScore, 0) /
         categoryProperties.length;
@@ -103,7 +103,7 @@ export function getNostalgiaCurve(property: PropertyScore) {
 export function getModernizationRecommendations(property: PropertyScore): string[] {
   return [
     `Preserve ${property.preserve[0]} as the emotional contract for original fans.`,
-    `Update ${property.update[0]} so the revival feels native to ${CURRENT_YEAR} rather than costumed in 1995.`,
+    `Update ${property.update[0]} so the revival feels native to ${currentYear()} rather than costumed in 1995.`,
     `Package as a ${property.revivalFormat} with a launch window of ${property.launchWindow}.`,
     `Use ${property.currentSignal.toLowerCase()} as the top-of-funnel marketing signal.`,
     `De-risk rights and execution early: current model risk is ${property.riskScore}/100.`,
