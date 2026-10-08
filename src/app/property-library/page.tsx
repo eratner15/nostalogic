@@ -2,13 +2,13 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowUpDown, Search } from "lucide-react";
-import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { categories, fetchPropertiesFromApi, getProperties, getPropertiesFrom, scoreAll, years, type Property, type PropertyCategory, type TimingStage } from "@/services/property-data";
+import { ArrowDown, ArrowUp, MessageSquareText, Search, X } from "lucide-react";
+import { Meter, PageHeader, ScoreBadge, riskBand } from "@/components/brand";
+import { cn } from "@/lib/utils";
+import { useLibrary } from "@/hooks/use-library";
+import { categories, getPropertiesFrom, years, type PropertyCategory, type TimingStage } from "@/services/property-data";
 
-type SortKey = "rank" | "name" | "year" | "category" | "score" | "risk";
+type SortKey = "rank" | "name" | "year" | "score" | "risk";
 
 const timingOptions: (TimingStage | "All")[] = ["All", "Pre-Peak", "Sweet Spot", "Mature"];
 const pageSize = 25;
@@ -21,179 +21,195 @@ export default function PropertyLibrary() {
   const [sortKey, setSortKey] = useState<SortKey>("score");
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("desc");
   const [page, setPage] = useState(1);
-  const [apiSource, setApiSource] = useState<Property[] | null>(null);
+  const library = useLibrary();
+  const [history, setHistory] = useState<Record<string, number[]>>({});
 
   useEffect(() => {
     let alive = true;
-    fetchPropertiesFromApi().then((list) => {
-      if (alive && list) setApiSource(list);
-    });
+    fetch("/api/score-history")
+      .then((res) => (res.ok ? res.json() : {}))
+      .then((h) => { if (alive) setHistory(h); })
+      .catch(() => {});
     return () => { alive = false; };
   }, []);
 
-  const properties = useMemo(() => {
-    const rows = apiSource
-      ? getPropertiesFrom(scoreAll(apiSource), { query, category, year, timing })
-      : getProperties({ query, category, year, timing });
-    return [...rows].sort((a, b) => {
-      const direction = sortDirection === "asc" ? 1 : -1;
+  const rows = useMemo(() => {
+    const filtered = getPropertiesFrom(library, { query, category, year, timing });
+    const direction = sortDirection === "asc" ? 1 : -1;
+    return [...filtered].sort((a, b) => {
       if (sortKey === "name") return a.name.localeCompare(b.name) * direction;
-      if (sortKey === "category") return a.category.localeCompare(b.category) * direction;
       if (sortKey === "year") return (a.year - b.year) * direction;
       if (sortKey === "risk") return (a.riskScore - b.riskScore) * direction;
       if (sortKey === "rank") return (a.rank - b.rank) * direction;
       return (a.revivalReadinessScore - b.revivalReadinessScore) * direction;
     });
-  }, [apiSource, category, query, sortDirection, sortKey, timing, year]);
+  }, [library, category, query, sortDirection, sortKey, timing, year]);
 
-  const totalPages = Math.max(1, Math.ceil(properties.length / pageSize));
-  const visibleProperties = properties.slice((page - 1) * pageSize, page * pageSize);
-  const firstVisible = properties.length === 0 ? 0 : (page - 1) * pageSize + 1;
-  const lastVisible = Math.min(page * pageSize, properties.length);
+  useEffect(() => setPage(1), [category, query, sortKey, sortDirection, timing, year]);
 
-  useEffect(() => {
-    setPage(1);
-  }, [category, query, sortKey, sortDirection, timing, year]);
+  const totalPages = Math.max(1, Math.ceil(rows.length / pageSize));
+  const visible = rows.slice((page - 1) * pageSize, page * pageSize);
+  const filtersActive = query || category !== "All" || year !== "All" || timing !== "All";
 
   const handleSort = (key: SortKey) => {
-    if (key === sortKey) {
-      setSortDirection(sortDirection === "asc" ? "desc" : "asc");
-      return;
-    }
+    if (key === sortKey) return setSortDirection(sortDirection === "asc" ? "desc" : "asc");
     setSortKey(key);
-    setSortDirection(key === "name" || key === "category" ? "asc" : "desc");
+    setSortDirection(key === "name" || key === "rank" || key === "risk" ? "asc" : "desc");
   };
+
+  // Hand the current view to the agent as a natural-language question.
+  const askAboutView = [
+    "Which of these should be revived first, and why:",
+    category !== "All" ? category : "all categories",
+    year !== "All" ? `from ${year}` : null,
+    timing !== "All" ? `in the ${timing} stage` : null,
+    query ? `matching "${query}"` : null,
+  ].filter(Boolean).join(" ");
+
+  const SortHeader = ({ k, label, className }: { k: SortKey; label: string; className?: string }) => (
+    <th className={cn("px-4 py-3 font-normal", className)}>
+      <button className={cn("inline-flex items-center gap-1 hover:text-foreground", sortKey === k && "text-foreground")} onClick={() => handleSort(k)}>
+        {label}
+        {sortKey === k && (sortDirection === "asc" ? <ArrowUp className="h-3 w-3" /> : <ArrowDown className="h-3 w-3" />)}
+      </button>
+    </th>
+  );
 
   return (
     <main className="mx-auto max-w-7xl px-4 py-10 md:px-6">
-      <section className="mb-8 grid gap-6 lg:grid-cols-[1fr_auto] lg:items-end">
-        <div>
-          <Badge className="border-secondary/40 bg-secondary/10 text-secondary hover:bg-secondary/10">Discovery Engine</Badge>
-          <h1 className="mt-4 text-4xl font-semibold tracking-normal md:text-5xl">Search the 1994-1996 IP library.</h1>
-          <p className="mt-4 max-w-3xl text-muted-foreground">
-            Filter the seed universe by category, year, timing stage, and cultural signal. Scores are generated locally
-            from social buzz, nostalgia alignment, and modern relevance.
-          </p>
-        </div>
-        <div className="grid gap-3 sm:grid-cols-2 lg:w-[420px]">
-          <div className="metric-tile">
-            <div className="text-3xl font-semibold">{properties.length}</div>
-            <div className="text-sm text-muted-foreground">matching properties</div>
+      <PageHeader
+        eyebrow="The library"
+        title="Every property, scored and ranked."
+        lede="The full 1993-1998 corpus, ranked by Revival Readiness. Filter the shelf, open any title for the full analysis, or hand the current view to the Prophet."
+        aside={
+          <div className="grid grid-cols-2 gap-3 lg:w-80">
+            <div className="metric-tile">
+              <div className="font-mono text-3xl font-semibold">{rows.length}</div>
+              <div className="mt-1 text-xs text-muted-foreground">matching properties</div>
+            </div>
+            <div className="metric-tile">
+              <div className="font-mono text-3xl font-semibold text-accent">{rows.reduce((max, p) => Math.max(max, p.revivalReadinessScore), 0) || "-"}</div>
+              <div className="mt-1 text-xs text-muted-foreground">top readiness</div>
+            </div>
           </div>
-          <div className="metric-tile">
-            <div className="text-3xl font-semibold">{properties[0]?.revivalReadinessScore ?? "-"}</div>
-            <div className="text-sm text-muted-foreground">top readiness score</div>
-          </div>
-        </div>
+        }
+      />
+
+      <section className="mb-4 grid gap-3 md:grid-cols-[1fr_170px_120px_150px]">
+        <label className="relative">
+          <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Title, genre, signal, or tag" className="field pl-9" aria-label="Search the library" />
+        </label>
+        <select value={category} onChange={(event) => setCategory(event.target.value as PropertyCategory | "All")} className="field" aria-label="Category">
+          {categories.map((item) => <option key={item} value={item}>{item === "All" ? "All categories" : item}</option>)}
+        </select>
+        <select value={year} onChange={(event) => setYear(event.target.value)} className="field" aria-label="Year">
+          {years.map((item) => <option key={item} value={item}>{item === "All" ? "All years" : item}</option>)}
+        </select>
+        <select value={timing} onChange={(event) => setTiming(event.target.value as TimingStage | "All")} className="field" aria-label="Timing stage">
+          {timingOptions.map((item) => <option key={item} value={item}>{item === "All" ? "Any timing" : item}</option>)}
+        </select>
       </section>
 
-      <section className="scan-card mb-6 p-4">
-        <div className="grid gap-3 md:grid-cols-[1fr_160px_140px_160px]">
-          <label className="relative">
-            <Search className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
-            <Input
-              value={query}
-              onChange={(event) => setQuery(event.target.value)}
-              placeholder="Search by title, genre, signal, or tag"
-              className="border-white/10 bg-white/5 pl-9"
-            />
-          </label>
-          <select value={category} onChange={(event) => setCategory(event.target.value as PropertyCategory | "All")} className="rounded-md border border-white/10 bg-card px-3 text-sm">
-            {categories.map((item) => <option key={item} value={item}>{item}</option>)}
-          </select>
-          <select value={year} onChange={(event) => setYear(event.target.value)} className="rounded-md border border-white/10 bg-card px-3 text-sm">
-            {years.map((item) => <option key={item} value={item}>{item}</option>)}
-          </select>
-          <select value={timing} onChange={(event) => setTiming(event.target.value as TimingStage | "All")} className="rounded-md border border-white/10 bg-card px-3 text-sm">
-            {timingOptions.map((item) => <option key={item} value={item}>{item}</option>)}
-          </select>
+      <div className="mb-6 flex flex-wrap items-center justify-between gap-3">
+        <div className="flex flex-wrap items-center gap-2">
+          {filtersActive ? (
+            <button
+              onClick={() => { setQuery(""); setCategory("All"); setYear("All"); setTiming("All"); }}
+              className="chip transition hover:text-foreground"
+            >
+              <X className="h-3 w-3" /> Clear filters
+            </button>
+          ) : (
+            <span className="text-xs text-muted-foreground">Showing the whole shelf.</span>
+          )}
         </div>
-      </section>
+        <Link href={`/prophet-chat/?q=${encodeURIComponent(askAboutView)}`} className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-foreground">
+          <MessageSquareText className="h-4 w-4" /> Ask the Prophet about this view
+        </Link>
+      </div>
 
       <section className="scan-card overflow-hidden">
         <div className="overflow-x-auto">
-          <table className="w-full min-w-[960px] text-left text-sm">
-            <thead className="border-b border-white/10 bg-white/[0.03] text-xs uppercase tracking-[0.12em] text-muted-foreground">
+          <table className="w-full text-left text-sm">
+            <thead className="border-b border-border font-mono text-[11px] uppercase tracking-[0.14em] text-muted-foreground">
               <tr>
-                {[
-                  ["rank", "Rank"],
-                  ["name", "Property"],
-                  ["category", "Category"],
-                  ["year", "Year"],
-                  ["score", "Readiness"],
-                  ["risk", "Risk"],
-                ].map(([key, label]) => (
-                  <th key={key} className="px-4 py-3">
-                    <button className="inline-flex items-center gap-2 hover:text-white" onClick={() => handleSort(key as SortKey)}>
-                      {label}
-                      <ArrowUpDown className="h-3.5 w-3.5" />
-                    </button>
-                  </th>
-                ))}
-                <th className="px-4 py-3">Timing</th>
-                <th className="px-4 py-3">Signal</th>
-                <th className="px-4 py-3" />
+                <SortHeader k="rank" label="#" className="w-14" />
+                <SortHeader k="name" label="Property" />
+                <SortHeader k="year" label="Year" className="hidden sm:table-cell" />
+                <SortHeader k="score" label="Readiness" />
+                <SortHeader k="risk" label="Risk" className="hidden md:table-cell" />
+                <th className="hidden px-4 py-3 font-normal lg:table-cell">Timing</th>
+                <th className="hidden px-4 py-3 font-normal xl:table-cell">Current signal</th>
               </tr>
             </thead>
-            <tbody className="divide-y divide-white/10">
-              {visibleProperties.map((property) => (
-                <tr key={property.id} className="hover:bg-white/[0.025]">
-                  <td className="px-4 py-4 font-mono text-muted-foreground">#{property.rank}</td>
-                  <td className="px-4 py-4">
-                    <div className="font-medium text-white">{property.name}</div>
-                    <div className="mt-1 max-w-md text-xs leading-5 text-muted-foreground">{property.briefDescription}</div>
-                  </td>
-                  <td className="px-4 py-4"><Badge variant="outline" className="border-white/15">{property.category}</Badge></td>
-                  <td className="px-4 py-4">{property.year}</td>
-                  <td className="px-4 py-4">
-                    <div className="font-semibold text-white">{property.revivalReadinessScore}</div>
-                    <div className="mt-1 h-1.5 w-24 rounded-full bg-white/10">
-                      <div className="h-1.5 rounded-full bg-primary" style={{ width: `${property.revivalReadinessScore}%` }} />
-                    </div>
-                  </td>
-                  <td className="px-4 py-4 text-muted-foreground">{property.riskScore}</td>
-                  <td className="px-4 py-4 text-secondary">{property.timingStage}</td>
-                  <td className="px-4 py-4 max-w-xs text-muted-foreground">{property.currentSignal}</td>
-                  <td className="px-4 py-4 text-right">
-                    <Button asChild size="sm" variant="outline" className="border-white/15 bg-white/5">
-                      <Link href={`/analysis-tools?propertyId=${property.id}`}>Analyze</Link>
-                    </Button>
+            <tbody className="divide-y divide-border">
+              {visible.map((property) => {
+                const risk = riskBand(property.riskScore);
+                return (
+                  <tr key={property.id} className="group align-top transition hover:bg-muted/30">
+                    <td className="px-4 py-4 font-mono text-xs text-muted-foreground">{property.rank}</td>
+                    <td className="px-4 py-4">
+                      <Link href={`/analysis-tools/?propertyId=${property.id}`} className="font-medium text-foreground group-hover:text-primary">
+                        {property.name}
+                      </Link>
+                      <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                        <span className="chip py-0">{property.category}</span>
+                        <span className="sm:hidden">{property.year}</span>
+                        <span className="hidden md:inline">{property.genre}</span>
+                      </div>
+                      <p className="mt-2 hidden max-w-xl text-xs leading-5 text-muted-foreground md:block">{property.briefDescription}</p>
+                    </td>
+                    <td className="hidden px-4 py-4 font-mono text-muted-foreground sm:table-cell">{property.year}</td>
+                    <td className="px-4 py-4"><ScoreBadge score={property.revivalReadinessScore} size="sm" /><Sparkline points={history[property.id]} /></td>
+                    <td className="hidden px-4 py-4 md:table-cell">
+                      <span className={cn("font-mono font-semibold", risk.text)}>{property.riskScore}</span>
+                      <Meter value={property.riskScore} tone={risk.bar} className="mt-1.5 w-12" />
+                    </td>
+                    <td className="hidden px-4 py-4 text-xs text-muted-foreground lg:table-cell">{property.timingStage}</td>
+                    <td className="hidden max-w-xs px-4 py-4 text-xs leading-5 text-muted-foreground xl:table-cell">{property.currentSignal}</td>
+                  </tr>
+                );
+              })}
+              {visible.length === 0 && (
+                <tr>
+                  <td colSpan={7} className="px-4 py-12 text-center text-muted-foreground">
+                    Nothing on the shelf matches. <Link href={`/prophet-chat/?q=${encodeURIComponent(query || "What is closest to what I am looking for?")}`} className="text-primary hover:underline">Ask the Prophet</Link> instead.
                   </td>
                 </tr>
-              ))}
+              )}
             </tbody>
           </table>
         </div>
-        <div className="flex flex-col gap-3 border-t border-white/10 p-4 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            Showing <span className="text-white">{firstVisible}-{lastVisible}</span> of{" "}
-            <span className="text-white">{properties.length}</span> properties
-          </div>
+        <div className="flex flex-col gap-3 border-t border-border p-4 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+          <span>
+            {rows.length ? (page - 1) * pageSize + 1 : 0}-{Math.min(page * pageSize, rows.length)} of <span className="text-foreground">{rows.length}</span>
+          </span>
           <div className="flex items-center gap-2">
-            <Button
-              variant="outline"
-              size="sm"
-              className="border-white/15 bg-white/5"
-              disabled={page === 1}
-              onClick={() => setPage((current) => Math.max(1, current - 1))}
-            >
-              Previous
-            </Button>
-            <span className="min-w-24 text-center text-xs uppercase tracking-[0.12em]">
-              Page {page} / {totalPages}
-            </span>
-            <Button
-              variant="outline"
-              size="sm"
-              className="border-white/15 bg-white/5"
-              disabled={page === totalPages}
-              onClick={() => setPage((current) => Math.min(totalPages, current + 1))}
-            >
-              Next
-            </Button>
+            <button className="rounded border border-border px-3 py-1.5 text-xs hover:text-foreground disabled:opacity-40" disabled={page === 1} onClick={() => setPage((p) => Math.max(1, p - 1))}>Previous</button>
+            <span className="min-w-20 text-center font-mono text-xs">{page} / {totalPages}</span>
+            <button className="rounded border border-border px-3 py-1.5 text-xs hover:text-foreground disabled:opacity-40" disabled={page === totalPages} onClick={() => setPage((p) => Math.min(totalPages, p + 1))}>Next</button>
           </div>
         </div>
       </section>
     </main>
+  );
+}
+
+/** Weekly snapshot scores, oldest first. Hidden until there are two weeks to compare. */
+function Sparkline({ points }: { points?: number[] }) {
+  if (!points || points.length < 2) return null;
+  const w = 64, h = 16, lo = Math.min(...points) - 2, hi = Math.max(...points) + 2;
+  const xy = points.map((v, i) => `${(i / (points.length - 1)) * w},${h - ((v - lo) / (hi - lo)) * h}`).join(" ");
+  const delta = points[points.length - 1] - points[0];
+  return (
+    <span className="mt-2 flex items-center gap-1.5" title={`Weekly scores: ${points.join(", ")}`}>
+      <svg width={w} height={h} viewBox={`0 0 ${w} ${h}`} aria-label={`Score history ${points.join(", ")}`}>
+        <polyline points={xy} fill="none" stroke="currentColor" strokeWidth="1.25" className="text-muted-foreground" />
+      </svg>
+      <span className={cn("font-mono text-[11px]", delta > 0 ? "text-accent" : delta < 0 ? "text-destructive" : "text-muted-foreground")}>
+        {delta > 0 ? "+" : ""}{delta}
+      </span>
+    </span>
   );
 }

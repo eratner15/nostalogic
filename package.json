@@ -5,12 +5,17 @@
   "scripts": {
     "dev": "next dev -p 3000",
     "build": "next build",
-    "deploy": "npm run build && npx wrangler pages deploy out --project-name nostaldamus --branch main --commit-dirty=true",
+    "deploy": "npm run build && npx wrangler deploy",
     "start": "next start",
-    "lint": "tsc --noEmit",
-    "typecheck": "tsc --noEmit"
+    "lint": "npm run typecheck",
+    "typecheck": "tsc --noEmit && tsc --noEmit -p worker/tsconfig.json",
+    "test": "tsx --test worker/agent/agent.test.ts worker/scoring.test.ts worker/agent-api.test.ts",
+    "db:local": "wrangler d1 migrations apply nostaldamus-db --local && node scripts/load-seed.mjs data/corpus.json r2-claude-2026-08-15 --local",
+    "db:migrate": "wrangler d1 migrations apply nostaldamus-db --remote",
+    "dev:worker": "npm run build && wrangler dev"
   },
   "dependencies": {
+    "@anthropic-ai/sdk": "^0.132.1",
     "@radix-ui/react-accordion": "^1.2.3",
     "@radix-ui/react-alert-dialog": "^1.1.6",
     "@radix-ui/react-avatar": "^1.1.3",
@@ -42,12 +47,14 @@
     "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
-    "@types/node": "^20.17.32",
+    "@types/node": "^20.19.43",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
     "postcss": "8.5.10",
     "tailwindcss": "^3.4.17",
-    "typescript": "^5"
+    "tsx": "^4.23.15",
+    "typescript": "^5",
+    "wrangler": "^4.149.0"
   },
   "overrides": {
     "postcss": "8.5.10"

@@ -1,3 +1,5 @@
+-- NostalDamus base schema (applied by hand in August 2026 as worker/schema.sql).
+-- Every statement is IF NOT EXISTS, so applying it to the live database is a no-op.
 -- NostalDamus D1 schema. The properties table is the product; everything the
 -- old static property-data.ts carried moves here, plus scoring provenance.
 CREATE TABLE IF NOT EXISTS properties (

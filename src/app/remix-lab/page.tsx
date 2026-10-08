@@ -140,8 +140,8 @@ function RemixContent() {
     <main className="mx-auto max-w-7xl px-4 py-10 md:px-6">
       <section className="mb-8 grid gap-6 lg:grid-cols-[1fr_430px] lg:items-end">
         <div>
-          <Badge className="border-accent/40 bg-accent/10 text-accent hover:bg-accent/10">Composite Remix Engine</Badge>
-          <h1 className="mt-4 text-4xl font-semibold tracking-normal md:text-5xl">Build a new property from multiple nostalgia signals.</h1>
+          <p className="eyebrow flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-primary" />Composite Remix Engine</p>
+          <h1 className="mt-4 display text-4xl leading-[1.05] md:text-5xl">Build a new property from multiple nostalgia signals.</h1>
           <p className="mt-4 max-w-3xl text-muted-foreground">
             Blend two to five 1993-1998 properties into an original franchise concept. The engine synthesizes audience overlap,
             category tension, preserve/update rules, and rights risk into a development-ready pitch.
@@ -154,7 +154,7 @@ function RemixContent() {
               <select
                 value={propertyToAdd}
                 onChange={(event) => setPropertyToAdd(event.target.value)}
-                className="h-11 min-w-0 flex-1 rounded-md border border-white/10 bg-card px-3 text-sm"
+                className="h-11 min-w-0 flex-1 rounded-md border border-border bg-card px-3 text-sm"
               >
                 {availableProperties.map((item) => (
                   <option key={item.id} value={item.id}>{item.name}</option>
@@ -170,7 +170,7 @@ function RemixContent() {
             <select
               value={format}
               onChange={(event) => setFormat(event.target.value as RebootType)}
-              className="h-11 w-full rounded-md border border-white/10 bg-card px-3 text-sm"
+              className="h-11 w-full rounded-md border border-border bg-card px-3 text-sm"
             >
               {formats.map((item) => <option key={item} value={item}>{item}</option>)}
             </select>
@@ -183,7 +183,7 @@ function RemixContent() {
           <button
             key={recipe.join("-")}
             onClick={() => applyRecipe(recipe)}
-            className="rounded-md border border-white/10 bg-white/[0.025] p-3 text-left text-sm leading-6 text-muted-foreground transition hover:border-primary/40 hover:bg-primary/10"
+            className="rounded-md border border-border bg-muted/40 p-3 text-left text-sm leading-6 text-muted-foreground transition hover:border-primary/40 hover:bg-primary/10"
           >
             <span className="mb-2 flex items-center gap-2 text-xs uppercase tracking-[0.14em] text-primary">
               <Shuffle className="h-3.5 w-3.5" /> Recipe
@@ -200,12 +200,12 @@ function RemixContent() {
             <h2 className="mt-2 text-2xl font-semibold">{properties.length} signal{properties.length === 1 ? "" : "s"} selected</h2>
             <div className="mt-5 grid gap-3">
               {properties.map((property) => (
-                <div key={property.id} className="rounded-md border border-white/10 bg-white/[0.025] p-4">
+                <div key={property.id} className="rounded-md border border-border bg-muted/40 p-4">
                   <div className="flex items-start justify-between gap-3">
                     <div>
                       <div className="flex flex-wrap items-center gap-2">
                         <h3 className="font-semibold">{property.name}</h3>
-                        <Badge variant="outline" className="border-white/15 text-muted-foreground">{property.category}</Badge>
+                        <Badge variant="outline" className="border-border text-muted-foreground">{property.category}</Badge>
                       </div>
                       <p className="mt-2 text-sm leading-6 text-muted-foreground">{property.briefDescription}</p>
                     </div>
@@ -222,7 +222,7 @@ function RemixContent() {
                   </div>
                   <div className="mt-3 flex flex-wrap gap-2">
                     {property.tags.slice(0, 4).map((tag) => (
-                      <Badge key={tag} variant="outline" className="border-white/15 text-muted-foreground">{tag}</Badge>
+                      <Badge key={tag} variant="outline" className="border-border text-muted-foreground">{tag}</Badge>
                     ))}
                   </div>
                 </div>
@@ -243,14 +243,14 @@ function RemixContent() {
         </div>
 
         <div className="scan-card overflow-hidden">
-          <div className="border-b border-white/10 p-5">
+          <div className="border-b border-border p-5">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <p className="text-xs uppercase tracking-[0.18em] text-muted-foreground">Generated new property</p>
                 <h2 className="mt-1 text-3xl font-semibold">{pitch.title}</h2>
                 <p className="mt-2 text-sm text-muted-foreground">{pitch.subtitle}</p>
               </div>
-              <Button onClick={copyPitch} variant="outline" className="border-white/15 bg-white/5">
+              <Button onClick={copyPitch} variant="outline" className="border-border bg-muted/40">
                 <Copy className="h-4 w-4" />
                 {copied ? "Copied" : "Copy"}
               </Button>
@@ -270,8 +270,8 @@ function RemixContent() {
               <h3 className="mb-3 flex items-center gap-2 font-semibold text-accent"><Layers3 className="h-4 w-4" /> World Engine</h3>
               <div className="grid gap-3">
                 {pitch.world.map((item, index) => (
-                  <div key={item} className="rounded-md border border-white/10 bg-white/[0.025] p-3 text-sm leading-6 text-muted-foreground">
-                    <span className="mr-2 font-mono text-white">0{index + 1}</span>{item}
+                  <div key={item} className="rounded-md border border-border bg-muted/40 p-3 text-sm leading-6 text-muted-foreground">
+                    <span className="mr-2 font-mono text-foreground">0{index + 1}</span>{item}
                   </div>
                 ))}
               </div>
@@ -280,8 +280,8 @@ function RemixContent() {
               <h3 className="mb-3 font-semibold text-primary">Franchise Mechanics</h3>
               <div className="grid gap-3">
                 {pitch.mechanics.map((item, index) => (
-                  <div key={item} className="rounded-md border border-white/10 bg-white/[0.025] p-3 text-sm leading-6 text-muted-foreground">
-                    <span className="mr-2 font-mono text-white">0{index + 1}</span>{item}
+                  <div key={item} className="rounded-md border border-border bg-muted/40 p-3 text-sm leading-6 text-muted-foreground">
+                    <span className="mr-2 font-mono text-foreground">0{index + 1}</span>{item}
                   </div>
                 ))}
               </div>
@@ -304,8 +304,8 @@ function RemixContent() {
               <h3 className="mb-3 font-semibold text-accent">Launch Campaign</h3>
               <div className="grid gap-3">
                 {pitch.launch.map((item, index) => (
-                  <div key={item} className="rounded-md border border-white/10 bg-white/[0.025] p-3 text-sm leading-6 text-muted-foreground">
-                    <span className="mr-2 font-mono text-white">0{index + 1}</span>{item}
+                  <div key={item} className="rounded-md border border-border bg-muted/40 p-3 text-sm leading-6 text-muted-foreground">
+                    <span className="mr-2 font-mono text-foreground">0{index + 1}</span>{item}
                   </div>
                 ))}
               </div>
@@ -315,7 +315,7 @@ function RemixContent() {
               <span className="font-semibold text-primary">Development risk:</span> {pitch.risk}
             </div>
             {isComposite && (
-              <div className="rounded-md border border-white/10 bg-white/[0.025] p-4 text-xs leading-5 text-muted-foreground">
+              <div className="rounded-md border border-border bg-muted/40 p-4 text-xs leading-5 text-muted-foreground">
                 Rights note: this is a new-property synthesis model, not a literal crossover recommendation. Clear rights before using names, characters, marks, music, artwork, or protected story expression.
               </div>
             )}
@@ -338,10 +338,10 @@ function RemixContent() {
                 The deterministic pitch above always works. This one asks the AI Prophet for a written concept from your exact source stack and saves it to the library.
               </p>
               {aiState.phase === "error" && (
-                <p className="mt-3 rounded-md border border-white/10 bg-white/[0.03] p-3 text-sm leading-6 text-muted-foreground">{aiState.message}</p>
+                <p className="mt-3 rounded-md border border-border bg-muted/40 p-3 text-sm leading-6 text-muted-foreground">{aiState.message}</p>
               )}
               {aiState.phase === "done" && (
-                <div className="mt-3 rounded-md border border-white/10 bg-white/[0.03] p-4">
+                <div className="mt-3 rounded-md border border-border bg-muted/40 p-4">
                   <pre className="whitespace-pre-wrap font-sans text-sm leading-6 text-muted-foreground">{aiState.concept}</pre>
                   <p className="mt-3 text-xs text-muted-foreground">Saved as remix {aiState.id.slice(0, 8)}.</p>
                 </div>

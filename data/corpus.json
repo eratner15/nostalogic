@@ -1,0 +1,4045 @@
+[
+ {
+  "id": "a-goofy-movie-1995",
+  "name": "A Goofy Movie",
+  "year": 1995,
+  "category": "Movie",
+  "genre": "Animated father-son road-trip musical",
+  "originalImpact": 55,
+  "modernRelevance": 76,
+  "socialBuzz": 78,
+  "rightsComplexity": 15,
+  "creatorAvailability": 45,
+  "briefDescription": "Disney's modest 1995 theatrical about Goofy dragging teenage Max on a fishing trip while Max schemes to reach a Powerline concert. A generational cult classic far bigger now than on release.",
+  "coreAudience": "90s kids - with a famously devoted Black millennial fanbase - who now sell out Powerline tribute concerts and cosplay Max's outfit.",
+  "currentSignal": "The 30th anniversary in 2025 drew documentary and reunion coverage from Disney, and Powerline's 'Stand Out'/'I2I' remain streaming and cosplay staples decades after release.",
+  "revivalFormat": "Powerline live concert tour plus a legacy sequel with Max as a dad",
+  "tags": [
+   "disney",
+   "animation",
+   "musical",
+   "father-son",
+   "cult-classic",
+   "powerline"
+  ],
+  "preserve": [
+   "the Powerline songbook",
+   "sincere dad-son friction and love",
+   "hand-drawn animation identity"
+  ],
+  "update": [
+   "Max as a father facing his own teen",
+   "a real-artist Powerline collaboration",
+   "theatrical-event release for the fandom"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "aaahh-real-monsters-1994",
+  "name": "Aaahh!!! Real Monsters",
+  "year": 1994,
+  "category": "TV",
+  "genre": "Animated monster comedy",
+  "originalImpact": 48,
+  "modernRelevance": 66,
+  "socialBuzz": 32,
+  "rightsComplexity": 30,
+  "creatorAvailability": 55,
+  "briefDescription": "Klasky Csupo's series about three monster students - Ickis, Oblina, and Krumm - learning the craft of scaring humans at a school beneath a city dump.",
+  "coreAudience": "90s kids who loved its gross-tender weirdness; now families raised on Monsters, Inc. ready for the scuzzier original take.",
+  "currentSignal": "Recurs in Nicktoons nostalgia merchandise and revival wishlists; Paramount has periodically mined sibling Klasky Csupo properties, leaving this one conspicuously untouched.",
+  "revivalFormat": "Animated feature or series revival",
+  "tags": [
+   "nickelodeon",
+   "monsters",
+   "animation",
+   "klasky-csupo",
+   "90s"
+  ],
+  "preserve": [
+   "scare-school premise",
+   "the central trio's designs",
+   "gross-out tenderness balance"
+  ],
+  "update": [
+   "what scares kids now (screens, not closets)",
+   "modern animation while keeping the grotesque linework",
+   "monster-world lore expansion"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "abc-tgif-1994",
+  "name": "ABC TGIF",
+  "year": 1994,
+  "category": "Sports/Media",
+  "genre": "Family sitcom programming block",
+  "originalImpact": 80,
+  "modernRelevance": 55,
+  "socialBuzz": 30,
+  "rightsComplexity": 55,
+  "creatorAvailability": 30,
+  "briefDescription": "ABC's Friday-night family block - Full House, Family Matters, Boy Meets World, Step by Step - the last great appointment-TV ritual for American families, peaking mid-decade.",
+  "coreAudience": "90s families on the couch together; now streaming households that co-view less than ever and miss the ritual.",
+  "currentSignal": "ABC briefly revived the TGIF branding in the late 2010s, and the block's shows continue to perform as streaming comfort food, but no platform has rebuilt the shared Friday ritual itself.",
+  "revivalFormat": "Streaming-native weekly family-night programming event with live premieres",
+  "tags": [
+   "tv-block",
+   "sitcom",
+   "family",
+   "90s",
+   "abc"
+  ],
+  "preserve": [
+   "family co-viewing ritual function",
+   "lineup-as-brand curation",
+   "interstitial host charm"
+  ],
+  "update": [
+   "weekly-drop event mechanics on streaming",
+   "new family sitcoms, not just reruns",
+   "second-screen interactivity done gently"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "ace-of-base-1993",
+  "name": "Ace of Base",
+  "year": 1993,
+  "category": "Music",
+  "genre": "Europop",
+  "originalImpact": 70,
+  "modernRelevance": 48,
+  "socialBuzz": 40,
+  "rightsComplexity": 50,
+  "creatorAvailability": 30,
+  "briefDescription": "The Swedish quartet behind 'The Sign' and 'All That She Wants' - among the best-selling debut albums ever, a bridge between ABBA and the Max Martin era.",
+  "coreAudience": "Radio listeners of 1993-94 everywhere; now streaming-playlist nostalgics and pop producers who mine the melodies.",
+  "currentSignal": "The catalog streams durably and its hooks are periodically interpolated by modern pop acts, but the estranged original lineup makes a true reunion unlikely.",
+  "revivalFormat": "Catalog-driven jukebox musical or biopic",
+  "tags": [
+   "europop",
+   "swedish",
+   "90s",
+   "one-album-wonder",
+   "catalog"
+  ],
+  "preserve": [
+   "the four signature hits intact",
+   "sunny-melancholy Scandinavian pop tone"
+  ],
+  "update": [
+   "tell the genuinely strange band backstory honestly",
+   "modern catalog marketing (sync, interpolation)"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "all-that-1994",
+  "name": "All That",
+  "year": 1994,
+  "category": "TV",
+  "genre": "Kids sketch comedy",
+  "originalImpact": 60,
+  "modernRelevance": 62,
+  "socialBuzz": 42,
+  "rightsComplexity": 35,
+  "creatorAvailability": 55,
+  "briefDescription": "Nickelodeon's SNL-for-kids launched Kenan Thompson, Kel Mitchell, and Amanda Bynes, with sketches like Good Burger becoming franchises of their own.",
+  "coreAudience": "90s Nick kids quoting 'Welcome to Good Burger'; now their kids, plus a creator economy full of sketch-native teens.",
+  "currentSignal": "A 2019-2020 revival ran briefly, and alumni reunions (including 2023's Good Burger 2) continue to draw nostalgia coverage.",
+  "revivalFormat": "Short-form sketch factory built for TikTok/YouTube with a TV anchor",
+  "tags": [
+   "nickelodeon",
+   "sketch-comedy",
+   "kids",
+   "kenan",
+   "90s"
+  ],
+  "preserve": [
+   "kids-doing-real-sketch-comedy premise",
+   "star-pipeline function",
+   "recurring-character engine"
+  ],
+  "update": [
+   "short-form-first distribution",
+   "casting from creator platforms",
+   "modernized standards for how kid performers are treated"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "anastasia-1997",
+  "name": "Anastasia",
+  "year": 1997,
+  "category": "Movie",
+  "genre": "Animated musical",
+  "originalImpact": 60,
+  "modernRelevance": 68,
+  "socialBuzz": 45,
+  "rightsComplexity": 45,
+  "creatorAvailability": 45,
+  "briefDescription": "Don Bluth's Fox-produced answer to Disney: a lost-princess musical with 'Journey to the Past' and 'Once Upon a December,' now owned by Disney via the Fox acquisition.",
+  "coreAudience": "90s girls who claimed her as an honorary Disney princess; now theater kids and animation fans.",
+  "currentSignal": "The Broadway adaptation ran 2017-2019 and continues touring internationally, and 'Once Upon a December' recurs as a social-audio favorite.",
+  "revivalFormat": "Live-action musical remake now that Disney owns it",
+  "tags": [
+   "animation",
+   "musical",
+   "princess",
+   "bluth",
+   "fox"
+  ],
+  "preserve": [
+   "the two signature songs",
+   "amnesia-identity fairy-tale engine",
+   "lush period romance"
+  ],
+  "update": [
+   "handle the real Romanov history more honestly",
+   "rework or replace the zombie-Rasputin villain",
+   "modern musical staging"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "angels-in-the-outfield-1994",
+  "name": "Angels in the Outfield",
+  "year": 1994,
+  "category": "Movie",
+  "genre": "Family sports fantasy",
+  "originalImpact": 50,
+  "modernRelevance": 55,
+  "socialBuzz": 26,
+  "rightsComplexity": 30,
+  "creatorAvailability": 40,
+  "briefDescription": "Disney's remake of the 1951 film: a foster kid prays for the last-place California Angels, and actual angels start fixing games. Early roles for Joseph Gordon-Levitt and Adrien Brody.",
+  "coreAudience": "90s kids and baseball families; now nostalgic parents and trivia lovers who marvel at the cast.",
+  "currentSignal": "Circulates mainly as its-cast-was-stacked trivia content and on Disney+; the real Angels franchise keeps the name association alive.",
+  "revivalFormat": "Faith-adjacent family remake for streaming",
+  "tags": [
+   "baseball",
+   "fantasy",
+   "disney",
+   "family",
+   "90s-kids"
+  ],
+  "preserve": [
+   "foster-kid emotional core",
+   "it could happen sincerity",
+   "team-turnaround arc"
+  ],
+  "update": [
+   "modern foster-care portrayal",
+   "less literal angel VFX",
+   "contemporary MLB backdrop"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "animorphs-1998",
+  "name": "Animorphs",
+  "year": 1998,
+  "category": "TV",
+  "genre": "YA sci-fi war drama",
+  "originalImpact": 55,
+  "modernRelevance": 78,
+  "socialBuzz": 52,
+  "rightsComplexity": 55,
+  "creatorAvailability": 60,
+  "briefDescription": "Scholastic's mega-selling 1996 book series - five kids wage guerrilla war against brain-stealing alien parasites using animal morphing - got a low-budget 1998 Nickelodeon series that couldn't match the books' darkness.",
+  "coreAudience": "Book-fair kids traumatized by its honest war storytelling; now adults who insist it was secretly one of the darkest YA series ever published.",
+  "currentSignal": "A film adaptation was announced by Scholastic Entertainment and a studio partner but has been quiet; author K.A. Applegate remains active and beloved online, and the fandom's 'the books were war fiction' discourse recurs constantly.",
+  "revivalFormat": "Serious serialized streaming adaptation of the books",
+  "tags": [
+   "ya",
+   "sci-fi",
+   "war",
+   "scholastic",
+   "90s-books"
+  ],
+  "preserve": [
+   "the war's genuine moral cost and trauma",
+   "body-horror reality of morphing",
+   "Yeerk invasion paranoia",
+   "the bleak honest ending"
+  ],
+  "update": [
+   "VFX finally capable of the morphing",
+   "adaptation written for the grown original readers",
+   "modern serialized structure"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "aol-instant-messenger-1997",
+  "name": "AOL Instant Messenger (AIM)",
+  "year": 1997,
+  "category": "Tech",
+  "genre": "Instant messaging platform",
+  "originalImpact": 88,
+  "modernRelevance": 55,
+  "socialBuzz": 46,
+  "rightsComplexity": 55,
+  "creatorAvailability": 20,
+  "briefDescription": "The 1997 messenger that invented teen digital social life - screen names, buddy lists, away messages as identity performance - shut down for good in 2017.",
+  "coreAudience": "Every American teen from 1997-2006; now adults who remember away messages as the last honest social media.",
+  "currentSignal": "The door-creak sound and away-message culture remain reliable nostalgia-essay and meme material, and 'bring back away messages' recurs as a feature request in modern-app discourse.",
+  "revivalFormat": "Away-message-centric status app or licensed retro feature inside an existing platform",
+  "tags": [
+   "messaging",
+   "90s-internet",
+   "aol",
+   "away-message",
+   "y2k"
+  ],
+  "preserve": [
+   "buddy-list door sounds",
+   "away messages as expressive status",
+   "screen-name playfulness"
+  ],
+  "update": [
+   "mobile-native rebuild",
+   "presence without surveillance pressure",
+   "a business model that isn't ads"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "aqua-barbie-girl-1997",
+  "name": "Aqua ('Barbie Girl' era)",
+  "year": 1997,
+  "category": "Music",
+  "genre": "Eurodance bubblegum",
+  "originalImpact": 68,
+  "modernRelevance": 55,
+  "socialBuzz": 58,
+  "rightsComplexity": 55,
+  "creatorAvailability": 70,
+  "briefDescription": "The Danish-Norwegian act whose 'Barbie Girl' was 1997's global novelty smash - and the subject of a landmark Mattel trademark lawsuit that Aqua won.",
+  "coreAudience": "90s radio kids; now the Barbie-movie generation that just heard the song reborn on a global chart.",
+  "currentSignal": "The 2023 Barbie film's 'Barbie World' (Nicki Minaj and Ice Spice interpolating the song, with Aqua credited) charted globally and re-monetized the catalog.",
+  "revivalFormat": "Sync-and-interpolation catalog strategy plus 90s-package touring",
+  "tags": [
+   "eurodance",
+   "novelty",
+   "90s",
+   "barbie",
+   "denmark"
+  ],
+  "preserve": [
+   "the song's knowing camp",
+   "the band's ownership of the joke"
+  ],
+  "update": [
+   "lean into interpolation economy",
+   "camp-pop live staging for Pride and festival circuits"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "banjo-kazooie-1998",
+  "name": "Banjo-Kazooie",
+  "year": 1998,
+  "category": "Video Game",
+  "genre": "3D platformer",
+  "originalImpact": 68,
+  "modernRelevance": 75,
+  "socialBuzz": 60,
+  "rightsComplexity": 30,
+  "creatorAvailability": 40,
+  "briefDescription": "Rare's 1998 bear-and-bird collect-a-thon was the N64's warmest masterpiece. Microsoft has owned it since 2002 and shipped no true platformer entry since 2008's vehicle-based Nuts & Bolts.",
+  "coreAudience": "N64 kids; now a fanbase whose Smash Bros. reaction in 2019 demonstrated exactly how much latent demand exists.",
+  "currentSignal": "The duo's 2019 Super Smash Bros. DLC reveal was met with an enormous reaction, the game hit Nintendo Switch Online in 2022, and fans petition Xbox at every showcase - with no new game announced.",
+  "revivalFormat": "Full 3D-platformer revival in the Mario Odyssey mold",
+  "tags": [
+   "platformer",
+   "rare",
+   "n64",
+   "xbox",
+   "dormant-franchise"
+  ],
+  "preserve": [
+   "move-learning collect-a-thon structure",
+   "Grant Kirkhope musical identity",
+   "googly-eyed British humor",
+   "Gruntilda's rhymes"
+  ],
+  "update": [
+   "Odyssey-standard movement and camera",
+   "a studio with platformer chops (original Rare team is gone)",
+   "modern collectible design that respects player time"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "beanie-babies-1993",
+  "name": "Beanie Babies",
+  "year": 1993,
+  "category": "Toy/Fad",
+  "genre": "Collectible plush",
+  "originalImpact": 92,
+  "modernRelevance": 55,
+  "socialBuzz": 52,
+  "rightsComplexity": 45,
+  "creatorAvailability": 35,
+  "briefDescription": "Ty Warner's under-stuffed plush line launched in 1993 and became the 1990s' defining speculative mania - retired designs, price guides, and families investing college funds in Princess bears.",
+  "coreAudience": "Collector parents and playground traders of the 90s; now a culture that understands it as the proto-NFT bubble.",
+  "currentSignal": "Apple's 2023 film The Beanie Bubble and multiple documentaries revisited the mania, while the vast majority of 'investment' Beanies now resell for almost nothing - itself a permanent cautionary tale.",
+  "revivalFormat": "Nostalgia-collab drops plus scripted/documentary storytelling about the bubble",
+  "tags": [
+   "collectible",
+   "plush",
+   "bubble",
+   "90s",
+   "speculation"
+  ],
+  "preserve": [
+   "heart-tag and poem identity",
+   "scarcity-drop mechanics done knowingly"
+  ],
+  "update": [
+   "transparent, wink-at-the-bubble marketing",
+   "adult-collector drop model (limited collabs)",
+   "avoid implying investment value"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "blockbuster-video-1996",
+  "name": "Blockbuster Video",
+  "year": 1996,
+  "category": "Sports/Media",
+  "genre": "Video rental retail brand",
+  "originalImpact": 90,
+  "modernRelevance": 50,
+  "socialBuzz": 58,
+  "rightsComplexity": 45,
+  "creatorAvailability": 20,
+  "briefDescription": "At its mid-90s peak the Friday-night institution of American life: thousands of blue-and-yellow stores, be-kind-rewind, and the agony of the empty box behind the new release.",
+  "coreAudience": "Every 90s family; now a culture so nostalgic for it that a single surviving store became a tourist destination.",
+  "currentSignal": "The last remaining store in Bend, Oregon operates as a genuine tourist attraction and documentary subject, and the DISH-owned brand keeps resurfacing in stunt marketing and merchandise drops.",
+  "revivalFormat": "Nostalgia retail/experience licensing - pop-up video stores, merch, and a curation brand",
+  "tags": [
+   "retail",
+   "movies",
+   "90s",
+   "nostalgia-brand",
+   "friday-night"
+  ],
+  "preserve": [
+   "blue-and-yellow trade dress and ticket logo",
+   "browse-the-aisles curation ritual"
+  ],
+  "update": [
+   "pop-up and experiential formats, not real rental economics",
+   "curation-as-service angle for streaming overload",
+   "merch program with restraint"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "bop-it-1996",
+  "name": "Bop It",
+  "year": 1996,
+  "category": "Toy/Fad",
+  "genre": "Electronic reaction game",
+  "originalImpact": 65,
+  "modernRelevance": 55,
+  "socialBuzz": 38,
+  "rightsComplexity": 20,
+  "creatorAvailability": 45,
+  "briefDescription": "Hasbro's 1996 voice-commanded reaction toy - bop it, twist it, pull it - that turned failure audio into a permanent piece of collective auditory memory.",
+  "coreAudience": "90s kids and their exasperated parents; now party-game adults and a meme culture that still hears the voice.",
+  "currentSignal": "The line has been continuously reissued in new variants and the command audio remains a recognizable meme sound, making this dormant as a phenomenon though not as a product.",
+  "revivalFormat": "Social/party relaunch - tournament mode, streamer challenges, giant versions",
+  "tags": [
+   "electronic-toy",
+   "party-game",
+   "90s",
+   "hasbro",
+   "reaction"
+  ],
+  "preserve": [
+   "the original voice and command set",
+   "one-object pass-around social play"
+  ],
+  "update": [
+   "app-linked score sharing",
+   "party formats built for filming",
+   "collab colorways"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "boy-meets-world-1993",
+  "name": "Boy Meets World",
+  "year": 1993,
+  "category": "TV",
+  "genre": "Coming-of-age sitcom",
+  "originalImpact": 70,
+  "modernRelevance": 68,
+  "socialBuzz": 70,
+  "rightsComplexity": 35,
+  "creatorAvailability": 75,
+  "briefDescription": "ABC's TGIF centerpiece followed Cory Matthews from sixth grade through marriage, with Mr. Feeny as TV's most beloved teacher. Girl Meets World continued it 2014-17.",
+  "coreAudience": "TGIF families; now millennials who process their whole adolescence through it - many via the cast's own rewatch podcast.",
+  "currentSignal": "The cast's rewatch podcast Pod Meets World has been a sustained chart success, keeping cast chemistry and candid behind-the-scenes stories in circulation.",
+  "revivalFormat": "Multigenerational revival series centered on adult Cory and Topanga",
+  "tags": [
+   "sitcom",
+   "tgif",
+   "coming-of-age",
+   "90s",
+   "feeny"
+  ],
+  "preserve": [
+   "Cory-Shawn friendship",
+   "Feeny's moral authority",
+   "growing-up-in-real-time sincerity"
+  ],
+  "update": [
+   "honest midlife material for the original cast",
+   "a new kid generation written for today",
+   "single-cam or hybrid format"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "bubsy-1993",
+  "name": "Bubsy",
+  "year": 1993,
+  "category": "Video Game",
+  "genre": "Mascot platformer",
+  "originalImpact": 40,
+  "modernRelevance": 30,
+  "socialBuzz": 42,
+  "rightsComplexity": 60,
+  "creatorAvailability": 25,
+  "briefDescription": "Accolade's wisecracking bobcat was hyped as a Sonic-killer in 1993 ('What could possibly go wrong?') and instead became gaming's canonical failed mascot - a status that made him immortal.",
+  "coreAudience": "16-bit kids who rented it once; now an internet that loves him purely as a punchline, which is itself an asset.",
+  "currentSignal": "Persists as gaming's favorite ironic mascot meme; a 2017 revival attempt (The Woolies Strike Back) landed poorly, and the brand has since changed corporate hands.",
+  "revivalFormat": "Self-aware comedy game or animated short series about being a failed mascot",
+  "tags": [
+   "platformer",
+   "mascot",
+   "90s",
+   "meme",
+   "irony"
+  ],
+  "preserve": [
+   "the catchphrase and the failure legend",
+   "90s-mascot-attitude aesthetic as satire"
+  ],
+  "update": [
+   "make the self-awareness the product",
+   "actually competent game design this time"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "casper-1995",
+  "name": "Casper",
+  "year": 1995,
+  "category": "Movie",
+  "genre": "Family supernatural comedy",
+  "originalImpact": 70,
+  "modernRelevance": 72,
+  "socialBuzz": 40,
+  "rightsComplexity": 65,
+  "creatorAvailability": 35,
+  "briefDescription": "Amblin's 1995 hit put the Harvey Comics friendly ghost in a landmark CGI/live-action hybrid, with Christina Ricci as the girl who moves into Whipstaff Manor.",
+  "coreAudience": "Kids who felt the weird melancholy under the jokes; now A24-literate adults who remember it as their first movie about death.",
+  "currentSignal": "A live-action reboot series was reported in development at Peacock in recent years, and the character remains a steady Halloween licensing presence.",
+  "revivalFormat": "Family film that leans into the gentle-grief premise",
+  "tags": [
+   "ghost",
+   "harvey-comics",
+   "family",
+   "halloween",
+   "90s-vfx"
+  ],
+  "preserve": [
+   "the melancholy under the comedy",
+   "Casper as a dead child treated tenderly",
+   "Whipstaff gothic production design"
+  ],
+  "update": [
+   "modern CG ghost design",
+   "grief handled with contemporary sensitivity",
+   "the trio of uncles rebalanced"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "chrono-trigger-1995",
+  "name": "Chrono Trigger",
+  "year": 1995,
+  "category": "Video Game",
+  "genre": "RPG",
+  "originalImpact": 70,
+  "modernRelevance": 85,
+  "socialBuzz": 70,
+  "rightsComplexity": 55,
+  "creatorAvailability": 40,
+  "briefDescription": "Square's 1995 'dream team' time-travel RPG (Sakaguchi, Horii, Toriyama) is routinely ranked the greatest JRPG ever made - and has had no mainline successor since 1999's Chrono Cross.",
+  "coreAudience": "SNES RPG kids; now the entire JRPG audience, which treats a remake as the genre's most wanted unmade project.",
+  "currentSignal": "Square Enix marked the 30th anniversary in 2025 with celebration activity amid years of executive comments teasing interest, fueling constant remake speculation - while HD-2D remakes of its SNES peers keep proving the model.",
+  "revivalFormat": "Full remake in the Square Enix HD-2D or Remake-style program",
+  "tags": [
+   "jrpg",
+   "square-enix",
+   "time-travel",
+   "snes",
+   "remake-demand"
+  ],
+  "preserve": [
+   "the original's pacing and multiple endings",
+   "Yasunori Mitsuda's score",
+   "Toriyama character designs",
+   "no filler bloat"
+  ],
+  "update": [
+   "HD-2D or faithful visual reconstruction",
+   "quality-of-life modernization only",
+   "honor Toriyama's 2024 passing in the treatment"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "clueless-1995",
+  "name": "Clueless",
+  "year": 1995,
+  "category": "Movie",
+  "genre": "Teen comedy",
+  "originalImpact": 78,
+  "modernRelevance": 82,
+  "socialBuzz": 80,
+  "rightsComplexity": 30,
+  "creatorAvailability": 70,
+  "briefDescription": "Amy Heckerling's Emma-in-Beverly-Hills defined 90s teen style and slang. Cher Horowitz's yellow plaid suit and 'As if!' are permanent pop-culture vocabulary.",
+  "coreAudience": "90s teen girls; now their daughters, plus a fashion and meme ecosystem that never stopped citing it.",
+  "currentSignal": "The yellow plaid outfit remains a top Halloween costume annually, and a series continuation with Alicia Silverstone has been reported in development at a streamer.",
+  "revivalFormat": "Streaming series with Cher as a Beverly Hills adult and a new teen ensemble",
+  "tags": [
+   "teen",
+   "fashion",
+   "comedy",
+   "jane-austen",
+   "90s-style"
+  ],
+  "preserve": [
+   "sunny satire without meanness",
+   "Austen-armature plotting",
+   "quotable slang invention",
+   "fashion as character"
+  ],
+  "update": [
+   "social-media-era popularity mechanics",
+   "new-money vs influencer wealth",
+   "a slang lexicon built fresh, not recycled"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "command-and-conquer-1995",
+  "name": "Command & Conquer",
+  "year": 1995,
+  "category": "Video Game",
+  "genre": "Real-time strategy",
+  "originalImpact": 78,
+  "modernRelevance": 70,
+  "socialBuzz": 40,
+  "rightsComplexity": 35,
+  "creatorAvailability": 40,
+  "briefDescription": "Westwood's 1995 RTS landmark - GDI vs Nod, FMV cutscenes, Kane - co-founded the genre with Warcraft and sold tens of millions before EA ground the franchise down to mobile spin-offs.",
+  "coreAudience": "PC LAN-party kids of the late 90s; now a strategy audience underserved since the genre's mainstream retreat.",
+  "currentSignal": "EA's 2020 Remastered Collection sold well and was warmly received, and EA has since released classic C&C source code - yet no new mainline RTS has followed.",
+  "revivalFormat": "New mainline RTS with a campaign built around FMV camp",
+  "tags": [
+   "rts",
+   "pc",
+   "westwood",
+   "ea",
+   "kane"
+  ],
+  "preserve": [
+   "GDI/Nod asymmetry and Kane",
+   "FMV cutscene camp as identity",
+   "Frank Klepacki-style soundtrack"
+  ],
+  "update": [
+   "modern RTS onboarding for a post-MOBA audience",
+   "co-op campaign",
+   "esports-optional, campaign-first design"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "cool-runnings-1993",
+  "name": "Cool Runnings",
+  "year": 1993,
+  "category": "Movie",
+  "genre": "Underdog sports comedy",
+  "originalImpact": 60,
+  "modernRelevance": 70,
+  "socialBuzz": 42,
+  "rightsComplexity": 25,
+  "creatorAvailability": 35,
+  "briefDescription": "Disney's loosely fact-based comedy about the 1988 Jamaican bobsled team's improbable Winter Olympics run, anchored by John Candy's final beloved family role.",
+  "coreAudience": "90s kids and casual Olympics viewers then; global feel-good sports audiences and family co-viewers now.",
+  "currentSignal": "Streams on Disney+ and resurfaces reliably in coverage every Winter Olympics cycle whenever tropical-nation teams qualify.",
+  "revivalFormat": "New-generation sequel timed to a Winter Olympics",
+  "tags": [
+   "olympics",
+   "underdog",
+   "jamaica",
+   "disney",
+   "sports"
+  ],
+  "preserve": [
+   "true-story underdog warmth",
+   "team-of-misfits chemistry",
+   "feel-good tone without cynicism"
+  ],
+  "update": [
+   "center actual Jamaican and Caribbean voices in the writing",
+   "modern Olympics commercial landscape",
+   "avoid caricature the original was criticized for"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "crazy-bones-1997",
+  "name": "Crazy Bones (GoGo's)",
+  "year": 1997,
+  "category": "Toy/Fad",
+  "genre": "Collectible figurine game",
+  "originalImpact": 55,
+  "modernRelevance": 42,
+  "socialBuzz": 22,
+  "rightsComplexity": 60,
+  "creatorAvailability": 25,
+  "briefDescription": "The tiny plastic knucklebones-descended figures that swept schoolyards in waves from 1997 onward - flicked, stacked, traded, and confiscated on three continents.",
+  "coreAudience": "Late-90s schoolkids, huge in Europe and Latin America; now blind-box collectors who already buy the modern equivalent.",
+  "currentSignal": "Sustains a modest but genuine collector aftermarket and periodic relaunch waves abroad; the current blind-box collectible boom (Pop Mart et al.) is proof the format's economics work now.",
+  "revivalFormat": "Blind-box collectible relaunch with artist-series figures",
+  "tags": [
+   "collectible",
+   "schoolyard",
+   "90s",
+   "blind-box",
+   "figurines"
+  ],
+  "preserve": [
+   "flickable game function (not just display)",
+   "cheap pocket-money price point"
+  ],
+  "update": [
+   "artist-collab series for adult collectors",
+   "organized schoolyard-legal play formats",
+   "clean up multi-territory rights"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "daria-1997",
+  "name": "Daria",
+  "year": 1997,
+  "category": "TV",
+  "genre": "Animated teen satire",
+  "originalImpact": 62,
+  "modernRelevance": 82,
+  "socialBuzz": 65,
+  "rightsComplexity": 35,
+  "creatorAvailability": 55,
+  "briefDescription": "MTV's deadpan misanthrope surveyed suburban high school with lethal irony. The defining portrait of Gen-X teen alienation, and a permanent aesthetic reference.",
+  "coreAudience": "Alienated 90s teens; now both nostalgic Gen-Xers and Gen Z, which adopted her wholesale as a reaction-image patron saint.",
+  "currentSignal": "A Jodie-centered spinoff film with Tracee Ellis Ross was announced by MTV but has gone quiet, while Daria screenshots remain ubiquitous reaction images.",
+  "revivalFormat": "Revival series with Daria as a disillusioned adult",
+  "tags": [
+   "mtv",
+   "animation",
+   "satire",
+   "teen",
+   "irony"
+  ],
+  "preserve": [
+   "Daria's voice - dry, moral, unimpressed",
+   "Jane Lane friendship core",
+   "satire that spares no one including Daria"
+  ],
+  "update": [
+   "targets: hustle culture, wellness, online discourse",
+   "Daria as adult or a new teen inheriting the mode",
+   "the sick-sad-world of feeds instead of TV"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "demolition-man-1993",
+  "name": "Demolition Man",
+  "year": 1993,
+  "category": "Movie",
+  "genre": "Sci-fi action satire",
+  "originalImpact": 62,
+  "modernRelevance": 78,
+  "socialBuzz": 64,
+  "rightsComplexity": 30,
+  "creatorAvailability": 60,
+  "briefDescription": "Stallone and Snipes thaw out of cryo-prison into a sanitized 2032 San Angeles where swearing is fined, contact is banned, and Taco Bell won the franchise wars.",
+  "coreAudience": "Action fans of 1993; now the internet, which treats its predictions of speech-policing, wellness culture, and the three seashells as prophecy.",
+  "currentSignal": "Stallone said publicly in 2020 that a sequel was in development at Warner Bros., and the 'three seashells' remains a recurring meme; nothing has been formally greenlit since.",
+  "revivalFormat": "Legacy sequel with Stallone passing the torch",
+  "tags": [
+   "sci-fi",
+   "action",
+   "satire",
+   "stallone",
+   "dystopia"
+  ],
+  "preserve": [
+   "the utopia-as-dystopia satire",
+   "R-rated action scale",
+   "the comedy of a caveman in a polite future"
+  ],
+  "update": [
+   "satire targets refreshed for the 2030s",
+   "the franchise-wars gag for the streaming/brand era",
+   "a co-lead who isn't just a callback"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "dexters-laboratory-1996",
+  "name": "Dexter's Laboratory",
+  "year": 1996,
+  "category": "TV",
+  "genre": "Animated comedy",
+  "originalImpact": 62,
+  "modernRelevance": 70,
+  "socialBuzz": 52,
+  "rightsComplexity": 30,
+  "creatorAvailability": 65,
+  "briefDescription": "Genndy Tartakovsky's breakout: a pocket-sized boy genius hides a vast laboratory from his parents while sister Dee Dee destroys everything. The show that built Cartoon Network's golden age.",
+  "coreAudience": "Cartoon Network kids of the late 90s; now STEM-identifying adults with 'Omelette du fromage' still in their heads.",
+  "currentSignal": "Tartakovsky remains among Warner's most active animation auteurs, and Dexter memes ('Omelette du fromage') recur steadily; the property itself has had no series since 2003.",
+  "revivalFormat": "Tartakovsky-led revival series or special",
+  "tags": [
+   "cartoon-network",
+   "animation",
+   "science",
+   "tartakovsky",
+   "90s"
+  ],
+  "preserve": [
+   "Dexter-Dee Dee dynamic",
+   "Tartakovsky's graphic timing-driven style",
+   "Mandark rivalry"
+  ],
+  "update": [
+   "science jokes for the AI/biotech era",
+   "serialized specials over shorts",
+   "Dee Dee given fuller interiority"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "duke-nukem-3d-1996",
+  "name": "Duke Nukem 3D",
+  "year": 1996,
+  "category": "Video Game",
+  "genre": "First-person shooter",
+  "originalImpact": 70,
+  "modernRelevance": 35,
+  "socialBuzz": 40,
+  "rightsComplexity": 60,
+  "creatorAvailability": 35,
+  "briefDescription": "1996's interactive, wisecracking FPS landmark whose sequel Duke Nukem Forever became gaming's most famous 14-year development disaster. The character has been radioactive-dormant since 2011.",
+  "coreAudience": "Shareware-era PC teens; now a retro-FPS scene that loves the level design while acknowledging the character aged terribly.",
+  "currentSignal": "A Duke Nukem film/TV project was reported in development at Legendary with comedy producers attached, and Gearbox has periodically teased openness to a new game.",
+  "revivalFormat": "Satirical reboot that makes the relic-of-the-90s problem the actual joke",
+  "tags": [
+   "fps",
+   "90s",
+   "pc",
+   "gearbox",
+   "problematic-mascot"
+  ],
+  "preserve": [
+   "interactive-world level design ethos",
+   "boomer-shooter gunfeel"
+  ],
+  "update": [
+   "the character must become the butt of the joke",
+   "writing team with actual satirical chops",
+   "modern retro-FPS production model"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "dumb-and-dumber-1994",
+  "name": "Dumb and Dumber",
+  "year": 1994,
+  "category": "Movie",
+  "genre": "Buddy comedy",
+  "originalImpact": 82,
+  "modernRelevance": 55,
+  "socialBuzz": 58,
+  "rightsComplexity": 45,
+  "creatorAvailability": 55,
+  "briefDescription": "The Farrelly brothers' debut: two catastrophically stupid best friends drive a dog-shaped van to Aspen to return a briefcase. Cemented Jim Carrey's 1994 as the biggest comedy year an actor ever had.",
+  "coreAudience": "Teens of the 90s who memorized every line; now the meme economy, where its reaction GIFs are permanent infrastructure.",
+  "currentSignal": "'So you're telling me there's a chance' and the tuxedo scene remain among the most-used comedy GIFs online; the 2014 sequel underperformed critically, cooling studio interest.",
+  "revivalFormat": "Streaming re-release and anniversary theatrical event rather than another sequel",
+  "tags": [
+   "comedy",
+   "buddy",
+   "farrelly",
+   "jim-carrey",
+   "road-trip"
+  ],
+  "preserve": [
+   "total commitment to stupidity without irony",
+   "the leads' genuine friendship"
+  ],
+  "update": [
+   "gross-out calibrated for modern audiences",
+   "any continuation needs new characters, not aged retreads"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "earthbound-1995",
+  "name": "EarthBound",
+  "year": 1995,
+  "category": "Video Game",
+  "genre": "RPG",
+  "originalImpact": 45,
+  "modernRelevance": 80,
+  "socialBuzz": 65,
+  "rightsComplexity": 40,
+  "creatorAvailability": 55,
+  "briefDescription": "Shigesato Itoi's suburban-America RPG flopped in the US in 1995, then became the most influential cult game of its era - the direct ancestor of Undertale and a generation of indie RPGs.",
+  "coreAudience": "The few kids who played it then; now an enormous indie-game generation raised on its descendants.",
+  "currentSignal": "Nintendo added EarthBound and its predecessor to Switch Online in 2022, while the fan translation of sequel Mother 3 remains gaming's most famous unanswered localization demand.",
+  "revivalFormat": "Official Mother 3 western release plus a collected trilogy",
+  "tags": [
+   "rpg",
+   "nintendo",
+   "cult-classic",
+   "mother",
+   "indie-ancestor"
+  ],
+  "preserve": [
+   "Itoi's sincerity-and-strangeness tone",
+   "modern-suburbia setting",
+   "the trilogy's emotional throughline"
+  ],
+  "update": [
+   "simply localize Mother 3 officially",
+   "quality-of-life for modern players",
+   "merchandising the fandom already sustains unofficially"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "earthworm-jim-1994",
+  "name": "Earthworm Jim",
+  "year": 1994,
+  "category": "Video Game",
+  "genre": "Run-and-gun platformer",
+  "originalImpact": 60,
+  "modernRelevance": 55,
+  "socialBuzz": 30,
+  "rightsComplexity": 70,
+  "creatorAvailability": 45,
+  "briefDescription": "A worm in a robotic supersuit launching cows and whipping his own head - 1994's most gorgeously animated and funniest platformer, from Shiny Entertainment.",
+  "coreAudience": "Genesis/SNES kids drawn to its lunacy; now retro-platformer enthusiasts and animation nerds.",
+  "currentSignal": "A new installment was announced exclusively for the ill-fated Intellivision Amico and has been in limbo since, with rights holder Interplay largely inactive; creator Doug TenNapel's public controversies complicate creator-led revivals.",
+  "revivalFormat": "Hand-animated modern platformer from a new studio",
+  "tags": [
+   "platformer",
+   "90s",
+   "comedy",
+   "genesis",
+   "interplay"
+  ],
+  "preserve": [
+   "hand-drawn animation extravagance",
+   "absurdist villain roster",
+   "whip-and-gun movement feel"
+  ],
+  "update": [
+   "untangle rights and creator distance",
+   "modern level design",
+   "animation pipeline worthy of the original's ambition"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "empire-records-1995",
+  "name": "Empire Records",
+  "year": 1995,
+  "category": "Movie",
+  "genre": "Teen ensemble hangout comedy",
+  "originalImpact": 35,
+  "modernRelevance": 60,
+  "socialBuzz": 55,
+  "rightsComplexity": 45,
+  "creatorAvailability": 50,
+  "briefDescription": "A total flop in 1995, this one-day-in-a-record-store ensemble (Liv Tyler, Renée Zellweger) became a defining cult hangout film about saving an indie shop from a chain.",
+  "coreAudience": "Alt-90s teens then; now vinyl-revival millennials and Gen Z retail workers who live the anti-corporate premise.",
+  "currentSignal": "'Rex Manning Day' trends on social media every April 8, and a stage-musical adaptation has been publicly discussed for years without arriving.",
+  "revivalFormat": "Stage musical or streaming series set in a modern indie record store",
+  "tags": [
+   "music",
+   "teen",
+   "cult-classic",
+   "retail",
+   "90s-alt"
+  ],
+  "preserve": [
+   "one-location one-day structure",
+   "damn-the-man indie spirit",
+   "the soundtrack-forward identity"
+  ],
+  "update": [
+   "vinyl-revival economics",
+   "modern ensemble diversity",
+   "streaming-era music culture tension"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "event-horizon-1997",
+  "name": "Event Horizon",
+  "year": 1997,
+  "category": "Movie",
+  "genre": "Sci-fi horror",
+  "originalImpact": 30,
+  "modernRelevance": 72,
+  "socialBuzz": 48,
+  "rightsComplexity": 40,
+  "creatorAvailability": 55,
+  "briefDescription": "Paramount's 1997 haunted-spaceship film about a vessel that returned from a hell dimension. Bombed on release, then became sci-fi horror's most beloved cult object, with famously lost gore footage.",
+  "coreAudience": "Horror teens who rented it repeatedly; now the Dead Space/Warhammer-adjacent fandom that treats it as a genre cornerstone.",
+  "currentSignal": "A television adaptation has been reported in development at Amazon, and the legend of the lost uncut footage still generates coverage.",
+  "revivalFormat": "Prestige horror series expanding the ship's mythology",
+  "tags": [
+   "sci-fi",
+   "horror",
+   "cult-classic",
+   "space",
+   "paramount"
+  ],
+  "preserve": [
+   "the ship as a haunted house in space",
+   "hell-dimension cosmic dread",
+   "practical gothic production design"
+  ],
+  "update": [
+   "series pacing to build the dread the film rushed",
+   "modern horror craft",
+   "canonize the mythology fans invented"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "free-willy-1993",
+  "name": "Free Willy",
+  "year": 1993,
+  "category": "Movie",
+  "genre": "Family animal adventure",
+  "originalImpact": 65,
+  "modernRelevance": 35,
+  "socialBuzz": 28,
+  "rightsComplexity": 35,
+  "creatorAvailability": 35,
+  "briefDescription": "Warner Bros.' 1993 hit about a troubled boy who bonds with a captive orca and helps him escape, spawning sequels and the real-life Keiko release campaign.",
+  "coreAudience": "Animal-loving 90s kids; today's audience skews toward conservation-minded families, but the captive-orca premise itself has aged badly post-Blackfish.",
+  "currentSignal": "Mostly lives on through anniversary retrospectives and the well-documented Keiko rehabilitation story; no significant reboot activity is publicly known.",
+  "revivalFormat": "Documentary revisiting Keiko and the film's legacy",
+  "tags": [
+   "orca",
+   "family",
+   "animals",
+   "conservation",
+   "90s-kids"
+  ],
+  "preserve": [
+   "boy-animal emotional bond",
+   "the breach-over-the-jetty iconography"
+  ],
+  "update": [
+   "reframe entirely around anti-captivity ethics",
+   "practical/VFX orca instead of trained animals",
+   "conservation-era storytelling"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "furby-1998",
+  "name": "Furby",
+  "year": 1998,
+  "category": "Toy/Fad",
+  "genre": "Animatronic pet toy",
+  "originalImpact": 82,
+  "modernRelevance": 60,
+  "socialBuzz": 58,
+  "rightsComplexity": 25,
+  "creatorAvailability": 35,
+  "briefDescription": "The 1998 animatronic gremlin that 'learned English,' caused Christmas riots and NSA bans, and sold 40 million units in three years - then kept resurfacing in uncanny-valley folklore.",
+  "coreAudience": "Christmas-1998 kids; now a bifurcated fanbase of nostalgic parents and the 'long Furby' cursed-customization internet.",
+  "currentSignal": "Hasbro relaunched Furby in 2023 to solid sales, while the thriving 'long Furby' custom scene and Furby-horror memes keep the character weirdly alive online.",
+  "revivalFormat": "AI-conversational Furby done with real privacy guardrails",
+  "tags": [
+   "animatronic",
+   "90s",
+   "furby",
+   "hasbro",
+   "uncanny"
+  ],
+  "preserve": [
+   "Furbish-to-English learning illusion",
+   "the slightly unsettling charm - don't sand it off"
+  ],
+  "update": [
+   "on-device conversational AI with hard privacy limits",
+   "embrace the cursed-custom community officially",
+   "collector colorway drops"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "gak-1993",
+  "name": "Nickelodeon Gak",
+  "year": 1993,
+  "category": "Toy/Fad",
+  "genre": "Sensory compound toy",
+  "originalImpact": 60,
+  "modernRelevance": 65,
+  "socialBuzz": 38,
+  "rightsComplexity": 40,
+  "creatorAvailability": 20,
+  "briefDescription": "Nickelodeon and Mattel's squishy, fart-noise compound turned the network's slime identity into 1993's grossest must-have, spawning Floam and Smud.",
+  "coreAudience": "Nick kids of the early 90s; now the massive ASMR/satisfying-slime content audience their kids belong to.",
+  "currentSignal": "The DIY-slime and sensory-toy content boom on YouTube and TikTok is a direct descendant, showing the play pattern is bigger than ever while the Gak brand sits mostly unused.",
+  "revivalFormat": "Sensory-toy line relaunch with creator-collab colorways",
+  "tags": [
+   "nickelodeon",
+   "slime",
+   "sensory",
+   "90s",
+   "gross"
+  ],
+  "preserve": [
+   "the name and gross-noise identity",
+   "Nickelodeon slime-green heritage"
+  ],
+  "update": [
+   "modern safety/material standards",
+   "ASMR-creator marketing",
+   "collectible textures and colorways"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "gargoyles-1994",
+  "name": "Gargoyles",
+  "year": 1994,
+  "category": "TV",
+  "genre": "Animated action fantasy",
+  "originalImpact": 55,
+  "modernRelevance": 80,
+  "socialBuzz": 65,
+  "rightsComplexity": 20,
+  "creatorAvailability": 85,
+  "briefDescription": "Disney's darkest 90s series: medieval Scottish gargoyles wake in modern Manhattan, protecting a city that fears them. Shakespearean arcs, serialized mythology, and a ferociously loyal fandom.",
+  "coreAudience": "Kids who sensed it was smarter than everything around it; now the adult-animation and fantasy-drama audience it was always really for.",
+  "currentSignal": "A live-action adaptation has been reported in development at Disney with James Wan producing, and creator Greg Weisman has continued the canon in ongoing Dynamite comics since 2022.",
+  "revivalFormat": "Live-action Disney+ series",
+  "tags": [
+   "disney",
+   "animation",
+   "fantasy",
+   "gothic",
+   "cult-classic"
+  ],
+  "preserve": [
+   "Weisman's canon and involvement",
+   "protect-a-city-that-hates-you theme",
+   "Xanatos as chessmaster villain",
+   "Shakespearean serialization"
+  ],
+  "update": [
+   "modern serialized-TV structure it predicted",
+   "production values matching the ambition",
+   "Manhattan of the 2020s"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "gattaca-1997",
+  "name": "Gattaca",
+  "year": 1997,
+  "category": "Movie",
+  "genre": "Science-fiction drama",
+  "originalImpact": 35,
+  "modernRelevance": 85,
+  "socialBuzz": 38,
+  "rightsComplexity": 40,
+  "creatorAvailability": 60,
+  "briefDescription": "Andrew Niccol's 1997 flop-turned-classic about a genetically 'invalid' man who borrows a superior man's identity to reach space. The definitive film about genetic discrimination.",
+  "coreAudience": "Sci-fi and bioethics audiences; now everyone watching embryo-screening startups and CRISPR make the premise into news.",
+  "currentSignal": "A television adaptation has been reported in development at Sony, and the film is cited constantly in coverage of real embryo-selection and gene-editing companies.",
+  "revivalFormat": "Prestige limited series",
+  "tags": [
+   "genetics",
+   "dystopia",
+   "bioethics",
+   "sci-fi",
+   "prescient"
+  ],
+  "preserve": [
+   "the no-gene-for-the-human-spirit thesis",
+   "restrained near-future minimalism",
+   "identity-loan central device"
+  ],
+  "update": [
+   "grounded in actual 2020s genomics (polygenic scores, embryo screening)",
+   "series-scale worldbuilding",
+   "broader social strata than the original's elite setting"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "geocities-1994",
+  "name": "GeoCities",
+  "year": 1994,
+  "category": "Tech",
+  "genre": "Personal homepage platform",
+  "originalImpact": 75,
+  "modernRelevance": 60,
+  "socialBuzz": 36,
+  "rightsComplexity": 50,
+  "creatorAvailability": 20,
+  "briefDescription": "The neighborhood-organized homepage service where millions built their first corner of the web - guestbooks, MIDI autoplay, under-construction GIFs - until Yahoo shuttered it in 2009.",
+  "coreAudience": "The first generation of web self-publishers; now indie-web builders and a Gen Z nostalgic for a web nobody optimized.",
+  "currentSignal": "The indie-web revival - Neocities' hundreds of thousands of handmade sites, personal-blog renaissance essays - explicitly channels GeoCities' ethos while the brand itself sits unused at Yahoo.",
+  "revivalFormat": "Relaunched personal-homepage platform positioned against algorithmic feeds",
+  "tags": [
+   "web",
+   "90s-internet",
+   "homepage",
+   "yahoo",
+   "indie-web"
+  ],
+  "preserve": [
+   "neighborhoods as community geography",
+   "total creative ownership of your page",
+   "amateurism as a feature"
+  ],
+  "update": [
+   "modern hosting/tooling under the retro freedom",
+   "sane moderation architecture",
+   "no engagement-metric mechanics at all"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "hackers-1995",
+  "name": "Hackers",
+  "year": 1995,
+  "category": "Movie",
+  "genre": "Cyberpunk teen thriller",
+  "originalImpact": 40,
+  "modernRelevance": 72,
+  "socialBuzz": 58,
+  "rightsComplexity": 40,
+  "creatorAvailability": 55,
+  "briefDescription": "Angelina Jolie and Jonny Lee Miller as rollerblading teen hackers framed for a corporate worm. Laughed at in 1995, beloved now for its neon vision of hacker culture as youth counterculture.",
+  "coreAudience": "Proto-internet teens; now the actual infosec industry, which quotes 'Hack the Planet' with total sincerity.",
+  "currentSignal": "The security community keeps it alive with anniversary screenings and constant 'Hack the Planet' references at conferences like DEF CON.",
+  "revivalFormat": "Stylized series about Gen Z hacker culture under the Hackers banner",
+  "tags": [
+   "hacking",
+   "cyberpunk",
+   "teen",
+   "cult-classic",
+   "infosec"
+  ],
+  "preserve": [
+   "hacking as joyful counterculture, not grim crime",
+   "maximalist visual style",
+   "the crew ensemble"
+  ],
+  "update": [
+   "real modern security culture (CTFs, ransomware, hacktivism)",
+   "post-Mr.-Robot authenticity balanced against the fantasy",
+   "electronic soundtrack from current artists"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "hanson-1997",
+  "name": "Hanson",
+  "year": 1997,
+  "category": "Music",
+  "genre": "Pop rock",
+  "originalImpact": 65,
+  "modernRelevance": 45,
+  "socialBuzz": 36,
+  "rightsComplexity": 25,
+  "creatorAvailability": 90,
+  "briefDescription": "Three Oklahoma brothers made 'MMMBop' the inescapable song of 1997 and were dismissed as a teen fad - then quietly built a 25-year independent career.",
+  "coreAudience": "Teen-mag readers of 1997; now a loyal touring fanbase and a press that periodically rediscovers 'they never stopped.'",
+  "currentSignal": "The band still tours and runs its own label and annual fan events, and 'MMMBop' anniversary features recur in music media.",
+  "revivalFormat": "Documentary on the fad-to-lifer arc",
+  "tags": [
+   "pop",
+   "90s",
+   "one-hit-wonder-myth",
+   "brothers",
+   "mmmbop"
+  ],
+  "preserve": [
+   "the brothers' actual musicianship story",
+   "MMMBop as centerpiece"
+  ],
+  "update": [
+   "reframe from punchline to survivor narrative",
+   "modern doc-and-tour packaging"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "heavyweights-1995",
+  "name": "Heavyweights",
+  "year": 1995,
+  "category": "Movie",
+  "genre": "Summer-camp comedy",
+  "originalImpact": 30,
+  "modernRelevance": 42,
+  "socialBuzz": 32,
+  "rightsComplexity": 35,
+  "creatorAvailability": 60,
+  "briefDescription": "Judd Apatow co-wrote this Disney comedy about a fat camp taken over by an unhinged fitness guru (Ben Stiller). A flop that became a sleepover-cult staple.",
+  "coreAudience": "90s kids who quoted Tony Perkis; now comedy nerds who see the Apatow/Stiller DNA. Modern body-politics make a straight remake tricky.",
+  "currentSignal": "Cited regularly on comedy podcasts and in Apatow retrospectives as an ahead-of-its-time cult film; streams on Disney+.",
+  "revivalFormat": "Satirical series aimed at wellness-influencer culture, camp setting optional",
+  "tags": [
+   "summer-camp",
+   "comedy",
+   "cult-classic",
+   "stiller",
+   "apatow"
+  ],
+  "preserve": [
+   "kids-vs-charlatan-adult structure",
+   "the unhinged wellness-guru villain archetype"
+  ],
+  "update": [
+   "body-positivity framing replacing fat-camp premise",
+   "villain updated to influencer/biohacker grifter",
+   "modern kid ensemble"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "hey-arnold-1996",
+  "name": "Hey Arnold!",
+  "year": 1996,
+  "category": "TV",
+  "genre": "Animated urban slice-of-life",
+  "originalImpact": 65,
+  "modernRelevance": 75,
+  "socialBuzz": 58,
+  "rightsComplexity": 30,
+  "creatorAvailability": 70,
+  "briefDescription": "Nickelodeon's football-headed fourth grader navigates a poetic, working-class city block of boarders, bullies, and urban legends. The rare kids show about empathy and economic reality.",
+  "coreAudience": "City kids and latchkey kids of the 90s; now adults who recognize it as the gentlest, most humane Nicktoon.",
+  "currentSignal": "The 2017 Jungle Movie finally resolved the series' parents cliffhanger after a decade-long fan campaign, and creator Craig Bartlett remains active and openly fond of continuing it.",
+  "revivalFormat": "The Patakis-style series following the cast as adults",
+  "tags": [
+   "nickelodeon",
+   "animation",
+   "urban",
+   "slice-of-life",
+   "empathy"
+  ],
+  "preserve": [
+   "working-class city texture",
+   "Helga's complexity",
+   "jazz-inflected score and mood",
+   "empathy-first storytelling"
+  ],
+  "update": [
+   "gentrification of the neighborhood as story engine",
+   "the kids aged into adulthood",
+   "modern urban diversity deepened"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "homeward-bound-1993",
+  "name": "Homeward Bound: The Incredible Journey",
+  "year": 1993,
+  "category": "Movie",
+  "genre": "Family animal adventure",
+  "originalImpact": 55,
+  "modernRelevance": 64,
+  "socialBuzz": 30,
+  "rightsComplexity": 20,
+  "creatorAvailability": 30,
+  "briefDescription": "Disney's remake of its own 1963 film: two dogs and a cat cross the Sierra Nevada to find their family, with wisecracking celebrity voiceover interiority.",
+  "coreAudience": "Every 90s kid who cried at 'Shadow made it'; now pet-obsessed millennial parents.",
+  "currentSignal": "Streams on Disney+ and circulates in 'movies that wrecked you as a kid' social threads; Disney has shown appetite for live-action animal remakes generally.",
+  "revivalFormat": "Live-action/VFX remake for Disney+",
+  "tags": [
+   "pets",
+   "adventure",
+   "disney",
+   "tearjerker",
+   "family"
+  ],
+  "preserve": [
+   "the three-animal voice dynamic",
+   "Shadow's final-hill payoff",
+   "real-landscape scale"
+  ],
+  "update": [
+   "VFX animal performance instead of trained-animal stunts",
+   "modern voice cast",
+   "contemporary family framing"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "independence-day-1996",
+  "name": "Independence Day",
+  "year": 1996,
+  "category": "Movie",
+  "genre": "Alien-invasion blockbuster",
+  "originalImpact": 95,
+  "modernRelevance": 62,
+  "socialBuzz": 45,
+  "rightsComplexity": 30,
+  "creatorAvailability": 60,
+  "briefDescription": "The biggest film of 1996 and the template for the modern event blockbuster: aliens vaporize the White House, and Will Smith and Jeff Goldblum punch back. The 2016 sequel flopped without Smith.",
+  "coreAudience": "Everyone alive in July 1996; now dads who rewatch it every Fourth of July.",
+  "currentSignal": "Remains annual Fourth of July programming, and Roland Emmerich has publicly floated continuation ideas since the 2016 sequel underperformed; Disney now controls the Fox library.",
+  "revivalFormat": "Full reboot as an event film, ignoring the 2016 sequel",
+  "tags": [
+   "aliens",
+   "blockbuster",
+   "disaster",
+   "july-4th",
+   "90s-spectacle"
+  ],
+  "preserve": [
+   "global-ensemble disaster structure",
+   "practical-model destruction spectacle",
+   "sincere rally-the-world speech energy"
+  ],
+  "update": [
+   "invasion mechanics for the drone/satellite era",
+   "international rather than US-savior framing",
+   "a genuine movie-star lead"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "jagged-little-pill-1995",
+  "name": "Jagged Little Pill (Alanis Morissette)",
+  "year": 1995,
+  "category": "Music",
+  "genre": "Alternative rock",
+  "originalImpact": 85,
+  "modernRelevance": 60,
+  "socialBuzz": 38,
+  "rightsComplexity": 40,
+  "creatorAvailability": 85,
+  "briefDescription": "The 33-million-selling scream of 1995. 'You Oughta Know' and 'Ironic' made feminine rage mainstream a generation before the culture caught up to it.",
+  "coreAudience": "Every woman with a Discman in 1995; now mothers and daughters at the same anniversary shows.",
+  "currentSignal": "The Broadway adaptation won Tonys and continues in touring productions, and Morissette's anniversary tours have been consistent arena draws.",
+  "revivalFormat": "Continued anniversary touring plus the stage musical's international rollout",
+  "tags": [
+   "alternative",
+   "90s",
+   "female-rage",
+   "broadway",
+   "canadian"
+  ],
+  "preserve": [
+   "the album performed intact",
+   "the unpolished anger"
+  ],
+  "update": [
+   "stage-musical localization for global markets",
+   "framing for the post-#MeToo listener the record predicted"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "james-and-the-giant-peach-1996",
+  "name": "James and the Giant Peach",
+  "year": 1996,
+  "category": "Movie",
+  "genre": "Stop-motion fantasy",
+  "originalImpact": 42,
+  "modernRelevance": 58,
+  "socialBuzz": 26,
+  "rightsComplexity": 75,
+  "creatorAvailability": 45,
+  "briefDescription": "Henry Selick's stop-motion/live-action Roald Dahl adaptation for Disney: an orphaned boy sails the Atlantic inside a giant peach with a crew of talking insects.",
+  "coreAudience": "Kids drawn to its strange darkness; now stop-motion devotees and Dahl completists.",
+  "currentSignal": "Netflix acquired the entire Roald Dahl catalog in 2021 and has been developing Dahl animation, while the 1996 film itself sits with Disney - a genuine rights split.",
+  "revivalFormat": "New stop-motion or hybrid adaptation under Netflix's Dahl program",
+  "tags": [
+   "roald-dahl",
+   "stop-motion",
+   "fantasy",
+   "selick",
+   "disney"
+  ],
+  "preserve": [
+   "stop-motion tactility",
+   "Dahl's genuine menace and strangeness",
+   "the found-family insect crew"
+  ],
+  "update": [
+   "Dahl-estate content sensitivities navigated transparently",
+   "modern stop-motion scale",
+   "score and songs rebuilt"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "jingle-all-the-way-1996",
+  "name": "Jingle All the Way",
+  "year": 1996,
+  "category": "Movie",
+  "genre": "Holiday comedy",
+  "originalImpact": 48,
+  "modernRelevance": 60,
+  "socialBuzz": 48,
+  "rightsComplexity": 35,
+  "creatorAvailability": 50,
+  "briefDescription": "Arnold Schwarzenegger battles a mailman and all of Minneapolis for the last Turbo-Man doll on Christmas Eve. A satire of toy-craze consumerism that became a camp holiday staple.",
+  "coreAudience": "Kids of the Tickle-Me-Elmo era; now adults who understand it was a documentary about their parents.",
+  "currentSignal": "Resurges every December in memes and cable rotation, with 'put that cookie down' enjoying a durable second life online.",
+  "revivalFormat": "Holiday remake about a hyped drop/scalper-bot economy",
+  "tags": [
+   "christmas",
+   "comedy",
+   "consumerism",
+   "arnold",
+   "toys"
+  ],
+  "preserve": [
+   "parent-desperation farce engine",
+   "the toy-craze satire",
+   "camp action set pieces"
+  ],
+  "update": [
+   "scalper bots, drops, and resale apps as the villain",
+   "two-household modern family dynamics",
+   "a new fictional must-have toy"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "jock-jams-1995",
+  "name": "Jock Jams",
+  "year": 1995,
+  "category": "Music",
+  "genre": "Stadium anthem compilation",
+  "originalImpact": 62,
+  "modernRelevance": 58,
+  "socialBuzz": 34,
+  "rightsComplexity": 80,
+  "creatorAvailability": 25,
+  "briefDescription": "The ESPN/Tommy Boy compilation series that canonized arena hype music - 'Whoomp! (There It Is),' 'Get Ready for This' - selling millions of copies of songs everyone already heard at games.",
+  "coreAudience": "90s sports kids and gym classes; now every stadium crowd that still hears half the tracklist nightly.",
+  "currentSignal": "Its core tracklist remains default stadium-PA canon decades later, though reassembling the compilation rights would be a licensing thicket.",
+  "revivalFormat": "Branded playlist/live-event franchise with ESPN",
+  "tags": [
+   "sports",
+   "compilation",
+   "anthems",
+   "espn",
+   "90s"
+  ],
+  "preserve": [
+   "the ESPN brand tie",
+   "shameless hype-first curation"
+  ],
+  "update": [
+   "playlist-era product instead of CDs",
+   "modern anthem additions alongside the canon"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "johnny-bravo-1997",
+  "name": "Johnny Bravo",
+  "year": 1997,
+  "category": "TV",
+  "genre": "Animated comedy",
+  "originalImpact": 55,
+  "modernRelevance": 48,
+  "socialBuzz": 44,
+  "rightsComplexity": 30,
+  "creatorAvailability": 60,
+  "briefDescription": "Cartoon Network's Elvis-quiffed himbo whose every pickup attempt ends in violence and rejection. The joke was always on Johnny - a fact revivals would need to keep straight.",
+  "coreAudience": "Late-90s CN kids; now an internet that uses Johnny as the definitive himbo/failed-alpha reaction image.",
+  "currentSignal": "Endures as a reaction-GIF and meme staple, and periodically resurfaces in fan-casting discourse about a live-action version; no confirmed project exists.",
+  "revivalFormat": "Adult-animation satire of manosphere self-improvement culture",
+  "tags": [
+   "cartoon-network",
+   "comedy",
+   "himbo",
+   "animation",
+   "90s"
+  ],
+  "preserve": [
+   "Johnny always loses",
+   "Mama Bravo dynamic",
+   "the visual monologue mugging"
+  ],
+  "update": [
+   "satire aimed at dating-app and influencer masculinity",
+   "the women written with agency",
+   "adult-swim tonal home"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "kenan-and-kel-1996",
+  "name": "Kenan & Kel",
+  "year": 1996,
+  "category": "TV",
+  "genre": "Teen buddy sitcom",
+  "originalImpact": 55,
+  "modernRelevance": 58,
+  "socialBuzz": 50,
+  "rightsComplexity": 35,
+  "creatorAvailability": 75,
+  "briefDescription": "The All That spinoff starring Kenan Thompson's scheming teen and Kel Mitchell's orange-soda-loving accomplice in Chicago. The definitive 90s Nick sitcom duo.",
+  "coreAudience": "SNICK kids; now adults who greet any orange soda with the catechism 'Who loves orange soda?'",
+  "currentSignal": "The duo reunited for Good Burger 2 in 2023 to strong nostalgia turnout, and both remain prominent - Kenan as SNL's longest-serving cast member.",
+  "revivalFormat": "Reunion sitcom with Kenan and Kel as adults",
+  "tags": [
+   "nickelodeon",
+   "sitcom",
+   "buddy",
+   "90s",
+   "snick"
+  ],
+  "preserve": [
+   "the duo's actual chemistry",
+   "scheme-of-the-week engine",
+   "fourth-wall intro/outro bits"
+  ],
+  "update": [
+   "age the characters honestly into adult life",
+   "modern Chicago setting",
+   "multi-cam warmth without laugh-track staleness"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "killer-instinct-1994",
+  "name": "Killer Instinct",
+  "year": 1994,
+  "category": "Video Game",
+  "genre": "Fighting",
+  "originalImpact": 62,
+  "modernRelevance": 68,
+  "socialBuzz": 42,
+  "rightsComplexity": 30,
+  "creatorAvailability": 45,
+  "briefDescription": "Rare's 1994 arcade fighter - Ultra combos, 'C-C-C-COMBO BREAKER,' Fulgore and Jago - was the SNES era's answer to Mortal Kombat, and its 2013 Xbox reboot was quietly excellent.",
+  "coreAudience": "Arcade fighting-game kids; now the FGC, which still holds the 2013 reboot in high regard.",
+  "currentSignal": "Microsoft shipped a 10th-anniversary update of the 2013 reboot in 2023 and has acknowledged fan demand, but no full sequel has been announced.",
+  "revivalFormat": "Full sequel as an Xbox/PC flagship fighter",
+  "tags": [
+   "fighting",
+   "arcade",
+   "rare",
+   "xbox",
+   "combo"
+  ],
+  "preserve": [
+   "combo-breaker system identity",
+   "the announcer",
+   "Ultra combo spectacle",
+   "the theme music"
+  ],
+  "update": [
+   "rollback-native online from day one",
+   "esports circuit support",
+   "roster refresh alongside the classics"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "legends-of-the-hidden-temple-1993",
+  "name": "Legends of the Hidden Temple",
+  "year": 1993,
+  "category": "TV",
+  "genre": "Kids action game show",
+  "originalImpact": 58,
+  "modernRelevance": 72,
+  "socialBuzz": 52,
+  "rightsComplexity": 30,
+  "creatorAvailability": 45,
+  "briefDescription": "Nickelodeon's temple-run game show: Purple Parrots and Silver Snakes brave Olmec's temple, where the Shrine of the Silver Monkey destroyed a generation's confidence.",
+  "coreAudience": "Every 90s kid who screamed at contestants fumbling the monkey; now adults who want to run the temple themselves.",
+  "currentSignal": "A 2021 adult revival on The CW lasted one season, and the silver-monkey assembly failure remains a reliable nostalgia meme.",
+  "revivalFormat": "Big-budget adult competition series or location-based experience",
+  "tags": [
+   "game-show",
+   "nickelodeon",
+   "competition",
+   "90s-kids",
+   "olmec"
+  ],
+  "preserve": [
+   "Olmec as host-deity",
+   "team names and color identity",
+   "the temple-run finale structure"
+  ],
+  "update": [
+   "physical scale worthy of adult competitors",
+   "streaming production values",
+   "a real prize economy"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "lilith-fair-1997",
+  "name": "Lilith Fair",
+  "year": 1997,
+  "category": "Music",
+  "genre": "Music festival",
+  "originalImpact": 60,
+  "modernRelevance": 75,
+  "socialBuzz": 42,
+  "rightsComplexity": 40,
+  "creatorAvailability": 75,
+  "briefDescription": "Sarah McLachlan's all-women touring festival was 1997's top-grossing festival tour, proving the industry wrong about stacking female acts - then a 2010 revival misfired and the brand went quiet.",
+  "coreAudience": "90s women's-music audiences; now a festival market where women headliners dominate and the brand's thesis has been fully vindicated.",
+  "currentSignal": "Recent retrospective documentary coverage has revisited the festival's legacy, and McLachlan has discussed the brand warmly in interviews; no new edition is confirmed.",
+  "revivalFormat": "Curated festival relaunch with current-generation women headliners",
+  "tags": [
+   "festival",
+   "women",
+   "90s",
+   "lilith",
+   "live-music"
+  ],
+  "preserve": [
+   "all-women booking thesis",
+   "McLachlan's founder blessing",
+   "charitable component"
+  ],
+  "update": [
+   "booking across pop/rap/country, not just folk-rock",
+   "modern festival economics and safety standards",
+   "avoid the 2010 revival's mistakes"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "lisa-frank-1996",
+  "name": "Lisa Frank",
+  "year": 1996,
+  "category": "Toy/Fad",
+  "genre": "School-supply art brand",
+  "originalImpact": 70,
+  "modernRelevance": 68,
+  "socialBuzz": 55,
+  "rightsComplexity": 55,
+  "creatorAvailability": 40,
+  "briefDescription": "The neon-rainbow unicorns, dolphins, and leopards that ruled 90s school supplies at peak saturation - a maximalist aesthetic empire run from a famously secretive Tucson factory.",
+  "coreAudience": "Trapper Keeper kids, especially girls; now millennial women driving collabs and a Gen Z that discovered the aesthetic via Y2K revivalism.",
+  "currentSignal": "Steady licensing collabs (cosmetics, apparel, hotel pop-up activations) keep the artwork commercially alive, while reports about the company's troubled internal history have added documentary interest.",
+  "revivalFormat": "Full lifestyle-brand relaunch with premium collabs and an animated project",
+  "tags": [
+   "stationery",
+   "aesthetic",
+   "90s",
+   "maximalism",
+   "unicorns"
+  ],
+  "preserve": [
+   "the original character art and saturation-maximal palette",
+   "sticker/school-supply heart of the brand"
+  ],
+  "update": [
+   "adult product categories (beauty, home, fashion)",
+   "transparent modern company practices",
+   "digital sticker/wallpaper ecosystem"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "macarena-1996",
+  "name": "Macarena (Los del Río)",
+  "year": 1996,
+  "category": "Music",
+  "genre": "Latin dance pop",
+  "originalImpact": 88,
+  "modernRelevance": 40,
+  "socialBuzz": 42,
+  "rightsComplexity": 50,
+  "creatorAvailability": 45,
+  "briefDescription": "The Bayside Boys remix spent 14 weeks at #1 in 1996 and put a line dance in every wedding, ballpark, and political convention on Earth - the biggest one-song craze of the decade.",
+  "coreAudience": "Literally everyone in 1996; now wedding DJs, stadium organists, and TikTok dance-trend archaeology.",
+  "currentSignal": "The dance still fires reliably at stadiums and weddings, and short-form video periodically resurfaces it in dance-challenge cycles.",
+  "revivalFormat": "Official short-form dance-challenge campaign tied to an anniversary",
+  "tags": [
+   "dance-craze",
+   "latin",
+   "one-hit-wonder",
+   "90s",
+   "novelty"
+  ],
+  "preserve": [
+   "the original dance untouched",
+   "the Sevillana duo's authorship credit"
+  ],
+  "update": [
+   "short-form-native choreography variations",
+   "modern Latin-pop remix collaboration"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "magic-eye-1993",
+  "name": "Magic Eye",
+  "year": 1993,
+  "category": "Toy/Fad",
+  "genre": "Autostereogram print phenomenon",
+  "originalImpact": 72,
+  "modernRelevance": 45,
+  "socialBuzz": 32,
+  "rightsComplexity": 40,
+  "creatorAvailability": 30,
+  "briefDescription": "The 3D-hidden-image books that topped bestseller lists in 1993-94, hung in every mall kiosk, and divided humanity into people who could see the sailboat and people who lied about it.",
+  "coreAudience": "Mall America of the mid-90s; now an internet that periodically rediscovers autostereograms as shareable challenges.",
+  "currentSignal": "The books remain in print and hidden-image posts still go reliably viral in periodic waves, suggesting the format ports naturally to filters and short-form challenges.",
+  "revivalFormat": "AR filter / short-form challenge franchise with print collabs",
+  "tags": [
+   "optical-illusion",
+   "books",
+   "90s",
+   "mall-culture",
+   "viral"
+  ],
+  "preserve": [
+   "genuine autostereogram craft (not fake reveals)",
+   "the can-you-see-it social moment"
+  ],
+  "update": [
+   "phone-native formats (filters, wallpapers)",
+   "artist-collab image drops",
+   "accessibility mode for those who can't converge"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "men-in-black-1997",
+  "name": "Men in Black",
+  "year": 1997,
+  "category": "Movie",
+  "genre": "Sci-fi buddy comedy",
+  "originalImpact": 92,
+  "modernRelevance": 68,
+  "socialBuzz": 42,
+  "rightsComplexity": 55,
+  "creatorAvailability": 45,
+  "briefDescription": "Sony's 1997 juggernaut from a Malibu/Marvel comic: a secret agency polices aliens on Earth. Defined the Will Smith summer-event era; dormant since 2019's spinoff underperformed.",
+  "coreAudience": "Everyone in summer 1997; now audiences nostalgic for original-concept blockbusters and the neuralyzer as shorthand.",
+  "currentSignal": "Franchise has been quiet since Men in Black: International (2019) disappointed; the neuralyzer remains universally understood shorthand in memes and headlines.",
+  "revivalFormat": "Animated series returning to the weird-procedural tone",
+  "tags": [
+   "aliens",
+   "buddy-comedy",
+   "sony",
+   "blockbuster",
+   "90s-summer"
+  ],
+  "preserve": [
+   "deadpan bureaucracy-of-the-weird tone",
+   "mentor-rookie dynamic",
+   "practical creature-shop aliens"
+  ],
+  "update": [
+   "surveillance-era secrecy logic",
+   "a genuinely new duo with real chemistry",
+   "conspiracy culture handled knowingly"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "mighty-max-1993",
+  "name": "Mighty Max",
+  "year": 1993,
+  "category": "Toy/Fad",
+  "genre": "Portable playset toys",
+  "originalImpact": 52,
+  "modernRelevance": 60,
+  "socialBuzz": 26,
+  "rightsComplexity": 50,
+  "creatorAvailability": 35,
+  "briefDescription": "Bluebird's boys' answer to Polly Pocket: palm-sized horror playsets - skulls, dragons, doom zones - that opened into miniature worlds, backed by a surprisingly dark 1993 cartoon.",
+  "coreAudience": "Kids who carried dread in their pockets; now adult collectors paying real money for complete sets and a Mattel that owns the molds.",
+  "currentSignal": "Complete vintage playsets command strong collector prices, and Mattel's film-and-revival strategy for its toy vault (Polly Pocket and others in development) makes dormant Bluebird IP a plausible candidate.",
+  "revivalFormat": "Premium collector playset relaunch plus an animated series",
+  "tags": [
+   "toys",
+   "playsets",
+   "horror",
+   "90s",
+   "mattel"
+  ],
+  "preserve": [
+   "pocket-world playset engineering",
+   "horror-adventure theming",
+   "Max-Virgil-Norman trio from the cartoon"
+  ],
+  "update": [
+   "adult-collector premium tier",
+   "modern safety standards for small parts",
+   "story universe built for streaming"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "mighty-morphin-power-rangers-1993",
+  "name": "Mighty Morphin Power Rangers",
+  "year": 1993,
+  "category": "TV",
+  "genre": "Superhero action kids series",
+  "originalImpact": 90,
+  "modernRelevance": 65,
+  "socialBuzz": 58,
+  "rightsComplexity": 60,
+  "creatorAvailability": 40,
+  "briefDescription": "The 1993 phenomenon that spliced Japanese Super Sentai footage with American teens, triggered toy shortages and moral panics, and ran for three decades of seasons - until the franchise went quiet mid-2020s.",
+  "coreAudience": "Every elementary schooler of 1993-95; now 35-45 collectors who fund a large Lightning Collection aftermarket.",
+  "currentSignal": "Hasbro's Netflix era ended in 2023 with the 30th-anniversary special Once & Always, and the franchise has since been on an acknowledged pause while Hasbro sorts its next partner - the first real gap in 30 years.",
+  "revivalFormat": "Full cinematic-universe reboot aimed at both kids and grown fans",
+  "tags": [
+   "tokusatsu",
+   "superhero",
+   "hasbro",
+   "90s-kids",
+   "toyetic"
+  ],
+  "preserve": [
+   "teens-with-attitude ensemble formula",
+   "Zord/Megazord escalation",
+   "the original theme",
+   "Sentai partnership DNA"
+  ],
+  "update": [
+   "original footage instead of spliced Sentai",
+   "dual-track content for kids and adult collectors",
+   "modern serialized stakes"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "mrs-doubtfire-1993",
+  "name": "Mrs. Doubtfire",
+  "year": 1993,
+  "category": "Movie",
+  "genre": "Family comedy",
+  "originalImpact": 88,
+  "modernRelevance": 55,
+  "socialBuzz": 48,
+  "rightsComplexity": 40,
+  "creatorAvailability": 25,
+  "briefDescription": "The second-highest-grossing film of 1993: a divorced dad poses as a British nanny to stay close to his kids. Inseparable from Robin Williams' performance.",
+  "coreAudience": "Family audiences of the 90s; now adults processing divorce-kid childhoods, plus musical-theater audiences.",
+  "currentSignal": "A Broadway musical adaptation opened in 2021 and has continued in touring productions; any film remake talk runs into the consensus that the role was Williams' alone.",
+  "revivalFormat": "Continued stage-musical rollout rather than a film remake",
+  "tags": [
+   "comedy",
+   "family",
+   "divorce",
+   "robin-williams",
+   "san-francisco"
+  ],
+  "preserve": [
+   "the emotional honesty about divorce",
+   "warmth over farce",
+   "the kids' point of view"
+  ],
+  "update": [
+   "gender-disguise comedy needs a fundamentally rethought premise",
+   "modern custody and co-parenting realities"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "mtv-rock-n-jock-1994",
+  "name": "MTV Rock N' Jock",
+  "year": 1994,
+  "category": "Sports/Media",
+  "genre": "Celebrity sports event television",
+  "originalImpact": 55,
+  "modernRelevance": 60,
+  "socialBuzz": 28,
+  "rightsComplexity": 35,
+  "creatorAvailability": 25,
+  "briefDescription": "MTV's annual celebrity softball and basketball games - musicians, actors, and pros in absurd uniforms with 25-point shots - peak-90s proof that famous people playing dumb sports is great TV.",
+  "coreAudience": "MTV-generation viewers; now the audience that made celebrity boxing, pickleball exhibitions, and creator games a booming category.",
+  "currentSignal": "The celebrity/creator sports-event economy (influencer boxing, celebrity flag football, all-star games) is thriving without the brand, while Rock N' Jock survives mainly in throwback clip compilations.",
+  "revivalFormat": "Streaming/YouTube live event series mixing musicians, creators, and retired pros",
+  "tags": [
+   "mtv",
+   "celebrity",
+   "sports",
+   "90s",
+   "event-tv"
+  ],
+  "preserve": [
+   "gimmick rules (25-point hoop energy)",
+   "music-culture-meets-sports casting",
+   "unserious tone"
+  ],
+  "update": [
+   "creator-economy rosters",
+   "live-streamed with betting-free interactivity",
+   "highlight-clip-native production"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "mtv-unplugged-1993",
+  "name": "MTV Unplugged",
+  "year": 1993,
+  "category": "Music",
+  "genre": "Live acoustic performance franchise",
+  "originalImpact": 80,
+  "modernRelevance": 68,
+  "socialBuzz": 34,
+  "rightsComplexity": 35,
+  "creatorAvailability": 40,
+  "briefDescription": "The acoustic-session franchise peaked in 1993-94 with Nirvana's landmark set - among the most acclaimed live recordings ever - making 'unplugged' a permanent word in music.",
+  "coreAudience": "MTV-generation music fans; now streaming audiences who prove the appetite daily through Tiny Desk and live-session channels.",
+  "currentSignal": "NPR's Tiny Desk dominance shows the stripped-live format thriving while the Unplugged brand sits largely unused amid Paramount's shrinking MTV footprint.",
+  "revivalFormat": "YouTube-first session series under the Unplugged name",
+  "tags": [
+   "mtv",
+   "live-music",
+   "acoustic",
+   "franchise",
+   "90s"
+  ],
+  "preserve": [
+   "strip-the-artist-bare format purity",
+   "album-quality audio release of each session"
+  ],
+  "update": [
+   "YouTube/streaming-native distribution",
+   "booking current-generation stars",
+   "untether from linear MTV entirely"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "my-so-called-life-1994",
+  "name": "My So-Called Life",
+  "year": 1994,
+  "category": "TV",
+  "genre": "Teen drama",
+  "originalImpact": 48,
+  "modernRelevance": 66,
+  "socialBuzz": 38,
+  "rightsComplexity": 50,
+  "creatorAvailability": 50,
+  "briefDescription": "One 19-episode season with Claire Danes as Angela Chase - flannel, Jordan Catalano, and interior monologue - that permanently raised the bar for honest teen drama before ABC cut it down.",
+  "coreAudience": "Gen-X teens who saw themselves on TV for the first time; now prestige-drama viewers and the writers it influenced.",
+  "currentSignal": "A permanent fixture atop canceled-too-soon rankings, with each cast-anniversary interview cycle producing fresh coverage; no revival has ever been confirmed.",
+  "revivalFormat": "Limited series revisiting Angela Chase at midlife",
+  "tags": [
+   "teen-drama",
+   "gen-x",
+   "one-season",
+   "cult-classic",
+   "90s"
+  ],
+  "preserve": [
+   "diary-voiceover interiority",
+   "unresolved emotional honesty",
+   "parents written as full humans"
+  ],
+  "update": [
+   "Angela as an adult with a teenager of her own",
+   "modern teen interiority (curated vs felt selves)",
+   "limited-series closure the cancellation denied"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "myst-1993",
+  "name": "Myst",
+  "year": 1993,
+  "category": "Video Game",
+  "genre": "Puzzle adventure",
+  "originalImpact": 85,
+  "modernRelevance": 70,
+  "socialBuzz": 38,
+  "rightsComplexity": 45,
+  "creatorAvailability": 85,
+  "briefDescription": "The best-selling PC game of the 1990s: a silent island of surreal puzzle worlds that sold CD-ROM drives by the million and proved games could be contemplative.",
+  "coreAudience": "The first mainstream-adult gaming audience; now puzzle/atmosphere gamers and a film industry that has circled it for decades.",
+  "currentSignal": "Cyan remains active and shipped a full remake of sequel Riven in 2024, while film/TV rights have been shopped repeatedly (including a announced Village Roadshow deal) without a produced adaptation.",
+  "revivalFormat": "Prestige TV adaptation of the D'ni mythology",
+  "tags": [
+   "puzzle",
+   "adventure",
+   "pc",
+   "90s",
+   "cyan"
+  ],
+  "preserve": [
+   "environmental storytelling without hand-holding",
+   "the Atrus/brothers moral mystery",
+   "surreal-world artistry"
+  ],
+  "update": [
+   "adaptation must invent characters carefully",
+   "modern puzzle-game onboarding",
+   "VR as a natural home"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "nba-jam-1993",
+  "name": "NBA Jam",
+  "year": 1993,
+  "category": "Video Game",
+  "genre": "Arcade sports",
+  "originalImpact": 80,
+  "modernRelevance": 75,
+  "socialBuzz": 52,
+  "rightsComplexity": 65,
+  "creatorAvailability": 50,
+  "briefDescription": "Midway's 1993 arcade phenomenon - 2-on-2, no fouls, flaming dunks, 'Boomshakalaka!' - was the highest-earning arcade sports game ever and a cultural event in every pizza parlor.",
+  "coreAudience": "Arcade and console kids of the mid-90s; now adults starved for arcade sports in a sim-only NBA gaming duopoly.",
+  "currentSignal": "Arcade1Up's NBA Jam home cabinets sold well, an acclaimed oral-history book documented the game's legend, and no modern entry has existed since EA's 2010 reboot.",
+  "revivalFormat": "Free-to-play cross-platform arcade revival with live NBA rosters",
+  "tags": [
+   "arcade",
+   "basketball",
+   "sports",
+   "90s",
+   "boomshakalaka"
+  ],
+  "preserve": [
+   "2-on-2 no-rules feel",
+   "announcer catchphrases",
+   "on-fire mechanic",
+   "big-head codes"
+  ],
+  "update": [
+   "NBA licensing deal",
+   "seasonal live-service roster updates",
+   "couch-plus-online multiplayer"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "netscape-navigator-1994",
+  "name": "Netscape Navigator",
+  "year": 1994,
+  "category": "Tech",
+  "genre": "Web browser",
+  "originalImpact": 85,
+  "modernRelevance": 45,
+  "socialBuzz": 26,
+  "rightsComplexity": 60,
+  "creatorAvailability": 40,
+  "briefDescription": "The browser that carried the mainstream onto the web - the throbbing N, the 1995 IPO that ignited the dot-com boom, then death by Microsoft in the browser wars.",
+  "coreAudience": "Everyone who first dialed up in the 90s; now developers who venerate it (Firefox descends from its code) and a market restless with Chrome hegemony.",
+  "currentSignal": "Mozilla and Firefox are its direct open-source descendants, while the Netscape trademark itself has sat parked at corporate owners for two decades - a famous name with no product.",
+  "revivalFormat": "Privacy-first browser brand relaunch aimed at Chrome fatigue",
+  "tags": [
+   "browser",
+   "90s-internet",
+   "dotcom",
+   "netscape",
+   "brand"
+  ],
+  "preserve": [
+   "the N logo and meteor-shower loading animation",
+   "user-agent (not advertiser) allegiance"
+  ],
+  "update": [
+   "built on a modern engine",
+   "a genuine differentiator (privacy, AI, or local-first)",
+   "untangle the parked trademark"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "nfl-blitz-1997",
+  "name": "NFL Blitz",
+  "year": 1997,
+  "category": "Video Game",
+  "genre": "Arcade sports",
+  "originalImpact": 58,
+  "modernRelevance": 65,
+  "socialBuzz": 46,
+  "rightsComplexity": 80,
+  "creatorAvailability": 45,
+  "briefDescription": "Midway's 1997 arcade football - 7-on-7, no penalties, late hits encouraged - was NBA Jam's gridiron sibling and died when the NFL tightened licensing around violence and exclusivity.",
+  "coreAudience": "Arcade and N64 kids; now NFL fans loudly bored of the sim-only Madden monopoly.",
+  "currentSignal": "An Arcade1Up home cabinet release and perennial 'bring back Blitz' fan discourse show demand, but the NFL's exclusive licensing posture remains the wall.",
+  "revivalFormat": "Licensed arcade football revival, or an unlicensed spiritual successor with fictional teams",
+  "tags": [
+   "arcade",
+   "football",
+   "sports",
+   "midway",
+   "90s"
+  ],
+  "preserve": [
+   "late-hit lawless arcade feel",
+   "pick-up-and-play 7-on-7 speed",
+   "over-the-top announcer"
+  ],
+  "update": [
+   "navigate or bypass NFL exclusivity",
+   "online play and seasons",
+   "tone the violence for rating without neutering it"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "no-doubt-1995",
+  "name": "No Doubt (Tragic Kingdom era)",
+  "year": 1995,
+  "category": "Music",
+  "genre": "Ska pop rock",
+  "originalImpact": 78,
+  "modernRelevance": 62,
+  "socialBuzz": 52,
+  "rightsComplexity": 40,
+  "creatorAvailability": 80,
+  "briefDescription": "Tragic Kingdom (1995) - 'Just a Girl,' 'Don't Speak,' 'Spiderwebs' - turned an Anaheim ska band into one of the defining acts of the decade before Gwen Stefani's solo career froze the band in amber.",
+  "coreAudience": "Alternative-radio teens of 1995-97; now festival-going adults for whom the reunion itch is strong.",
+  "currentSignal": "The band's 2024 Coachella one-off reunion drew enormous coverage and immediately stoked full-tour speculation that hasn't been fulfilled.",
+  "revivalFormat": "Full reunion tour",
+  "tags": [
+   "ska",
+   "alternative",
+   "90s",
+   "gwen-stefani",
+   "reunion"
+  ],
+  "preserve": [
+   "the original four-piece",
+   "Tragic Kingdom played as an album",
+   "the ska-punk energy unpolished"
+  ],
+  "update": [
+   "nothing musically - the demand is for the original",
+   "just modern touring production"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "now-and-then-1995",
+  "name": "Now and Then",
+  "year": 1995,
+  "category": "Movie",
+  "genre": "Female coming-of-age drama",
+  "originalImpact": 42,
+  "modernRelevance": 64,
+  "socialBuzz": 34,
+  "rightsComplexity": 40,
+  "creatorAvailability": 55,
+  "briefDescription": "Four women (Demi Moore, Melanie Griffith, Rosie O'Donnell, Rita Wilson) reunite and flash back to the pivotal 1970 summer of their girlhood. The female Stand by Me.",
+  "coreAudience": "Girls of the mid-90s who watched it at every sleepover; now women in their 40s who own the friendship-nostalgia genre's spending power.",
+  "currentSignal": "Sustains steady sleepover-canon affection in millennial-women media and anniversary essays; no publicly confirmed remake.",
+  "revivalFormat": "Series alternating a 90s childhood timeline with the women today",
+  "tags": [
+   "coming-of-age",
+   "friendship",
+   "female-led",
+   "nostalgia",
+   "90s"
+  ],
+  "preserve": [
+   "dual-timeline structure",
+   "unsentimental girlhood honesty",
+   "the four-friend archetype spread"
+  ],
+  "update": [
+   "the childhood timeline moves to the 90s itself",
+   "modern women's midlife stakes",
+   "more diverse foursome"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "nsync-1998",
+  "name": "*NSYNC",
+  "year": 1998,
+  "category": "Music",
+  "genre": "Pop",
+  "originalImpact": 88,
+  "modernRelevance": 60,
+  "socialBuzz": 68,
+  "rightsComplexity": 40,
+  "creatorAvailability": 75,
+  "briefDescription": "The boy band that broke US sales records at the millennium went on indefinite hiatus in 2002 and never did a farewell - leaving the highest-value unfinished business in pop nostalgia.",
+  "coreAudience": "Teen fans of 1998-2001, now 35-45 with disposable income; every reunion tease produces measurable internet weather.",
+  "currentSignal": "'It's gonna be May' recurs as an annual meme event, and the group's first new song in two decades ('Better Place,' for 2023's Trolls) plus repeated joint appearances keep reunion-tour speculation permanently warm.",
+  "revivalFormat": "Reunion tour with or without new music",
+  "tags": [
+   "boy-band",
+   "pop",
+   "90s",
+   "reunion",
+   "meme"
+  ],
+  "preserve": [
+   "the five-member lineup",
+   "the hits performed straight, not winked at"
+  ],
+  "update": [
+   "Timberlake-era baggage managed candidly",
+   "residency/stadium economics of modern nostalgia touring"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "palmpilot-1996",
+  "name": "PalmPilot",
+  "year": 1996,
+  "category": "Tech",
+  "genre": "Personal digital assistant",
+  "originalImpact": 72,
+  "modernRelevance": 40,
+  "socialBuzz": 22,
+  "rightsComplexity": 55,
+  "creatorAvailability": 35,
+  "briefDescription": "The 1996 PDA that got organizer software right - Graffiti handwriting, HotSync, a thousand third-party apps - and defined pocket computing until the smartphone ate it.",
+  "coreAudience": "90s professionals and gadget kids with stylus dreams; now the digital-minimalism crowd buying distraction-free devices.",
+  "currentSignal": "The minimalist-device wave (e.g., Light Phone-style products) has revived the single-purpose-gadget category the Pilot perfected, while the Palm brand has been dormant since a 2018 licensed mini-phone flopped.",
+  "revivalFormat": "Distraction-free organizer device under the Palm name",
+  "tags": [
+   "pda",
+   "gadget",
+   "90s-tech",
+   "palm",
+   "minimalism"
+  ],
+  "preserve": [
+   "instant-on single-purpose focus",
+   "week-long battery ethos",
+   "the beloved form factor"
+  ],
+  "update": [
+   "e-ink screen and modern sync",
+   "position explicitly as phone detox",
+   "resolve the licensed-out brand rights"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "parappa-the-rapper-1996",
+  "name": "PaRappa the Rapper",
+  "year": 1996,
+  "category": "Video Game",
+  "genre": "Rhythm",
+  "originalImpact": 55,
+  "modernRelevance": 60,
+  "socialBuzz": 34,
+  "rightsComplexity": 50,
+  "creatorAvailability": 65,
+  "briefDescription": "Masaya Matsuura and artist Rodney Greenblat invented the rhythm genre with a paper-flat rapping dog whose mantra 'I gotta believe!' became PlayStation folklore.",
+  "coreAudience": "Early PlayStation adopters charmed by its style; now rhythm-game and Y2K-aesthetic communities.",
+  "currentSignal": "Sony's 2017 PS4 remaster and periodic anniversary artwork show the brand is remembered but unexploited; the character recurs in PlayStation nostalgia merchandising.",
+  "revivalFormat": "New rhythm game with current hip-hop production and creator-made levels",
+  "tags": [
+   "rhythm",
+   "playstation",
+   "hip-hop",
+   "y2k",
+   "japan"
+  ],
+  "preserve": [
+   "paper-flat art style",
+   "call-and-response rap teaching structure",
+   "gotta-believe sincerity"
+  ],
+  "update": [
+   "actual contemporary hip-hop collaborators",
+   "user-generated rap-level tools",
+   "latency-perfect modern input"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "pleasantville-1998",
+  "name": "Pleasantville",
+  "year": 1998,
+  "category": "Movie",
+  "genre": "Fantasy social satire",
+  "originalImpact": 45,
+  "modernRelevance": 78,
+  "socialBuzz": 32,
+  "rightsComplexity": 40,
+  "creatorAvailability": 60,
+  "briefDescription": "Two 90s teens get trapped in a black-and-white 1950s sitcom, and their presence brings color, sex, books, and conflict to a town built on nostalgia. New Line's great film about nostalgia itself.",
+  "coreAudience": "Thoughtful teens of 1998; now an era relitigating idealized pasts, for which the film is a ready-made metaphor.",
+  "currentSignal": "Frequently invoked in essays and commentary about nostalgia politics and censorship; its color-into-monochrome imagery remains a widely referenced visual shorthand.",
+  "revivalFormat": "Limited series where characters enter a curated social-media past",
+  "tags": [
+   "satire",
+   "nostalgia",
+   "fantasy",
+   "90s",
+   "allegory"
+  ],
+  "preserve": [
+   "color-as-awakening visual device",
+   "sympathy for those afraid of change",
+   "the argument against weaponized nostalgia"
+  ],
+  "update": [
+   "the trap becomes an algorithmic nostalgia feed rather than a sitcom",
+   "new entry-point technology",
+   "contemporary culture-war texture handled with the original's grace"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "pogs-1994",
+  "name": "POGs",
+  "year": 1994,
+  "category": "Toy/Fad",
+  "genre": "Collectible schoolyard game",
+  "originalImpact": 78,
+  "modernRelevance": 45,
+  "socialBuzz": 34,
+  "rightsComplexity": 70,
+  "creatorAvailability": 25,
+  "briefDescription": "The Hawaiian milk-cap game that exploded into 1994-95's global schoolyard craze - caps, slammers, playing 'for keeps' - then got banned from schools and vanished as fast as it came.",
+  "coreAudience": "Elementary schoolers of 1994-95; now adults for whom a slammer is pure sense-memory, plus a collectibles market primed by the card boom.",
+  "currentSignal": "Vintage caps and slammers sustain a modest collector niche, and POGs appear reliably in ranked lists of 90s fads; scattered brand-revival attempts have never restored distribution.",
+  "revivalFormat": "Collectible relaunch with licensed IP caps and an app-linked play layer",
+  "tags": [
+   "collectible",
+   "fad",
+   "schoolyard",
+   "90s",
+   "hawaii"
+  ],
+  "preserve": [
+   "physical flip-and-slam play",
+   "for-keeps stakes (opt-in)",
+   "cap-art collectibility"
+  ],
+  "update": [
+   "licensed-IP cap art (anime, games, sports)",
+   "organized play like modern TCGs",
+   "sort out fragmented trademark rights"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "primal-rage-1994",
+  "name": "Primal Rage",
+  "year": 1994,
+  "category": "Video Game",
+  "genre": "Fighting",
+  "originalImpact": 48,
+  "modernRelevance": 55,
+  "socialBuzz": 26,
+  "rightsComplexity": 65,
+  "creatorAvailability": 25,
+  "briefDescription": "Atari Games' stop-motion arcade fighter where god-dinosaurs battle over a post-apocalyptic Earth while tiny humans worship them. Huge toy line, abrupt franchise death.",
+  "coreAudience": "Arcade kids who loved dinosaurs and fatalities equally; now kaiju-media fans and retro collectors.",
+  "currentSignal": "Original cabinets and the toy line command collector prices, and the property periodically appears in fan wishlists for the dormant Midway/Atari vault now under Warner's umbrella.",
+  "revivalFormat": "Kaiju fighting-game reboot with platform-fighter accessibility",
+  "tags": [
+   "fighting",
+   "arcade",
+   "dinosaurs",
+   "kaiju",
+   "90s"
+  ],
+  "preserve": [
+   "god-beasts-and-worshippers lore",
+   "stop-motion-flavored creature animation",
+   "roster archetypes"
+  ],
+  "update": [
+   "modern netcode and fighting systems",
+   "creature designs by current monster artists",
+   "clear rights consolidation from the Midway estate"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "reboot-1994",
+  "name": "ReBoot",
+  "year": 1994,
+  "category": "TV",
+  "genre": "CGI action-adventure",
+  "originalImpact": 50,
+  "modernRelevance": 70,
+  "socialBuzz": 42,
+  "rightsComplexity": 55,
+  "creatorAvailability": 45,
+  "briefDescription": "The first fully CGI TV series: Guardian Bob defends the city of Mainframe inside a computer from viruses Megabyte and Hexadecimal, and from invasive 'games' the User plays.",
+  "coreAudience": "Saturday-morning kids fascinated by living inside a computer; now an audience that actually lives inside computers.",
+  "currentSignal": "The 2018 Netflix hybrid reboot The Guardian Code was poorly received by the original fanbase, which continues to petition for a continuation of the original's cliffhanger.",
+  "revivalFormat": "Adult-skewing CGI continuation resolving the original cliffhanger",
+  "tags": [
+   "cgi",
+   "animation",
+   "computers",
+   "canadian",
+   "cult-classic"
+  ],
+  "preserve": [
+   "inside-the-computer worldbuilding",
+   "Megabyte/Hexadecimal villains",
+   "the game-cube invasion device"
+  ],
+  "update": [
+   "metaphors for cloud, AI, and networks instead of 90s desktops",
+   "modern CG craft honoring the retro look",
+   "continue, don't restart, the story"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "richie-rich-1994",
+  "name": "Richie Rich",
+  "year": 1994,
+  "category": "Movie",
+  "genre": "Family comedy",
+  "originalImpact": 48,
+  "modernRelevance": 52,
+  "socialBuzz": 24,
+  "rightsComplexity": 60,
+  "creatorAvailability": 30,
+  "briefDescription": "Macaulay Culkin's last big kid role: the Harvey Comics richest-boy-in-the-world defends the family fortune with gadgets and new friends from the sandlot.",
+  "coreAudience": "Kids who dreamed about the McDonald's in the house; now audiences fluent in wealth satire.",
+  "currentSignal": "The Harvey Comics character persists in licensing and had a short-lived Netflix kids series in 2015; the 1994 film itself trades on Culkin nostalgia in listicles.",
+  "revivalFormat": "Satirical animated series about absurd wealth",
+  "tags": [
+   "harvey-comics",
+   "wealth",
+   "family",
+   "comedy",
+   "macaulay-culkin"
+  ],
+  "preserve": [
+   "kid-scale wish fulfillment gadgets",
+   "the lonely-rich-kid heart"
+  ],
+  "update": [
+   "wealth jokes recalibrated for the billionaire-discourse era",
+   "tech-fortune rather than old-money family",
+   "sharper satire"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "road-rash-1994",
+  "name": "Road Rash",
+  "year": 1994,
+  "category": "Video Game",
+  "genre": "Combat racing",
+  "originalImpact": 55,
+  "modernRelevance": 55,
+  "socialBuzz": 24,
+  "rightsComplexity": 40,
+  "creatorAvailability": 30,
+  "briefDescription": "EA's motorcycle-racing series where you club rivals off their bikes at 100 mph, peaking with the acclaimed 1994 3DO edition and its grunge soundtrack. Dead since 1999.",
+  "coreAudience": "Genesis kids who discovered chain-fighting on a motorcycle; now a retro audience served only by indie imitators.",
+  "currentSignal": "Spiritual successors like Road Redemption (2017) demonstrated persistent demand, while EA has left the trademark unused for over two decades.",
+  "revivalFormat": "Arcade combat-racing reboot with licensed rock soundtrack",
+  "tags": [
+   "racing",
+   "combat",
+   "ea",
+   "motorcycle",
+   "90s"
+  ],
+  "preserve": [
+   "bat-and-chain combat racing core",
+   "cop-chase risk economy",
+   "irreverent outlaw tone"
+  ],
+  "update": [
+   "modern physics with arcade forgiveness",
+   "online grudge multiplayer",
+   "soundtrack licensing as a feature"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "rockos-modern-life-1993",
+  "name": "Rocko's Modern Life",
+  "year": 1993,
+  "category": "TV",
+  "genre": "Absurdist animated sitcom",
+  "originalImpact": 52,
+  "modernRelevance": 68,
+  "socialBuzz": 45,
+  "rightsComplexity": 30,
+  "creatorAvailability": 70,
+  "briefDescription": "Nickelodeon's satire of adult drudgery starring an anxious Australian wallaby navigating jobs, bills, and the megacorporation Conglom-O ('We own you').",
+  "coreAudience": "Kids who got half the jokes; now burned-out millennials for whom the show about jobs and rent was a documentary.",
+  "currentSignal": "The 2019 Netflix special Static Cling was warmly received - notably for a thoughtful trans storyline - and the show's anti-corporate gags circulate steadily as memes.",
+  "revivalFormat": "Adult-animation series revival",
+  "tags": [
+   "nickelodeon",
+   "satire",
+   "animation",
+   "capitalism",
+   "90s"
+  ],
+  "preserve": [
+   "adult-life anxiety satire",
+   "Joe Murray's rubbery visual style",
+   "Conglom-O as villain-employer"
+  ],
+  "update": [
+   "gig-economy and app-life material",
+   "full adult-animation targeting",
+   "streaming-era episode lengths"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "rookie-of-the-year-1993",
+  "name": "Rookie of the Year",
+  "year": 1993,
+  "category": "Movie",
+  "genre": "Sports fantasy comedy",
+  "originalImpact": 50,
+  "modernRelevance": 62,
+  "socialBuzz": 34,
+  "rightsComplexity": 35,
+  "creatorAvailability": 45,
+  "briefDescription": "A 12-year-old breaks his arm, the tendons heal tight, and he ends up pitching 100+ mph for the Chicago Cubs. Pure 90s kid wish-fulfillment from Fox.",
+  "coreAudience": "Little-league kids of 1993; now baseball dads and the MLB-highlight meme crowd.",
+  "currentSignal": "Retains steady cult affection among baseball fans and broadcasters who reference it when young pitchers debut; no publicly confirmed remake.",
+  "revivalFormat": "Modernized remake in the NIL/social-media youth-sports era",
+  "tags": [
+   "baseball",
+   "wish-fulfillment",
+   "chicago",
+   "kids-sports",
+   "comedy"
+  ],
+  "preserve": [
+   "the kid-in-the-majors absurdity played straight",
+   "Cubs/underdog-franchise setting",
+   "the funky arm-mechanic gag"
+  ],
+  "update": [
+   "social media instantly making the kid famous",
+   "modern sports-science and exploitation angles",
+   "the economics of a child athlete today"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "sabrina-the-teenage-witch-1996",
+  "name": "Sabrina the Teenage Witch",
+  "year": 1996,
+  "category": "TV",
+  "genre": "Supernatural teen sitcom",
+  "originalImpact": 68,
+  "modernRelevance": 70,
+  "socialBuzz": 48,
+  "rightsComplexity": 55,
+  "creatorAvailability": 60,
+  "briefDescription": "Melissa Joan Hart's TGIF hit about a teen witch, her 600-year-old aunts, and Salem, a warlock condemned to be a sarcastic animatronic cat.",
+  "coreAudience": "90s teen girls; now split between their nostalgia and Gen Z's witch-aesthetic enthusiasm.",
+  "currentSignal": "Netflix's darker Chilling Adventures take ended in 2020, leaving the sunny sitcom version dormant; Hart has said publicly she'd revisit the role, and Salem memes persist.",
+  "revivalFormat": "Comfort-TV sitcom revival with Sabrina as the aunt figure",
+  "tags": [
+   "witch",
+   "sitcom",
+   "tgif",
+   "archie-comics",
+   "90s"
+  ],
+  "preserve": [
+   "sitcom lightness (vs. the CAOS grimdark)",
+   "Salem's voice",
+   "the aunts' dynamic"
+  ],
+  "update": [
+   "Sabrina as mentor to a new teen witch",
+   "practical-effects charm with modern polish",
+   "witch-internet-culture jokes"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "simcity-2000-1994",
+  "name": "SimCity 2000",
+  "year": 1994,
+  "category": "Video Game",
+  "genre": "City-building simulation",
+  "originalImpact": 75,
+  "modernRelevance": 70,
+  "socialBuzz": 32,
+  "rightsComplexity": 35,
+  "creatorAvailability": 30,
+  "briefDescription": "The definitive 90s city builder - arcologies, llamas, and newspaper headlines - that made urban planning a mass-market hobby and defined Maxis before EA absorbed it.",
+  "coreAudience": "PC kids who zoned their first grid in 1994; now the enormous city-builder market EA abandoned.",
+  "currentSignal": "The SimCity brand has been dormant since the botched 2013 always-online reboot, while Cities: Skylines built a giant business in the vacuum - a widely cited case study in franchise self-destruction.",
+  "revivalFormat": "Premium offline SimCity reboot with mod support",
+  "tags": [
+   "simulation",
+   "city-builder",
+   "maxis",
+   "pc",
+   "dormant-franchise"
+  ],
+  "preserve": [
+   "approachable-depth balance vs hardcore rivals",
+   "the humor (llamas, disasters, newspaper)",
+   "arcology endgame fantasy"
+  ],
+  "update": [
+   "offline-first with full mod tools",
+   "modern urbanism content (transit, climate, housing)",
+   "rebuild goodwill the 2013 launch burned"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "sister-sister-1994",
+  "name": "Sister, Sister",
+  "year": 1994,
+  "category": "TV",
+  "genre": "Family sitcom",
+  "originalImpact": 55,
+  "modernRelevance": 60,
+  "socialBuzz": 44,
+  "rightsComplexity": 40,
+  "creatorAvailability": 75,
+  "briefDescription": "Tia and Tamera Mowry as twins separated at birth who reunite as teens, merging two very different single-parent households. A cornerstone of 90s Black family television.",
+  "coreAudience": "90s sitcom kids, especially Black families underserved by TV then; now the streaming audience that rediscovered it.",
+  "currentSignal": "Its 2020 addition to Netflix drove a documented viewership resurgence, and the Mowry twins have repeatedly said publicly they're open to a revival.",
+  "revivalFormat": "Revival sitcom with the twins as mothers of teens",
+  "tags": [
+   "sitcom",
+   "twins",
+   "family",
+   "90s",
+   "black-tv"
+  ],
+  "preserve": [
+   "the twins' real chemistry",
+   "two-household culture-clash engine",
+   "warm family sincerity"
+  ],
+  "update": [
+   "the twins as parents now",
+   "modern family formats",
+   "streaming-native release"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "sky-dancers-1994",
+  "name": "Sky Dancers",
+  "year": 1994,
+  "category": "Toy/Fad",
+  "genre": "Flying doll toys",
+  "originalImpact": 55,
+  "modernRelevance": 42,
+  "socialBuzz": 28,
+  "rightsComplexity": 50,
+  "creatorAvailability": 25,
+  "briefDescription": "Galoob's pull-string fairy dolls that launched spinning into the air - a mid-90s girls'-toy blockbuster eventually recalled in 2000 after thousands of injury reports.",
+  "coreAudience": "Girls of the mid-90s (and the siblings they hit in the face); now nostalgic millennial moms and toy-history content channels.",
+  "currentSignal": "A staple of toys-that-got-recalled nostalgia content, with vintage dolls trading steadily on resale platforms; the brand has seen periodic small relaunch attempts.",
+  "revivalFormat": "Re-engineered safe relaunch with a fantasy animation tie-in",
+  "tags": [
+   "toys",
+   "dolls",
+   "90s",
+   "recall",
+   "girls-toys"
+  ],
+  "preserve": [
+   "the launch-into-flight magic moment",
+   "fairy-ballerina aesthetic"
+  ],
+  "update": [
+   "fundamental safety re-engineering (soft rotors, auto-stop)",
+   "modern fantasy story universe",
+   "collector-and-kid dual lines"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "small-soldiers-1998",
+  "name": "Small Soldiers",
+  "year": 1998,
+  "category": "Movie",
+  "genre": "Sci-fi action comedy",
+  "originalImpact": 45,
+  "modernRelevance": 75,
+  "socialBuzz": 36,
+  "rightsComplexity": 50,
+  "creatorAvailability": 55,
+  "briefDescription": "Joe Dante's 1998 film about action figures with military AI chips that wage real war on a suburban family. A toyetic satire that reads as prophecy in the AI-toy era.",
+  "coreAudience": "Kids who wanted the toys; now adults watching actual AI chips get put into actual children's toys.",
+  "currentSignal": "Regularly cited in commentary about AI-enabled toys and autonomous weapons; the original Kenner-style figures hold steady collector value.",
+  "revivalFormat": "Remake with LLM-powered toys as the premise",
+  "tags": [
+   "ai",
+   "toys",
+   "satire",
+   "joe-dante",
+   "suburbia"
+  ],
+  "preserve": [
+   "Dante's toys-are-a-little-evil mischief",
+   "Commando Elite vs Gorgonites moral inversion",
+   "corporate-negligence satire"
+  ],
+  "update": [
+   "chips become actual LLMs with voice models",
+   "smart-home battlefield",
+   "toy-company satire aimed at data harvesting"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "space-ghost-coast-to-coast-1994",
+  "name": "Space Ghost Coast to Coast",
+  "year": 1994,
+  "category": "TV",
+  "genre": "Absurdist animated talk show",
+  "originalImpact": 45,
+  "modernRelevance": 58,
+  "socialBuzz": 35,
+  "rightsComplexity": 35,
+  "creatorAvailability": 30,
+  "briefDescription": "Cartoon Network resurrected a 1960s Hanna-Barbera hero as a delusional talk-show host interviewing real celebrities. The show that invented the Adult Swim sensibility.",
+  "coreAudience": "College kids of the 90s who taped it late at night; now the entire adult-animation audience its DNA created.",
+  "currentSignal": "Dynamite has published new Space Ghost comics, and the show is routinely credited in retrospectives as Adult Swim's founding document; the 2025 death of voice actor George Lowe makes a direct continuation harder.",
+  "revivalFormat": "AI-era absurdist talk show revival with a new host character",
+  "tags": [
+   "adult-swim",
+   "talk-show",
+   "absurdist",
+   "hanna-barbera",
+   "cult-classic"
+  ],
+  "preserve": [
+   "anti-comedy interview rhythm",
+   "cheap-recycled-animation aesthetic as a feature",
+   "Zorak and Moltar dynamic"
+  ],
+  "update": [
+   "guests from the podcast/streamer ecosystem",
+   "a new voice lead",
+   "short-form clips as the native format"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "spice-girls-1996",
+  "name": "Spice Girls",
+  "year": 1996,
+  "category": "Music",
+  "genre": "Pop",
+  "originalImpact": 92,
+  "modernRelevance": 70,
+  "socialBuzz": 72,
+  "rightsComplexity": 45,
+  "creatorAvailability": 80,
+  "briefDescription": "'Wannabe' launched the biggest pop-cultural phenomenon of 1996-98: five personas, Girl Power, and merchandising on a scale pop hadn't seen. They never had a proper final act.",
+  "coreAudience": "Girls (and everyone) of the late 90s; now women 35-45 with stadium-ticket budgets, plus Gen Z discovering the camp.",
+  "currentSignal": "The 2019 reunion stadium tour (without Victoria Beckham) sold out and grossed heavily, and full-five-member reunion rumors resurface around every anniversary window.",
+  "revivalFormat": "Full-lineup reunion tour with a documentary component",
+  "tags": [
+   "pop",
+   "girl-power",
+   "90s",
+   "british",
+   "reunion"
+  ],
+  "preserve": [
+   "all five personas",
+   "girl-power messaging",
+   "the camp maximalism"
+  ],
+  "update": [
+   "staging and production at modern residency scale",
+   "girl-power reframed with 25 years of hindsight",
+   "a documentary that tells the business story honestly"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "spyro-the-dragon-1998",
+  "name": "Spyro the Dragon",
+  "year": 1998,
+  "category": "Video Game",
+  "genre": "3D platformer",
+  "originalImpact": 72,
+  "modernRelevance": 70,
+  "socialBuzz": 46,
+  "rightsComplexity": 40,
+  "creatorAvailability": 55,
+  "briefDescription": "Insomniac's purple dragon gave the original PlayStation its mascot platformer, later fueling the Skylanders toy boom. The 2018 Reignited Trilogy remake sold strongly - then nothing followed.",
+  "coreAudience": "PS1 kids; now late-millennial gamers who bought Reignited and are still waiting for a new entry.",
+  "currentSignal": "Reignited Trilogy's multimillion sales proved the audience, developer Toys for Bob has since gone independent while publicly celebrating Spyro anniversaries, and fans read periodic teases as a Spyro 4 setup - unconfirmed.",
+  "revivalFormat": "Brand-new mainline Spyro 4",
+  "tags": [
+   "platformer",
+   "playstation",
+   "dragon",
+   "90s",
+   "activision"
+  ],
+  "preserve": [
+   "glide-and-charge movement joy",
+   "storybook world design",
+   "Stewart Copeland-flavored soundtrack DNA"
+  ],
+  "update": [
+   "modern platformer scale and camera",
+   "keep Toys for Bob's remake-era art direction",
+   "avoid toys-to-life baggage"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "star-fox-1993",
+  "name": "Star Fox",
+  "year": 1993,
+  "category": "Video Game",
+  "genre": "Rail shooter",
+  "originalImpact": 70,
+  "modernRelevance": 72,
+  "socialBuzz": 48,
+  "rightsComplexity": 25,
+  "creatorAvailability": 40,
+  "briefDescription": "Nintendo's 1993 Super FX-chip showpiece put polygonal dogfighting on the SNES and gave the world Fox McCloud, Slippy, and 'do a barrel roll!' Dormant since 2016's Star Fox Zero.",
+  "coreAudience": "SNES and N64 kids; now Nintendo's adult base, which asks for a new entry at every Direct.",
+  "currentSignal": "No new installment since Star Fox Zero (2016) - one of Nintendo's longest-idle major franchises - while 'do a barrel roll' persists as a meme and Google easter egg.",
+  "revivalFormat": "New Switch-generation rail shooter with modern flight feel",
+  "tags": [
+   "nintendo",
+   "shooter",
+   "space",
+   "snes",
+   "dormant-franchise"
+  ],
+  "preserve": [
+   "branching-route campaign structure",
+   "wingmate chatter personality",
+   "arcade session length"
+  ],
+  "update": [
+   "controls that abandon Zero's gimmicks",
+   "co-op wingman multiplayer",
+   "a story reset from the muddled continuity"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "starcraft-1998",
+  "name": "StarCraft",
+  "year": 1998,
+  "category": "Video Game",
+  "genre": "Real-time strategy",
+  "originalImpact": 88,
+  "modernRelevance": 68,
+  "socialBuzz": 50,
+  "rightsComplexity": 30,
+  "creatorAvailability": 45,
+  "briefDescription": "Blizzard's 1998 RTS became a national sport in South Korea and effectively invented modern esports. The franchise has been frozen since StarCraft II's content wind-down and a canceled shooter.",
+  "coreAudience": "PC gamers of 1998-2012 and the Korean pro scene; now an esports generation whose founding text sits idle.",
+  "currentSignal": "StarCraft: Remastered still sustains a Korean competitive scene decades on, and recurring reports say Blizzard has explored new StarCraft projects since the Microsoft acquisition - nothing announced.",
+  "revivalFormat": "StarCraft III, or a faithful universe expansion in a new genre done with RTS respect",
+  "tags": [
+   "rts",
+   "blizzard",
+   "esports",
+   "pc",
+   "korea"
+  ],
+  "preserve": [
+   "three-faction asymmetric design",
+   "esports-grade mechanical depth",
+   "Terran/Zerg/Protoss tone and lore"
+  ],
+  "update": [
+   "modern onboarding so non-pros can enjoy it",
+   "co-op modes proven by SC2's best-loved feature",
+   "rebuild Blizzard-audience trust"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "starship-troopers-1997",
+  "name": "Starship Troopers",
+  "year": 1997,
+  "category": "Movie",
+  "genre": "Military sci-fi satire",
+  "originalImpact": 58,
+  "modernRelevance": 80,
+  "socialBuzz": 70,
+  "rightsComplexity": 45,
+  "creatorAvailability": 45,
+  "briefDescription": "Verhoeven's 1997 fascism satire disguised as a bug-war blockbuster was misread on release and canonized later. 'Would you like to know more?' became a permanent piece of internet grammar.",
+  "coreAudience": "Action fans who missed the joke in 1997; now a politically fluent internet that quotes 'I'm doing my part!' daily.",
+  "currentSignal": "Helldivers 2's massive 2024 success was widely credited to channeling the film's satire, and a new film take has been reported in development at Sony with Neill Blomkamp linked.",
+  "revivalFormat": "Big-budget series that keeps the satire load-bearing",
+  "tags": [
+   "sci-fi",
+   "satire",
+   "military",
+   "verhoeven",
+   "bugs"
+  ],
+  "preserve": [
+   "the propaganda-broadcast framing device",
+   "satire that implicates the audience",
+   "hard-R bug-war spectacle"
+  ],
+  "update": [
+   "media-satire updated from newsreels to feeds and streamers",
+   "modern VFX scale",
+   "book-vs-film tension handled deliberately"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "starter-jackets-1993",
+  "name": "Starter",
+  "year": 1993,
+  "category": "Sports/Media",
+  "genre": "Licensed sports apparel",
+  "originalImpact": 75,
+  "modernRelevance": 65,
+  "socialBuzz": 40,
+  "rightsComplexity": 55,
+  "creatorAvailability": 20,
+  "briefDescription": "The satin team jacket that was the early-90s schoolyard status symbol - so coveted it drove real crime waves - before overexpansion and the 1994 sports strikes broke the company.",
+  "coreAudience": "Hip-hop and sports kids of 1991-95; now a vintage-streetwear market where original jackets are grails.",
+  "currentSignal": "Original 90s Starter jackets command strong vintage resale prices and the brand periodically issues retro drops under its licensing owner, riding the throwback-jersey wave.",
+  "revivalFormat": "Premium heritage relaunch with league licensing and hip-hop collabs",
+  "tags": [
+   "streetwear",
+   "sports",
+   "90s",
+   "vintage",
+   "apparel"
+  ],
+  "preserve": [
+   "the satin snap-front silhouette and S-star logo",
+   "team-color maximalism"
+  ],
+  "update": [
+   "premium materials and fits",
+   "artist/athlete collab program",
+   "consolidated modern league licenses"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "street-sharks-1994",
+  "name": "Street Sharks",
+  "year": 1994,
+  "category": "Toy/Fad",
+  "genre": "Action figures and cartoon",
+  "originalImpact": 50,
+  "modernRelevance": 42,
+  "socialBuzz": 36,
+  "rightsComplexity": 55,
+  "creatorAvailability": 30,
+  "briefDescription": "Mattel's 'jawesome' TMNT cash-in: four brothers turned half-shark, with chunky rubber-skinned figures kids remember more fondly than the cartoon deserved.",
+  "coreAudience": "Post-Turtles playground kids; now ironic-nostalgia adults and figure collectors.",
+  "currentSignal": "Vintage figures hold collector value and the property recurs in 90s-knockoff-nostalgia content; Mattel has left it untouched through its IP-mining era.",
+  "revivalFormat": "Tongue-in-cheek adult animated revival plus collector figures",
+  "tags": [
+   "action-figures",
+   "90s",
+   "sharks",
+   "mattel",
+   "tmnt-clone"
+  ],
+  "preserve": [
+   "jawesome catchphrase camp",
+   "chunky tactile figure design"
+  ],
+  "update": [
+   "self-aware comedy tone",
+   "modern collector-figure quality",
+   "a story that owns its knockoff origins"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "surge-1996",
+  "name": "Surge",
+  "year": 1996,
+  "category": "Toy/Fad",
+  "genre": "Soft drink fad",
+  "originalImpact": 58,
+  "modernRelevance": 50,
+  "socialBuzz": 34,
+  "rightsComplexity": 30,
+  "creatorAvailability": 20,
+  "briefDescription": "Coca-Cola's 1996 'fully loaded' citrus soda - a Mountain Dew assault weapon marketed on pure extreme-90s energy - discontinued in 2003 and mourned ever since.",
+  "coreAudience": "Skate-video teens of the late 90s; now the retro-snack revival market that has resurrected multiple dead brands.",
+  "currentSignal": "The fan-driven SURGE Movement got Coca-Cola to re-release it via Amazon in 2014 - an early landmark of nostalgia-campaign marketing - before distribution faded again, proving demand can be summoned.",
+  "revivalFormat": "Limited retro re-release drops with gaming/energy-culture partnerships",
+  "tags": [
+   "soda",
+   "90s",
+   "extreme",
+   "coca-cola",
+   "retro-brand"
+  ],
+  "preserve": [
+   "the original formula (or credible facsimile)",
+   "green chaos-energy branding"
+  ],
+  "update": [
+   "drop-model scarcity releases",
+   "gaming and creator partnerships",
+   "sugar-free variant"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "swat-kats-1993",
+  "name": "SWAT Kats: The Radical Squadron",
+  "year": 1993,
+  "category": "TV",
+  "genre": "Animated action",
+  "originalImpact": 45,
+  "modernRelevance": 62,
+  "socialBuzz": 30,
+  "rightsComplexity": 45,
+  "creatorAvailability": 55,
+  "briefDescription": "Hanna-Barbera's highest-rated syndicated show of 1994: two disgraced pilot cats run a junkyard by day and defend Megakat City in a homebuilt fighter jet by night. Canceled abruptly mid-success.",
+  "coreAudience": "Action-cartoon kids who never forgave the cancellation; now an adult fandom that funds revival attempts.",
+  "currentSignal": "The creators' 2015 crowdfunding campaign for a revival raised its goal but never shipped a series, and the property sits in Warner Bros.' Hanna-Barbera vault with periodic fan-campaign flare-ups.",
+  "revivalFormat": "Adult-leaning animated revival in the Hanna-Barbera reboot mold",
+  "tags": [
+   "hanna-barbera",
+   "action",
+   "animation",
+   "jets",
+   "cult-classic"
+  ],
+  "preserve": [
+   "the TurboKat and gadget-craft appeal",
+   "vigilantes-vs-bureaucracy setup",
+   "kaiju-of-the-week villains"
+  ],
+  "update": [
+   "serialized storytelling",
+   "modern action-animation craft",
+   "resolve the abrupt-cancellation cliffhanger energy"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "swing-revival-1998",
+  "name": "The Swing Revival",
+  "year": 1998,
+  "category": "Music",
+  "genre": "Neo-swing",
+  "originalImpact": 55,
+  "modernRelevance": 48,
+  "socialBuzz": 26,
+  "rightsComplexity": 75,
+  "creatorAvailability": 60,
+  "briefDescription": "The 1998 micro-era when Brian Setzer, Cherry Poppin' Daddies, and Big Bad Voodoo Daddy put zoot suits on MTV, propelled by the Gap's 'Khakis Swing' ad and the movie Swingers.",
+  "coreAudience": "Late-90s teens who briefly learned to lindy hop; now electro-swing listeners and vintage-dance communities that never fully died.",
+  "currentSignal": "'Zoot Suit Riot' and the Gap ad circulate steadily as ultimate-90s-artifact touchstones, and lindy-hop/electro-swing scenes persist worldwide at niche scale.",
+  "revivalFormat": "Curated tour/festival brand packaging the surviving bands with electro-swing acts",
+  "tags": [
+   "swing",
+   "90s",
+   "fad",
+   "retro",
+   "dance"
+  ],
+  "preserve": [
+   "live horns as the product",
+   "dance-floor participation"
+  ],
+  "update": [
+   "package as event-night experience, not radio genre",
+   "bridge to electro-swing and TikTok dance audiences"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "talkboy-1993",
+  "name": "Talkboy",
+  "year": 1993,
+  "category": "Toy/Fad",
+  "genre": "Electronic gadget toy",
+  "originalImpact": 58,
+  "modernRelevance": 38,
+  "socialBuzz": 30,
+  "rightsComplexity": 65,
+  "creatorAvailability": 25,
+  "briefDescription": "The cassette recorder with variable-speed playback that started as a Home Alone 2 movie prop, then became 1993's hottest Christmas gadget when kids demanded the real thing.",
+  "coreAudience": "Kids who wanted to be Kevin McCallister; now adults who rewatch Home Alone 2 every December and collect 90s tech.",
+  "currentSignal": "Working units are steady eBay collectibles, and each Home Alone holiday-viewing cycle briefly revives interest in the prop-turned-product story.",
+  "revivalFormat": "Retro-styled voice-memo/voice-changer gadget tied to Home Alone licensing",
+  "tags": [
+   "gadget",
+   "home-alone",
+   "90s",
+   "christmas",
+   "cassette"
+  ],
+  "preserve": [
+   "chunky silver industrial design",
+   "slow-down voice-trick feature"
+  ],
+  "update": [
+   "digital guts with cassette aesthetics",
+   "privacy-safe recording features for kids",
+   "movie-anniversary launch timing"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "tamagotchi-1996",
+  "name": "Tamagotchi",
+  "year": 1996,
+  "category": "Toy/Fad",
+  "genre": "Virtual pet",
+  "originalImpact": 85,
+  "modernRelevance": 70,
+  "socialBuzz": 55,
+  "rightsComplexity": 20,
+  "creatorAvailability": 60,
+  "briefDescription": "Bandai's 1996 egg-shaped virtual pet caused global shortages, school bans, and tiny pixel funerals - the first mass experience of caring for (and killing) a digital creature.",
+  "coreAudience": "Schoolkids of 1997 worldwide; now adults buying re-releases and a Gen Z drawn to low-stakes digital care as a phone antidote.",
+  "currentSignal": "Bandai continues releasing new connected models and anniversary editions to solid collector demand, and vintage-90s shells trade actively - a brand that's alive at niche scale with mainstream-revival headroom.",
+  "revivalFormat": "Mainstream relaunch positioned as the anti-smartphone digital pet",
+  "tags": [
+   "virtual-pet",
+   "bandai",
+   "90s",
+   "handheld",
+   "japan"
+  ],
+  "preserve": [
+   "single-device dedicated-object form factor",
+   "real death stakes",
+   "pixel-pet charm"
+  ],
+  "update": [
+   "position against screen-time guilt",
+   "adult-collector and kid lines",
+   "careful connectivity that doesn't become another app"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "tech-deck-1998",
+  "name": "Tech Deck",
+  "year": 1998,
+  "category": "Toy/Fad",
+  "genre": "Fingerboards",
+  "originalImpact": 60,
+  "modernRelevance": 65,
+  "socialBuzz": 48,
+  "rightsComplexity": 30,
+  "creatorAvailability": 40,
+  "briefDescription": "The 96mm fingerboards with real skate-brand graphics that turned every 1998 classroom desk into a skatepark and made miniature kickflips a legitimate dexterity subculture.",
+  "coreAudience": "Skate-adjacent kids of the late 90s; now a genuine adult fingerboarding scene plus skate culture's mainstream moment.",
+  "currentSignal": "Fingerboarding has an active competitive and TikTok scene where adult hobbyists spend real money on premium setups, while Tech Deck itself still ships mass-market waves.",
+  "revivalFormat": "Premium adult line plus creator-led competition series",
+  "tags": [
+   "skateboarding",
+   "fingerboard",
+   "90s",
+   "dexterity",
+   "collectible"
+  ],
+  "preserve": [
+   "real skate-brand graphic licensing",
+   "cheap collectible entry point"
+  ],
+  "update": [
+   "premium wood-deck adult tier",
+   "sponsored fingerboard competition content",
+   "skater collab drops"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "the-adventures-of-pete-and-pete-1993",
+  "name": "The Adventures of Pete & Pete",
+  "year": 1993,
+  "category": "TV",
+  "genre": "Surreal kids comedy",
+  "originalImpact": 40,
+  "modernRelevance": 62,
+  "socialBuzz": 40,
+  "rightsComplexity": 40,
+  "creatorAvailability": 65,
+  "briefDescription": "Nickelodeon's surrealist suburban fable about two brothers named Pete, a tattoo named Petunia, a personal superhero named Artie, and indie-rock guest stars.",
+  "coreAudience": "Weird kids of the 90s; now indie-culture adults who recognize it as the most artful thing Nickelodeon ever made.",
+  "currentSignal": "Cast-and-creator reunion events have sold out repeatedly over the years, and the show is a fixture of best-kids-TV-ever critical lists.",
+  "revivalFormat": "A24-style revival film or special with the original Petes as adults",
+  "tags": [
+   "nickelodeon",
+   "surreal",
+   "indie",
+   "suburbia",
+   "cult-classic"
+  ],
+  "preserve": [
+   "deadpan surrealism",
+   "suburban-mythology tone",
+   "indie-music DNA"
+  ],
+  "update": [
+   "the Petes as adults with kids",
+   "modern indie-music cameo roster",
+   "streaming-special format"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "the-craft-1996",
+  "name": "The Craft",
+  "year": 1996,
+  "category": "Movie",
+  "genre": "Teen supernatural horror",
+  "originalImpact": 55,
+  "modernRelevance": 75,
+  "socialBuzz": 65,
+  "rightsComplexity": 40,
+  "creatorAvailability": 55,
+  "briefDescription": "Four outcast Catholic-school girls form a coven and learn power has a price. The film that made teen witchcraft a permanent aesthetic subculture.",
+  "coreAudience": "Goth and alt girls of 1996; now the enormous WitchTok/witchcore audience that treats the film as founding scripture.",
+  "currentSignal": "Witchcraft aesthetics remain a huge social-media subculture that constantly cites the film; the 2020 sequel The Craft: Legacy underperformed, leaving the brand open.",
+  "revivalFormat": "Prestige TV series about a modern coven",
+  "tags": [
+   "witchcraft",
+   "teen",
+   "horror",
+   "goth",
+   "female-led"
+  ],
+  "preserve": [
+   "outsider-girl rage at the core",
+   "power-corrupts arc",
+   "practical occult texture over CG"
+  ],
+  "update": [
+   "witchcraft-as-online-subculture reality",
+   "intersectional coven",
+   "horror craft at modern elevated standard"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "the-cranberries-1994",
+  "name": "The Cranberries ('Zombie' era)",
+  "year": 1994,
+  "category": "Music",
+  "genre": "Alternative rock",
+  "originalImpact": 78,
+  "modernRelevance": 55,
+  "socialBuzz": 52,
+  "rightsComplexity": 45,
+  "creatorAvailability": 25,
+  "briefDescription": "No Need to Argue (1994) and 'Zombie' made Dolores O'Riordan's keening voice globally iconic. Her death in 2018 ended the band but supercharged the catalog's afterlife.",
+  "coreAudience": "Alt-rock 90s listeners; now a streaming generation that keeps 'Zombie' and 'Linger' in constant circulation.",
+  "currentSignal": "'Zombie' has surpassed one billion YouTube views and remains a heavily covered and sampled song, with O'Riordan tributes recurring in music press.",
+  "revivalFormat": "Documentary and estate-led catalog program",
+  "tags": [
+   "alternative",
+   "irish",
+   "90s",
+   "catalog",
+   "dolores"
+  ],
+  "preserve": [
+   "O'Riordan's vocals as untouchable",
+   "the political weight of 'Zombie'"
+  ],
+  "update": [
+   "estate-guided doc telling her story",
+   "catalog sync strategy handled with taste"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "the-faculty-1998",
+  "name": "The Faculty",
+  "year": 1998,
+  "category": "Movie",
+  "genre": "Teen sci-fi horror",
+  "originalImpact": 42,
+  "modernRelevance": 64,
+  "socialBuzz": 38,
+  "rightsComplexity": 70,
+  "creatorAvailability": 55,
+  "briefDescription": "Robert Rodriguez's Body Snatchers-in-high-school: a breakfast-club of archetypes discovers the teachers are alien-infected. Peak 90s teen-horror cast (Wood, Hartnett, Brewster).",
+  "coreAudience": "Scream-era teens; now the elevated-teen-horror audience streaming platforms keep chasing.",
+  "currentSignal": "Enjoys steady cult rewatch status in teen-horror retrospectives; the Dimension/Miramax library's tangled post-Weinstein ownership complicates any reboot.",
+  "revivalFormat": "Streaming series remake, one semester of paranoia",
+  "tags": [
+   "teen",
+   "horror",
+   "aliens",
+   "high-school",
+   "90s-horror"
+  ],
+  "preserve": [
+   "who's-infected paranoia engine",
+   "archetypes-subverted ensemble",
+   "school-as-institution distrust theme"
+  ],
+  "update": [
+   "phones and group chats change the paranoia math",
+   "modern teen social hierarchies",
+   "clear rights consolidation first"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "the-fifth-element-1997",
+  "name": "The Fifth Element",
+  "year": 1997,
+  "category": "Movie",
+  "genre": "Space opera",
+  "originalImpact": 72,
+  "modernRelevance": 70,
+  "socialBuzz": 52,
+  "rightsComplexity": 55,
+  "creatorAvailability": 40,
+  "briefDescription": "Luc Besson's maximalist 1997 space opera: a cab driver, a perfect being in thermal bandages, Gaultier costumes, and the Diva Dance. Europe's biggest sci-fi export of the decade.",
+  "coreAudience": "Sci-fi fans who wanted color and camp instead of grim chrome; now a convention-cosplay perennial across generations.",
+  "currentSignal": "Multipass and Leeloo cosplay remain fixtures at every major convention, and 4K re-releases keep selling; Besson's personal controversies complicate any creator-led revival.",
+  "revivalFormat": "Animated series expanding the universe without Besson at the center",
+  "tags": [
+   "space-opera",
+   "camp",
+   "besson",
+   "cosplay",
+   "90s-sci-fi"
+  ],
+  "preserve": [
+   "maximalist color-forward design language",
+   "comedy woven through the opera",
+   "the Diva Dance as musical centerpiece"
+  ],
+  "update": [
+   "new creative leadership",
+   "worldbuilding depth the film only sketched",
+   "a fresh central duo"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "the-mask-1994",
+  "name": "The Mask",
+  "year": 1994,
+  "category": "Movie",
+  "genre": "Comic-book slapstick comedy",
+  "originalImpact": 80,
+  "modernRelevance": 66,
+  "socialBuzz": 52,
+  "rightsComplexity": 55,
+  "creatorAvailability": 55,
+  "briefDescription": "New Line's 1994 smash from the Dark Horse comic: a meek bank clerk finds a Norse mask that turns him into a cartoon-physics id monster. Made Jim Carrey and Cameron Diaz superstars.",
+  "coreAudience": "Kids who quoted 'Ssssmokin!' at recess; now animation-literate adults who appreciate the Tex Avery homage.",
+  "currentSignal": "Jim Carrey has said in interviews he would only revisit the role for a filmmaker with a truly crazy vision; the darker Dark Horse comic remains an untapped tonal direction.",
+  "revivalFormat": "New-wearer reboot leaning into the comic's darker anarchic tone",
+  "tags": [
+   "comic-book",
+   "comedy",
+   "jim-carrey",
+   "vfx",
+   "dark-horse"
+  ],
+  "preserve": [
+   "cartoon-logic transformation VFX",
+   "the mask changing hands as the story engine",
+   "Coco Bongo showstopper energy"
+  ],
+  "update": [
+   "modern VFX pipeline for the Avery gags",
+   "a female or ensemble wearer",
+   "the comic's horror-comedy edge"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "the-mighty-ducks-1994",
+  "name": "The Mighty Ducks (D2 era)",
+  "year": 1994,
+  "category": "Movie",
+  "genre": "Youth sports comedy",
+  "originalImpact": 68,
+  "modernRelevance": 68,
+  "socialBuzz": 48,
+  "rightsComplexity": 25,
+  "creatorAvailability": 50,
+  "briefDescription": "Disney's youth-hockey trilogy peaked with 1994's D2, where Gordon Bombay's misfits become Team USA. The franchise was big enough that an actual NHL expansion team took its name.",
+  "coreAudience": "90s kids who learned the Flying V; now hockey parents and Emilio Estevez loyalists.",
+  "currentSignal": "The 2021 Disney+ series Game Changers lasted one season, leaving the film continuity dormant again; the Anaheim Ducks NHL team remains the brand's living monument.",
+  "revivalFormat": "Legacy-sequel film reuniting the original Ducks as adults",
+  "tags": [
+   "hockey",
+   "underdog",
+   "disney",
+   "team-sports",
+   "90s-kids"
+  ],
+  "preserve": [
+   "knucklepuck and Flying V iconography",
+   "misfits-vs-elites structure",
+   "Minnesota hockey culture"
+  ],
+  "update": [
+   "the toxic side of modern youth sports",
+   "original cast in coach/parent roles",
+   "girls' hockey representation"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "the-pagemaster-1994",
+  "name": "The Pagemaster",
+  "year": 1994,
+  "category": "Movie",
+  "genre": "Animated fantasy adventure",
+  "originalImpact": 40,
+  "modernRelevance": 66,
+  "socialBuzz": 24,
+  "rightsComplexity": 50,
+  "creatorAvailability": 40,
+  "briefDescription": "A timid boy (Macaulay Culkin) is pulled into an animated library where books - Adventure, Fantasy, Horror - guide him through classic literature to find his courage.",
+  "coreAudience": "Bookish 90s kids; now parents, teachers, and librarians hungry for literacy IP in a screen-saturated era.",
+  "currentSignal": "A box-office disappointment then, it retains a soft spot among millennial librarians and educators; the reading-crisis discourse makes literacy-adventure IP newly attractive.",
+  "revivalFormat": "Animated streaming series, one classic book per episode",
+  "tags": [
+   "animation",
+   "books",
+   "literacy",
+   "fantasy",
+   "library"
+  ],
+  "preserve": [
+   "books as living characters",
+   "genre-hopping structure",
+   "the courage-through-reading theme"
+  ],
+  "update": [
+   "contemporary and diverse literary canon",
+   "modern animation",
+   "tie-ins with actual reading programs"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "the-powerpuff-girls-1998",
+  "name": "The Powerpuff Girls",
+  "year": 1998,
+  "category": "TV",
+  "genre": "Superhero animated comedy",
+  "originalImpact": 78,
+  "modernRelevance": 72,
+  "socialBuzz": 58,
+  "rightsComplexity": 35,
+  "creatorAvailability": 70,
+  "briefDescription": "Craig McCracken's kindergarten superheroines - Blossom, Bubbles, Buttercup - mixed kaiju battles with sugar-and-spice irony and became a global merchandising force and proto-girl-power icon.",
+  "coreAudience": "Late-90s kids of all genders; now a fashion-collab generation that still buys the merch.",
+  "currentSignal": "A leaked CW live-action pilot script was widely mocked and shelved in 2021, and a McCracken-led animated return was announced amid Warner's streaming reshuffles - status has stayed murky.",
+  "revivalFormat": "McCracken-led animated revival",
+  "tags": [
+   "cartoon-network",
+   "superhero",
+   "girl-power",
+   "animation",
+   "kaiju"
+  ],
+  "preserve": [
+   "McCracken's graphic style",
+   "sincere-ironic double register",
+   "Mojo Jojo",
+   "the girls as actual kindergartners"
+  ],
+  "update": [
+   "girl-power themes past their 90s framing",
+   "villain roster refresh",
+   "avoid the edgy live-action trap entirely"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "the-sandlot-1993",
+  "name": "The Sandlot",
+  "year": 1993,
+  "category": "Movie",
+  "genre": "Coming-of-age sports comedy",
+  "originalImpact": 62,
+  "modernRelevance": 74,
+  "socialBuzz": 66,
+  "rightsComplexity": 30,
+  "creatorAvailability": 45,
+  "briefDescription": "A 1993 Fox film about a neighborhood baseball crew in 1962 chasing a ball signed by Babe Ruth over a fence guarded by 'The Beast.' Modest theatrically, it became a generational cable and VHS staple.",
+  "coreAudience": "Kids of the early 90s who wore out the VHS; now parents who want a screens-down summer story to share with their own kids.",
+  "currentSignal": "'You're killing me, Smalls' remains a licensed merch staple, and cast reunions at MLB ballparks continue to draw anniversary coverage; a continuation series was publicly discussed for Disney+ but has not materialized.",
+  "revivalFormat": "Legacy-sequel film with the original cast as the parents",
+  "tags": [
+   "baseball",
+   "summer",
+   "friendship",
+   "period-piece",
+   "cult-classic"
+  ],
+  "preserve": [
+   "the 1960s sandlot setting",
+   "kid-gang ensemble tone",
+   "the Beast reveal structure"
+  ],
+  "update": [
+   "frame narrative with modern kids discovering the lot",
+   "more diverse ensemble",
+   "release strategy built for family streaming"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "the-secret-world-of-alex-mack-1994",
+  "name": "The Secret World of Alex Mack",
+  "year": 1994,
+  "category": "TV",
+  "genre": "Kids sci-fi dramedy",
+  "originalImpact": 45,
+  "modernRelevance": 60,
+  "socialBuzz": 26,
+  "rightsComplexity": 35,
+  "creatorAvailability": 55,
+  "briefDescription": "A junior-high girl doused in a chemical-plant spill gains telekinesis, zapping powers, and the ability to melt into a puddle - and hides it all from the corporation hunting her.",
+  "coreAudience": "Nickelodeon kids, especially girls who rarely got the superpowered lead; now the YA-superhero streaming audience.",
+  "currentSignal": "Persists on best-of-90s-Nick lists and in cast-reunion interview coverage; the corporate-coverup premise maps cleanly onto modern environmental stories.",
+  "revivalFormat": "YA streaming reboot with a new teen and a legacy Alex cameo",
+  "tags": [
+   "nickelodeon",
+   "superpowers",
+   "ya",
+   "90s",
+   "sci-fi"
+  ],
+  "preserve": [
+   "ordinary-girl-with-powers grounding",
+   "corporate-contamination villain",
+   "the puddle transformation as signature"
+  ],
+  "update": [
+   "environmental-justice framing",
+   "modern VFX",
+   "surveillance making secrecy harder and scarier"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "the-tick-1994",
+  "name": "The Tick",
+  "year": 1994,
+  "category": "TV",
+  "genre": "Superhero parody animation",
+  "originalImpact": 42,
+  "modernRelevance": 60,
+  "socialBuzz": 30,
+  "rightsComplexity": 60,
+  "creatorAvailability": 60,
+  "briefDescription": "Ben Edlund's nigh-invulnerable blue absurdity and sidekick Arthur parodied superhero convention on Fox Kids years before superhero saturation made the joke universal.",
+  "coreAudience": "Comic-shop kids of the 90s; now a superhero-exhausted mainstream that has caught up to the joke.",
+  "currentSignal": "Three separate TV adaptations (1994, 2001, Amazon 2016-19) attest to durable appeal; the Amazon series' cancellation left the IP dormant again with fans petitioning.",
+  "revivalFormat": "Animated revival aimed at superhero-fatigue satire",
+  "tags": [
+   "superhero",
+   "parody",
+   "animation",
+   "cult-classic",
+   "fox-kids"
+  ],
+  "preserve": [
+   "The Tick's oblivious moral grandeur",
+   "Arthur as anxious audience surrogate",
+   "villain absurdism (Chairface, The Terror)"
+  ],
+  "update": [
+   "satire aimed at cinematic-universe fatigue",
+   "animation over live-action budgets",
+   "serialized parody arcs"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "tlc-1994",
+  "name": "TLC (CrazySexyCool era)",
+  "year": 1994,
+  "category": "Music",
+  "genre": "R&B",
+  "originalImpact": 85,
+  "modernRelevance": 65,
+  "socialBuzz": 48,
+  "rightsComplexity": 55,
+  "creatorAvailability": 45,
+  "briefDescription": "CrazySexyCool made TLC the best-selling American girl group ever - 'Creep,' 'Waterfalls,' 'Red Light Special' - amid a famously catastrophic contract that bankrupted them at their peak.",
+  "coreAudience": "90s R&B radio nation; now a generation that reveres them as style and business-cautionary icons.",
+  "currentSignal": "Surviving members T-Boz and Chilli tour steadily on 90s package bills, and the group's story (including Left Eye's 2002 death and the bankruptcy saga) continues to anchor documentaries and biopic retrospectives.",
+  "revivalFormat": "Prestige scripted series on the rise and the contract that broke them",
+  "tags": [
+   "r-and-b",
+   "girl-group",
+   "90s",
+   "atlanta",
+   "music-business"
+  ],
+  "preserve": [
+   "the catalog untouched",
+   "Left Eye's memory handled with care",
+   "the trio's distinct personas"
+  ],
+  "update": [
+   "the business story told with modern music-industry literacy",
+   "estate cooperation structured properly"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "tommy-boy-1995",
+  "name": "Tommy Boy",
+  "year": 1995,
+  "category": "Movie",
+  "genre": "Road-trip buddy comedy",
+  "originalImpact": 55,
+  "modernRelevance": 52,
+  "socialBuzz": 50,
+  "rightsComplexity": 35,
+  "creatorAvailability": 25,
+  "briefDescription": "Chris Farley and David Spade drive across the Midwest to save the family brake-pad factory. The definitive Farley vehicle, quoted continuously for 30 years.",
+  "coreAudience": "SNL-era teens; now middle-aged Midwesterners and sales-culture guys who quote 'fat guy in a little coat' weekly.",
+  "currentSignal": "Its quotes remain evergreen in sports and sales-bro internet culture, and Farley retrospectives (documentaries, biographies) keep renewing attention; Farley's absence makes any remake near-untouchable.",
+  "revivalFormat": "Documentary/retrospective programming around Farley rather than a remake",
+  "tags": [
+   "comedy",
+   "buddy",
+   "farley",
+   "road-trip",
+   "midwest"
+  ],
+  "preserve": [
+   "the Farley original as-is",
+   "rust-belt factory-town heart"
+  ],
+  "update": [
+   "any spiritual successor needs a new star and premise, not recasting",
+   "4K/anniversary theatrical treatment"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "total-request-live-1998",
+  "name": "Total Request Live (TRL)",
+  "year": 1998,
+  "category": "Music",
+  "genre": "Music video countdown show",
+  "originalImpact": 82,
+  "modernRelevance": 52,
+  "socialBuzz": 38,
+  "rightsComplexity": 35,
+  "creatorAvailability": 45,
+  "briefDescription": "From 1998, MTV's Times Square countdown was the daily town square of teen pop - Carson Daly, screaming crowds below the window, TRL premieres as cultural events.",
+  "coreAudience": "After-school teens of 1998-2002; now adults nostalgic for a monoculture moment, and creators who'd kill for a real premiere venue.",
+  "currentSignal": "A 2017-18 revival failed quickly, but the Times Square-window era remains heavily nostalgized in pop-history retrospectives and artist interviews.",
+  "revivalFormat": "Live-streamed weekly premiere event co-produced with a platform like YouTube or TikTok",
+  "tags": [
+   "mtv",
+   "pop",
+   "countdown",
+   "times-square",
+   "y2k"
+  ],
+  "preserve": [
+   "fan-voted countdown mechanic",
+   "live street-facing studio energy",
+   "premiere-as-event function"
+  ],
+  "update": [
+   "votes from actual streaming/social data",
+   "creator-native hosts",
+   "platform partnership instead of cable"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "turok-1997",
+  "name": "Turok: Dinosaur Hunter",
+  "year": 1997,
+  "category": "Video Game",
+  "genre": "First-person shooter",
+  "originalImpact": 55,
+  "modernRelevance": 60,
+  "socialBuzz": 32,
+  "rightsComplexity": 65,
+  "creatorAvailability": 30,
+  "briefDescription": "The N64's first great shooter: a Native American warrior hunting cybernetic dinosaurs in the Lost Land, based on a comics character dating to the 1950s.",
+  "coreAudience": "N64 kids who feared the fog; now retro-FPS players served by remasters and dino-game fans with few options.",
+  "currentSignal": "Nightdive's well-received remasters kept the brand warm, and a new team-based entry (Turok: Origins) was announced in late 2024 - modest-scale revival activity, not a blockbuster relaunch.",
+  "revivalFormat": "Single-player dino-hunter FPS reboot with Native creative leadership",
+  "tags": [
+   "fps",
+   "n64",
+   "dinosaurs",
+   "comics",
+   "90s"
+  ],
+  "preserve": [
+   "dino-hunting power fantasy",
+   "exotic weapon escalation (Cerebral Bore)",
+   "Lost Land setting"
+  ],
+  "update": [
+   "authentic Native American representation with Native writers",
+   "modern FPS movement",
+   "consolidated rights across comics and games"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "twisted-metal-1995",
+  "name": "Twisted Metal",
+  "year": 1995,
+  "category": "Video Game",
+  "genre": "Vehicular combat",
+  "originalImpact": 65,
+  "modernRelevance": 62,
+  "socialBuzz": 42,
+  "rightsComplexity": 30,
+  "creatorAvailability": 45,
+  "briefDescription": "PlayStation's original killer app genre: a demolition-derby death tournament run by Calypso, who grants wishes that always go wrong, starring the flaming-clown ice-cream truck Sweet Tooth.",
+  "coreAudience": "First-gen PlayStation kids; now a fanbase that got a TV series but hasn't had a new game since 2012.",
+  "currentSignal": "The Peacock live-action series ran two seasons with Sweet Tooth as its breakout, but Sony has shipped no new game in over a decade and reportedly canceled a live-service revival attempt.",
+  "revivalFormat": "New arena vehicular-combat game with party-game accessibility",
+  "tags": [
+   "playstation",
+   "vehicular-combat",
+   "90s",
+   "sweet-tooth",
+   "sony"
+  ],
+  "preserve": [
+   "Calypso wish-corruption frame",
+   "Sweet Tooth iconography",
+   "car-as-character roster design"
+  ],
+  "update": [
+   "modern multiplayer structure without live-service bloat",
+   "destruction physics showcase",
+   "cross-media timing with the TV audience"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "waterworld-1995",
+  "name": "Waterworld",
+  "year": 1995,
+  "category": "Movie",
+  "genre": "Post-apocalyptic action",
+  "originalImpact": 58,
+  "modernRelevance": 68,
+  "socialBuzz": 40,
+  "rightsComplexity": 35,
+  "creatorAvailability": 50,
+  "briefDescription": "The infamously over-budget 1995 Kevin Costner epic set on a drowned Earth where a mutant Mariner ferries a girl with a map to Dryland tattooed on her back.",
+  "coreAudience": "Action fans who half-remember it as a punchline; now climate-anxious audiences for whom the premise reads very differently.",
+  "currentSignal": "The Universal Studios stunt show based on the film has run continuously for nearly three decades across multiple parks, outliving the movie's bad press.",
+  "revivalFormat": "Prestige TV series worldbuilding the drowned Earth properly",
+  "tags": [
+   "post-apocalyptic",
+   "climate",
+   "action",
+   "ocean",
+   "cult-rehabilitation"
+  ],
+  "preserve": [
+   "fully practical waterborne world aesthetic",
+   "the atoll/smoker faction ecology"
+  ],
+  "update": [
+   "climate framing with real scientific texture",
+   "ensemble cast over lone-hero structure",
+   "TV budget pacing instead of one bloated film"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "wcw-monday-nitro-1995",
+  "name": "WCW Monday Nitro",
+  "year": 1995,
+  "category": "Sports/Media",
+  "genre": "Professional wrestling television",
+  "originalImpact": 85,
+  "modernRelevance": 60,
+  "socialBuzz": 52,
+  "rightsComplexity": 40,
+  "creatorAvailability": 40,
+  "briefDescription": "Ted Turner's 1995 wrestling show beat WWF Raw for 83 straight weeks behind the nWo storyline, defined the Monday Night Wars, then collapsed and sold to Vince McMahon in 2001.",
+  "coreAudience": "Attitude-era teens who flipped between channels; now AEW's audience and a documentary market that can't stop relitigating WCW's death.",
+  "currentSignal": "A 2024 docuseries on WCW's collapse drew strong viewership, nWo merchandise still sells through WWE, and the Monday Night Wars era anchors endless podcast and retrospective content.",
+  "revivalFormat": "Premium documentary/drama franchise (WWE owns the library; a scripted series is the natural form)",
+  "tags": [
+   "wrestling",
+   "90s",
+   "nwo",
+   "monday-night-wars",
+   "wcw"
+  ],
+  "preserve": [
+   "the nWo invasion-angle legend",
+   "cruiserweight in-ring legacy",
+   "the corporate-hubris fall narrative"
+  ],
+  "update": [
+   "scripted prestige treatment of the rise-and-fall",
+   "honest handling of the era's excesses",
+   "archival remaster program"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "winamp-1997",
+  "name": "Winamp",
+  "year": 1997,
+  "category": "Tech",
+  "genre": "Media player software",
+  "originalImpact": 70,
+  "modernRelevance": 50,
+  "socialBuzz": 40,
+  "rightsComplexity": 55,
+  "creatorAvailability": 40,
+  "briefDescription": "The MP3 player that 'really whips the llama's ass' - custom skins, visualizations, and playlists made it the sound system of the Napster era before AOL let it rot.",
+  "coreAudience": "MP3-era teens who skinned everything; now digital-ownership advocates fleeing streaming and a skin-nostalgia design culture.",
+  "currentSignal": "A 2024 source-code release by the current brand owner generated big attention and immediate licensing controversy, showing both latent love and stewardship risk.",
+  "revivalFormat": "Local-first music player relaunch for the post-streaming ownership movement",
+  "tags": [
+   "software",
+   "mp3",
+   "90s-tech",
+   "skins",
+   "music"
+  ],
+  "preserve": [
+   "skin ecosystem and visualizers",
+   "the llama attitude",
+   "lightweight local-file soul"
+  ],
+  "update": [
+   "modern library/format support",
+   "bridge to Bandcamp-style ownership economy",
+   "competent open-source governance"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "wishbone-1995",
+  "name": "Wishbone",
+  "year": 1995,
+  "category": "TV",
+  "genre": "Educational literary kids series",
+  "originalImpact": 42,
+  "modernRelevance": 68,
+  "socialBuzz": 36,
+  "rightsComplexity": 50,
+  "creatorAvailability": 40,
+  "briefDescription": "PBS's Jack Russell terrier who daydreamed himself into classic literature, playing d'Artagnan and Odysseus in period costume. A literacy gateway for a generation.",
+  "coreAudience": "PBS kids who met the canon through a dog; now parents and educators desperate for reading-adjacent screen time.",
+  "currentSignal": "A feature film was announced in development at Universal with Mattel, with reports of a name director attached, though it has gone quiet since.",
+  "revivalFormat": "Family feature film plus a rebooted series",
+  "tags": [
+   "pbs",
+   "literacy",
+   "dog",
+   "educational",
+   "90s-kids"
+  ],
+  "preserve": [
+   "dog-as-literary-hero conceit",
+   "genuine classic-literature fidelity",
+   "the theme song"
+  ],
+  "update": [
+   "a broader, more global book canon",
+   "modern family-film production",
+   "companion reading-app ecosystem"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ },
+ {
+  "id": "xena-warrior-princess-1995",
+  "name": "Xena: Warrior Princess",
+  "year": 1995,
+  "category": "TV",
+  "genre": "Fantasy action adventure",
+  "originalImpact": 72,
+  "modernRelevance": 74,
+  "socialBuzz": 50,
+  "rightsComplexity": 45,
+  "creatorAvailability": 60,
+  "briefDescription": "The syndicated juggernaut that outgrew Hercules: a redemption-seeking warrior and her bard Gabrielle became 90s TV's biggest female action hero and a queer-subtext landmark.",
+  "coreAudience": "Syndication devotees and a pioneering LGBTQ fandom; now audiences the show's subtext-only romance was written for.",
+  "currentSignal": "An NBC reboot with a writer attached was developed and scrapped in 2017; convention appearances by Lucy Lawless still draw large crowds and she remains publicly game.",
+  "revivalFormat": "Streaming reboot making the central romance explicit",
+  "tags": [
+   "fantasy",
+   "action",
+   "female-led",
+   "lgbtq",
+   "syndication"
+  ],
+  "preserve": [
+   "redemption arc at the core",
+   "Xena-Gabrielle relationship as the heart",
+   "campy-sincere mythological tone"
+  ],
+  "update": [
+   "text the subtext",
+   "modern fantasy production scale",
+   "Lawless in a mentor role"
+  ],
+  "rubricVersion": "r2-claude-2026-08-15"
+ }
+]

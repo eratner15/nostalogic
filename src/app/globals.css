@@ -2,41 +2,47 @@
 @tailwind components;
 @tailwind utilities;
 
+/*
+ * NostalDamus design system: "broadcast archive".
+ * Warm tape-shelf darks, cream type, one amber signal color, and mono labels
+ * that read like archive catalog cards. Score bands: sage = go, amber = watch,
+ * brick = hold. Colors are HSL channels consumed by tailwind.config.ts.
+ */
 @layer base {
   :root {
-    --background: 235 31% 6%;
-    --foreground: 210 40% 98%;
-    --card: 235 25% 10%;
-    --card-foreground: 210 40% 98%;
-    --popover: 235 25% 10%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 316 92% 62%;
-    --primary-foreground: 235 31% 6%;
-    --secondary: 190 95% 48%;
-    --secondary-foreground: 235 31% 6%;
-    --muted: 235 16% 16%;
-    --muted-foreground: 218 16% 70%;
-    --accent: 154 78% 51%;
-    --accent-foreground: 235 31% 6%;
-    --destructive: 0 72% 51%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 235 18% 22%;
-    --input: 235 18% 22%;
-    --ring: 316 92% 62%;
-    --chart-1: 316 92% 62%;
-    --chart-2: 190 95% 48%;
-    --chart-3: 154 78% 51%;
-    --chart-4: 43 96% 56%;
-    --chart-5: 265 89% 70%;
-    --radius: 0.5rem;
-    --sidebar-background: 235 25% 10%;
-    --sidebar-foreground: 210 40% 98%;
-    --sidebar-primary: 316 92% 62%;
-    --sidebar-primary-foreground: 235 31% 6%;
-    --sidebar-accent: 235 16% 16%;
-    --sidebar-accent-foreground: 210 40% 98%;
-    --sidebar-border: 235 18% 22%;
-    --sidebar-ring: 316 92% 62%;
+    --background: 30 12% 5%;
+    --foreground: 40 30% 90%;
+    --card: 30 10% 8%;
+    --card-foreground: 40 30% 90%;
+    --popover: 30 10% 9%;
+    --popover-foreground: 40 30% 90%;
+    --primary: 36 90% 58%;
+    --primary-foreground: 30 20% 7%;
+    --secondary: 176 38% 50%;
+    --secondary-foreground: 30 20% 7%;
+    --muted: 30 8% 12%;
+    --muted-foreground: 36 10% 62%;
+    --accent: 92 34% 58%;
+    --accent-foreground: 30 20% 7%;
+    --destructive: 8 66% 55%;
+    --destructive-foreground: 40 30% 95%;
+    --border: 32 9% 17%;
+    --input: 32 9% 19%;
+    --ring: 36 90% 58%;
+    --chart-1: 36 90% 58%;
+    --chart-2: 176 38% 50%;
+    --chart-3: 92 34% 58%;
+    --chart-4: 8 66% 55%;
+    --chart-5: 40 30% 75%;
+    --radius: 0.375rem;
+    --sidebar-background: 30 10% 8%;
+    --sidebar-foreground: 40 30% 90%;
+    --sidebar-primary: 36 90% 58%;
+    --sidebar-primary-foreground: 30 20% 7%;
+    --sidebar-accent: 30 8% 12%;
+    --sidebar-accent-foreground: 40 30% 90%;
+    --sidebar-border: 32 9% 17%;
+    --sidebar-ring: 36 90% 58%;
   }
 
   * {
@@ -51,29 +57,61 @@
   body {
     @apply bg-background text-foreground antialiased;
     background:
-      linear-gradient(rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255, 255, 255, 0.025) 1px, transparent 1px),
-      radial-gradient(circle at 22% 4%, rgba(236, 72, 153, 0.18), transparent 28rem),
-      radial-gradient(circle at 85% 12%, rgba(34, 211, 238, 0.14), transparent 24rem),
+      radial-gradient(ellipse 70rem 32rem at 50% -8rem, hsl(36 90% 58% / 0.07), transparent 70%),
       hsl(var(--background));
-    background-size: 44px 44px, 44px 44px, auto, auto, auto;
+    font-feature-settings: "ss01", "cv11";
+  }
+
+  ::selection {
+    background: hsl(var(--primary) / 0.35);
   }
 
   a {
     @apply transition-colors;
   }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-ring ring-offset-2 ring-offset-background;
+  }
+
+  select {
+    @apply bg-card text-foreground;
+  }
 }
 
 @layer components {
+  /* Primary surface: a catalog card. */
   .scan-card {
-    @apply rounded-lg border border-white/10 bg-card/80 shadow-[0_0_0_1px_rgba(255,255,255,0.02),0_24px_80px_rgba(0,0,0,0.28)] backdrop-blur;
+    @apply rounded-md border border-border bg-card shadow-[0_1px_0_hsl(40_30%_90%/0.03)_inset,0_18px_50px_-24px_rgba(0,0,0,0.7)];
   }
 
   .metric-tile {
-    @apply rounded-md border border-white/10 bg-white/[0.035] p-4;
+    @apply rounded-md border border-border bg-muted/50 p-4;
   }
 
   .neon-rule {
-    @apply h-px w-full bg-gradient-to-r from-transparent via-primary/80 to-transparent;
+    @apply h-px w-full bg-gradient-to-r from-transparent via-primary/60 to-transparent;
+  }
+
+  /* Mono uppercase label, like the typed line on a tape spine. */
+  .eyebrow {
+    @apply font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-muted-foreground;
+  }
+
+  .display {
+    @apply font-display font-medium tracking-[-0.02em] text-foreground;
+  }
+
+  .field {
+    @apply h-11 w-full rounded-md border border-input bg-background/60 px-3 text-sm text-foreground outline-none transition placeholder:text-muted-foreground/60 focus:border-primary/70;
+  }
+
+  .chip {
+    @apply inline-flex items-center gap-1.5 rounded border border-border bg-muted/60 px-2 py-0.5 font-mono text-[11px] text-muted-foreground;
+  }
+
+  /* Faint CRT scanlines for hero surfaces only. */
+  .scanlines {
+    background-image: repeating-linear-gradient(to bottom, hsl(40 30% 90% / 0.025) 0 1px, transparent 1px 3px);
   }
 }
