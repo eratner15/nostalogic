@@ -21,6 +21,12 @@ database_name = "nostaldamus-db"
 database_id = "1c94c92c-5013-413a-83d3-97207f122309"
 migrations_dir = "worker/migrations"
 
+# Remix Studio images (posters, sizzle keyframes). Create once with:
+#   npx wrangler r2 bucket create nostaldamus-media
+[[r2_buckets]]
+binding = "MEDIA"
+bucket_name = "nostaldamus-media"
+
 # Secret (wrangler secret put, never here): ANTHROPIC_API_KEY. Without it the
 # library and deterministic scoring work; Remix/Chat return a clear 503.
 
@@ -36,3 +42,5 @@ crons = ["17 * * * *"]
 #   AGENT_TOKEN  - the Revival Watch agent; the same value lives in its vault.
 #   ADMIN_TOKEN  - the /admin review page.
 #   RESEND_API_KEY + DIGEST_EMAIL_TO - optional digest email.
+#   OPENAI_API_KEY - Remix Studio posters and keyframes (gpt-image). Optional:
+#                    without it the Studio falls back to an SVG poster and text cards.

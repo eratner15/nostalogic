@@ -1,12 +1,14 @@
 /**
  * Remix Studio tests: the five-step pipeline against a scripted fake model
- * (no API key or network), and the poster SVG sanitizer.
+ * (no API key or network), image generation against a fake OpenAI endpoint,
+ * and the SVG poster sanitizer.
  */
 import assert from "node:assert/strict";
 import { test } from "node:test";
 import corpus from "../../data/corpus.json";
 import { scoreAll, type Property } from "../../src/lib/scoring";
-import type { StudioEvent, StudioStep } from "../../src/lib/studio";
+import type { Art, Sizzle, StudioEvent, StudioStep } from "../../src/lib/studio";
+import { generateImage, renderToMedia } from "./images";
 import { runStudio } from "./pipeline";
 import { sanitizeSvg } from "./svg";
 
@@ -20,13 +22,19 @@ const concept = {
   borrowed_mechanics: [{ source: "Tamagotchi", mechanic: "care loop" }, { source: "Daria", mechanic: "deadpan narrator" }],
   new_elements: ["grading creature"], visual_style: "acid green on charcoal", risks: ["r"],
 };
-const preview = { title: "Pocket Static teaser", beats: [{ seconds: 4, visual: "A cracked screen glows.", on_screen_text: "", audio: "hum", speaker: "VERA", line: "It judges everyone." }] };
+const screenplay = `Title: Pocket Static\n\nINT. VERA'S BEDROOM - NIGHT\n\n${"A cracked handheld glows on the nightstand. ".repeat(12)}\n\nVERA\nIt judges everyone.\n\nCUT TO:`;
+const sizzle: Sizzle = {
+  title: "Pocket Static", tagline: "It rates everyone.", style_bible: "Flat 2D animation, acid green on charcoal.", poster_prompt: "Key art of a glowing handheld creature.",
+  shots: [
+    { seconds: 5, image_prompt: "A cracked handheld glowing in a dark drawer.", camera: "push_in", on_screen_text: "", speaker: "", line: "", music: "hum" },
+    { seconds: 4, image_prompt: "A food court where every phone lights up.", camera: "pan_left", on_screen_text: "POCKET STATIC", speaker: "NARRATOR", line: "It rates everyone.", music: "" },
+  ],
+};
 const verdict = {
   verdict: "develop", summary: "s", scores: [{ dimension: "Originality", score: 4, note: "n" }],
   strengths: ["a"], concerns: ["b"], rights_flags: [], next_steps: ["c"], audience_test_questions: ["q"],
 };
-const poster = `Here you go:\n<svg viewBox="0 0 600 900" width="600" height="900" onload="alert(1)"><script>alert(2)</script><defs><linearGradient id="g"/></defs><rect fill="url(#g)" width="600" height="900"/><image href="https://evil.example/x.png"/><a href="https://evil.example"><text>Click</text></a><text x="20" y="80">POCKET STATIC</text></svg>`;
-const screenplay = `Title: Pocket Static\n\nINT. VERA'S BEDROOM - NIGHT\n\n${"A cracked handheld glows on the nightstand. ".repeat(12)}\n\nVERA\nIt judges everyone.\n\nCUT TO:`;
+const posterSvg = `<svg viewBox="0 0 600 900" onload="alert(1)"><script>alert(2)</script><defs><linearGradient id="g"/></defs><rect fill="url(#g)" width="600" height="900"/><image href="https://evil.example/x.png"/><a href="https://evil.example"><text>Click</text></a><text x="20" y="80">POCKET STATIC</text></svg>`;
 
 const usage = { input_tokens: 50, output_tokens: 10, cache_read_input_tokens: 0, cache_creation_input_tokens: 0 };
 const message = (text: string, stop_reason = "end_turn") => ({
@@ -44,66 +52,88 @@ function fakeModel(texts: { text: string; stop?: string }[]) {
   return { fetchImpl, bodies };
 }
 
-test("studio runs five steps in order, saves each, and sanitizes the poster", async () => {
-  const { fetchImpl, bodies } = fakeModel([
-    { text: JSON.stringify(concept) }, { text: poster }, { text: screenplay }, { text: JSON.stringify(preview) }, { text: JSON.stringify(verdict) },
-  ]);
+const run = (texts: { text: string; stop?: string }[], renderArt?: Parameters<typeof runStudio>[4]) => {
+  const { fetchImpl, bodies } = fakeModel(texts);
   const events: StudioEvent[] = [];
   const saved = new Map<StudioStep, unknown>();
-  const result = await runStudio(
-    { sources, format: "Animated Series", previewKind: "trailer" },
+  const result = runStudio(
+    { sources, format: "Animated Series" },
     { apiKey: "test", model: "claude-opus-5-5", fetch: fetchImpl },
     (e) => { events.push(e); },
     async (step, value) => { saved.set(step, value); },
+    renderArt,
   );
+  return { result, events, saved, bodies };
+};
 
-  assert.equal(result.ok, true);
-  assert.equal(result.usage.input, 250);
-  assert.deepEqual([...saved.keys()], ["concept", "poster", "screenplay", "preview", "verdict"]);
-  assert.deepEqual(events.filter((e) => e.type === "step").map((e) => (e as { step: string }).step), ["concept", "poster", "screenplay", "preview", "verdict"]);
-
-  const svg = String(saved.get("poster"));
-  assert.ok(svg.startsWith("<svg"));
-  assert.ok(!/script|onload|evil\.example|<image|<a\b/i.test(svg), svg);
-  assert.match(svg, /url\(#g\)/);                       // local gradient references survive
-  assert.match(svg, /POCKET STATIC/);
-
-  assert.equal((saved.get("preview") as { kind: string }).kind, "trailer");
-
-  // Concept, preview, and verdict ask for structured JSON; poster and screenplay are free text.
-  const formats = bodies.map((b) => Boolean((b.output_config as { format?: unknown }).format));
-  assert.deepEqual(formats, [true, false, false, true, true]);
+test("with images: five steps in order, generated art saved, no SVG call", async () => {
+  const { result, events, saved, bodies } = run(
+    [{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: JSON.stringify(verdict) }],
+    async (s) => ({ posterImage: "/api/media/studio/x/poster.png", shotImages: s.shots.map((_, i) => `/api/media/studio/x/shot-${i + 1}.png`), note: null }),
+  );
+  const r = await result;
+  assert.equal(r.ok, true);
+  assert.deepEqual([...saved.keys()], ["concept", "screenplay", "sizzle", "art", "verdict"]);
+  assert.deepEqual(events.filter((e) => e.type === "step").map((e) => (e as { step: string }).step), ["concept", "screenplay", "sizzle", "art", "verdict"]);
+  const art = saved.get("art") as Art;
+  assert.equal(art.posterImage, "/api/media/studio/x/poster.png");
+  assert.equal(art.posterSvg, null);
+  assert.equal(art.shotImages.length, 2);
+  // Concept, sizzle, and verdict ask for structured JSON; the script is free text.
+  assert.deepEqual(bodies.map((b) => Boolean((b.output_config as { format?: unknown }).format)), [true, false, true, true]);
   assert.equal(bodies[0].fallbacks, "default");
 });
 
+test("without images: the poster falls back to a sanitized SVG", async () => {
+  const { result, saved } = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: posterSvg }, { text: JSON.stringify(verdict) }]);
+  assert.equal((await result).ok, true);
+  const art = saved.get("art") as Art;
+  assert.equal(art.posterImage, null);
+  assert.ok(art.posterSvg?.startsWith("<svg"));
+  assert.ok(!/script|onload|evil\.example|<image|<a\b/i.test(art.posterSvg ?? ""), art.posterSvg ?? "");
+  assert.match(art.posterSvg ?? "", /url\(#g\)/);
+  assert.deepEqual(art.shotImages, [null, null]);
+});
+
 test("a failed step stops the run, reports the step, and keeps earlier work", async () => {
-  const { fetchImpl } = fakeModel([{ text: JSON.stringify(concept) }, { text: "Sorry, no SVG today." }]);
-  const events: StudioEvent[] = [];
-  const saved = new Map<StudioStep, unknown>();
-  const result = await runStudio(
-    { sources, format: "Feature Film", previewKind: "scene" },
-    { apiKey: "test", model: "claude-opus-5-5", fetch: fetchImpl },
-    (e) => { events.push(e); },
-    async (step, value) => { saved.set(step, value); },
-  );
-  assert.equal(result.ok, false);
+  const { result, events, saved } = run([{ text: JSON.stringify(concept) }, { text: "too short" }]);
+  assert.equal((await result).ok, false);
   assert.deepEqual([...saved.keys()], ["concept"]);
   const error = events.at(-1) as { type: string; step?: string };
   assert.equal(error.type, "error");
-  assert.equal(error.step, "poster");
+  assert.equal(error.step, "screenplay");
 });
 
 test("a refusal is reported as an error, not thrown", async () => {
-  const { fetchImpl } = fakeModel([{ text: "", stop: "refusal" }]);
-  const events: StudioEvent[] = [];
-  const result = await runStudio(
-    { sources, format: "Video Game", previewKind: "trailer" },
-    { apiKey: "test", model: "claude-opus-5-5", fetch: fetchImpl },
-    (e) => { events.push(e); },
-    async () => {},
-  );
-  assert.equal(result.ok, false);
+  const { result, events } = run([{ text: "", stop: "refusal" }]);
+  assert.equal((await result).ok, false);
   assert.equal(events.at(-1)?.type, "error");
+});
+
+test("generateImage posts to gpt-image and decodes the PNG", async () => {
+  let sent: Record<string, unknown> = {};
+  const fetchImpl = (async (url: unknown, init?: RequestInit) => {
+    assert.equal(String(url), "https://api.openai.com/v1/images/generations");
+    assert.equal(new Headers(init?.headers).get("authorization"), "Bearer sk-test");
+    sent = JSON.parse(String(init?.body));
+    return new Response(JSON.stringify({ data: [{ b64_json: btoa("PNGDATA") }] }), { status: 200 });
+  }) as typeof fetch;
+  const bytes = await generateImage({ OPENAI_API_KEY: "sk-test" }, "a poster", "1024x1536", "high", fetchImpl);
+  assert.equal(new TextDecoder().decode(bytes), "PNGDATA");
+  assert.deepEqual([sent.model, sent.size, sent.quality], ["gpt-image-1", "1024x1536", "high"]);
+});
+
+test("renderToMedia stores the image, and reports failures instead of throwing", async () => {
+  const puts: string[] = [];
+  const MEDIA = { put: async (key: string) => { puts.push(key); } } as unknown as R2Bucket;
+  const ok = (async () => new Response(JSON.stringify({ data: [{ b64_json: btoa("x") }] }), { status: 200 })) as unknown as typeof fetch;
+  const bad = (async () => new Response(JSON.stringify({ error: { message: "content policy" } }), { status: 400 })) as unknown as typeof fetch;
+  const env = { OPENAI_API_KEY: "sk", MEDIA };
+  assert.deepEqual(await renderToMedia(env, "studio/a/poster.png", "p", "1024x1536", "high", ok), { url: "/api/media/studio/a/poster.png", error: null });
+  const failed = await renderToMedia(env, "studio/a/shot-1.png", "p", "1536x1024", "medium", bad);
+  assert.equal(failed.url, null);
+  assert.match(failed.error ?? "", /400: content policy/);
+  assert.deepEqual(puts, ["studio/a/poster.png"]);
 });
 
 test("sanitizeSvg rejects text with no svg and adds a namespace", () => {

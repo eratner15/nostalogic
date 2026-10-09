@@ -340,7 +340,7 @@ function RemixContent() {
                 </Link>
               </div>
               <p className="mt-2 text-xs leading-5 text-muted-foreground">
-                Turns these sources into an original property with a poster, opening pages, a playable trailer or opening scene, and a greenlight verdict.
+                Turns these sources into an original property with a movie poster, a sizzle reel, and a greenlight verdict.
               </p>
             </div>
             <div className="rounded-md border border-accent/25 bg-accent/[0.06] p-4">
