@@ -495,3 +495,10 @@ test("prefixed active elements and hrefs are stripped; stroke opacity does not h
   await r.result;
   assert.equal((r.saved.get("sizzle") as Sizzle).shots[0].line, "Pocket Static is coming.");
 });
+
+test("and aliases get an ampersand form; a prefixed <title> does not count as the poster title", async () => {
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("Dumb and Dumber").includes("Dumb & Dumber"));
+  const prefixed = `<svg viewBox="0 0 600 900" xmlns:s="http://www.w3.org/2000/svg"><s:title>Pocket Static</s:title><text>A NEW SHOW</text></svg>`;
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: prefixed }, { text: prefixed }]).result).ok, false);
+});

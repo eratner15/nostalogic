@@ -144,8 +144,9 @@ export function sourceAliases(name: string): string[] {
     out.add(n.replace(/^[*!#~_+.-]+|[*!#~_+.-]+$/g, ""));
     // Punctuation inside a multiword title ("Aaahh!!! Real Monsters" -> "Aaahh Real Monsters").
     if (/[!?.,:;*~_+'"-]/.test(n)) out.add(n.replace(/[!?.,:;*~_+'"-]+/g, " ").replace(/\s+/g, " ").trim());
-    // An ampersand is also written as "and" ("Kenan & Kel" -> "Kenan and Kel").
+    // An ampersand and "and" stand for each other ("Kenan & Kel" <-> "Kenan and Kel").
     if (/\s&\s/.test(n)) out.add(n.replace(/\s+&\s+/g, " and "));
+    if (/\sand\s/i.test(n)) out.add(n.replace(/\s+and\s+/gi, " & "));
   }
   return [...out].filter((n) => n.length >= 3);
 }
@@ -394,7 +395,7 @@ export async function runStudio(
       // wraps ("It" must not match "written").
       const title = wordPattern(concept.title.replace(/\s+/g, " ").trim(), "i");
       // The title must be in rendered text, not only in <title>, <desc>, <metadata>, or <defs>.
-      const rendered = dropSubtrees(raw, (tag, name) => NEVER_RENDERED.test(name) || HIDDEN.test(tag));
+      const rendered = dropSubtrees(raw, (tag, name) => NEVER_RENDERED.test(name.replace(/^[\w-]+:/, "")) || HIDDEN.test(tag));
       const renderedText = [rendered.replace(/<[^>]*>/g, " "), rendered.replace(/<[^>]*>/g, "")]
         .map((t) => decodeXml(t).replace(/\s+/g, " ").trim());
       const showsTitle = renderedText.some((t) => title.test(t));
