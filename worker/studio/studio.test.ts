@@ -322,3 +322,15 @@ test("rights guard covers concept names, music cues, and CDATA or split poster t
     assert.equal((await r.result).ok, false, poster);
   }
 });
+
+test("source names anywhere public in the concept fail; a renamed tagline follows the concept title", async () => {
+  const leak = run([{ text: JSON.stringify({ ...concept, logline: "Daria meets a pocket pet." }) }]);
+  assert.equal((await leak.result).ok, false);
+  const risky = run([{ text: JSON.stringify({ ...concept, risks: ["Tone may read as too close to Daria."] }) }, { text: "too short" }]);
+  await risky.result;
+  assert.ok(risky.saved.get("concept"), "risks may name a source");
+  const renamed = { ...sizzle, title: "Static Pocket", tagline: "Static Pocket rates everyone." };
+  const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(renamed) }]);
+  await r.result;
+  assert.equal((r.saved.get("sizzle") as Sizzle).tagline, `${concept.title} rates everyone.`);
+});

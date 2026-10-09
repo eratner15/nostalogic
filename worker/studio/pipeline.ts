@@ -218,7 +218,14 @@ export async function runStudio(
     concept.format = input.format;   // the format the user picked, everywhere
     if (!Array.isArray(concept.characters) || concept.characters.length < 3) throw new StepError("The concept came back with fewer than three characters.");
     concept.characters = concept.characters.slice(0, 5);
-    if ([concept.title, ...concept.characters.map((ch) => ch.name)].some(named)) throw new StepError("The concept reused a source property's name for its title or a character.");
+    // Every public concept field, except the intentional provenance (borrowed_mechanics)
+    // and the risks, which may name a source to warn about closeness.
+    const publicConcept = [
+      concept.title, concept.logline, concept.tone, concept.audience, concept.premise, concept.world, concept.story_engine, concept.visual_style,
+      ...concept.characters.flatMap((ch) => [ch.name, ch.role, ch.description]),
+      ...(concept.new_elements ?? []),
+    ].map((v) => String(v ?? ""));
+    if (publicConcept.some(named)) throw new StepError("The concept used a source property's name outside its borrowed mechanics.");
     await save(step, concept);
     await emit({ type: "result", step, data: concept });
     const conceptJson = JSON.stringify(concept);
@@ -251,6 +258,7 @@ export async function runStudio(
     if (sizzle.title && sizzle.title !== concept.title) {
       const old = wordPattern(sizzle.title, "gi");   // whole words only: a title "It" must not touch "with"
       sizzle.poster_prompt = sizzle.poster_prompt.replace(old, concept.title);
+      sizzle.tagline = sizzle.tagline.replace(old, concept.title);
       sizzle.shots = sizzle.shots.map((s) => ({ ...s, on_screen_text: s.on_screen_text.replace(old, concept.title) }));
     }
     sizzle.title = concept.title;

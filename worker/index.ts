@@ -198,7 +198,8 @@ app.post("/studio", async (c) => {
           const r = await job();
           if (r.generated) {
             imagesMade++;
-            await c.env.DB.prepare("UPDATE studio_packages SET images = ? WHERE id = ?").bind(imagesMade, id).run().catch(() => {});
+            // Atomic increment: concurrent lanes must not overwrite each other's count.
+            await c.env.DB.prepare("UPDATE studio_packages SET images = images + 1 WHERE id = ?").bind(id).run().catch(() => {});
           }
           return r;
         });
