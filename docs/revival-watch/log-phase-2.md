@@ -123,3 +123,11 @@ The local fetch loop from handoff step 5 was not run. The production hourly cron
 | Arctic Shift | 0 | 90 | 7, all `subreddit lookup HTTP 429` |
 
 Arctic Shift rate-limits the Worker's shared outbound address. PR #10 (retry once after a 429, then skip Arctic Shift for the rest of the run) is merged but not deployed. This check closes when every pair has a `read_to` and no pair has a `last_error`. Until then, Phase 2 is not complete.
+
+## G8 re-check (2026-10-09)
+
+Every row was checked again with `scripts/check-sources.mjs` (Wikipedia REST summary with redirect resolution, Arctic Shift subreddit search, one request at a time). The CSV now carries three more columns: `checked_by`, `checked_at`, and `note`. The note holds the reason for every cell that the Phase 2 review changed, or "verified" for an untouched row.
+
+Result: 119 of 119 titles resolve to their canonical page with no redirect. 86 of 87 subreddits exist in Arctic Shift with a refreshed subscriber count. r/furby answered a rate limit on the re-check and keeps its Phase 2 verification. Six subreddits came back with different letter case from Arctic Shift; the CSV keeps the Phase 2 spelling, because the loader treats a changed query as a new source and would reset the bookmark.
+
+Rerun: `node scripts/check-sources.mjs docs/revival-watch/sources-reviewed.csv docs/revival-watch/sources-reviewed.csv --notes docs/revival-watch/log-phase-2.md --checked-by "<who>"`.
