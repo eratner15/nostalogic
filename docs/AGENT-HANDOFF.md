@@ -182,6 +182,7 @@ npm run deploy
 
 - Optional: `IMAGE_MODEL` (default `gpt-image-1`), `IMAGE_QUALITY` (forces one quality for all images).
 - Limits: 5 packs per visitor IP per day (`STUDIO_DAILY_PER_IP`), 40 in total
-  (`STUDIO_DAILY_TOTAL`). Each pack = 4-5 Claude calls plus up to 10 images.
+  (`STUDIO_DAILY_TOTAL`). Each pack = 4 to 6 Claude calls (the SVG poster fallback may retry once)
+  plus up to 13 images (one poster and up to 12 keyframes).
 - Cost check:
   `SELECT date(created_at), COUNT(*), SUM(input_tokens), SUM(cache_write_tokens), SUM(cache_read_tokens), SUM(output_tokens), SUM(images) FROM studio_packages GROUP BY 1`.

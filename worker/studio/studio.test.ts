@@ -391,3 +391,18 @@ test("cast names must be distinct and nonblank; blank pages fail; metadata title
   const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: meta }, { text: meta }]);
   assert.equal((await r.result).ok, false);
 });
+
+test("spaced source names, hidden poster titles, and scene-less pages are caught", async () => {
+  const prose = "I am sorry, but here is an essay about the show instead of a script. ".repeat(8);
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: prose }]).result).ok, false);
+  const hidden = `<svg><text display="none">Pocket Static</text><text>A NEW SHOW</text></svg>`;
+  const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: hidden }, { text: hidden }]);
+  assert.equal((await r.result).ok, false);
+});
+
+test("names match across runs of whitespace", async () => {
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("Kenan & Kel").includes("Kenan & Kel"));
+  const r = run([{ text: JSON.stringify({ ...concept, premise: "Daria   style narration." }) }]);
+  assert.equal((await r.result).ok, false);
+});

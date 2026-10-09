@@ -187,6 +187,10 @@ function StudioContent() {
     } finally {
       setActive(null);
       setRunning(false);
+      // If the URL lost its id mid-run (Studio nav link), restore it so the pack can be shared.
+      if (runningId.current && window.location.pathname.startsWith("/studio") && !new URLSearchParams(window.location.search).get("id")) {
+        window.history.replaceState(null, "", `/studio/?id=${runningId.current}`);
+      }
     }
   };
 
@@ -311,7 +315,7 @@ function StudioContent() {
       )}
 
       <div className="space-y-6">
-        {parts.sizzle && <SizzlePlayer sizzle={parts.sizzle} images={parts.art?.shotImages ?? parts.sizzle.shots.map(() => null)} />}
+        {parts.sizzle && <SizzlePlayer sizzle={parts.sizzle} images={parts.art?.shotImages ?? parts.sizzle.shots.map(() => null)} artPending={running && !parts.art} />}
         {parts.sizzle && !parts.art && running && (
           <p className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 className="h-4 w-4 animate-spin text-primary" /> Generating the poster and keyframes. The sizzle plays with text cards until they land.</p>
         )}

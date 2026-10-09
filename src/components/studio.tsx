@@ -118,7 +118,8 @@ export function parseFountain(text: string): Line[] {
   raw.forEach((line, i) => {
     const t = line.trim();
     if (!t) { inDialogue = false; return; }
-    if (/^title:/i.test(t)) { out.push({ kind: "title", text: t.replace(/^title:\s*/i, "") }); return; }
+    // Only the opening line is a title page; a later "Title:" is ordinary text.
+    if (/^title:/i.test(t) && raw.slice(0, i).every((l) => !l.trim())) { out.push({ kind: "title", text: t.replace(/^title:\s*/i, "") }); return; }
     if (/^(\.|int\.|ext\.|int\/ext|i\/e)/i.test(t)) { out.push({ kind: "scene", text: t.replace(/^\./, "").toUpperCase() }); inDialogue = false; return; }
     if (/^>/.test(t) || /^[A-Z .]+TO:$/.test(t) || /^(FADE (IN|OUT)|CUT TO BLACK)/.test(t)) { out.push({ kind: "transition", text: t.replace(/^>\s*/, "") }); return; }
     if (inDialogue) { out.push({ kind: /^\(.*\)$/.test(t) ? "paren" : "dialogue", text: t }); return; }

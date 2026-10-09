@@ -152,7 +152,8 @@ function decodeXml(text: string): string {
 
 /** A whole-word match for a literal name (word edges only where the name has word characters). */
 function wordPattern(name: string, flags: string): RegExp {
-  const body = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  // Any run of whitespace in the name matches any run in the text ("Kenan   & Kel").
+  const body = name.trim().split(/\s+/).map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("\\s+");
   return new RegExp(`(?<![\\w])${body}(?![\\w])`, flags);
 }
 
@@ -267,6 +268,7 @@ export async function runStudio(
       { effort: "medium" },
     );
     if (screenplay.trim().length < 400) throw new StepError("The opening pages came back too short.");
+    if (!/^\s*(INT\.|EXT\.|INT\/EXT|I\/E|\.[A-Z])/im.test(screenplay)) throw new StepError("The opening pages came back without a scene heading.");
     if (named(screenplay)) throw new StepError("The opening pages used a source property's name.");
     // The script's title page carries the concept title.
     // Only an opening "Title:" line is the title page; one inside the script is left alone.
@@ -334,7 +336,10 @@ export async function runStudio(
       // wraps ("It" must not match "written").
       const title = wordPattern(concept.title.replace(/\s+/g, " ").trim(), "i");
       // The title must be in rendered text, not only in <title>, <desc>, <metadata>, or <defs>.
-      const rendered = raw.replace(/<(title|desc|metadata|defs)\b[\s\S]*?<\/\1>/gi, "");
+      const rendered = raw
+        .replace(/<(title|desc|metadata|defs)\b[\s\S]*?<\/\1>/gi, "")
+        // Hidden elements do not show a title either (display none, visibility hidden, opacity 0).
+        .replace(/<(\w+)\b[^>]*(display\s*[:=]\s*["']?\s*none|visibility\s*[:=]\s*["']?\s*hidden|opacity\s*[:=]\s*["']?\s*0(\.0*)?(?![.\d]))[^>]*>[\s\S]*?<\/\1>/gi, "");
       const renderedText = [rendered.replace(/<[^>]*>/g, " "), rendered.replace(/<[^>]*>/g, "")]
         .map((t) => decodeXml(t).replace(/\s+/g, " ").trim());
       const showsTitle = renderedText.some((t) => title.test(t));

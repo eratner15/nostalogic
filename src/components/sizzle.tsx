@@ -91,7 +91,7 @@ class Score {
   }
 }
 
-export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (string | null)[] }) {
+export function SizzlePlayer({ sizzle, images, artPending = false }: { sizzle: Sizzle; images: (string | null)[]; artPending?: boolean }) {
   const canvas = useRef<HTMLCanvasElement>(null);
   const loaded = useRef<(HTMLImageElement | null)[]>([]);
   const raf = useRef<number | null>(null);
@@ -308,7 +308,8 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
 
   const exportVideo = () => {
     const el = canvas.current;
-    if (!el || exporting || pendingImages > 0 || typeof MediaRecorder === "undefined") return;
+    if (!el || exporting || pendingImages > 0 || artPending) return;
+    if (typeof MediaRecorder === "undefined") { setExportNote("This browser cannot record video. Use the Claude Motion prompt instead."); return; }
     if (typeof el.captureStream !== "function") { setExportNote("This browser cannot record the canvas. Use the Claude Motion prompt instead."); return; }
     setExporting(true);
     let stream: MediaStream | null = null;
@@ -431,7 +432,7 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
           </div>
           <div className="flex items-center gap-2">
             <span className="font-mono text-xs text-muted-foreground">{Math.floor(time)}s / {total}s</span>
-            <button onClick={exportVideo} disabled={exporting || pendingImages > 0} title={pendingImages > 0 ? "Waiting for keyframes to load" : undefined} className="inline-flex items-center gap-2 rounded border border-border px-3 py-2 text-xs text-muted-foreground hover:text-foreground disabled:opacity-60">
+            <button onClick={exportVideo} disabled={exporting || pendingImages > 0 || artPending} title={artPending ? "Waiting for the poster and keyframes" : pendingImages > 0 ? "Waiting for keyframes to load" : undefined} className="inline-flex items-center gap-2 rounded border border-border px-3 py-2 text-xs text-muted-foreground hover:text-foreground disabled:opacity-60">
               {exporting ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Download className="h-3.5 w-3.5" />} {exporting ? "Recording…" : "Export video"}
             </button>
             <button
