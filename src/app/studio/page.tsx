@@ -131,6 +131,9 @@ function StudioContent() {
     if (!/^[0-9a-f-]{36}$/.test(packageId)) { setError("Package not found."); return; }
     let alive = true;
     setError(null);
+    // Never show the previous pack under a new id, whether this load succeeds or not.
+    setParts(emptyParts);
+    setMeta(null);
     fetch(`/api/studio/${encodeURIComponent(packageId)}`).then(async (res) => {
       const data = await res.json().catch(() => ({}));
       if (!alive) return;

@@ -351,3 +351,8 @@ test("an SVG-only pack still shares with the site card image", async () => {
   assert.equal(card?.image, "https://x.test/og.png");
   assert.deepEqual(card?.imageSize, [1680, 945]);
 });
+
+test("a blank concept title fails the concept step", async () => {
+  const r = run([{ text: JSON.stringify({ ...concept, title: "   " }) }]);
+  assert.equal((await r.result).ok, false);
+});

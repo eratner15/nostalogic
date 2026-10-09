@@ -241,6 +241,8 @@ export async function runStudio(
     if (mechanics.some((m) => !m)) throw new StepError("The concept did not say what it borrows from every source.");
     concept.borrowed_mechanics = mechanics as Concept["borrowed_mechanics"];
     concept.format = input.format;   // the format the user picked, everywhere
+    concept.title = String(concept.title ?? "").trim();
+    if (!concept.title) throw new StepError("The concept came back without a title.");
     if (!Array.isArray(concept.characters) || concept.characters.length < 3) throw new StepError("The concept came back with fewer than three characters.");
     concept.characters = concept.characters.slice(0, 5);
     // Every public concept field, except the intentional provenance (borrowed_mechanics)
