@@ -236,7 +236,7 @@ export async function runStudio(
     // One-to-one: an entry serves one source, and a label naming two sources is ambiguous.
     const names = input.sources.map((p) => p.name.toLowerCase());
     const matchesName = (label: string, name: string) => label === name || label.includes(name);
-    const entries = (concept.borrowed_mechanics ?? []).map((m) => ({ label: String(m?.source ?? "").trim().toLowerCase(), mechanic: String(m?.mechanic ?? ""), used: false }));
+    const entries = (concept.borrowed_mechanics ?? []).map((m) => ({ label: String(m?.source ?? "").trim().toLowerCase(), mechanic: String(m?.mechanic ?? "").trim(), used: false }));
     const mechanics = input.sources.map((p, i) => {
       const hit = entries.find((e) => !e.used && e.label && e.mechanic && matchesName(e.label, names[i]) && names.filter((n) => matchesName(e.label, n)).length === 1);
       if (!hit) return null;
@@ -341,7 +341,8 @@ export async function runStudio(
       const title = wordPattern(concept.title.replace(/\s+/g, " ").trim(), "i");
       // The title must be in rendered text, not only in <title>, <desc>, <metadata>, or <defs>.
       const rendered = raw
-        .replace(/<(title|desc|metadata|defs)\b[\s\S]*?<\/\1>/gi, "")
+        // Never-rendered containers: metadata, definitions, symbols, clip paths, masks, patterns, markers.
+        .replace(/<(title|desc|metadata|defs|symbol|clipPath|mask|pattern|marker)\b[\s\S]*?<\/\1>/gi, "")
         // Hidden elements do not show a title either (display none, visibility hidden, opacity 0).
         .replace(/<(\w+)\b[^>]*(display\s*[:=]\s*["']?\s*none|visibility\s*[:=]\s*["']?\s*hidden|opacity\s*[:=]\s*["']?\s*0(\.0*)?(?![.\d]))[^>]*>[\s\S]*?<\/\1>/gi, "");
       const renderedText = [rendered.replace(/<[^>]*>/g, " "), rendered.replace(/<[^>]*>/g, "")]

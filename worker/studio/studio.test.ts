@@ -417,3 +417,11 @@ test("stylized names get a plain alias; a blank sizzle title changes nothing", a
   assert.equal(saved.tagline, sizzle.tagline);
   assert.equal(saved.shots[0].on_screen_text, "");
 });
+
+test("blank mechanics fail; a title only inside <symbol> does not count", async () => {
+  const blank = run([{ text: JSON.stringify({ ...concept, borrowed_mechanics: [{ source: "Tamagotchi", mechanic: "   " }, { source: "Daria", mechanic: "deadpan narrator" }] }) }]);
+  assert.equal((await blank.result).ok, false);
+  const sym = `<svg><symbol id="t"><text>Pocket Static</text></symbol><text>A NEW SHOW</text></svg>`;
+  const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: sym }, { text: sym }]);
+  assert.equal((await r.result).ok, false);
+});
