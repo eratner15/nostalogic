@@ -201,3 +201,26 @@ test("the concept must name a mechanic for every selected source", async () => {
   const saved = ok.saved.get("concept") as { borrowed_mechanics: { source: string }[] };
   assert.deepEqual(saved.borrowed_mechanics.map((m) => m.source), sources.map((p) => p.name));
 });
+
+test("sameOriginJson admits same-origin JSON and rejects cross-site or simple requests", async () => {
+  const { sameOriginJson } = await import("../http");
+  const req = (headers: Record<string, string>) => new Request("https://nostalogic.cafecito-ai.com/api/studio", { method: "POST", headers });
+  assert.equal(sameOriginJson(req({ "content-type": "application/json", origin: "https://nostalogic.cafecito-ai.com", "sec-fetch-site": "same-origin" })), true);
+  assert.equal(sameOriginJson(req({ "content-type": "application/json" })), true);   // curl, server-to-server
+  assert.equal(sameOriginJson(req({ "content-type": "text/plain", origin: "https://nostalogic.cafecito-ai.com" })), false);
+  assert.equal(sameOriginJson(req({ "content-type": "application/json", origin: "https://evil.example" })), false);
+  assert.equal(sameOriginJson(req({ "content-type": "application/json", "sec-fetch-site": "cross-site" })), false);
+});
+
+test("mechanics are one-to-one, verdict dimensions are exact, and the sizzle takes the concept title", async () => {
+  const combined = run([{ text: JSON.stringify({ ...concept, borrowed_mechanics: [{ source: "Tamagotchi / Daria", mechanic: "both" }, { source: "Tamagotchi / Daria", mechanic: "again" }] }) }]);
+  assert.equal((await combined.result).ok, false);
+  const art = async (s: Sizzle) => ({ posterImage: "/p.png", shotImages: s.shots.map(() => null), note: null });
+  const texts = [{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify({ ...sizzle, title: "Something Else" }) }];
+  const dup = run([...texts, { text: JSON.stringify({ ...verdict, scores: DIMENSIONS.map(() => ({ dimension: "Originality", score: 4, note: "n" })) }) }], art);
+  assert.equal((await dup.result).ok, false);
+  assert.equal((dup.saved.get("sizzle") as Sizzle).title, concept.title);
+  const shuffled = run([...texts, { text: JSON.stringify({ ...verdict, scores: [...verdict.scores].reverse().map((s) => ({ ...s, dimension: s.dimension.toUpperCase() })) }) }], art);
+  assert.equal((await shuffled.result).ok, true);
+  assert.deepEqual((shuffled.saved.get("verdict") as { scores: { dimension: string }[] }).scores.map((s) => s.dimension), DIMENSIONS);
+});

@@ -178,13 +178,15 @@ export async function runStudio(
       { effort: "medium", schema: conceptSchema },
     ));
     // Provenance must name every selected source exactly once, and nothing else.
-    const mechanics = input.sources.map((p) => {
-      const name = p.name.toLowerCase();
-      const hit = (concept.borrowed_mechanics ?? []).find((m) => {
-        const label = String(m?.source ?? "").trim().toLowerCase();
-        return label && (label === name || label.includes(name) || name.includes(label));
-      });
-      return hit ? { source: p.name, mechanic: hit.mechanic } : null;
+    // One-to-one: an entry serves one source, and a label naming two sources is ambiguous.
+    const names = input.sources.map((p) => p.name.toLowerCase());
+    const matchesName = (label: string, name: string) => label === name || label.includes(name);
+    const entries = (concept.borrowed_mechanics ?? []).map((m) => ({ label: String(m?.source ?? "").trim().toLowerCase(), mechanic: String(m?.mechanic ?? ""), used: false }));
+    const mechanics = input.sources.map((p, i) => {
+      const hit = entries.find((e) => !e.used && e.label && e.mechanic && matchesName(e.label, names[i]) && names.filter((n) => matchesName(e.label, n)).length === 1);
+      if (!hit) return null;
+      hit.used = true;
+      return { source: p.name, mechanic: hit.mechanic };
     });
     if (mechanics.some((m) => !m)) throw new StepError("The concept did not say what it borrows from every source.");
     concept.borrowed_mechanics = mechanics as Concept["borrowed_mechanics"];
@@ -211,6 +213,7 @@ export async function runStudio(
       { effort: "medium", schema: sizzleSchema },
     ));
     // The schema describes the limits; enforce them so the player and export stay 30-75 seconds.
+    sizzle.title = concept.title;   // one name across the page, player, export, and poster
     if (sizzle.shots.length < 5 || sizzle.shots.length > 12) throw new StepError(`The sizzle came back with ${sizzle.shots.length} shots; it needs 7 to 9.`);
     sizzle.shots = sizzle.shots.map((s) => ({ ...s, seconds: Math.min(8, Math.max(3, Math.round(Number(s.seconds) || 5))) }));
     const runtime = sizzleRuntime(sizzle);
@@ -245,11 +248,18 @@ export async function runStudio(
       `Act as a skeptical development executive. Decide whether this pack deserves development money.\nSource properties: ${brief}\nConcept: ${conceptJson}\nOpening pages:\n${screenplay}\nSizzle shots: ${JSON.stringify(sizzle.shots)}\n\nJudge the work itself: originality, audience fit, story engine, production feasibility, rights distance from the sources, and franchise potential. Flag anything that echoes a source too closely. This is a creative judgment, not a market forecast; never predict revenue or ratings.`,
       { effort: "medium", schema: verdictSchema },
     ));
-    verdict.scores = (verdict.scores ?? [])
-      .filter((s) => s && typeof s.dimension === "string")
-      .slice(0, VERDICT_DIMENSIONS.length)
-      .map((s) => ({ ...s, score: Math.min(5, Math.max(1, Math.round(Number(s.score) || 1))) }));
-    if (verdict.scores.length < VERDICT_DIMENSIONS.length) throw new StepError("The verdict came back without all six scores.");
+    // Exactly the six dimensions, by name, in order; duplicates and extras are dropped.
+    const given = new Map<string, Verdict["scores"][number]>();
+    for (const s of verdict.scores ?? []) {
+      const key = String(s?.dimension ?? "").trim().toLowerCase();
+      if (key && !given.has(key)) given.set(key, s);
+    }
+    const scores = VERDICT_DIMENSIONS.map((dimension) => {
+      const s = given.get(dimension.toLowerCase());
+      return s ? { dimension, score: Math.min(5, Math.max(1, Math.round(Number(s.score) || 1))), note: String(s.note ?? "") } : null;
+    });
+    if (scores.some((s) => !s)) throw new StepError("The verdict came back without all six scores.");
+    verdict.scores = scores as Verdict["scores"];
     await save(step, verdict);
     await emit({ type: "result", step, data: verdict });
     return { ok: true, usage };

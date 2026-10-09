@@ -20,6 +20,7 @@ import { runStudio } from "./studio/pipeline";
 import { STUDIO_FORMATS, type Sizzle, type StudioEvent, type StudioPackage, type StudioStep } from "../src/lib/studio";
 import { renderToMedia, type ImageEnv } from "./studio/images";
 import { shareCard, shareTags } from "./studio/share";
+import { sameOriginJson } from "./http";
 
 type Env = AgentEnv & ImageEnv & {
   DB: D1Database;
@@ -152,6 +153,7 @@ const STUDIO_COLUMNS: Record<StudioStep, string> = {
 };
 
 app.post("/studio", async (c) => {
+  if (!sameOriginJson(c.req.raw)) return c.json({ error: "forbidden" }, 403);
   const body = await c.req.json<{ propertyIds?: string[]; format?: string; sessionKey?: string }>().catch(() => null);
   // The type parameter is compile-time only: check shapes before using them.
   const rawIds: unknown[] = Array.isArray(body?.propertyIds) ? body.propertyIds : [];
@@ -340,6 +342,7 @@ app.get("/remixes/:id", async (c) => {
  * call, then `answer`, then `done` (or a single `error`).
  */
 app.post("/prophet", async (c) => {
+  if (!sameOriginJson(c.req.raw)) return c.json({ error: "forbidden" }, 403);
   const body = await c.req.json<{ message?: string; sessionKey?: string; history?: HistoryTurn[] }>().catch(() => null);
   const question = (body?.message ?? "").trim().slice(0, 1000);
   const session = (body?.sessionKey ?? "anon").slice(0, 64);
