@@ -157,7 +157,9 @@ app.post("/studio", async (c) => {
   const body = await c.req.json<{ propertyIds?: string[]; format?: string; sessionKey?: string }>().catch(() => null);
   // The type parameter is compile-time only: check shapes before using them.
   const rawIds: unknown[] = Array.isArray(body?.propertyIds) ? body.propertyIds : [];
-  const ids = [...new Set(rawIds.filter((x): x is string => typeof x === "string"))].slice(0, 4);
+  const ids = [...new Set(rawIds.filter((x): x is string => typeof x === "string"))];
+  // Reject, never truncate: a pack must use exactly the sources the user chose.
+  if (ids.length !== rawIds.length || ids.length > 4) return c.json({ error: "pick two to four distinct source properties" }, 400);
   const format = STUDIO_FORMATS.find((f) => f === body?.format) ?? "Streaming Series";
   const session = (typeof body?.sessionKey === "string" && body.sessionKey ? body.sessionKey : "anon").slice(0, 64);
   if (ids.length < 2) return c.json({ error: "pick two to four source properties" }, 400);

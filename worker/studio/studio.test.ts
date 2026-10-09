@@ -263,3 +263,10 @@ test("source names never reach the screen or the image model; title fixes stay w
   assert.equal(saved.shots[0].image_prompt, "A cracked glowing in a drawer.");
   assert.equal(saved.poster_prompt, `A group of kids hold ${concept.title} up.`);
 });
+
+test("a fallback SVG poster that names a source is retried, then fails", async () => {
+  const named = `<svg viewBox="0 0 600 900"><text x="20" y="80">Tamagotchi meets Daria</text></svg>`;
+  const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: named }, { text: named }]);
+  assert.equal((await r.result).ok, false);
+  assert.equal((r.events.at(-1) as { step?: string }).step, "art");
+});

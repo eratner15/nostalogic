@@ -321,9 +321,14 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
     rec.onstop = () => {
       const blob = new Blob(chunks, { type: rec.mimeType || "video/webm" });
       const a = document.createElement("a");
-      a.href = URL.createObjectURL(blob);
+      const url = URL.createObjectURL(blob);
+      a.href = url;
       a.download = `${sizzle.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-sizzle${vertical ? "-vertical" : ""}.${blob.type.includes("mp4") ? "mp4" : "webm"}`;
       a.click();
+      // Release the capture and the blob once the download has started.
+      rec.stream.getTracks().forEach((t) => t.stop());
+      window.setTimeout(() => URL.revokeObjectURL(url), 10_000);
+      if (recorder.current === rec) recorder.current = null;
       setExporting(false);
     };
     recorder.current = rec;

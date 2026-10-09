@@ -260,7 +260,10 @@ export async function runStudio(
         `Design the one-sheet poster for this property as a single SVG.\nConcept: ${conceptJson}\nTagline: ${sizzle.tagline}\n\nRequirements:\n- Output ONLY the SVG markup, starting with <svg and ending with </svg>. No prose, no code fence.\n- viewBox="0 0 600 900" with width="600" height="900", xmlns set.\n- Built from shapes, paths, gradients (linearGradient, radialGradient in <defs>), and text only. No <image>, <style>, <script>, <foreignObject>, <use>, external links, or web fonts. Use font-family serif, sans-serif, or monospace, with presentation attributes.\n- Show the title large, the tagline, and a credit block at the bottom in small condensed text. A strong single key image built from geometry, following: ${sizzle.style_bible}\n- Every text element must fit inside the 600 px width.\n- Do not use any source property's name, logo, or characters.`,
         { effort: "medium" },
       );
-      art.posterSvg = sanitizeSvg(posterText);
+      const svg = sanitizeSvg(posterText);
+      // The same rights guard as on-screen text: visible poster text must not name a source.
+      const visible = (svg ?? "").replace(/<[^>]*>/g, " ");
+      art.posterSvg = svg && !named(visible) ? svg : null;
     }
     if (!art.posterImage && !art.posterSvg) throw new StepError("The poster could not be drawn.");
     await save(step, art);
