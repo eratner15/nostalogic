@@ -372,3 +372,12 @@ test("poster title must be whole words; spaced or split source names are still c
   const r = run([{ text: JSON.stringify(short) }, { text: screenplay }, { text: JSON.stringify({ ...sizzle, title: "It" }) }, { text: noTitle }, { text: noTitle }]);
   assert.equal((await r.result).ok, false);
 });
+
+test("only an opening Title line is rewritten; otherwise the title page is prepended", async () => {
+  const body = screenplay.replace("Title: Pocket Static\n\n", "") + "\n\nVERA\nTitle: Queen of the Food Court.";
+  const r = run([{ text: JSON.stringify(concept) }, { text: body }, { text: "{}" }]);
+  await r.result;
+  const saved = r.saved.get("screenplay") as string;
+  assert.ok(saved.startsWith("Title: Pocket Static\n\n"));
+  assert.match(saved, /Title: Queen of the Food Court\./);
+});

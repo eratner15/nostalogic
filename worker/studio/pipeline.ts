@@ -267,9 +267,10 @@ export async function runStudio(
     if (screenplay.length < 400) throw new StepError("The opening pages came back too short.");
     if (named(screenplay)) throw new StepError("The opening pages used a source property's name.");
     // The script's title page carries the concept title.
-    screenplay = /^\s*Title:.*$/im.test(screenplay)
-      ? screenplay.replace(/^\s*Title:.*$/im, `Title: ${concept.title}`)
-      : `Title: ${concept.title}\n\n${screenplay}`;
+    // Only an opening "Title:" line is the title page; one inside the script is left alone.
+    screenplay = /^\s*Title:.*/i.test(screenplay)
+      ? screenplay.replace(/^\s*Title:.*/i, `Title: ${concept.title}`)
+      : `Title: ${concept.title}\n\n${screenplay.trimStart()}`;
     await save(step, screenplay);
     await emit({ type: "result", step, data: screenplay });
 
