@@ -4,6 +4,8 @@
  * only a drawing, drop anything that could run code or load from elsewhere.
  */
 
+import { XMLValidator } from "fast-xml-parser";
+
 const MAX_BYTES = 120_000;
 
 /** Decodes the XML entities a poster's text can use, so "Kenan &amp; Kel" reads as "Kenan & Kel". */
@@ -12,21 +14,6 @@ export function decodeXml(text: string): string {
     .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
     .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
     .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&amp;/g, "&");
-}
-
-/**
- * True when every element closes in order. A browser shows nothing for an SVG file
- * whose tags do not match, so such a poster is rejected and asked for again.
- */
-function wellFormed(svg: string): boolean {
-  const body = svg.replace(/<!--[\s\S]*?-->/g, "").replace(/<!\[CDATA\[[\s\S]*?\]\]>/g, "").replace(/<\?[\s\S]*?\?>/g, "");
-  const stack: string[] = [];
-  for (const [tag, close, name] of body.matchAll(/<(\/?)([^\s<>\/!?]+)[^<>]*>/g)) {
-    if (tag.endsWith("/>")) continue;
-    if (!close) stack.push(name);
-    else if (stack.pop() !== name) return false;
-  }
-  return stack.length === 0 && !/<(?![!?\/]?[^\s<>\/!?]+[^<>]*>)/.test(body);
 }
 
 /**
@@ -53,7 +40,14 @@ export function extractSvg(text: string): string | null {
 export function sanitizeSvg(raw: string): string | null {
   let svg = extractSvg(raw);
   if (!svg || svg.length > MAX_BYTES) return null;
+  // A document type can declare entities; a poster never needs one.
+  if (/<!(DOCTYPE|ENTITY)/i.test(svg)) return null;
   svg = svg
+    // Normalize first, so every later check reads plain elements and text: comments and
+    // processing instructions never render, and CDATA becomes ordinary escaped text.
+    .replace(/<!--[\s\S]*?-->/g, "")
+    .replace(/<\?[\s\S]*?\?>/g, "")
+    .replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, (_, text: string) => text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;"))
     // Elements that run code, embed documents, or pull remote content.
     // A namespace prefix ("<s:script>") does not hide an element.
     .replace(/<((?:[\w-]+:)?(?:script|foreignObject|iframe|object|embed|image|use|style|animate\w*|set|a))\b[\s\S]*?(<\/\1>|\/>)/gi, "")
@@ -71,7 +65,10 @@ export function sanitizeSvg(raw: string): string | null {
   // A poster needs no namespace-prefixed elements, and a prefix can disguise an active one
   // ("<s.x:script>"), so any prefixed element tag rejects the poster outright.
   if (/<\/?[^\s<>\/!?]+:/.test(svg)) return null;
-  if (!wellFormed(svg) || loadsExternal(svg)) return null;
+  // A real XML check: a browser shows nothing for an SVG file that does not parse
+  // (unbalanced tags, unquoted attributes, entities XML does not define).
+  if (XMLValidator.validate(svg) !== true || /&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);)/i.test(svg)) return null;
+  if (loadsExternal(svg)) return null;
   // Ensure the namespace so the file renders when opened on its own.
   if (!/xmlns=/.test(svg.slice(0, 300))) svg = svg.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
   return svg;

@@ -503,12 +503,15 @@ test("and aliases get an ampersand form; a prefixed <title> does not count as th
   assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: prefixed }, { text: prefixed }]).result).ok, false);
 });
 
-test("xml:base is stripped; commented tags do not end a hidden group; a source name in a comment still fails", async () => {
+test("xml:base is stripped; commented tags do not end a hidden group; comments never ship", async () => {
   assert.ok(!sanitizeSvg(`<svg xml:base="https://e.example/"><filter><feImage href="#a"/></filter><text>X</text></svg>`)!.includes("e.example"));
   const tricky = `<svg viewBox="0 0 600 900"><g display="none"><!-- </g> --><text>POCKET STATIC</text></g><text>A NEW SHOW</text></svg>`;
   assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: tricky }, { text: tricky }]).result).ok, false);
+  // Comments are removed by the sanitizer, so a source name in one never ships.
   const noted = `<svg viewBox="0 0 600 900"><!-- after Tamagotchi --><text>POCKET STATIC</text></svg>`;
-  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: noted }, { text: noted }]).result).ok, false);
+  const n = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: noted }, { text: JSON.stringify(verdict) }]);
+  assert.equal((await n.result).ok, true);
+  assert.ok(!(n.saved.get("art") as Art).posterSvg!.includes("Tamagotchi"));
   const plain = `<svg viewBox="0 0 600 900"><!-- layout --><text>POCKET STATIC</text></svg>`;
   assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: plain }, { text: JSON.stringify(verdict) }]).result).ok, true);
 });
@@ -537,4 +540,15 @@ test("era names stay aliases; comment-split names fail; encoded url() and malfor
   assert.equal(sanitizeSvg(`<svg><rect style="fill:u\\72l(https://e.example/p)"/><text>X</text></svg>`), null);
   assert.ok(sanitizeSvg(`<svg><defs><linearGradient id="g"/></defs><rect fill="url(#g)"/><rect fill='url("#g")'/><text>Rock &#38; Roll</text></svg>`));
   assert.equal(sanitizeSvg(`<svg><rect><text>POCKET STATIC</text></svg>`), null);
+});
+
+test("the XML check rejects unquoted attributes and unknown entities; processing instructions are removed; accent-free aliases", async () => {
+  assert.equal(sanitizeSvg(`<svg><text x=10>POCKET STATIC</text></svg>`), null);
+  assert.equal(sanitizeSvg(`<svg><text>A&nbsp;B</text></svg>`), null);
+  assert.equal(sanitizeSvg(`<!DOCTYPE svg [<!ENTITY t "x">]><svg><text>&t;</text></svg>`), null);
+  const pi = `<svg viewBox="0 0 600 900"><g display="none"><?note </g> ?><text>POCKET STATIC</text></g><text>A NEW SHOW</text></svg>`;
+  assert.ok(!sanitizeSvg(pi)!.includes("<?"));
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: pi }, { text: pi }]).result).ok, false);
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("Macarena (Los del Río)").includes("Los del Rio"));
 });

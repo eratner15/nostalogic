@@ -148,6 +148,9 @@ export function sourceAliases(name: string): string[] {
     v.push(n.replace(/^[*!#~_+.-]+|[*!#~_+.-]+$/g, ""));
     // Punctuation inside a multiword title ("Aaahh!!! Real Monsters" -> "Aaahh Real Monsters").
     if (/[!?.,:;*~_+'"-]/.test(n)) v.push(n.replace(/[!?.,:;*~_+'"-]+/g, " ").replace(/\s+/g, " ").trim());
+    // Accents are often dropped ("Los del Río" -> "Los del Rio").
+    const folded = n.normalize("NFD").replace(/\p{M}/gu, "");
+    if (folded !== n) v.push(folded);
     // An ampersand and "and" stand for each other ("Kenan & Kel" <-> "Kenan and Kel").
     if (/\s&\s/.test(n)) v.push(n.replace(/\s+&\s+/g, " and "));
     if (/\sand\s/i.test(n)) v.push(n.replace(/\s+and\s+/gi, " & "));
@@ -397,21 +400,16 @@ export async function runStudio(
       );
       const svg = sanitizeSvg(posterText);
       // The same rights guard as on-screen text: visible poster text must not name a source.
-      // Unwrap CDATA, then read the text both with tags as spaces and with tags removed,
-      // so a name split across <tspan>s ("Da<tspan>ria</tspan>") is still seen.
-      // Comment text counts here too: it ships in the downloadable SVG.
-      const unwrapped = (svg ?? "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1").replace(/<!--|-->/g, " ");
-      // Also read it with comments removed, so a name split by a comment ("Da<!-- x -->ria") is seen.
-      const uncommented = (svg ?? "").replace(/<!--[\s\S]*?-->/g, "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1");
-      const visible = [unwrapped, uncommented].flatMap((u) => [u.replace(/<[^>]*>/g, " "), u.replace(/<[^>]*>/g, "")])
+      // The sanitizer already removed comments and processing instructions and turned CDATA
+      // into text. Read the text both with tags as spaces and with tags removed, so a name
+      // split across <tspan>s ("Da<tspan>ria</tspan>") is still seen.
+      const raw = svg ?? "";
+      const visible = [raw.replace(/<[^>]*>/g, " "), raw.replace(/<[^>]*>/g, "")]
         .map((t) => decodeXml(t).replace(/\s+/g, " ").trim());
       // It must also show the canonical title as whole words, ignoring case and line
       // wraps ("It" must not match "written").
       const title = wordPattern(concept.title.replace(/\s+/g, " ").trim(), "i");
       // The title must be in rendered text, not only in <title>, <desc>, <metadata>, or <defs>.
-      // Comments never render, and tag-shaped text inside one must not end a hidden group early.
-      // CDATA is text: its tag-shaped content must not open or close elements here.
-      const raw = (svg ?? "").replace(/<!--[\s\S]*?-->/g, "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, (_, text: string) => text.replace(/[<>]/g, " "));
       const rendered = dropSubtrees(raw, (tag, name) => NEVER_RENDERED.test(name.replace(/^[\w-]+:/, "")) || HIDDEN.test(tag));
       const renderedText = [rendered.replace(/<[^>]*>/g, " "), rendered.replace(/<[^>]*>/g, "")]
         .map((t) => decodeXml(t).replace(/\s+/g, " ").trim());
