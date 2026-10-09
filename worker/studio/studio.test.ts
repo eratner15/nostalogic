@@ -576,3 +576,8 @@ test("only SVG drawing elements pass; typographic punctuation and hidden-split n
   const { sourceAliases } = await import("./pipeline");
   assert.ok(sourceAliases("Dexter’s Laboratory").includes("Dexter's Laboratory"));
 });
+
+test("an href with any prefix must be a #fragment", () => {
+  assert.equal(sanitizeSvg(`<svg xmlns:s.x="http://www.w3.org/1999/xlink"><linearGradient id="h" s.x:href="https://e.example/p.svg#g"/><text>X</text></svg>`), null);
+  assert.ok(sanitizeSvg(`<svg xmlns:xlink="http://www.w3.org/1999/xlink"><defs><linearGradient id="g"/><linearGradient id="h" xlink:href="#g"/></defs><text>X</text></svg>`));
+});

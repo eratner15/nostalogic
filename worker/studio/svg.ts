@@ -45,8 +45,8 @@ const drawingParser = new XMLParser({ preserveOrder: true, ignoreAttributes: fal
 
 /**
  * True when the parsed poster holds only drawing elements in the SVG namespace: no element
- * outside DRAWING, no default namespace other than SVG, no `src`, and no backslash in any
- * attribute value (CSS escapes and line continuations have no use in a poster).
+ * outside DRAWING, no default namespace other than SVG, no `src`, no href outside the file,
+ * and no backslash in any attribute value (CSS escapes have no use in a poster).
  */
 function onlySvgDrawing(svg: string): boolean {
   type XmlNode = Record<string, unknown> & { ":@"?: Record<string, string> };
@@ -58,6 +58,8 @@ function onlySvgDrawing(svg: string): boolean {
       const v = decodeXml(String(value));
       if (attr === "xmlns" && v !== "http://www.w3.org/2000/svg") return false;
       if (/^src$/i.test(attr) || v.includes("\\")) return false;
+      // Any href, whatever its prefix ("s.x:href"), must point inside the file.
+      if (/^href$/i.test(attr.replace(/^.*:/, "")) && !v.trim().startsWith("#")) return false;
     }
     return ok((node[name] as XmlNode[]) ?? []);
   });
