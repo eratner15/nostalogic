@@ -309,14 +309,18 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
   const exportVideo = () => {
     const el = canvas.current;
     if (!el || exporting || pendingImages > 0 || typeof MediaRecorder === "undefined") return;
+    if (typeof el.captureStream !== "function") { setExportNote("This browser cannot record the canvas. Use the Claude Motion prompt instead."); return; }
     setExporting(true);
-    const stream = el.captureStream(30);
+    let stream: MediaStream | null = null;
+    try {
+    const capture = el.captureStream(30);
+    stream = capture;
     // Music is recorded; browser speech is not capturable, so the export carries subtitles instead.
     play(0, music, () => recorder.current?.stop());   // the Score toggle decides whether music is recorded
     const audio = score.current?.dest.stream.getAudioTracks() ?? [];
-    audio.forEach((track) => stream.addTrack(track));
+    audio.forEach((track) => capture.addTrack(track));
     const type = ["video/mp4;codecs=avc1,mp4a", "video/mp4", "video/webm;codecs=vp9,opus", "video/webm"].find((m) => MediaRecorder.isTypeSupported(m)) ?? "";
-    const rec = new MediaRecorder(stream, type ? { mimeType: type, videoBitsPerSecond: 6_000_000 } : undefined);
+    const rec = new MediaRecorder(capture, type ? { mimeType: type, videoBitsPerSecond: 6_000_000 } : undefined);
     const chunks: Blob[] = [];
     rec.ondataavailable = (e) => { if (e.data.size) chunks.push(e.data); };
     rec.onstop = () => {
@@ -349,6 +353,14 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
     document.addEventListener("visibilitychange", onHide);
     rec.addEventListener("stop", () => document.removeEventListener("visibilitychange", onHide));
     rec.start(250);
+    } catch {
+      // Setup failed (no encoder for this stream, for example): undo everything it started.
+      stream?.getTracks().forEach((t) => t.stop());
+      recorder.current = null;
+      stop();
+      setExporting(false);
+      setExportNote("This browser could not start the recording. Use the Claude Motion prompt instead.");
+    }
   };
 
   const motionPrompt = () => {

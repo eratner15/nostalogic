@@ -365,3 +365,10 @@ test("a fallback SVG poster must show the concept title, even wrapped over two l
   const ok = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: wrapped }, { text: JSON.stringify(verdict) }]);
   assert.equal((await ok.result).ok, true);
 });
+
+test("poster title must be whole words; spaced or split source names are still caught", async () => {
+  const short = { ...concept, title: "It" };
+  const noTitle = `<svg><text>Written by nobody</text></svg>`;
+  const r = run([{ text: JSON.stringify(short) }, { text: screenplay }, { text: JSON.stringify({ ...sizzle, title: "It" }) }, { text: noTitle }, { text: noTitle }]);
+  assert.equal((await r.result).ok, false);
+});

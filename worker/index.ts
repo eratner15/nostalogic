@@ -186,12 +186,15 @@ app.post("/studio", async (c) => {
   let imagesMade = 0;
   const renderArt = c.env.OPENAI_API_KEY && c.env.MEDIA
     ? async (sizzle: Sizzle) => {
-        const style = sizzle.style_bible;
+        // Cap the model-written parts, so the fixed constraints after them are never cut
+        // by the image API's prompt limit.
+        const cap = (t: string, n: number) => String(t ?? "").slice(0, n);
+        const style = cap(sizzle.style_bible, 4000);
         const still = "Cinematic film still, widescreen composition. No text, captions, letters, logos, or watermarks.";
         // Three at a time: each decoded PNG is several MB, and the isolate has 128 MB.
         const jobs = [
-          () => renderToMedia(c.env, `studio/${id}/poster.png`, `${sizzle.poster_prompt}\n\nStyle: ${style}\nA theatrical movie poster, portrait one-sheet, professional key art. The only title on the poster is "${sizzle.title}". Tagline: "${sizzle.tagline}". No other names or titles.`, "1024x1536", "high"),
-          ...sizzle.shots.map((shot, i) => () => renderToMedia(c.env, `studio/${id}/shot-${i + 1}.png`, `${style}\n\n${shot.image_prompt}\n\n${still}`, "1536x1024", "medium")),
+          () => renderToMedia(c.env, `studio/${id}/poster.png`, `${cap(sizzle.poster_prompt, 8000)}\n\nStyle: ${style}\nA theatrical movie poster, portrait one-sheet, professional key art. The only title on the poster is "${sizzle.title}". Tagline: "${sizzle.tagline}". No other names or titles.`, "1024x1536", "high"),
+          ...sizzle.shots.map((shot, i) => () => renderToMedia(c.env, `studio/${id}/shot-${i + 1}.png`, `${style}\n\n${cap(shot.image_prompt, 8000)}\n\n${still}`, "1536x1024", "medium")),
         ];
         // Count each billed image as it finishes, so an interrupted art step keeps its usage.
         const counted = jobs.map((job) => async () => {

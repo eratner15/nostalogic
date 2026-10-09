@@ -325,11 +325,12 @@ export async function runStudio(
       // Unwrap CDATA, then read the text both with tags as spaces and with tags removed,
       // so a name split across <tspan>s ("Da<tspan>ria</tspan>") is still seen.
       const raw = (svg ?? "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1");
-      const visible = [raw.replace(/<[^>]*>/g, " "), raw.replace(/<[^>]*>/g, "")].map(decodeXml);
-      // It must also show the canonical title (whitespace and case ignored, so a title
-      // wrapped over two lines still counts).
-      const flat = (t: string) => t.replace(/\s+/g, " ").trim().toLowerCase();
-      const showsTitle = visible.some((t) => flat(t).includes(flat(concept.title)));
+      const visible = [raw.replace(/<[^>]*>/g, " "), raw.replace(/<[^>]*>/g, "")]
+        .map((t) => decodeXml(t).replace(/\s+/g, " ").trim());
+      // It must also show the canonical title as whole words, ignoring case and line
+      // wraps ("It" must not match "written").
+      const title = wordPattern(concept.title.replace(/\s+/g, " ").trim(), "i");
+      const showsTitle = visible.some((t) => title.test(t));
       art.posterSvg = svg && showsTitle && !visible.some(named) ? svg : null;
     }
     if (!art.posterImage && !art.posterSvg) throw new StepError("The poster could not be drawn.");
