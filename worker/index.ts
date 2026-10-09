@@ -153,9 +153,11 @@ const STUDIO_COLUMNS: Record<StudioStep, string> = {
 
 app.post("/studio", async (c) => {
   const body = await c.req.json<{ propertyIds?: string[]; format?: string; sessionKey?: string }>().catch(() => null);
-  const ids = [...new Set((body?.propertyIds ?? []).filter((x): x is string => typeof x === "string"))].slice(0, 4);
+  // The type parameter is compile-time only: check shapes before using them.
+  const rawIds: unknown[] = Array.isArray(body?.propertyIds) ? body.propertyIds : [];
+  const ids = [...new Set(rawIds.filter((x): x is string => typeof x === "string"))].slice(0, 4);
   const format = STUDIO_FORMATS.find((f) => f === body?.format) ?? "Streaming Series";
-  const session = (body?.sessionKey ?? "anon").slice(0, 64);
+  const session = (typeof body?.sessionKey === "string" && body.sessionKey ? body.sessionKey : "anon").slice(0, 64);
   if (ids.length < 2) return c.json({ error: "pick two to four source properties" }, 400);
   if (!c.env.ANTHROPIC_API_KEY) return c.json({ error: NOT_CONFIGURED }, 503);
 
@@ -182,10 +184,12 @@ app.post("/studio", async (c) => {
     ? async (sizzle: Sizzle) => {
         const style = sizzle.style_bible;
         const still = "Cinematic film still, widescreen composition. No text, captions, letters, logos, or watermarks.";
-        const [poster, ...shots] = await Promise.all([
-          renderToMedia(c.env, `studio/${id}/poster.png`, `${sizzle.poster_prompt}\n\nStyle: ${style}\nA theatrical movie poster, portrait one-sheet, professional key art.`, "1024x1536", "high"),
-          ...sizzle.shots.map((shot, i) => renderToMedia(c.env, `studio/${id}/shot-${i + 1}.png`, `${style}\n\n${shot.image_prompt}\n\n${still}`, "1536x1024", "medium")),
-        ]);
+        // Three at a time: each decoded PNG is several MB, and the isolate has 128 MB.
+        const jobs = [
+          () => renderToMedia(c.env, `studio/${id}/poster.png`, `${sizzle.poster_prompt}\n\nStyle: ${style}\nA theatrical movie poster, portrait one-sheet, professional key art.`, "1024x1536", "high"),
+          ...sizzle.shots.map((shot, i) => () => renderToMedia(c.env, `studio/${id}/shot-${i + 1}.png`, `${style}\n\n${shot.image_prompt}\n\n${still}`, "1536x1024", "medium")),
+        ];
+        const [poster, ...shots] = await mapLimit(jobs, 3);
         imagesMade = [poster, ...shots].filter((r) => r.url).length;
         const failed = [poster, ...shots].filter((r) => !r.url).map((r) => r.error);
         return {
@@ -233,6 +237,20 @@ app.post("/studio", async (c) => {
   });
 });
 
+/** Runs async jobs with at most `limit` in flight, keeping result order. */
+async function mapLimit<T>(jobs: (() => Promise<T>)[], limit: number): Promise<T[]> {
+  const out: T[] = new Array(jobs.length);
+  let next = 0;
+  const lane = async () => { while (next < jobs.length) { const i = next++; out[i] = await jobs[i](); } };
+  await Promise.all(Array.from({ length: Math.min(limit, jobs.length) }, lane));
+  return out;
+}
+
+/** A pack's poster for previews: the generated PNG, else the SVG fallback. */
+function posterUrl(id: string, art: { posterImage: string | null; posterSvg: string | null } | null): string | null {
+  return art?.posterImage ?? (art?.posterSvg ? `/api/media/studio/${id}/poster.svg` : null);
+}
+
 /** Public gallery: the latest finished packs that an admin has not taken down. */
 app.get("/studio", async (c) => {
   const { results } = await c.env.DB.prepare(
@@ -249,7 +267,7 @@ app.get("/studio", async (c) => {
       title: concept.title,
       logline: concept.logline,
       tagline: parse<Sizzle>(r.sizzle)?.tagline ?? null,
-      poster: parse<{ posterImage: string | null }>(r.art)?.posterImage ?? null,
+      poster: posterUrl(String(r.id), parse<{ posterImage: string | null; posterSvg: string | null }>(r.art)),
       verdict: parse<{ verdict: string }>(r.verdict)?.verdict ?? null,
       createdAt: r.created_at,
     }];
@@ -276,6 +294,21 @@ app.get("/studio/:id", async (c) => {
     createdAt: String(r.created_at),
   };
   return c.json(pkg);
+});
+
+/** The SVG fallback poster (sanitized when saved), served as an image so galleries can show it. */
+app.get("/media/studio/:id/poster.svg", async (c) => {
+  const row = await c.env.DB.prepare("SELECT art, hidden FROM studio_packages WHERE id = ?").bind(c.req.param("id")).first<{ art: string | null; hidden: number }>();
+  const svg = row && !row.hidden && row.art ? (JSON.parse(row.art) as { posterSvg?: string | null }).posterSvg : null;
+  if (!svg) return c.json({ error: "not found" }, 404);
+  return new Response(svg, {
+    headers: {
+      "content-type": "image/svg+xml; charset=utf-8",
+      "content-security-policy": "default-src 'none'; style-src 'unsafe-inline'",
+      "x-content-type-options": "nosniff",
+      "cache-control": "public, max-age=3600",
+    },
+  });
 });
 
 /** Studio images from R2, served same-origin so the sizzle canvas can export them. */

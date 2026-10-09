@@ -233,10 +233,12 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
   // First frame, and redraw when images arrive.
   useEffect(() => { if (!playing) draw(time); }, [draw, ready, playing, time]);
 
+  // A ref, so a toggle during playback reaches the running tick loop.
+  const voiceOn = useRef(voice);
   const speak = useCallback((text: string) => {
-    if (!voice || !text) return;
+    if (!voiceOn.current || !text) return;
     try { window.speechSynthesis.cancel(); window.speechSynthesis.speak(new SpeechSynthesisUtterance(text)); } catch { /* no speech */ }
-  }, [voice]);
+  }, []);
 
   const stop = useCallback(() => {
     if (raf.current) cancelAnimationFrame(raf.current);
@@ -374,7 +376,7 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
                 </button>
               ))}
             </div>
-            <button onClick={() => setVoice((v) => !v)} className={cn("inline-flex items-center gap-1.5 rounded border px-2.5 py-2 text-xs", voice ? "border-primary/50 text-primary" : "border-border text-muted-foreground")}>{voice ? <Volume2 className="h-3.5 w-3.5" /> : <VolumeX className="h-3.5 w-3.5" />} Voice</button>
+            <button onClick={() => { const next = !voice; voiceOn.current = next; setVoice(next); if (!next) { try { window.speechSynthesis.cancel(); } catch { /* no speech */ } } }} className={cn("inline-flex items-center gap-1.5 rounded border px-2.5 py-2 text-xs", voice ? "border-primary/50 text-primary" : "border-border text-muted-foreground")}>{voice ? <Volume2 className="h-3.5 w-3.5" /> : <VolumeX className="h-3.5 w-3.5" />} Voice</button>
           </div>
           <div className="flex items-center gap-2">
             <span className="font-mono text-xs text-muted-foreground">{Math.floor(time)}s / {total}s</span>
