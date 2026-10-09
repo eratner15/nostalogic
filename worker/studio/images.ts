@@ -58,7 +58,7 @@ export async function renderToMedia(
   if (!env.MEDIA) return { url: null, error: "no media bucket" };
   try {
     const bytes = await generateImage(env, prompt, size, quality, fetchImpl);
-    await env.MEDIA.put(key, bytes, { httpMetadata: { contentType: "image/png", cacheControl: "public, max-age=31536000, immutable" } });
+    await env.MEDIA.put(key, bytes, { httpMetadata: { contentType: "image/png" } });
     return { url: `/api/media/${key}`, error: null };
   } catch (error) {
     return { url: null, error: error instanceof Error ? error.message : "image failed" };

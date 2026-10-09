@@ -121,9 +121,10 @@ function StudioContent() {
   // Load a saved package when the URL carries an id (and it is not the one streaming now).
   useEffect(() => {
     if (!packageId || packageId === runningId.current) return;
+    if (!/^[0-9a-f-]{36}$/.test(packageId)) { setError("Package not found."); return; }
     let alive = true;
     setError(null);
-    fetch(`/api/studio/${packageId}`).then(async (res) => {
+    fetch(`/api/studio/${encodeURIComponent(packageId)}`).then(async (res) => {
       const data = await res.json().catch(() => ({}));
       if (!alive) return;
       if (!res.ok) { setError(data.error ?? "Package not found."); return; }

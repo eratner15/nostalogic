@@ -277,6 +277,14 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
 
   useEffect(() => () => stop(), [stop]);
 
+  // Score applies to the current playback too, not only the next one.
+  const toggleMusic = () => {
+    const next = !music;
+    setMusic(next);
+    if (score.current) score.current.out.gain.value = next ? 0.9 : 0;
+    else if (next && playing) { score.current = new Score(); score.current.start(); }
+  };
+
   const exportVideo = () => {
     const el = canvas.current;
     if (!el || exporting || typeof MediaRecorder === "undefined") return;
@@ -352,7 +360,7 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
               {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />} {playing ? "Pause" : "Play sizzle"}
             </button>
             <button onClick={() => { stop(); setTime(0); draw(0); }} disabled={exporting} className="rounded border disabled:opacity-40 border-border p-2 text-muted-foreground hover:text-foreground" aria-label="Restart"><RotateCcw className="h-4 w-4" /></button>
-            <button onClick={() => setMusic((m) => !m)} className={cn("inline-flex items-center gap-1.5 rounded border px-2.5 py-2 text-xs", music ? "border-primary/50 text-primary" : "border-border text-muted-foreground")}><Music2 className="h-3.5 w-3.5" /> Score</button>
+            <button onClick={toggleMusic} disabled={exporting} className={cn("inline-flex items-center gap-1.5 rounded border px-2.5 py-2 text-xs", music ? "border-primary/50 text-primary" : "border-border text-muted-foreground")}><Music2 className="h-3.5 w-3.5" /> Score</button>
             <div className="inline-flex overflow-hidden rounded border border-border text-xs" role="group" aria-label="Frame">
               {(["wide", "vertical"] as const).map((a) => (
                 <button

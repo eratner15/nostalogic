@@ -199,7 +199,10 @@ app.post("/studio", async (c) => {
   const { readable, writable } = new TransformStream();
   const writer = writable.getWriter();
   const encoder = new TextEncoder();
-  const emit = (event: StudioEvent) => writer.write(encoder.encode(`data: ${JSON.stringify(event)}\n\n`));
+  // A closed tab must not change the run: a failed write only means nobody is listening.
+  const emit = async (event: StudioEvent) => {
+    try { await writer.write(encoder.encode(`data: ${JSON.stringify(event)}\n\n`)); } catch { /* client gone */ }
+  };
   const save = async (step: StudioStep, value: unknown) => {
     await c.env.DB.prepare(`UPDATE studio_packages SET ${STUDIO_COLUMNS[step]} = ? WHERE id = ?`)
       .bind(typeof value === "string" ? value : JSON.stringify(value), id).run();
@@ -279,11 +282,16 @@ app.get("/studio/:id", async (c) => {
 app.get("/media/*", async (c) => {
   if (!c.env.MEDIA) return c.json({ error: "media not configured" }, 503);
   const key = c.req.path.replace(/^\/api\/media\//, "");
-  if (!/^studio\/[0-9a-f-]{36}\/(poster|shot-\d{1,2})\.png$/.test(key)) return c.json({ error: "not found" }, 404);
+  const match = /^studio\/([0-9a-f-]{36})\/(poster|shot-\d{1,2})\.png$/.exec(key);
+  if (!match) return c.json({ error: "not found" }, 404);
+  // A hidden (taken-down) pack serves no images either.
+  const pack = await c.env.DB.prepare("SELECT hidden FROM studio_packages WHERE id = ?").bind(match[1]).first<{ hidden: number }>();
+  if (!pack || pack.hidden) return c.json({ error: "not found" }, 404);
   const object = await c.env.MEDIA.get(key);
   if (!object) return c.json({ error: "not found" }, 404);
   return new Response(object.body, {
-    headers: { "content-type": "image/png", "cache-control": "public, max-age=31536000, immutable" },
+    // One hour, not immutable, so a takedown reaches cached copies within the hour.
+    headers: { "content-type": "image/png", "cache-control": "public, max-age=3600" },
   });
 });
 
