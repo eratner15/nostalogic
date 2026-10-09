@@ -9,6 +9,7 @@ const navItems = [
   { href: "/prophet-chat/", label: "Ask" },
   { href: "/property-library/", label: "Library" },
   { href: "/analysis-tools/", label: "Analysis" },
+  { href: "/compare/", label: "Compare" },
   { href: "/remix-lab/", label: "Remix Lab" },
   { href: "/studio/", label: "Studio" },
   { href: "/market-intelligence/", label: "Market" },

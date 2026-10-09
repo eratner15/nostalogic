@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "npm run typecheck",
     "typecheck": "tsc --noEmit && tsc --noEmit -p worker/tsconfig.json",
-    "test": "tsx --test worker/agent/agent.test.ts worker/scoring.test.ts worker/agent-api.test.ts worker/signals.test.ts worker/studio/studio.test.ts",
+    "test": "tsx --test worker/agent/agent.test.ts worker/scoring.test.ts worker/agent-api.test.ts worker/signals.test.ts worker/analytics.test.ts worker/studio/studio.test.ts",
     "db:local": "wrangler d1 migrations apply nostaldamus-db --local && node scripts/load-seed.mjs data/corpus.json r2-claude-2026-08-15 --local",
     "db:migrate": "wrangler d1 migrations apply nostaldamus-db --remote",
     "dev:worker": "npm run build && wrangler dev"

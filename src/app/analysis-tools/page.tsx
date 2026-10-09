@@ -3,7 +3,7 @@
 import { Suspense, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { AlertTriangle, CalendarClock, Gauge, Layers3, MessageSquareText, Sparkles } from "lucide-react";
+import { Activity, AlertTriangle, CalendarClock, Gauge, Layers3, MessageSquareText, Sparkles } from "lucide-react";
 import type { LucideIcon } from "lucide-react";
 import { PageHeader } from "@/components/brand";
 import { useLibrary } from "@/hooks/use-library";
@@ -110,6 +110,9 @@ function AnalysisContent() {
             >
               <MessageSquareText className="h-4 w-4" /> Ask the Prophet about {property.name}
             </Link>
+            <Link href={`/property-analytics/?propertyId=${property.id}`} className="mt-2 inline-flex items-center gap-2 text-sm font-medium text-primary hover:text-foreground">
+              <Activity className="h-4 w-4" /> Signals and evidence
+            </Link>
           </div>
         }
       />
@@ -186,6 +189,17 @@ function AnalysisContent() {
           <Button asChild className="mt-5">
             <Link href={`/remix-lab/?propertyId=${property.id}`}>Build a Pitch</Link>
           </Button>
+        </div>
+      </section>
+
+      <section className="mt-6 grid gap-4 rounded border border-primary/30 bg-primary/10 p-5 md:grid-cols-[1fr_auto] md:items-center">
+        <div>
+          <h3 className="display text-2xl">Need this verified before you spend on it?</h3>
+          <p className="mt-1 text-sm leading-6 text-muted-foreground">The $199 Revival Opportunity Brief on {property.name}: rights holder of record, audience, comparables, risks, and what we could not verify. Human-reviewed, two business days.</p>
+        </div>
+        <div className="flex flex-wrap gap-3">
+          <Link href={`/order-report/?property=${encodeURIComponent(property.name)}`} className="inline-flex h-11 items-center rounded bg-primary px-5 font-medium text-primary-foreground hover:bg-primary/90">Order the $199 brief</Link>
+          <Link href={`/compare/?ids=${property.id}`} className="inline-flex h-11 items-center rounded border border-border px-5 text-sm hover:text-foreground">Compare with others</Link>
         </div>
       </section>
     </main>

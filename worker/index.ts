@@ -14,6 +14,7 @@ import { scoreAll, type Property, type PropertyScore } from "../src/lib/scoring"
 import { DEFAULT_AGENT_MODEL, runAgent, type AgentEvent, type HistoryTurn } from "./agent/run";
 import { agentApi, type AgentEnv } from "./agent-api";
 import { loadTrackRecord, scoreHistory, weeklyLedger } from "./ledger";
+import { loadSignals } from "./analytics";
 import { mondayOf } from "./scoring";
 import { runSignals, yesterday } from "./signals";
 import { runStudio } from "./studio/pipeline";
@@ -87,6 +88,13 @@ app.get("/properties/:id", async (c) => {
   const property = (await loadLibrary(c.env)).find((p) => p.id === c.req.param("id"));
   if (!property) return c.json({ error: "not found" }, 404);
   return c.json(property);
+});
+
+/** Daily signal readings (last 120 days), bookmark state and weekly score snapshots for one property. */
+app.get("/properties/:id/signals", async (c) => {
+  const out = await loadSignals(c.env, c.req.param("id"), new Date());
+  if (!out) return c.json({ error: "not found" }, 404);
+  return c.json(out, 200, { "cache-control": "public, max-age=900" });
 });
 
 /** Daily counter; limits enforced loosely until Phase 3 defines tiers. */

@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState } from "react";
 import Link from "next/link";
-import { ArrowDown, ArrowUp, MessageSquareText, Search, X } from "lucide-react";
+import { ArrowDown, ArrowUp, Activity, MessageSquareText, Search, X } from "lucide-react";
 import { Meter, PageHeader, ScoreBadge, riskBand } from "@/components/brand";
 import { cn } from "@/lib/utils";
 import { useLibrary } from "@/hooks/use-library";
@@ -23,6 +23,8 @@ export default function PropertyLibrary() {
   const [page, setPage] = useState(1);
   const library = useLibrary();
   const [history, setHistory] = useState<Record<string, number[]>>({});
+  const [compare, setCompare] = useState<string[]>([]);
+  const toggleCompare = (id: string) => setCompare((c) => (c.includes(id) ? c.filter((x) => x !== id) : c.length < 4 ? [...c, id] : c));
 
   useEffect(() => {
     let alive = true;
@@ -141,6 +143,7 @@ export default function PropertyLibrary() {
                 <SortHeader k="risk" label="Risk" className="hidden md:table-cell" />
                 <th className="hidden px-4 py-3 font-normal lg:table-cell">Timing</th>
                 <th className="hidden px-4 py-3 font-normal xl:table-cell">Current signal</th>
+                <th className="w-16 px-2 py-3 text-center font-normal">Compare</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-border">
@@ -153,6 +156,7 @@ export default function PropertyLibrary() {
                       <Link href={`/analysis-tools/?propertyId=${property.id}`} className="font-medium text-foreground group-hover:text-primary">
                         {property.name}
                       </Link>
+                      <Link href={`/property-analytics/?propertyId=${property.id}`} className="ml-2 inline-flex items-center gap-1 align-middle text-xs text-muted-foreground hover:text-primary" title="Signals and evidence"><Activity className="h-3.5 w-3.5" />signals</Link>
                       <div className="mt-1 flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
                         <span className="chip py-0">{property.category}</span>
                         <span className="sm:hidden">{property.year}</span>
@@ -168,12 +172,17 @@ export default function PropertyLibrary() {
                     </td>
                     <td className="hidden px-4 py-4 text-xs text-muted-foreground lg:table-cell">{property.timingStage}</td>
                     <td className="hidden max-w-xs px-4 py-4 text-xs leading-5 text-muted-foreground xl:table-cell">{property.currentSignal}</td>
+                    <td className="px-2 py-2 text-center align-middle">
+                      <label className="inline-flex h-11 w-11 cursor-pointer items-center justify-center rounded hover:bg-muted/60" title={compare.length >= 4 && !compare.includes(property.id) ? "Four at most" : `Compare ${property.name}`}>
+                        <input type="checkbox" className="h-4 w-4 accent-[hsl(var(--primary))]" checked={compare.includes(property.id)} disabled={compare.length >= 4 && !compare.includes(property.id)} onChange={() => toggleCompare(property.id)} aria-label={`Compare ${property.name}`} />
+                      </label>
+                    </td>
                   </tr>
                 );
               })}
               {visible.length === 0 && (
                 <tr>
-                  <td colSpan={7} className="px-4 py-12 text-center text-muted-foreground">
+                  <td colSpan={8} className="px-4 py-12 text-center text-muted-foreground">
                     Nothing on the shelf matches. <Link href={`/prophet-chat/?q=${encodeURIComponent(query || "What is closest to what I am looking for?")}`} className="text-primary hover:underline">Ask the Prophet</Link> instead.
                   </td>
                 </tr>
@@ -192,6 +201,22 @@ export default function PropertyLibrary() {
           </div>
         </div>
       </section>
+
+      {compare.length > 0 && (
+        <div className="fixed inset-x-0 bottom-0 z-40 border-t border-border bg-background/95 backdrop-blur">
+          <div className="mx-auto flex max-w-7xl flex-wrap items-center justify-between gap-3 px-4 py-3 md:px-6">
+            <span className="text-sm text-muted-foreground">
+              <span className="font-mono text-foreground">{compare.length}</span> of 4 picked: {compare.map((id) => library.find((p) => p.id === id)?.name ?? id).join(", ")}
+            </span>
+            <div className="flex items-center gap-2">
+              <button onClick={() => setCompare([])} className="h-11 rounded border border-border px-4 text-sm hover:text-foreground">Clear</button>
+              {compare.length >= 2
+                ? <Link href={`/compare/?ids=${compare.join(",")}`} className="inline-flex h-11 items-center rounded bg-primary px-5 text-sm font-medium text-primary-foreground hover:bg-primary/90">Compare {compare.length}</Link>
+                : <span className="inline-flex h-11 items-center rounded border border-border px-5 text-sm text-muted-foreground">Pick one more</span>}
+            </div>
+          </div>
+        </div>
+      )}
     </main>
   );
 }

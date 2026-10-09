@@ -1,6 +1,7 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, Suspense, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Link from "next/link";
 import { ArrowLeft, CheckCircle2, FileText, LockKeyhole } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -11,7 +12,9 @@ type State =
   | { phase: "success"; id: string }
   | { phase: "error"; message: string };
 
-export default function OrderReport() {
+function OrderReportForm() {
+  const params = useSearchParams();
+  const presetProperty = params.get("property") ?? "";
   const [state, setState] = useState<State>({ phase: "idle" });
 
   async function submit(event: FormEvent<HTMLFormElement>) {
@@ -126,7 +129,7 @@ export default function OrderReport() {
             </label>
             <label className="block text-sm">
               <span className="mb-2 block text-muted-foreground">Property or franchise *</span>
-              <input required name="propertyName" maxLength={180} placeholder="Example: a film, series, game, toy, or music property" className="h-11 w-full rounded-md border border-border bg-background/70 px-3 outline-none placeholder:text-muted-foreground/60 focus:border-primary" />
+              <input required name="propertyName" defaultValue={presetProperty} maxLength={180} placeholder="Example: a film, series, game, toy, or music property" className="h-11 w-full rounded-md border border-border bg-background/70 px-3 outline-none placeholder:text-muted-foreground/60 focus:border-primary" />
             </label>
             <label className="block text-sm">
               <span className="mb-2 block text-muted-foreground">What decision are you trying to make? *</span>
@@ -148,5 +151,13 @@ export default function OrderReport() {
         </section>
       </div>
     </main>
+  );
+}
+
+export default function OrderReport() {
+  return (
+    <Suspense fallback={<main className="p-8">Loading the order form...</main>}>
+      <OrderReportForm />
+    </Suspense>
   );
 }
