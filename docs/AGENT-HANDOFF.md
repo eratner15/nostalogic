@@ -147,24 +147,41 @@ Run in order from the repository root:
 ## Remix Studio (development packs)
 
 `/studio` turns 2-4 library properties into an ORIGINAL property and a pack for
-deciding whether to make it. One request runs five Claude steps in order
-(`worker/studio/pipeline.ts`), each saved to `studio_packages` as it lands:
+deciding whether to make it. One request runs five steps (`worker/studio/`),
+each saved to `studio_packages` as it lands:
 
-| Step | Output | How it is made |
+| Step | Output | Made by |
 |---|---|---|
-| Concept | Title, logline, characters, story engine, borrowed mechanics, risks | Structured JSON |
-| Poster | One-sheet, 600 x 900 SVG | Claude draws it; the worker strips scripts, links, and images; the page shows it in an `<img>` |
-| Opening pages | About 3 minutes of screenplay, Fountain format | Plain text |
-| Preview | A 60-90 second trailer, or the opening scene staged, as timed beats | Structured JSON; the page plays it with captions and optional read-aloud |
-| Greenlight verdict | Develop / revise / pass, six scored dimensions, rights flags, next steps, test questions | Structured JSON |
+| Concept | Title, logline, characters, story engine, borrowed mechanics, risks | Claude, structured JSON |
+| Opening pages | About 3 minutes of Fountain screenplay (folded away on the page) | Claude |
+| Sizzle shot list | 7-9 shots, 45-60 seconds: keyframe prompt, camera move, title card, voice line, music cue; a style bible; a poster prompt | Claude, structured JSON |
+| Poster and keyframes | A 1024x1536 movie poster (high quality) and one 1536x1024 keyframe per shot (medium), stored in R2 | OpenAI gpt-image (`OPENAI_API_KEY`) |
+| Greenlight verdict | Develop / revise / pass, six scored dimensions, rights flags, next steps, test questions | Claude, structured JSON |
+
+The page plays the sizzle on a canvas: camera moves on each keyframe,
+crossfades, 2.39:1 letterbox, serif title cards, captions, a generated score,
+and optional browser voice. **Export video** records it to MP4 or WebM with the
+score. **Claude Motion prompt** copies a ready `/motion` prompt with the shots
+and keyframe links, for a polished MP4 in claude.ai (Claude Motion is a
+claude.ai feature in beta for Team and Enterprise, not an API).
+
+Without `OPENAI_API_KEY` the poster falls back to a Claude-drawn SVG and the
+sizzle plays with text cards.
 
 Rights rule in every prompt: borrow mechanics, never expression. No source
-names, characters, catchphrases, logos, or songs in the new property.
+names, characters, catchphrases, logos, songs, real people, or brands.
 
-- Share: each pack has a link, `/studio/?id=<id>`.
+Setup, once:
+
+```bash
+npx wrangler r2 bucket create nostaldamus-media
+npx wrangler secret put OPENAI_API_KEY
+npm run db:migrate          # applies 0004_studio.sql
+npm run deploy
+```
+
+- Optional: `IMAGE_MODEL` (default `gpt-image-1`), `IMAGE_QUALITY` (forces one quality for all images).
 - Limits: 5 packs per visitor IP per day (`STUDIO_DAILY_PER_IP`), 40 in total
-  (`STUDIO_DAILY_TOTAL`). Uses `AGENT_MODEL` like the Prophet.
-- Needs migration `0004_studio.sql` (`npm run db:migrate`) and `ANTHROPIC_API_KEY`.
-- Cost: five calls per pack; check with
-  `SELECT date(created_at), COUNT(*), SUM(input_tokens), SUM(output_tokens) FROM studio_packages GROUP BY 1`.
-
+  (`STUDIO_DAILY_TOTAL`). Each pack = 4-5 Claude calls plus up to 10 images.
+- Cost check:
+  `SELECT date(created_at), COUNT(*), SUM(input_tokens), SUM(output_tokens), SUM(images) FROM studio_packages GROUP BY 1`.

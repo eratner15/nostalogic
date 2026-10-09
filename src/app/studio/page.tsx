@@ -5,22 +5,23 @@ import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { Check, Copy, Download, Film, Loader2, Plus, Sparkles, TriangleAlert, X } from "lucide-react";
 import { PageHeader } from "@/components/brand";
-import { ConceptView, PosterView, PreviewPlayer, ScreenplayView, VerdictView, download, slugify } from "@/components/studio";
+import { SizzlePlayer } from "@/components/sizzle";
+import { ConceptView, PosterView, ScreenplayView, VerdictView, download, slugify } from "@/components/studio";
 import { useLibrary } from "@/hooks/use-library";
 import { cn } from "@/lib/utils";
 import {
   STEP_LABELS, STUDIO_FORMATS, STUDIO_STEPS,
-  type Concept, type Preview, type PreviewKind, type StudioPackage, type StudioStep, type Verdict,
+  type Art, type Concept, type Sizzle, type StudioPackage, type StudioStep, type Verdict,
 } from "@/lib/studio";
 
 type Parts = {
   concept: Concept | null;
-  posterSvg: string | null;
   screenplay: string | null;
-  preview: Preview | null;
+  sizzle: Sizzle | null;
+  art: Art | null;
   verdict: Verdict | null;
 };
-const emptyParts: Parts = { concept: null, posterSvg: null, screenplay: null, preview: null, verdict: null };
+const emptyParts: Parts = { concept: null, screenplay: null, sizzle: null, art: null, verdict: null };
 
 function getSessionKey(): string {
   try {
@@ -55,7 +56,7 @@ async function* readEvents(body: ReadableStream<Uint8Array>): AsyncGenerator<Rec
 }
 
 const stepKey: Record<StudioStep, keyof Parts> = {
-  concept: "concept", poster: "posterSvg", screenplay: "screenplay", preview: "preview", verdict: "verdict",
+  concept: "concept", screenplay: "screenplay", sizzle: "sizzle", art: "art", verdict: "verdict",
 };
 
 function StudioContent() {
@@ -67,10 +68,9 @@ function StudioContent() {
   const [sourceIds, setSourceIds] = useState<string[]>(initialIds.length ? initialIds : []);
   const [toAdd, setToAdd] = useState("");
   const [format, setFormat] = useState<string>(STUDIO_FORMATS.find((f) => f === params.get("format")) ?? "Streaming Series");
-  const [previewKind, setPreviewKind] = useState<PreviewKind>(params.get("preview") === "scene" ? "scene" : "trailer");
 
   const [parts, setParts] = useState<Parts>(emptyParts);
-  const [meta, setMeta] = useState<{ format: string; previewKind: PreviewKind; propertyIds: string[] } | null>(null);
+  const [meta, setMeta] = useState<{ format: string; propertyIds: string[] } | null>(null);
   const [active, setActive] = useState<StudioStep | null>(null);
   const [running, setRunning] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -91,8 +91,8 @@ function StudioContent() {
       if (!alive) return;
       if (!res.ok) { setError(data.error ?? "Package not found."); return; }
       const pkg = data as StudioPackage;
-      setParts({ concept: pkg.concept, posterSvg: pkg.posterSvg, screenplay: pkg.screenplay, preview: pkg.preview, verdict: pkg.verdict });
-      setMeta({ format: pkg.format, previewKind: pkg.previewKind, propertyIds: pkg.propertyIds });
+      setParts({ concept: pkg.concept, screenplay: pkg.screenplay, sizzle: pkg.sizzle, art: pkg.art, verdict: pkg.verdict });
+      setMeta({ format: pkg.format, propertyIds: pkg.propertyIds });
       if (pkg.status === "error") setError(pkg.error ?? "This package stopped before it finished.");
       if (pkg.status === "running") setError("This package is still being made, or its run was interrupted. Reload in a minute.");
     }).catch(() => alive && setError("Network error."));
@@ -104,12 +104,12 @@ function StudioContent() {
     setRunning(true);
     setError(null);
     setParts(emptyParts);
-    setMeta({ format, previewKind, propertyIds: sourceIds });
+    setMeta({ format, propertyIds: sourceIds });
     try {
       const res = await fetch("/api/studio", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ propertyIds: sourceIds, format, preview: previewKind, sessionKey: getSessionKey() }),
+        body: JSON.stringify({ propertyIds: sourceIds, format, sessionKey: getSessionKey() }),
       });
       if (!res.ok || !res.body) {
         const data = await res.json().catch(() => ({}));
@@ -159,7 +159,7 @@ function StudioContent() {
       <PageHeader
         eyebrow="Remix Studio · development pack"
         title={hasPackage && parts.concept ? parts.concept.title : "From remix to greenlight."}
-        lede={hasPackage && parts.concept ? parts.concept.logline : "Blend two to four library properties into an original property, then get the pack you need to decide whether to make it: concept, poster, opening pages, a playable trailer or opening scene, and a greenlight verdict."}
+        lede={hasPackage && parts.concept ? parts.concept.logline : "Blend two to four library properties into an original property, then get what you need to decide whether to make it: a movie poster, a sizzle reel you can watch in a minute, and a greenlight verdict."}
         aside={hasPackage ? (
           <div className="flex flex-wrap gap-2">
             {packageId && (
@@ -216,21 +216,10 @@ function StudioContent() {
                 {STUDIO_FORMATS.map((f) => <option key={f}>{f}</option>)}
               </select>
             </div>
-            <div>
-              <p className="eyebrow">3 · Preview</p>
-              <div className="mt-3 grid grid-cols-2 gap-2">
-                {([["trailer", "Trailer", "60-90 seconds"], ["scene", "Opening scene", "The first minutes, staged"]] as const).map(([k, label, note]) => (
-                  <button key={k} onClick={() => setPreviewKind(k)} className={cn("rounded-md border p-3 text-left transition", previewKind === k ? "border-primary/60 bg-primary/10" : "border-border hover:border-primary/40")}>
-                    <span className="block text-sm font-medium text-foreground">{label}</span>
-                    <span className="block text-xs text-muted-foreground">{note}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
             <button onClick={generate} disabled={sources.length < 2} className="inline-flex h-12 w-full items-center justify-center gap-2 rounded bg-primary font-medium text-primary-foreground transition hover:bg-primary/90 disabled:opacity-40">
               <Sparkles className="h-4 w-4" /> Build the pack
             </button>
-            <p className="text-xs leading-5 text-muted-foreground">Five model steps, about two to four minutes. Each step is saved as it finishes.</p>
+            <p className="text-xs leading-5 text-muted-foreground">Concept, script, sizzle shot list, poster and keyframes, verdict: about three to five minutes. Each step is saved as it finishes.</p>
           </div>
         </section>
       )}
@@ -265,13 +254,26 @@ function StudioContent() {
       )}
 
       <div className="space-y-6">
+        {parts.sizzle && <SizzlePlayer sizzle={parts.sizzle} images={parts.art?.shotImages ?? parts.sizzle.shots.map(() => null)} />}
+        {parts.sizzle && !parts.art && running && (
+          <p className="flex items-center gap-2 text-sm text-muted-foreground"><Loader2 className="h-4 w-4 animate-spin text-primary" /> Generating the poster and keyframes. The sizzle plays with text cards until they land.</p>
+        )}
+        {parts.art?.note && <p className="text-xs text-muted-foreground">{parts.art.note}</p>}
+        {(parts.art || parts.verdict) && (
+          <div className={cn("grid gap-6", parts.art && parts.verdict && "lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]")}>
+            {parts.art && <PosterView image={parts.art.posterImage} svg={parts.art.posterSvg} title={title} />}
+            {parts.verdict && <VerdictView verdict={parts.verdict} />}
+          </div>
+        )}
         {parts.concept && <ConceptView concept={parts.concept} />}
-        <div className={cn("grid gap-6", parts.posterSvg && parts.screenplay && "lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]")}>
-          {parts.posterSvg && <PosterView svg={parts.posterSvg} title={title} />}
-          {parts.screenplay && <ScreenplayView text={parts.screenplay} title={title} />}
-        </div>
-        {parts.preview && <PreviewPlayer preview={parts.preview} />}
-        {parts.verdict && <VerdictView verdict={parts.verdict} />}
+        {parts.screenplay && (
+          <details className="scan-card group">
+            <summary className="cursor-pointer list-none px-5 py-4 text-sm text-muted-foreground hover:text-foreground">
+              <span className="eyebrow mr-2">Opening pages</span> Read the first three minutes of the script
+            </summary>
+            <div className="border-t border-border p-2"><ScreenplayView text={parts.screenplay} title={title} /></div>
+          </details>
+        )}
       </div>
     </main>
   );

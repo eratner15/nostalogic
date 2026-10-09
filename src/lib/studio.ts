@@ -2,24 +2,22 @@
  * Remix Studio: types shared by the worker pipeline and the Studio page.
  *
  * A package turns 2-4 source properties into an ORIGINAL property and a
- * development pack: concept, poster, opening pages, a playable preview, and a
- * greenlight verdict that helps decide whether to make it.
+ * development pack: concept, opening pages, a sizzle reel (shot list plus
+ * generated keyframes), a movie poster, and a greenlight verdict that helps
+ * decide whether to make it.
  */
 
-export const STUDIO_STEPS = ["concept", "poster", "screenplay", "preview", "verdict"] as const;
+export const STUDIO_STEPS = ["concept", "screenplay", "sizzle", "art", "verdict"] as const;
 export type StudioStep = (typeof STUDIO_STEPS)[number];
 
 export const STUDIO_FORMATS = ["Streaming Series", "Feature Film", "Animated Series", "Video Game", "Limited Series"] as const;
 export type StudioFormat = (typeof STUDIO_FORMATS)[number];
 
-/** "trailer" = a 60-90 second trailer; "scene" = the screenplay's opening, staged as a playable scene. */
-export type PreviewKind = "trailer" | "scene";
-
 export const STEP_LABELS: Record<StudioStep, string> = {
   concept: "Concept",
-  poster: "Poster",
   screenplay: "Opening pages",
-  preview: "Preview",
+  sizzle: "Sizzle shot list",
+  art: "Poster and keyframes",
   verdict: "Greenlight verdict",
 };
 
@@ -39,19 +37,36 @@ export type Concept = {
   risks: string[];
 };
 
-export type Beat = {
+export const CAMERA_MOVES = ["push_in", "pull_out", "pan_left", "pan_right", "tilt_up", "tilt_down", "static"] as const;
+export type CameraMove = (typeof CAMERA_MOVES)[number];
+
+export type SizzleShot = {
   seconds: number;
-  visual: string;
+  image_prompt: string;
+  camera: CameraMove;
   on_screen_text: string;
-  audio: string;
   speaker: string;
   line: string;
+  music: string;
 };
 
-export type Preview = {
-  kind: PreviewKind;
+export type Sizzle = {
   title: string;
-  beats: Beat[];
+  tagline: string;
+  /** Prepended to every image prompt so the keyframes share one look and cast. */
+  style_bible: string;
+  poster_prompt: string;
+  shots: SizzleShot[];
+};
+
+/** What the art step produced. Image URLs are same-origin (/api/media/...). */
+export type Art = {
+  posterImage: string | null;
+  /** The SVG one-sheet, used when no image model is configured or the image failed. */
+  posterSvg: string | null;
+  shotImages: (string | null)[];
+  /** Why images are missing, if they are. */
+  note: string | null;
 };
 
 export type Verdict = {
@@ -69,12 +84,11 @@ export type StudioPackage = {
   id: string;
   propertyIds: string[];
   format: string;
-  previewKind: PreviewKind;
   status: "running" | "done" | "error";
   concept: Concept | null;
-  posterSvg: string | null;
   screenplay: string | null;
-  preview: Preview | null;
+  sizzle: Sizzle | null;
+  art: Art | null;
   verdict: Verdict | null;
   error: string | null;
   createdAt: string;
@@ -87,7 +101,7 @@ export type StudioEvent =
   | { type: "error"; step?: StudioStep; message: string }
   | { type: "done"; id: string };
 
-/** Total runtime of a preview, in seconds. */
-export function previewRuntime(preview: Preview): number {
-  return preview.beats.reduce((sum, beat) => sum + Math.max(1, beat.seconds), 0);
+/** Total runtime of a sizzle, in seconds. */
+export function sizzleRuntime(sizzle: Sizzle): number {
+  return sizzle.shots.reduce((sum, shot) => sum + Math.max(1, shot.seconds), 0);
 }

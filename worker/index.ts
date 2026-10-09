@@ -17,9 +17,10 @@ import { loadTrackRecord, scoreHistory, weeklyLedger } from "./ledger";
 import { mondayOf } from "./scoring";
 import { runSignals, yesterday } from "./signals";
 import { runStudio } from "./studio/pipeline";
-import { STUDIO_FORMATS, type PreviewKind, type StudioEvent, type StudioPackage, type StudioStep } from "../src/lib/studio";
+import { STUDIO_FORMATS, type Sizzle, type StudioEvent, type StudioPackage, type StudioStep } from "../src/lib/studio";
+import { renderToMedia, type ImageEnv } from "./studio/images";
 
-type Env = AgentEnv & {
+type Env = AgentEnv & ImageEnv & {
   DB: D1Database;
   ASSETS: Fetcher;
   ANTHROPIC_API_KEY?: string;
@@ -146,14 +147,13 @@ app.post("/remix", async (c) => {
  * `result` per stage, then `done` or one `error`.
  */
 const STUDIO_COLUMNS: Record<StudioStep, string> = {
-  concept: "concept", poster: "poster_svg", screenplay: "screenplay", preview: "preview", verdict: "verdict",
+  concept: "concept", screenplay: "screenplay", sizzle: "sizzle", art: "art", verdict: "verdict",
 };
 
 app.post("/studio", async (c) => {
-  const body = await c.req.json<{ propertyIds?: string[]; format?: string; preview?: string; sessionKey?: string }>().catch(() => null);
+  const body = await c.req.json<{ propertyIds?: string[]; format?: string; sessionKey?: string }>().catch(() => null);
   const ids = [...new Set((body?.propertyIds ?? []).filter((x): x is string => typeof x === "string"))].slice(0, 4);
   const format = STUDIO_FORMATS.find((f) => f === body?.format) ?? "Streaming Series";
-  const previewKind: PreviewKind = body?.preview === "scene" ? "scene" : "trailer";
   const session = (body?.sessionKey ?? "anon").slice(0, 64);
   if (ids.length < 2) return c.json({ error: "pick two to four source properties" }, 400);
   if (!c.env.ANTHROPIC_API_KEY) return c.json({ error: NOT_CONFIGURED }, 503);
@@ -172,8 +172,28 @@ app.post("/studio", async (c) => {
   const id = crypto.randomUUID();
   const model = c.env.AGENT_MODEL || DEFAULT_AGENT_MODEL;
   await c.env.DB.prepare(
-    "INSERT INTO studio_packages (id, property_ids, format, preview_kind, model, session_key) VALUES (?, ?, ?, ?, ?, ?)",
-  ).bind(id, JSON.stringify(sources.map((p) => p.id)), format, previewKind, model, session).run();
+    "INSERT INTO studio_packages (id, property_ids, format, model, session_key) VALUES (?, ?, ?, ?, ?)",
+  ).bind(id, JSON.stringify(sources.map((p) => p.id)), format, model, session).run();
+
+  // Poster (portrait, high quality) and one keyframe per shot (landscape), in parallel.
+  let imagesMade = 0;
+  const renderArt = c.env.OPENAI_API_KEY && c.env.MEDIA
+    ? async (sizzle: Sizzle) => {
+        const style = sizzle.style_bible;
+        const still = "Cinematic film still, widescreen composition. No text, captions, letters, logos, or watermarks.";
+        const [poster, ...shots] = await Promise.all([
+          renderToMedia(c.env, `studio/${id}/poster.png`, `${sizzle.poster_prompt}\n\nStyle: ${style}\nA theatrical movie poster, portrait one-sheet, professional key art.`, "1024x1536", "high"),
+          ...sizzle.shots.map((shot, i) => renderToMedia(c.env, `studio/${id}/shot-${i + 1}.png`, `${style}\n\n${shot.image_prompt}\n\n${still}`, "1536x1024", "medium")),
+        ]);
+        imagesMade = [poster, ...shots].filter((r) => r.url).length;
+        const failed = [poster, ...shots].filter((r) => !r.url).map((r) => r.error);
+        return {
+          posterImage: poster.url,
+          shotImages: shots.map((r) => r.url),
+          note: failed.length ? `${failed.length} image(s) failed: ${failed[0]}` : null,
+        };
+      }
+    : undefined;
 
   const { readable, writable } = new TransformStream();
   const writer = writable.getWriter();
@@ -188,12 +208,12 @@ app.post("/studio", async (c) => {
     let failure: string | null = null;
     try {
       await emit({ type: "started", id });
-      const result = await runStudio({ sources, format, previewKind }, { apiKey: c.env.ANTHROPIC_API_KEY!, model }, async (event) => {
+      const result = await runStudio({ sources, format }, { apiKey: c.env.ANTHROPIC_API_KEY!, model }, async (event) => {
         if (event.type === "error") failure = event.message;
         await emit(event);
-      }, save);
-      await c.env.DB.prepare("UPDATE studio_packages SET status = ?, error = ?, input_tokens = ?, output_tokens = ? WHERE id = ?")
-        .bind(result.ok ? "done" : "error", failure, result.usage.input, result.usage.output, id).run();
+      }, save, renderArt);
+      await c.env.DB.prepare("UPDATE studio_packages SET status = ?, error = ?, input_tokens = ?, output_tokens = ?, images = ? WHERE id = ?")
+        .bind(result.ok ? "done" : "error", failure, result.usage.input, result.usage.output, imagesMade, id).run();
       if (result.ok) await emit({ type: "done", id });
     } catch {
       await c.env.DB.prepare("UPDATE studio_packages SET status = 'error', error = ? WHERE id = ?").bind("unexpected failure", id).run().catch(() => {});
@@ -217,17 +237,28 @@ app.get("/studio/:id", async (c) => {
     id: String(r.id),
     propertyIds: parse(r.property_ids) ?? [],
     format: String(r.format),
-    previewKind: r.preview_kind === "scene" ? "scene" : "trailer",
     status: r.status === "done" ? "done" : r.status === "error" ? "error" : "running",
     concept: parse(r.concept),
-    posterSvg: r.poster_svg,
     screenplay: r.screenplay,
-    preview: parse(r.preview),
+    sizzle: parse(r.sizzle),
+    art: parse(r.art),
     verdict: parse(r.verdict),
     error: r.error,
     createdAt: String(r.created_at),
   };
   return c.json(pkg);
+});
+
+/** Studio images from R2, served same-origin so the sizzle canvas can export them. */
+app.get("/media/*", async (c) => {
+  if (!c.env.MEDIA) return c.json({ error: "media not configured" }, 503);
+  const key = c.req.path.replace(/^\/api\/media\//, "");
+  if (!/^studio\/[0-9a-f-]{36}\/(poster|shot-\d{1,2})\.png$/.test(key)) return c.json({ error: "not found" }, 404);
+  const object = await c.env.MEDIA.get(key);
+  if (!object) return c.json({ error: "not found" }, 404);
+  return new Response(object.body, {
+    headers: { "content-type": "image/png", "cache-control": "public, max-age=31536000, immutable" },
+  });
 });
 
 app.get("/remixes/:id", async (c) => {
