@@ -600,3 +600,16 @@ test("unbound prefixes, paint-server titles, and accessible names; abandoned med
   await deleteMedia(MEDIA, "studio/a/");
   assert.deepEqual(deleted, keys);
 });
+
+test("unpainted titles do not count; outlined and inherited-stroke titles do", async () => {
+  // Accepted posters are followed by the verdict; rejected ones are asked for once more, then the step fails.
+  const titleOk = async (svg: string, expect: boolean) =>
+    (await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: svg }, { text: expect ? JSON.stringify(verdict) : svg }]).result).ok;
+  const wrap = (body: string) => `<svg viewBox="0 0 600 900">${body}<text>A NEW SHOW</text></svg>`;
+  assert.equal(await titleOk(wrap(`<text fill-opacity="0">POCKET STATIC</text>`), false), false);
+  assert.equal(await titleOk(wrap(`<text fill="none">POCKET STATIC</text>`), false), false);
+  assert.equal(await titleOk(wrap(`<g style="fill:transparent"><text>POCKET STATIC</text></g>`), false), false);
+  assert.equal(await titleOk(wrap(`<text fill="none" stroke="#fff">POCKET STATIC</text>`), true), true);
+  assert.equal(await titleOk(wrap(`<g stroke="#fff"><text fill="none">POCKET STATIC</text></g>`), true), true);
+  assert.equal(await titleOk(wrap(`<g fill="none"><text fill="#fff">POCKET STATIC</text></g>`), true), true);
+});

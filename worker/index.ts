@@ -225,9 +225,10 @@ app.post("/studio", async (c) => {
   };
   let artSaved = false;
   const save = async (step: StudioStep, value: unknown) => {
-    if (step === "art") artSaved = true;
     await c.env.DB.prepare(`UPDATE studio_packages SET ${STUDIO_COLUMNS[step]} = ? WHERE id = ?`)
       .bind(typeof value === "string" ? value : JSON.stringify(value), id).run();
+    // Only a successful write makes the images reachable; until then they may be deleted.
+    if (step === "art") artSaved = true;
   };
 
   const work = (async () => {

@@ -201,30 +201,60 @@ const posterParser = new XMLParser({
  * whole subtree, for the title check. Each is joined two ways: with spaces between nodes,
  * and with none, so a word split across <tspan>s ("Da<tspan>ria</tspan>") is still whole.
  */
+type Paint = { fill: boolean; fillOpacity: number; stroke: boolean; strokeOpacity: number };
+
+/**
+ * The fill and stroke an element paints with, inherited the way SVG inherits them. Text
+ * shows only when its fill or its stroke is visible, so an outlined title
+ * (fill="none" stroke="#fff") counts, and an unpainted one (fill-opacity="0") does not.
+ */
+function paintOf(attrs: Record<string, string>, parent: Paint): Paint {
+  const props: Record<string, string> = {};
+  for (const [k, v] of Object.entries(attrs)) props[k.toLowerCase()] = decodeXml(String(v)).trim();
+  for (const decl of (props.style ?? "").split(";")) {
+    const at = decl.indexOf(":");
+    if (at > 0) props[decl.slice(0, at).trim().toLowerCase()] = decl.slice(at + 1).replace(/!important/i, "").trim();
+  }
+  const visible = (v: string) => !/^(none|transparent)$/i.test(v);
+  const opacity = (v: string | undefined, inherited: number) => {
+    if (v === undefined || /^inherit$/i.test(v)) return inherited;
+    const n = parseFloat(v) / (v.trim().endsWith("%") ? 100 : 1);
+    return Number.isFinite(n) ? n : inherited;
+  };
+  return {
+    fill: props.fill === undefined || /^inherit$/i.test(props.fill) ? parent.fill : visible(props.fill),
+    fillOpacity: opacity(props["fill-opacity"], parent.fillOpacity),
+    stroke: props.stroke === undefined || /^inherit$/i.test(props.stroke) ? parent.stroke : visible(props.stroke),
+    strokeOpacity: opacity(props["stroke-opacity"], parent.strokeOpacity),
+  };
+}
+
 function posterText(svg: string): { all: string[]; rendered: string[] } {
   const all: string[] = [];
   const rendered: string[] = [];
   type XmlNode = Record<string, unknown> & { ":@"?: Record<string, string> };
-  const walk = (nodes: XmlNode[], hidden: boolean) => {
+  const walk = (nodes: XmlNode[], hidden: boolean, paint: Paint) => {
+    const painted = (paint.fill && paint.fillOpacity > 0) || (paint.stroke && paint.strokeOpacity > 0);
     for (const node of nodes) {
       if ("#text" in node) {
         const text = decodeXml(String(node["#text"]));
         all.push(text);
-        if (!hidden) rendered.push(text);
+        if (!hidden && painted) rendered.push(text);
         continue;
       }
       const name = Object.keys(node).find((k) => k !== ":@");
       if (!name) continue;
-      const attrs = Object.entries(node[":@"] ?? {}).map(([k, v]) => ` ${k}="${decodeXml(String(v))}"`).join("");
+      const raw = node[":@"] ?? {};
+      const attrs = Object.entries(raw).map(([k, v]) => ` ${k}="${decodeXml(String(v))}"`).join("");
       // Accessible names are read aloud, so the source-name check reads them too.
-      for (const [k, v] of Object.entries(node[":@"] ?? {})) {
+      for (const [k, v] of Object.entries(raw)) {
         if (/^aria-|(^|:)title$/i.test(k)) all.push(decodeXml(String(v)));
       }
       const hide = hidden || NEVER_RENDERED.test(name.replace(/^[^:]+:/, "")) || HIDDEN.test(attrs);
-      walk((node[name] as XmlNode[]) ?? [], hide);
+      walk((node[name] as XmlNode[]) ?? [], hide, paintOf(raw, paint));
     }
   };
-  walk(posterParser.parse(svg) as XmlNode[], false);
+  walk(posterParser.parse(svg) as XmlNode[], false, { fill: true, fillOpacity: 1, stroke: false, strokeOpacity: 1 });
   const join = (parts: string[]) => [parts.join(" "), parts.join("")].map((t) => t.replace(/\s+/g, " ").trim());
   return { all: join(all), rendered: join(rendered) };
 }
