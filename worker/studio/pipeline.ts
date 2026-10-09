@@ -138,6 +138,8 @@ export function sourceAliases(name: string): string[] {
     if (n.includes(":")) out.add(n.split(":")[0].trim());
     for (const part of n.split("/")) out.add(part.replace(/\s+(TV|Books?|Series|Film)$/i, "").trim());
     if (/^The\s/.test(n)) out.add(n.replace(/^The\s+/, ""));
+    // A leading "A"/"An" drops only when two or more words remain ("A Goofy Movie" -> "Goofy Movie").
+    if (/^An?\s+\S+\s+\S/.test(n)) out.add(n.replace(/^An?\s+/, ""));
     // Stylized punctuation at the edges ("*NSYNC" also means "NSYNC").
     out.add(n.replace(/^[*!#~_+.-]+|[*!#~_+.-]+$/g, ""));
     // Punctuation inside a multiword title ("Aaahh!!! Real Monsters" -> "Aaahh Real Monsters").
@@ -251,9 +253,15 @@ export async function runStudio(
     concept.title = String(concept.title ?? "").trim();
     if (!concept.title) throw new StepError("The concept came back without a title.");
     if (!Array.isArray(concept.characters) || concept.characters.length < 3) throw new StepError("The concept came back with fewer than three characters.");
-    concept.characters = concept.characters.slice(0, 5).map((ch) => ({ ...ch, name: String(ch?.name ?? "").trim() }));
+    // Required text fields must say something; a blank logline would leave the page header empty.
+    for (const key of ["logline", "tone", "audience", "premise", "world", "story_engine", "visual_style"] as const) {
+      concept[key] = String(concept[key] ?? "").trim();
+      if (!concept[key]) throw new StepError(`The concept came back with a blank ${key.replace("_", " ")}.`);
+    }
+    concept.characters = concept.characters.slice(0, 5).map((ch) => ({ ...ch, name: String(ch?.name ?? "").trim(), role: String(ch?.role ?? "").trim(), description: String(ch?.description ?? "").trim() }));
     const castNames = concept.characters.map((ch) => ch.name.toLowerCase());
     if (castNames.some((n) => !n) || new Set(castNames).size !== castNames.length) throw new StepError("The concept needs three to five distinctly named characters.");
+    if (concept.characters.some((ch) => !ch.role || !ch.description)) throw new StepError("Every character needs a role and a description.");
     // Every public concept field, except the intentional provenance (borrowed_mechanics)
     // and the risks, which may name a source to warn about closeness.
     const publicConcept = [

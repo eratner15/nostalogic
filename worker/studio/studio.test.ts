@@ -441,3 +441,13 @@ test("hyphenated single-word names get a spaced alias", async () => {
   const { sourceAliases } = await import("./pipeline");
   assert.ok(sourceAliases("Banjo-Kazooie").includes("Banjo Kazooie"));
 });
+
+test("a leading A or An drops from multiword source names; blank concept fields fail", async () => {
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("A Goofy Movie").includes("Goofy Movie"));
+  assert.ok(!sourceAliases("A Team").includes("Team"));
+  const logline = run([{ text: JSON.stringify({ ...concept, logline: "   " }) }]);
+  assert.equal((await logline.result).ok, false);
+  const role = run([{ text: JSON.stringify({ ...concept, characters: concept.characters.map((ch, i) => (i ? ch : { ...ch, description: " " })) }) }]);
+  assert.equal((await role.result).ok, false);
+});
