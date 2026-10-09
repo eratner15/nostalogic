@@ -141,7 +141,7 @@ export function sourceAliases(name: string): string[] {
     // Stylized punctuation at the edges ("*NSYNC" also means "NSYNC").
     out.add(n.replace(/^[*!#~_+.-]+|[*!#~_+.-]+$/g, ""));
     // Punctuation inside a multiword title ("Aaahh!!! Real Monsters" -> "Aaahh Real Monsters").
-    if (/\s/.test(n)) out.add(n.replace(/[!?.,:;*~_+'"-]+/g, " ").replace(/\s+/g, " ").trim());
+    if (/[!?.,:;*~_+'"-]/.test(n)) out.add(n.replace(/[!?.,:;*~_+'"-]+/g, " ").replace(/\s+/g, " ").trim());
   }
   return [...out].filter((n) => n.length >= 3);
 }

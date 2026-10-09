@@ -275,6 +275,8 @@ function posterUrl(id: string, art: { posterImage: string | null; posterSvg: str
   return art?.posterImage ?? (art?.posterSvg ? `/api/media/studio/${id}/poster.svg` : null);
 }
 
+const STALE_RUN = "The run stopped before it finished, most likely because the page was closed.";
+
 /** Public gallery: the latest finished packs that an admin has not taken down. */
 app.get("/studio", async (c) => {
   const { results } = await c.env.DB.prepare(
@@ -301,8 +303,16 @@ app.get("/studio", async (c) => {
 });
 
 app.get("/studio/:id", async (c) => {
-  const r = await c.env.DB.prepare("SELECT * FROM studio_packages WHERE id = ? AND hidden = 0").bind(c.req.param("id")).first<Record<string, string | null>>();
+  const r = await c.env.DB.prepare(
+    "SELECT *, (status = 'running' AND created_at < datetime('now', '-20 minutes')) AS stale FROM studio_packages WHERE id = ? AND hidden = 0",
+  ).bind(c.req.param("id")).first<Record<string, string | null>>();
   if (!r) return c.json({ error: "not found" }, 404);
+  // A run that can no longer finish reads as stopped now, not at the next hourly sweep.
+  if (Number(r.stale)) {
+    r.status = "error";
+    r.error = STALE_RUN;
+    await c.env.DB.prepare("UPDATE studio_packages SET status = 'error', error = ? WHERE id = ? AND status = 'running'").bind(STALE_RUN, r.id).run().catch(() => {});
+  }
   const parse = (v: string | null) => (v ? JSON.parse(v) : null);
   const pkg: StudioPackage = {
     id: String(r.id),
@@ -533,8 +543,8 @@ export default {
       // A Studio run dies about 30 seconds after its browser disconnects
       // (request-scoped waitUntil). Close out runs that can no longer finish.
       await env.DB.prepare(
-        "UPDATE studio_packages SET status = 'error', error = 'The run stopped before it finished, most likely because the page was closed.' WHERE status = 'running' AND created_at < datetime('now', '-20 minutes')",
-      ).run().catch((e) => console.log("studio sweep failed", String(e)));
+        "UPDATE studio_packages SET status = 'error', error = ? WHERE status = 'running' AND created_at < datetime('now', '-20 minutes')",
+      ).bind(STALE_RUN).run().catch((e) => console.log("studio sweep failed", String(e)));
       if (await ledgerDue(env, now)) {
         console.log("weekly ledger", JSON.stringify(await weeklyLedger(env, now)));
       }

@@ -324,7 +324,20 @@ export function SizzlePlayer({ sizzle, images, artPending = false }: { sizzle: S
     const rec = new MediaRecorder(capture, type ? { mimeType: type, videoBitsPerSecond: 6_000_000 } : undefined);
     const chunks: Blob[] = [];
     rec.ondataavailable = (e) => { if (e.data.size) chunks.push(e.data); };
+    // An encoder error mid-recording must not download a broken file.
+    let failed = false;
+    rec.onerror = () => {
+      failed = true;
+      setExportNote("The recording failed. Use the Claude Motion prompt instead.");
+    };
     rec.onstop = () => {
+      if (failed) {
+        rec.stream.getTracks().forEach((t) => t.stop());
+        if (recorder.current === rec) recorder.current = null;
+        stop();
+        setExporting(false);
+        return;
+      }
       const blob = new Blob(chunks, { type: rec.mimeType || "video/webm" });
       const a = document.createElement("a");
       const url = URL.createObjectURL(blob);

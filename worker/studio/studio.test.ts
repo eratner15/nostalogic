@@ -436,3 +436,8 @@ test("punctuation inside a multiword source name is tolerated", async () => {
   const res = await runStudio({ sources: pair, format: "Animated Series" }, { apiKey: "t", model: "m", fetch: fetchImpl }, () => {}, async () => {});
   assert.equal(res.ok, false);
 });
+
+test("hyphenated single-word names get a spaced alias", async () => {
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("Banjo-Kazooie").includes("Banjo Kazooie"));
+});
