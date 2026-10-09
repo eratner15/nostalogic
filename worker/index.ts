@@ -16,8 +16,13 @@ import { agentApi, type AgentEnv } from "./agent-api";
 import { loadTrackRecord, scoreHistory, weeklyLedger } from "./ledger";
 import { mondayOf } from "./scoring";
 import { runSignals, yesterday } from "./signals";
+import { runStudio } from "./studio/pipeline";
+import { STUDIO_FORMATS, type Sizzle, type StudioEvent, type StudioPackage, type StudioStep } from "../src/lib/studio";
+import { deleteMedia, renderToMedia, type ImageEnv } from "./studio/images";
+import { shareCard, shareTags } from "./studio/share";
+import { sameOriginJson } from "./http";
 
-type Env = AgentEnv & {
+type Env = AgentEnv & ImageEnv & {
   DB: D1Database;
   ASSETS: Fetcher;
   ANTHROPIC_API_KEY?: string;
@@ -27,6 +32,9 @@ type Env = AgentEnv & {
   /** Questions per visitor IP per day (default 40) and across all visitors (default 400). */
   AGENT_DAILY_PER_IP?: string;
   AGENT_DAILY_TOTAL?: string;
+  /** Studio packs per visitor IP per day (default 5) and across all visitors (default 40). */
+  STUDIO_DAILY_PER_IP?: string;
+  STUDIO_DAILY_TOTAL?: string;
   REPORT_CHECKOUT_URL?: string;
 };
 
@@ -135,6 +143,233 @@ app.post("/remix", async (c) => {
   return c.json({ id, concept, propertyIds: ids });
 });
 
+/**
+ * Remix Studio: 2-4 source properties -> an original property's development
+ * pack. Streams Server-Sent Events: `started` (the share id), then `step` and
+ * `result` per stage, then `done` or one `error`.
+ */
+const STUDIO_COLUMNS: Record<StudioStep, string> = {
+  concept: "concept", screenplay: "screenplay", sizzle: "sizzle", art: "art", verdict: "verdict",
+};
+
+app.post("/studio", async (c) => {
+  if (!sameOriginJson(c.req.raw)) return c.json({ error: "forbidden" }, 403);
+  const body = await c.req.json<{ propertyIds?: string[]; format?: string; sessionKey?: string }>().catch(() => null);
+  // The type parameter is compile-time only: check shapes before using them.
+  const rawIds: unknown[] = Array.isArray(body?.propertyIds) ? body.propertyIds : [];
+  const ids = [...new Set(rawIds.filter((x): x is string => typeof x === "string"))];
+  // Reject, never truncate: a pack must use exactly the sources the user chose.
+  if (ids.length !== rawIds.length || ids.length > 4) return c.json({ error: "pick two to four distinct source properties" }, 400);
+  const format = STUDIO_FORMATS.find((f) => f === body?.format) ?? "Streaming Series";
+  const session = (typeof body?.sessionKey === "string" && body.sessionKey ? body.sessionKey : "anon").slice(0, 64);
+  if (ids.length < 2) return c.json({ error: "pick two to four source properties" }, 400);
+  if (!c.env.ANTHROPIC_API_KEY) return c.json({ error: NOT_CONFIGURED }, 503);
+
+  const sources = (await loadLibrary(c.env)).filter((p) => ids.includes(p.id));
+  if (sources.length !== ids.length) return c.json({ error: "unknown properties" }, 400);
+
+  const ip = c.req.header("cf-connecting-ip") ?? "unknown";
+  if (!(await bumpUsage(c.env, "studio-ip", ip, Number(c.env.STUDIO_DAILY_PER_IP ?? 5)))) {
+    return c.json({ error: "daily studio limit reached" }, 429);
+  }
+  if (!(await bumpUsage(c.env, "studio-total", "all", Number(c.env.STUDIO_DAILY_TOTAL ?? 40)))) {
+    return c.json({ error: "The studio has reached today's budget. Try again tomorrow." }, 429);
+  }
+
+  const id = crypto.randomUUID();
+  const model = c.env.AGENT_MODEL || DEFAULT_AGENT_MODEL;
+  await c.env.DB.prepare(
+    "INSERT INTO studio_packages (id, property_ids, format, model, session_key) VALUES (?, ?, ?, ?, ?)",
+  ).bind(id, JSON.stringify(sources.map((p) => p.id)), format, model, session).run();
+
+  // Poster (portrait, high quality) and one keyframe per shot (landscape), in parallel.
+  let imagesMade = 0;
+  const renderArt = c.env.OPENAI_API_KEY && c.env.MEDIA
+    ? async (sizzle: Sizzle) => {
+        // Cap the model-written parts, so the fixed constraints after them are never cut
+        // by the image API's prompt limit.
+        const cap = (t: string, n: number) => String(t ?? "").slice(0, n);
+        const style = cap(sizzle.style_bible, 4000);
+        const still = "Cinematic film still, widescreen composition. No text, captions, letters, logos, or watermarks.";
+        // Three at a time: each decoded PNG is several MB, and the isolate has 128 MB.
+        const jobs = [
+          () => renderToMedia(c.env, `studio/${id}/poster.png`, `${cap(sizzle.poster_prompt, 8000)}\n\nStyle: ${style}\nA theatrical movie poster, portrait one-sheet, professional key art. The only title on the poster is "${sizzle.title}". Tagline: "${sizzle.tagline}". No other names or titles.`, "1024x1536", "high"),
+          ...sizzle.shots.map((shot, i) => () => renderToMedia(c.env, `studio/${id}/shot-${i + 1}.png`, `${style}\n\n${cap(shot.image_prompt, 8000)}\n\n${still}`, "1536x1024", "medium")),
+        ];
+        // Count each billed image as it finishes, so an interrupted art step keeps its usage.
+        const counted = jobs.map((job) => async () => {
+          const r = await job();
+          if (r.generated) {
+            imagesMade++;
+            // Atomic increment: concurrent lanes must not overwrite each other's count.
+            await c.env.DB.prepare("UPDATE studio_packages SET images = images + 1 WHERE id = ?").bind(id).run().catch(() => {});
+          }
+          return r;
+        });
+        const [poster, ...shots] = await mapLimit(counted, 3);
+        const failed = [poster, ...shots].filter((r) => !r.url).map((r) => r.error);
+        return {
+          posterImage: poster.url,
+          shotImages: shots.map((r) => r.url),
+          note: failed.length ? `${failed.length} image(s) failed: ${failed[0]}` : null,
+        };
+      }
+    : undefined;
+
+  const { readable, writable } = new TransformStream();
+  const writer = writable.getWriter();
+  const encoder = new TextEncoder();
+  // A closed tab must not change the run: a failed write only means nobody is listening.
+  const emit = async (event: StudioEvent) => {
+    try { await writer.write(encoder.encode(`data: ${JSON.stringify(event)}\n\n`)); } catch { /* client gone */ }
+  };
+  let artSaved = false;
+  const save = async (step: StudioStep, value: unknown) => {
+    await c.env.DB.prepare(`UPDATE studio_packages SET ${STUDIO_COLUMNS[step]} = ? WHERE id = ?`)
+      .bind(typeof value === "string" ? value : JSON.stringify(value), id).run();
+    // Only a successful write makes the images reachable; until then they may be deleted.
+    if (step === "art") artSaved = true;
+  };
+
+  const work = (async () => {
+    let failure: string | null = null;
+    try {
+      await emit({ type: "started", id });
+      const result = await runStudio({ sources, format }, {
+        apiKey: c.env.ANTHROPIC_API_KEY!,
+        model,
+        // Billed usage is saved as it accrues, so an interrupted run still counts.
+        onUsage: async (u) => {
+          await c.env.DB.prepare("UPDATE studio_packages SET input_tokens = ?, output_tokens = ?, cache_write_tokens = ?, cache_read_tokens = ? WHERE id = ?")
+            .bind(u.input, u.output, u.cacheWrite, u.cacheRead, id).run();
+        },
+      }, async (event) => {
+        if (event.type === "error") failure = event.message;
+        await emit(event);
+      }, save, renderArt);
+      await c.env.DB.prepare("UPDATE studio_packages SET status = ?, error = ?, input_tokens = ?, output_tokens = ?, cache_write_tokens = ?, cache_read_tokens = ?, images = ? WHERE id = ?")
+        .bind(result.ok ? "done" : "error", failure, result.usage.input, result.usage.output, result.usage.cacheWrite, result.usage.cacheRead, imagesMade, id).run();
+      if (result.ok) await emit({ type: "done", id });
+      // Images from an art step that never saved are unreachable: remove them.
+      else if (!artSaved) await deleteMedia(c.env.MEDIA, `studio/${id}/`).catch(() => {});
+    } catch {
+      await c.env.DB.prepare("UPDATE studio_packages SET status = 'error', error = ? WHERE id = ?").bind("unexpected failure", id).run().catch(() => {});
+      await emit({ type: "error", message: "The studio failed unexpectedly. Try again." }).catch(() => {});
+      if (!artSaved) await deleteMedia(c.env.MEDIA, `studio/${id}/`).catch(() => {});
+    } finally {
+      await writer.close().catch(() => {});
+    }
+  })();
+  c.executionCtx.waitUntil(work);
+
+  return new Response(readable, {
+    headers: { "content-type": "text/event-stream; charset=utf-8", "cache-control": "no-cache, no-transform" },
+  });
+});
+
+/** Runs async jobs with at most `limit` in flight, keeping result order. */
+async function mapLimit<T>(jobs: (() => Promise<T>)[], limit: number): Promise<T[]> {
+  const out: T[] = new Array(jobs.length);
+  let next = 0;
+  const lane = async () => { while (next < jobs.length) { const i = next++; out[i] = await jobs[i](); } };
+  await Promise.all(Array.from({ length: Math.min(limit, jobs.length) }, lane));
+  return out;
+}
+
+/** A pack's poster for previews: the generated PNG, else the SVG fallback. */
+function posterUrl(id: string, art: { posterImage: string | null; posterSvg: string | null } | null): string | null {
+  return art?.posterImage ?? (art?.posterSvg ? `/api/media/studio/${id}/poster.svg` : null);
+}
+
+const STALE_RUN = "The run stopped before it finished, most likely because the page was closed.";
+
+/** Public gallery: the latest finished packs that an admin has not taken down. */
+app.get("/studio", async (c) => {
+  const { results } = await c.env.DB.prepare(
+    `SELECT id, format, concept, sizzle, art, verdict, created_at FROM studio_packages
+     WHERE status = 'done' AND hidden = 0 ORDER BY created_at DESC LIMIT 24`,
+  ).all<Record<string, string | null>>();
+  const parse = <T,>(v: string | null): T | null => { try { return v ? JSON.parse(v) as T : null; } catch { return null; } };
+  const packs = results.flatMap((r) => {
+    const concept = parse<{ title: string; logline: string }>(r.concept);
+    if (!concept) return [];
+    return [{
+      id: r.id,
+      format: r.format,
+      title: concept.title,
+      logline: concept.logline,
+      tagline: parse<Sizzle>(r.sizzle)?.tagline ?? null,
+      poster: posterUrl(String(r.id), parse<{ posterImage: string | null; posterSvg: string | null }>(r.art)),
+      verdict: parse<{ verdict: string }>(r.verdict)?.verdict ?? null,
+      createdAt: r.created_at,
+    }];
+  });
+  c.header("cache-control", "public, max-age=60");
+  return c.json({ packs });
+});
+
+app.get("/studio/:id", async (c) => {
+  const r = await c.env.DB.prepare(
+    "SELECT *, (status = 'running' AND created_at < datetime('now', '-20 minutes')) AS stale FROM studio_packages WHERE id = ? AND hidden = 0",
+  ).bind(c.req.param("id")).first<Record<string, string | null>>();
+  if (!r) return c.json({ error: "not found" }, 404);
+  // A run that can no longer finish reads as stopped now, not at the next hourly sweep.
+  if (Number(r.stale)) {
+    r.status = "error";
+    r.error = STALE_RUN;
+    await c.env.DB.prepare("UPDATE studio_packages SET status = 'error', error = ? WHERE id = ? AND status = 'running'").bind(STALE_RUN, r.id).run().catch(() => {});
+    // A run that stopped before saving its art leaves only unreachable images behind.
+    if (!r.art) c.executionCtx.waitUntil(deleteMedia(c.env.MEDIA, `studio/${r.id}/`).catch(() => {}));
+  }
+  const parse = (v: string | null) => (v ? JSON.parse(v) : null);
+  const pkg: StudioPackage = {
+    id: String(r.id),
+    propertyIds: parse(r.property_ids) ?? [],
+    format: String(r.format),
+    status: r.status === "done" ? "done" : r.status === "error" ? "error" : "running",
+    concept: parse(r.concept),
+    screenplay: r.screenplay,
+    sizzle: parse(r.sizzle),
+    art: parse(r.art),
+    verdict: parse(r.verdict),
+    error: r.error,
+    createdAt: String(r.created_at),
+  };
+  return c.json(pkg);
+});
+
+/** The SVG fallback poster (sanitized when saved), served as an image so galleries can show it. */
+app.get("/media/studio/:id/poster.svg", async (c) => {
+  const row = await c.env.DB.prepare("SELECT art, hidden FROM studio_packages WHERE id = ?").bind(c.req.param("id")).first<{ art: string | null; hidden: number }>();
+  const svg = row && !row.hidden && row.art ? (JSON.parse(row.art) as { posterSvg?: string | null }).posterSvg : null;
+  if (!svg) return c.json({ error: "not found" }, 404);
+  return new Response(svg, {
+    headers: {
+      "content-type": "image/svg+xml; charset=utf-8",
+      "content-security-policy": "default-src 'none'; style-src 'unsafe-inline'",
+      "x-content-type-options": "nosniff",
+      "cache-control": "public, max-age=3600",
+    },
+  });
+});
+
+/** Studio images from R2, served same-origin so the sizzle canvas can export them. */
+app.get("/media/*", async (c) => {
+  if (!c.env.MEDIA) return c.json({ error: "media not configured" }, 503);
+  const key = c.req.path.replace(/^\/api\/media\//, "");
+  const match = /^studio\/([0-9a-f-]{36})\/(poster|shot-\d{1,2})\.png$/.exec(key);
+  if (!match) return c.json({ error: "not found" }, 404);
+  // A hidden (taken-down) pack serves no images either.
+  const pack = await c.env.DB.prepare("SELECT hidden FROM studio_packages WHERE id = ?").bind(match[1]).first<{ hidden: number }>();
+  if (!pack || pack.hidden) return c.json({ error: "not found" }, 404);
+  const object = await c.env.MEDIA.get(key);
+  if (!object) return c.json({ error: "not found" }, 404);
+  return new Response(object.body, {
+    // One hour, not immutable, so a takedown reaches cached copies within the hour.
+    headers: { "content-type": "image/png", "cache-control": "public, max-age=3600" },
+  });
+});
+
 app.get("/remixes/:id", async (c) => {
   const row = await c.env.DB.prepare("SELECT * FROM remixes WHERE id = ?").bind(c.req.param("id")).first();
   if (!row) return c.json({ error: "not found" }, 404);
@@ -147,6 +382,7 @@ app.get("/remixes/:id", async (c) => {
  * call, then `answer`, then `done` (or a single `error`).
  */
 app.post("/prophet", async (c) => {
+  if (!sameOriginJson(c.req.raw)) return c.json({ error: "forbidden" }, 403);
   const body = await c.req.json<{ message?: string; sessionKey?: string; history?: HistoryTurn[] }>().catch(() => null);
   const question = (body?.message ?? "").trim().slice(0, 1000);
   const session = (body?.sessionKey ?? "anon").slice(0, 64);
@@ -272,6 +508,21 @@ async function ledgerDue(env: Env, now: Date): Promise<boolean> {
 
 const CANONICAL = "https://nostalogic.cafecito-ai.com";
 
+/** The Studio page with this pack's title, logline, and poster as its link preview. */
+async function studioPage(req: Request, env: Env, id: string): Promise<Response> {
+  const page = await env.ASSETS.fetch(req);
+  if (!page.ok) return page;
+  const row = await env.DB.prepare("SELECT concept, sizzle, art FROM studio_packages WHERE id = ? AND hidden = 0")
+    .bind(id).first<Record<string, unknown>>().catch(() => null);
+  const card = row ? shareCard(row, CANONICAL, id) : null;
+  if (!card) return page;
+  return new HTMLRewriter()
+    .on('meta[property^="og:"], meta[name^="twitter:"], meta[name="description"]', { element(el) { el.remove(); } })
+    .on("title", { element(el) { el.setInnerContent(`${card.title} · NostalDamus Studio`); } })
+    .on("head", { element(el) { el.append(shareTags(card), { html: true }); } })
+    .transform(page);
+}
+
 export default {
   async fetch(req: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(req.url);
@@ -282,6 +533,8 @@ export default {
       return Response.redirect(`${CANONICAL}${rest}${url.search}`, 301);
     }
     if (url.pathname.startsWith("/api")) return app.fetch(req, env, ctx);
+    const packId = url.searchParams.get("id") ?? "";
+    if (url.pathname === "/studio/" && /^[0-9a-f-]{36}$/.test(packId)) return studioPage(req, env, packId);
     return env.ASSETS.fetch(req);
   },
 
@@ -295,6 +548,15 @@ export default {
     const work = async () => {
       // Signals first, so the snapshot sees the freshest readings.
       console.log("signals", JSON.stringify(await runSignals(env, now)));
+      // A Studio run dies about 30 seconds after its browser disconnects
+      // (request-scoped waitUntil). Close out runs that can no longer finish.
+      // Runs that stopped before saving their art also leave unreachable images: delete them.
+      const stale = await env.DB.prepare(
+        "UPDATE studio_packages SET status = 'error', error = ? WHERE status = 'running' AND created_at < datetime('now', '-20 minutes') RETURNING id, art IS NULL AS orphaned",
+      ).bind(STALE_RUN).all<{ id: string; orphaned: number }>().catch((e) => { console.log("studio sweep failed", String(e)); return null; });
+      for (const r of stale?.results ?? []) {
+        if (Number(r.orphaned)) await deleteMedia(env.MEDIA, `studio/${r.id}/`).catch((e) => console.log("studio media cleanup failed", r.id, String(e)));
+      }
       if (await ledgerDue(env, now)) {
         console.log("weekly ledger", JSON.stringify(await weeklyLedger(env, now)));
       }

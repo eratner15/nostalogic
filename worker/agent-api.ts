@@ -310,6 +310,15 @@ agentApi.post("/admin/proposals/:id/reject", async (c) => {
   return c.json({ ok: true });
 });
 
+/** Takedown for Studio packs (rights or abuse). A hidden pack leaves the gallery and its page. */
+for (const [action, hidden] of [["hide", 1], ["unhide", 0]] as const) {
+  agentApi.post(`/admin/studio/:id/${action}`, async (c) => {
+    const r = await c.env.DB.prepare("UPDATE studio_packages SET hidden = ? WHERE id = ?").bind(hidden, c.req.param("id")).run();
+    if (!r.meta.changes) return c.json({ error: "no studio pack with that id" }, 404);
+    return c.json({ ok: true, hidden: Boolean(hidden) });
+  });
+}
+
 agentApi.get("/admin/digests", async (c) => {
   const { results } = await c.env.DB.prepare(
     "SELECT id, week, summary_md, unread_sources, created_at FROM digests ORDER BY created_at DESC LIMIT 26",

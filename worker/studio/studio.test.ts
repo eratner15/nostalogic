@@ -1,0 +1,617 @@
+/**
+ * Remix Studio tests: the five-step pipeline against a scripted fake model
+ * (no API key or network), image generation against a fake OpenAI endpoint,
+ * and the SVG poster sanitizer.
+ */
+import assert from "node:assert/strict";
+import { test } from "node:test";
+import corpus from "../../data/corpus.json";
+import { scoreAll, type Property } from "../../src/lib/scoring";
+import type { Art, Sizzle, StudioEvent, StudioStep } from "../../src/lib/studio";
+import { generateImage, renderToMedia } from "./images";
+import { runStudio } from "./pipeline";
+import { sanitizeSvg } from "./svg";
+
+const library = scoreAll(corpus as Property[]);
+const sources = library.filter((p) => ["tamagotchi-1996", "daria-1997"].includes(p.id));
+
+const concept = {
+  title: "Pocket Static", logline: "A deadpan teen raises a digital creature that grades her town.", format: "Animated Series",
+  tone: "dry", audience: "Millennials and teens", premise: "p", world: "w", story_engine: "e",
+  characters: [{ name: "Vera Kell", role: "lead", description: "d" }, { name: "Odo Pratt", role: "rival", description: "d" }, { name: "Mims", role: "creature", description: "d" }],
+  borrowed_mechanics: [{ source: "Tamagotchi", mechanic: "care loop" }, { source: "Daria", mechanic: "deadpan narrator" }],
+  new_elements: ["grading creature"], visual_style: "acid green on charcoal", risks: ["r"],
+};
+const screenplay = `Title: Pocket Static\n\nINT. VERA'S BEDROOM - NIGHT\n\n${"A cracked handheld glows on the nightstand. ".repeat(12)}\n\nVERA\nIt judges everyone.\n\nCUT TO:`;
+const sizzle: Sizzle = {
+  title: "Pocket Static", tagline: "It rates everyone.", style_bible: "Flat 2D animation, acid green on charcoal.", poster_prompt: "Key art of a glowing handheld creature.",
+  shots: [
+    { seconds: 5, image_prompt: "A cracked handheld glowing in a dark drawer.", camera: "push_in", on_screen_text: "", speaker: "", line: "", music: "hum" },
+    { seconds: 4, image_prompt: "A food court where every phone lights up.", camera: "pan_left", on_screen_text: "POCKET STATIC", speaker: "NARRATOR", line: "It rates everyone.", music: "" },
+    ...Array.from({ length: 5 }, (_, i) => ({ seconds: 7, image_prompt: `Beat ${i + 3}.`, camera: "static" as const, on_screen_text: "", speaker: "", line: "", music: "" })),
+  ],
+};
+const DIMENSIONS = ["Originality", "Audience fit", "Story engine", "Production feasibility", "Rights distance", "Franchise potential"];
+const verdict = {
+  verdict: "develop", summary: "s", scores: DIMENSIONS.map((dimension) => ({ dimension, score: 4, note: "n" })),
+  strengths: ["a"], concerns: ["b"], rights_flags: [], next_steps: ["c"], audience_test_questions: ["q"],
+};
+const posterSvg = `<svg viewBox="0 0 600 900" onload="alert(1)"><script>alert(2)</script><defs><linearGradient id="g"/></defs><rect fill="url(#g)" width="600" height="900"/><image href="https://evil.example/x.png"/><a href="https://evil.example"><text>Click</text></a><text x="20" y="80">POCKET STATIC</text></svg>`;
+
+const usage = { input_tokens: 50, output_tokens: 10, cache_read_input_tokens: 0, cache_creation_input_tokens: 0 };
+const message = (text: string, stop_reason = "end_turn") => ({
+  id: "msg", type: "message", role: "assistant", model: "claude-opus-5-5", content: [{ type: "text", text }], stop_reason, stop_sequence: null, usage,
+});
+
+function fakeModel(texts: { text: string; stop?: string }[]) {
+  const bodies: Record<string, unknown>[] = [];
+  const fetchImpl = (async (_url: unknown, init?: RequestInit) => {
+    bodies.push(JSON.parse(String(init?.body)));
+    const next = texts[bodies.length - 1];
+    if (!next) throw new Error("fake model ran out of responses");
+    return new Response(JSON.stringify(message(next.text, next.stop)), { status: 200, headers: { "content-type": "application/json" } });
+  }) as typeof fetch;
+  return { fetchImpl, bodies };
+}
+
+const run = (texts: { text: string; stop?: string }[], renderArt?: Parameters<typeof runStudio>[4]) => {
+  const { fetchImpl, bodies } = fakeModel(texts);
+  const events: StudioEvent[] = [];
+  const saved = new Map<StudioStep, unknown>();
+  const result = runStudio(
+    { sources, format: "Animated Series" },
+    { apiKey: "test", model: "claude-opus-5-5", fetch: fetchImpl },
+    (e) => { events.push(e); },
+    async (step, value) => { saved.set(step, value); },
+    renderArt,
+  );
+  return { result, events, saved, bodies };
+};
+
+
+/** True when the art step rejected the SVG poster twice and failed (not a later step). */
+async function rejectsPoster(svg: string, c: object = concept, z: object = sizzle): Promise<boolean> {
+  const r = run([{ text: JSON.stringify(c) }, { text: screenplay }, { text: JSON.stringify(z) }, { text: svg }, { text: svg }]);
+  const result = await r.result;
+  return !result.ok && !r.saved.get("art") && (r.events.at(-1) as { step?: string }).step === "art";
+}
+
+test("with images: five steps in order, generated art saved, no SVG call", async () => {
+  const { result, events, saved, bodies } = run(
+    [{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: JSON.stringify(verdict) }],
+    async (s) => ({ posterImage: "/api/media/studio/x/poster.png", shotImages: s.shots.map((_, i) => `/api/media/studio/x/shot-${i + 1}.png`), note: null }),
+  );
+  const r = await result;
+  assert.equal(r.ok, true);
+  assert.deepEqual([...saved.keys()], ["concept", "screenplay", "sizzle", "art", "verdict"]);
+  assert.deepEqual(events.filter((e) => e.type === "step").map((e) => (e as { step: string }).step), ["concept", "screenplay", "sizzle", "art", "verdict"]);
+  const art = saved.get("art") as Art;
+  assert.equal(art.posterImage, "/api/media/studio/x/poster.png");
+  assert.equal(art.posterSvg, null);
+  assert.equal(art.shotImages.length, 7);
+  // Concept, sizzle, and verdict ask for structured JSON; the script is free text.
+  assert.deepEqual(bodies.map((b) => Boolean((b.output_config as { format?: unknown }).format)), [true, false, true, true]);
+  assert.equal(bodies[0].fallbacks, "default");
+});
+
+test("without images: the poster falls back to a sanitized SVG", async () => {
+  const { result, saved } = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: posterSvg }, { text: JSON.stringify(verdict) }]);
+  assert.equal((await result).ok, true);
+  const art = saved.get("art") as Art;
+  assert.equal(art.posterImage, null);
+  assert.ok(art.posterSvg?.startsWith("<svg"));
+  assert.ok(!/script|onload|evil\.example|<image|<a\b/i.test(art.posterSvg ?? ""), art.posterSvg ?? "");
+  assert.match(art.posterSvg ?? "", /url\(#g\)/);
+  assert.deepEqual(art.shotImages, sizzle.shots.map(() => null));
+});
+
+test("an SVG poster that sanitizes to nothing is retried once, then fails the art step", async () => {
+  const retried = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: "no drawing" }, { text: posterSvg }, { text: JSON.stringify(verdict) }]);
+  assert.equal((await retried.result).ok, true);
+  assert.ok((retried.saved.get("art") as Art).posterSvg);
+  const failed = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: "no drawing" }, { text: "still none" }]);
+  assert.equal((await failed.result).ok, false);
+  assert.equal((failed.events.at(-1) as { step?: string }).step, "art");
+});
+
+test("a sizzle outside 5-12 shots or 30-75 seconds fails; shot lengths are clamped to 3-8 seconds", async () => {
+  const tooFew = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify({ ...sizzle, shots: sizzle.shots.slice(0, 2) }) }]);
+  assert.equal((await tooFew.result).ok, false);
+  assert.equal((tooFew.events.at(-1) as { step?: string }).step, "sizzle");
+  const long = { ...sizzle, shots: sizzle.shots.map((s) => ({ ...s, seconds: 60 })) };
+  const clamped = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(long) }], async (s) => ({ posterImage: "/p.png", shotImages: s.shots.map(() => null), note: null }));
+  assert.equal((await clamped.result).ok, false);   // 7 shots x 8s = 56s passes the runtime check, but the fake model has no verdict reply
+  assert.ok((clamped.saved.get("sizzle") as Sizzle).shots.every((s) => s.seconds === 8));
+});
+
+test("verdict scores are clamped to 1-5, and a verdict missing dimensions fails", async () => {
+  const texts = [{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }];
+  const art = async (s: Sizzle) => ({ posterImage: "/p.png", shotImages: s.shots.map(() => null), note: null });
+  const high = run([...texts, { text: JSON.stringify({ ...verdict, scores: verdict.scores.map((x) => ({ ...x, score: 9 })) }) }], art);
+  assert.equal((await high.result).ok, true);
+  assert.ok((high.saved.get("verdict") as { scores: { score: number }[] }).scores.every((x) => x.score === 5));
+  const short = run([...texts, { text: JSON.stringify({ ...verdict, scores: verdict.scores.slice(0, 2) }) }], art);
+  assert.equal((await short.result).ok, false);
+});
+
+test("a failed step stops the run, reports the step, and keeps earlier work", async () => {
+  const { result, events, saved } = run([{ text: JSON.stringify(concept) }, { text: "too short" }]);
+  assert.equal((await result).ok, false);
+  assert.deepEqual([...saved.keys()], ["concept"]);
+  const error = events.at(-1) as { type: string; step?: string };
+  assert.equal(error.type, "error");
+  assert.equal(error.step, "screenplay");
+});
+
+test("a refusal is reported as an error, not thrown", async () => {
+  const { result, events } = run([{ text: "", stop: "refusal" }]);
+  assert.equal((await result).ok, false);
+  assert.equal(events.at(-1)?.type, "error");
+});
+
+test("generateImage posts to gpt-image and decodes the PNG", async () => {
+  let sent: Record<string, unknown> = {};
+  const fetchImpl = (async (url: unknown, init?: RequestInit) => {
+    assert.equal(String(url), "https://api.openai.com/v1/images/generations");
+    assert.equal(new Headers(init?.headers).get("authorization"), "Bearer sk-test");
+    sent = JSON.parse(String(init?.body));
+    return new Response(JSON.stringify({ data: [{ b64_json: btoa("PNGDATA") }] }), { status: 200 });
+  }) as typeof fetch;
+  const bytes = await generateImage({ OPENAI_API_KEY: "sk-test" }, "a poster", "1024x1536", "high", fetchImpl);
+  assert.equal(new TextDecoder().decode(bytes), "PNGDATA");
+  assert.deepEqual([sent.model, sent.size, sent.quality], ["gpt-image-1", "1024x1536", "high"]);
+});
+
+test("renderToMedia stores the image, and reports failures instead of throwing", async () => {
+  const puts: string[] = [];
+  const MEDIA = { put: async (key: string) => { puts.push(key); } } as unknown as R2Bucket;
+  const ok = (async () => new Response(JSON.stringify({ data: [{ b64_json: btoa("x") }] }), { status: 200 })) as unknown as typeof fetch;
+  const bad = (async () => new Response(JSON.stringify({ error: { message: "content policy" } }), { status: 400 })) as unknown as typeof fetch;
+  const env = { OPENAI_API_KEY: "sk", MEDIA };
+  assert.deepEqual(await renderToMedia(env, "studio/a/poster.png", "p", "1024x1536", "high", ok), { url: "/api/media/studio/a/poster.png", error: null, generated: true });
+  const failed = await renderToMedia(env, "studio/a/shot-1.png", "p", "1536x1024", "medium", bad);
+  assert.equal(failed.url, null);
+  // The saved message is a fixed category; upstream detail stays in the Worker log.
+  assert.equal(failed.error, "image generation failed");
+  assert.deepEqual(puts, ["studio/a/poster.png"]);
+});
+
+test("sanitizeSvg rejects text with no svg and adds a namespace", () => {
+  assert.equal(sanitizeSvg("no drawing here"), null);
+  assert.match(sanitizeSvg("<svg viewBox='0 0 10 10'><rect/></svg>") ?? "", /xmlns="http:\/\/www.w3.org\/2000\/svg"/);
+  const quoted = sanitizeSvg(`<svg><rect fill='url("#a")'/><rect fill="url('#b')"/><rect fill="url(https://evil.example/x)"/><rect fill='url("https://evil.example/y")'/></svg>`) ?? "";
+  assert.match(quoted, /url\("#a"\)/);
+  assert.match(quoted, /url\('#b'\)/);
+  assert.ok(!quoted.includes("evil.example"), quoted);
+});
+
+test("shareCard builds an absolute poster URL, and shareTags escapes model text", async () => {
+  const { shareCard, shareTags } = await import("./share");
+  const row = {
+    concept: JSON.stringify({ ...concept, title: `Pocket "Static" <b>` }),
+    sizzle: JSON.stringify(sizzle),
+    art: JSON.stringify({ posterImage: "/api/media/studio/x/poster.png", posterSvg: null, shotImages: [], note: null }),
+  };
+  const card = shareCard(row, "https://nostalogic.cafecito-ai.com", "abc");
+  assert.equal(card?.image, "https://nostalogic.cafecito-ai.com/api/media/studio/x/poster.png");
+  assert.equal(card?.url, "https://nostalogic.cafecito-ai.com/studio/?id=abc");
+  const tags = shareTags(card!);
+  assert.match(tags, /og:title" content="Pocket &quot;Static&quot; &lt;b&gt; · NostalDamus Studio"/);
+  assert.match(tags, /twitter:card" content="summary_large_image"/);
+  assert.equal(shareCard({ concept: "not json" }, "https://x", "abc"), null);
+});
+
+test("the concept must name a mechanic for every selected source", async () => {
+  const missing = run([{ text: JSON.stringify({ ...concept, borrowed_mechanics: [{ source: "Tamagotchi", mechanic: "care loop" }, { source: "Invented Show", mechanic: "x" }] }) }]);
+  assert.equal((await missing.result).ok, false);
+  assert.equal((missing.events.at(-1) as { step?: string }).step, "concept");
+  const ok = run([{ text: JSON.stringify(concept) }, { text: "too short" }]);
+  await ok.result;
+  const saved = ok.saved.get("concept") as { borrowed_mechanics: { source: string }[] };
+  assert.deepEqual(saved.borrowed_mechanics.map((m) => m.source), sources.map((p) => p.name));
+});
+
+test("sameOriginJson admits same-origin JSON and rejects cross-site or simple requests", async () => {
+  const { sameOriginJson } = await import("../http");
+  const req = (headers: Record<string, string>) => new Request("https://nostalogic.cafecito-ai.com/api/studio", { method: "POST", headers });
+  assert.equal(sameOriginJson(req({ "content-type": "application/json", origin: "https://nostalogic.cafecito-ai.com", "sec-fetch-site": "same-origin" })), true);
+  assert.equal(sameOriginJson(req({ "content-type": "application/json" })), true);   // curl, server-to-server
+  assert.equal(sameOriginJson(req({ "content-type": "text/plain", origin: "https://nostalogic.cafecito-ai.com" })), false);
+  assert.equal(sameOriginJson(req({ "content-type": "application/json", origin: "https://evil.example" })), false);
+  assert.equal(sameOriginJson(req({ "content-type": "application/json", "sec-fetch-site": "cross-site" })), false);
+});
+
+test("mechanics are one-to-one, verdict dimensions are exact, and the sizzle takes the concept title", async () => {
+  const combined = run([{ text: JSON.stringify({ ...concept, borrowed_mechanics: [{ source: "Tamagotchi / Daria", mechanic: "both" }, { source: "Tamagotchi / Daria", mechanic: "again" }] }) }]);
+  assert.equal((await combined.result).ok, false);
+  const art = async (s: Sizzle) => ({ posterImage: "/p.png", shotImages: s.shots.map(() => null), note: null });
+  const texts = [{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify({ ...sizzle, title: "Something Else" }) }];
+  const dup = run([...texts, { text: JSON.stringify({ ...verdict, scores: DIMENSIONS.map(() => ({ dimension: "Originality", score: 4, note: "n" })) }) }], art);
+  assert.equal((await dup.result).ok, false);
+  assert.equal((dup.saved.get("sizzle") as Sizzle).title, concept.title);
+  const shuffled = run([...texts, { text: JSON.stringify({ ...verdict, scores: [...verdict.scores].reverse().map((s) => ({ ...s, dimension: s.dimension.toUpperCase() })) }) }], art);
+  assert.equal((await shuffled.result).ok, true);
+  assert.deepEqual((shuffled.saved.get("verdict") as { scores: { dimension: string }[] }).scores.map((s) => s.dimension), DIMENSIONS);
+});
+
+test("a billed image counts as generated even when storage fails", async () => {
+  const MEDIA = { put: async () => { throw new Error("r2 down"); } } as unknown as R2Bucket;
+  const ok = (async () => new Response(JSON.stringify({ data: [{ b64_json: btoa("x") }] }), { status: 200 })) as unknown as typeof fetch;
+  const r = await renderToMedia({ OPENAI_API_KEY: "sk", MEDIA }, "studio/a/poster.png", "p", "1024x1536", "high", ok);
+  assert.deepEqual([r.url, r.generated], [null, true]);
+});
+
+test("the concept takes the requested format, and a renamed sizzle is rewritten to the concept title", async () => {
+  const renamed = { ...sizzle, title: "Static Pocket", poster_prompt: "Key art for STATIC POCKET.", shots: sizzle.shots.map((s, i) => (i === 1 ? { ...s, on_screen_text: "STATIC POCKET" } : s)) };
+  const r = run([{ text: JSON.stringify({ ...concept, format: "Feature Film" }) }, { text: screenplay }, { text: JSON.stringify(renamed) }]);
+  await r.result;
+  assert.equal((r.saved.get("concept") as { format: string }).format, "Animated Series");
+  const saved = r.saved.get("sizzle") as Sizzle;
+  assert.equal(saved.title, concept.title);
+  assert.equal(saved.poster_prompt, `Key art for ${concept.title}.`);
+  assert.equal(saved.shots[1].on_screen_text, concept.title);
+});
+
+test("a concept needs three to five characters", async () => {
+  const thin = run([{ text: JSON.stringify({ ...concept, characters: [] }) }]);
+  assert.equal((await thin.result).ok, false);
+  const many = run([{ text: JSON.stringify({ ...concept, characters: Array.from({ length: 8 }, (_, i) => ({ name: `C${i}`, role: "r", description: "d" })) }) }, { text: "too short" }]);
+  await many.result;
+  assert.equal((many.saved.get("concept") as { characters: unknown[] }).characters.length, 5);
+});
+
+test("source names never reach the screen or the image model; title fixes stay whole-word", async () => {
+  const onScreen = { ...sizzle, shots: sizzle.shots.map((s, i) => (i === 1 ? { ...s, line: "Like Daria, but louder." } : s)) };
+  const bad = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(onScreen) }]);
+  assert.equal((await bad.result).ok, false);
+  assert.equal((bad.events.at(-1) as { step?: string }).step, "sizzle");
+  const inPrompt = { ...sizzle, title: "It", poster_prompt: "A group of kids hold It up.", shots: sizzle.shots.map((s, i) => (i === 0 ? { ...s, image_prompt: "A cracked Tamagotchi glowing in a drawer." } : s)) };
+  const ok = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(inPrompt) }]);
+  await ok.result;
+  const saved = ok.saved.get("sizzle") as Sizzle;
+  assert.equal(saved.shots[0].image_prompt, "A cracked glowing in a drawer.");
+  assert.equal(saved.poster_prompt, `A group of kids hold ${concept.title} up.`);
+});
+
+test("a fallback SVG poster that names a source is retried, then fails", async () => {
+  const named = `<svg viewBox="0 0 600 900"><text x="20" y="80">Tamagotchi meets Daria</text></svg>`;
+  assert.ok(await rejectsPoster(named));
+});
+
+test("rights guard covers speakers, capitals, and entity-encoded poster text; the reel always has its title card", async () => {
+  const speaker = { ...sizzle, shots: sizzle.shots.map((s, i) => (i === 1 ? { ...s, speaker: "Daria" } : s)) };
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(speaker) }]).result).ok, false);
+  const caps = { ...sizzle, tagline: "DARIA, LOUDER." };
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(caps) }]).result).ok, false);
+  const noCard = { ...sizzle, shots: sizzle.shots.map((s) => ({ ...s, on_screen_text: "" })) };
+  const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(noCard) }]);
+  await r.result;
+  assert.equal((r.saved.get("sizzle") as Sizzle).shots.at(-1)?.on_screen_text, concept.title);
+});
+
+test("usage is reported after every model call", async () => {
+  const seen: number[] = [];
+  const { fetchImpl } = fakeModel([{ text: JSON.stringify(concept) }, { text: "too short" }]);
+  await runStudio({ sources, format: "Animated Series" }, { apiKey: "t", model: "m", fetch: fetchImpl, onUsage: async (u) => { seen.push(u.input); } }, () => {}, async () => {});
+  assert.deepEqual(seen, [50, 100]);
+});
+
+test("poster text with XML entities is decoded before the source-name check", async () => {
+  const kk = library.find((p) => p.name.includes("&"));
+  if (!kk) return;   // no ampersand names in this corpus
+  const pair = [kk, sources[0]];
+  const enc = kk.name.replace(/&/g, "&amp;");
+  const bad = `<svg viewBox="0 0 600 900"><text x="20" y="80">${enc}</text></svg>`;
+  const c = { ...concept, borrowed_mechanics: pair.map((p) => ({ source: p.name, mechanic: "m" })) };
+  const { fetchImpl } = fakeModel([{ text: JSON.stringify(c) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: bad }, { text: bad }]);
+  const events: StudioEvent[] = [];
+  const res = await runStudio({ sources: pair, format: "Animated Series" }, { apiKey: "t", model: "m", fetch: fetchImpl }, (e) => { events.push(e); }, async () => {});
+  assert.equal(res.ok, false);
+  assert.equal((events.at(-1) as { step?: string }).step, "art");
+});
+
+test("opening pages that name a source fail the screenplay step", async () => {
+  const r = run([{ text: JSON.stringify(concept) }, { text: `${screenplay}\n\nVERA\nIt's like a Tamagotchi, but mean.` }]);
+  assert.equal((await r.result).ok, false);
+  assert.equal((r.events.at(-1) as { step?: string }).step, "screenplay");
+});
+
+test("rights guard covers concept names, music cues, and CDATA or split poster text; script title follows the concept", async () => {
+  const badTitle = run([{ text: JSON.stringify({ ...concept, characters: [...concept.characters.slice(0, 2), { name: "Daria", role: "r", description: "d" }] }) }]);
+  assert.equal((await badTitle.result).ok, false);
+  const music = { ...sizzle, shots: sizzle.shots.map((s, i) => (i === 0 ? { ...s, music: "the Daria theme, slowed" } : s)) };
+  const ok = run([{ text: JSON.stringify(concept) }, { text: screenplay.replace("Title: Pocket Static", "Title: Wrong Name") }, { text: JSON.stringify(music) }]);
+  await ok.result;
+  assert.equal((ok.saved.get("sizzle") as Sizzle).shots[0].music, "the theme, slowed");
+  assert.match(ok.saved.get("screenplay") as string, /^Title: Pocket Static$/m);
+  for (const poster of [`<svg><text><![CDATA[Daria]]></text></svg>`, `<svg><text>Da<tspan>ria</tspan></text></svg>`]) {
+    assert.ok(await rejectsPoster(poster), poster);
+  }
+});
+
+test("source names anywhere public in the concept fail; a renamed tagline follows the concept title", async () => {
+  const leak = run([{ text: JSON.stringify({ ...concept, logline: "Daria meets a pocket pet." }) }]);
+  assert.equal((await leak.result).ok, false);
+  const risky = run([{ text: JSON.stringify({ ...concept, risks: ["Tone may read as too close to Daria."] }) }, { text: "too short" }]);
+  await risky.result;
+  assert.ok(risky.saved.get("concept"), "risks may name a source");
+  const renamed = { ...sizzle, title: "Static Pocket", tagline: "Static Pocket rates everyone." };
+  const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(renamed) }]);
+  await r.result;
+  assert.equal((r.saved.get("sizzle") as Sizzle).tagline, `${concept.title} rates everyone.`);
+});
+
+test("source aliases cover qualifiers, subtitles, and parenthetical short names", async () => {
+  const { sourceAliases } = await import("./pipeline");
+  assert.deepEqual(new Set(sourceAliases("AOL Instant Messenger (AIM)")), new Set(["AOL Instant Messenger (AIM)", "AOL Instant Messenger", "AIM"]));
+  assert.ok(sourceAliases("Xena: Warrior Princess").includes("Xena"));
+  assert.ok(sourceAliases("The Mighty Ducks (D2 era)").includes("Mighty Ducks"));
+  assert.ok(!sourceAliases("The Mighty Ducks (D2 era)").includes("D2 era"));
+  assert.ok(sourceAliases("Goosebumps TV/Books").includes("Goosebumps"));
+  assert.ok(sourceAliases("Aqua ('Barbie Girl' era)").includes("Barbie Girl"));
+});
+
+test("an SVG-only pack still shares with the site card image", async () => {
+  const { shareCard } = await import("./share");
+  const card = shareCard({ concept: JSON.stringify(concept), art: JSON.stringify({ posterImage: null, posterSvg: "<svg/>", shotImages: [], note: null }) }, "https://x.test", "abc");
+  assert.equal(card?.image, "https://x.test/og.png");
+  assert.deepEqual(card?.imageSize, [1680, 945]);
+});
+
+test("a blank concept title fails the concept step", async () => {
+  const r = run([{ text: JSON.stringify({ ...concept, title: "   " }) }]);
+  assert.equal((await r.result).ok, false);
+});
+
+test("a fallback SVG poster must show the concept title, even wrapped over two lines", async () => {
+  const noTitle = `<svg viewBox="0 0 600 900"><text x="20" y="80">A NEW SHOW</text></svg>`;
+  assert.ok(await rejectsPoster(noTitle));
+  const wrapped = `<svg viewBox="0 0 600 900"><text x="20" y="80">POCKET</text><text x="20" y="160">STATIC</text></svg>`;
+  const ok = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: wrapped }, { text: JSON.stringify(verdict) }]);
+  assert.equal((await ok.result).ok, true);
+});
+
+test("poster title must be whole words; spaced or split source names are still caught", async () => {
+  const short = { ...concept, title: "It" };
+  const noTitle = `<svg><text>Written by nobody</text></svg>`;
+  assert.ok(await rejectsPoster(noTitle, short, { ...sizzle, title: "It" }));
+});
+
+test("only an opening Title line is rewritten; otherwise the title page is prepended", async () => {
+  const body = screenplay.replace("Title: Pocket Static\n\n", "") + "\n\nVERA\nTitle: Queen of the Food Court.";
+  const r = run([{ text: JSON.stringify(concept) }, { text: body }, { text: "{}" }]);
+  await r.result;
+  const saved = r.saved.get("screenplay") as string;
+  assert.ok(saved.startsWith("Title: Pocket Static\n\n"));
+  assert.match(saved, /Title: Queen of the Food Court\./);
+});
+
+test("cast names must be distinct and nonblank; blank pages fail; metadata titles do not count", async () => {
+  const dupes = run([{ text: JSON.stringify({ ...concept, characters: [concept.characters[0], concept.characters[0], concept.characters[1]] }) }]);
+  assert.equal((await dupes.result).ok, false);
+  const blank = run([{ text: JSON.stringify(concept) }, { text: " ".repeat(500) }]);
+  assert.equal((await blank.result).ok, false);
+  const meta = `<svg><title>Pocket Static</title><text>A NEW SHOW</text></svg>`;
+  assert.ok(await rejectsPoster(meta));
+});
+
+test("spaced source names, hidden poster titles, and scene-less pages are caught", async () => {
+  const prose = "I am sorry, but here is an essay about the show instead of a script. ".repeat(8);
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: prose }]).result).ok, false);
+  const hidden = `<svg><text display="none">Pocket Static</text><text>A NEW SHOW</text></svg>`;
+  assert.ok(await rejectsPoster(hidden));
+});
+
+test("names match across runs of whitespace", async () => {
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("Kenan & Kel").includes("Kenan & Kel"));
+  const r = run([{ text: JSON.stringify({ ...concept, premise: "Daria   style narration." }) }]);
+  assert.equal((await r.result).ok, false);
+});
+
+test("stylized names get a plain alias; a blank sizzle title changes nothing", async () => {
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("*NSYNC").includes("NSYNC"));
+  const blank = { ...sizzle, title: "   " };
+  const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(blank) }]);
+  await r.result;
+  const saved = r.saved.get("sizzle") as Sizzle;
+  assert.equal(saved.tagline, sizzle.tagline);
+  assert.equal(saved.shots[0].on_screen_text, "");
+});
+
+test("blank mechanics fail; a title only inside <symbol> does not count", async () => {
+  const blank = run([{ text: JSON.stringify({ ...concept, borrowed_mechanics: [{ source: "Tamagotchi", mechanic: "   " }, { source: "Daria", mechanic: "deadpan narrator" }] }) }]);
+  assert.equal((await blank.result).ok, false);
+  const sym = `<svg><symbol id="t"><text>Pocket Static</text></symbol><text>A NEW SHOW</text></svg>`;
+  assert.ok(await rejectsPoster(sym));
+});
+
+test("punctuation inside a multiword source name is tolerated", async () => {
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("Aaahh!!! Real Monsters").includes("Aaahh Real Monsters"));
+  const pair = [library.find((p) => p.name === "Aaahh!!! Real Monsters")!, sources[1]];
+  if (!pair[0]) return;
+  const c = { ...concept, logline: "Aaahh! Real Monsters meets a slacker.", borrowed_mechanics: pair.map((p) => ({ source: p.name, mechanic: "m" })) };
+  const { fetchImpl } = fakeModel([{ text: JSON.stringify(c) }]);
+  const res = await runStudio({ sources: pair, format: "Animated Series" }, { apiKey: "t", model: "m", fetch: fetchImpl }, () => {}, async () => {});
+  assert.equal(res.ok, false);
+});
+
+test("hyphenated single-word names get a spaced alias", async () => {
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("Banjo-Kazooie").includes("Banjo Kazooie"));
+});
+
+test("a leading A or An drops from multiword source names; blank concept fields fail", async () => {
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("A Goofy Movie").includes("Goofy Movie"));
+  assert.ok(!sourceAliases("A Team").includes("Team"));
+  const logline = run([{ text: JSON.stringify({ ...concept, logline: "   " }) }]);
+  assert.equal((await logline.result).ok, false);
+  const role = run([{ text: JSON.stringify({ ...concept, characters: concept.characters.map((ch, i) => (i ? ch : { ...ch, description: " " })) }) }]);
+  assert.equal((await role.result).ok, false);
+});
+
+test("blank or source-only visual prompts fail; zero-size poster titles do not count; blank verdict text fails", async () => {
+  const onlySource = { ...sizzle, shots: sizzle.shots.map((s, i) => (i ? s : { ...s, image_prompt: "Tamagotchi" })) };
+  const prompt = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(onlySource) }]);
+  assert.equal((await prompt.result).ok, false);
+  const style = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify({ ...sizzle, style_bible: "   " }) }]);
+  assert.equal((await style.result).ok, false);
+  const tiny = `<svg viewBox="0 0 600 900"><g font-size="0"><text>POCKET STATIC</text></g><text style="font-size:0px">POCKET STATIC</text><text>A NEW SHOW</text></svg>`;
+  assert.ok(await rejectsPoster(tiny));
+  const art = [{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: posterSvg }];
+  const summary = run([...art, { text: JSON.stringify({ ...verdict, summary: " " }) }]);
+  assert.equal((await summary.result).ok, false);
+  const note = run([...art, { text: JSON.stringify({ ...verdict, scores: verdict.scores.map((s, i) => (i ? s : { ...s, note: "" })) }) }]);
+  assert.equal((await note.result).ok, false);
+  assert.equal((await run([...art, { text: JSON.stringify(verdict) }]).result).ok, true);
+});
+
+test("nested hidden groups, unquoted hrefs, ampersand aliases, and blank tagline, new elements, or verdict lists", async () => {
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("Kenan & Kel").includes("Kenan and Kel"));
+  assert.ok(!(sanitizeSvg(`<svg><text><textPath href=https://example.com/p>X</textPath></text></svg>`) ?? "").includes("example.com"));
+  const nested = `<svg viewBox="0 0 600 900"><g display="none"><g><rect/></g><text>POCKET STATIC</text></g><text>A NEW SHOW</text></svg>`;
+  assert.ok(await rejectsPoster(nested));
+  const shown = `<svg viewBox="0 0 600 900"><g display="none"><g><rect/></g></g><g><g><text>POCKET</text></g><text>STATIC</text></g></svg>`;
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: shown }, { text: JSON.stringify(verdict) }]).result).ok, true);
+  assert.equal((await run([{ text: JSON.stringify({ ...concept, new_elements: [" "] }) }]).result).ok, false);
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify({ ...sizzle, tagline: " " }) }]).result).ok, false);
+  const art = [{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: posterSvg }];
+  assert.equal((await run([...art, { text: JSON.stringify({ ...verdict, next_steps: [] }) }]).result).ok, false);
+  assert.equal((await run([...art, { text: JSON.stringify({ ...verdict, audience_test_questions: [""] }) }]).result).ok, false);
+});
+
+test("prefixed active elements and hrefs are stripped; stroke opacity does not hide a title; an old title in a spoken line is rewritten", async () => {
+  const dirty = sanitizeSvg(`<svg xmlns:s="http://www.w3.org/2000/svg" xmlns:x="http://www.w3.org/1999/xlink"><s:script>alert(1)</s:script><s:image x:href="https://e.example/p"/><feImage x:href="https://e.example/q"/><text>X</text></svg>`)!;
+  assert.ok(!/script|alert|e\.example/.test(dirty));
+  const outlined = `<svg viewBox="0 0 600 900"><text stroke-opacity="0" fill="#fff">POCKET STATIC</text></svg>`;
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: outlined }, { text: JSON.stringify(verdict) }]).result).ok, true);
+  const renamed = { ...sizzle, title: "Static Pets", shots: sizzle.shots.map((s, i) => (i ? s : { ...s, line: "Static Pets is coming." })) };
+  const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(renamed) }]);
+  await r.result;
+  assert.equal((r.saved.get("sizzle") as Sizzle).shots[0].line, "Pocket Static is coming.");
+});
+
+test("and aliases get an ampersand form; a prefixed <title> does not count as the poster title", async () => {
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("Dumb and Dumber").includes("Dumb & Dumber"));
+  const prefixed = `<svg viewBox="0 0 600 900" xmlns:s="http://www.w3.org/2000/svg"><s:title>Pocket Static</s:title><text>A NEW SHOW</text></svg>`;
+  assert.ok(await rejectsPoster(prefixed));
+});
+
+test("xml:base is stripped; commented tags do not end a hidden group; comments never ship", async () => {
+  const based = sanitizeSvg(`<svg xml:base="https://e.example/"><text><textPath href="#a">X</textPath></text></svg>`)!;
+  assert.ok(based && !based.includes("e.example"));
+  const tricky = `<svg viewBox="0 0 600 900"><g display="none"><!-- </g> --><text>POCKET STATIC</text></g><text>A NEW SHOW</text></svg>`;
+  assert.ok(await rejectsPoster(tricky));
+  // Comments are removed by the sanitizer, so a source name in one never ships.
+  const noted = `<svg viewBox="0 0 600 900"><!-- after Tamagotchi --><text>POCKET STATIC</text></svg>`;
+  const n = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: noted }, { text: JSON.stringify(verdict) }]);
+  assert.equal((await n.result).ok, true);
+  assert.ok(!(n.saved.get("art") as Art).posterSvg!.includes("Tamagotchi"));
+  const plain = `<svg viewBox="0 0 600 900"><!-- layout --><text>POCKET STATIC</text></svg>`;
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: plain }, { text: JSON.stringify(verdict) }]).result).ok, true);
+});
+
+test("prefixed SVG elements reject the poster; CDATA tags do not close hidden groups; alias rules compose; blank shot text is empty", async () => {
+  assert.equal(sanitizeSvg(`<svg xmlns:s.x="http://www.w3.org/2000/svg"><s.x:script>alert(1)</s.x:script><text>X</text></svg>`), null);
+  assert.ok(sanitizeSvg(`<svg xmlns:xlink="http://www.w3.org/1999/xlink"><text>Doors 12:00</text></svg>`));
+  const cdata = `<svg viewBox="0 0 600 900"><g display="none"><![CDATA[</g>]]><text>POCKET STATIC</text></g><text>A NEW SHOW</text></svg>`;
+  assert.ok(await rejectsPoster(cdata));
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("The Adventures of Pete & Pete").includes("Adventures of Pete and Pete"));
+  const blanks = { ...sizzle, shots: sizzle.shots.map((s, i) => (i === 1 ? { ...s, on_screen_text: "  ", line: " ", speaker: " " } : s)) };
+  const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(blanks) }]);
+  await r.result;
+  const shot = (r.saved.get("sizzle") as Sizzle).shots[1];
+  assert.deepEqual([shot.on_screen_text, shot.line, shot.speaker], ["", "", ""]);
+});
+
+test("era names stay aliases; comment-split names fail; encoded url() and malformed posters are rejected", async () => {
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("No Doubt (Tragic Kingdom era)").includes("Tragic Kingdom"));
+  assert.ok(!sourceAliases("The Mighty Ducks (D2 era)").includes("D2"));
+  const split = `<svg viewBox="0 0 600 900"><text>POCKET STATIC</text><text>Da<!-- x -->ria</text></svg>`;
+  assert.ok(await rejectsPoster(split));
+  assert.equal(sanitizeSvg(`<svg><rect fill="u&#114;l(https://e.example/p.svg#x)"/><text>X</text></svg>`), null);
+  assert.equal(sanitizeSvg(`<svg><rect style="fill:u\\72l(https://e.example/p)"/><text>X</text></svg>`), null);
+  assert.ok(sanitizeSvg(`<svg><defs><linearGradient id="g"/></defs><rect fill="url(#g)"/><rect fill='url("#g")'/><text>Rock &#38; Roll</text></svg>`));
+  assert.equal(sanitizeSvg(`<svg><rect><text>POCKET STATIC</text></svg>`), null);
+});
+
+test("the XML check rejects unquoted attributes and unknown entities; processing instructions are removed; accent-free aliases", async () => {
+  assert.equal(sanitizeSvg(`<svg><text x=10>POCKET STATIC</text></svg>`), null);
+  assert.equal(sanitizeSvg(`<svg><text>A&nbsp;B</text></svg>`), null);
+  assert.equal(sanitizeSvg(`<!DOCTYPE svg [<!ENTITY t "x">]><svg><text>&t;</text></svg>`), null);
+  const pi = `<svg viewBox="0 0 600 900"><g display="none"><?note </g> ?><text>POCKET STATIC</text></g><text>A NEW SHOW</text></svg>`;
+  assert.ok(!sanitizeSvg(pi)!.includes("<?"));
+  assert.ok(await rejectsPoster(pi));
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("Macarena (Los del Río)").includes("Los del Rio"));
+});
+
+test("the namespace is read from the root only; quoted '/>' does not end a hidden group; encoded hiding counts", async () => {
+  const nested = sanitizeSvg(`<svg><g xmlns="http://www.w3.org/2000/svg"><text>X</text></g></svg>`)!;
+  assert.ok(nested.startsWith(`<svg xmlns="http://www.w3.org/2000/svg">`));
+  assert.equal(sanitizeSvg(`<svg xmlns="http://example.com/other"><text>X</text></svg>`), null);
+  const quoted = `<svg viewBox="0 0 600 900"><g display="none" data-x="/>"><text>POCKET STATIC</text></g><text>A NEW SHOW</text></svg>`;
+  assert.ok(await rejectsPoster(quoted));
+  const encoded = `<svg viewBox="0 0 600 900"><g display="&#110;one"><text>POCKET STATIC</text></g><text>A NEW SHOW</text></svg>`;
+  assert.ok(await rejectsPoster(encoded));
+});
+
+test("only SVG drawing elements pass; typographic punctuation and hidden-split names are caught", async () => {
+  assert.equal(sanitizeSvg(`<svg><g><img xmlns="http://www.w3.org/1999/xhtml" src="https://e.example/p"/></g><text>X</text></svg>`), null);
+  assert.equal(sanitizeSvg(`<svg><filter><feImage href="#a"/></filter><text>X</text></svg>`), null);
+  assert.equal(sanitizeSvg(`<svg><rect fill="u\\&#10;rl(https://e.example/p)"/><text>X</text></svg>`), null);
+  assert.ok(sanitizeSvg(`<svg><defs><linearGradient id="g"><stop offset="0"/></linearGradient></defs><rect fill="url(#g)"/><text>X</text></svg>`));
+  const curly = run([{ text: JSON.stringify({ ...concept, premise: "A Daria’s-style narrator." }) }]);
+  assert.equal((await curly.result).ok, false);
+  const hiddenSplit = `<svg viewBox="0 0 600 900"><text>POCKET STATIC</text><text>Da<tspan display="none">x</tspan>ria</text></svg>`;
+  assert.ok(await rejectsPoster(hiddenSplit));
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("Dexter’s Laboratory").includes("Dexter's Laboratory"));
+});
+
+test("an href with any prefix must be a #fragment", () => {
+  assert.equal(sanitizeSvg(`<svg xmlns:s.x="http://www.w3.org/1999/xlink"><linearGradient id="h" s.x:href="https://e.example/p.svg#g"/><text>X</text></svg>`), null);
+  assert.ok(sanitizeSvg(`<svg xmlns:xlink="http://www.w3.org/1999/xlink"><defs><linearGradient id="g"/><linearGradient id="h" xlink:href="#g"/></defs><text>X</text></svg>`));
+});
+
+test("unbound prefixes, paint-server titles, and accessible names; abandoned media is deleted", async () => {
+  assert.equal(sanitizeSvg(`<svg><defs><linearGradient id="g"/><linearGradient id="h" x:href="#g"/></defs><text>X</text></svg>`), null);
+  assert.equal(sanitizeSvg(`<svg><defs><linearGradient id="g"/><linearGradient id="h" xlink:href="#g"/></defs><text>X</text></svg>`), null);
+  const inFilter = `<svg viewBox="0 0 600 900"><filter id="f"><text>POCKET STATIC</text></filter><text>A NEW SHOW</text></svg>`;
+  assert.ok(await rejectsPoster(inFilter));
+  const aria = `<svg viewBox="0 0 600 900" aria-label="Daria"><text>POCKET STATIC</text></svg>`;
+  assert.ok(await rejectsPoster(aria));
+  const { deleteMedia } = await import("./images");
+  const keys = ["studio/a/poster.png", "studio/a/shot-1.png"];
+  const deleted: string[] = [];
+  const MEDIA = {
+    list: async () => ({ objects: keys.map((key) => ({ key })), truncated: false }),
+    delete: async (k: string[]) => { deleted.push(...k); },
+  } as unknown as R2Bucket;
+  await deleteMedia(MEDIA, "studio/a/");
+  assert.deepEqual(deleted, keys);
+});
+
+test("unpainted titles do not count; outlined and inherited-stroke titles do", async () => {
+  // Accepted posters are followed by the verdict; rejected ones are asked for once more, then the step fails.
+  // The poster counts as accepted only when the art step saved it.
+  const titleOk = async (svg: string, expect: boolean) => {
+    const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: svg }, { text: expect ? JSON.stringify(verdict) : svg }]);
+    await r.result;
+    return Boolean((r.saved.get("art") as Art | undefined)?.posterSvg);
+  };
+  const wrap = (body: string) => `<svg viewBox="0 0 600 900">${body}<text>A NEW SHOW</text></svg>`;
+  assert.equal(await titleOk(wrap(`<text fill-opacity="0">POCKET STATIC</text>`), false), false);
+  assert.equal(await titleOk(wrap(`<text fill="none">POCKET STATIC</text>`), false), false);
+  assert.equal(await titleOk(wrap(`<g style="fill:transparent"><text>POCKET STATIC</text></g>`), false), false);
+  assert.equal(await titleOk(wrap(`<text fill="none" stroke="#fff">POCKET STATIC</text>`), true), true);
+  assert.equal(await titleOk(wrap(`<g stroke="#fff"><text fill="none">POCKET STATIC</text></g>`), true), true);
+  assert.equal(await titleOk(wrap(`<g fill="none"><text fill="#fff">POCKET STATIC</text></g>`), true), true);
+});

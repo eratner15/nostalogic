@@ -143,3 +143,46 @@ Run in order from the repository root:
 5. Create the Revival Watch managed agent: `scripts/agent-setup.sh`. It needs
    `ant` logged in, and it asks before each change.
 6. Run it on demand at any time: `ant beta:deployments run --deployment-id <id>`.
+
+## Remix Studio (development packs)
+
+`/studio` turns 2-4 library properties into an ORIGINAL property and a pack for
+deciding whether to make it. One request runs five steps (`worker/studio/`),
+each saved to `studio_packages` as it lands:
+
+| Step | Output | Made by |
+|---|---|---|
+| Concept | Title, logline, characters, story engine, borrowed mechanics, risks | Claude, structured JSON |
+| Opening pages | About 3 minutes of Fountain screenplay (folded away on the page) | Claude |
+| Sizzle shot list | 7-9 shots, 45-60 seconds: keyframe prompt, camera move, title card, voice line, music cue; a style bible; a poster prompt | Claude, structured JSON |
+| Poster and keyframes | A 1024x1536 movie poster (high quality) and one 1536x1024 keyframe per shot (medium), stored in R2 | OpenAI gpt-image (`OPENAI_API_KEY`) |
+| Greenlight verdict | Develop / revise / pass, six scored dimensions, rights flags, next steps, test questions | Claude, structured JSON |
+
+The page plays the sizzle on a canvas: camera moves on each keyframe,
+crossfades, 2.39:1 letterbox, serif title cards, captions, a generated score,
+and optional browser voice. **Export video** records it to MP4 or WebM with the
+score. **Claude Motion prompt** copies a ready `/motion` prompt with the shots
+and keyframe links, for a polished MP4 in claude.ai (Claude Motion is a
+claude.ai feature in beta for Team and Enterprise, not an API).
+
+Without `OPENAI_API_KEY` the poster falls back to a Claude-drawn SVG and the
+sizzle plays with text cards.
+
+Rights rule in every prompt: borrow mechanics, never expression. No source
+names, characters, catchphrases, logos, songs, real people, or brands.
+
+Setup, once:
+
+```bash
+npx wrangler r2 bucket create nostaldamus-media
+npx wrangler secret put OPENAI_API_KEY
+npm run db:migrate          # applies 0004_studio.sql
+npm run deploy
+```
+
+- Optional: `IMAGE_MODEL` (default `gpt-image-1`), `IMAGE_QUALITY` (forces one quality for all images).
+- Limits: 5 packs per visitor IP per day (`STUDIO_DAILY_PER_IP`), 40 in total
+  (`STUDIO_DAILY_TOTAL`). Each pack = 4 to 6 Claude calls (the SVG poster fallback may retry once)
+  plus up to 13 images (one poster and up to 12 keyframes).
+- Cost check:
+  `SELECT date(created_at), COUNT(*), SUM(input_tokens), SUM(cache_write_tokens), SUM(cache_read_tokens), SUM(output_tokens), SUM(images) FROM studio_packages GROUP BY 1`.
