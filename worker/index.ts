@@ -16,6 +16,8 @@ import { agentApi, type AgentEnv } from "./agent-api";
 import { loadTrackRecord, scoreHistory, weeklyLedger } from "./ledger";
 import { mondayOf } from "./scoring";
 import { runSignals, yesterday } from "./signals";
+import { runStudio } from "./studio/pipeline";
+import { STUDIO_FORMATS, type PreviewKind, type StudioEvent, type StudioPackage, type StudioStep } from "../src/lib/studio";
 
 type Env = AgentEnv & {
   DB: D1Database;
@@ -27,6 +29,9 @@ type Env = AgentEnv & {
   /** Questions per visitor IP per day (default 40) and across all visitors (default 400). */
   AGENT_DAILY_PER_IP?: string;
   AGENT_DAILY_TOTAL?: string;
+  /** Studio packs per visitor IP per day (default 5) and across all visitors (default 40). */
+  STUDIO_DAILY_PER_IP?: string;
+  STUDIO_DAILY_TOTAL?: string;
   REPORT_CHECKOUT_URL?: string;
 };
 
@@ -133,6 +138,96 @@ app.post("/remix", async (c) => {
     "INSERT INTO remixes (id, property_ids, concept, model) VALUES (?, ?, ?, ?)",
   ).bind(id, JSON.stringify(ids), concept, model).run();
   return c.json({ id, concept, propertyIds: ids });
+});
+
+/**
+ * Remix Studio: 2-4 source properties -> an original property's development
+ * pack. Streams Server-Sent Events: `started` (the share id), then `step` and
+ * `result` per stage, then `done` or one `error`.
+ */
+const STUDIO_COLUMNS: Record<StudioStep, string> = {
+  concept: "concept", poster: "poster_svg", screenplay: "screenplay", preview: "preview", verdict: "verdict",
+};
+
+app.post("/studio", async (c) => {
+  const body = await c.req.json<{ propertyIds?: string[]; format?: string; preview?: string; sessionKey?: string }>().catch(() => null);
+  const ids = [...new Set((body?.propertyIds ?? []).filter((x): x is string => typeof x === "string"))].slice(0, 4);
+  const format = STUDIO_FORMATS.find((f) => f === body?.format) ?? "Streaming Series";
+  const previewKind: PreviewKind = body?.preview === "scene" ? "scene" : "trailer";
+  const session = (body?.sessionKey ?? "anon").slice(0, 64);
+  if (ids.length < 2) return c.json({ error: "pick two to four source properties" }, 400);
+  if (!c.env.ANTHROPIC_API_KEY) return c.json({ error: NOT_CONFIGURED }, 503);
+
+  const sources = (await loadLibrary(c.env)).filter((p) => ids.includes(p.id));
+  if (sources.length < 2) return c.json({ error: "unknown properties" }, 400);
+
+  const ip = c.req.header("cf-connecting-ip") ?? "unknown";
+  if (!(await bumpUsage(c.env, "studio-ip", ip, Number(c.env.STUDIO_DAILY_PER_IP ?? 5)))) {
+    return c.json({ error: "daily studio limit reached" }, 429);
+  }
+  if (!(await bumpUsage(c.env, "studio-total", "all", Number(c.env.STUDIO_DAILY_TOTAL ?? 40)))) {
+    return c.json({ error: "The studio has reached today's budget. Try again tomorrow." }, 429);
+  }
+
+  const id = crypto.randomUUID();
+  const model = c.env.AGENT_MODEL || DEFAULT_AGENT_MODEL;
+  await c.env.DB.prepare(
+    "INSERT INTO studio_packages (id, property_ids, format, preview_kind, model, session_key) VALUES (?, ?, ?, ?, ?, ?)",
+  ).bind(id, JSON.stringify(sources.map((p) => p.id)), format, previewKind, model, session).run();
+
+  const { readable, writable } = new TransformStream();
+  const writer = writable.getWriter();
+  const encoder = new TextEncoder();
+  const emit = (event: StudioEvent) => writer.write(encoder.encode(`data: ${JSON.stringify(event)}\n\n`));
+  const save = async (step: StudioStep, value: unknown) => {
+    await c.env.DB.prepare(`UPDATE studio_packages SET ${STUDIO_COLUMNS[step]} = ? WHERE id = ?`)
+      .bind(typeof value === "string" ? value : JSON.stringify(value), id).run();
+  };
+
+  const work = (async () => {
+    let failure: string | null = null;
+    try {
+      await emit({ type: "started", id });
+      const result = await runStudio({ sources, format, previewKind }, { apiKey: c.env.ANTHROPIC_API_KEY!, model }, async (event) => {
+        if (event.type === "error") failure = event.message;
+        await emit(event);
+      }, save);
+      await c.env.DB.prepare("UPDATE studio_packages SET status = ?, error = ?, input_tokens = ?, output_tokens = ? WHERE id = ?")
+        .bind(result.ok ? "done" : "error", failure, result.usage.input, result.usage.output, id).run();
+      if (result.ok) await emit({ type: "done", id });
+    } catch {
+      await c.env.DB.prepare("UPDATE studio_packages SET status = 'error', error = ? WHERE id = ?").bind("unexpected failure", id).run().catch(() => {});
+      await emit({ type: "error", message: "The studio failed unexpectedly. Try again." }).catch(() => {});
+    } finally {
+      await writer.close().catch(() => {});
+    }
+  })();
+  c.executionCtx.waitUntil(work);
+
+  return new Response(readable, {
+    headers: { "content-type": "text/event-stream; charset=utf-8", "cache-control": "no-cache, no-transform" },
+  });
+});
+
+app.get("/studio/:id", async (c) => {
+  const r = await c.env.DB.prepare("SELECT * FROM studio_packages WHERE id = ?").bind(c.req.param("id")).first<Record<string, string | null>>();
+  if (!r) return c.json({ error: "not found" }, 404);
+  const parse = (v: string | null) => (v ? JSON.parse(v) : null);
+  const pkg: StudioPackage = {
+    id: String(r.id),
+    propertyIds: parse(r.property_ids) ?? [],
+    format: String(r.format),
+    previewKind: r.preview_kind === "scene" ? "scene" : "trailer",
+    status: r.status === "done" ? "done" : r.status === "error" ? "error" : "running",
+    concept: parse(r.concept),
+    posterSvg: r.poster_svg,
+    screenplay: r.screenplay,
+    preview: parse(r.preview),
+    verdict: parse(r.verdict),
+    error: r.error,
+    createdAt: String(r.created_at),
+  };
+  return c.json(pkg);
 });
 
 app.get("/remixes/:id", async (c) => {
