@@ -308,3 +308,17 @@ test("opening pages that name a source fail the screenplay step", async () => {
   assert.equal((await r.result).ok, false);
   assert.equal((r.events.at(-1) as { step?: string }).step, "screenplay");
 });
+
+test("rights guard covers concept names, music cues, and CDATA or split poster text; script title follows the concept", async () => {
+  const badTitle = run([{ text: JSON.stringify({ ...concept, characters: [...concept.characters.slice(0, 2), { name: "Daria", role: "r", description: "d" }] }) }]);
+  assert.equal((await badTitle.result).ok, false);
+  const music = { ...sizzle, shots: sizzle.shots.map((s, i) => (i === 0 ? { ...s, music: "the Daria theme, slowed" } : s)) };
+  const ok = run([{ text: JSON.stringify(concept) }, { text: screenplay.replace("Title: Pocket Static", "Title: Wrong Name") }, { text: JSON.stringify(music) }]);
+  await ok.result;
+  assert.equal((ok.saved.get("sizzle") as Sizzle).shots[0].music, "the theme, slowed");
+  assert.match(ok.saved.get("screenplay") as string, /^Title: Pocket Static$/m);
+  for (const poster of [`<svg><text><![CDATA[Daria]]></text></svg>`, `<svg><text>Da<tspan>ria</tspan></text></svg>`]) {
+    const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: poster }, { text: poster }]);
+    assert.equal((await r.result).ok, false, poster);
+  }
+});

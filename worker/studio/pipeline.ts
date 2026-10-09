@@ -25,7 +25,8 @@ export type StudioInput = {
 /** Renders the poster and keyframes from the sizzle; injected so the pipeline stays testable. */
 export type RenderArt = (sizzle: Sizzle) => Promise<Omit<Art, "posterSvg">>;
 
-export type StudioUsage = { input: number; output: number };
+/** Cache writes and reads are billed at different rates, so they are kept apart. */
+export type StudioUsage = { input: number; output: number; cacheWrite: number; cacheRead: number };
 
 class StepError extends Error {}
 
@@ -157,7 +158,7 @@ export async function runStudio(
   renderArt?: RenderArt,
 ): Promise<{ ok: boolean; usage: StudioUsage }> {
   const client = new Anthropic({ apiKey: options.apiKey, fetch: options.fetch, maxRetries: 1 });
-  const usage: StudioUsage = { input: 0, output: 0 };
+  const usage: StudioUsage = { input: 0, output: 0, cacheWrite: 0, cacheRead: 0 };
 
   const call = async (prompt: string, opts: { effort: "low" | "medium" | "high"; schema?: object }): Promise<string> => {
     const response = await client.beta.messages.create({
@@ -171,6 +172,8 @@ export async function runStudio(
     });
     usage.input += response.usage.input_tokens;
     usage.output += response.usage.output_tokens;
+    usage.cacheWrite += response.usage.cache_creation_input_tokens ?? 0;
+    usage.cacheRead += response.usage.cache_read_input_tokens ?? 0;
     await options.onUsage?.({ ...usage }).catch(() => {});
     if (response.stop_reason === "refusal") throw new StepError("The model declined this step. Try different sources.");
     if (response.stop_reason === "max_tokens") throw new StepError("The step ran out of room before finishing.");
@@ -215,6 +218,7 @@ export async function runStudio(
     concept.format = input.format;   // the format the user picked, everywhere
     if (!Array.isArray(concept.characters) || concept.characters.length < 3) throw new StepError("The concept came back with fewer than three characters.");
     concept.characters = concept.characters.slice(0, 5);
+    if ([concept.title, ...concept.characters.map((ch) => ch.name)].some(named)) throw new StepError("The concept reused a source property's name for its title or a character.");
     await save(step, concept);
     await emit({ type: "result", step, data: concept });
     const conceptJson = JSON.stringify(concept);
@@ -222,12 +226,16 @@ export async function runStudio(
     // 2. Opening pages (kept for development; the sizzle is what people watch)
     step = "screenplay";
     await emit({ type: "step", step });
-    const screenplay = await call(
+    let screenplay = await call(
       `Write the opening pages of this ${input.format}: about three minutes of screen time, roughly three pages.\nConcept: ${conceptJson}\n\nRequirements:\n- Fountain screenplay format, plain text only: scene headings like INT. PLACE - DAY, action lines, CHARACTER names in capitals on their own line before dialogue, parentheticals in brackets on their own line, transitions like CUT TO: on their own line.\n- Start with a title line "Title: <title>" then a blank line.\n- Open with a hook that sells the premise in the first 30 seconds and end on a button that makes the viewer want the next scene.\n- Only the new property's own characters and world.\n${input.format === "Video Game" ? "- For a video game, write the opening cinematic and the first playable moment, with gameplay described in action lines." : ""}`,
       { effort: "medium" },
     );
     if (screenplay.length < 400) throw new StepError("The opening pages came back too short.");
     if (named(screenplay)) throw new StepError("The opening pages used a source property's name.");
+    // The script's title page carries the concept title.
+    screenplay = /^\s*Title:.*$/im.test(screenplay)
+      ? screenplay.replace(/^\s*Title:.*$/im, `Title: ${concept.title}`)
+      : `Title: ${concept.title}\n\n${screenplay}`;
     await save(step, screenplay);
     await emit({ type: "result", step, data: screenplay });
 
@@ -259,7 +267,7 @@ export async function runStudio(
     const scrub = (text: string) => sourceNames.reduce((t, r) => t.replace(r, ""), text).replace(/\s{2,}/g, " ").trim();
     sizzle.poster_prompt = scrub(sizzle.poster_prompt);
     sizzle.style_bible = scrub(sizzle.style_bible);
-    sizzle.shots = sizzle.shots.map((s) => ({ ...s, image_prompt: scrub(s.image_prompt) }));
+    sizzle.shots = sizzle.shots.map((s) => ({ ...s, image_prompt: scrub(s.image_prompt), music: scrub(s.music) }));
     await save(step, sizzle);
     await emit({ type: "result", step, data: sizzle });
 
@@ -279,8 +287,11 @@ export async function runStudio(
       );
       const svg = sanitizeSvg(posterText);
       // The same rights guard as on-screen text: visible poster text must not name a source.
-      const visible = decodeXml((svg ?? "").replace(/<[^>]*>/g, " "));
-      art.posterSvg = svg && !named(visible) ? svg : null;
+      // Unwrap CDATA, then read the text both with tags as spaces and with tags removed,
+      // so a name split across <tspan>s ("Da<tspan>ria</tspan>") is still seen.
+      const raw = (svg ?? "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1");
+      const visible = [raw.replace(/<[^>]*>/g, " "), raw.replace(/<[^>]*>/g, "")].map(decodeXml);
+      art.posterSvg = svg && !visible.some(named) ? svg : null;
     }
     if (!art.posterImage && !art.posterSvg) throw new StepError("The poster could not be drawn.");
     await save(step, art);

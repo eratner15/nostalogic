@@ -17,6 +17,8 @@ CREATE TABLE IF NOT EXISTS studio_packages (
   session_key   TEXT NOT NULL,
   input_tokens  INTEGER NOT NULL DEFAULT 0,
   output_tokens INTEGER NOT NULL DEFAULT 0,
+  cache_write_tokens INTEGER NOT NULL DEFAULT 0,  -- prompt-cache writes (billed above input)
+  cache_read_tokens  INTEGER NOT NULL DEFAULT 0,  -- prompt-cache reads (billed below input)
   images        INTEGER NOT NULL DEFAULT 0,    -- images generated, for cost tracking
   hidden        INTEGER NOT NULL DEFAULT 0,    -- 1 = taken down by an admin (rights or abuse)
   created_at    TEXT NOT NULL DEFAULT (datetime('now'))

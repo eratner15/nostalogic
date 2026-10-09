@@ -184,4 +184,4 @@ npm run deploy
 - Limits: 5 packs per visitor IP per day (`STUDIO_DAILY_PER_IP`), 40 in total
   (`STUDIO_DAILY_TOTAL`). Each pack = 4-5 Claude calls plus up to 10 images.
 - Cost check:
-  `SELECT date(created_at), COUNT(*), SUM(input_tokens), SUM(output_tokens), SUM(images) FROM studio_packages GROUP BY 1`.
+  `SELECT date(created_at), COUNT(*), SUM(input_tokens), SUM(cache_write_tokens), SUM(cache_read_tokens), SUM(output_tokens), SUM(images) FROM studio_packages GROUP BY 1`.

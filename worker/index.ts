@@ -232,7 +232,10 @@ app.post("/studio", async (c) => {
         apiKey: c.env.ANTHROPIC_API_KEY!,
         model,
         // Billed usage is saved as it accrues, so an interrupted run still counts.
-        onUsage: async (u) => { await c.env.DB.prepare("UPDATE studio_packages SET input_tokens = ?, output_tokens = ? WHERE id = ?").bind(u.input, u.output, id).run(); },
+        onUsage: async (u) => {
+          await c.env.DB.prepare("UPDATE studio_packages SET input_tokens = ?, output_tokens = ?, cache_write_tokens = ?, cache_read_tokens = ? WHERE id = ?")
+            .bind(u.input, u.output, u.cacheWrite, u.cacheRead, id).run();
+        },
       }, async (event) => {
         if (event.type === "error") failure = event.message;
         await emit(event);
