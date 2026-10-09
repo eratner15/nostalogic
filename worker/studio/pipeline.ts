@@ -144,6 +144,8 @@ export function sourceAliases(name: string): string[] {
     out.add(n.replace(/^[*!#~_+.-]+|[*!#~_+.-]+$/g, ""));
     // Punctuation inside a multiword title ("Aaahh!!! Real Monsters" -> "Aaahh Real Monsters").
     if (/[!?.,:;*~_+'"-]/.test(n)) out.add(n.replace(/[!?.,:;*~_+'"-]+/g, " ").replace(/\s+/g, " ").trim());
+    // An ampersand is also written as "and" ("Kenan & Kel" -> "Kenan and Kel").
+    if (/\s&\s/.test(n)) out.add(n.replace(/\s+&\s+/g, " and "));
   }
   return [...out].filter((n) => n.length >= 3);
 }
@@ -163,6 +165,40 @@ function wordPattern(name: string, flags: string): RegExp {
   // Between words, any run of spaces or punctuation matches ("Kenan   & Kel", "Aaahh! Real Monsters").
   const body = name.trim().split(/\s+/).map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("[\\s!?.,:;*~_+'\"-]+");
   return new RegExp(`(?<![\\w])${body}(?![\\w])`, flags);
+}
+
+// Never-rendered containers: metadata, definitions, symbols, clip paths, masks, patterns, markers.
+const NEVER_RENDERED = /^(title|desc|metadata|defs|symbol|clipPath|mask|pattern|marker)$/i;
+// Hidden elements do not show a title either (display none, visibility hidden, opacity 0, font size 0).
+const HIDDEN = /(display\s*[:=]\s*["']?\s*none|visibility\s*[:=]\s*["']?\s*hidden|(?:opacity|font-size)\s*[:=]\s*["']?\s*0(\.0*)?(?:px|pt|em|rem|%)?(?![.\d\w]))/i;
+
+/**
+ * Removes every element whose opening tag matches, with its whole subtree.
+ * Tags are counted by depth, so a nested element of the same name does not end
+ * the removal early. An unclosed match removes the rest of the document.
+ */
+function dropSubtrees(xml: string, drop: (tag: string, name: string) => boolean): string {
+  let out = "";
+  let last = 0;
+  let depth = 0;
+  let skipTo = -1;   // the depth that ends the current removal; -1 when not removing
+  for (const m of xml.matchAll(/<(\/?)([\w:-]+)\b[^>]*?(\/?)>/g)) {
+    const [tag, close, name, self] = m;
+    const at = m.index ?? 0;
+    if (close) {
+      depth--;
+      if (skipTo >= 0 && depth === skipTo) { skipTo = -1; last = at + tag.length; }
+      continue;
+    }
+    if (skipTo < 0 && drop(tag, name)) {
+      out += xml.slice(last, at);
+      last = at + tag.length;
+      if (self) continue;
+      skipTo = depth;
+    }
+    if (!self) depth++;
+  }
+  return skipTo >= 0 ? out : out + xml.slice(last);
 }
 
 function sourceBrief(sources: PropertyScore[]) {
@@ -262,6 +298,8 @@ export async function runStudio(
     const castNames = concept.characters.map((ch) => ch.name.toLowerCase());
     if (castNames.some((n) => !n) || new Set(castNames).size !== castNames.length) throw new StepError("The concept needs three to five distinctly named characters.");
     if (concept.characters.some((ch) => !ch.role || !ch.description)) throw new StepError("Every character needs a role and a description.");
+    concept.new_elements = (Array.isArray(concept.new_elements) ? concept.new_elements : []).map((e) => String(e ?? "").trim()).filter(Boolean);
+    if (!concept.new_elements.length) throw new StepError("The concept did not say what is new.");
     // Every public concept field, except the intentional provenance (borrowed_mechanics)
     // and the risks, which may name a source to warn about closeness.
     const publicConcept = [
@@ -308,6 +346,8 @@ export async function runStudio(
       sizzle.shots = sizzle.shots.map((s) => ({ ...s, on_screen_text: s.on_screen_text.replace(old, concept.title) }));
     }
     sizzle.title = concept.title;
+    sizzle.tagline = String(sizzle.tagline ?? "").trim();
+    if (!sizzle.tagline) throw new StepError("The sizzle came back without a tagline.");
     if (sizzle.shots.length < 5 || sizzle.shots.length > 12) throw new StepError(`The sizzle came back with ${sizzle.shots.length} shots; the reel takes 5 to 12 (7 to 9 asked).`);
     sizzle.shots = sizzle.shots.map((s) => ({ ...s, seconds: Math.min(8, Math.max(3, Math.round(Number(s.seconds) || 5))) }));
     // The reel must name the property: make the last shot the title card if none is.
@@ -354,11 +394,7 @@ export async function runStudio(
       // wraps ("It" must not match "written").
       const title = wordPattern(concept.title.replace(/\s+/g, " ").trim(), "i");
       // The title must be in rendered text, not only in <title>, <desc>, <metadata>, or <defs>.
-      const rendered = raw
-        // Never-rendered containers: metadata, definitions, symbols, clip paths, masks, patterns, markers.
-        .replace(/<(title|desc|metadata|defs|symbol|clipPath|mask|pattern|marker)\b[\s\S]*?<\/\1>/gi, "")
-        // Hidden elements do not show a title either (display none, visibility hidden, opacity 0, font size 0).
-        .replace(/<(\w+)\b[^>]*(display\s*[:=]\s*["']?\s*none|visibility\s*[:=]\s*["']?\s*hidden|(?:opacity|font-size)\s*[:=]\s*["']?\s*0(\.0*)?(?:px|pt|em|rem|%)?(?![.\d\w]))[^>]*>[\s\S]*?<\/\1>/gi, "");
+      const rendered = dropSubtrees(raw, (tag, name) => NEVER_RENDERED.test(name) || HIDDEN.test(tag));
       const renderedText = [rendered.replace(/<[^>]*>/g, " "), rendered.replace(/<[^>]*>/g, "")]
         .map((t) => decodeXml(t).replace(/\s+/g, " ").trim());
       const showsTitle = renderedText.some((t) => title.test(t));
@@ -389,6 +425,10 @@ export async function runStudio(
     // The summary and every score note are the explanation people read; none may be blank.
     verdict.summary = String(verdict.summary ?? "").trim();
     if (!verdict.summary || scores.some((s) => !s!.note)) throw new StepError("The verdict came back without a summary or a note for every score.");
+    const list = (v: unknown) => (Array.isArray(v) ? v : []).map((e) => String(e ?? "").trim()).filter(Boolean);
+    verdict.next_steps = list(verdict.next_steps);
+    verdict.audience_test_questions = list(verdict.audience_test_questions);
+    if (!verdict.next_steps.length || !verdict.audience_test_questions.length) throw new StepError("The verdict came back without next steps or audience test questions.");
     verdict.scores = scores as Verdict["scores"];
     await save(step, verdict);
     await emit({ type: "result", step, data: verdict });

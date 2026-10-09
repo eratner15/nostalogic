@@ -24,7 +24,7 @@ export function sanitizeSvg(raw: string): string | null {
     .replace(/\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, "")
     .replace(/javascript:/gi, "")
     // Links that leave the document: only #fragment references survive.
-    .replace(/\s(?:xlink:)?href\s*=\s*("(?!#)[^"]*"|'(?!#)[^']*')/gi, "")
+    .replace(/\s(?:xlink:)?href\s*=\s*("(?!#)[^"]*"|'(?!#)[^']*'|(?!["'#])[^\s>]+)/gi, "")
     // Quoted and unquoted references are separate cases, so url("#g") survives.
     .replace(/url\(\s*(?:"(?!#)[^"]*"|'(?!#)[^']*'|(?!["'#])[^)]*)\s*\)/gi, "none");
   if (!/^<svg[\s>]/.test(svg)) return null;

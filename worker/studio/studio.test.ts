@@ -468,3 +468,19 @@ test("blank or source-only visual prompts fail; zero-size poster titles do not c
   assert.equal((await note.result).ok, false);
   assert.equal((await run([...art, { text: JSON.stringify(verdict) }]).result).ok, true);
 });
+
+test("nested hidden groups, unquoted hrefs, ampersand aliases, and blank tagline, new elements, or verdict lists", async () => {
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("Kenan & Kel").includes("Kenan and Kel"));
+  assert.ok(!sanitizeSvg(`<svg><filter><feImage href=https://example.com/p /></filter><text>X</text></svg>`)!.includes("example.com"));
+  const nested = `<svg viewBox="0 0 600 900"><g display="none"><g><rect/></g><text>POCKET STATIC</text></g><text>A NEW SHOW</text></svg>`;
+  const hidden = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: nested }, { text: nested }]);
+  assert.equal((await hidden.result).ok, false);
+  const shown = `<svg viewBox="0 0 600 900"><g display="none"><g><rect/></g></g><g><g><text>POCKET</text></g><text>STATIC</text></g></svg>`;
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: shown }, { text: JSON.stringify(verdict) }]).result).ok, true);
+  assert.equal((await run([{ text: JSON.stringify({ ...concept, new_elements: [" "] }) }]).result).ok, false);
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify({ ...sizzle, tagline: " " }) }]).result).ok, false);
+  const art = [{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: posterSvg }];
+  assert.equal((await run([...art, { text: JSON.stringify({ ...verdict, next_steps: [] }) }]).result).ok, false);
+  assert.equal((await run([...art, { text: JSON.stringify({ ...verdict, audience_test_questions: [""] }) }]).result).ok, false);
+});
