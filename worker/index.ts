@@ -193,9 +193,16 @@ app.post("/studio", async (c) => {
           () => renderToMedia(c.env, `studio/${id}/poster.png`, `${sizzle.poster_prompt}\n\nStyle: ${style}\nA theatrical movie poster, portrait one-sheet, professional key art.`, "1024x1536", "high"),
           ...sizzle.shots.map((shot, i) => () => renderToMedia(c.env, `studio/${id}/shot-${i + 1}.png`, `${style}\n\n${shot.image_prompt}\n\n${still}`, "1536x1024", "medium")),
         ];
-        const [poster, ...shots] = await mapLimit(jobs, 3);
-        imagesMade = [poster, ...shots].filter((r) => r.generated).length;   // billed, stored or not
-        await c.env.DB.prepare("UPDATE studio_packages SET images = ? WHERE id = ?").bind(imagesMade, id).run().catch(() => {});
+        // Count each billed image as it finishes, so an interrupted art step keeps its usage.
+        const counted = jobs.map((job) => async () => {
+          const r = await job();
+          if (r.generated) {
+            imagesMade++;
+            await c.env.DB.prepare("UPDATE studio_packages SET images = ? WHERE id = ?").bind(imagesMade, id).run().catch(() => {});
+          }
+          return r;
+        });
+        const [poster, ...shots] = await mapLimit(counted, 3);
         const failed = [poster, ...shots].filter((r) => !r.url).map((r) => r.error);
         return {
           posterImage: poster.url,

@@ -186,6 +186,11 @@ export async function runStudio(
   };
 
   const brief = sourceBrief(input.sources);
+  // Rights: no source name on screen, and none sent to the image model. Matching is
+  // whole-word, on the name as written and in capitals ("Daria", "DARIA"), so
+  // "friends" in prose does not trip "Friends".
+  const sourceNames = input.sources.flatMap((p) => [...new Set([p.name, p.name.toUpperCase()])].map((n) => wordPattern(n, "g")));
+  const named = (text: string) => sourceNames.some((r) => { r.lastIndex = 0; return r.test(text); });
   let step: StudioStep = "concept";
   try {
     // 1. Concept
@@ -222,6 +227,7 @@ export async function runStudio(
       { effort: "medium" },
     );
     if (screenplay.length < 400) throw new StepError("The opening pages came back too short.");
+    if (named(screenplay)) throw new StepError("The opening pages used a source property's name.");
     await save(step, screenplay);
     await emit({ type: "result", step, data: screenplay });
 
@@ -248,11 +254,6 @@ export async function runStudio(
     }
     const runtime = sizzleRuntime(sizzle);
     if (runtime < 30 || runtime > 75) throw new StepError(`The sizzle came back at ${runtime} seconds; it needs 45 to 60.`);
-    // Rights: no source name on screen, and none sent to the image model. Matching is
-    // whole-word, on the name as written and in capitals ("Daria", "DARIA"), so
-    // "friends" in prose does not trip "Friends".
-    const sourceNames = input.sources.flatMap((p) => [...new Set([p.name, p.name.toUpperCase()])].map((n) => wordPattern(n, "g")));
-    const named = (text: string) => sourceNames.some((r) => { r.lastIndex = 0; return r.test(text); });
     const onScreen = [sizzle.title, sizzle.tagline, ...sizzle.shots.flatMap((s) => [s.on_screen_text, s.speaker, s.line])];
     if (onScreen.some(named)) throw new StepError("The sizzle put a source property's name on screen.");
     const scrub = (text: string) => sourceNames.reduce((t, r) => t.replace(r, ""), text).replace(/\s{2,}/g, " ").trim();

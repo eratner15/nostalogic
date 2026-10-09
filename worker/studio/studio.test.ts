@@ -302,3 +302,9 @@ test("poster text with XML entities is decoded before the source-name check", as
   assert.equal(res.ok, false);
   assert.equal((events.at(-1) as { step?: string }).step, "art");
 });
+
+test("opening pages that name a source fail the screenplay step", async () => {
+  const r = run([{ text: JSON.stringify(concept) }, { text: `${screenplay}\n\nVERA\nIt's like a Tamagotchi, but mean.` }]);
+  assert.equal((await r.result).ok, false);
+  assert.equal((r.events.at(-1) as { step?: string }).step, "screenplay");
+});
