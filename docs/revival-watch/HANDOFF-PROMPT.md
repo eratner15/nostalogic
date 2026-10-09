@@ -139,7 +139,7 @@ Run `ant apply --dry-run -v` on the five base files and show Evan the plan. Conf
 
 - The org is "Evan's Individual Organization" and holds the $200 promotional credit. The credit expires 2026-10-22 and auto-reload is off.
 - The budget cap is $5 a run (`deployments/revival-watch-weekly.md`).
-- The schedule is Monday 07:32 America/New_York.
+- The schedule is Monday 13:32 America/New_York (after the weekly snapshot).
 
 Ask for an explicit go.
 
