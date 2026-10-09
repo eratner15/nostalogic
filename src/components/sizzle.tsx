@@ -5,9 +5,13 @@ import { Check, Clapperboard, Download, Loader2, Music2, Pause, Play, RotateCcw,
 import { cn } from "@/lib/utils";
 import { sizzleRuntime, type CameraMove, type Sizzle } from "@/lib/studio";
 
-const W = 1280;
-const H = 720;
-const BAR = Math.round((H - W / 2.39) / 2); // letterbox to 2.39:1
+type Aspect = "wide" | "vertical";
+/** wide: 16:9 with a 2.39:1 letterbox. vertical: 9:16 full-bleed for TikTok, Reels, and Shorts. */
+const FRAME: Record<Aspect, { w: number; h: number; bar: number }> = {
+  wide: { w: 1280, h: 720, bar: Math.round((720 - 1280 / 2.39) / 2) },
+  vertical: { w: 720, h: 1280, bar: 0 },
+};
+const WATERMARK = "NOSTALDAMUS STUDIO";
 const FADE = 0.6; // seconds of crossfade into the next shot
 
 type Timed = { start: number; end: number };
@@ -102,6 +106,9 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
   const [exporting, setExporting] = useState(false);
   const [copied, setCopied] = useState(false);
   const [ready, setReady] = useState(0);
+  const [aspect, setAspect] = useState<Aspect>("wide");
+  const { w: W, h: H, bar: BAR } = FRAME[aspect];
+  const vertical = aspect === "vertical";
 
   const total = sizzleRuntime(sizzle);
   const timeline: Timed[] = useMemo(() => {
@@ -146,14 +153,14 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
       ctx.fillStyle = "rgba(237,230,214,0.6)";
       ctx.font = "italic 26px Georgia, serif";
       ctx.textAlign = "center";
-      wrap(ctx, shot.image_prompt, 860).slice(0, 5).forEach((l, n, arr) => ctx.fillText(l, W / 2, H / 2 - (arr.length - 1) * 18 + n * 36));
+      wrap(ctx, shot.image_prompt, Math.min(860, W - 120)).slice(0, 5).forEach((l, n, arr) => ctx.fillText(l, W / 2, H / 2 - (arr.length - 1) * 18 + n * 36));
     }
     if (shot.on_screen_text) {
       ctx.fillStyle = `rgba(0,0,0,${0.5 * Math.min(1, p * 3)})`;
       ctx.fillRect(0, 0, W, H);
     }
     ctx.restore();
-  }, [sizzle]);
+  }, [sizzle, W, H]);
 
   const draw = useCallback((t: number) => {
     const ctx = canvas.current?.getContext("2d");
@@ -182,10 +189,10 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
       ctx.fillStyle = "#f2ede0";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      const size = shot.on_screen_text.length > 22 ? 64 : 92;
+      const size = vertical ? (shot.on_screen_text.length > 14 ? 54 : 76) : shot.on_screen_text.length > 22 ? 64 : 92;
       ctx.font = `500 ${size}px ${displayFont}`;
       if ("letterSpacing" in ctx) (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing = `${(2 + 6 * p).toFixed(1)}px`;
-      wrap(ctx, shot.on_screen_text.toUpperCase(), W - 200).slice(0, 2).forEach((l, n, arr) => ctx.fillText(l, W / 2, H / 2 + (n - (arr.length - 1) / 2) * size * 1.1));
+      wrap(ctx, shot.on_screen_text.toUpperCase(), W - (vertical ? 100 : 200)).slice(0, vertical ? 3 : 2).forEach((l, n, arr) => ctx.fillText(l, W / 2, H / 2 + (n - (arr.length - 1) / 2) * size * 1.1));
       ctx.restore();
     }
 
@@ -196,14 +203,32 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
       ctx.globalAlpha = a;
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      ctx.font = "500 26px Inter, system-ui, sans-serif";
+      ctx.font = `600 ${vertical ? 34 : 26}px Inter, system-ui, sans-serif`;
       const text = shot.speaker && shot.speaker !== "NARRATOR" ? `${shot.speaker}: ${shot.line}` : shot.line;
-      const lines = wrap(ctx, text, W - 240).slice(0, 2);
+      const lineHeight = vertical ? 44 : 30;
+      const lines = wrap(ctx, text, W - (vertical ? 100 : 240)).slice(0, vertical ? 3 : 2);
+      // Vertical has no letterbox: captions sit in the lower third on a dark band.
+      const centerY = vertical ? H * 0.74 : H - BAR / 2;
+      if (vertical) {
+        ctx.fillStyle = "rgba(0,0,0,0.55)";
+        ctx.fillRect(0, centerY - (lines.length * lineHeight) / 2 - 18, W, lines.length * lineHeight + 36);
+      }
       ctx.fillStyle = "#ffffff";
-      lines.forEach((l, n) => ctx.fillText(l, W / 2, H - BAR / 2 + (n - (lines.length - 1) / 2) * 30));
+      lines.forEach((l, n) => ctx.fillText(l, W / 2, centerY + (n - (lines.length - 1) / 2) * lineHeight));
       ctx.restore();
     }
-  }, [timeline, total, sizzle, drawShot, displayFont]);
+
+    // Watermark, so a reposted clip still points back to the studio.
+    ctx.save();
+    ctx.globalAlpha = 0.7;
+    ctx.fillStyle = "#f2ede0";
+    ctx.font = `500 ${vertical ? 20 : 14}px "IBM Plex Mono", ui-monospace, monospace`;
+    ctx.textBaseline = "middle";
+    if ("letterSpacing" in ctx) (ctx as CanvasRenderingContext2D & { letterSpacing: string }).letterSpacing = "3px";
+    ctx.textAlign = vertical ? "center" : "right";
+    ctx.fillText(WATERMARK, vertical ? W / 2 : W - 28, vertical ? 64 : BAR / 2);
+    ctx.restore();
+  }, [timeline, total, sizzle, drawShot, displayFont, W, H, BAR, vertical]);
 
   // First frame, and redraw when images arrive.
   useEffect(() => { if (!playing) draw(time); }, [draw, ready, playing, time]);
@@ -269,7 +294,7 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
       const blob = new Blob(chunks, { type: rec.mimeType || "video/webm" });
       const a = document.createElement("a");
       a.href = URL.createObjectURL(blob);
-      a.download = `${sizzle.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-sizzle.${blob.type.includes("mp4") ? "mp4" : "webm"}`;
+      a.download = `${sizzle.title.toLowerCase().replace(/[^a-z0-9]+/g, "-")}-sizzle${vertical ? "-vertical" : ""}.${blob.type.includes("mp4") ? "mp4" : "webm"}`;
       a.click();
       setExporting(false);
     };
@@ -304,7 +329,7 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
         <span className="chip">{imageCount ? `${imageCount} generated keyframes` : "Text cards (no image model)"}</span>
       </div>
       <div className="p-5">
-        <canvas ref={canvas} width={W} height={H} className="mx-auto block aspect-video w-full max-w-4xl rounded-md bg-black" />
+        <canvas ref={canvas} width={W} height={H} className={cn("mx-auto block w-full rounded-md bg-black", vertical ? "aspect-[9/16] max-w-xs" : "aspect-video max-w-4xl")} />
         <div className="mx-auto mt-2 flex h-1 max-w-4xl gap-px">
           {timeline.map((s, i) => (
             <button
@@ -327,6 +352,19 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
             </button>
             <button onClick={() => { stop(); setTime(0); draw(0); }} className="rounded border border-border p-2 text-muted-foreground hover:text-foreground" aria-label="Restart"><RotateCcw className="h-4 w-4" /></button>
             <button onClick={() => setMusic((m) => !m)} className={cn("inline-flex items-center gap-1.5 rounded border px-2.5 py-2 text-xs", music ? "border-primary/50 text-primary" : "border-border text-muted-foreground")}><Music2 className="h-3.5 w-3.5" /> Score</button>
+            <div className="inline-flex overflow-hidden rounded border border-border text-xs" role="group" aria-label="Frame">
+              {(["wide", "vertical"] as const).map((a) => (
+                <button
+                  key={a}
+                  onClick={() => { if (a !== aspect) { stop(); setAspect(a); } }}
+                  disabled={exporting}
+                  aria-pressed={aspect === a}
+                  className={cn("px-2.5 py-2", aspect === a ? "bg-primary/15 text-primary" : "text-muted-foreground hover:text-foreground")}
+                >
+                  {a === "wide" ? "16:9" : "9:16"}
+                </button>
+              ))}
+            </div>
             <button onClick={() => setVoice((v) => !v)} className={cn("inline-flex items-center gap-1.5 rounded border px-2.5 py-2 text-xs", voice ? "border-primary/50 text-primary" : "border-border text-muted-foreground")}>{voice ? <Volume2 className="h-3.5 w-3.5" /> : <VolumeX className="h-3.5 w-3.5" />} Voice</button>
           </div>
           <div className="flex items-center gap-2">
@@ -344,7 +382,7 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
           </div>
         </div>
         <p className="mx-auto mt-3 max-w-4xl text-xs leading-5 text-muted-foreground">
-          Export records the sizzle in real time with the score and burned-in captions (browser voice cannot be recorded). For a polished MP4, paste the Claude Motion prompt into claude.ai with /motion.
+          Export records the sizzle in real time with the score and burned-in captions (browser voice cannot be recorded). Pick 9:16 for TikTok, Reels, and Shorts. For a polished MP4, paste the Claude Motion prompt into claude.ai with /motion.
         </p>
         <details className="mx-auto mt-4 max-w-4xl text-sm">
           <summary className="cursor-pointer text-muted-foreground hover:text-foreground">Shot list</summary>

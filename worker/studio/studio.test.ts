@@ -140,3 +140,19 @@ test("sanitizeSvg rejects text with no svg and adds a namespace", () => {
   assert.equal(sanitizeSvg("no drawing here"), null);
   assert.match(sanitizeSvg("<svg viewBox='0 0 10 10'><rect/></svg>") ?? "", /xmlns="http:\/\/www.w3.org\/2000\/svg"/);
 });
+
+test("shareCard builds an absolute poster URL, and shareTags escapes model text", async () => {
+  const { shareCard, shareTags } = await import("./share");
+  const row = {
+    concept: JSON.stringify({ ...concept, title: `Pocket "Static" <b>` }),
+    sizzle: JSON.stringify(sizzle),
+    art: JSON.stringify({ posterImage: "/api/media/studio/x/poster.png", posterSvg: null, shotImages: [], note: null }),
+  };
+  const card = shareCard(row, "https://nostalogic.cafecito-ai.com", "abc");
+  assert.equal(card?.image, "https://nostalogic.cafecito-ai.com/api/media/studio/x/poster.png");
+  assert.equal(card?.url, "https://nostalogic.cafecito-ai.com/studio/?id=abc");
+  const tags = shareTags(card!);
+  assert.match(tags, /og:title" content="Pocket &quot;Static&quot; &lt;b&gt; · NostalDamus Studio"/);
+  assert.match(tags, /twitter:card" content="summary_large_image"/);
+  assert.equal(shareCard({ concept: "not json" }, "https://x", "abc"), null);
+});

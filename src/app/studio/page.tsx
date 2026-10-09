@@ -3,7 +3,7 @@
 import { Suspense, useEffect, useMemo, useRef, useState } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
-import { Check, Copy, Download, Film, Loader2, Plus, Sparkles, TriangleAlert, X } from "lucide-react";
+import { Check, Download, Film, Loader2, Plus, Share2, Sparkles, TriangleAlert, X } from "lucide-react";
 import { PageHeader } from "@/components/brand";
 import { SizzlePlayer } from "@/components/sizzle";
 import { ConceptView, PosterView, ScreenplayView, VerdictView, download, slugify } from "@/components/studio";
@@ -53,6 +53,43 @@ async function* readEvents(body: ReadableStream<Uint8Array>): AsyncGenerator<Rec
       }
     }
   }
+}
+
+type GalleryPack = { id: string; format: string; title: string; logline: string; tagline: string | null; poster: string | null; verdict: string | null };
+
+/** The public gallery: the latest finished packs, each a shareable page. */
+function RecentPacks() {
+  const [packs, setPacks] = useState<GalleryPack[] | null>(null);
+  useEffect(() => {
+    fetch("/api/studio").then((r) => (r.ok ? r.json() : { packs: [] })).then((d) => setPacks(d.packs ?? [])).catch(() => setPacks([]));
+  }, []);
+  if (!packs?.length) return null;
+  return (
+    <section className="mt-10">
+      <div className="mb-4 flex items-end justify-between gap-3">
+        <div>
+          <p className="eyebrow">Gallery</p>
+          <h2 className="display mt-1 text-2xl">Recent packs</h2>
+        </div>
+        <p className="text-xs text-muted-foreground">Each pack has its own link, poster preview, and sizzle.</p>
+      </div>
+      <ul className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
+        {packs.map((p) => (
+          <li key={p.id}>
+            <a href={`/studio/?id=${p.id}`} className="group block">
+              <div className="aspect-[2/3] overflow-hidden rounded-md border border-border bg-muted">
+                {p.poster
+                  ? <img src={p.poster} alt={`${p.title} poster`} loading="lazy" className="h-full w-full object-cover transition group-hover:scale-[1.03]" />
+                  : <div className="flex h-full items-center justify-center p-3 text-center display text-lg leading-tight text-foreground">{p.title}</div>}
+              </div>
+              <p className="mt-2 truncate text-sm font-medium text-foreground group-hover:text-primary">{p.title}</p>
+              <p className="truncate text-xs text-muted-foreground">{p.format}{p.verdict ? ` · ${p.verdict}` : ""}</p>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
 }
 
 const stepKey: Record<StudioStep, keyof Parts> = {
@@ -164,10 +201,17 @@ function StudioContent() {
           <div className="flex flex-wrap gap-2">
             {packageId && (
               <button
-                onClick={async () => { try { await navigator.clipboard.writeText(shareUrl); setCopied(true); window.setTimeout(() => setCopied(false), 1400); } catch { /* clipboard blocked */ } }}
+                onClick={async () => {
+                  // Phones get the native share sheet; desktops copy the link.
+                  if (navigator.share) {
+                    try { await navigator.share({ title: `${title} · NostalDamus Studio`, text: parts.concept?.logline, url: shareUrl }); } catch { /* dismissed */ }
+                    return;
+                  }
+                  try { await navigator.clipboard.writeText(shareUrl); setCopied(true); window.setTimeout(() => setCopied(false), 1400); } catch { /* clipboard blocked */ }
+                }}
                 className="inline-flex items-center gap-2 rounded border border-border px-3 py-2 text-sm text-muted-foreground hover:text-foreground"
               >
-                {copied ? <Check className="h-4 w-4" /> : <Copy className="h-4 w-4" />} {copied ? "Copied" : "Share link"}
+                {copied ? <Check className="h-4 w-4" /> : <Share2 className="h-4 w-4" />} {copied ? "Link copied" : "Share"}
               </button>
             )}
             {parts.concept && (
@@ -223,6 +267,8 @@ function StudioContent() {
           </div>
         </section>
       )}
+
+      {!hasPackage && <RecentPacks />}
 
       {hasPackage && (
         <ol className="mb-8 grid gap-2 sm:grid-cols-5">

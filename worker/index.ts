@@ -19,6 +19,7 @@ import { runSignals, yesterday } from "./signals";
 import { runStudio } from "./studio/pipeline";
 import { STUDIO_FORMATS, type Sizzle, type StudioEvent, type StudioPackage, type StudioStep } from "../src/lib/studio";
 import { renderToMedia, type ImageEnv } from "./studio/images";
+import { shareCard, shareTags } from "./studio/share";
 
 type Env = AgentEnv & ImageEnv & {
   DB: D1Database;
@@ -229,8 +230,33 @@ app.post("/studio", async (c) => {
   });
 });
 
+/** Public gallery: the latest finished packs that an admin has not taken down. */
+app.get("/studio", async (c) => {
+  const { results } = await c.env.DB.prepare(
+    `SELECT id, format, concept, sizzle, art, verdict, created_at FROM studio_packages
+     WHERE status = 'done' AND hidden = 0 ORDER BY created_at DESC LIMIT 24`,
+  ).all<Record<string, string | null>>();
+  const parse = <T,>(v: string | null): T | null => { try { return v ? JSON.parse(v) as T : null; } catch { return null; } };
+  const packs = results.flatMap((r) => {
+    const concept = parse<{ title: string; logline: string }>(r.concept);
+    if (!concept) return [];
+    return [{
+      id: r.id,
+      format: r.format,
+      title: concept.title,
+      logline: concept.logline,
+      tagline: parse<Sizzle>(r.sizzle)?.tagline ?? null,
+      poster: parse<{ posterImage: string | null }>(r.art)?.posterImage ?? null,
+      verdict: parse<{ verdict: string }>(r.verdict)?.verdict ?? null,
+      createdAt: r.created_at,
+    }];
+  });
+  c.header("cache-control", "public, max-age=60");
+  return c.json({ packs });
+});
+
 app.get("/studio/:id", async (c) => {
-  const r = await c.env.DB.prepare("SELECT * FROM studio_packages WHERE id = ?").bind(c.req.param("id")).first<Record<string, string | null>>();
+  const r = await c.env.DB.prepare("SELECT * FROM studio_packages WHERE id = ? AND hidden = 0").bind(c.req.param("id")).first<Record<string, string | null>>();
   if (!r) return c.json({ error: "not found" }, 404);
   const parse = (v: string | null) => (v ? JSON.parse(v) : null);
   const pkg: StudioPackage = {
@@ -398,6 +424,21 @@ async function ledgerDue(env: Env, now: Date): Promise<boolean> {
 
 const CANONICAL = "https://nostalogic.cafecito-ai.com";
 
+/** The Studio page with this pack's title, logline, and poster as its link preview. */
+async function studioPage(req: Request, env: Env, id: string): Promise<Response> {
+  const page = await env.ASSETS.fetch(req);
+  if (!page.ok) return page;
+  const row = await env.DB.prepare("SELECT concept, sizzle, art FROM studio_packages WHERE id = ? AND hidden = 0")
+    .bind(id).first<Record<string, unknown>>().catch(() => null);
+  const card = row ? shareCard(row, CANONICAL, id) : null;
+  if (!card) return page;
+  return new HTMLRewriter()
+    .on('meta[property^="og:"], meta[name^="twitter:"], meta[name="description"]', { element(el) { el.remove(); } })
+    .on("title", { element(el) { el.setInnerContent(`${card.title} · NostalDamus Studio`); } })
+    .on("head", { element(el) { el.append(shareTags(card), { html: true }); } })
+    .transform(page);
+}
+
 export default {
   async fetch(req: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(req.url);
@@ -408,6 +449,8 @@ export default {
       return Response.redirect(`${CANONICAL}${rest}${url.search}`, 301);
     }
     if (url.pathname.startsWith("/api")) return app.fetch(req, env, ctx);
+    const packId = url.searchParams.get("id") ?? "";
+    if (url.pathname === "/studio/" && /^[0-9a-f-]{36}$/.test(packId)) return studioPage(req, env, packId);
     return env.ASSETS.fetch(req);
   },
 

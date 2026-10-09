@@ -18,6 +18,8 @@ CREATE TABLE IF NOT EXISTS studio_packages (
   input_tokens  INTEGER NOT NULL DEFAULT 0,
   output_tokens INTEGER NOT NULL DEFAULT 0,
   images        INTEGER NOT NULL DEFAULT 0,    -- images generated, for cost tracking
+  hidden        INTEGER NOT NULL DEFAULT 0,    -- 1 = taken down by an admin (rights or abuse)
   created_at    TEXT NOT NULL DEFAULT (datetime('now'))
 );
 CREATE INDEX IF NOT EXISTS idx_studio_created ON studio_packages(created_at DESC);
+CREATE INDEX IF NOT EXISTS idx_studio_gallery ON studio_packages(status, hidden, created_at DESC);
