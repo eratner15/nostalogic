@@ -190,7 +190,7 @@ app.post("/studio", async (c) => {
         const still = "Cinematic film still, widescreen composition. No text, captions, letters, logos, or watermarks.";
         // Three at a time: each decoded PNG is several MB, and the isolate has 128 MB.
         const jobs = [
-          () => renderToMedia(c.env, `studio/${id}/poster.png`, `${sizzle.poster_prompt}\n\nStyle: ${style}\nA theatrical movie poster, portrait one-sheet, professional key art.`, "1024x1536", "high"),
+          () => renderToMedia(c.env, `studio/${id}/poster.png`, `${sizzle.poster_prompt}\n\nStyle: ${style}\nA theatrical movie poster, portrait one-sheet, professional key art. The only title on the poster is "${sizzle.title}". Tagline: "${sizzle.tagline}". No other names or titles.`, "1024x1536", "high"),
           ...sizzle.shots.map((shot, i) => () => renderToMedia(c.env, `studio/${id}/shot-${i + 1}.png`, `${style}\n\n${shot.image_prompt}\n\n${still}`, "1536x1024", "medium")),
         ];
         // Count each billed image as it finishes, so an interrupted art step keeps its usage.
@@ -241,8 +241,8 @@ app.post("/studio", async (c) => {
         if (event.type === "error") failure = event.message;
         await emit(event);
       }, save, renderArt);
-      await c.env.DB.prepare("UPDATE studio_packages SET status = ?, error = ?, input_tokens = ?, output_tokens = ?, images = ? WHERE id = ?")
-        .bind(result.ok ? "done" : "error", failure, result.usage.input, result.usage.output, imagesMade, id).run();
+      await c.env.DB.prepare("UPDATE studio_packages SET status = ?, error = ?, input_tokens = ?, output_tokens = ?, cache_write_tokens = ?, cache_read_tokens = ?, images = ? WHERE id = ?")
+        .bind(result.ok ? "done" : "error", failure, result.usage.input, result.usage.output, result.usage.cacheWrite, result.usage.cacheRead, imagesMade, id).run();
       if (result.ok) await emit({ type: "done", id });
     } catch {
       await c.env.DB.prepare("UPDATE studio_packages SET status = 'error', error = ? WHERE id = ?").bind("unexpected failure", id).run().catch(() => {});

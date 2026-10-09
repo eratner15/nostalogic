@@ -5,7 +5,7 @@
  */
 import type { Art, Concept, Sizzle } from "../../src/lib/studio";
 
-export type ShareCard = { title: string; description: string; image: string | null; url: string };
+export type ShareCard = { title: string; description: string; image: string | null; imageSize: [number, number]; url: string };
 
 const parse = <T>(v: unknown): T | null => {
   if (typeof v !== "string" || !v) return null;
@@ -17,11 +17,13 @@ export function shareCard(row: { concept?: unknown; sizzle?: unknown; art?: unkn
   if (!concept?.title) return null;
   const sizzle = parse<Sizzle>(row.sizzle);
   const art = parse<Art>(row.art);
-  const poster = art?.posterImage?.startsWith("/api/media/") ? `${origin}${art.posterImage}` : null;
+  // SVG posters do not unfurl on most networks: fall back to the site card image, not none.
+  const poster = art?.posterImage?.startsWith("/api/media/") ? `${origin}${art.posterImage}` : `${origin}/og.png`;
   return {
     title: concept.title.slice(0, 120),
     description: [sizzle?.tagline, concept.logline].filter(Boolean).join(" ").slice(0, 300),
     image: poster,
+    imageSize: art?.posterImage ? [1024, 1536] : [1680, 945],
     url: `${origin}/studio/?id=${id}`,
   };
 }
@@ -41,7 +43,7 @@ export function shareTags(card: ShareCard): string {
     ["name", "twitter:description", card.description],
   ];
   if (card.image) {
-    tags.push(["property", "og:image", card.image], ["property", "og:image:width", "1024"], ["property", "og:image:height", "1536"], ["name", "twitter:image", card.image]);
+    tags.push(["property", "og:image", card.image], ["property", "og:image:width", String(card.imageSize[0])], ["property", "og:image:height", String(card.imageSize[1])], ["name", "twitter:image", card.image]);
   }
   return tags.map(([attr, key, value]) => `<meta ${attr}="${key}" content="${esc(value)}">`).join("");
 }

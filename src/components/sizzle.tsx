@@ -105,6 +105,7 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
   const [voice, setVoice] = useState(false);
   const [exporting, setExporting] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [exportNote, setExportNote] = useState<string | null>(null);
   const [ready, setReady] = useState(0);
   const [aspect, setAspect] = useState<Aspect>("wide");
   const { w: W, h: H, bar: BAR } = FRAME[aspect];
@@ -332,6 +333,21 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
       setExporting(false);
     };
     recorder.current = rec;
+    setExportNote(null);
+    // Hidden tabs throttle animation frames while the clock runs on, which would record
+    // a frozen reel. Cancel instead, and say why.
+    const onHide = () => {
+      if (!document.hidden || recorder.current !== rec) return;
+      rec.onstop = null;
+      if (rec.state !== "inactive") rec.stop();
+      rec.stream.getTracks().forEach((t) => t.stop());
+      recorder.current = null;
+      stop();
+      setExporting(false);
+      setExportNote("Export stopped because the tab was hidden. Keep this tab visible while it records.");
+    };
+    document.addEventListener("visibilitychange", onHide);
+    rec.addEventListener("stop", () => document.removeEventListener("visibilitychange", onHide));
     rec.start(250);
   };
 
@@ -416,6 +432,7 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
           </div>
         </div>
         <p className="mx-auto mt-3 max-w-4xl text-xs leading-5 text-muted-foreground">
+          {exportNote && <span className="mb-1 block text-primary">{exportNote}</span>}
           Export records the sizzle in real time with the score and burned-in captions (browser voice cannot be recorded). Pick 9:16 for TikTok, Reels, and Shorts. For a polished MP4, paste the Claude Motion prompt into claude.ai with /motion.
         </p>
         <details className="mx-auto mt-4 max-w-4xl text-sm">

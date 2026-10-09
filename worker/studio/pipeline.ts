@@ -120,6 +120,28 @@ const verdictSchema = {
   },
 };
 
+/**
+ * The names a source goes by, beyond its catalog label: "AOL Instant Messenger (AIM)"
+ * also means "AOL Instant Messenger" and "AIM"; "Xena: Warrior Princess" also means
+ * "Xena"; "The Mighty Ducks (D2 era)" also means "Mighty Ducks". "...era" notes and
+ * fragments under three characters are not names.
+ */
+export function sourceAliases(name: string): string[] {
+  const out = new Set<string>([name]);
+  const base = name.replace(/\s*\([^)]*\)\s*/g, " ").trim();
+  out.add(base);
+  for (const [, inner] of name.matchAll(/\(([^)]*)\)/g)) {
+    if (!/\bera\b/i.test(inner)) out.add(inner.trim());
+    for (const [, quoted] of inner.matchAll(/'([^']+)'/g)) out.add(quoted.trim());
+  }
+  for (const n of [...out]) {
+    if (n.includes(":")) out.add(n.split(":")[0].trim());
+    for (const part of n.split("/")) out.add(part.replace(/\s+(TV|Books?|Series|Film)$/i, "").trim());
+    if (/^The\s/.test(n)) out.add(n.replace(/^The\s+/, ""));
+  }
+  return [...out].filter((n) => n.length >= 3);
+}
+
 /** Decodes the XML entities a poster's text can use, so "Kenan &amp; Kel" reads as "Kenan & Kel". */
 function decodeXml(text: string): string {
   return text
@@ -192,7 +214,10 @@ export async function runStudio(
   // Rights: no source name on screen, and none sent to the image model. Matching is
   // whole-word, on the name as written and in capitals ("Daria", "DARIA"), so
   // "friends" in prose does not trip "Friends".
-  const sourceNames = input.sources.flatMap((p) => [...new Set([p.name, p.name.toUpperCase()])].map((n) => wordPattern(n, "g")));
+  const sourceNames = input.sources
+    .flatMap((p) => sourceAliases(p.name))
+    .flatMap((n) => [...new Set([n, n.toUpperCase()])])
+    .map((n) => wordPattern(n, "g"));
   const named = (text: string) => sourceNames.some((r) => { r.lastIndex = 0; return r.test(text); });
   let step: StudioStep = "concept";
   try {

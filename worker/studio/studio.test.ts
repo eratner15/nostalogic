@@ -334,3 +334,20 @@ test("source names anywhere public in the concept fail; a renamed tagline follow
   await r.result;
   assert.equal((r.saved.get("sizzle") as Sizzle).tagline, `${concept.title} rates everyone.`);
 });
+
+test("source aliases cover qualifiers, subtitles, and parenthetical short names", async () => {
+  const { sourceAliases } = await import("./pipeline");
+  assert.deepEqual(new Set(sourceAliases("AOL Instant Messenger (AIM)")), new Set(["AOL Instant Messenger (AIM)", "AOL Instant Messenger", "AIM"]));
+  assert.ok(sourceAliases("Xena: Warrior Princess").includes("Xena"));
+  assert.ok(sourceAliases("The Mighty Ducks (D2 era)").includes("Mighty Ducks"));
+  assert.ok(!sourceAliases("The Mighty Ducks (D2 era)").includes("D2 era"));
+  assert.ok(sourceAliases("Goosebumps TV/Books").includes("Goosebumps"));
+  assert.ok(sourceAliases("Aqua ('Barbie Girl' era)").includes("Barbie Girl"));
+});
+
+test("an SVG-only pack still shares with the site card image", async () => {
+  const { shareCard } = await import("./share");
+  const card = shareCard({ concept: JSON.stringify(concept), art: JSON.stringify({ posterImage: null, posterSvg: "<svg/>", shotImages: [], note: null }) }, "https://x.test", "abc");
+  assert.equal(card?.image, "https://x.test/og.png");
+  assert.deepEqual(card?.imageSize, [1680, 945]);
+});
