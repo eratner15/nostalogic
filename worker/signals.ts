@@ -37,9 +37,13 @@ export async function runSignals(env: SignalEnv, now: Date, fetcher: typeof fetc
      LIMIT ?`,
   ).bind(y, limit).all<Pair>();
 
-  const log = { pairs: results.length, ok: 0, gap: 0 };
+  const log = { pairs: results.length, ok: 0, gap: 0, skipped: 0 };
   let lastArctic = false;
+  // Arctic Shift rate-limits by address, and Workers share outbound addresses.
+  // After one 429 that survives a retry, the rest of this run would fail too.
+  let arcticLimited = false;
   for (const pair of results) {
+    if (pair.source === "arcticshift" && arcticLimited) { log.skipped++; continue; }
     if (pair.source === "arcticshift" && lastArctic) await pause(1000);
     lastArctic = pair.source === "arcticshift";
     const from = pair.read_to ? addDays(pair.read_to, 1) : addDays(y, -(BACKFILL_DAYS - 1));
@@ -53,6 +57,7 @@ export async function runSignals(env: SignalEnv, now: Date, fetcher: typeof fetc
     }
     if (!res.ok) {
       log.gap++;
+      if (pair.source === "arcticshift" && /\bHTTP 429\b/.test(res.error)) arcticLimited = true;
       await env.DB.batch([
         env.DB.prepare(
           "INSERT INTO signal_readings (property_id, source, status, detail) VALUES (?, ?, 'gap', ?)",
@@ -119,12 +124,19 @@ export async function fetchWikipedia(fetcher: typeof fetch, title: string, from:
 
 const pause = (ms: number) => new Promise((r) => setTimeout(r, ms));
 
-/** Arctic Shift answers 422 "Timeout. Maybe slow down a bit" at random. Retry once. */
+/**
+ * Arctic Shift answers 422 "Timeout. Maybe slow down a bit" at random, and 429
+ * when an address is over its quota, with x-ratelimit-reset in seconds. Retry once.
+ */
 async function arcticGet(fetcher: typeof fetch, url: string): Promise<Response> {
   const init = { headers: { "user-agent": UA, accept: "application/json" } };
   const res = await fetcher(url, init);
-  if (res.status !== 422) return res;
-  await pause(3000);
+  if (res.status !== 422 && res.status !== 429) return res;
+  const reset = Number(res.headers.get("x-ratelimit-reset"));
+  const wait = res.status === 429 && res.headers.has("x-ratelimit-reset") && Number.isFinite(reset) && reset >= 0
+    ? Math.min(reset, 20) * 1000 + 250
+    : 3000;
+  await pause(wait);
   return fetcher(url, init);
 }
 
