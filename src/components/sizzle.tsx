@@ -116,16 +116,25 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
     return sizzle.shots.map((s) => { const start = t; t += Math.max(1, s.seconds); return { start, end: t }; });
   }, [sizzle]);
 
-  // Load keyframes (same-origin, so the canvas stays exportable).
+  // Load keyframes (same-origin, so the canvas stays exportable). Keyed on the
+  // URLs, not the array, so a parent re-render does not reload them.
+  const imageKey = images.join("|");
+  const [settled, setSettled] = useState(0);
   useEffect(() => {
-    loaded.current = images.map(() => null);
-    images.forEach((src, i) => {
+    let alive = true;
+    const srcs = imageKey.split("|");
+    loaded.current = srcs.map(() => null);
+    setSettled(0);
+    srcs.forEach((src, i) => {
       if (!src) return;
       const img = new Image();
-      img.onload = () => { loaded.current[i] = img; setReady((n) => n + 1); };
+      img.onload = () => { if (!alive) return; loaded.current[i] = img; setReady((n) => n + 1); setSettled((n) => n + 1); };
+      img.onerror = () => { if (alive) setSettled((n) => n + 1); };
       img.src = src;
     });
-  }, [images]);
+    return () => { alive = false; };
+  }, [imageKey]);
+  const pendingImages = Math.max(0, images.filter(Boolean).length - settled);
 
   const displayFont = useMemo(() => {
     if (typeof window === "undefined") return "Georgia, serif";
@@ -277,7 +286,16 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
     raf.current = requestAnimationFrame(tick);
   }, [stop, total, draw, timeline, sizzle, speak]);
 
-  useEffect(() => () => stop(), [stop]);
+  useEffect(() => () => {
+    stop();
+    // Unmounting mid-export (for example, New pack): end the recording and release its tracks.
+    const rec = recorder.current;
+    if (rec && rec.state !== "inactive") {
+      rec.onstop = null;
+      rec.stop();
+      rec.stream.getTracks().forEach((t) => t.stop());
+    }
+  }, [stop]);
 
   // Score applies to the current playback too, not only the next one.
   const toggleMusic = () => {
@@ -289,7 +307,7 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
 
   const exportVideo = () => {
     const el = canvas.current;
-    if (!el || exporting || typeof MediaRecorder === "undefined") return;
+    if (!el || exporting || pendingImages > 0 || typeof MediaRecorder === "undefined") return;
     setExporting(true);
     const stream = el.captureStream(30);
     // Music is recorded; browser speech is not capturable, so the export carries subtitles instead.
@@ -380,7 +398,7 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
           </div>
           <div className="flex items-center gap-2">
             <span className="font-mono text-xs text-muted-foreground">{Math.floor(time)}s / {total}s</span>
-            <button onClick={exportVideo} disabled={exporting} className="inline-flex items-center gap-2 rounded border border-border px-3 py-2 text-xs text-muted-foreground hover:text-foreground disabled:opacity-60">
+            <button onClick={exportVideo} disabled={exporting || pendingImages > 0} title={pendingImages > 0 ? "Waiting for keyframes to load" : undefined} className="inline-flex items-center gap-2 rounded border border-border px-3 py-2 text-xs text-muted-foreground hover:text-foreground disabled:opacity-60">
               {exporting ? <Loader2 className="h-3.5 w-3.5 animate-spin" /> : <Download className="h-3.5 w-3.5" />} {exporting ? "Recording…" : "Export video"}
             </button>
             <button

@@ -190,6 +190,7 @@ export async function runStudio(
     });
     if (mechanics.some((m) => !m)) throw new StepError("The concept did not say what it borrows from every source.");
     concept.borrowed_mechanics = mechanics as Concept["borrowed_mechanics"];
+    concept.format = input.format;   // the format the user picked, everywhere
     await save(step, concept);
     await emit({ type: "result", step, data: concept });
     const conceptJson = JSON.stringify(concept);
@@ -213,7 +214,13 @@ export async function runStudio(
       { effort: "medium", schema: sizzleSchema },
     ));
     // The schema describes the limits; enforce them so the player and export stay 30-75 seconds.
-    sizzle.title = concept.title;   // one name across the page, player, export, and poster
+    // One name across the page, player, export, title card, and poster prompt.
+    if (sizzle.title && sizzle.title !== concept.title) {
+      const old = new RegExp(sizzle.title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+      sizzle.poster_prompt = sizzle.poster_prompt.replace(old, concept.title);
+      sizzle.shots = sizzle.shots.map((s) => ({ ...s, on_screen_text: s.on_screen_text.replace(old, concept.title) }));
+    }
+    sizzle.title = concept.title;
     if (sizzle.shots.length < 5 || sizzle.shots.length > 12) throw new StepError(`The sizzle came back with ${sizzle.shots.length} shots; it needs 7 to 9.`);
     sizzle.shots = sizzle.shots.map((s) => ({ ...s, seconds: Math.min(8, Math.max(3, Math.round(Number(s.seconds) || 5))) }));
     const runtime = sizzleRuntime(sizzle);

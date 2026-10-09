@@ -54,13 +54,16 @@ export async function renderToMedia(
   size: ImageSize,
   quality: "low" | "medium" | "high",
   fetchImpl: typeof fetch = fetch,
-): Promise<{ url: string | null; error: string | null }> {
-  if (!env.MEDIA) return { url: null, error: "no media bucket" };
+): Promise<{ url: string | null; error: string | null; generated: boolean }> {
+  if (!env.MEDIA) return { url: null, error: "no media bucket", generated: false };
+  // generated is true once the image API returns an image (a billed call), even if storage fails.
+  let generated = false;
   try {
     const bytes = await generateImage(env, prompt, size, quality, fetchImpl);
+    generated = true;
     await env.MEDIA.put(key, bytes, { httpMetadata: { contentType: "image/png" } });
-    return { url: `/api/media/${key}`, error: null };
+    return { url: `/api/media/${key}`, error: null, generated };
   } catch (error) {
-    return { url: null, error: error instanceof Error ? error.message : "image failed" };
+    return { url: null, error: error instanceof Error ? error.message : "image failed", generated };
   }
 }

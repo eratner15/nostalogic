@@ -160,7 +160,7 @@ test("renderToMedia stores the image, and reports failures instead of throwing",
   const ok = (async () => new Response(JSON.stringify({ data: [{ b64_json: btoa("x") }] }), { status: 200 })) as unknown as typeof fetch;
   const bad = (async () => new Response(JSON.stringify({ error: { message: "content policy" } }), { status: 400 })) as unknown as typeof fetch;
   const env = { OPENAI_API_KEY: "sk", MEDIA };
-  assert.deepEqual(await renderToMedia(env, "studio/a/poster.png", "p", "1024x1536", "high", ok), { url: "/api/media/studio/a/poster.png", error: null });
+  assert.deepEqual(await renderToMedia(env, "studio/a/poster.png", "p", "1024x1536", "high", ok), { url: "/api/media/studio/a/poster.png", error: null, generated: true });
   const failed = await renderToMedia(env, "studio/a/shot-1.png", "p", "1536x1024", "medium", bad);
   assert.equal(failed.url, null);
   assert.match(failed.error ?? "", /400: content policy/);
@@ -223,4 +223,22 @@ test("mechanics are one-to-one, verdict dimensions are exact, and the sizzle tak
   const shuffled = run([...texts, { text: JSON.stringify({ ...verdict, scores: [...verdict.scores].reverse().map((s) => ({ ...s, dimension: s.dimension.toUpperCase() })) }) }], art);
   assert.equal((await shuffled.result).ok, true);
   assert.deepEqual((shuffled.saved.get("verdict") as { scores: { dimension: string }[] }).scores.map((s) => s.dimension), DIMENSIONS);
+});
+
+test("a billed image counts as generated even when storage fails", async () => {
+  const MEDIA = { put: async () => { throw new Error("r2 down"); } } as unknown as R2Bucket;
+  const ok = (async () => new Response(JSON.stringify({ data: [{ b64_json: btoa("x") }] }), { status: 200 })) as unknown as typeof fetch;
+  const r = await renderToMedia({ OPENAI_API_KEY: "sk", MEDIA }, "studio/a/poster.png", "p", "1024x1536", "high", ok);
+  assert.deepEqual([r.url, r.generated], [null, true]);
+});
+
+test("the concept takes the requested format, and a renamed sizzle is rewritten to the concept title", async () => {
+  const renamed = { ...sizzle, title: "Static Pocket", poster_prompt: "Key art for STATIC POCKET.", shots: sizzle.shots.map((s, i) => (i === 1 ? { ...s, on_screen_text: "STATIC POCKET" } : s)) };
+  const r = run([{ text: JSON.stringify({ ...concept, format: "Feature Film" }) }, { text: screenplay }, { text: JSON.stringify(renamed) }]);
+  await r.result;
+  assert.equal((r.saved.get("concept") as { format: string }).format, "Animated Series");
+  const saved = r.saved.get("sizzle") as Sizzle;
+  assert.equal(saved.title, concept.title);
+  assert.equal(saved.poster_prompt, `Key art for ${concept.title}.`);
+  assert.equal(saved.shots[1].on_screen_text, concept.title);
 });

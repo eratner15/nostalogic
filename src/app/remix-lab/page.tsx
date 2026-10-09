@@ -332,15 +332,23 @@ function RemixContent() {
                 <h3 className="flex items-center gap-2 font-semibold text-primary">
                   <Film className="h-4 w-4" /> Build the full pack in the Studio
                 </h3>
-                <Link
-                  href={`/studio/?ids=${selectedIds.slice(0, 4).join(",")}&format=${encodeURIComponent(studioFormat[format])}`}
-                  className="inline-flex items-center gap-2 rounded bg-primary px-3 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
-                >
-                  Open Studio <ArrowRight className="h-4 w-4" />
-                </Link>
+                {selectedIds.length <= 4 ? (
+                  <Link
+                    href={`/studio/?ids=${selectedIds.join(",")}&format=${encodeURIComponent(studioFormat[format])}`}
+                    className="inline-flex items-center gap-2 rounded bg-primary px-3 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+                  >
+                    Open Studio <ArrowRight className="h-4 w-4" />
+                  </Link>
+                ) : (
+                  <span className="inline-flex cursor-not-allowed items-center gap-2 rounded bg-muted px-3 py-2 text-sm text-muted-foreground" aria-disabled="true">
+                    Open Studio <ArrowRight className="h-4 w-4" />
+                  </span>
+                )}
               </div>
               <p className="mt-2 text-xs leading-5 text-muted-foreground">
-                Turns these sources into an original property with a movie poster, a sizzle reel, and a greenlight verdict.
+                {selectedIds.length <= 4
+                  ? "Turns these sources into an original property with a movie poster, a sizzle reel, and a greenlight verdict."
+                  : "The Studio takes up to four sources. Remove one to continue."}
               </p>
             </div>
             <div className="rounded-md border border-accent/25 bg-accent/[0.06] p-4">

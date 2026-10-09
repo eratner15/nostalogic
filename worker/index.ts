@@ -192,7 +192,7 @@ app.post("/studio", async (c) => {
           ...sizzle.shots.map((shot, i) => () => renderToMedia(c.env, `studio/${id}/shot-${i + 1}.png`, `${style}\n\n${shot.image_prompt}\n\n${still}`, "1536x1024", "medium")),
         ];
         const [poster, ...shots] = await mapLimit(jobs, 3);
-        imagesMade = [poster, ...shots].filter((r) => r.url).length;
+        imagesMade = [poster, ...shots].filter((r) => r.generated).length;   // billed, stored or not
         const failed = [poster, ...shots].filter((r) => !r.url).map((r) => r.error);
         return {
           posterImage: poster.url,
