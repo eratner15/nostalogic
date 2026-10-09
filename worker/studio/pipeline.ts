@@ -139,7 +139,7 @@ export function sourceAliases(name: string): string[] {
     for (const part of n.split("/")) out.add(part.replace(/\s+(TV|Books?|Series|Film)$/i, "").trim());
     if (/^The\s/.test(n)) out.add(n.replace(/^The\s+/, ""));
     // Stylized punctuation at the edges ("*NSYNC" also means "NSYNC").
-    out.add(n.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, ""));
+    out.add(n.replace(/^[*!#~_+.-]+|[*!#~_+.-]+$/g, ""));
   }
   return [...out].filter((n) => n.length >= 3);
 }
