@@ -552,3 +552,13 @@ test("the XML check rejects unquoted attributes and unknown entities; processing
   const { sourceAliases } = await import("./pipeline");
   assert.ok(sourceAliases("Macarena (Los del Río)").includes("Los del Rio"));
 });
+
+test("the namespace is read from the root only; quoted '/>' does not end a hidden group; encoded hiding counts", async () => {
+  const nested = sanitizeSvg(`<svg><g xmlns="http://www.w3.org/2000/svg"><text>X</text></g></svg>`)!;
+  assert.ok(nested.startsWith(`<svg xmlns="http://www.w3.org/2000/svg">`));
+  assert.equal(sanitizeSvg(`<svg xmlns="http://example.com/other"><text>X</text></svg>`), null);
+  const quoted = `<svg viewBox="0 0 600 900"><g display="none" data-x="/>"><text>POCKET STATIC</text></g><text>A NEW SHOW</text></svg>`;
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: quoted }, { text: quoted }]).result).ok, false);
+  const encoded = `<svg viewBox="0 0 600 900"><g display="&#110;one"><text>POCKET STATIC</text></g><text>A NEW SHOW</text></svg>`;
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: encoded }, { text: encoded }]).result).ok, false);
+});

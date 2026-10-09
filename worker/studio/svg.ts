@@ -70,6 +70,11 @@ export function sanitizeSvg(raw: string): string | null {
   if (XMLValidator.validate(svg) !== true || /&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);)/i.test(svg)) return null;
   if (loadsExternal(svg)) return null;
   // Ensure the namespace so the file renders when opened on its own.
-  if (!/xmlns=/.test(svg.slice(0, 300))) svg = svg.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+  // Read only the root's own attributes (quote-aware), and require the SVG namespace there.
+  const root = svg.match(/^<svg(?:\s+[^\s=>\/]+\s*=\s*(?:"[^"]*"|'[^']*'))*\s*\/?>/)?.[0];
+  if (!root) return null;
+  const ns = root.match(/\sxmlns\s*=\s*(?:"([^"]*)"|'([^']*)')/);
+  if (!ns) svg = svg.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
+  else if ((ns[1] ?? ns[2]) !== "http://www.w3.org/2000/svg") return null;
   return svg;
 }

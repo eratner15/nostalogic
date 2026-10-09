@@ -7,6 +7,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import type { PropertyScore } from "../../src/lib/scoring";
 import { sizzleRuntime, type Art, type Concept, type Sizzle, type StudioEvent, type StudioStep, type Verdict } from "../../src/lib/studio";
+import { XMLParser } from "fast-xml-parser";
 import { decodeXml, sanitizeSvg } from "./svg";
 
 export type StudioOptions = {
@@ -180,33 +181,40 @@ const NEVER_RENDERED = /^(title|desc|metadata|defs|symbol|clipPath|mask|pattern|
 // Hidden elements do not show a title either (display none, visibility hidden, opacity 0, font size 0).
 const HIDDEN = /(display\s*[:=]\s*["']?\s*none|visibility\s*[:=]\s*["']?\s*hidden|(?<![\w-])(?:opacity|font-size)\s*[:=]\s*["']?\s*0(\.0*)?(?:px|pt|em|rem|%)?(?![.\d\w]))/i;
 
+const posterParser = new XMLParser({
+  preserveOrder: true, ignoreAttributes: false, attributeNamePrefix: "",
+  parseTagValue: false, parseAttributeValue: false, trimValues: false, processEntities: false,
+});
+
 /**
- * Removes every element whose opening tag matches, with its whole subtree.
- * Tags are counted by depth, so a nested element of the same name does not end
- * the removal early. An unclosed match removes the rest of the document.
+ * The poster's text, read from a real XML parse (so quotes, nesting, and entities are
+ * handled the way a browser handles them). `all` is every text node, for the source-name
+ * check; `rendered` leaves out never-rendered containers and hidden elements with their
+ * whole subtree, for the title check. Each is joined two ways: with spaces between nodes,
+ * and with none, so a word split across <tspan>s ("Da<tspan>ria</tspan>") is still whole.
  */
-function dropSubtrees(xml: string, drop: (tag: string, name: string) => boolean): string {
-  let out = "";
-  let last = 0;
-  let depth = 0;
-  let skipTo = -1;   // the depth that ends the current removal; -1 when not removing
-  for (const m of xml.matchAll(/<(\/?)([\w:-]+)\b[^>]*?(\/?)>/g)) {
-    const [tag, close, name, self] = m;
-    const at = m.index ?? 0;
-    if (close) {
-      depth--;
-      if (skipTo >= 0 && depth === skipTo) { skipTo = -1; last = at + tag.length; }
-      continue;
+function posterText(svg: string): { all: string[]; rendered: string[] } {
+  const all: string[] = [];
+  const rendered: string[] = [];
+  type XmlNode = Record<string, unknown> & { ":@"?: Record<string, string> };
+  const walk = (nodes: XmlNode[], hidden: boolean) => {
+    for (const node of nodes) {
+      if ("#text" in node) {
+        const text = decodeXml(String(node["#text"]));
+        all.push(text);
+        if (!hidden) rendered.push(text);
+        continue;
+      }
+      const name = Object.keys(node).find((k) => k !== ":@");
+      if (!name) continue;
+      const attrs = Object.entries(node[":@"] ?? {}).map(([k, v]) => ` ${k}="${decodeXml(String(v))}"`).join("");
+      const hide = hidden || NEVER_RENDERED.test(name.replace(/^[^:]+:/, "")) || HIDDEN.test(attrs);
+      walk((node[name] as XmlNode[]) ?? [], hide);
     }
-    if (skipTo < 0 && drop(tag, name)) {
-      out += xml.slice(last, at);
-      last = at + tag.length;
-      if (self) continue;
-      skipTo = depth;
-    }
-    if (!self) depth++;
-  }
-  return skipTo >= 0 ? out : out + xml.slice(last);
+  };
+  walk(posterParser.parse(svg) as XmlNode[], false);
+  const join = (parts: string[]) => [parts.join(" "), parts.join("")].map((t) => t.replace(/\s+/g, " ").trim());
+  return { all: join(all), rendered: join(rendered) };
 }
 
 function sourceBrief(sources: PropertyScore[]) {
@@ -394,26 +402,18 @@ export async function runStudio(
     }
     // Malformed or oversized SVG sanitizes to null: ask once more, then fail the step.
     for (let attempt = 0; !art.posterImage && !art.posterSvg && attempt < 2; attempt++) {
-      const posterText = await call(
+      const reply = await call(
         `Design the one-sheet poster for this property as a single SVG.\nConcept: ${conceptJson}\nTagline: ${sizzle.tagline}\n\nRequirements:\n- Output ONLY the SVG markup, starting with <svg and ending with </svg>. No prose, no code fence.\n- viewBox="0 0 600 900" with width="600" height="900", xmlns set.\n- Built from shapes, paths, gradients (linearGradient, radialGradient in <defs>), and text only. No <image>, <style>, <script>, <foreignObject>, <use>, external links, or web fonts. Use font-family serif, sans-serif, or monospace, with presentation attributes.\n- Show the title large, the tagline, and a credit block at the bottom in small condensed text. A strong single key image built from geometry, following: ${sizzle.style_bible}\n- Every text element must fit inside the 600 px width.\n- Do not use any source property's name, logo, or characters.`,
         { effort: "medium" },
       );
-      const svg = sanitizeSvg(posterText);
-      // The same rights guard as on-screen text: visible poster text must not name a source.
-      // The sanitizer already removed comments and processing instructions and turned CDATA
-      // into text. Read the text both with tags as spaces and with tags removed, so a name
-      // split across <tspan>s ("Da<tspan>ria</tspan>") is still seen.
-      const raw = svg ?? "";
-      const visible = [raw.replace(/<[^>]*>/g, " "), raw.replace(/<[^>]*>/g, "")]
-        .map((t) => decodeXml(t).replace(/\s+/g, " ").trim());
-      // It must also show the canonical title as whole words, ignoring case and line
-      // wraps ("It" must not match "written").
+      const svg = sanitizeSvg(reply);
+      // The same rights guard as on-screen text: poster text must not name a source.
+      // The title must show as whole words, ignoring case and line wraps ("It" must not
+      // match "written"), in rendered text: not only in <title>, <desc>, <defs>, or hidden.
+      const text = svg ? posterText(svg) : { all: [], rendered: [] };
       const title = wordPattern(concept.title.replace(/\s+/g, " ").trim(), "i");
-      // The title must be in rendered text, not only in <title>, <desc>, <metadata>, or <defs>.
-      const rendered = dropSubtrees(raw, (tag, name) => NEVER_RENDERED.test(name.replace(/^[\w-]+:/, "")) || HIDDEN.test(tag));
-      const renderedText = [rendered.replace(/<[^>]*>/g, " "), rendered.replace(/<[^>]*>/g, "")]
-        .map((t) => decodeXml(t).replace(/\s+/g, " ").trim());
-      const showsTitle = renderedText.some((t) => title.test(t));
+      const showsTitle = text.rendered.some((t) => title.test(t));
+      const visible = text.all;
       art.posterSvg = svg && showsTitle && !visible.some(named) ? svg : null;
     }
     if (!art.posterImage && !art.posterSvg) throw new StepError("The poster could not be drawn.");
