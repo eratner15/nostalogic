@@ -484,3 +484,14 @@ test("nested hidden groups, unquoted hrefs, ampersand aliases, and blank tagline
   assert.equal((await run([...art, { text: JSON.stringify({ ...verdict, next_steps: [] }) }]).result).ok, false);
   assert.equal((await run([...art, { text: JSON.stringify({ ...verdict, audience_test_questions: [""] }) }]).result).ok, false);
 });
+
+test("prefixed active elements and hrefs are stripped; stroke opacity does not hide a title; an old title in a spoken line is rewritten", async () => {
+  const dirty = sanitizeSvg(`<svg xmlns:s="http://www.w3.org/2000/svg" xmlns:x="http://www.w3.org/1999/xlink"><s:script>alert(1)</s:script><s:image x:href="https://e.example/p"/><feImage x:href="https://e.example/q"/><text>X</text></svg>`)!;
+  assert.ok(!/script|alert|e\.example/.test(dirty));
+  const outlined = `<svg viewBox="0 0 600 900"><text stroke-opacity="0" fill="#fff">POCKET STATIC</text></svg>`;
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: outlined }, { text: JSON.stringify(verdict) }]).result).ok, true);
+  const renamed = { ...sizzle, title: "Static Pets", shots: sizzle.shots.map((s, i) => (i ? s : { ...s, line: "Static Pets is coming." })) };
+  const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(renamed) }]);
+  await r.result;
+  assert.equal((r.saved.get("sizzle") as Sizzle).shots[0].line, "Pocket Static is coming.");
+});

@@ -117,7 +117,9 @@ function StudioContent() {
   const runningId = useRef<string | null>(null);
 
   const byId = useMemo(() => new Map(library.map((p) => [p.id, p])), [library]);
+  // An id no longer in the library (an old link) is never shown, counted, or sent.
   const sources = sourceIds.map((id) => byId.get(id)).filter((p): p is NonNullable<typeof p> => Boolean(p));
+  const sourceKeys = sources.map((p) => p.id);
   const available = library.filter((p) => !sourceIds.includes(p.id));
 
   // Load a saved package when the URL carries an id (and it is not the one streaming now).
@@ -152,12 +154,12 @@ function StudioContent() {
     setRunning(true);
     setError(null);
     setParts(emptyParts);
-    setMeta({ format, propertyIds: sourceIds });
+    setMeta({ format, propertyIds: sourceKeys });
     try {
       const res = await fetch("/api/studio", {
         method: "POST",
         headers: { "content-type": "application/json" },
-        body: JSON.stringify({ propertyIds: sourceIds, format, sessionKey: getSessionKey() }),
+        body: JSON.stringify({ propertyIds: sourceKeys, format, sessionKey: getSessionKey() }),
       });
       if (!res.ok || !res.body) {
         const data = await res.json().catch(() => ({}));
@@ -262,7 +264,7 @@ function StudioContent() {
                     <option value="">Add a property…</option>
                     {[...available].sort((a, b) => a.name.localeCompare(b.name)).map((p) => <option key={p.id} value={p.id}>{p.name} ({p.year})</option>)}
                   </select>
-                  <button disabled={!toAdd} onClick={() => { setSourceIds((ids) => [...ids, toAdd]); setToAdd(""); }} className="rounded border border-border px-3 text-muted-foreground hover:text-foreground disabled:opacity-40" aria-label="Add"><Plus className="h-4 w-4" /></button>
+                  <button disabled={!toAdd} onClick={() => { setSourceIds((ids) => [...ids.filter((id) => byId.has(id)), toAdd]); setToAdd(""); }} className="rounded border border-border px-3 text-muted-foreground hover:text-foreground disabled:opacity-40" aria-label="Add"><Plus className="h-4 w-4" /></button>
                 </div>
               )}
             </div>

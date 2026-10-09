@@ -18,13 +18,14 @@ export function sanitizeSvg(raw: string): string | null {
   if (!svg || svg.length > MAX_BYTES) return null;
   svg = svg
     // Elements that run code, embed documents, or pull remote content.
-    .replace(/<(script|foreignObject|iframe|object|embed|image|use|style|animate\w*|set|a)\b[\s\S]*?(<\/\1>|\/>)/gi, "")
-    .replace(/<\/?(script|foreignObject|iframe|object|embed|image|use|style|a)\b[^>]*>/gi, "")
+    // A namespace prefix ("<s:script>") does not hide an element.
+    .replace(/<((?:[\w-]+:)?(?:script|foreignObject|iframe|object|embed|image|use|style|animate\w*|set|a))\b[\s\S]*?(<\/\1>|\/>)/gi, "")
+    .replace(/<\/?(?:[\w-]+:)?(script|foreignObject|iframe|object|embed|image|use|style|a)\b[^>]*>/gi, "")
     // Event handlers and javascript: URLs.
     .replace(/\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, "")
     .replace(/javascript:/gi, "")
     // Links that leave the document: only #fragment references survive.
-    .replace(/\s(?:xlink:)?href\s*=\s*("(?!#)[^"]*"|'(?!#)[^']*'|(?!["'#])[^\s>]+)/gi, "")
+    .replace(/\s(?:[\w-]+:)?href\s*=\s*("(?!#)[^"]*"|'(?!#)[^']*'|(?!["'#])[^\s>]+)/gi, "")
     // Quoted and unquoted references are separate cases, so url("#g") survives.
     .replace(/url\(\s*(?:"(?!#)[^"]*"|'(?!#)[^']*'|(?!["'#])[^)]*)\s*\)/gi, "none");
   if (!/^<svg[\s>]/.test(svg)) return null;

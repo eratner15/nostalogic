@@ -170,7 +170,7 @@ function wordPattern(name: string, flags: string): RegExp {
 // Never-rendered containers: metadata, definitions, symbols, clip paths, masks, patterns, markers.
 const NEVER_RENDERED = /^(title|desc|metadata|defs|symbol|clipPath|mask|pattern|marker)$/i;
 // Hidden elements do not show a title either (display none, visibility hidden, opacity 0, font size 0).
-const HIDDEN = /(display\s*[:=]\s*["']?\s*none|visibility\s*[:=]\s*["']?\s*hidden|(?:opacity|font-size)\s*[:=]\s*["']?\s*0(\.0*)?(?:px|pt|em|rem|%)?(?![.\d\w]))/i;
+const HIDDEN = /(display\s*[:=]\s*["']?\s*none|visibility\s*[:=]\s*["']?\s*hidden|(?<![\w-])(?:opacity|font-size)\s*[:=]\s*["']?\s*0(\.0*)?(?:px|pt|em|rem|%)?(?![.\d\w]))/i;
 
 /**
  * Removes every element whose opening tag matches, with its whole subtree.
@@ -343,7 +343,7 @@ export async function runStudio(
       const old = wordPattern(sizzle.title, "gi");   // whole words only: a title "It" must not touch "with"
       sizzle.poster_prompt = sizzle.poster_prompt.replace(old, concept.title);
       sizzle.tagline = sizzle.tagline.replace(old, concept.title);
-      sizzle.shots = sizzle.shots.map((s) => ({ ...s, on_screen_text: s.on_screen_text.replace(old, concept.title) }));
+      sizzle.shots = sizzle.shots.map((s) => ({ ...s, on_screen_text: s.on_screen_text.replace(old, concept.title), line: String(s.line ?? "").replace(old, concept.title) }));
     }
     sizzle.title = concept.title;
     sizzle.tagline = String(sizzle.tagline ?? "").trim();
