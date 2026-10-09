@@ -101,7 +101,7 @@ function StudioContent() {
   const library = useLibrary();
   const packageId = params.get("id");
 
-  const initialIds = (params.get("ids") ?? "").split(",").filter(Boolean).slice(0, 4);
+  const initialIds = [...new Set((params.get("ids") ?? "").split(",").filter(Boolean))].slice(0, 4);
   const [sourceIds, setSourceIds] = useState<string[]>(initialIds.length ? initialIds : []);
   const [toAdd, setToAdd] = useState("");
   const [format, setFormat] = useState<string>(STUDIO_FORMATS.find((f) => f === params.get("format")) ?? "Streaming Series");

@@ -502,3 +502,13 @@ test("and aliases get an ampersand form; a prefixed <title> does not count as th
   const prefixed = `<svg viewBox="0 0 600 900" xmlns:s="http://www.w3.org/2000/svg"><s:title>Pocket Static</s:title><text>A NEW SHOW</text></svg>`;
   assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: prefixed }, { text: prefixed }]).result).ok, false);
 });
+
+test("xml:base is stripped; commented tags do not end a hidden group; a source name in a comment still fails", async () => {
+  assert.ok(!sanitizeSvg(`<svg xml:base="https://e.example/"><filter><feImage href="#a"/></filter><text>X</text></svg>`)!.includes("e.example"));
+  const tricky = `<svg viewBox="0 0 600 900"><g display="none"><!-- </g> --><text>POCKET STATIC</text></g><text>A NEW SHOW</text></svg>`;
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: tricky }, { text: tricky }]).result).ok, false);
+  const noted = `<svg viewBox="0 0 600 900"><!-- after Tamagotchi --><text>POCKET STATIC</text></svg>`;
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: noted }, { text: noted }]).result).ok, false);
+  const plain = `<svg viewBox="0 0 600 900"><!-- layout --><text>POCKET STATIC</text></svg>`;
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: plain }, { text: JSON.stringify(verdict) }]).result).ok, true);
+});

@@ -83,6 +83,9 @@ function RemixContent() {
     [selectedIds, library]
   );
   const properties = selectedProperties.length ? selectedProperties : [library[0]];
+  // The Studio builds from two to four sources that resolve in the library.
+  const studioIds = [...new Set(selectedProperties.map((p) => p.id))];
+  const studioReady = studioIds.length >= 2 && studioIds.length <= 4;
   const pitch = generateCompositePitch(properties, format);
   const isComposite = properties.length > 1;
   const availableProperties = library.filter((property) => !selectedIds.includes(property.id));
@@ -332,9 +335,9 @@ function RemixContent() {
                 <h3 className="flex items-center gap-2 font-semibold text-primary">
                   <Film className="h-4 w-4" /> Build the full pack in the Studio
                 </h3>
-                {selectedIds.length <= 4 ? (
+                {studioReady ? (
                   <Link
-                    href={`/studio/?ids=${selectedIds.join(",")}&format=${encodeURIComponent(studioFormat[format])}`}
+                    href={`/studio/?ids=${studioIds.join(",")}&format=${encodeURIComponent(studioFormat[format])}`}
                     className="inline-flex items-center gap-2 rounded bg-primary px-3 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
                   >
                     Open Studio <ArrowRight className="h-4 w-4" />
@@ -346,9 +349,11 @@ function RemixContent() {
                 )}
               </div>
               <p className="mt-2 text-xs leading-5 text-muted-foreground">
-                {selectedIds.length <= 4
+                {studioReady
                   ? "Turns these sources into an original property with a movie poster, a sizzle reel, and a greenlight verdict."
-                  : "The Studio takes up to four sources. Remove one to continue."}
+                  : studioIds.length < 2
+                    ? "The Studio needs at least two sources from the library. Add one to continue."
+                    : "The Studio takes up to four sources. Remove one to continue."}
               </p>
             </div>
             <div className="rounded-md border border-accent/25 bg-accent/[0.06] p-4">

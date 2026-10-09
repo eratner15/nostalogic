@@ -388,13 +388,16 @@ export async function runStudio(
       // The same rights guard as on-screen text: visible poster text must not name a source.
       // Unwrap CDATA, then read the text both with tags as spaces and with tags removed,
       // so a name split across <tspan>s ("Da<tspan>ria</tspan>") is still seen.
-      const raw = (svg ?? "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1");
-      const visible = [raw.replace(/<[^>]*>/g, " "), raw.replace(/<[^>]*>/g, "")]
+      // Comment text counts here too: it ships in the downloadable SVG.
+      const unwrapped = (svg ?? "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1").replace(/<!--|-->/g, " ");
+      const visible = [unwrapped.replace(/<[^>]*>/g, " "), unwrapped.replace(/<[^>]*>/g, "")]
         .map((t) => decodeXml(t).replace(/\s+/g, " ").trim());
       // It must also show the canonical title as whole words, ignoring case and line
       // wraps ("It" must not match "written").
       const title = wordPattern(concept.title.replace(/\s+/g, " ").trim(), "i");
       // The title must be in rendered text, not only in <title>, <desc>, <metadata>, or <defs>.
+      // Comments never render, and tag-shaped text inside one must not end a hidden group early.
+      const raw = (svg ?? "").replace(/<!--[\s\S]*?-->/g, "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1");
       const rendered = dropSubtrees(raw, (tag, name) => NEVER_RENDERED.test(name.replace(/^[\w-]+:/, "")) || HIDDEN.test(tag));
       const renderedText = [rendered.replace(/<[^>]*>/g, " "), rendered.replace(/<[^>]*>/g, "")]
         .map((t) => decodeXml(t).replace(/\s+/g, " ").trim());

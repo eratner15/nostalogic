@@ -24,6 +24,8 @@ export function sanitizeSvg(raw: string): string | null {
     // Event handlers and javascript: URLs.
     .replace(/\son\w+\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, "")
     .replace(/javascript:/gi, "")
+    // xml:base would make a #fragment reference resolve against a remote document.
+    .replace(/\sxml:base\s*=\s*("[^"]*"|'[^']*'|[^\s>]+)/gi, "")
     // Links that leave the document: only #fragment references survive.
     .replace(/\s(?:[\w-]+:)?href\s*=\s*("(?!#)[^"]*"|'(?!#)[^']*'|(?!["'#])[^\s>]+)/gi, "")
     // Quoted and unquoted references are separate cases, so url("#g") survives.
