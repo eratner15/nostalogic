@@ -104,9 +104,22 @@ Not run in this phase: `wrangler dev --local --test-scheduled` and `POST /api/ad
 
 On 2026-10-09, about 02:15 UTC, after the PR #4 rollout, this file was loaded into production with `node scripts/load-sources.mjs docs/revival-watch/sources-reviewed.csv --remote`. Result: 209 bookmarks (119 Wikipedia, 90 subreddit). The hourly cron began the 120-day backfill.
 
+Coverage: this CSV now maps 206 sources (119 Wikipedia, 87 subreddit). Production holds 209 until the three deletions below run.
+
 The loader only inserts and updates. The three subreddits cleared above (event-horizon-1997, heavyweights-1995, starter-jackets-1993) stay in production until their bookmarks are deleted:
 
 ```sql
 DELETE FROM signal_readings  WHERE source = 'arcticshift' AND property_id IN ('event-horizon-1997','heavyweights-1995','starter-jackets-1993');
 DELETE FROM signal_bookmarks WHERE source = 'arcticshift' AND property_id IN ('event-horizon-1997','heavyweights-1995','starter-jackets-1993');
 ```
+
+## Production fetch check (open)
+
+The local fetch loop from handoff step 5 was not run. The production hourly cron now does the same reads against the real APIs. Status on 2026-10-09 at 04:08 UTC:
+
+| Source | Pairs read | Total | Errors |
+|---|---|---|---|
+| Wikipedia | 13 | 119 | 0 |
+| Arctic Shift | 0 | 90 | 7, all `subreddit lookup HTTP 429` |
+
+Arctic Shift rate-limits the Worker's shared outbound address. PR #10 (retry once after a 429, then skip Arctic Shift for the rest of the run) is merged but not deployed. This check closes when every pair has a `read_to` and no pair has a `last_error`. Until then, Phase 2 is not complete.
