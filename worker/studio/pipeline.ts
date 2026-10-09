@@ -7,7 +7,7 @@
 import Anthropic from "@anthropic-ai/sdk";
 import type { PropertyScore } from "../../src/lib/scoring";
 import { sizzleRuntime, type Art, type Concept, type Sizzle, type StudioEvent, type StudioStep, type Verdict } from "../../src/lib/studio";
-import { sanitizeSvg } from "./svg";
+import { decodeXml, sanitizeSvg } from "./svg";
 
 export type StudioOptions = {
   apiKey: string;
@@ -131,7 +131,8 @@ export function sourceAliases(name: string): string[] {
   const base = name.replace(/\s*\([^)]*\)\s*/g, " ").trim();
   out.add(base);
   for (const [, inner] of name.matchAll(/\(([^)]*)\)/g)) {
-    if (!/\bera\b/i.test(inner)) out.add(inner.trim());
+    // "(Tragic Kingdom era)" still names "Tragic Kingdom"; the length filter drops notes like "D2".
+    out.add(inner.replace(/\s+era\s*$/i, "").trim());
     for (const [, quoted] of inner.matchAll(/'([^']+)'/g)) out.add(quoted.trim());
   }
   // Apply every rule to every alias, including aliases a rule just made, so rules compose
@@ -161,13 +162,6 @@ export function sourceAliases(name: string): string[] {
   return [...out].filter((n) => n.length >= 3);
 }
 
-/** Decodes the XML entities a poster's text can use, so "Kenan &amp; Kel" reads as "Kenan & Kel". */
-function decodeXml(text: string): string {
-  return text
-    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
-    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
-    .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&amp;/g, "&");
-}
 
 /** A whole-word match for a literal name (word edges only where the name has word characters). */
 function wordPattern(name: string, flags: string): RegExp {
@@ -407,7 +401,9 @@ export async function runStudio(
       // so a name split across <tspan>s ("Da<tspan>ria</tspan>") is still seen.
       // Comment text counts here too: it ships in the downloadable SVG.
       const unwrapped = (svg ?? "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1").replace(/<!--|-->/g, " ");
-      const visible = [unwrapped.replace(/<[^>]*>/g, " "), unwrapped.replace(/<[^>]*>/g, "")]
+      // Also read it with comments removed, so a name split by a comment ("Da<!-- x -->ria") is seen.
+      const uncommented = (svg ?? "").replace(/<!--[\s\S]*?-->/g, "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1");
+      const visible = [unwrapped, uncommented].flatMap((u) => [u.replace(/<[^>]*>/g, " "), u.replace(/<[^>]*>/g, "")])
         .map((t) => decodeXml(t).replace(/\s+/g, " ").trim());
       // It must also show the canonical title as whole words, ignoring case and line
       // wraps ("It" must not match "written").

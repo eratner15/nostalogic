@@ -526,3 +526,15 @@ test("prefixed SVG elements reject the poster; CDATA tags do not close hidden gr
   const shot = (r.saved.get("sizzle") as Sizzle).shots[1];
   assert.deepEqual([shot.on_screen_text, shot.line, shot.speaker], ["", "", ""]);
 });
+
+test("era names stay aliases; comment-split names fail; encoded url() and malformed posters are rejected", async () => {
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("No Doubt (Tragic Kingdom era)").includes("Tragic Kingdom"));
+  assert.ok(!sourceAliases("The Mighty Ducks (D2 era)").includes("D2"));
+  const split = `<svg viewBox="0 0 600 900"><text>POCKET STATIC</text><text>Da<!-- x -->ria</text></svg>`;
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: split }, { text: split }]).result).ok, false);
+  assert.equal(sanitizeSvg(`<svg><rect fill="u&#114;l(https://e.example/p.svg#x)"/><text>X</text></svg>`), null);
+  assert.equal(sanitizeSvg(`<svg><rect style="fill:u\\72l(https://e.example/p)"/><text>X</text></svg>`), null);
+  assert.ok(sanitizeSvg(`<svg><defs><linearGradient id="g"/></defs><rect fill="url(#g)"/><rect fill='url("#g")'/><text>Rock &#38; Roll</text></svg>`));
+  assert.equal(sanitizeSvg(`<svg><rect><text>POCKET STATIC</text></svg>`), null);
+});
