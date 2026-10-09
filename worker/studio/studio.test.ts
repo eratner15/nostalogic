@@ -270,3 +270,35 @@ test("a fallback SVG poster that names a source is retried, then fails", async (
   assert.equal((await r.result).ok, false);
   assert.equal((r.events.at(-1) as { step?: string }).step, "art");
 });
+
+test("rights guard covers speakers, capitals, and entity-encoded poster text; the reel always has its title card", async () => {
+  const speaker = { ...sizzle, shots: sizzle.shots.map((s, i) => (i === 1 ? { ...s, speaker: "Daria" } : s)) };
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(speaker) }]).result).ok, false);
+  const caps = { ...sizzle, tagline: "DARIA, LOUDER." };
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(caps) }]).result).ok, false);
+  const noCard = { ...sizzle, shots: sizzle.shots.map((s) => ({ ...s, on_screen_text: "" })) };
+  const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(noCard) }]);
+  await r.result;
+  assert.equal((r.saved.get("sizzle") as Sizzle).shots.at(-1)?.on_screen_text, concept.title);
+});
+
+test("usage is reported after every model call", async () => {
+  const seen: number[] = [];
+  const { fetchImpl } = fakeModel([{ text: JSON.stringify(concept) }, { text: "too short" }]);
+  await runStudio({ sources, format: "Animated Series" }, { apiKey: "t", model: "m", fetch: fetchImpl, onUsage: async (u) => { seen.push(u.input); } }, () => {}, async () => {});
+  assert.deepEqual(seen, [50, 100]);
+});
+
+test("poster text with XML entities is decoded before the source-name check", async () => {
+  const kk = library.find((p) => p.name.includes("&"));
+  if (!kk) return;   // no ampersand names in this corpus
+  const pair = [kk, sources[0]];
+  const enc = kk.name.replace(/&/g, "&amp;");
+  const bad = `<svg viewBox="0 0 600 900"><text x="20" y="80">${enc}</text></svg>`;
+  const c = { ...concept, borrowed_mechanics: pair.map((p) => ({ source: p.name, mechanic: "m" })) };
+  const { fetchImpl } = fakeModel([{ text: JSON.stringify(c) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: bad }, { text: bad }]);
+  const events: StudioEvent[] = [];
+  const res = await runStudio({ sources: pair, format: "Animated Series" }, { apiKey: "t", model: "m", fetch: fetchImpl }, (e) => { events.push(e); }, async () => {});
+  assert.equal(res.ok, false);
+  assert.equal((events.at(-1) as { step?: string }).step, "art");
+});

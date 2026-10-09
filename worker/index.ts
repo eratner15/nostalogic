@@ -195,6 +195,7 @@ app.post("/studio", async (c) => {
         ];
         const [poster, ...shots] = await mapLimit(jobs, 3);
         imagesMade = [poster, ...shots].filter((r) => r.generated).length;   // billed, stored or not
+        await c.env.DB.prepare("UPDATE studio_packages SET images = ? WHERE id = ?").bind(imagesMade, id).run().catch(() => {});
         const failed = [poster, ...shots].filter((r) => !r.url).map((r) => r.error);
         return {
           posterImage: poster.url,
@@ -220,7 +221,12 @@ app.post("/studio", async (c) => {
     let failure: string | null = null;
     try {
       await emit({ type: "started", id });
-      const result = await runStudio({ sources, format }, { apiKey: c.env.ANTHROPIC_API_KEY!, model }, async (event) => {
+      const result = await runStudio({ sources, format }, {
+        apiKey: c.env.ANTHROPIC_API_KEY!,
+        model,
+        // Billed usage is saved as it accrues, so an interrupted run still counts.
+        onUsage: async (u) => { await c.env.DB.prepare("UPDATE studio_packages SET input_tokens = ?, output_tokens = ? WHERE id = ?").bind(u.input, u.output, id).run(); },
+      }, async (event) => {
         if (event.type === "error") failure = event.message;
         await emit(event);
       }, save, renderArt);

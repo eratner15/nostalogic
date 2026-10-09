@@ -13,6 +13,8 @@ export type StudioOptions = {
   apiKey: string;
   model: string;
   fetch?: typeof fetch;
+  /** Called after every model call with the running totals, so billed usage survives an interrupted run. */
+  onUsage?: (usage: StudioUsage) => Promise<void>;
 };
 
 export type StudioInput = {
@@ -117,6 +119,14 @@ const verdictSchema = {
   },
 };
 
+/** Decodes the XML entities a poster's text can use, so "Kenan &amp; Kel" reads as "Kenan & Kel". */
+function decodeXml(text: string): string {
+  return text
+    .replace(/&#x([0-9a-f]+);/gi, (_, h) => String.fromCodePoint(parseInt(h, 16)))
+    .replace(/&#(\d+);/g, (_, d) => String.fromCodePoint(Number(d)))
+    .replace(/&lt;/g, "<").replace(/&gt;/g, ">").replace(/&quot;/g, '"').replace(/&apos;/g, "'").replace(/&amp;/g, "&");
+}
+
 /** A whole-word match for a literal name (word edges only where the name has word characters). */
 function wordPattern(name: string, flags: string): RegExp {
   const body = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
@@ -161,6 +171,7 @@ export async function runStudio(
     });
     usage.input += response.usage.input_tokens;
     usage.output += response.usage.output_tokens;
+    await options.onUsage?.({ ...usage }).catch(() => {});
     if (response.stop_reason === "refusal") throw new StepError("The model declined this step. Try different sources.");
     if (response.stop_reason === "max_tokens") throw new StepError("The step ran out of room before finishing.");
     return response.content.filter((b): b is Anthropic.Beta.BetaTextBlock => b.type === "text").map((b) => b.text).join("\n").trim();
@@ -231,13 +242,18 @@ export async function runStudio(
     sizzle.title = concept.title;
     if (sizzle.shots.length < 5 || sizzle.shots.length > 12) throw new StepError(`The sizzle came back with ${sizzle.shots.length} shots; it needs 7 to 9.`);
     sizzle.shots = sizzle.shots.map((s) => ({ ...s, seconds: Math.min(8, Math.max(3, Math.round(Number(s.seconds) || 5))) }));
+    // The reel must name the property: make the last shot the title card if none is.
+    if (!sizzle.shots.some((s) => s.on_screen_text.trim().toLowerCase() === concept.title.toLowerCase())) {
+      sizzle.shots[sizzle.shots.length - 1] = { ...sizzle.shots[sizzle.shots.length - 1], on_screen_text: concept.title };
+    }
     const runtime = sizzleRuntime(sizzle);
     if (runtime < 30 || runtime > 75) throw new StepError(`The sizzle came back at ${runtime} seconds; it needs 45 to 60.`);
     // Rights: no source name on screen, and none sent to the image model. Matching is
-    // case-sensitive and whole-word, so "friends" in prose does not trip "Friends".
-    const sourceNames = input.sources.map((p) => wordPattern(p.name, "g"));
+    // whole-word, on the name as written and in capitals ("Daria", "DARIA"), so
+    // "friends" in prose does not trip "Friends".
+    const sourceNames = input.sources.flatMap((p) => [...new Set([p.name, p.name.toUpperCase()])].map((n) => wordPattern(n, "g")));
     const named = (text: string) => sourceNames.some((r) => { r.lastIndex = 0; return r.test(text); });
-    const onScreen = [sizzle.title, sizzle.tagline, ...sizzle.shots.flatMap((s) => [s.on_screen_text, s.line])];
+    const onScreen = [sizzle.title, sizzle.tagline, ...sizzle.shots.flatMap((s) => [s.on_screen_text, s.speaker, s.line])];
     if (onScreen.some(named)) throw new StepError("The sizzle put a source property's name on screen.");
     const scrub = (text: string) => sourceNames.reduce((t, r) => t.replace(r, ""), text).replace(/\s{2,}/g, " ").trim();
     sizzle.poster_prompt = scrub(sizzle.poster_prompt);
@@ -262,7 +278,7 @@ export async function runStudio(
       );
       const svg = sanitizeSvg(posterText);
       // The same rights guard as on-screen text: visible poster text must not name a source.
-      const visible = (svg ?? "").replace(/<[^>]*>/g, " ");
+      const visible = decodeXml((svg ?? "").replace(/<[^>]*>/g, " "));
       art.posterSvg = svg && !named(visible) ? svg : null;
     }
     if (!art.posterImage && !art.posterSvg) throw new StepError("The poster could not be drawn.");

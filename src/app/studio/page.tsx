@@ -110,6 +110,8 @@ function StudioContent() {
   const [meta, setMeta] = useState<{ format: string; propertyIds: string[] } | null>(null);
   const [active, setActive] = useState<StudioStep | null>(null);
   const [running, setRunning] = useState(false);
+  const runningRef = useRef(false);
+  runningRef.current = running;
   const [error, setError] = useState<string | null>(null);
   const [copied, setCopied] = useState(false);
   const runningId = useRef<string | null>(null);
@@ -120,7 +122,12 @@ function StudioContent() {
 
   // Load a saved package when the URL carries an id (and it is not the one streaming now).
   useEffect(() => {
-    if (!packageId || packageId === runningId.current) return;
+    if (!packageId) {
+      // Navigated back to /studio/ (for example, the Studio nav link): show the builder again.
+      if (!runningRef.current) { runningId.current = null; setParts(emptyParts); setMeta(null); setError(null); }
+      return;
+    }
+    if (packageId === runningId.current) return;
     if (!/^[0-9a-f-]{36}$/.test(packageId)) { setError("Package not found."); return; }
     let alive = true;
     setError(null);
@@ -200,7 +207,7 @@ function StudioContent() {
         lede={hasPackage && parts.concept ? parts.concept.logline : "Blend two to four library properties into an original property, then get what you need to decide whether to make it: a movie poster, a sizzle reel you can watch in a minute, and a greenlight verdict."}
         aside={hasPackage ? (
           <div className="flex flex-wrap gap-2">
-            {packageId && (
+            {packageId && parts.verdict && !running && (
               <button
                 onClick={async () => {
                   // Phones get the native share sheet; desktops copy the link.

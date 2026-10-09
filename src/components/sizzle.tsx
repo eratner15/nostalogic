@@ -311,7 +311,7 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
     setExporting(true);
     const stream = el.captureStream(30);
     // Music is recorded; browser speech is not capturable, so the export carries subtitles instead.
-    play(0, true, () => recorder.current?.stop());
+    play(0, music, () => recorder.current?.stop());   // the Score toggle decides whether music is recorded
     const audio = score.current?.dest.stream.getAudioTracks() ?? [];
     audio.forEach((track) => stream.addTrack(track));
     const type = ["video/mp4;codecs=avc1,mp4a", "video/mp4", "video/webm;codecs=vp9,opus", "video/webm"].find((m) => MediaRecorder.isTypeSupported(m)) ?? "";
