@@ -6,7 +6,7 @@
  */
 import Anthropic from "@anthropic-ai/sdk";
 import type { PropertyScore } from "../../src/lib/scoring";
-import type { Art, Concept, Sizzle, StudioEvent, StudioStep, Verdict } from "../../src/lib/studio";
+import { sizzleRuntime, type Art, type Concept, type Sizzle, type StudioEvent, type StudioStep, type Verdict } from "../../src/lib/studio";
 import { sanitizeSvg } from "./svg";
 
 export type StudioOptions = {
@@ -95,6 +95,8 @@ const sizzleSchema = {
   },
 };
 
+const VERDICT_DIMENSIONS = ["Originality", "Audience fit", "Story engine", "Production feasibility", "Rights distance", "Franchise potential"];
+
 const verdictSchema = {
   type: "object",
   additionalProperties: false,
@@ -104,7 +106,7 @@ const verdictSchema = {
     summary: { type: "string", description: "Two or three sentences: the call and the main reason." },
     scores: {
       type: "array",
-      description: "Exactly these dimensions: Originality, Audience fit, Story engine, Production feasibility, Rights distance, Franchise potential.",
+      description: `Exactly these six dimensions, in order: ${VERDICT_DIMENSIONS.join(", ")}.`,
       items: { type: "object", additionalProperties: false, required: ["dimension", "score", "note"], properties: { dimension: { type: "string" }, score: { type: "integer", description: "1 (weak) to 5 (strong)." }, note: { type: "string" } } },
     },
     strengths: { type: "array", items: { type: "string" } },
@@ -197,8 +199,11 @@ export async function runStudio(
       `Cut a 45-60 second sizzle reel that sells this ${input.format} to a buyer who will not read a script.\nConcept: ${conceptJson}\nOpening pages, for tone and lines you may reuse:\n${screenplay}\n\nRules:\n- 7 to 9 shots, 4 to 8 seconds each, 45 to 60 seconds in total.\n- Arc: a cold-open image that hooks, the world, the lead, the conflict, escalation, a title card shot, one final button.\n- Every image_prompt is a single cinematic keyframe a generator can render; it must stand on its own (repeat who and where) and match the style_bible. No text in the images; titles go in on_screen_text.\n- Vary the camera moves. Give the title card shot on_screen_text equal to the title.\n- Voice lines are short and punchy; a NARRATOR may carry the pitch.\n- No real people, actors, brands, or anything from the source properties.`,
       { effort: "medium", schema: sizzleSchema },
     ));
-    sizzle.shots = sizzle.shots.slice(0, 12);
-    if (!sizzle.shots.length) throw new StepError("The sizzle came back with no shots.");
+    // The schema describes the limits; enforce them so the player and export stay 30-75 seconds.
+    if (sizzle.shots.length < 5 || sizzle.shots.length > 12) throw new StepError(`The sizzle came back with ${sizzle.shots.length} shots; it needs 7 to 9.`);
+    sizzle.shots = sizzle.shots.map((s) => ({ ...s, seconds: Math.min(8, Math.max(3, Math.round(Number(s.seconds) || 5))) }));
+    const runtime = sizzleRuntime(sizzle);
+    if (runtime < 30 || runtime > 75) throw new StepError(`The sizzle came back at ${runtime} seconds; it needs 45 to 60.`);
     await save(step, sizzle);
     await emit({ type: "result", step, data: sizzle });
 
@@ -210,13 +215,15 @@ export async function runStudio(
       const rendered = await renderArt(sizzle);
       art = { ...rendered, posterSvg: null };
     }
-    if (!art.posterImage) {
+    // Malformed or oversized SVG sanitizes to null: ask once more, then fail the step.
+    for (let attempt = 0; !art.posterImage && !art.posterSvg && attempt < 2; attempt++) {
       const posterText = await call(
         `Design the one-sheet poster for this property as a single SVG.\nConcept: ${conceptJson}\nTagline: ${sizzle.tagline}\n\nRequirements:\n- Output ONLY the SVG markup, starting with <svg and ending with </svg>. No prose, no code fence.\n- viewBox="0 0 600 900" with width="600" height="900", xmlns set.\n- Built from shapes, paths, gradients (linearGradient, radialGradient in <defs>), and text only. No <image>, <style>, <script>, <foreignObject>, <use>, external links, or web fonts. Use font-family serif, sans-serif, or monospace, with presentation attributes.\n- Show the title large, the tagline, and a credit block at the bottom in small condensed text. A strong single key image built from geometry, following: ${sizzle.style_bible}\n- Every text element must fit inside the 600 px width.\n- Do not use any source property's name, logo, or characters.`,
         { effort: "medium" },
       );
       art.posterSvg = sanitizeSvg(posterText);
     }
+    if (!art.posterImage && !art.posterSvg) throw new StepError("The poster could not be drawn.");
     await save(step, art);
     await emit({ type: "result", step, data: art });
 
@@ -227,6 +234,11 @@ export async function runStudio(
       `Act as a skeptical development executive. Decide whether this pack deserves development money.\nSource properties: ${brief}\nConcept: ${conceptJson}\nOpening pages:\n${screenplay}\nSizzle shots: ${JSON.stringify(sizzle.shots)}\n\nJudge the work itself: originality, audience fit, story engine, production feasibility, rights distance from the sources, and franchise potential. Flag anything that echoes a source too closely. This is a creative judgment, not a market forecast; never predict revenue or ratings.`,
       { effort: "medium", schema: verdictSchema },
     ));
+    verdict.scores = (verdict.scores ?? [])
+      .filter((s) => s && typeof s.dimension === "string")
+      .slice(0, VERDICT_DIMENSIONS.length)
+      .map((s) => ({ ...s, score: Math.min(5, Math.max(1, Math.round(Number(s.score) || 1))) }));
+    if (verdict.scores.length < VERDICT_DIMENSIONS.length) throw new StepError("The verdict came back without all six scores.");
     await save(step, verdict);
     await emit({ type: "result", step, data: verdict });
     return { ok: true, usage };

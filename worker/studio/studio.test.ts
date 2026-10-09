@@ -28,10 +28,12 @@ const sizzle: Sizzle = {
   shots: [
     { seconds: 5, image_prompt: "A cracked handheld glowing in a dark drawer.", camera: "push_in", on_screen_text: "", speaker: "", line: "", music: "hum" },
     { seconds: 4, image_prompt: "A food court where every phone lights up.", camera: "pan_left", on_screen_text: "POCKET STATIC", speaker: "NARRATOR", line: "It rates everyone.", music: "" },
+    ...Array.from({ length: 5 }, (_, i) => ({ seconds: 7, image_prompt: `Beat ${i + 3}.`, camera: "static" as const, on_screen_text: "", speaker: "", line: "", music: "" })),
   ],
 };
+const DIMENSIONS = ["Originality", "Audience fit", "Story engine", "Production feasibility", "Rights distance", "Franchise potential"];
 const verdict = {
-  verdict: "develop", summary: "s", scores: [{ dimension: "Originality", score: 4, note: "n" }],
+  verdict: "develop", summary: "s", scores: DIMENSIONS.map((dimension) => ({ dimension, score: 4, note: "n" })),
   strengths: ["a"], concerns: ["b"], rights_flags: [], next_steps: ["c"], audience_test_questions: ["q"],
 };
 const posterSvg = `<svg viewBox="0 0 600 900" onload="alert(1)"><script>alert(2)</script><defs><linearGradient id="g"/></defs><rect fill="url(#g)" width="600" height="900"/><image href="https://evil.example/x.png"/><a href="https://evil.example"><text>Click</text></a><text x="20" y="80">POCKET STATIC</text></svg>`;
@@ -78,7 +80,7 @@ test("with images: five steps in order, generated art saved, no SVG call", async
   const art = saved.get("art") as Art;
   assert.equal(art.posterImage, "/api/media/studio/x/poster.png");
   assert.equal(art.posterSvg, null);
-  assert.equal(art.shotImages.length, 2);
+  assert.equal(art.shotImages.length, 7);
   // Concept, sizzle, and verdict ask for structured JSON; the script is free text.
   assert.deepEqual(bodies.map((b) => Boolean((b.output_config as { format?: unknown }).format)), [true, false, true, true]);
   assert.equal(bodies[0].fallbacks, "default");
@@ -92,7 +94,36 @@ test("without images: the poster falls back to a sanitized SVG", async () => {
   assert.ok(art.posterSvg?.startsWith("<svg"));
   assert.ok(!/script|onload|evil\.example|<image|<a\b/i.test(art.posterSvg ?? ""), art.posterSvg ?? "");
   assert.match(art.posterSvg ?? "", /url\(#g\)/);
-  assert.deepEqual(art.shotImages, [null, null]);
+  assert.deepEqual(art.shotImages, sizzle.shots.map(() => null));
+});
+
+test("an SVG poster that sanitizes to nothing is retried once, then fails the art step", async () => {
+  const retried = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: "no drawing" }, { text: posterSvg }, { text: JSON.stringify(verdict) }]);
+  assert.equal((await retried.result).ok, true);
+  assert.ok((retried.saved.get("art") as Art).posterSvg);
+  const failed = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: "no drawing" }, { text: "still none" }]);
+  assert.equal((await failed.result).ok, false);
+  assert.equal((failed.events.at(-1) as { step?: string }).step, "art");
+});
+
+test("a sizzle outside 5-12 shots or 30-75 seconds fails; shot lengths are clamped to 3-8 seconds", async () => {
+  const tooFew = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify({ ...sizzle, shots: sizzle.shots.slice(0, 2) }) }]);
+  assert.equal((await tooFew.result).ok, false);
+  assert.equal((tooFew.events.at(-1) as { step?: string }).step, "sizzle");
+  const long = { ...sizzle, shots: sizzle.shots.map((s) => ({ ...s, seconds: 60 })) };
+  const clamped = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(long) }], async (s) => ({ posterImage: "/p.png", shotImages: s.shots.map(() => null), note: null }));
+  assert.equal((await clamped.result).ok, false);   // 7 shots x 8s = 56s passes the runtime check, but the fake model has no verdict reply
+  assert.ok((clamped.saved.get("sizzle") as Sizzle).shots.every((s) => s.seconds === 8));
+});
+
+test("verdict scores are clamped to 1-5, and a verdict missing dimensions fails", async () => {
+  const texts = [{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }];
+  const art = async (s: Sizzle) => ({ posterImage: "/p.png", shotImages: s.shots.map(() => null), note: null });
+  const high = run([...texts, { text: JSON.stringify({ ...verdict, scores: verdict.scores.map((x) => ({ ...x, score: 9 })) }) }], art);
+  assert.equal((await high.result).ok, true);
+  assert.ok((high.saved.get("verdict") as { scores: { score: number }[] }).scores.every((x) => x.score === 5));
+  const short = run([...texts, { text: JSON.stringify({ ...verdict, scores: verdict.scores.slice(0, 2) }) }], art);
+  assert.equal((await short.result).ok, false);
 });
 
 test("a failed step stops the run, reports the step, and keeps earlier work", async () => {
@@ -139,6 +170,10 @@ test("renderToMedia stores the image, and reports failures instead of throwing",
 test("sanitizeSvg rejects text with no svg and adds a namespace", () => {
   assert.equal(sanitizeSvg("no drawing here"), null);
   assert.match(sanitizeSvg("<svg viewBox='0 0 10 10'><rect/></svg>") ?? "", /xmlns="http:\/\/www.w3.org\/2000\/svg"/);
+  const quoted = sanitizeSvg(`<svg><rect fill='url("#a")'/><rect fill="url('#b')"/><rect fill="url(https://evil.example/x)"/><rect fill='url("https://evil.example/y")'/></svg>`) ?? "";
+  assert.match(quoted, /url\("#a"\)/);
+  assert.match(quoted, /url\('#b'\)/);
+  assert.ok(!quoted.includes("evil.example"), quoted);
 });
 
 test("shareCard builds an absolute poster URL, and shareTags escapes model text", async () => {

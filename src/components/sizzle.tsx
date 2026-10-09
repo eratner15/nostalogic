@@ -335,6 +335,7 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
             <button
               key={i}
               onClick={() => { const t = s.start + 0.01; setTime(t); if (playing) play(t, music); else draw(t); }}
+              disabled={exporting}
               style={{ flexGrow: s.end - s.start }}
               aria-label={`Jump to shot ${i + 1}`}
               className={cn("h-full rounded-full", time >= s.end ? "bg-primary" : i === shotIndex ? "bg-primary/60" : "bg-muted")}
@@ -350,7 +351,7 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
             >
               {playing ? <Pause className="h-4 w-4" /> : <Play className="h-4 w-4" />} {playing ? "Pause" : "Play sizzle"}
             </button>
-            <button onClick={() => { stop(); setTime(0); draw(0); }} className="rounded border border-border p-2 text-muted-foreground hover:text-foreground" aria-label="Restart"><RotateCcw className="h-4 w-4" /></button>
+            <button onClick={() => { stop(); setTime(0); draw(0); }} disabled={exporting} className="rounded border disabled:opacity-40 border-border p-2 text-muted-foreground hover:text-foreground" aria-label="Restart"><RotateCcw className="h-4 w-4" /></button>
             <button onClick={() => setMusic((m) => !m)} className={cn("inline-flex items-center gap-1.5 rounded border px-2.5 py-2 text-xs", music ? "border-primary/50 text-primary" : "border-border text-muted-foreground")}><Music2 className="h-3.5 w-3.5" /> Score</button>
             <div className="inline-flex overflow-hidden rounded border border-border text-xs" role="group" aria-label="Frame">
               {(["wide", "vertical"] as const).map((a) => (

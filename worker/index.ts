@@ -160,7 +160,7 @@ app.post("/studio", async (c) => {
   if (!c.env.ANTHROPIC_API_KEY) return c.json({ error: NOT_CONFIGURED }, 503);
 
   const sources = (await loadLibrary(c.env)).filter((p) => ids.includes(p.id));
-  if (sources.length < 2) return c.json({ error: "unknown properties" }, 400);
+  if (sources.length !== ids.length) return c.json({ error: "unknown properties" }, 400);
 
   const ip = c.req.header("cf-connecting-ip") ?? "unknown";
   if (!(await bumpUsage(c.env, "studio-ip", ip, Number(c.env.STUDIO_DAILY_PER_IP ?? 5)))) {

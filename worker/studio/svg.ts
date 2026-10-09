@@ -25,7 +25,8 @@ export function sanitizeSvg(raw: string): string | null {
     .replace(/javascript:/gi, "")
     // Links that leave the document: only #fragment references survive.
     .replace(/\s(?:xlink:)?href\s*=\s*("(?!#)[^"]*"|'(?!#)[^']*')/gi, "")
-    .replace(/url\(\s*['"]?(?!#)[^)]*\)/gi, "none");
+    // Quoted and unquoted references are separate cases, so url("#g") survives.
+    .replace(/url\(\s*(?:"(?!#)[^"]*"|'(?!#)[^']*'|(?!["'#])[^)]*)\s*\)/gi, "none");
   if (!/^<svg[\s>]/.test(svg)) return null;
   // Ensure the namespace so the file renders when opened on its own.
   if (!/xmlns=/.test(svg.slice(0, 300))) svg = svg.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
