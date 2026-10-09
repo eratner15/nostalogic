@@ -381,3 +381,13 @@ test("only an opening Title line is rewritten; otherwise the title page is prepe
   assert.ok(saved.startsWith("Title: Pocket Static\n\n"));
   assert.match(saved, /Title: Queen of the Food Court\./);
 });
+
+test("cast names must be distinct and nonblank; blank pages fail; metadata titles do not count", async () => {
+  const dupes = run([{ text: JSON.stringify({ ...concept, characters: [concept.characters[0], concept.characters[0], concept.characters[1]] }) }]);
+  assert.equal((await dupes.result).ok, false);
+  const blank = run([{ text: JSON.stringify(concept) }, { text: " ".repeat(500) }]);
+  assert.equal((await blank.result).ok, false);
+  const meta = `<svg><title>Pocket Static</title><text>A NEW SHOW</text></svg>`;
+  const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: meta }, { text: meta }]);
+  assert.equal((await r.result).ok, false);
+});

@@ -244,7 +244,9 @@ export async function runStudio(
     concept.title = String(concept.title ?? "").trim();
     if (!concept.title) throw new StepError("The concept came back without a title.");
     if (!Array.isArray(concept.characters) || concept.characters.length < 3) throw new StepError("The concept came back with fewer than three characters.");
-    concept.characters = concept.characters.slice(0, 5);
+    concept.characters = concept.characters.slice(0, 5).map((ch) => ({ ...ch, name: String(ch?.name ?? "").trim() }));
+    const castNames = concept.characters.map((ch) => ch.name.toLowerCase());
+    if (castNames.some((n) => !n) || new Set(castNames).size !== castNames.length) throw new StepError("The concept needs three to five distinctly named characters.");
     // Every public concept field, except the intentional provenance (borrowed_mechanics)
     // and the risks, which may name a source to warn about closeness.
     const publicConcept = [
@@ -264,7 +266,7 @@ export async function runStudio(
       `Write the opening pages of this ${input.format}: about three minutes of screen time, roughly three pages.\nConcept: ${conceptJson}\n\nRequirements:\n- Fountain screenplay format, plain text only: scene headings like INT. PLACE - DAY, action lines, CHARACTER names in capitals on their own line before dialogue, parentheticals in brackets on their own line, transitions like CUT TO: on their own line.\n- Start with a title line "Title: <title>" then a blank line.\n- Open with a hook that sells the premise in the first 30 seconds and end on a button that makes the viewer want the next scene.\n- Only the new property's own characters and world.\n${input.format === "Video Game" ? "- For a video game, write the opening cinematic and the first playable moment, with gameplay described in action lines." : ""}`,
       { effort: "medium" },
     );
-    if (screenplay.length < 400) throw new StepError("The opening pages came back too short.");
+    if (screenplay.trim().length < 400) throw new StepError("The opening pages came back too short.");
     if (named(screenplay)) throw new StepError("The opening pages used a source property's name.");
     // The script's title page carries the concept title.
     // Only an opening "Title:" line is the title page; one inside the script is left alone.
@@ -290,14 +292,14 @@ export async function runStudio(
       sizzle.shots = sizzle.shots.map((s) => ({ ...s, on_screen_text: s.on_screen_text.replace(old, concept.title) }));
     }
     sizzle.title = concept.title;
-    if (sizzle.shots.length < 5 || sizzle.shots.length > 12) throw new StepError(`The sizzle came back with ${sizzle.shots.length} shots; it needs 7 to 9.`);
+    if (sizzle.shots.length < 5 || sizzle.shots.length > 12) throw new StepError(`The sizzle came back with ${sizzle.shots.length} shots; the reel takes 5 to 12 (7 to 9 asked).`);
     sizzle.shots = sizzle.shots.map((s) => ({ ...s, seconds: Math.min(8, Math.max(3, Math.round(Number(s.seconds) || 5))) }));
     // The reel must name the property: make the last shot the title card if none is.
     if (!sizzle.shots.some((s) => s.on_screen_text.trim().toLowerCase() === concept.title.toLowerCase())) {
       sizzle.shots[sizzle.shots.length - 1] = { ...sizzle.shots[sizzle.shots.length - 1], on_screen_text: concept.title };
     }
     const runtime = sizzleRuntime(sizzle);
-    if (runtime < 30 || runtime > 75) throw new StepError(`The sizzle came back at ${runtime} seconds; it needs 45 to 60.`);
+    if (runtime < 30 || runtime > 75) throw new StepError(`The sizzle came back at ${runtime} seconds; the reel takes 30 to 75 (45 to 60 asked).`);
     const onScreen = [sizzle.title, sizzle.tagline, ...sizzle.shots.flatMap((s) => [s.on_screen_text, s.speaker, s.line])];
     if (onScreen.some(named)) throw new StepError("The sizzle put a source property's name on screen.");
     const scrub = (text: string) => sourceNames.reduce((t, r) => t.replace(r, ""), text).replace(/\s{2,}/g, " ").trim();
@@ -331,7 +333,11 @@ export async function runStudio(
       // It must also show the canonical title as whole words, ignoring case and line
       // wraps ("It" must not match "written").
       const title = wordPattern(concept.title.replace(/\s+/g, " ").trim(), "i");
-      const showsTitle = visible.some((t) => title.test(t));
+      // The title must be in rendered text, not only in <title>, <desc>, <metadata>, or <defs>.
+      const rendered = raw.replace(/<(title|desc|metadata|defs)\b[\s\S]*?<\/\1>/gi, "");
+      const renderedText = [rendered.replace(/<[^>]*>/g, " "), rendered.replace(/<[^>]*>/g, "")]
+        .map((t) => decodeXml(t).replace(/\s+/g, " ").trim());
+      const showsTitle = renderedText.some((t) => title.test(t));
       art.posterSvg = svg && showsTitle && !visible.some(named) ? svg : null;
     }
     if (!art.posterImage && !art.posterSvg) throw new StepError("The poster could not be drawn.");
