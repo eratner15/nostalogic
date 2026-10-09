@@ -138,6 +138,8 @@ export function sourceAliases(name: string): string[] {
     if (n.includes(":")) out.add(n.split(":")[0].trim());
     for (const part of n.split("/")) out.add(part.replace(/\s+(TV|Books?|Series|Film)$/i, "").trim());
     if (/^The\s/.test(n)) out.add(n.replace(/^The\s+/, ""));
+    // Stylized punctuation at the edges ("*NSYNC" also means "NSYNC").
+    out.add(n.replace(/^[^\p{L}\p{N}]+|[^\p{L}\p{N}]+$/gu, ""));
   }
   return [...out].filter((n) => n.length >= 3);
 }
@@ -152,6 +154,8 @@ function decodeXml(text: string): string {
 
 /** A whole-word match for a literal name (word edges only where the name has word characters). */
 function wordPattern(name: string, flags: string): RegExp {
+  // A blank name matches nothing (an empty pattern would match everywhere).
+  if (!name.trim()) return /(?!)/g;
   // Any run of whitespace in the name matches any run in the text ("Kenan   & Kel").
   const body = name.trim().split(/\s+/).map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("\\s+");
   return new RegExp(`(?<![\\w])${body}(?![\\w])`, flags);
@@ -287,7 +291,7 @@ export async function runStudio(
     ));
     // The schema describes the limits; enforce them so the player and export stay 30-75 seconds.
     // One name across the page, player, export, title card, and poster prompt.
-    if (sizzle.title && sizzle.title !== concept.title) {
+    if (sizzle.title?.trim() && sizzle.title.trim() !== concept.title) {
       const old = wordPattern(sizzle.title, "gi");   // whole words only: a title "It" must not touch "with"
       sizzle.poster_prompt = sizzle.poster_prompt.replace(old, concept.title);
       sizzle.tagline = sizzle.tagline.replace(old, concept.title);

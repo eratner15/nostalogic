@@ -406,3 +406,14 @@ test("names match across runs of whitespace", async () => {
   const r = run([{ text: JSON.stringify({ ...concept, premise: "Daria   style narration." }) }]);
   assert.equal((await r.result).ok, false);
 });
+
+test("stylized names get a plain alias; a blank sizzle title changes nothing", async () => {
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("*NSYNC").includes("NSYNC"));
+  const blank = { ...sizzle, title: "   " };
+  const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(blank) }]);
+  await r.result;
+  const saved = r.saved.get("sizzle") as Sizzle;
+  assert.equal(saved.tagline, sizzle.tagline);
+  assert.equal(saved.shots[0].on_screen_text, "");
+});
