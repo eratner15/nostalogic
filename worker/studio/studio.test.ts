@@ -472,7 +472,7 @@ test("blank or source-only visual prompts fail; zero-size poster titles do not c
 test("nested hidden groups, unquoted hrefs, ampersand aliases, and blank tagline, new elements, or verdict lists", async () => {
   const { sourceAliases } = await import("./pipeline");
   assert.ok(sourceAliases("Kenan & Kel").includes("Kenan and Kel"));
-  assert.ok(!sanitizeSvg(`<svg><filter><feImage href=https://example.com/p /></filter><text>X</text></svg>`)!.includes("example.com"));
+  assert.ok(!(sanitizeSvg(`<svg><text><textPath href=https://example.com/p>X</textPath></text></svg>`) ?? "").includes("example.com"));
   const nested = `<svg viewBox="0 0 600 900"><g display="none"><g><rect/></g><text>POCKET STATIC</text></g><text>A NEW SHOW</text></svg>`;
   const hidden = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: nested }, { text: nested }]);
   assert.equal((await hidden.result).ok, false);
@@ -504,7 +504,8 @@ test("and aliases get an ampersand form; a prefixed <title> does not count as th
 });
 
 test("xml:base is stripped; commented tags do not end a hidden group; comments never ship", async () => {
-  assert.ok(!sanitizeSvg(`<svg xml:base="https://e.example/"><filter><feImage href="#a"/></filter><text>X</text></svg>`)!.includes("e.example"));
+  const based = sanitizeSvg(`<svg xml:base="https://e.example/"><text><textPath href="#a">X</textPath></text></svg>`)!;
+  assert.ok(based && !based.includes("e.example"));
   const tricky = `<svg viewBox="0 0 600 900"><g display="none"><!-- </g> --><text>POCKET STATIC</text></g><text>A NEW SHOW</text></svg>`;
   assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: tricky }, { text: tricky }]).result).ok, false);
   // Comments are removed by the sanitizer, so a source name in one never ships.
@@ -561,4 +562,17 @@ test("the namespace is read from the root only; quoted '/>' does not end a hidde
   assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: quoted }, { text: quoted }]).result).ok, false);
   const encoded = `<svg viewBox="0 0 600 900"><g display="&#110;one"><text>POCKET STATIC</text></g><text>A NEW SHOW</text></svg>`;
   assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: encoded }, { text: encoded }]).result).ok, false);
+});
+
+test("only SVG drawing elements pass; typographic punctuation and hidden-split names are caught", async () => {
+  assert.equal(sanitizeSvg(`<svg><g><img xmlns="http://www.w3.org/1999/xhtml" src="https://e.example/p"/></g><text>X</text></svg>`), null);
+  assert.equal(sanitizeSvg(`<svg><filter><feImage href="#a"/></filter><text>X</text></svg>`), null);
+  assert.equal(sanitizeSvg(`<svg><rect fill="u\\&#10;rl(https://e.example/p)"/><text>X</text></svg>`), null);
+  assert.ok(sanitizeSvg(`<svg><defs><linearGradient id="g"><stop offset="0"/></linearGradient></defs><rect fill="url(#g)"/><text>X</text></svg>`));
+  const curly = run([{ text: JSON.stringify({ ...concept, premise: "A Daria’s-style narrator." }) }]);
+  assert.equal((await curly.result).ok, false);
+  const hiddenSplit = `<svg viewBox="0 0 600 900"><text>POCKET STATIC</text><text>Da<tspan display="none">x</tspan>ria</text></svg>`;
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: hiddenSplit }, { text: hiddenSplit }]).result).ok, false);
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("Dexter’s Laboratory").includes("Dexter's Laboratory"));
 });

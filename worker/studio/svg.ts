@@ -4,7 +4,7 @@
  * only a drawing, drop anything that could run code or load from elsewhere.
  */
 
-import { XMLValidator } from "fast-xml-parser";
+import { XMLParser, XMLValidator } from "fast-xml-parser";
 
 const MAX_BYTES = 120_000;
 
@@ -28,6 +28,40 @@ function loadsExternal(svg: string): boolean {
     if (/url\(\s*(?!["']?\s*#)/i.test(value) || /javascript:/i.test(value)) return true;
   }
   return false;
+}
+
+// The elements a drawn poster uses. Anything else (an HTML <img> in a switched default
+// namespace, <feImage>, unknown tags) rejects the poster rather than being repaired.
+const DRAWING = new Set([
+  "svg", "g", "defs", "title", "desc", "metadata", "symbol", "rect", "circle", "ellipse", "line",
+  "polyline", "polygon", "path", "text", "tspan", "textPath", "linearGradient", "radialGradient",
+  "stop", "clipPath", "mask", "pattern", "marker", "filter", "feBlend", "feColorMatrix",
+  "feComponentTransfer", "feComposite", "feConvolveMatrix", "feDiffuseLighting", "feDisplacementMap",
+  "feDistantLight", "feDropShadow", "feFlood", "feFuncA", "feFuncB", "feFuncG", "feFuncR",
+  "feGaussianBlur", "feMerge", "feMergeNode", "feMorphology", "feOffset", "fePointLight",
+  "feSpecularLighting", "feSpotLight", "feTile", "feTurbulence",
+]);
+const drawingParser = new XMLParser({ preserveOrder: true, ignoreAttributes: false, attributeNamePrefix: "", processEntities: false });
+
+/**
+ * True when the parsed poster holds only drawing elements in the SVG namespace: no element
+ * outside DRAWING, no default namespace other than SVG, no `src`, and no backslash in any
+ * attribute value (CSS escapes and line continuations have no use in a poster).
+ */
+function onlySvgDrawing(svg: string): boolean {
+  type XmlNode = Record<string, unknown> & { ":@"?: Record<string, string> };
+  const ok = (nodes: XmlNode[]): boolean => nodes.every((node) => {
+    if ("#text" in node) return true;
+    const name = Object.keys(node).find((k) => k !== ":@");
+    if (!name || !DRAWING.has(name)) return false;
+    for (const [attr, value] of Object.entries(node[":@"] ?? {})) {
+      const v = decodeXml(String(value));
+      if (attr === "xmlns" && v !== "http://www.w3.org/2000/svg") return false;
+      if (/^src$/i.test(attr) || v.includes("\\")) return false;
+    }
+    return ok((node[name] as XmlNode[]) ?? []);
+  });
+  return ok(drawingParser.parse(svg) as XmlNode[]);
 }
 
 export function extractSvg(text: string): string | null {
@@ -68,7 +102,7 @@ export function sanitizeSvg(raw: string): string | null {
   // A real XML check: a browser shows nothing for an SVG file that does not parse
   // (unbalanced tags, unquoted attributes, entities XML does not define).
   if (XMLValidator.validate(svg) !== true || /&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);)/i.test(svg)) return null;
-  if (loadsExternal(svg)) return null;
+  if (loadsExternal(svg) || !onlySvgDrawing(svg)) return null;
   // Ensure the namespace so the file renders when opened on its own.
   // Read only the root's own attributes (quote-aware), and require the SVG namespace there.
   const root = svg.match(/^<svg(?:\s+[^\s=>\/]+\s*=\s*(?:"[^"]*"|'[^']*'))*\s*\/?>/)?.[0];

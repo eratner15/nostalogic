@@ -121,6 +121,11 @@ const verdictSchema = {
   },
 };
 
+/** Typographic quotes, apostrophes, and dashes in their plain ASCII forms. */
+export function plainPunctuation(text: string): string {
+  return text.replace(/[\u2018\u2019\u02BC\u2032]/g, "'").replace(/[\u201C\u201D\u2033]/g, '"').replace(/[\u2010-\u2015]/g, "-");
+}
+
 /**
  * The names a source goes by, beyond its catalog label: "AOL Instant Messenger (AIM)"
  * also means "AOL Instant Messenger" and "AIM"; "Xena: Warrior Princess" also means
@@ -149,6 +154,8 @@ export function sourceAliases(name: string): string[] {
     v.push(n.replace(/^[*!#~_+.-]+|[*!#~_+.-]+$/g, ""));
     // Punctuation inside a multiword title ("Aaahh!!! Real Monsters" -> "Aaahh Real Monsters").
     if (/[!?.,:;*~_+'"-]/.test(n)) v.push(n.replace(/[!?.,:;*~_+'"-]+/g, " ").replace(/\s+/g, " ").trim());
+    const plain = plainPunctuation(n);
+    if (plain !== n) v.push(plain);
     // Accents are often dropped ("Los del Río" -> "Los del Rio").
     const folded = n.normalize("NFD").replace(/\p{M}/gu, "");
     if (folded !== n) v.push(folded);
@@ -279,7 +286,8 @@ export async function runStudio(
     .flatMap((p) => sourceAliases(p.name))
     .flatMap((n) => [...new Set([n, n.toUpperCase()])])
     .map((n) => wordPattern(n, "g"));
-  const named = (text: string) => sourceNames.some((r) => { r.lastIndex = 0; return r.test(text); });
+  // Typographic quotes and dashes read as their plain forms ("Dexter’s" -> "Dexter's").
+  const named = (text: string) => sourceNames.some((r) => { r.lastIndex = 0; return r.test(plainPunctuation(text)); });
   let step: StudioStep = "concept";
   try {
     // 1. Concept
@@ -381,7 +389,7 @@ export async function runStudio(
     if (runtime < 30 || runtime > 75) throw new StepError(`The sizzle came back at ${runtime} seconds; the reel takes 30 to 75 (45 to 60 asked).`);
     const onScreen = [sizzle.title, sizzle.tagline, ...sizzle.shots.flatMap((s) => [s.on_screen_text, s.speaker, s.line])];
     if (onScreen.some(named)) throw new StepError("The sizzle put a source property's name on screen.");
-    const scrub = (text: string) => sourceNames.reduce((t, r) => t.replace(r, ""), text).replace(/\s{2,}/g, " ").trim();
+    const scrub = (text: string) => sourceNames.reduce((t, r) => t.replace(r, ""), plainPunctuation(text)).replace(/\s{2,}/g, " ").trim();
     sizzle.poster_prompt = scrub(sizzle.poster_prompt);
     sizzle.style_bible = scrub(sizzle.style_bible);
     sizzle.shots = sizzle.shots.map((s) => ({ ...s, image_prompt: scrub(s.image_prompt), music: scrub(s.music) }));
@@ -413,7 +421,8 @@ export async function runStudio(
       const text = svg ? posterText(svg) : { all: [], rendered: [] };
       const title = wordPattern(concept.title.replace(/\s+/g, " ").trim(), "i");
       const showsTitle = text.rendered.some((t) => title.test(t));
-      const visible = text.all;
+      // Check every text node and the rendered text: a hidden node can split a name ("Da<tspan display="none">x</tspan>ria").
+      const visible = [...text.all, ...text.rendered];
       art.posterSvg = svg && showsTitle && !visible.some(named) ? svg : null;
     }
     if (!art.posterImage && !art.posterSvg) throw new StepError("The poster could not be drawn.");
