@@ -58,6 +58,9 @@ function onlySvgDrawing(svg: string): boolean {
       const v = decodeXml(String(value));
       if (attr === "xmlns" && v !== "http://www.w3.org/2000/svg") return false;
       if (/^src$/i.test(attr) || v.includes("\\")) return false;
+      // Only the prefixes a poster can declare and use: xlink, xml, and xmlns declarations.
+      const prefix = attr.includes(":") ? attr.slice(0, attr.indexOf(":")) : null;
+      if (prefix && !["xlink", "xml", "xmlns"].includes(prefix)) return false;
       // Any href, whatever its prefix ("s.x:href"), must point inside the file.
       if (/^href$/i.test(attr.replace(/^.*:/, "")) && !v.trim().startsWith("#")) return false;
     }
@@ -105,6 +108,8 @@ export function sanitizeSvg(raw: string): string | null {
   // (unbalanced tags, unquoted attributes, entities XML does not define).
   if (XMLValidator.validate(svg) !== true || /&(?!(?:amp|lt|gt|quot|apos|#\d+|#x[0-9a-f]+);)/i.test(svg)) return null;
   if (loadsExternal(svg) || !onlySvgDrawing(svg)) return null;
+  // An xlink: attribute needs its namespace declared, or a namespace-aware viewer rejects the file.
+  if (/\sxlink:/.test(svg) && !/\sxmlns:xlink\s*=\s*["']http:\/\/www\.w3\.org\/1999\/xlink["']/.test(svg)) return null;
   // Ensure the namespace so the file renders when opened on its own.
   // Read only the root's own attributes (quote-aware), and require the SVG namespace there.
   const root = svg.match(/^<svg(?:\s+[^\s=>\/]+\s*=\s*(?:"[^"]*"|'[^']*'))*\s*\/?>/)?.[0];

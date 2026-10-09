@@ -183,8 +183,9 @@ function wordPattern(name: string, flags: string): RegExp {
   return new RegExp(`(?<![\\w])${body}(?![\\w])`, flags);
 }
 
-// Never-rendered containers: metadata, definitions, symbols, clip paths, masks, patterns, markers.
-const NEVER_RENDERED = /^(title|desc|metadata|defs|symbol|clipPath|mask|pattern|marker)$/i;
+// Never-rendered containers: metadata, definitions, symbols, clip paths, masks, patterns, markers,
+// filters, and gradients (paint servers never paint their own children).
+const NEVER_RENDERED = /^(title|desc|metadata|defs|symbol|clipPath|mask|pattern|marker|filter|linearGradient|radialGradient|stop|fe\w+)$/i;
 // Hidden elements do not show a title either (display none, visibility hidden, opacity 0, font size 0).
 const HIDDEN = /(display\s*[:=]\s*["']?\s*none|visibility\s*[:=]\s*["']?\s*hidden|(?<![\w-])(?:opacity|font-size)\s*[:=]\s*["']?\s*0(\.0*)?(?:px|pt|em|rem|%)?(?![.\d\w]))/i;
 
@@ -215,6 +216,10 @@ function posterText(svg: string): { all: string[]; rendered: string[] } {
       const name = Object.keys(node).find((k) => k !== ":@");
       if (!name) continue;
       const attrs = Object.entries(node[":@"] ?? {}).map(([k, v]) => ` ${k}="${decodeXml(String(v))}"`).join("");
+      // Accessible names are read aloud, so the source-name check reads them too.
+      for (const [k, v] of Object.entries(node[":@"] ?? {})) {
+        if (/^aria-|(^|:)title$/i.test(k)) all.push(decodeXml(String(v)));
+      }
       const hide = hidden || NEVER_RENDERED.test(name.replace(/^[^:]+:/, "")) || HIDDEN.test(attrs);
       walk((node[name] as XmlNode[]) ?? [], hide);
     }

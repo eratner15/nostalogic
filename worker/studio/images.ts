@@ -64,6 +64,20 @@ export async function renderToMedia(
     await env.MEDIA.put(key, bytes, { httpMetadata: { contentType: "image/png" } });
     return { url: `/api/media/${key}`, error: null, generated };
   } catch (error) {
-    return { url: null, error: error instanceof Error ? error.message : "image failed", generated };
+    // The detail stays in the Worker log: upstream errors can carry account or key details,
+    // and this message is saved in the pack, which is public.
+    console.log("studio image failed", key, error instanceof Error ? error.message : String(error));
+    return { url: null, error: generated ? "image storage failed" : "image generation failed", generated };
   }
+}
+
+/** Deletes every stored object under a prefix, such as an abandoned pack's "studio/<id>/". */
+export async function deleteMedia(media: R2Bucket | undefined, prefix: string): Promise<void> {
+  if (!media) return;
+  let cursor: string | undefined;
+  do {
+    const page = await media.list({ prefix, cursor });
+    if (page.objects.length) await media.delete(page.objects.map((o) => o.key));
+    cursor = page.truncated ? page.cursor : undefined;
+  } while (cursor);
 }

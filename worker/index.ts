@@ -18,7 +18,7 @@ import { mondayOf } from "./scoring";
 import { runSignals, yesterday } from "./signals";
 import { runStudio } from "./studio/pipeline";
 import { STUDIO_FORMATS, type Sizzle, type StudioEvent, type StudioPackage, type StudioStep } from "../src/lib/studio";
-import { renderToMedia, type ImageEnv } from "./studio/images";
+import { deleteMedia, renderToMedia, type ImageEnv } from "./studio/images";
 import { shareCard, shareTags } from "./studio/share";
 import { sameOriginJson } from "./http";
 
@@ -223,7 +223,9 @@ app.post("/studio", async (c) => {
   const emit = async (event: StudioEvent) => {
     try { await writer.write(encoder.encode(`data: ${JSON.stringify(event)}\n\n`)); } catch { /* client gone */ }
   };
+  let artSaved = false;
   const save = async (step: StudioStep, value: unknown) => {
+    if (step === "art") artSaved = true;
     await c.env.DB.prepare(`UPDATE studio_packages SET ${STUDIO_COLUMNS[step]} = ? WHERE id = ?`)
       .bind(typeof value === "string" ? value : JSON.stringify(value), id).run();
   };
@@ -247,9 +249,12 @@ app.post("/studio", async (c) => {
       await c.env.DB.prepare("UPDATE studio_packages SET status = ?, error = ?, input_tokens = ?, output_tokens = ?, cache_write_tokens = ?, cache_read_tokens = ?, images = ? WHERE id = ?")
         .bind(result.ok ? "done" : "error", failure, result.usage.input, result.usage.output, result.usage.cacheWrite, result.usage.cacheRead, imagesMade, id).run();
       if (result.ok) await emit({ type: "done", id });
+      // Images from an art step that never saved are unreachable: remove them.
+      else if (!artSaved) await deleteMedia(c.env.MEDIA, `studio/${id}/`).catch(() => {});
     } catch {
       await c.env.DB.prepare("UPDATE studio_packages SET status = 'error', error = ? WHERE id = ?").bind("unexpected failure", id).run().catch(() => {});
       await emit({ type: "error", message: "The studio failed unexpectedly. Try again." }).catch(() => {});
+      if (!artSaved) await deleteMedia(c.env.MEDIA, `studio/${id}/`).catch(() => {});
     } finally {
       await writer.close().catch(() => {});
     }
@@ -312,6 +317,8 @@ app.get("/studio/:id", async (c) => {
     r.status = "error";
     r.error = STALE_RUN;
     await c.env.DB.prepare("UPDATE studio_packages SET status = 'error', error = ? WHERE id = ? AND status = 'running'").bind(STALE_RUN, r.id).run().catch(() => {});
+    // A run that stopped before saving its art leaves only unreachable images behind.
+    if (!r.art) c.executionCtx.waitUntil(deleteMedia(c.env.MEDIA, `studio/${r.id}/`).catch(() => {}));
   }
   const parse = (v: string | null) => (v ? JSON.parse(v) : null);
   const pkg: StudioPackage = {
@@ -542,9 +549,13 @@ export default {
       console.log("signals", JSON.stringify(await runSignals(env, now)));
       // A Studio run dies about 30 seconds after its browser disconnects
       // (request-scoped waitUntil). Close out runs that can no longer finish.
-      await env.DB.prepare(
-        "UPDATE studio_packages SET status = 'error', error = ? WHERE status = 'running' AND created_at < datetime('now', '-20 minutes')",
-      ).bind(STALE_RUN).run().catch((e) => console.log("studio sweep failed", String(e)));
+      // Runs that stopped before saving their art also leave unreachable images: delete them.
+      const stale = await env.DB.prepare(
+        "UPDATE studio_packages SET status = 'error', error = ? WHERE status = 'running' AND created_at < datetime('now', '-20 minutes') RETURNING id, art IS NULL AS orphaned",
+      ).bind(STALE_RUN).all<{ id: string; orphaned: number }>().catch((e) => { console.log("studio sweep failed", String(e)); return null; });
+      for (const r of stale?.results ?? []) {
+        if (Number(r.orphaned)) await deleteMedia(env.MEDIA, `studio/${r.id}/`).catch((e) => console.log("studio media cleanup failed", r.id, String(e)));
+      }
       if (await ledgerDue(env, now)) {
         console.log("weekly ledger", JSON.stringify(await weeklyLedger(env, now)));
       }

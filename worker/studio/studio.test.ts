@@ -163,7 +163,8 @@ test("renderToMedia stores the image, and reports failures instead of throwing",
   assert.deepEqual(await renderToMedia(env, "studio/a/poster.png", "p", "1024x1536", "high", ok), { url: "/api/media/studio/a/poster.png", error: null, generated: true });
   const failed = await renderToMedia(env, "studio/a/shot-1.png", "p", "1536x1024", "medium", bad);
   assert.equal(failed.url, null);
-  assert.match(failed.error ?? "", /400: content policy/);
+  // The saved message is a fixed category; upstream detail stays in the Worker log.
+  assert.equal(failed.error, "image generation failed");
   assert.deepEqual(puts, ["studio/a/poster.png"]);
 });
 
@@ -580,4 +581,22 @@ test("only SVG drawing elements pass; typographic punctuation and hidden-split n
 test("an href with any prefix must be a #fragment", () => {
   assert.equal(sanitizeSvg(`<svg xmlns:s.x="http://www.w3.org/1999/xlink"><linearGradient id="h" s.x:href="https://e.example/p.svg#g"/><text>X</text></svg>`), null);
   assert.ok(sanitizeSvg(`<svg xmlns:xlink="http://www.w3.org/1999/xlink"><defs><linearGradient id="g"/><linearGradient id="h" xlink:href="#g"/></defs><text>X</text></svg>`));
+});
+
+test("unbound prefixes, paint-server titles, and accessible names; abandoned media is deleted", async () => {
+  assert.equal(sanitizeSvg(`<svg><defs><linearGradient id="g"/><linearGradient id="h" x:href="#g"/></defs><text>X</text></svg>`), null);
+  assert.equal(sanitizeSvg(`<svg><defs><linearGradient id="g"/><linearGradient id="h" xlink:href="#g"/></defs><text>X</text></svg>`), null);
+  const inFilter = `<svg viewBox="0 0 600 900"><filter id="f"><text>POCKET STATIC</text></filter><text>A NEW SHOW</text></svg>`;
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: inFilter }, { text: inFilter }]).result).ok, false);
+  const aria = `<svg viewBox="0 0 600 900" aria-label="Daria"><text>POCKET STATIC</text></svg>`;
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: aria }, { text: aria }]).result).ok, false);
+  const { deleteMedia } = await import("./images");
+  const keys = ["studio/a/poster.png", "studio/a/shot-1.png"];
+  const deleted: string[] = [];
+  const MEDIA = {
+    list: async () => ({ objects: keys.map((key) => ({ key })), truncated: false }),
+    delete: async (k: string[]) => { deleted.push(...k); },
+  } as unknown as R2Bucket;
+  await deleteMedia(MEDIA, "studio/a/");
+  assert.deepEqual(deleted, keys);
 });
