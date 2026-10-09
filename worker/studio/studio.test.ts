@@ -425,3 +425,14 @@ test("blank mechanics fail; a title only inside <symbol> does not count", async 
   const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: sym }, { text: sym }]);
   assert.equal((await r.result).ok, false);
 });
+
+test("punctuation inside a multiword source name is tolerated", async () => {
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("Aaahh!!! Real Monsters").includes("Aaahh Real Monsters"));
+  const pair = [library.find((p) => p.name === "Aaahh!!! Real Monsters")!, sources[1]];
+  if (!pair[0]) return;
+  const c = { ...concept, logline: "Aaahh! Real Monsters meets a slacker.", borrowed_mechanics: pair.map((p) => ({ source: p.name, mechanic: "m" })) };
+  const { fetchImpl } = fakeModel([{ text: JSON.stringify(c) }]);
+  const res = await runStudio({ sources: pair, format: "Animated Series" }, { apiKey: "t", model: "m", fetch: fetchImpl }, () => {}, async () => {});
+  assert.equal(res.ok, false);
+});

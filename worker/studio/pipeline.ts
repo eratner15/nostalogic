@@ -140,6 +140,8 @@ export function sourceAliases(name: string): string[] {
     if (/^The\s/.test(n)) out.add(n.replace(/^The\s+/, ""));
     // Stylized punctuation at the edges ("*NSYNC" also means "NSYNC").
     out.add(n.replace(/^[*!#~_+.-]+|[*!#~_+.-]+$/g, ""));
+    // Punctuation inside a multiword title ("Aaahh!!! Real Monsters" -> "Aaahh Real Monsters").
+    if (/\s/.test(n)) out.add(n.replace(/[!?.,:;*~_+'"-]+/g, " ").replace(/\s+/g, " ").trim());
   }
   return [...out].filter((n) => n.length >= 3);
 }
@@ -156,8 +158,8 @@ function decodeXml(text: string): string {
 function wordPattern(name: string, flags: string): RegExp {
   // A blank name matches nothing (an empty pattern would match everywhere).
   if (!name.trim()) return /(?!)/g;
-  // Any run of whitespace in the name matches any run in the text ("Kenan   & Kel").
-  const body = name.trim().split(/\s+/).map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("\\s+");
+  // Between words, any run of spaces or punctuation matches ("Kenan   & Kel", "Aaahh! Real Monsters").
+  const body = name.trim().split(/\s+/).map((w) => w.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).join("[\\s!?.,:;*~_+'\"-]+");
   return new RegExp(`(?<![\\w])${body}(?![\\w])`, flags);
 }
 
