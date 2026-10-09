@@ -326,7 +326,11 @@ export async function runStudio(
       // so a name split across <tspan>s ("Da<tspan>ria</tspan>") is still seen.
       const raw = (svg ?? "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1");
       const visible = [raw.replace(/<[^>]*>/g, " "), raw.replace(/<[^>]*>/g, "")].map(decodeXml);
-      art.posterSvg = svg && !visible.some(named) ? svg : null;
+      // It must also show the canonical title (whitespace and case ignored, so a title
+      // wrapped over two lines still counts).
+      const flat = (t: string) => t.replace(/\s+/g, " ").trim().toLowerCase();
+      const showsTitle = visible.some((t) => flat(t).includes(flat(concept.title)));
+      art.posterSvg = svg && showsTitle && !visible.some(named) ? svg : null;
     }
     if (!art.posterImage && !art.posterSvg) throw new StepError("The poster could not be drawn.");
     await save(step, art);

@@ -356,3 +356,12 @@ test("a blank concept title fails the concept step", async () => {
   const r = run([{ text: JSON.stringify({ ...concept, title: "   " }) }]);
   assert.equal((await r.result).ok, false);
 });
+
+test("a fallback SVG poster must show the concept title, even wrapped over two lines", async () => {
+  const noTitle = `<svg viewBox="0 0 600 900"><text x="20" y="80">A NEW SHOW</text></svg>`;
+  const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: noTitle }, { text: noTitle }]);
+  assert.equal((await r.result).ok, false);
+  const wrapped = `<svg viewBox="0 0 600 900"><text x="20" y="80">POCKET</text><text x="20" y="160">STATIC</text></svg>`;
+  const ok = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: wrapped }, { text: JSON.stringify(verdict) }]);
+  assert.equal((await ok.result).ok, true);
+});
