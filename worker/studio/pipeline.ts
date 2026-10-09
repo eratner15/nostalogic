@@ -232,14 +232,18 @@ function paintOf(attrs: Record<string, string>, parent: Paint): Paint {
 function posterText(svg: string): { all: string[]; rendered: string[] } {
   const all: string[] = [];
   const rendered: string[] = [];
+  // Each <text> element is also read on its own, so a word split across its <tspan>s is
+  // whole there even when other text sits before it in the document.
+  const blocks: { all: string[]; rendered: string[] }[] = [];
   type XmlNode = Record<string, unknown> & { ":@"?: Record<string, string> };
-  const walk = (nodes: XmlNode[], hidden: boolean, paint: Paint) => {
+  const walk = (nodes: XmlNode[], hidden: boolean, paint: Paint, block: { all: string[]; rendered: string[] } | null) => {
     const painted = (paint.fill && paint.fillOpacity > 0) || (paint.stroke && paint.strokeOpacity > 0);
     for (const node of nodes) {
       if ("#text" in node) {
         const text = decodeXml(String(node["#text"]));
         all.push(text);
-        if (!hidden && painted) rendered.push(text);
+        block?.all.push(text);
+        if (!hidden && painted) { rendered.push(text); block?.rendered.push(text); }
         continue;
       }
       const name = Object.keys(node).find((k) => k !== ":@");
@@ -251,12 +255,17 @@ function posterText(svg: string): { all: string[]; rendered: string[] } {
         if (/^aria-|(^|:)title$/i.test(k)) all.push(decodeXml(String(v)));
       }
       const hide = hidden || NEVER_RENDERED.test(name.replace(/^[^:]+:/, "")) || HIDDEN.test(attrs);
-      walk((node[name] as XmlNode[]) ?? [], hide, paintOf(raw, paint));
+      let inner = block;
+      if (!block && name.replace(/^[^:]+:/, "") === "text") blocks.push(inner = { all: [], rendered: [] });
+      walk((node[name] as XmlNode[]) ?? [], hide, paintOf(raw, paint), inner);
     }
   };
-  walk(posterParser.parse(svg) as XmlNode[], false, { fill: true, fillOpacity: 1, stroke: false, strokeOpacity: 1 });
+  walk(posterParser.parse(svg) as XmlNode[], false, { fill: true, fillOpacity: 1, stroke: false, strokeOpacity: 1 }, null);
   const join = (parts: string[]) => [parts.join(" "), parts.join("")].map((t) => t.replace(/\s+/g, " ").trim());
-  return { all: join(all), rendered: join(rendered) };
+  return {
+    all: [...join(all), ...blocks.flatMap((b) => join(b.all))],
+    rendered: [...join(rendered), ...blocks.flatMap((b) => join(b.rendered))],
+  };
 }
 
 function sourceBrief(sources: PropertyScore[]) {
