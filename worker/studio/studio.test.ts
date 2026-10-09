@@ -191,3 +191,13 @@ test("shareCard builds an absolute poster URL, and shareTags escapes model text"
   assert.match(tags, /twitter:card" content="summary_large_image"/);
   assert.equal(shareCard({ concept: "not json" }, "https://x", "abc"), null);
 });
+
+test("the concept must name a mechanic for every selected source", async () => {
+  const missing = run([{ text: JSON.stringify({ ...concept, borrowed_mechanics: [{ source: "Tamagotchi", mechanic: "care loop" }, { source: "Invented Show", mechanic: "x" }] }) }]);
+  assert.equal((await missing.result).ok, false);
+  assert.equal((missing.events.at(-1) as { step?: string }).step, "concept");
+  const ok = run([{ text: JSON.stringify(concept) }, { text: "too short" }]);
+  await ok.result;
+  const saved = ok.saved.get("concept") as { borrowed_mechanics: { source: string }[] };
+  assert.deepEqual(saved.borrowed_mechanics.map((m) => m.source), sources.map((p) => p.name));
+});

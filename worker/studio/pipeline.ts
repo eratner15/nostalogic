@@ -177,6 +177,17 @@ export async function runStudio(
       `Format: ${input.format}\nSource properties (data from the NostalDamus library):\n${brief}\n\nBlend these into ONE original ${input.format}. Give it 3-5 characters with new names. In borrowed_mechanics, give one entry per source.`,
       { effort: "medium", schema: conceptSchema },
     ));
+    // Provenance must name every selected source exactly once, and nothing else.
+    const mechanics = input.sources.map((p) => {
+      const name = p.name.toLowerCase();
+      const hit = (concept.borrowed_mechanics ?? []).find((m) => {
+        const label = String(m?.source ?? "").trim().toLowerCase();
+        return label && (label === name || label.includes(name) || name.includes(label));
+      });
+      return hit ? { source: p.name, mechanic: hit.mechanic } : null;
+    });
+    if (mechanics.some((m) => !m)) throw new StepError("The concept did not say what it borrows from every source.");
+    concept.borrowed_mechanics = mechanics as Concept["borrowed_mechanics"];
     await save(step, concept);
     await emit({ type: "result", step, data: concept });
     const conceptJson = JSON.stringify(concept);

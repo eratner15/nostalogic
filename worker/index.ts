@@ -472,6 +472,11 @@ export default {
     const work = async () => {
       // Signals first, so the snapshot sees the freshest readings.
       console.log("signals", JSON.stringify(await runSignals(env, now)));
+      // A Studio run dies about 30 seconds after its browser disconnects
+      // (request-scoped waitUntil). Close out runs that can no longer finish.
+      await env.DB.prepare(
+        "UPDATE studio_packages SET status = 'error', error = 'The run stopped before it finished, most likely because the page was closed.' WHERE status = 'running' AND created_at < datetime('now', '-20 minutes')",
+      ).run().catch((e) => console.log("studio sweep failed", String(e)));
       if (await ledgerDue(env, now)) {
         console.log("weekly ledger", JSON.stringify(await weeklyLedger(env, now)));
       }

@@ -321,7 +321,7 @@ export function SizzlePlayer({ sizzle, images }: { sizzle: Sizzle; images: (stri
       if (s.music) parts.push(`Sound: ${s.music}.`);
       return parts.join(" ");
     });
-    return `/motion Make a ${total}-second cinematic sizzle reel for "${sizzle.title}", tagline "${sizzle.tagline}". 16:9 with 2.39:1 letterbox bars, slow camera moves on each still, 0.6-second crossfades, bold serif title cards, captions in the lower bar. Look: ${sizzle.style_bible}\n\nShots:\n${lines.join("\n")}\n\nEnd on the title card, then the tagline.`;
+    return `/motion Make a ${total}-second cinematic sizzle reel for "${sizzle.title}", tagline "${sizzle.tagline}". ${vertical ? "Vertical 9:16, full-bleed, for TikTok, Reels, and Shorts" : "16:9 with 2.39:1 letterbox bars"}, slow camera moves on each still, 0.6-second crossfades, bold serif title cards, captions ${vertical ? "in the lower third on a dark band" : "in the lower bar"}. Look: ${sizzle.style_bible}\n\nShots:\n${lines.join("\n")}\n\nEnd on the title card, then the tagline.`;
   };
 
   const shotIndex = Math.max(0, timeline.findIndex((s) => time < s.end));

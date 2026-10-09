@@ -264,7 +264,7 @@ function StudioContent() {
             <button onClick={generate} disabled={sources.length < 2} className="inline-flex h-12 w-full items-center justify-center gap-2 rounded bg-primary font-medium text-primary-foreground transition hover:bg-primary/90 disabled:opacity-40">
               <Sparkles className="h-4 w-4" /> Build the pack
             </button>
-            <p className="text-xs leading-5 text-muted-foreground">Concept, script, sizzle shot list, poster and keyframes, verdict: about three to five minutes. Each step is saved as it finishes.</p>
+            <p className="text-xs leading-5 text-muted-foreground">Concept, script, sizzle shot list, poster and keyframes, verdict: about three to five minutes. Each step is saved as it finishes. Keep this tab open until the pack is done.</p>
           </div>
         </section>
       )}
