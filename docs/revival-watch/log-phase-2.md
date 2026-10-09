@@ -78,8 +78,10 @@ Changes: 43 cell edits across 39 rows. 17 `wiki_title` edits (16 fixed, 1 cleare
 - **jock-jams-1995:** kept `Jock Jams, Volume 1` (the 1995 album) rather than the series page `Jock series`.
 - **Band-era rows** (Ace of Base, Aqua, No Doubt, NSYNC, Spice Girls, The Cranberries, TLC): these now point at the band article. If the scoring should track the specific album or song, switch back.
 - **Franchise-wide subreddits:** r/powerrangers (for MMPR), r/dukenukem (Duke Nukem plus other Build engine games), r/commandandconquer, r/TheTick, r/starshiptroopers, r/earthbound, r/myst and r/Spyro cover more than the single 1990s title. I kept or chose them because they are the real fan communities.
-- **starter-jackets-1993 r/Starter:** Arctic Shift subreddit search does not list it, so there is no fresh subscriber count (the old value of 80 is kept). Its recent posts are about vintage Starter jackets, so I kept it, but the name is a generic word.
-- **Low-quality dedicated subs that were kept:** r/Heavyweights (8 subscribers, recent posts are boxing spam), r/Clueless, r/eventhorizon and r/rockosmodernlife (dedicated, but recent posts include stream spam), and r/IndependenceDay (141 subscribers, mixed posts, inactive since 2023).
+- **starter-jackets-1993 r/Starter:** cleared after review. Arctic Shift subreddit search does not list it, and the runtime existence check uses that same search, so the pair could never be read.
+- **Cleared after review:** r/Heavyweights (8 subscribers; recent posts are boxing spam, which the pipeline would count as interest) and r/eventhorizon (banned in April 2026; Arctic Shift has no posts after October 2025, so it would record false zero days).
+- **Low-quality dedicated subs that were kept:** r/Clueless and r/rockosmodernlife (dedicated, but recent posts include stream spam), and r/IndependenceDay (141 subscribers, mixed posts, inactive since 2023).
+- **palmpilot-1996 stays on `PalmPilot`.** The property is the PalmPilot brand, and 1996 is its launch year. `PalmPilot` had 9,363 views in September 2026; `Pilot 1000` returned no page-view data.
 - **Searched, nothing dedicated found (left empty):** Angels in the Outfield, The Craft, Tommy Boy, The Sandlot (r/TheSandlot is a fantasy baseball league), Anastasia, Bubsy, Gattaca, Wishbone, The Pagemaster, Surge.
 
 ## Local load test
@@ -96,4 +98,28 @@ arcticshift  | 90
 wikipedia    | 119
 ```
 
-Not run in this phase: `wrangler dev --local --test-scheduled` and `POST /api/admin/run/signals` (handoff step 5, second half). Nothing was deployed and no remote command was run.
+Not run in this phase: `wrangler dev --local --test-scheduled` and `POST /api/admin/run/signals` (handoff step 5, second half).
+
+## Production load (after this phase)
+
+On 2026-10-09, about 02:15 UTC, after the PR #4 rollout, this file was loaded into production with `node scripts/load-sources.mjs docs/revival-watch/sources-reviewed.csv --remote`. Result: 209 bookmarks (119 Wikipedia, 90 subreddit). The hourly cron began the 120-day backfill.
+
+Coverage: this CSV now maps 206 sources (119 Wikipedia, 87 subreddit). Production holds 209 until the three deletions below run.
+
+The loader only inserts and updates. The three subreddits cleared above (event-horizon-1997, heavyweights-1995, starter-jackets-1993) stay in production until their bookmarks are deleted:
+
+```sql
+DELETE FROM signal_readings  WHERE source = 'arcticshift' AND property_id IN ('event-horizon-1997','heavyweights-1995','starter-jackets-1993');
+DELETE FROM signal_bookmarks WHERE source = 'arcticshift' AND property_id IN ('event-horizon-1997','heavyweights-1995','starter-jackets-1993');
+```
+
+## Production fetch check (open)
+
+The local fetch loop from handoff step 5 was not run. The production hourly cron now does the same reads against the real APIs. Status on 2026-10-09 at 04:08 UTC:
+
+| Source | Pairs read | Total | Errors |
+|---|---|---|---|
+| Wikipedia | 13 | 119 | 0 |
+| Arctic Shift | 0 | 90 | 7, all `subreddit lookup HTTP 429` |
+
+Arctic Shift rate-limits the Worker's shared outbound address. PR #10 (retry once after a 429, then skip Arctic Shift for the rest of the run) is merged but not deployed. This check closes when every pair has a `read_to` and no pair has a `last_error`. Until then, Phase 2 is not complete.
