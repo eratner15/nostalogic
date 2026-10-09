@@ -117,6 +117,12 @@ const verdictSchema = {
   },
 };
 
+/** A whole-word match for a literal name (word edges only where the name has word characters). */
+function wordPattern(name: string, flags: string): RegExp {
+  const body = name.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  return new RegExp(`(?<![\\w])${body}(?![\\w])`, flags);
+}
+
 function sourceBrief(sources: PropertyScore[]) {
   return JSON.stringify(sources.map((p) => ({
     name: p.name,
@@ -191,6 +197,8 @@ export async function runStudio(
     if (mechanics.some((m) => !m)) throw new StepError("The concept did not say what it borrows from every source.");
     concept.borrowed_mechanics = mechanics as Concept["borrowed_mechanics"];
     concept.format = input.format;   // the format the user picked, everywhere
+    if (!Array.isArray(concept.characters) || concept.characters.length < 3) throw new StepError("The concept came back with fewer than three characters.");
+    concept.characters = concept.characters.slice(0, 5);
     await save(step, concept);
     await emit({ type: "result", step, data: concept });
     const conceptJson = JSON.stringify(concept);
@@ -216,7 +224,7 @@ export async function runStudio(
     // The schema describes the limits; enforce them so the player and export stay 30-75 seconds.
     // One name across the page, player, export, title card, and poster prompt.
     if (sizzle.title && sizzle.title !== concept.title) {
-      const old = new RegExp(sizzle.title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+      const old = wordPattern(sizzle.title, "gi");   // whole words only: a title "It" must not touch "with"
       sizzle.poster_prompt = sizzle.poster_prompt.replace(old, concept.title);
       sizzle.shots = sizzle.shots.map((s) => ({ ...s, on_screen_text: s.on_screen_text.replace(old, concept.title) }));
     }
@@ -225,6 +233,16 @@ export async function runStudio(
     sizzle.shots = sizzle.shots.map((s) => ({ ...s, seconds: Math.min(8, Math.max(3, Math.round(Number(s.seconds) || 5))) }));
     const runtime = sizzleRuntime(sizzle);
     if (runtime < 30 || runtime > 75) throw new StepError(`The sizzle came back at ${runtime} seconds; it needs 45 to 60.`);
+    // Rights: no source name on screen, and none sent to the image model. Matching is
+    // case-sensitive and whole-word, so "friends" in prose does not trip "Friends".
+    const sourceNames = input.sources.map((p) => wordPattern(p.name, "g"));
+    const named = (text: string) => sourceNames.some((r) => { r.lastIndex = 0; return r.test(text); });
+    const onScreen = [sizzle.title, sizzle.tagline, ...sizzle.shots.flatMap((s) => [s.on_screen_text, s.line])];
+    if (onScreen.some(named)) throw new StepError("The sizzle put a source property's name on screen.");
+    const scrub = (text: string) => sourceNames.reduce((t, r) => t.replace(r, ""), text).replace(/\s{2,}/g, " ").trim();
+    sizzle.poster_prompt = scrub(sizzle.poster_prompt);
+    sizzle.style_bible = scrub(sizzle.style_bible);
+    sizzle.shots = sizzle.shots.map((s) => ({ ...s, image_prompt: scrub(s.image_prompt) }));
     await save(step, sizzle);
     await emit({ type: "result", step, data: sizzle });
 

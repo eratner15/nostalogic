@@ -18,7 +18,7 @@ const sources = library.filter((p) => ["tamagotchi-1996", "daria-1997"].includes
 const concept = {
   title: "Pocket Static", logline: "A deadpan teen raises a digital creature that grades her town.", format: "Animated Series",
   tone: "dry", audience: "Millennials and teens", premise: "p", world: "w", story_engine: "e",
-  characters: [{ name: "Vera Kell", role: "lead", description: "d" }],
+  characters: [{ name: "Vera Kell", role: "lead", description: "d" }, { name: "Odo Pratt", role: "rival", description: "d" }, { name: "Mims", role: "creature", description: "d" }],
   borrowed_mechanics: [{ source: "Tamagotchi", mechanic: "care loop" }, { source: "Daria", mechanic: "deadpan narrator" }],
   new_elements: ["grading creature"], visual_style: "acid green on charcoal", risks: ["r"],
 };
@@ -241,4 +241,25 @@ test("the concept takes the requested format, and a renamed sizzle is rewritten 
   assert.equal(saved.title, concept.title);
   assert.equal(saved.poster_prompt, `Key art for ${concept.title}.`);
   assert.equal(saved.shots[1].on_screen_text, concept.title);
+});
+
+test("a concept needs three to five characters", async () => {
+  const thin = run([{ text: JSON.stringify({ ...concept, characters: [] }) }]);
+  assert.equal((await thin.result).ok, false);
+  const many = run([{ text: JSON.stringify({ ...concept, characters: Array.from({ length: 8 }, (_, i) => ({ name: `C${i}`, role: "r", description: "d" })) }) }, { text: "too short" }]);
+  await many.result;
+  assert.equal((many.saved.get("concept") as { characters: unknown[] }).characters.length, 5);
+});
+
+test("source names never reach the screen or the image model; title fixes stay whole-word", async () => {
+  const onScreen = { ...sizzle, shots: sizzle.shots.map((s, i) => (i === 1 ? { ...s, line: "Like Daria, but louder." } : s)) };
+  const bad = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(onScreen) }]);
+  assert.equal((await bad.result).ok, false);
+  assert.equal((bad.events.at(-1) as { step?: string }).step, "sizzle");
+  const inPrompt = { ...sizzle, title: "It", poster_prompt: "A group of kids hold It up.", shots: sizzle.shots.map((s, i) => (i === 0 ? { ...s, image_prompt: "A cracked Tamagotchi glowing in a drawer." } : s)) };
+  const ok = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(inPrompt) }]);
+  await ok.result;
+  const saved = ok.saved.get("sizzle") as Sizzle;
+  assert.equal(saved.shots[0].image_prompt, "A cracked glowing in a drawer.");
+  assert.equal(saved.poster_prompt, `A group of kids hold ${concept.title} up.`);
 });
