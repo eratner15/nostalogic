@@ -2,7 +2,8 @@
 
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
-import { Copy, Layers3, Plus, Shuffle, Sparkles, WandSparkles, X } from "lucide-react";
+import Link from "next/link";
+import { ArrowRight, Copy, Film, Layers3, Plus, Shuffle, Sparkles, WandSparkles, X } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import {
@@ -15,6 +16,12 @@ import {
 } from "@/services/property-data";
 
 const formats: RebootType[] = ["Streaming Series", "Movie", "Video Game", "Toys", "Live Event", "TV Show"];
+
+// Remix Lab formats -> the Studio's production formats.
+const studioFormat: Record<RebootType, string> = {
+  "Streaming Series": "Streaming Series", Movie: "Feature Film", "Video Game": "Video Game",
+  Toys: "Animated Series", "Live Event": "Limited Series", "TV Show": "Streaming Series",
+};
 
 function getSessionKey(): string {
   try {
@@ -320,6 +327,22 @@ function RemixContent() {
               </div>
             )}
 
+            <div className="rounded-md border border-primary/30 bg-primary/[0.06] p-4">
+              <div className="flex flex-wrap items-center justify-between gap-3">
+                <h3 className="flex items-center gap-2 font-semibold text-primary">
+                  <Film className="h-4 w-4" /> Build the full pack in the Studio
+                </h3>
+                <Link
+                  href={`/studio/?ids=${selectedIds.slice(0, 4).join(",")}&format=${encodeURIComponent(studioFormat[format])}`}
+                  className="inline-flex items-center gap-2 rounded bg-primary px-3 py-2 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+                >
+                  Open Studio <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+              <p className="mt-2 text-xs leading-5 text-muted-foreground">
+                Turns these sources into an original property with a poster, opening pages, a playable trailer or opening scene, and a greenlight verdict.
+              </p>
+            </div>
             <div className="rounded-md border border-accent/25 bg-accent/[0.06] p-4">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <h3 className="flex items-center gap-2 font-semibold text-accent">

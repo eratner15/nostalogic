@@ -143,3 +143,28 @@ Run in order from the repository root:
 5. Create the Revival Watch managed agent: `scripts/agent-setup.sh`. It needs
    `ant` logged in, and it asks before each change.
 6. Run it on demand at any time: `ant beta:deployments run --deployment-id <id>`.
+
+## Remix Studio (development packs)
+
+`/studio` turns 2-4 library properties into an ORIGINAL property and a pack for
+deciding whether to make it. One request runs five Claude steps in order
+(`worker/studio/pipeline.ts`), each saved to `studio_packages` as it lands:
+
+| Step | Output | How it is made |
+|---|---|---|
+| Concept | Title, logline, characters, story engine, borrowed mechanics, risks | Structured JSON |
+| Poster | One-sheet, 600 x 900 SVG | Claude draws it; the worker strips scripts, links, and images; the page shows it in an `<img>` |
+| Opening pages | About 3 minutes of screenplay, Fountain format | Plain text |
+| Preview | A 60-90 second trailer, or the opening scene staged, as timed beats | Structured JSON; the page plays it with captions and optional read-aloud |
+| Greenlight verdict | Develop / revise / pass, six scored dimensions, rights flags, next steps, test questions | Structured JSON |
+
+Rights rule in every prompt: borrow mechanics, never expression. No source
+names, characters, catchphrases, logos, or songs in the new property.
+
+- Share: each pack has a link, `/studio/?id=<id>`.
+- Limits: 5 packs per visitor IP per day (`STUDIO_DAILY_PER_IP`), 40 in total
+  (`STUDIO_DAILY_TOTAL`). Uses `AGENT_MODEL` like the Prophet.
+- Needs migration `0004_studio.sql` (`npm run db:migrate`) and `ANTHROPIC_API_KEY`.
+- Cost: five calls per pack; check with
+  `SELECT date(created_at), COUNT(*), SUM(input_tokens), SUM(output_tokens) FROM studio_packages GROUP BY 1`.
+

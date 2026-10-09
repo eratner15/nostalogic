@@ -10,6 +10,7 @@ const navItems = [
   { href: "/property-library/", label: "Library" },
   { href: "/analysis-tools/", label: "Analysis" },
   { href: "/remix-lab/", label: "Remix Lab" },
+  { href: "/studio/", label: "Studio" },
   { href: "/market-intelligence/", label: "Market" },
   { href: "/track-record/", label: "Track record" },
 ];
