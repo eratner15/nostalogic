@@ -512,3 +512,17 @@ test("xml:base is stripped; commented tags do not end a hidden group; a source n
   const plain = `<svg viewBox="0 0 600 900"><!-- layout --><text>POCKET STATIC</text></svg>`;
   assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: plain }, { text: JSON.stringify(verdict) }]).result).ok, true);
 });
+
+test("prefixed SVG elements reject the poster; CDATA tags do not close hidden groups; alias rules compose; blank shot text is empty", async () => {
+  assert.equal(sanitizeSvg(`<svg xmlns:s.x="http://www.w3.org/2000/svg"><s.x:script>alert(1)</s.x:script><text>X</text></svg>`), null);
+  assert.ok(sanitizeSvg(`<svg xmlns:xlink="http://www.w3.org/1999/xlink"><text>Doors 12:00</text></svg>`));
+  const cdata = `<svg viewBox="0 0 600 900"><g display="none"><![CDATA[</g>]]><text>POCKET STATIC</text></g><text>A NEW SHOW</text></svg>`;
+  assert.equal((await run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: cdata }, { text: cdata }]).result).ok, false);
+  const { sourceAliases } = await import("./pipeline");
+  assert.ok(sourceAliases("The Adventures of Pete & Pete").includes("Adventures of Pete and Pete"));
+  const blanks = { ...sizzle, shots: sizzle.shots.map((s, i) => (i === 1 ? { ...s, on_screen_text: "  ", line: " ", speaker: " " } : s)) };
+  const r = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(blanks) }]);
+  await r.result;
+  const shot = (r.saved.get("sizzle") as Sizzle).shots[1];
+  assert.deepEqual([shot.on_screen_text, shot.line, shot.speaker], ["", "", ""]);
+});

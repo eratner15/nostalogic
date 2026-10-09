@@ -31,6 +31,9 @@ export function sanitizeSvg(raw: string): string | null {
     // Quoted and unquoted references are separate cases, so url("#g") survives.
     .replace(/url\(\s*(?:"(?!#)[^"]*"|'(?!#)[^']*'|(?!["'#])[^)]*)\s*\)/gi, "none");
   if (!/^<svg[\s>]/.test(svg)) return null;
+  // A poster needs no namespace-prefixed elements, and a prefix can disguise an active one
+  // ("<s.x:script>"), so any prefixed element tag rejects the poster outright.
+  if (/<\/?[^\s<>\/!?]+:/.test(svg)) return null;
   // Ensure the namespace so the file renders when opened on its own.
   if (!/xmlns=/.test(svg.slice(0, 300))) svg = svg.replace(/^<svg/, '<svg xmlns="http://www.w3.org/2000/svg"');
   return svg;

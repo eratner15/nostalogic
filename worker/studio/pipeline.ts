@@ -134,19 +134,29 @@ export function sourceAliases(name: string): string[] {
     if (!/\bera\b/i.test(inner)) out.add(inner.trim());
     for (const [, quoted] of inner.matchAll(/'([^']+)'/g)) out.add(quoted.trim());
   }
-  for (const n of [...out]) {
-    if (n.includes(":")) out.add(n.split(":")[0].trim());
-    for (const part of n.split("/")) out.add(part.replace(/\s+(TV|Books?|Series|Film)$/i, "").trim());
-    if (/^The\s/.test(n)) out.add(n.replace(/^The\s+/, ""));
+  // Apply every rule to every alias, including aliases a rule just made, so rules compose
+  // ("The Adventures of Pete & Pete" -> "Adventures of Pete and Pete"). The cap bounds the work.
+  const variants = (n: string) => {
+    const v: string[] = [];
+    if (n.includes(":")) v.push(n.split(":")[0].trim());
+    for (const part of n.split("/")) v.push(part.replace(/\s+(TV|Books?|Series|Film)$/i, "").trim());
+    if (/^The\s/.test(n)) v.push(n.replace(/^The\s+/, ""));
     // A leading "A"/"An" drops only when two or more words remain ("A Goofy Movie" -> "Goofy Movie").
-    if (/^An?\s+\S+\s+\S/.test(n)) out.add(n.replace(/^An?\s+/, ""));
+    if (/^An?\s+\S+\s+\S/.test(n)) v.push(n.replace(/^An?\s+/, ""));
     // Stylized punctuation at the edges ("*NSYNC" also means "NSYNC").
-    out.add(n.replace(/^[*!#~_+.-]+|[*!#~_+.-]+$/g, ""));
+    v.push(n.replace(/^[*!#~_+.-]+|[*!#~_+.-]+$/g, ""));
     // Punctuation inside a multiword title ("Aaahh!!! Real Monsters" -> "Aaahh Real Monsters").
-    if (/[!?.,:;*~_+'"-]/.test(n)) out.add(n.replace(/[!?.,:;*~_+'"-]+/g, " ").replace(/\s+/g, " ").trim());
+    if (/[!?.,:;*~_+'"-]/.test(n)) v.push(n.replace(/[!?.,:;*~_+'"-]+/g, " ").replace(/\s+/g, " ").trim());
     // An ampersand and "and" stand for each other ("Kenan & Kel" <-> "Kenan and Kel").
-    if (/\s&\s/.test(n)) out.add(n.replace(/\s+&\s+/g, " and "));
-    if (/\sand\s/i.test(n)) out.add(n.replace(/\s+and\s+/gi, " & "));
+    if (/\s&\s/.test(n)) v.push(n.replace(/\s+&\s+/g, " and "));
+    if (/\sand\s/i.test(n)) v.push(n.replace(/\s+and\s+/gi, " & "));
+    return v;
+  };
+  const queue = [...out];
+  while (queue.length && out.size < 64) {
+    for (const alias of variants(queue.shift()!)) {
+      if (alias && !out.has(alias)) { out.add(alias); queue.push(alias); }
+    }
   }
   return [...out].filter((n) => n.length >= 3);
 }
@@ -350,7 +360,14 @@ export async function runStudio(
     sizzle.tagline = String(sizzle.tagline ?? "").trim();
     if (!sizzle.tagline) throw new StepError("The sizzle came back without a tagline.");
     if (sizzle.shots.length < 5 || sizzle.shots.length > 12) throw new StepError(`The sizzle came back with ${sizzle.shots.length} shots; the reel takes 5 to 12 (7 to 9 asked).`);
-    sizzle.shots = sizzle.shots.map((s) => ({ ...s, seconds: Math.min(8, Math.max(3, Math.round(Number(s.seconds) || 5))) }));
+    // Whitespace-only optional text is empty text, so it never draws a blank card or caption.
+    sizzle.shots = sizzle.shots.map((s) => ({
+      ...s,
+      seconds: Math.min(8, Math.max(3, Math.round(Number(s.seconds) || 5))),
+      on_screen_text: String(s.on_screen_text ?? "").trim(),
+      speaker: String(s.speaker ?? "").trim(),
+      line: String(s.line ?? "").trim(),
+    }));
     // The reel must name the property: make the last shot the title card if none is.
     if (!sizzle.shots.some((s) => s.on_screen_text.trim().toLowerCase() === concept.title.toLowerCase())) {
       sizzle.shots[sizzle.shots.length - 1] = { ...sizzle.shots[sizzle.shots.length - 1], on_screen_text: concept.title };
@@ -397,7 +414,8 @@ export async function runStudio(
       const title = wordPattern(concept.title.replace(/\s+/g, " ").trim(), "i");
       // The title must be in rendered text, not only in <title>, <desc>, <metadata>, or <defs>.
       // Comments never render, and tag-shaped text inside one must not end a hidden group early.
-      const raw = (svg ?? "").replace(/<!--[\s\S]*?-->/g, "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, "$1");
+      // CDATA is text: its tag-shaped content must not open or close elements here.
+      const raw = (svg ?? "").replace(/<!--[\s\S]*?-->/g, "").replace(/<!\[CDATA\[([\s\S]*?)\]\]>/g, (_, text: string) => text.replace(/[<>]/g, " "));
       const rendered = dropSubtrees(raw, (tag, name) => NEVER_RENDERED.test(name.replace(/^[\w-]+:/, "")) || HIDDEN.test(tag));
       const renderedText = [rendered.replace(/<[^>]*>/g, " "), rendered.replace(/<[^>]*>/g, "")]
         .map((t) => decodeXml(t).replace(/\s+/g, " ").trim());
