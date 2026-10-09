@@ -322,6 +322,10 @@ export async function runStudio(
     sizzle.poster_prompt = scrub(sizzle.poster_prompt);
     sizzle.style_bible = scrub(sizzle.style_bible);
     sizzle.shots = sizzle.shots.map((s) => ({ ...s, image_prompt: scrub(s.image_prompt), music: scrub(s.music) }));
+    // A prompt that scrubs to nothing (blank, or only a source name) cannot drive the art.
+    if (!sizzle.poster_prompt || !sizzle.style_bible || sizzle.shots.some((s) => !s.image_prompt)) {
+      throw new StepError("The sizzle came back without a usable visual prompt for the poster, the style, or every shot.");
+    }
     await save(step, sizzle);
     await emit({ type: "result", step, data: sizzle });
 
@@ -353,8 +357,8 @@ export async function runStudio(
       const rendered = raw
         // Never-rendered containers: metadata, definitions, symbols, clip paths, masks, patterns, markers.
         .replace(/<(title|desc|metadata|defs|symbol|clipPath|mask|pattern|marker)\b[\s\S]*?<\/\1>/gi, "")
-        // Hidden elements do not show a title either (display none, visibility hidden, opacity 0).
-        .replace(/<(\w+)\b[^>]*(display\s*[:=]\s*["']?\s*none|visibility\s*[:=]\s*["']?\s*hidden|opacity\s*[:=]\s*["']?\s*0(\.0*)?(?![.\d]))[^>]*>[\s\S]*?<\/\1>/gi, "");
+        // Hidden elements do not show a title either (display none, visibility hidden, opacity 0, font size 0).
+        .replace(/<(\w+)\b[^>]*(display\s*[:=]\s*["']?\s*none|visibility\s*[:=]\s*["']?\s*hidden|(?:opacity|font-size)\s*[:=]\s*["']?\s*0(\.0*)?(?:px|pt|em|rem|%)?(?![.\d\w]))[^>]*>[\s\S]*?<\/\1>/gi, "");
       const renderedText = [rendered.replace(/<[^>]*>/g, " "), rendered.replace(/<[^>]*>/g, "")]
         .map((t) => decodeXml(t).replace(/\s+/g, " ").trim());
       const showsTitle = renderedText.some((t) => title.test(t));
@@ -379,9 +383,12 @@ export async function runStudio(
     }
     const scores = VERDICT_DIMENSIONS.map((dimension) => {
       const s = given.get(dimension.toLowerCase());
-      return s ? { dimension, score: Math.min(5, Math.max(1, Math.round(Number(s.score) || 1))), note: String(s.note ?? "") } : null;
+      return s ? { dimension, score: Math.min(5, Math.max(1, Math.round(Number(s.score) || 1))), note: String(s.note ?? "").trim() } : null;
     });
     if (scores.some((s) => !s)) throw new StepError("The verdict came back without all six scores.");
+    // The summary and every score note are the explanation people read; none may be blank.
+    verdict.summary = String(verdict.summary ?? "").trim();
+    if (!verdict.summary || scores.some((s) => !s!.note)) throw new StepError("The verdict came back without a summary or a note for every score.");
     verdict.scores = scores as Verdict["scores"];
     await save(step, verdict);
     await emit({ type: "result", step, data: verdict });

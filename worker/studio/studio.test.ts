@@ -451,3 +451,20 @@ test("a leading A or An drops from multiword source names; blank concept fields 
   const role = run([{ text: JSON.stringify({ ...concept, characters: concept.characters.map((ch, i) => (i ? ch : { ...ch, description: " " })) }) }]);
   assert.equal((await role.result).ok, false);
 });
+
+test("blank or source-only visual prompts fail; zero-size poster titles do not count; blank verdict text fails", async () => {
+  const onlySource = { ...sizzle, shots: sizzle.shots.map((s, i) => (i ? s : { ...s, image_prompt: "Tamagotchi" })) };
+  const prompt = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(onlySource) }]);
+  assert.equal((await prompt.result).ok, false);
+  const style = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify({ ...sizzle, style_bible: "   " }) }]);
+  assert.equal((await style.result).ok, false);
+  const tiny = `<svg viewBox="0 0 600 900"><g font-size="0"><text>POCKET STATIC</text></g><text style="font-size:0px">POCKET STATIC</text><text>A NEW SHOW</text></svg>`;
+  const zero = run([{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: tiny }, { text: tiny }]);
+  assert.equal((await zero.result).ok, false);
+  const art = [{ text: JSON.stringify(concept) }, { text: screenplay }, { text: JSON.stringify(sizzle) }, { text: posterSvg }];
+  const summary = run([...art, { text: JSON.stringify({ ...verdict, summary: " " }) }]);
+  assert.equal((await summary.result).ok, false);
+  const note = run([...art, { text: JSON.stringify({ ...verdict, scores: verdict.scores.map((s, i) => (i ? s : { ...s, note: "" })) }) }]);
+  assert.equal((await note.result).ok, false);
+  assert.equal((await run([...art, { text: JSON.stringify(verdict) }]).result).ok, true);
+});
