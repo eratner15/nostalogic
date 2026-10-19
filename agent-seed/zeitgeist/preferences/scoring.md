@@ -1,0 +1,15 @@
+# Trend score (read-only)
+
+Score each factor 0-100. Total = weighted sum, rounded to a whole number.
+
+| Factor | Weight | Question |
+|---|---|---|
+| momentum | 0.25 | How fast is attention rising over 8-26 weeks? |
+| stage | 0.15 | early 90, rising 70, peak 35, fading 10 |
+| audience_overlap | 0.20 | Overlap with the mahjong buyer (Lane B: how reachable the buyer is) |
+| speed_to_product | 0.15 | Can a first product ship in under 6 weeks? |
+| margin | 0.15 | Digital and licensing high; inventory and shipping low |
+| defensibility | 0.10 | Do we own a brand, list, data, or rights others lack? |
+
+Bands: GO 70+, WATCH 50-69, PASS below 50.
+A trend with only one signal is WATCH at most.

@@ -1,0 +1,3 @@
+# yaml-language-server: $schema=https://platform.claude.com/schemas/ant/beta/memory_store.json
+name: zeitgeist-preferences
+description: Read-only rules for Zeitgeist Scout - known assets, the Mahjong pattern, the scoring model, and the report style. Read every file fresh at the start of each run.

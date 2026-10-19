@@ -1,5 +1,18 @@
 # STATUS - NostalDamus
 
+
+## Zeitgeist Engine (2026-10-19, branch claude/zeitgeist-master-prompt)
+- New master prompt: docs/ZEITGEIST-MASTER-PROMPT.md. Finds rising trends,
+  scores them (6 factors, GO/WATCH/PASS bands), and maps each GO trend to a
+  revenue ladder built on the #2 Amazon mahjong book audience.
+- New Managed Agent: Zeitgeist Scout (agents/, environments/, memory_stores/,
+  deployments/zeitgeist-weekly.md, agent-seed/zeitgeist/). Weekly, Monday 09:07
+  New York. Writes reports to the zeitgeist-state memory store. No spend, no
+  outreach. Not applied; `ant apply --dry-run` not run (no ant CLI in session).
+- NEEDS EVAN: fill book title, author, category, ASIN in the master prompt
+  section 1 and agent-seed/zeitgeist/preferences/assets.md. Then run
+  scripts/zeitgeist-setup.sh (it refuses to run on placeholders).
+
 Updated 2026-10-08 (agent search + design overhaul, branch claude/agent-search-overhaul)
 
 ## Agent search + design overhaul (2026-10-08)

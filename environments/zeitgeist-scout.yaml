@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=https://platform.claude.com/schemas/ant/beta/environment.json
+name: zeitgeist-scout
+description: Cloud container for Zeitgeist Scout. Web access comes from the web_search and web_fetch tools; the container itself has no outbound hosts.
+config:
+  type: cloud
+  networking:
+    type: limited
+    allowed_hosts: []
