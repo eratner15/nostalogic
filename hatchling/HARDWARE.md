@@ -126,3 +126,29 @@ firmware from it.
 - Waveshare 1.28-B: https://www.waveshare.com/esp32-s3-touch-lcd-1.28-b.htm
 - Mouser M5Stack listings: https://www.mouser.com/en/c/semiconductors/engineering-development-tools/embedded-processor-development-kits/?m=M5Stack
 - Espressif web flasher: https://espressif.github.io/esptool-js/
+
+## Update 2026-10-19: talking keychain prototypes
+
+The product now listens and talks, so it needs a microphone and a speaker. The Dial
+has neither. Two keychain-size prototypes replace it:
+
+| | Prototype A: StickS3 in a skin | Prototype B: T-Circle-S3 pendant |
+|---|---|---|
+| Core | M5Stack StickS3 (K150), Mouser 170-K150, $21.50 + 30% tariff | LilyGO T-Circle-S3, about $28 on Amazon |
+| Size | 48 x 24 x 15 mm device; skin about 33 x 64 x 22 mm | 32 mm round, 17 mm tall, before shell |
+| Screen | 1.14" rectangle, 135 x 240 | 0.75" round, 160 x 160, touch |
+| Memory | 8 MB PSRAM, 8 MB flash | 8 MB PSRAM, 16 MB flash |
+| Mic / sound | MEMS mic, 1 W speaker built in | I2S MEMS mic, 3 W amplifier; speaker not confirmed |
+| Battery | 250 mAh built in | Not confirmed; charges over USB-C |
+| Extra parts | TPU skin (`hardware/shell/sticks3_sleeve.py`) | Small speaker, flat LiPo, printed round shell |
+| Build effort | Lowest: slide into the skin | Some soldering |
+
+The DualEye 1.28 (two round eye screens) is too wide for a keychain. Keep it for a
+later plush desk buddy.
+
+Skin v0: `python3 hatchling/hardware/shell/sticks3_sleeve.py` writes
+`build/sticks3_sleeve.stl`. Cutout positions are estimates. Print one in PLA for a
+fit check, correct the numbers at the top of the script, then print in TPU 95A.
+
+Safety notes for a children's keychain: small-parts rules apply (label it for 8+ at
+minimum), the battery must be sealed behind screws, and the voice stays on the device.
