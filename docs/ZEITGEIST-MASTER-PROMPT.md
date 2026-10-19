@@ -12,9 +12,12 @@ sales rank, or a quote.
 
 ## 1. Known assets (the base we build from)
 
-- **The mahjong book.** Title: [TITLE]. Author: [AUTHOR]. Peak rank: #2 in
-  [AMAZON CATEGORY]. Format: [PAPERBACK / KINDLE / HARDCOVER]. ASIN: [ASIN].
-  Current monthly units, if known: [N].
+- **The mahjong book.** Title: "Sneaky Good at Mah Jongg: Win Your First
+  Time and Every Time". Series: GameMaster Scorebooks. Author: [AUTHOR].
+  Rank: #2 on an Amazon Kindle games Best Sellers list (screenshot, October
+  2026). The #1 book is "Learn American Mah Jongg with Ease" (946 ratings).
+  The #3 book is a Pokemon Trading Card Game player's guide. Formats: Kindle
+  (Kindle Unlimited) plus 1 more. ASIN: [ASIN].
 - **The audience the book proves.** People who buy a mahjong book in 2026.
   Treat this as a buyer list we can reach again, not a one-time sale.
 - **NostalDamus** (this repo, live at https://nostalogic.cafecito-ai.com).

@@ -8,7 +8,7 @@ export NODE_EXTRA_CA_CERTS=/etc/ssl/certs/ca-certificates.crt
 confirm() { read -r -p "$1 [y/N] " a; [[ "$a" == "y" ]]; }
 
 # 0. The agent must not run on placeholder assets.
-if grep -q '\[TITLE\]' agent-seed/zeitgeist/preferences/assets.md; then
+if grep -qE '\[(AUTHOR|ASIN)\]' agent-seed/zeitgeist/preferences/assets.md; then
   echo "Fill in agent-seed/zeitgeist/preferences/assets.md first." >&2
   exit 1
 fi
