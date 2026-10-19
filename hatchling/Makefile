@@ -15,7 +15,7 @@ quantize:
 
 engine:
 	cd $(ROOT) && $(PY) hatchling/data/export_rules.py
-	cd $(ROOT) && cc -O2 -std=c99 -Wall -Wextra -Ihatchling/engine -o hatchling/build/hatch hatchling/engine/hatch.c hatchling/engine/pet_core.c -lm
+	cd $(ROOT) && cc -O2 -std=c99 -Wall -Wextra -Ihatchling/engine -o hatchling/build/hatch hatchling/engine/hatch.c hatchling/engine/pet_core.c hatchling/engine/babble.c -lm
 
 firmware: quantize
 	cd firmware/m5dial && pio run
