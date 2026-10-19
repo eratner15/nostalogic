@@ -7,7 +7,8 @@ This folder is the working prototype: data, training, the device engine, and the
 
 ```bash
 pip install torch --index-url https://download.pytorch.org/whl/cpu
-make -C hatchling all     # data -> train (about 6 min on 4 CPUs) -> engine -> tests -> eval
+make -C hatchling all       # data -> train (about 6 min) -> int8 -> engine -> tests -> eval
+make -C hatchling firmware  # build the M5Stack Dial firmware (needs: pip install platformio)
 make -C hatchling play    # play with a pet in the terminal
 ./hatchling/build/hatch play "any hatch code"
 ```
@@ -44,7 +45,11 @@ make -C hatchling play    # play with a pet in the terminal
 | `data/export_rules.py` | Writes `engine/rules.h` from `rules.py` |
 | `teacher/gemma_teacher.py` | Gemma 4 writes more lines; only approved words pass |
 | `train/train.py` | Trains the model; fails the build if a banned word is in the vocabulary |
-| `engine/hatch.c` | Pet, model, guardrail, and fallback in plain C99 |
+| `train/quantize.py` | Int8 model blob for the engine, plus the firmware header |
+| `engine/pet_core.c` | Pet, int8 model, guardrail, and fallback in plain C99 (shared by CLI and device) |
+| `engine/hatch.c` | Terminal program: play mode and the sample mode the eval uses |
+| `firmware/m5dial/` | Device firmware for the M5Stack Dial (PlatformIO) |
+| `HARDWARE.md` | What to order, how to flash, the day-1 test plan |
 | `eval/test_rules.py` | Rule unit tests |
 | `eval/redteam.py` | Release eval over the shipped engine; prints PASS or FAIL |
 
@@ -70,9 +75,8 @@ another company's pet names or characters.
 Next step for that audience: a small open-source MCP server, so the same
 hatch code shows your pet in a coding terminal. The physical pet stays offline.
 
-## Next steps to reach the device
+## Next steps
 
-1. Port `engine/hatch.c` to ESP-IDF on the chosen board. Draw the pet with LVGL.
-2. Quantize weights to int8 (the PSRAM bandwidth sets the speed).
-3. Run the teacher for about 50k lines, review new words, retrain, re-run the eval.
-4. Compile the same engine to WebAssembly for the browser pet (Hugging Face Space).
+1. Flash the M5Stack Dial and run the day-1 tests in `HARDWARE.md`.
+2. Run the teacher for about 50k lines, review new words, retrain, re-run the eval.
+3. Compile the same engine to WebAssembly for the browser pet (Hugging Face Space).

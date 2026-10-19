@@ -1,2 +1,4 @@
 build/
 __pycache__/
+firmware/*/.pio/
+firmware/*/src/model_blob.h
