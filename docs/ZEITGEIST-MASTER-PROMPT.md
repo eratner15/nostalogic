@@ -1,7 +1,7 @@
 # Master Prompt: Zeitgeist Engine (October 2026)
 
 Paste this whole file into a new Claude session to start or resume the work.
-Fill in the `[BRACKETS]` in "Known assets" once. Leave the rest as it is.
+Update "Known assets" when the book line changes. Leave the rest as it is.
 
 ---
 
@@ -13,11 +13,13 @@ sales rank, or a quote.
 ## 1. Known assets (the base we build from)
 
 - **The mahjong book.** Title: "Sneaky Good at Mah Jongg: Win Your First
-  Time and Every Time". Series: GameMaster Scorebooks. Author: [AUTHOR].
+  Time and Every Time". Series: GameMaster Scorebooks. Author: Evan Ratner.
   Rank: #2 on an Amazon Kindle games Best Sellers list (screenshot, October
   2026). The #1 book is "Learn American Mah Jongg with Ease" (946 ratings).
   The #3 book is a Pokemon Trading Card Game player's guide. Formats: Kindle
-  (Kindle Unlimited) plus 1 more. ASIN: [ASIN].
+  (Kindle Unlimited) and paperback. Kindle ASIN: B0GQHKVHYS. Paperback ASIN:
+  B0GQS7Y8PL. The series also has Canasta, Farkle, Yahtzee, Bunco, and
+  American Mah Jongg Master Edition Pro titles.
 - **The audience the book proves.** People who buy a mahjong book in 2026.
   Treat this as a buyer list we can reach again, not a one-time sale.
 - **NostalDamus** (this repo, live at https://nostalogic.cafecito-ai.com).
@@ -183,7 +185,7 @@ Agent rules:
 ## 11. Start now
 
 1. Read `STATUS.md` and this file.
-2. If section 1 still has brackets, ask Evan for those values first.
+2. Read the newest report in docs/zeitgeist/reports/ to compare against.
 3. Run the trend hunt for both lanes. Use parallel research agents if the
    session supports them: one per signal source in section 4.
 4. Write the Zeitgeist Report (section 7).
