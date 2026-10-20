@@ -1,0 +1,260 @@
+<title>Zeitgeist Report No. 1</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column; the trend board breaks out wider, like a club scoring table. */
+:root{
+  --bg:#f6f7f4; --surface:#ffffff; --fg:#1b2420; --muted:#5b6a63; --rule:#d9dfda;
+  --jade:#16705a; --jade-soft:#e2f0eb;
+  --go:#16705a; --go-bg:#dcefe7; --watch:#8a5a00; --watch-bg:#f7ecd4; --pass:#8f2d2d; --pass-bg:#f6e0de;
+  --display:"Young Serif",Georgia,serif; --body:"Public Sans",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111715; --surface:#18201d; --fg:#e4ebe7; --muted:#9aaba3; --rule:#2c3833;
+  --jade:#5cc3a4; --jade-soft:#1d3029; --go:#6fd2b2; --go-bg:#1b3229; --watch:#e3b55c; --watch-bg:#33291a; --pass:#ec8f86; --pass-bg:#3a2220; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111715; --surface:#18201d; --fg:#e4ebe7; --muted:#9aaba3; --rule:#2c3833;
+  --jade:#5cc3a4; --jade-soft:#1d3029; --go:#6fd2b2; --go-bg:#1b3229; --watch:#e3b55c; --watch-bg:#33291a; --pass:#ec8f86; --pass-bg:#3a2220; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px}
+main{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:48px}
+.col{max-width:68ch}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:clamp(2rem,5vw,2.8rem)}
+h2{font-size:1.6rem;margin-bottom:16px}
+h3{font-size:1.3rem}
+p{margin:0 0 12px}
+a{color:var(--jade)}
+a:focus-visible{outline:2px solid var(--jade);outline-offset:2px}
+.eyebrow{font:600 .75rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+header{display:flex;flex-direction:column;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:24px}
+.meta{color:var(--muted);font-size:.9rem}
+.topline{background:var(--jade-soft);border-radius:6px;padding:20px 22px}
+.topline ol{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:8px}
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:.9rem}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:middle}
+th{font:600 .7rem/1.2 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.f{font-family:var(--mono);font-size:.78rem;color:var(--muted);white-space:nowrap}
+.bar{display:inline-block;height:6px;border-radius:3px;background:var(--jade);vertical-align:middle;margin-left:8px}
+.chip{display:inline-block;font:600 .7rem/1 var(--mono);padding:5px 7px;border-radius:4px;letter-spacing:.04em}
+.GO{background:var(--go-bg);color:var(--go)} .WATCH{background:var(--watch-bg);color:var(--watch)} .PASS{background:var(--pass-bg);color:var(--pass)}
+.legend{font-size:.85rem;color:var(--muted);margin-top:10px}
+.bets{display:flex;flex-direction:column;gap:28px}
+.bet{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.bet-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 16px}
+.score{font:600 1.5rem/1 var(--mono);color:var(--go)}
+.factors{display:flex;flex-wrap:wrap;gap:6px}
+.factors span{font:400 .75rem/1 var(--mono);border:1px solid var(--rule);border-radius:4px;padding:5px 7px;color:var(--muted)}
+.factors b{color:var(--fg);font-weight:600}
+.label{font:600 .72rem/1 var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px}
+ul.ev{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
+.tag{font:600 .65rem/1 var(--mono);padding:3px 5px;border-radius:3px;margin-right:6px;vertical-align:1px}
+.fact{background:var(--jade-soft);color:var(--jade)} .read{background:var(--watch-bg);color:var(--watch)}
+.test{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;border-top:1px solid var(--rule);padding-top:14px}
+.test div{min-width:0;font-size:.9rem}
+ol.moves{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:10px}
+.small{font-size:.88rem;color:var(--muted)}
+ul.plain{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:.92rem}
+footer{border-top:1px solid var(--rule);padding-top:20px;font-size:.85rem;color:var(--muted)}
+</style>
+
+<main>
+<header>
+  <span class="eyebrow">Zeitgeist Report · Run 1 · 19 October 2026</span>
+  <h1>Zeitgeist Report No. 1</h1>
+  <p class="meta">For Evan Ratner. Base asset: <em>Sneaky Good at Mah Jongg</em> (GameMaster Scorebooks); the owner's screenshot showed it #2 on a Kindle games Best Sellers list (not confirmed on the live page in this run; see Unread sources). 16 trends scored. 4 research agents, about 190 web reads.</p>
+</header>
+
+<section class="topline col" aria-labelledby="tl">
+  <h2 id="tl">Top line</h2>
+  <ol>
+    <li>Mahjong is at its peak. The next wave is the same women in the same clubs, now adding canasta, craft nights, and needlepoint.</li>
+    <li>Best move: release a Game Night Host book before the Q4 gift window closes (craft nights and hosting, GO). As a validation test, not a GO pick: publish the canasta book as a new <em>Sneaky Good at Canasta</em> edition (Canasta is WATCH, capped; corrected 20 October 2026).</li>
+    <li>Risk: your book has 5 ratings against 940 to 4,500 for the leaders. Without reviews, new titles inherit the same ceiling.</li>
+  </ol>
+</section>
+
+<section aria-labelledby="board">
+  <h2 id="board">Trend board</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Trend</th><th>Lane</th><th>Stage</th><th>Score</th><th>Band</th><th>Mom · Stg · Aud · Spd · Mar · Def</th></tr></thead>
+    <tbody>
+      <tr><td>Canasta</td><td>A</td><td>early-rising</td><td class="num">76<span class="bar" style="width:76px"></span></td><td><span class="chip WATCH">WATCH</span> <span class="small">capped: one signal type</span></td><td class="f">55 · 80 · 95 · 95 · 70 · 60</td></tr>
+      <tr><td>Mahjong (the base)</td><td>A</td><td>peak</td><td class="num">67<span class="bar" style="width:67px"></span></td><td><span class="chip WATCH">WATCH</span> <span class="small">re-scored: momentum 85 to 50</span></td><td class="f">50 · 35 · 100 · 95 · 65 · 50</td></tr>
+      <tr><td>Craft nights and girls' night hosting</td><td>A</td><td>rising</td><td class="num">75<span class="bar" style="width:75px"></span></td><td><span class="chip GO">GO</span></td><td class="f">80 · 70 · 90 · 85 · 65 · 40</td></tr>
+      <tr><td>Needlepoint and stitch clubs</td><td>A</td><td>rising</td><td class="num">75<span class="bar" style="width:75px"></span></td><td><span class="chip GO">GO</span></td><td class="f">85 · 70 · 85 · 75 · 70 · 45</td></tr>
+      <tr><td>Supper clubs and home hosting</td><td>A</td><td>rising</td><td class="num">71<span class="bar" style="width:71px"></span></td><td><span class="chip WATCH">WATCH</span> <span class="small">capped: one signal type</span></td><td class="f">70 · 70 · 80 · 85 · 65 · 45</td></tr>
+      <tr><td>Game-night journals and stationery</td><td>A</td><td>rising</td><td class="num">70<span class="bar" style="width:70px"></span></td><td><span class="chip WATCH">WATCH</span> <span class="small">capped: no cited signal</span></td><td class="f">70 · 70 · 70 · 95 · 75 · 25</td></tr>
+      <tr><td>Phone-free social events</td><td>B</td><td>rising</td><td class="num">69<span class="bar" style="width:69px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="f">85 · 70 · 65 · 80 · 60 · 35</td></tr>
+      <tr><td>Speed puzzling and puzzle swaps</td><td>A</td><td>early-rising</td><td class="num">69<span class="bar" style="width:69px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="f">55 · 80 · 70 · 90 · 70 · 55</td></tr>
+      <tr><td>Backgammon clubs</td><td>B</td><td>early-rising</td><td class="num">69<span class="bar" style="width:69px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="f">68 · 80 · 55 · 85 · 65 · 60</td></tr>
+      <tr><td>Chess social nights</td><td>B</td><td>rising</td><td class="num">67<span class="bar" style="width:67px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="f">75 · 70 · 70 · 80 · 55 · 30</td></tr>
+      <tr><td>Silent book clubs</td><td>A</td><td>maturing</td><td class="num">65<span class="bar" style="width:65px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="f">60 · 50 · 85 · 90 · 60 · 30</td></tr>
+      <tr><td>90s toy nostalgia (Tamagotchi at 30)</td><td>B</td><td>rising</td><td class="num">65<span class="bar" style="width:65px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="f">70 · 70 · 75 · 60 · 50 · 50</td></tr>
+      <tr><td>Adult Pokemon TCG</td><td>B</td><td>peak</td><td class="num">64<span class="bar" style="width:64px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="f">85 · 35 · 75 · 75 · 55 · 25</td></tr>
+      <tr><td>Rummikub and Mexican Train</td><td>A</td><td>steady</td><td class="num">63<span class="bar" style="width:63px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="f">45 · 50 · 80 · 95 · 65 · 40</td></tr>
+      <tr><td>Bridge</td><td>A</td><td>early</td><td class="num">64<span class="bar" style="width:64px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="f">30 · 90 · 80 · 70 · 70 · 60</td></tr>
+      <tr><td>Run clubs</td><td>B</td><td>peak</td><td class="num">59<span class="bar" style="width:59px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="f">70 · 35 · 80 · 70 · 45 · 25</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="legend">Score = momentum 25% + stage 15% + audience overlap 20% + speed to product 15% + margin 15% + defensibility 10%. GO 70+, WATCH 50 to 69. All trends are new this run, so there is no change column yet. Lane A is adjacent to the book. Lane B is open field.</p>
+</section>
+
+<section aria-labelledby="bets">
+  <h2 id="bets">GO trends</h2>
+  <p class="small">Correction, 20 October 2026: this section first listed Canasta. It is now WATCH (capped) and has its own section below. Mahjong is re-scored to 67, WATCH: its momentum was 85 (rising), but the only cited momentum evidence is falling, so it is now 50. Its card moves to the corrections section below. Supper clubs (one press source) and game-night journals (no cited source) are also capped at WATCH by the two-signal-type rule.</p>
+  <div class="bets">
+
+  <article class="bet">
+    <div class="bet-head"><h3>1. Craft nights and girls' night hosting</h3><span class="score">75</span><span class="chip GO">GO</span><span class="small">Lane A · rising</span></div>
+    <div>
+      <div class="label">Evidence</div>
+      <ul class="ev">
+        <li><span class="tag fact">FACT</span>Michaels 2026 trend report: "craft night" searches up 103% year over year and "girls' night craft" up 242%. <a href="https://www.aol.com/lifestyle/8-biggest-crafting-trends-2026-194606392.html">BHG via AOL, 10 Mar 2026</a></li>
+        <li><span class="tag fact">FACT</span>"84% of Americans are turning to analog habits." US phone-free event attendance up 913%. <a href="https://www.eventbrite.com/blog/?p=441080">Eventbrite, about Apr 2026</a></li>
+        <li><span class="tag fact">FACT</span>67% of respondents prefer DIY and affordable party options. <a href="https://www.evite.com/blog/planning-budget/pregame-report-2026/">Evite Pregame Report 2026</a></li>
+        <li><span class="tag fact">FACT</span>Supper clubs "continue to grow in popularity." <a href="https://www.boston.com/food/restaurants/2026/08/15/supper-clubs-and-pop-up-dinners-worth-knowing/">Boston.com, 15 Aug 2026</a></li>
+        <li><span class="tag read">READ</span>The buyer is the host, not the player. One book can serve mahjong night, craft night, and supper club. This merges three GO and WATCH trends into one product.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="label">Revenue ladder</div>
+      <p>Book line: <em>Sneaky Good at Game Night: The Host's Book</em> with menus, rotations, phone-basket rules, and score sheets. Printables: Mahjong Luncheon set (place cards, menu cards in tile motifs). Email: a free host checklist on the website, never a signup link in the Kindle edition (KDP prohibits links to forms that ask for an email address). Gear later: host box.</p>
+    </div>
+    <div class="test">
+      <div><div class="label">14-day test</div>List a "Host a Mahjong Night" printable kit on Etsy at $9. Promote it to the mahjong book's readers with a link in the back matter.</div>
+      <div><div class="label">Cost</div>About $25: Etsy fees and $20 Etsy ads.</div>
+      <div><div class="label">Scale if</div>15+ sales, or 2%+ listing conversion. Then write the full host book for a mid-November release.</div>
+      <div><div class="label">Stop if</div>Under 5 sales in 14 days.</div>
+    </div>
+  </article>
+
+  <article class="bet">
+    <div class="bet-head"><h3>2. Needlepoint and stitch clubs</h3><span class="score">75</span><span class="chip GO">GO</span><span class="small">Lane A · rising</span></div>
+    <div>
+      <div class="label">Evidence</div>
+      <ul class="ev">
+        <li><span class="tag fact">FACT</span>"Needlepoint point searches are up 251% year over year." <a href="https://www.aol.com/lifestyle/8-biggest-crafting-trends-2026-194606392.html">Michaels via BHG, 10 Mar 2026</a></li>
+        <li><span class="tag fact">FACT</span>A distributor says "sales are up 305 percent". The average stitcher is now about 30 years younger than 61. <a href="https://www.stlmag.com/design/from-grandma-hobby-to-gen-z-trend-needlepoint-finds-a-new-audience-in-st-louis/">St. Louis Magazine, 27 Apr 2026</a></li>
+        <li><span class="tag fact">FACT</span>"In-person studios are thriving as third spaces." Beginner kits sell out "within days." <a href="https://www.ypulse.com/newsfeed/2026/01/20/needlepoint-is-the-latest-granny-hobby-gen-z-cant-put-down/">YPulse, 20 Jan 2026</a></li>
+        <li><span class="tag fact">FACT</span>Etsy data: beginner needlepoint searches up 208% year over year. <a href="https://fashionunited.com/news/fashion/why-grandma-hobbies-are-on-the-rise-among-young-consumers/2026072473586">FashionUnited, Jul 2026</a></li>
+        <li><span class="tag read">READ</span>This is the closest twin to mahjong: design-forward, boutique-led, social studios. Kits need sourcing, so start with paper.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="label">Revenue ladder</div>
+      <p>Book line: <em>Stitch Club Logbook</em> for canvases, threads, finishing costs, and club nights. Printables: mahjong-tile needlepoint charts (Crak, Bam, Dot motifs) on Etsy. Crossover: tile-motif canvas kit with a needlepoint partner. Events: stitch-and-mahj nights.</p>
+    </div>
+    <div class="test">
+      <div><div class="label">14-day test</div>List 3 mahjong-tile needlepoint chart printables on Etsy at $6 each.</div>
+      <div><div class="label">Cost</div>About $20 in fees and ads, plus chart design time.</div>
+      <div><div class="label">Scale if</div>20+ total sales. Then publish the logbook and look for a canvas partner.</div>
+      <div><div class="label">Stop if</div>Under 5 sales in 14 days.</div>
+    </div>
+  </article>
+
+  </div>
+</section>
+
+<section aria-labelledby="capped">
+  <h2 id="capped">Corrected to WATCH: Canasta and Mahjong</h2>
+  <p class="small">Correction, 20 October 2026: Canasta scores 76, but all three of its facts below are event demand (clubs, teachers, a parlor), and the series title is an owned asset, not a demand signal. The two-signal rule caps it at WATCH, so it is not a GO recommendation. It is kept because it set the first test.</p>
+  <div class="bets">
+
+  <article class="bet">
+    <div class="bet-head"><h3>Mahjong (the base)</h3><span class="score">67</span><span class="chip WATCH">WATCH</span><span class="small">Lane A · peak · factors 50 · 35 · 100 · 95 · 65 · 50</span></div>
+    <div>
+      <div class="label">Evidence (added 20 October 2026, from facts already in this report)</div>
+      <ul class="ev">
+        <li><span class="tag fact">FACT</span>Book demand: the paperback page, read 19 Oct 2026, shows "#83 in Card Games (Books)" (section "Book line moves").</li>
+        <li><span class="tag fact">FACT</span>Search and product demand: the "mahjong starter kit" Amazon keyword dropped 7,449 positions in one week in July. <a href="https://www.asinsight.com/report/US/mahjong-starter-kit">asinsight</a></li>
+        <li><span class="tag read">READ</span>The cited momentum is falling, so momentum is re-scored from 85 to 50 (steady), which gives 67, WATCH. Demand is high and flattening. Spend on the book you already sell, not on new mahjong products.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="label">Revenue ladder</div>
+      <p>Book line: the moves in "Book line moves" below. No new gear or printables for mahjong itself; the growth is in the adjacent trends above.</p>
+    </div>
+    <div class="test">
+      <div><div class="label">14-day test</div>Move the paperback out of "Entertaining &amp; Holiday Cooking" into a games category.</div>
+      <div><div class="label">Cost</div>$0.</div>
+      <div><div class="label">Scale if</div>The Card Games rank improves within 14 days. Then add the review ask and the Countdown Deal.</div>
+      <div><div class="label">Stop if</div>No rank change in 14 days; leave the category and move to reviews.</div>
+    </div>
+  </article>
+
+
+  <article class="bet">
+    <div class="bet-head"><h3>Canasta</h3><span class="score">76</span><span class="chip WATCH">WATCH (capped)</span><span class="small">Lane A · early-rising</span></div>
+    <div>
+      <div class="label">Evidence</div>
+      <ul class="ev">
+        <li><span class="tag fact">FACT</span>"Canasta occupies the same social spaces mahjong does now." Instructors "often teach canasta as well, sometimes on alternating days for the same groups." <a href="https://www.gowanuslounge.com/mahjongs-camp-takeover-opens-door-for-canasta/">Gowanus Lounge, 4 Aug 2026</a></li>
+        <li><span class="tag fact">FACT</span>"New clubs are forming every month." <a href="https://stacyknows.com/mahjong-canasta-westchester-summer-guide-2026/">Stacyknows, 23 Jun 2026</a></li>
+        <li><span class="tag fact">FACT</span>Boulder's first mahjong parlor plans "to introduce bridge and canasta in January." <a href="https://boulderreportinglab.org/2026/10/15/dealt-social-boulders-first-mahjong-parlor-opens-as-the-games-popularity-surges/">Boulder Reporting Lab, 15 Oct 2026</a></li>
+        <li><span class="tag fact">FACT</span>Your series already has <em>Canasta Master Edition Pro</em> (ASIN B0FND4DYZM).</li>
+        <li><span class="tag read">READ</span>Same buyer, same teachers, same tables. The evidence is local press, not national data, so momentum is scored low. Canasta scoring is hard, which suits a scorebook.</li>
+      </ul>
+    </div>
+    <div>
+      <div class="label">Revenue ladder</div>
+      <p>Book line: publish <em>Sneaky Good at Canasta</em> as a new edition (KDP locks a published title; a retitle needs a new book and ISBN), with a meld and bonus cheat sheet. Printables: canasta score pad on Etsy. Events: "Mahj and Canasta" club-night logbook for multi-game parlors. B2B: sell club packs to parlors adding canasta in January.</p>
+    </div>
+    <div class="test">
+      <div><div class="label">14-day test</div>Publish the canasta book as a new <em>Sneaky Good at Canasta</em> edition in the series design. Link it from the mahjong book's back matter and A+ content. Run Amazon ads on "canasta" keywords.</div>
+      <div><div class="label">Cost</div>About $60: cover work plus $50 ads.</div>
+      <div><div class="label">Scale if</div>10+ sales in 14 days, or ads cost under 50% of sales.</div>
+      <div><div class="label">Stop if</div>Under 3 sales, or ads cost more than 100% of sales.</div>
+    </div>
+  </article>
+
+  </div>
+</section>
+
+<section class="col" aria-labelledby="book">
+  <h2 id="book">Book line moves</h2>
+  <p class="small">Source for facts: the paperback page, read 19 Oct 2026. It shows "#83 in Card Games (Books)", 5 ratings at 5.0 stars, $12.99 paperback, Kindle from $7.00.</p>
+  <ol class="moves">
+    <li><strong>Get reviews first.</strong> 5 ratings against 940 (Learn American Mah Jongg with Ease) and 4,526 (Sandberg). Add a review ask to the back matter and run a Kindle Countdown Deal on Black Friday.</li>
+    <li><strong>Fix categories.</strong> The paperback sits in "Entertaining &amp; Holiday Cooking". Replace it with Board Games or Puzzles &amp; Games.</li>
+    <li><strong>Hardcover gift edition by mid-November.</strong> The giftable rivals are hardcovers. Q4 is the gift window.</li>
+    <li><strong>Mah Jongg Hand Log &amp; Win Journal.</strong> Two apps and an Etsy PDF suggest demand (read, not cited; one signal type). The research found no paperback hand log.</li>
+    <li><strong>2027 Card Edition, on preorder for April 2027.</strong> The NMJL card ships about 1 April. Teach strategy only. Do not copy the card, because its hands are copyrighted.</li>
+    <li><strong>Pick one lead mahjong title.</strong> <em>Sneaky Good</em> and <em>American Mah Jongg Master Edition Pro</em> compete. Make them Book 1 and Book 2.</li>
+    <li><strong>Large-print paperback.</strong> Large print is a proven seller in this audience.</li>
+    <li><strong>Price test, after the Countdown Deal.</strong> Kindle at $4.99 against $7.00, two weeks each, starting no earlier than 14 days after the Black Friday deal ends. KDP requires the list price to stay unchanged for 30 days before and 14 days after a Countdown Deal (<a href="https://kdp.amazon.com/en_US/help/topic/G201293780">KDP</a>), so a test before Black Friday would cancel the deal. Keep the paperback at $12.99, under the $15 to $23 rivals.</li>
+  </ol>
+</section>
+
+<section class="col" aria-labelledby="fade">
+  <h2 id="fade">Fading list and watch-outs</h2>
+  <p>This is the first run, so no trend dropped a band. These signals need watching:</p>
+  <ul class="plain">
+    <li><strong>Mahjong plateau.</strong> The "mahjong starter kit" Amazon keyword dropped 7,449 positions in one week in July (<a href="https://www.asinsight.com/report/US/mahjong-starter-kit">asinsight</a>). Searches for clubs still hit highs in August.</li>
+    <li><strong>Cultural appropriation backlash.</strong> The Boston Globe covered it in March 2026. Credit the game's Chinese and Jewish-American history in all products.</li>
+    <li><strong>Adult Pokemon.</strong> Big but speculative, and the buyer is far from yours. Do not chase it with the mahjong brand.</li>
+    <li><strong>Run clubs.</strong> At peak, crowded, and a poor fit. Stop considering it.</li>
+    <li><strong>NostalDamus tie-in.</strong> Pokemon and Tamagotchi both turn 30 in 2026. A "1996 anniversary" brief is a NostalDamus product, not a book-line product.</li>
+  </ul>
+</section>
+
+<section class="col" aria-labelledby="unread">
+  <h2 id="unread">Unread sources</h2>
+  <ul class="plain small">
+    <li>Amazon Best Sellers, Movers &amp; Shakers, and the Kindle product page (errors 500 and 503). The exact list in your screenshot is not confirmed. It is probably Kindle › Puzzles &amp; Games › Card Games.</li>
+    <li>All Axios pages (403). These hold the 151% puzzle-competition figure and a chess figure. Neither is used.</li>
+    <li>Pinterest Predicts 2026 original pages. A secondary write-up was used instead.</li>
+    <li>CNN English (451), ACBL Bridge Bulletin (403), Etsy trends page (403), silentbook.club (429), D Magazine (403), Goodreads search (redirect loop).</li>
+    <li>No Google Trends charts were read directly. Search figures come from articles that report them.</li>
+  </ul>
+</section>
+
+<footer>
+  Made with the master prompt in docs/ZEITGEIST-MASTER-PROMPT.md. Scores are judgments built from the cited evidence, not measurements. Next run: Zeitgeist Scout, Monday, once set up.
+</footer>
+</main>

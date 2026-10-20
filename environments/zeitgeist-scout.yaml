@@ -1,0 +1,10 @@
+# yaml-language-server: $schema=https://platform.claude.com/schemas/ant/beta/environment.json
+name: zeitgeist-scout
+description: Cloud container for Zeitgeist Scout. Open-web networking, because a limited environment's allowed_hosts also limits web_search and web_fetch (an empty list returns nothing) and the Scout must reach sites it cannot list in advance. The agent has bash, glob and grep disabled, so the container itself runs no commands that could use the network.
+config:
+  type: cloud
+  networking:
+    # Managed Agents docs, environments#networking: "With limited networking,
+    # allowed_hosts ... also applies to the web_search and web_fetch tools";
+    # tools-web-restrictions: "unrestricted networking ... do[es] not limit them."
+    type: unrestricted
