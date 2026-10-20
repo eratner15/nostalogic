@@ -48,13 +48,13 @@ This gives demand data before any hardware ships. It also makes the Hugging Face
 | Board | Why | Check before you buy |
 |---|---|---|
 | Waveshare ESP32-S3-Touch-LCD-1.46 (ESP32-S3R8) | 8 MB PSRAM, 16 MB flash, round touch, IMU, battery charging | It has a microphone and a speaker on board. Stock for 310. |
-| Waveshare ESP32-S3-Touch-LCD-1.85C (ESP32-S3R8) | 8 MB PSRAM, 16 MB flash, round screen, battery charging | Microphone on board; touch is an option; no IMU listed. Stock for 310. |
+| Waveshare ESP32-S3-Touch-LCD-1.85C V2 (ESP32-S3R8) | 8 MB PSRAM, 16 MB flash, round screen, battery charging | V2 (V1 was replaced) has **two** microphones; touch is an option; no IMU listed. Stock for 310. |
 | Ruled out: Waveshare ESP32-S3-LCD-1.28 | Cheap, IMU, battery charging | 2 MB PSRAM (ESP32-S3R2): only the 260K model fits |
 | Ruled out: M5Stack Dial | Finished shell, rotary ring | ESP32-S3FN8, 8 MB flash, no PSRAM listed |
 | Seeed XIAO ESP32-S3 + round display | Small; Seeed offers agile manufacturing later | Battery fit inside your shell |
 | LilyGO T-Watch S3 class | Finished wearable with battery | It has a microphone; firmware must keep it off. This weakens the "no mic" claim. |
 
-Recommendation: buy 5 Waveshare 1.46" and 5 Waveshare 1.85C on 2026-10-21 (10 boards, matching the $400 prototype line in the Christmas plan; the Week 2 gate tests 5 of whichever is chosen). Both are ESP32-S3R8 boards with 8 MB PSRAM, which the model runtime needs. Both carry a microphone: ask Waveshare whether it can be left off the board for 310 units (Christmas plan, decision 6). Shell work goes ahead for all units; the 50 Developer Edition units get a clear shell, quoted with the shell farms below. If none is quoted by Nov 2, the Developer Edition offer drops "clear shell" before preorders open.
+Recommendation: buy 5 Waveshare 1.46" and 5 Waveshare 1.85C on 2026-10-21 (10 boards, matching the $400 prototype line in the Christmas plan; the Week 2 gate tests 5 of whichever is chosen). Both are ESP32-S3R8 boards with 8 MB PSRAM, which the model runtime needs. Both carry microphones (the 1.85C V2 has two): ask Waveshare whether every microphone can be left off the board for 310 units (Christmas plan, decision 6). On arrival, test each sample: no microphone may return audio. Shell work goes ahead for all units; the 50 Developer Edition units get a clear shell, quoted with the shell farms below. If none is quoted by Nov 2, the Developer Edition offer drops "clear shell" before preorders open.
 
 ## 3. Who to contact
 
@@ -65,7 +65,7 @@ Evan sends every first message. An agent drafts it in Gmail, and Evan reviews an
 | Contact | Why | First ask |
 |---|---|---|
 | M5Stack (Espressif majority-owned since 2024) sales / OEM | Finished ESP32-S3 devices; custom print on shell; volume price | Not for 2026 (the Dial lists no PSRAM). Ask whether a round-screen device with 8 MB PSRAM is planned, for the 2027 run |
-| Waveshare sales | Bare round-screen boards | Price and stock for 310 of one SKU; can the microphone be left off the board |
+| Waveshare sales | Bare round-screen boards | Price and stock for 310 of one SKU; can every microphone (two on the 1.85C V2) be left off the board |
 | Seeed Studio (Fusion, agile manufacturing) | Path to a custom board in 2027 | Process and minimums for a custom ESP32-S3 board |
 | Espressif | Chip maker; partner programs and press | Partner listing; co-marketing on "LLM on ESP32-S3" |
 | Slant 3D | US print farm with an order API | 310 shells (including 50 clear), 5-day turn, price per part |

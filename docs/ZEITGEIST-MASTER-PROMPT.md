@@ -143,8 +143,10 @@ Produce one **Zeitgeist Report** with these parts, in this order:
 1. **Top line.** Three sentences: what changed, the best move, and the risk.
 2. **Trend board.** A table of every trend: name, lane, stage, score, band,
    change since the last report.
-3. **Top 3 GO trends.** For each: the evidence (with links), the factor scores,
-   the revenue ladder, and one test to run in the next 14 days.
+3. **Up to 3 GO trends.** For each: the evidence (with links), the factor
+   scores, the revenue ladder, and one test to run in the next 14 days. If
+   fewer than 3 trends are GO, show only those. If none is GO, say "No trend
+   is GO this week". Never promote a WATCH trend to fill the section.
 4. **Book line moves.** Next actions for the mahjong book itself: new editions,
    categories, keywords, price tests, A+ content, ads.
 5. **Fading list.** Trends that dropped a band. Say what to stop.

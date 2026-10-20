@@ -163,7 +163,7 @@ The batch order (310 units built for 300 sold, about $15.5k) is paid from preord
 | Model output is odd or rude | Short outputs, blocklist, scripted fallback; 200-line human review on Nov 8, before preorders and the batch order, repeated on the freeze candidate |
 | Bandai trademark or trade dress | Own name, own character, no egg-plus-three-buttons copy, no "Tamagotchi" in ads |
 | Lithium battery shipping | Buy cells with UN38.3 papers; ship ground with the right label |
-| FCC | A pre-certified module is not enough: the finished device needs its own EMC test at an accredited lab and the FCC authorization the lab advises. Book the lab by Oct 27 on the chosen board. Do not advertise the device for sale or open $129 preorders until the authorization is done; until then, take only refundable deposits. If it is not done by Nov 9, preorders wait and the Christmas ship dates move |
+| FCC | A pre-certified module is not enough: the finished device needs its own EMC test at an accredited lab and the FCC authorization the lab advises. Book the lab by Oct 27 on the chosen board. Do not open $129 preorders until the authorization is done; until then, take only refundable deposits. Deposits and any ad for them are a conditional sale under 47 CFR 2.803(c)(2)(i), so the deposit page must prominently say: the device is subject to FCC rules and delivery depends on completing FCC authorization; FCC rules do not address consumer protection, contract or other law; and if authorization fails, every deposit is refunded in full. Keep ownership of every unit until delivery and keep records of each deposit for 60 months. If it is not done by Nov 9, preorders wait and the Christmas ship dates move |
 | Too few preorders | Refund deposits; keep the gift-box list; move to a 2027 Kickstarter |
 | Too many preorders | Cap at 300, Founders, Developer and gift-box eggs together; open a numbered "second hatch" for February |
 
@@ -222,7 +222,7 @@ Each step has an owner. "Claude" means a Claude session can do the step. "Evan" 
 ### Tuesday Oct 20
 3. Evan: pick a name.
 4. Evan: buy the domain.
-5. Claude: build the landing page in this repo (Next.js on the existing Cloudflare Worker) with a waitlist and a Stripe deposit link.
+5. Claude: build the landing page in this repo (Next.js on the existing Cloudflare Worker) with a waitlist and a Stripe deposit link. The deposit page carries the three FCC conditional-sale notices from the FCC risk row before it goes live.
 6. Claude: write the pet-dialogue spec (species, states, 500 seed lines, banned topics).
 
 ### Wednesday Oct 21
@@ -258,7 +258,7 @@ Each step has an owner. "Claude" means a Claude session can do the step. "Evan" 
 3. Name, after the trademark search.
 4. Spend cap for Week 0 and Week 1: $2,000 recommended, not counting the embedded contractor, which Evan approves on its quote.
 5. Batch size: decided on 2026-11-15 by preorder count.
-6. Microphone: ask Waveshare to leave it off the board for 310 units (recommended, keeps "no microphone" true), or keep it off in firmware and say "microphone switched off" in all copy.
+6. Microphones: ask Waveshare to leave every microphone off the board for 310 units (the 1.85C V2 has two; recommended, keeps "no microphone" true), or keep all of them off in firmware, verified on each sample, and say "microphones switched off" in all copy.
 
 ## 9. Not confirmed
 
@@ -271,7 +271,7 @@ Each step has an owner. "Claude" means a Claude session can do the step. "Evan" 
 
 - Stickerbox price and refills: [Tom's Guide](https://www.tomsguide.com/ai/this-viral-ai-toy-that-gets-kids-off-screens-is-finally-20-percent-off-for-prime-day), [Yanko Design](https://www.yankodesign.com/2025/12/05/stickerbox-kids-say-an-idea-ai-prints-it-as-a-sticker-in-seconds/)
 - LLMs on ESP32-S3: [Hackster](https://www.hackster.io/news/microcontrollers-telling-micro-stories-0ff88720278c), [InsiderLLM](https://insiderllm.com/guides/llm-on-microcontroller-esp32-s3/), [The Register](https://assets.theregister.com/2026/08/04/202614/), [doryiii/esp32-llm](https://github.com/doryiii/esp32-llm)
-- Board memory: [Waveshare ESP32-S3-LCD-1.28 (2 MB PSRAM)](https://docs.waveshare.com/ESP32-S3-LCD-1.28), [M5Dial (ESP32-S3FN8, no PSRAM listed)](https://docs.m5stack.com/en/core/M5Dial), [Waveshare ESP32-S3-Touch-LCD-1.46 (ESP32-S3R8, 8 MB PSRAM, mic)](https://docs.waveshare.com/ESP32-S3-Touch-LCD-1.46), [Waveshare ESP32-S3-Touch-LCD-1.85C (ESP32-S3R8, 8 MB PSRAM, mic)](https://docs.waveshare.com/ESP32-S3-Touch-LCD-1.85C)
+- Board memory: [Waveshare ESP32-S3-LCD-1.28 (2 MB PSRAM)](https://docs.waveshare.com/ESP32-S3-LCD-1.28), [M5Dial (ESP32-S3FN8, no PSRAM listed)](https://docs.m5stack.com/en/core/M5Dial), [Waveshare ESP32-S3-Touch-LCD-1.46 (ESP32-S3R8, 8 MB PSRAM, mic)](https://docs.waveshare.com/ESP32-S3-Touch-LCD-1.46), [Waveshare ESP32-S3-Touch-LCD-1.85C (ESP32-S3R8, 8 MB PSRAM, V2 has two mics)](https://docs.waveshare.com/ESP32-S3-Touch-LCD-1.85C)
 - ESP32 pet with local models: [CircuitDigest](https://circuitdigest.com/news/esp32-based-ai-pet-gets-sick-if-you-doomscroll-while-android-handles-local-llms-stt-and-tts-offline)
 - AI toy rules: [TechRepublic](https://www.techrepublic.com/de/article/news-ai-toys-privacy-risks/), [Sen. Duckworth release](https://www.duckworth.senate.gov/news/press-releases/duckworth-gillibrand-demand-trump-administration-protect-our-children-from-risky-age-inappropriate-ai-toys), [MediaLaws](https://www.medialaws.eu/playing-by-the-rules-governing-ai-toys-in-the-european-union-and-the-united-states/)
 - Tamagotchi at 30: [License Global](https://www.licenseglobal.com/entertainment/tamagotchi-celebrates-30-years-with-launches-and-events-in-the-u-s-), [Hoodline, Times Square Nov 22](https://hoodline.com/2026/10/tamagotchi-floods-times-square-nov-22-for-free-30th-birthday-bash/), [CP24](https://www.cp24.com/news/canada/2026/01/11/why-are-people-still-playing-with-tamagotchis/)
