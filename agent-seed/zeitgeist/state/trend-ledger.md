@@ -16,5 +16,5 @@
 | 90s toy nostalgia (Tamagotchi 30) | B | rising | 65 | WATCH | 2026-10-19 |  |
 | Adult Pokemon TCG | B | peak | 64 | WATCH | 2026-10-19 |  |
 | Rummikub and Mexican Train | A | steady | 63 | WATCH | 2026-10-19 |  |
-| Bridge | A | early | 62 | WATCH | 2026-10-19 |  |
+| Bridge | A | early | 64 | WATCH | 2026-10-19 |  |
 | Run clubs | B | peak | 59 | WATCH | 2026-10-19 |  |
