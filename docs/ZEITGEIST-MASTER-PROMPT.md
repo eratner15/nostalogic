@@ -101,6 +101,10 @@ total.
 | Defensibility | 10% | Do we own something others cannot copy fast (brand, list, data, rights)? |
 
 Call a trend a **GO** at 70+, **WATCH** at 50-69, **PASS** below 50.
+A trend needs at least two independent signal types from section 4 to be
+GO. With only one (for example, several articles that all show event
+demand), it is WATCH at most, whatever its score. This is the same cap the
+Scout uses in `agent-seed/zeitgeist/preferences/scoring.md`.
 These bands are this report's own. They are not NostalDamus's: the app's
 `scoreBand` (src/components/brand.tsx) uses Go 78+, Watch 65-77 and Hold
 below 65, so the same number can read differently in the two systems. Never

@@ -152,7 +152,7 @@ Contribution depends on the mix, because all three offers share the 300 slots. A
 
 The contractor and the FCC test are each approved on their own quote. Get the quote before any hire; Evan approves it or names the funding in writing.
 
-The batch order (at most 310 units built for 300 sold, about $15.5k at the maximum) is paid from preorder cash. The 10 spare units cover the QA failures the Week 6 gate allows (under 3% of 310 is 9 units or fewer). Size the batch to paid orders, never to cash: build = paid orders / 0.97, rounded up, at most 310, even if the cash would buy more. Do not order the batch until collected preorder cash covers the whole order, plus $12 shipping and about 3% payment fees on every paid order, plus 10% for refunds. If preorders cover less than that by the order date, cut the batch to the number of units the cash covers, or name another source of funds in writing before ordering. A cut batch keeps the QA buffer: sell at most 97% of the units built, rounded down (build = sale cap / 0.97, rounded up).
+The batch order (at most 310 units built for 300 sold; at $39 to $57 landed, a full 310 costs about $12.1k to $17.7k) is paid from preorder cash. The 10 spare units cover the QA failures the Week 6 gate allows (under 3% of 310 is 9 units or fewer). Size the batch to paid orders, never to cash: build = paid orders / 0.97, rounded up, at most 310, even if the cash would buy more. Do not order the batch until collected preorder cash covers the whole order, plus $12 shipping and about 3% payment fees on every paid order, plus 10% for refunds. If preorders cover less than that by the order date, cut the batch to the number of units the cash covers, or name another source of funds in writing before ordering. A cut batch keeps the QA buffer: sell at most 97% of the units built, rounded down (build = sale cap / 0.97, rounded up).
 
 ### 4.5 Risks
 
@@ -164,6 +164,8 @@ The batch order (at most 310 units built for 300 sold, about $15.5k at the maxim
 | Bandai trademark or trade dress | Own name, own character, no egg-plus-three-buttons copy, no "Tamagotchi" in ads |
 | Lithium battery shipping | Buy cells with UN38.3 papers; ship ground with the right label |
 | FCC | A pre-certified module is not enough: the finished device needs its own EMC test at an accredited lab and the FCC authorization the lab advises. Book the lab by Oct 27 on the chosen board. Do not open $129 preorders until the authorization is done; until then, take only refundable deposits. Deposits and any ad for them are a conditional sale under 47 CFR 2.803(c)(2)(i), so the deposit page must prominently say: the device is subject to FCC rules and delivery depends on completing FCC authorization; FCC rules do not address consumer protection, contract or other law; and if authorization fails, every deposit is refunded in full. Keep ownership of every unit until delivery and keep records of each deposit for 60 months. If it is not done by Nov 9, preorders wait and the Christmas ship dates move |
+| Children's-product classification | Adults-only marketing does not settle it: the CPSC weighs foreseeable use, appeal and play value. Ask product-safety counsel or a CPSC-accepted lab for a classification by Nov 2. If it is a children's product, preorders wait for third-party testing and a Children's Product Certificate, and the Christmas dates move |
+| Radios on the board | Both boards have 2.4 GHz Wi-Fi and Bluetooth. Shipping firmware never starts either radio; QA checks each unit with a phone scan (no Wi-Fi network, no BLE advertisement) before "no network" appears in any copy |
 | Too few preorders | Refund deposits; keep the gift-box list; move to a 2027 Kickstarter |
 | Too many preorders | Cap at 300, Founders, Developer and gift-box eggs together; open a numbered "second hatch" for February |
 
@@ -207,7 +209,7 @@ The batch order (at most 310 units built for 300 sold, about $15.5k at the maxim
 | 3 | Nov 9 to Nov 15 | Preorders open; Christmas preorders close Nov 15; order parts for paid orders / 0.97, rounded up, at most 310 | Preorder cash covers the full batch cost, shipping and fees on every paid order, plus 10%, or the batch is cut to match |
 | 4 | Nov 16 to Nov 22 | Firmware freeze candidate; packaging printed | 200-line output review repeated on the freeze candidate passes |
 | 5 | Nov 23 to Nov 29 | Black Friday; parts arrive | All parts in hand by Nov 30 |
-| 6 | Nov 30 to Dec 6 | Assembly and flash, the ordered batch (at most 310) | QA fail rate under 3%, so every paid order has a passing unit |
+| 6 | Nov 30 to Dec 6 | Assembly and flash, the ordered batch (at most 310) | QA fail rate under 3%, so every paid order has a passing unit; every unit passes the no-radio and no-microphone checks |
 | 7 | Dec 7 to Dec 13 | Ship Founders units | 100% shipped by Dec 15 |
 | 8 | Dec 14 to Dec 20 | Ship gift boxes; support | Gift boxes out by Dec 18 |
 
@@ -232,7 +234,7 @@ Each step has an owner. "Claude" means a Claude session can do the step. "Evan" 
 
 ### Thursday Oct 22
 10. Claude: train model v0 (3.3M parameters, INT8; try 5M only if 3.3M runs above 8 tokens/s). Export it in the format the ESP32 runtime needs.
-11. Claude: write firmware v0: pet loop, sprites, an input layer for the touch screen and side buttons (the board is chosen Oct 27), sleep mode, model call.
+11. Claude: write firmware v0: pet loop, sprites, an input layer for the touch screen and side buttons (the board is chosen Oct 27), sleep mode, model call. Wi-Fi and Bluetooth are never started.
 12. Evan: set up Stripe. Create the $25 refundable deposit product.
 
 ### Friday Oct 23
@@ -247,7 +249,7 @@ Each step has an owner. "Claude" means a Claude session can do the step. "Evan" 
 
 ### Sunday Oct 25
 19. Evan and Claude: review deposits, waitlist count, and video views. This is a progress check, not the decision: deposits opened only the day before.
-20. The go/no-go is on Friday Oct 30, as the schedule says: if deposits are 50 or more by then, continue. If they are under 50, cut the batch to 100 units or move to a January Kickstarter.
+20. The go/no-go is on Friday Oct 30, as the schedule says: if deposits are 50 or more by then, continue. If they are under 50, cap Christmas sales at 100 (the build still follows paid orders / 0.97 on Nov 15) or move to a January Kickstarter.
 
 "By end of this week" means: a working prototype on video, a live deposit page, and a demand number. A shipped product is not possible this week.
 
