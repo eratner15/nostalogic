@@ -9,9 +9,10 @@
   deployments/zeitgeist-weekly.md, agent-seed/zeitgeist/). Weekly, Monday 09:07
   New York. Writes reports to the zeitgeist-state memory store. No spend, no
   outreach. Not applied; `ant apply --dry-run` not run (no ant CLI in session).
-- First report (manual run): docs/zeitgeist/reports/2026-10-19.html. 16 trends, 6 GO.
-  Top 3: canasta, game-night hosting, needlepoint. NEEDS EVAN: pick tests,
-  then run scripts/zeitgeist-setup.sh for weekly runs.
+- First report (manual run): docs/zeitgeist/reports/2026-10-19.html. 16 trends,
+  5 GO, 11 WATCH (corrected 2026-10-20: Canasta capped at WATCH, one signal
+  type). GO cards: craft nights and game-night hosting, needlepoint.
+  NEEDS EVAN: pick tests, then run scripts/zeitgeist-setup.sh for weekly runs.
 
 Updated 2026-10-08 (agent search + design overhaul, branch claude/agent-search-overhaul)
 
