@@ -37,3 +37,11 @@ it, pause the deployment first:
 `ant beta:deployments pause --deployment-id <id>`. Resolve the pending run,
 then `ant beta:deployments unpause --deployment-id <id>`. Unpausing resumes
 at the next scheduled Monday; a missed Monday is not run again.
+
+A session can also stop on its budget. When a run reaches the $5 cap it
+pauses with `budget_reached`, not with a tool confirmation, so approving
+tools will not move it. Check the session's stop reason first. If it is
+`budget_reached`, pause the deployment as above, then either raise that
+session's budget (budgets are changed on the session itself) and let it
+finish, or end it and note the missed week in the run log by hand. Unpause
+afterwards.

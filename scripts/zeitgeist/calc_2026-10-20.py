@@ -35,7 +35,7 @@ T = [
  ("Needlepoint and stitch clubs", "A", "rising", dict(mom=85, stg=70, aud=85, spd=95, mar=80, dfn=55), 75),
  ("Canasta", "A", "early-rising", dict(mom=55, stg=80, aud=95, spd=95, mar=70, dfn=70), 76),
  ("Hand and Foot", "A", "early-rising", dict(mom=65, stg=80, aud=90, spd=85, mar=70, dfn=60), None),
- ("Mahjong (the base)", "A", "peak", dict(mom=85, stg=35, aud=100, spd=95, mar=65, dfn=50), 76),
+ ("Mahjong (the base)", "A", "peak", dict(mom=85, stg=35, aud=100, spd=95, mar=65, dfn=50), 67),  # run 1 re-scored 2026-10-20: momentum 85 -> 50 (its cited keyword was falling)
  ("Craft nights and girls' night hosting", "A", "rising", dict(mom=75, stg=70, aud=90, spd=75, mar=55, dfn=45), 75),
  ("Game-night journals and score pads", "A", "rising", dict(mom=70, stg=70, aud=70, spd=95, mar=75, dfn=30), 70),
  ("Supper clubs and home hosting", "A", "rising", dict(mom=62, stg=70, aud=80, spd=85, mar=65, dfn=45), 71),
