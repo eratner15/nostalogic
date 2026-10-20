@@ -45,13 +45,20 @@ create() {  # store file -> 0 created, 1 exists (409), exits on other errors
   exit 1
 }
 exact_id() {  # store path -> id of the memory at exactly that path, or ""
-  # list flags per the CLI reference (path_prefix, format); check
-  # `ant beta:memory-stores:memories list --help` if this step fails.
-  ant beta:memory-stores:memories list --memory-store-id "$1" \
-      --path-prefix "/" --format json \
-    | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{
+  # Follows next_page until the path is found or the pages end (list
+  # defaults to 20 items a page; --limit 100 is the maximum).
+  local store=$1 want=$2 page="" out id next
+  while :; do
+    out=$(ant beta:memory-stores:memories list --memory-store-id "$store" \
+            --path-prefix "/" --limit 100 ${page:+--page "$page"} --format json)
+    read -r id next < <(node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{
         const j=JSON.parse(s); const items=Array.isArray(j)?j:(j.data||[]);
-        const m=items.find(x=>x.path===process.argv[1]); console.log(m?m.id:"");})' "$2"
+        const m=items.find(x=>x.path===process.argv[1]);
+        console.log((m?m.id:"-")+" "+((!Array.isArray(j)&&j.next_page)||"-"));})' "$want" <<<"$out")
+    if [[ "$id" != "-" ]]; then echo "$id"; return; fi
+    if [[ "$next" == "-" ]]; then echo ""; return; fi
+    page=$next
+  done
 }
 seed_state() {
   local store=$1 f=$2 path

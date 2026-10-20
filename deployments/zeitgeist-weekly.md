@@ -30,3 +30,10 @@ waits indefinitely. After each Monday run, open the session: if it shows a
 pending tool confirmation, read the proposed write and approve or deny it. If
 the run log has no line for that Monday by noon New York time, check for a
 paused session first.
+
+A paused session does not stop next Monday's run, and two runs writing the
+same ledger can clobber each other. If a run is still pending when you find
+it, pause the deployment first:
+`ant beta:deployments pause --deployment-id <id>`. Resolve the pending run,
+then `ant beta:deployments unpause --deployment-id <id>`. Unpausing resumes
+at the next scheduled Monday; a missed Monday is not run again.

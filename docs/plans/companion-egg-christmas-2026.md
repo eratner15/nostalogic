@@ -256,7 +256,7 @@ Each step has an owner. "Claude" means a Claude session can do the step. "Evan" 
 1. Adults only for 2026: yes or no.
 2. Founders price: $129 (recommended) or $149.
 3. Name, after the trademark search.
-4. Spend cap for Week 0 and Week 1: $2,000 recommended, not counting the embedded contractor, which Evan approves on its quote.
+4. Spend cap for Week 0 and Week 1: $2,000 recommended, not counting the embedded contractor or the FCC/EMC test, which Evan approves each on its own quote.
 5. Batch size: decided on 2026-11-15 by preorder count.
 6. Microphones: ask Waveshare to leave every microphone off the board for 310 units (the 1.85C V2 has two; recommended, keeps "no microphone" true), or keep all of them off in firmware, verified on each sample, and say "microphones switched off" in all copy.
 
