@@ -7,7 +7,7 @@ Written 2026-10-19. Christmas is 67 days away. Thanksgiving is 2026-11-26.
 
 1. Ship a limited **Founders Edition** of 300 units for Christmas. Do not try for retail shelves in 2026.
 2. Sell it to **adults** (the 1997 Tamagotchi kids, now 35 to 45). Do not sell to children this year.
-3. Run a **tiny language model on the device**. Use no microphone, no camera, no cloud, and no account.
+3. Run a **tiny language model on the device**. Use no camera, no cloud, and no account. Both boards with enough memory carry a microphone; it is left off the board or switched off in firmware (decision 6 in section 8).
 4. Open a waitlist and a refundable $25 deposit this week (Oct 24). Full $129 preorders open on Nov 9, after the prototype gates. Let preorder volume decide the batch size.
 5. Sell a **gift box with a hatch certificate** as the hedge. If units slip, the gift still arrives by 2026-12-24.
 
@@ -47,7 +47,7 @@ The model says WATCH, not GO. Speed and margin pull it down. This plan raises bo
 
 ### 3.1 What it is
 
-A palm-size device with a round color screen and simple controls: three buttons on a bare round-screen board, or the rotary ring on the M5Stack Dial. The board is chosen on Tue Oct 27, after the samples ordered on Oct 21 are tested; firmware v0 is written against an input layer that takes either, and the shell CAD waits for Oct 27. A small pet lives on it. The pet eats, sleeps, grows, and gets bored, as in 1997. The new part: the pet **writes its own short thoughts** with a language model that runs on the chip.
+A palm-size device with a round color touch screen and simple controls: swipe on the touch screen, plus side buttons. The board is chosen on Tue Oct 27, after the samples ordered on Oct 21 are tested (Waveshare 1.46" or 1.85C, section 3.4); firmware v0 is written against an input layer that takes either, and the shell CAD waits for Oct 27. A small pet lives on it. The pet eats, sleeps, grows, and gets bored, as in 1997. The new part: the pet **writes its own short thoughts** with a language model that runs on the chip.
 
 Examples of pet output: "I dreamed the moon was a cracker." "You were gone a long time. I counted clouds."
 
@@ -55,7 +55,7 @@ The pet does not hold open chats. It speaks in short lines. This keeps the model
 
 ### 3.2 Why "local" is the product, not a limit
 
-- **Privacy.** No microphone and no network means no data to leak. This is the answer to the FTC and Senate scrutiny of AI toys in 2026.
+- **Privacy.** No working microphone (removed at the factory, or switched off in firmware) and no network means no data to leak. This is the answer to the FTC and Senate scrutiny of AI toys in 2026.
 - **It works forever.** No server to shut down. Buyers remember pets that died when an app closed.
 - **Story.** "An AI that lives in an egg" is a press hook. Makers proved in 2025-2026 that small models run on a $10 chip.
 
@@ -71,11 +71,11 @@ Stickerbox (an AI sticker printer for kids) shows the shape: a screen-free AI ob
 
 ### 3.4 Hardware (no custom board in 2026)
 
-Use an off-the-shelf **ESP32-S3** board with a round display, battery charging, and a motion sensor. Waveshare and similar makers sell these boards near $20 to $30 retail. Order samples after a stock check on 2026-10-21, and pick the board on 2026-10-27 after testing them.
+Use an off-the-shelf **ESP32-S3** board with a round display, battery charging, and **8 MB PSRAM** (the model runtime needs it). Only boards built on the ESP32-S3R8 qualify. The Waveshare ESP32-S3-LCD-1.28 has 2 MB PSRAM and the M5Dial lists no PSRAM, so neither can run the model. Waveshare and similar makers sell these boards near $20 to $30 retail. Order samples after a stock check on 2026-10-21, and pick the board on 2026-10-27 after testing them.
 
-| Part | Est. unit cost at 300 units |
+| Part | Est. unit cost at 310 units |
 |---|---|
-| ESP32-S3 board, 1.28" round touch screen, 8 MB PSRAM, 16 MB flash | $18 to $24 |
+| ESP32-S3R8 board, round touch screen (Waveshare 1.46" or 1.85C), 8 MB PSRAM, 16 MB flash | $18 to $24 |
 | LiPo battery, 400 to 600 mAh | $3 to $5 |
 | Shell (3D print or resin, plus lanyard) | $6 to $10 |
 | Buttons, magnet, small parts | $2 |
@@ -85,7 +85,7 @@ Use an off-the-shelf **ESP32-S3** board with a round display, battery charging, 
 
 All figures are estimates. Confirm with three quotes before 2026-10-23.
 
-**About "the shells have been around for years":** stock egg keychain shells fit a coin cell and a 1-inch mono LCD. They do not fit an ESP32-S3 board with a battery. Use a slightly larger "pebble" shell for 2026. Commission a 3D-print shop or a resin-cast shop for 300 units. Design a true egg shell with a custom board for 2027 retail.
+**About "the shells have been around for years":** stock egg keychain shells fit a coin cell and a 1-inch mono LCD. They do not fit an ESP32-S3 board with a battery. Use a slightly larger "pebble" shell for 2026. Commission a 3D-print shop or a resin-cast shop for 310 units. Design a true egg shell with a custom board for 2027 retail.
 
 ### 3.5 The model on the chip
 
@@ -97,7 +97,7 @@ Public ESP32-S3 projects report these speeds (self-reported, not controlled test
 
 Plan:
 
-1. Train a 5M to 15M parameter model on a pet-dialogue dataset. Generate the dataset with a large model, then filter it.
+1. Train a 3M to 5M parameter model, INT8, on a pet-dialogue dataset. The esp32-llm project runs a 3.3M INT8 model at about 12 tokens per second and needs 8 MB PSRAM for it; 5M is untested and is tried on the device in Week 1. Plan no larger model for 2026. Generate the dataset with a large model, then filter it.
 2. Condition each output on pet state (hunger, mood, age, time of day, species).
 3. Cap each thought at 20 tokens. One thought takes about 1 to 2 seconds.
 4. Add a word blocklist on the output. Add a fallback to scripted lines if the filter trips.
@@ -119,7 +119,7 @@ Model gate: a 200-line human review of model output runs on Sun Nov 8, before fu
 |---|---|---|---|
 | Founders Edition (numbered, 1 of 300) | $129 | Dec 8 to Dec 15 | Includes 2 species packs |
 | Gift box (certificate + sticker + egg ships in January) | $99 | By Dec 18 | The Christmas hedge. Each gift box reserves one egg counted inside the 300-unit batch (not extra hardware); its cash counts toward the batch gate, and its egg ships in January from that batch |
-| Developer Edition (open firmware, clear shell) | $149 | Dec 8 to Dec 15 | Limit 50, counted inside the 300-unit batch (not extra hardware); the larger Developer Edition run is the Q1 2027 Crowd Supply campaign. If the Dial is chosen on Oct 27, the clear-shell order for these 50 stays in the shell quotes; if no clear shell is quoted by Nov 2, the offer says "stock Dial case" before preorders open on Nov 9 |
+| Developer Edition (open firmware, clear shell) | $149 | Dec 8 to Dec 15 | Limit 50, counted inside the 300-unit batch (not extra hardware); the larger Developer Edition run is the Q1 2027 Crowd Supply campaign. The clear shell for these 50 is part of the shell quotes; if no clear shell is quoted by Nov 2, the offer drops "clear shell" before preorders open on Nov 9 |
 | Personality pack | $12 | Digital, USB install | From January |
 | Refundable deposit (this week only) | $25 | n/a | Measures demand |
 
@@ -171,7 +171,7 @@ The batch order (310 units built for 300 sold, about $15.5k) is paid from preord
 ### 5.1 Positioning
 
 - Category: "the first offline AI pet."
-- Proof points: no mic, no cloud, no account, works forever.
+- Proof points: microphone removed or switched off (per decision 6), no cloud, no account, works forever.
 - Tone: warm, odd, a little funny. The pet's lines are the ads.
 
 ### 5.2 Channels, in order of cost
@@ -227,11 +227,11 @@ Each step has an owner. "Claude" means a Claude session can do the step. "Evan" 
 ### Wednesday Oct 21
 7. Evan: order 2 candidate ESP32-S3 round-screen boards (5 of each) with next-day shipping.
 8. Claude: generate the training dataset (target 200k short lines). Filter it.
-9. Claude: request quotes from three 3D-print farms for 300 shells.
+9. Claude: request quotes from three 3D-print farms for 310 shells.
 
 ### Thursday Oct 22
-10. Claude: train model v0 (5M parameters). Export it in the format the ESP32 runtime needs.
-11. Claude: write firmware v0: pet loop, sprites, an input layer for buttons or the ring (the board is chosen Oct 27), sleep mode, model call.
+10. Claude: train model v0 (3.3M parameters, INT8; try 5M only if 3.3M runs above 8 tokens/s). Export it in the format the ESP32 runtime needs.
+11. Claude: write firmware v0: pet loop, sprites, an input layer for the touch screen and side buttons (the board is chosen Oct 27), sleep mode, model call.
 12. Evan: set up Stripe. Create the $25 refundable deposit product.
 
 ### Friday Oct 23
@@ -257,6 +257,7 @@ Each step has an owner. "Claude" means a Claude session can do the step. "Evan" 
 3. Name, after the trademark search.
 4. Spend cap for Week 0 and Week 1: $2,000 recommended, not counting the embedded contractor, which Evan approves on its quote.
 5. Batch size: decided on 2026-11-15 by preorder count.
+6. Microphone: ask Waveshare to leave it off the board for 310 units (recommended, keeps "no microphone" true), or keep it off in firmware and say "microphone switched off" in all copy.
 
 ## 9. Not confirmed
 
@@ -269,6 +270,7 @@ Each step has an owner. "Claude" means a Claude session can do the step. "Evan" 
 
 - Stickerbox price and refills: [Tom's Guide](https://www.tomsguide.com/ai/this-viral-ai-toy-that-gets-kids-off-screens-is-finally-20-percent-off-for-prime-day), [Yanko Design](https://www.yankodesign.com/2025/12/05/stickerbox-kids-say-an-idea-ai-prints-it-as-a-sticker-in-seconds/)
 - LLMs on ESP32-S3: [Hackster](https://www.hackster.io/news/microcontrollers-telling-micro-stories-0ff88720278c), [InsiderLLM](https://insiderllm.com/guides/llm-on-microcontroller-esp32-s3/), [The Register](https://assets.theregister.com/2026/08/04/202614/), [doryiii/esp32-llm](https://github.com/doryiii/esp32-llm)
+- Board memory: [Waveshare ESP32-S3-LCD-1.28 (2 MB PSRAM)](https://docs.waveshare.com/ESP32-S3-LCD-1.28), [M5Dial (ESP32-S3FN8, no PSRAM listed)](https://docs.m5stack.com/en/core/M5Dial), [Waveshare ESP32-S3-Touch-LCD-1.46 (ESP32-S3R8, 8 MB PSRAM, mic)](https://docs.waveshare.com/ESP32-S3-Touch-LCD-1.46), [Waveshare ESP32-S3-Touch-LCD-1.85C (ESP32-S3R8, 8 MB PSRAM, mic)](https://docs.waveshare.com/ESP32-S3-Touch-LCD-1.85C)
 - ESP32 pet with local models: [CircuitDigest](https://circuitdigest.com/news/esp32-based-ai-pet-gets-sick-if-you-doomscroll-while-android-handles-local-llms-stt-and-tts-offline)
 - AI toy rules: [TechRepublic](https://www.techrepublic.com/de/article/news-ai-toys-privacy-risks/), [Sen. Duckworth release](https://www.duckworth.senate.gov/news/press-releases/duckworth-gillibrand-demand-trump-administration-protect-our-children-from-risky-age-inappropriate-ai-toys), [MediaLaws](https://www.medialaws.eu/playing-by-the-rules-governing-ai-toys-in-the-european-union-and-the-united-states/)
 - Tamagotchi at 30: [License Global](https://www.licenseglobal.com/entertainment/tamagotchi-celebrates-30-years-with-launches-and-events-in-the-u-s-), [Hoodline, Times Square Nov 22](https://hoodline.com/2026/10/tamagotchi-floods-times-square-nov-22-for-free-30th-birthday-bash/), [CP24](https://www.cp24.com/news/canada/2026/01/11/why-are-people-still-playing-with-tamagotchis/)

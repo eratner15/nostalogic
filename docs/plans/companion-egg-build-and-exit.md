@@ -16,7 +16,7 @@ Working name: **Hatchling** (placeholder).
 
 ```
  [Pet model]         [Firmware]            [Device]             [Web]
- 5-15M params  --->  ESP32-S3, C/C++  ---> board + battery ---> landing page
+ 3-5M params   --->  ESP32-S3, C/C++  ---> board + battery ---> landing page
  trained on HF       open source           + 3D shell           + browser twin
  open weights        GitHub                 numbered batch       (HF Space)
 ```
@@ -47,12 +47,14 @@ This gives demand data before any hardware ships. It also makes the Hugging Face
 
 | Board | Why | Check before you buy |
 |---|---|---|
-| Waveshare ESP32-S3 round touch LCD (1.28") | Battery charge circuit, IMU, low cost | Exact variant with 8 MB PSRAM; stock for 300 |
-| M5Stack Dial (ESP32-S3, 1.28" round touch, rotary ring, buzzer) | Comes in a finished shell. A ring to "feed" the pet is a strong toy action. About $35 list. | **PSRAM.** If the module has no PSRAM, only a very small model fits. Battery option. |
+| Waveshare ESP32-S3-Touch-LCD-1.46 (ESP32-S3R8) | 8 MB PSRAM, 16 MB flash, round touch, IMU, battery charging | It has a microphone and a speaker on board. Stock for 310. |
+| Waveshare ESP32-S3-Touch-LCD-1.85C (ESP32-S3R8) | 8 MB PSRAM, 16 MB flash, round screen, battery charging | Microphone on board; touch is an option; no IMU listed. Stock for 310. |
+| Ruled out: Waveshare ESP32-S3-LCD-1.28 | Cheap, IMU, battery charging | 2 MB PSRAM (ESP32-S3R2): only the 260K model fits |
+| Ruled out: M5Stack Dial | Finished shell, rotary ring | ESP32-S3FN8, 8 MB flash, no PSRAM listed |
 | Seeed XIAO ESP32-S3 + round display | Small; Seeed offers agile manufacturing later | Battery fit inside your shell |
 | LilyGO T-Watch S3 class | Finished wearable with battery | It has a microphone; firmware must keep it off. This weakens the "no mic" claim. |
 
-Recommendation: buy 5 Waveshare and 5 M5Stack Dial on 2026-10-21 (10 boards, matching the $400 prototype line in the Christmas plan; the Week 2 gate tests 5 of whichever is chosen). If the Dial has PSRAM and a battery option, use it for the Founders Edition and skip Founders shell work for 2026. Keep one shell job either way: a clear shell for the 50 Developer Edition units, quoted with the shell farms below. If none is quoted by Nov 2, the Developer Edition offer changes to "stock Dial case" before preorders open.
+Recommendation: buy 5 Waveshare 1.46" and 5 Waveshare 1.85C on 2026-10-21 (10 boards, matching the $400 prototype line in the Christmas plan; the Week 2 gate tests 5 of whichever is chosen). Both are ESP32-S3R8 boards with 8 MB PSRAM, which the model runtime needs. Both carry a microphone: ask Waveshare whether it can be left off the board for 310 units (Christmas plan, decision 6). Shell work goes ahead for all units; the 50 Developer Edition units get a clear shell, quoted with the shell farms below. If none is quoted by Nov 2, the Developer Edition offer drops "clear shell" before preorders open.
 
 ## 3. Who to contact
 
@@ -62,13 +64,13 @@ Evan sends every first message. An agent drafts it in Gmail, and Evan reviews an
 
 | Contact | Why | First ask |
 |---|---|---|
-| M5Stack (Espressif majority-owned since 2024) sales / OEM | Finished ESP32-S3 devices; custom print on shell; volume price | Price and lead time for 300 and 3,000 Dials; custom logo on shell |
-| Waveshare sales | Bare round-screen boards | Price and stock for 300 of one SKU |
+| M5Stack (Espressif majority-owned since 2024) sales / OEM | Finished ESP32-S3 devices; custom print on shell; volume price | Not for 2026 (the Dial lists no PSRAM). Ask whether a round-screen device with 8 MB PSRAM is planned, for the 2027 run |
+| Waveshare sales | Bare round-screen boards | Price and stock for 310 of one SKU; can the microphone be left off the board |
 | Seeed Studio (Fusion, agile manufacturing) | Path to a custom board in 2027 | Process and minimums for a custom ESP32-S3 board |
 | Espressif | Chip maker; partner programs and press | Partner listing; co-marketing on "LLM on ESP32-S3" |
-| Slant 3D | US print farm with an order API | 300 shells, 5-day turn, price per part |
+| Slant 3D | US print farm with an order API | 310 shells (including 50 clear), 5-day turn, price per part |
 | Craftcloud or JLC3DP | Second quote for shells | Same as above |
-| Battery supplier with UN38.3 papers | Legal battery shipping | 300 cells with test summary |
+| Battery supplier with UN38.3 papers | Legal battery shipping | 310 cells with test summary |
 
 ### 3.2 Software, model, and community
 
