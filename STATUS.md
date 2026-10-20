@@ -10,8 +10,9 @@
   New York. Writes reports to the zeitgeist-state memory store. No spend, no
   outreach. Not applied; `ant apply --dry-run` not run (no ant CLI in session).
 - First report (manual run): docs/zeitgeist/reports/2026-10-19.html. 16 trends,
-  3 GO, 13 WATCH (corrected 2026-10-20: Canasta, supper clubs and game-night
-  journals capped at WATCH by the two-signal-type rule). GO cards: craft nights and game-night hosting, needlepoint.
+  2 GO, 14 WATCH (corrected 2026-10-20: Canasta, supper clubs and game-night
+  journals capped at WATCH by the two-signal-type rule; Mahjong re-scored 76
+  to 67 because its cited momentum is falling). GO cards: craft nights and game-night hosting, needlepoint.
   NEEDS EVAN: pick tests, then run scripts/zeitgeist-setup.sh for weekly runs.
 
 Updated 2026-10-08 (agent search + design overhaul, branch claude/agent-search-overhaul)
