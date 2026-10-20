@@ -118,10 +118,10 @@ Model gate: a 200-line human review of model output runs on Sun Nov 8, before fu
 | Offer | Price | Ships | Notes |
 |---|---|---|---|
 | Founders Edition (numbered within the 300-unit batch) | $129 | Dec 8 to Dec 15 | Includes 2 species packs |
-| Gift box (certificate + sticker + egg ships in January) | $99 | By Dec 18 | The Christmas hedge. Each gift box reserves one egg counted inside the 300-unit batch (not extra hardware); its cash counts toward the batch gate, and its egg ships in January from that batch |
+| Gift box (certificate + sticker + egg ships in January) | $99 | By Dec 18 | The Christmas hedge. A gift box paid by Nov 15 reserves one egg inside the 300-unit batch (not extra hardware); its cash counts toward the batch gate, and its egg ships in January from that batch. A gift box sold after Nov 15 gets its certificate by Dec 18 and its egg from the February second hatch |
 | Developer Edition (open firmware, clear shell) | $149 | Dec 8 to Dec 15 | Limit 50, counted inside the 300-unit batch (not extra hardware); the larger Developer Edition run is the Q1 2027 Crowd Supply campaign. The clear shell for these 50 is part of the shell quotes; if no clear shell is quoted by Nov 2, the offer drops "clear shell" before preorders open on Nov 9 |
 | Personality pack | $12 | Digital, USB install | From January |
-| Refundable deposit (Oct 24 to Oct 30) | $25 | n/a | Measures demand; stays open through the Oct 30 go/no-go. On Nov 9 each depositor gets a preorder link for the balance ($104 for Founders), with the $25 credited, never charged twice. A depositor who does not convert by Dec 6, when preorders close, gets the $25 back in full. Until then every deposit is a refund liability, not batch cash |
+| Refundable deposit (Oct 24 to Oct 30) | $25 | n/a | Measures demand; stays open through the Oct 30 go/no-go. On Nov 9 each depositor gets a preorder link for the balance ($104 for Founders), with the $25 credited, never charged twice. A depositor who does not convert by Nov 15, when Christmas preorders close, gets the $25 back in full. Until then every deposit is a refund liability, not batch cash |
 
 ### 4.3 Unit economics (Founders Edition)
 
@@ -152,7 +152,7 @@ Contribution depends on the mix, because all three offers share the 300 slots. A
 
 The contractor and the FCC test are each approved on their own quote. Get the quote before any hire; Evan approves it or names the funding in writing.
 
-The batch order (310 units built for 300 sold, about $15.5k) is paid from preorder cash. The 10 spare units cover the QA failures the Week 6 gate allows (under 3% of 310 is 9 units or fewer). Size the batch to paid orders, never to cash: build = paid orders / 0.97, rounded up, at most 310, even if the cash would buy more. Do not order the batch until collected preorder cash covers the whole order, plus $12 shipping and about 3% payment fees on every paid order, plus 10% for refunds. If preorders cover less than that by the order date, cut the batch to the number of units the cash covers, or name another source of funds in writing before ordering. A cut batch keeps the QA buffer: sell at most 97% of the units built, rounded down (build = sale cap / 0.97, rounded up).
+The batch order (at most 310 units built for 300 sold, about $15.5k at the maximum) is paid from preorder cash. The 10 spare units cover the QA failures the Week 6 gate allows (under 3% of 310 is 9 units or fewer). Size the batch to paid orders, never to cash: build = paid orders / 0.97, rounded up, at most 310, even if the cash would buy more. Do not order the batch until collected preorder cash covers the whole order, plus $12 shipping and about 3% payment fees on every paid order, plus 10% for refunds. If preorders cover less than that by the order date, cut the batch to the number of units the cash covers, or name another source of funds in writing before ordering. A cut batch keeps the QA buffer: sell at most 97% of the units built, rounded down (build = sale cap / 0.97, rounded up).
 
 ### 4.5 Risks
 
@@ -192,8 +192,8 @@ The batch order (310 units built for 300 sold, about $15.5k) is paid from preord
 | 2026-10-24 | Waitlist and $25 deposits open |
 | 2026-11-09 | Full preorders open ($129) |
 | 2026-11-22 | Anniversary week content push |
-| 2026-11-27 | Black Friday: last Founders units and gift box |
-| 2026-12-06 | Preorders close for Christmas delivery |
+| 2026-11-15 | Christmas preorders close; the batch size locks to paid orders |
+| 2026-11-27 | Black Friday: gift boxes (certificate by Dec 18, egg in February) and second-hatch preorders |
 | 2026-12-15 | Last ship date for Founders Edition |
 | 2026-12-18 | Last ship date for gift boxes |
 
@@ -204,10 +204,10 @@ The batch order (310 units built for 300 sold, about $15.5k) is paid from preord
 | 0 | Oct 19 to Oct 25 | Prototype v0, name, deposits page live | 50 deposits by Oct 30, or rethink |
 | 1 | Oct 26 to Nov 1 | Board chosen; first trained model on device; shell v1 | Model runs above 8 tokens/s |
 | 2 | Nov 2 to Nov 8 | 5 working units of the chosen board; shell v2; quotes signed; FCC/EMC test done | 5 units of the chosen board pass a 48-hour battery test; 200-line output review passes, or preorders open on the scripted fallback (section 3.5); FCC authorization in hand, or preorders wait |
-| 3 | Nov 9 to Nov 15 | Preorders open; order parts for 310 (300 to sell, 10 spares) | Preorder cash covers the full batch cost, shipping and fees on every paid order, plus 10%, or the batch is cut to match |
+| 3 | Nov 9 to Nov 15 | Preorders open; Christmas preorders close Nov 15; order parts for paid orders / 0.97, rounded up, at most 310 | Preorder cash covers the full batch cost, shipping and fees on every paid order, plus 10%, or the batch is cut to match |
 | 4 | Nov 16 to Nov 22 | Firmware freeze candidate; packaging printed | 200-line output review repeated on the freeze candidate passes |
 | 5 | Nov 23 to Nov 29 | Black Friday; parts arrive | All parts in hand by Nov 30 |
-| 6 | Nov 30 to Dec 6 | Assembly and flash, 310 units | QA fail rate under 3%, so at least 300 units pass |
+| 6 | Nov 30 to Dec 6 | Assembly and flash, the ordered batch (at most 310) | QA fail rate under 3%, so every paid order has a passing unit |
 | 7 | Dec 7 to Dec 13 | Ship Founders units | 100% shipped by Dec 15 |
 | 8 | Dec 14 to Dec 20 | Ship gift boxes; support | Gift boxes out by Dec 18 |
 
