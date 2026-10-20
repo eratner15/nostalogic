@@ -154,6 +154,8 @@ The contractor and the FCC test are each approved on their own quote. Get the qu
 
 The batch order (at most 310 units built for 300 sold; at $39 to $57 landed, a full 310 costs about $12.1k to $17.7k) is paid from preorder cash. The 10 spare units cover the QA failures the Week 6 gate allows (under 3% of 310 is 9 units or fewer). Size the batch to paid orders, never to cash: build = paid orders / 0.97, rounded up, at most 310, even if the cash would buy more. Do not order the batch until collected preorder cash covers the whole order, plus $12 shipping and about 3% payment fees on every paid order, plus 10% for refunds. If preorders cover less than that by the order date, cut the batch to the number of units the cash covers, or name another source of funds in writing before ordering. A cut batch keeps the QA buffer: sell at most 97% of the units built, rounded down (build = sale cap / 0.97, rounded up).
 
+**February second hatch.** Orders paid Nov 16 to Dec 31 (Black Friday gift boxes and second-hatch preorders) belong to a separate batch, capped at 300. On Jan 4 its size locks to its own paid orders / 0.97, rounded up, under the same cash gate; parts are ordered that day, assembly and QA run Jan 25 to Jan 31, and eggs ship by Feb 14. It reuses the Christmas batch's FCC authorization and QA checks. Its cash is not spent before Jan 4. If the batch cannot ship by Feb 28, every second-hatch buyer is refunded in full.
+
 ### 4.5 Risks
 
 | Risk | Control |
@@ -165,9 +167,9 @@ The batch order (at most 310 units built for 300 sold; at $39 to $57 landed, a f
 | Lithium battery shipping | Buy cells with UN38.3 papers; ship ground with the right label |
 | FCC | A pre-certified module is not enough: the finished device needs its own EMC test at an accredited lab and the FCC authorization the lab advises. Book the lab by Oct 27 on the chosen board. Do not open $129 preorders until the authorization is done; until then, take only refundable deposits. Deposits and any ad for them are a conditional sale under 47 CFR 2.803(c)(2)(i), so the deposit page must prominently say: the device is subject to FCC rules and delivery depends on completing FCC authorization; FCC rules do not address consumer protection, contract or other law; and if authorization fails, every deposit is refunded in full. Keep ownership of every unit until delivery and keep records of each deposit for 60 months. If it is not done by Nov 9, preorders wait and the Christmas ship dates move |
 | Children's-product classification | Adults-only marketing does not settle it: the CPSC weighs foreseeable use, appeal and play value. Ask product-safety counsel or a CPSC-accepted lab for a classification by Nov 2. If it is a children's product, preorders wait for third-party testing and a Children's Product Certificate, and the Christmas dates move |
-| Radios on the board | Both boards have 2.4 GHz Wi-Fi and Bluetooth. Shipping firmware never starts either radio; QA checks each unit with a phone scan (no Wi-Fi network, no BLE advertisement) before "no network" appears in any copy |
+| Radios on the board | Both boards have 2.4 GHz Wi-Fi and Bluetooth. A phone scan is not enough: it misses a radio running in client mode. The shipping firmware build links no Wi-Fi or Bluetooth driver, checked by a link-map scan for `esp_wifi_init` and `esp_bt_controller_init` on every release, and a 2.4 GHz spectrum check on 5 sample units shows no transmissions. Only then may "no network" appear in any copy |
 | Too few preorders | Refund deposits; keep the gift-box list; move to a 2027 Kickstarter |
-| Too many preorders | Cap at 300, Founders, Developer and gift-box eggs together; open a numbered "second hatch" for February |
+| Too many preorders | Cap at 300, Founders, Developer and gift-box eggs together; open the February second hatch (section 4.4) |
 
 ## 5. Go-to-market
 
