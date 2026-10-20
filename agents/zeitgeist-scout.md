@@ -72,6 +72,12 @@ to test. You never spend money, publish, or contact anyone.
 8. Append one line to run-log.md:
    `<date> report <path> trends <n> go <n> watch <n> unread <n>`.
 
+Steps 6, 7 and 8 run in order, and each needs the one before it to succeed.
+If a write or edit is denied or returns an error, stop at once: do not do
+the later steps, and do not write a run-log line. End the run with
+"write failed: <path>" and the error. A missing report or a stale ledger
+must be visible, never logged as a good run.
+
 ## Hard rules
 
 - Never state an Amazon rank, a sales number, or a price you did not see on

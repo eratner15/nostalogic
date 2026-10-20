@@ -119,7 +119,7 @@ Model gate: a 200-line human review of model output runs on Sun Nov 8, before fu
 |---|---|---|---|
 | Founders Edition (numbered, 1 of 300) | $129 | Dec 8 to Dec 15 | Includes 2 species packs |
 | Gift box (certificate + sticker + egg ships in January) | $99 | By Dec 18 | The Christmas hedge. Each gift box reserves one egg counted inside the 300-unit batch (not extra hardware); its cash counts toward the batch gate, and its egg ships in January from that batch |
-| Developer Edition (open firmware, clear shell) | $149 | Dec 8 to Dec 15 | Limit 50, counted inside the 300-unit batch (not extra hardware); the larger Developer Edition run is the Q1 2027 Crowd Supply campaign |
+| Developer Edition (open firmware, clear shell) | $149 | Dec 8 to Dec 15 | Limit 50, counted inside the 300-unit batch (not extra hardware); the larger Developer Edition run is the Q1 2027 Crowd Supply campaign. If the Dial is chosen on Oct 27, the clear-shell order for these 50 stays in the shell quotes; if no clear shell is quoted by Nov 2, the offer says "stock Dial case" before preorders open on Nov 9 |
 | Personality pack | $12 | Digital, USB install | From January |
 | Refundable deposit (this week only) | $25 | n/a | Measures demand |
 
@@ -144,11 +144,14 @@ Model gate: a 200-line human review of model output runs on Sun Nov 8, before fu
 | Shell design and 10 test prints | $600 |
 | Model training compute | $200 to $500 |
 | Landing page, domain, Stripe | $50 |
+| Embedded contractor (part-time, 6 weeks) | quote first; outside the cap below |
 | Trademark knockout search | $0 to $300 |
 | Product liability insurance quote | quote only |
-| **Total before batch order** | **about $1,500 to $2,000** |
+| **Total before batch order** | **about $1,500 to $2,000, not counting the contractor** |
 
-The batch order (about $15k for 300 units) is paid from preorder cash. Do not order the batch until collected preorder cash covers the whole order plus 10% for payment fees and refunds. If preorders cover less than that by the order date, cut the batch to the number of units the cash covers, or name another source of funds in writing before ordering.
+The contractor is approved on its own quote. Get the quote before any hire; Evan approves it or names the funding in writing.
+
+The batch order (310 units built for 300 sold, about $15.5k) is paid from preorder cash. The 10 spare units cover the QA failures the Week 6 gate allows (under 3% of 310 is 9 units or fewer). Do not order the batch until collected preorder cash covers the whole order, plus $12 shipping and about 3% payment fees on every paid order, plus 10% for refunds. If preorders cover less than that by the order date, cut the batch to the number of units the cash covers, or name another source of funds in writing before ordering.
 
 ### 4.5 Risks
 
@@ -200,10 +203,10 @@ The batch order (about $15k for 300 units) is paid from preorder cash. Do not or
 | 0 | Oct 19 to Oct 25 | Prototype v0, name, deposits page live | 50 deposits by Oct 30, or rethink |
 | 1 | Oct 26 to Nov 1 | Board chosen; first trained model on device; shell v1 | Model runs above 8 tokens/s |
 | 2 | Nov 2 to Nov 8 | 5 working units of the chosen board; shell v2; quotes signed | 5 units of the chosen board pass a 48-hour battery test; 200-line output review passes, or preorders open on the scripted fallback (section 3.5) |
-| 3 | Nov 9 to Nov 15 | Preorders open; order parts for 300 | Preorder cash covers the full batch cost plus 10%, or the batch is cut to match |
+| 3 | Nov 9 to Nov 15 | Preorders open; order parts for 310 (300 to sell, 10 spares) | Preorder cash covers the full batch cost, shipping and fees on every paid order, plus 10%, or the batch is cut to match |
 | 4 | Nov 16 to Nov 22 | Firmware freeze candidate; packaging printed | 200-line output review repeated on the freeze candidate passes |
 | 5 | Nov 23 to Nov 29 | Black Friday; parts arrive | All parts in hand by Nov 30 |
-| 6 | Nov 30 to Dec 6 | Assembly and flash, 300 units | QA fail rate under 3% |
+| 6 | Nov 30 to Dec 6 | Assembly and flash, 310 units | QA fail rate under 3%, so at least 300 units pass |
 | 7 | Dec 7 to Dec 13 | Ship Founders units | 100% shipped by Dec 15 |
 | 8 | Dec 14 to Dec 20 | Ship gift boxes; support | Gift boxes out by Dec 18 |
 
@@ -252,7 +255,7 @@ Each step has an owner. "Claude" means a Claude session can do the step. "Evan" 
 1. Adults only for 2026: yes or no.
 2. Founders price: $129 (recommended) or $149.
 3. Name, after the trademark search.
-4. Spend cap for Week 0 and Week 1: $2,000 recommended.
+4. Spend cap for Week 0 and Week 1: $2,000 recommended, not counting the embedded contractor, which Evan approves on its quote.
 5. Batch size: decided on 2026-11-15 by preorder count.
 
 ## 9. Not confirmed

@@ -52,7 +52,7 @@ This gives demand data before any hardware ships. It also makes the Hugging Face
 | Seeed XIAO ESP32-S3 + round display | Small; Seeed offers agile manufacturing later | Battery fit inside your shell |
 | LilyGO T-Watch S3 class | Finished wearable with battery | It has a microphone; firmware must keep it off. This weakens the "no mic" claim. |
 
-Recommendation: buy 5 Waveshare and 5 M5Stack Dial on 2026-10-21 (10 boards, matching the $400 prototype line in the Christmas plan; the Week 2 gate tests 5 of whichever is chosen). If the Dial has PSRAM and a battery option, use it for the Founders Edition and skip shell work for 2026.
+Recommendation: buy 5 Waveshare and 5 M5Stack Dial on 2026-10-21 (10 boards, matching the $400 prototype line in the Christmas plan; the Week 2 gate tests 5 of whichever is chosen). If the Dial has PSRAM and a battery option, use it for the Founders Edition and skip Founders shell work for 2026. Keep one shell job either way: a clear shell for the 50 Developer Edition units, quoted with the shell farms below. If none is quoted by Nov 2, the Developer Edition offer changes to "stock Dial case" before preorders open.
 
 ## 3. Who to contact
 
@@ -142,7 +142,7 @@ This repo already uses **Claude Managed Agents** (`agents/`, `environments/`, `m
 - Sign a supplier contract or a purchase order.
 - Pass a lab test.
 
-Plan for one human embedded contractor (part-time, 6 weeks) and one person for packing and shipping in December.
+Plan for one human embedded contractor (part-time, 6 weeks) and one person for packing and shipping in December. The contractor is outside the $2,000 two-week cap: get a quote first, and hire only after Evan approves it or names the funding (Christmas plan, section 4.4).
 
 ## 5. Open-source plan ("Hugging Face style")
 
@@ -183,7 +183,7 @@ What a buyer checks, so keep it clean from day one:
 4. Claude: draft supplier emails to M5Stack, Waveshare, Slant 3D, and one battery supplier as Gmail drafts.
 5. Evan: order the 10 sample boards (5 of each).
 6. Claude: start the Hugging Face model repo and the browser twin.
-7. Evan: hire the embedded contractor (post the brief that Claude drafts).
+7. Evan: post the contractor brief that Claude drafts and get quotes. Hire only after approving a quote; it is outside the $2,000 cap.
 
 ## Sources
 
