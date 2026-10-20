@@ -94,7 +94,7 @@ total.
 | Factor | Weight | Question |
 |---|---|---|
 | Momentum | 25% | How fast is attention rising over 8-26 weeks? |
-| Stage | 15% | Early (best), rising, peak, or fading? Peak and fading score low. |
+| Stage | 15% | Score by stage name, and use only these: early 90, early-rising 80, rising 70, steady 50, maturing 50, peak 35, fading 10. (Same table as `agent-seed/zeitgeist/preferences/scoring.md`.) |
 | Audience overlap | 20% | How much does it overlap the mahjong buyer? (Lane B: how reachable is the buyer?) |
 | Speed to product | 15% | Can we ship a first product in under 6 weeks? |
 | Margin | 15% | Digital and licensing score high. Inventory and shipping score low. |

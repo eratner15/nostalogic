@@ -47,7 +47,7 @@ The model says WATCH, not GO. Speed and margin pull it down. This plan raises bo
 
 ### 3.1 What it is
 
-A palm-size device with a round color screen and three buttons. A small pet lives on it. The pet eats, sleeps, grows, and gets bored, as in 1997. The new part: the pet **writes its own short thoughts** with a language model that runs on the chip.
+A palm-size device with a round color screen and simple controls: three buttons on a bare round-screen board, or the rotary ring on the M5Stack Dial. The board decision on 2026-10-21 picks one, and the shell CAD and firmware v0 wait for that decision. A small pet lives on it. The pet eats, sleeps, grows, and gets bored, as in 1997. The new part: the pet **writes its own short thoughts** with a language model that runs on the chip.
 
 Examples of pet output: "I dreamed the moon was a cracker." "You were gone a long time. I counted clouds."
 
@@ -119,7 +119,7 @@ Fallback if the model is not ready by 2026-11-20: ship scripted lines with the m
 |---|---|---|---|
 | Founders Edition (numbered, 1 of 300) | $129 | Dec 8 to Dec 15 | Includes 2 species packs |
 | Gift box (certificate + sticker + egg ships in January) | $99 | By Dec 18 | The Christmas hedge |
-| Developer Edition (open firmware, clear shell) | $149 | Dec 8 to Dec 15 | Limit 50 |
+| Developer Edition (open firmware, clear shell) | $149 | Dec 8 to Dec 15 | Limit 50, counted inside the 300-unit batch (not extra hardware); the larger Developer Edition run is the Q1 2027 Crowd Supply campaign |
 | Personality pack | $12 | Digital, USB install | From January |
 | Refundable deposit (this week only) | $25 | n/a | Measures demand |
 
@@ -199,7 +199,7 @@ The batch order (about $15k for 300 units) is paid from preorder cash. Do not or
 |---|---|---|---|
 | 0 | Oct 19 to Oct 25 | Prototype v0, name, deposits page live | 50 deposits by Oct 30, or rethink |
 | 1 | Oct 26 to Nov 1 | Board chosen; first trained model on device; shell v1 | Model runs above 8 tokens/s |
-| 2 | Nov 2 to Nov 8 | 10 working units; shell v2; quotes signed | 10 units pass a 48-hour battery test |
+| 2 | Nov 2 to Nov 8 | 5 working units of the chosen board; shell v2; quotes signed | 5 units of the chosen board pass a 48-hour battery test |
 | 3 | Nov 9 to Nov 15 | Preorders open; order parts for 300 | Preorder cash covers the full batch cost plus 10%, or the batch is cut to match |
 | 4 | Nov 16 to Nov 22 | Firmware freeze candidate; packaging printed | 200-line output review passes |
 | 5 | Nov 23 to Nov 29 | Black Friday; parts arrive | All parts in hand by Nov 30 |
