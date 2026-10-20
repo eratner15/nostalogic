@@ -148,7 +148,7 @@ Fallback if the model is not ready by 2026-11-20: ship scripted lines with the m
 | Product liability insurance quote | quote only |
 | **Total before batch order** | **about $1,500 to $2,000** |
 
-The batch order (about $15k for 300 units) is paid from preorder cash. Do not order the batch until preorders cover at least 60% of it.
+The batch order (about $15k for 300 units) is paid from preorder cash. Do not order the batch until collected preorder cash covers the whole order plus 10% for payment fees and refunds. If preorders cover less than that by the order date, cut the batch to the number of units the cash covers, or name another source of funds in writing before ordering.
 
 ### 4.5 Risks
 
@@ -200,7 +200,7 @@ The batch order (about $15k for 300 units) is paid from preorder cash. Do not or
 | 0 | Oct 19 to Oct 25 | Prototype v0, name, deposits page live | 50 deposits by Oct 30, or rethink |
 | 1 | Oct 26 to Nov 1 | Board chosen; first trained model on device; shell v1 | Model runs above 8 tokens/s |
 | 2 | Nov 2 to Nov 8 | 10 working units; shell v2; quotes signed | 10 units pass a 48-hour battery test |
-| 3 | Nov 9 to Nov 15 | Preorders open; order parts for 300 | Preorders cover 60% of batch cost |
+| 3 | Nov 9 to Nov 15 | Preorders open; order parts for 300 | Preorder cash covers the full batch cost plus 10%, or the batch is cut to match |
 | 4 | Nov 16 to Nov 22 | Firmware freeze candidate; packaging printed | 200-line output review passes |
 | 5 | Nov 23 to Nov 29 | Black Friday; parts arrive | All parts in hand by Nov 30 |
 | 6 | Nov 30 to Dec 6 | Assembly and flash, 300 units | QA fail rate under 3% |
@@ -242,8 +242,8 @@ Each step has an owner. "Claude" means a Claude session can do the step. "Evan" 
 18. Evan: add "AI companion egg" to the Zeitgeist trend ledger.
 
 ### Sunday Oct 25
-19. Evan and Claude: review deposits, waitlist count, and video views.
-20. If deposits are 50 or more, continue to Week 1. If deposits are under 50, cut the batch to 100 units or move to a January Kickstarter.
+19. Evan and Claude: review deposits, waitlist count, and video views. This is a progress check, not the decision: deposits opened only the day before.
+20. The go/no-go is on Friday Oct 30, as the schedule says: if deposits are 50 or more by then, continue. If they are under 50, cut the batch to 100 units or move to a January Kickstarter.
 
 "By end of this week" means: a working prototype on video, a live deposit page, and a demand number. A shipped product is not possible this week.
 

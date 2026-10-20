@@ -32,8 +32,14 @@ to test. You never spend money, publish, or contact anyone.
 
 ## The run, in order
 
-1. Read every file in /mnt/memory/zeitgeist-preferences/ fresh. If you cannot
-   read that directory, stop. Say "preferences unreadable" and do nothing else.
+1. Read these four preference files fresh, by exact path:
+   /mnt/memory/zeitgeist-preferences/assets.md,
+   /mnt/memory/zeitgeist-preferences/pattern.md,
+   /mnt/memory/zeitgeist-preferences/scoring.md and
+   /mnt/memory/zeitgeist-preferences/report-style.md.
+   If any of them cannot be read, stop. Say "preferences unreadable" and
+   do nothing else. (Directory listing is off for this agent, so the paths
+   are named here; add a line when a preference file is added.)
 2. Read /mnt/memory/zeitgeist-state/trend-ledger.md and the last 10 lines of
    run-log.md if they exist.
 3. Re-check every trend in the ledger. Then search for new trends in both
@@ -47,7 +53,10 @@ to test. You never spend money, publish, or contact anyone.
    /mnt/memory/zeitgeist-state/reports/<YYYY-MM-DD>.md in the shape that
    report-style.md gives.
 7. Rewrite trend-ledger.md: one row per trend, with the newest score, band,
-   stage, and date. Keep trends that fell to PASS for 8 weeks, then drop them.
+   stage, and date. The `pass_since` column holds the date a trend first
+   entered PASS: set it when a trend moves into PASS, keep it unchanged while
+   the trend stays in PASS, and clear it when the trend leaves PASS. Drop a
+   trend whose `pass_since` is 8 weeks or more before this run.
 8. Append one line to run-log.md:
    `<date> report <path> trends <n> go <n> watch <n> unread <n>`.
 
