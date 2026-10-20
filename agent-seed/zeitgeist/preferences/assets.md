@@ -7,7 +7,10 @@
   ASIN B0GQS7Y8PL. Formats: Kindle (Kindle Unlimited) and paperback.
   Series also has Canasta, Farkle, Yahtzee, Bunco, and American Mah Jongg
   Master Edition Pro titles.
-- The book proves an audience: people who buy a mahjong guide in 2026.
+- The book proves an audience: people who buy a mahjong guide in 2026. It is
+  not a contact list; KDP gives no buyer names or emails. Score reach only
+  through Amazon ads, author follows, the series page, A+ content, and lists
+  built outside Amazon.
   Lane A trends must overlap this audience.
 - NostalDamus scores 1993-1998 pop-culture IP for revival. If a Lane B trend
   is a nostalgia wave, name the related era and properties.

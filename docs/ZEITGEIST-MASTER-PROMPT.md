@@ -21,7 +21,10 @@ sales rank, or a quote.
   B0GQS7Y8PL. The series also has Canasta, Farkle, Yahtzee, Bunco, and
   American Mah Jongg Master Edition Pro titles.
 - **The audience the book proves.** People who buy a mahjong book in 2026.
-  Treat this as a buyer list we can reach again, not a one-time sale.
+  This is evidence of an audience, not a contact list: KDP gives the
+  publisher no buyer names or emails. Reach it again only through channels
+  that exist: Amazon ads, author follows, the series page, A+ content, and
+  lists built outside Amazon (website, Etsy, events).
 - **NostalDamus** (this repo, live at https://nostalogic.cafecito-ai.com).
   It scores dormant 1993-1998 pop-culture IP for revival potential. It has a
   scoring model, a research agent (the Prophet), a weekly news agent

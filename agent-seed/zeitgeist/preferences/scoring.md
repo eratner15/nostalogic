@@ -12,6 +12,9 @@ Score each factor 0-100. Total = weighted sum, rounded to a whole number.
 | defensibility | 0.10 | Do we own a brand, list, data, or rights others lack? |
 
 Bands: GO 70+, WATCH 50-69, PASS below 50.
-A trend with only one signal is WATCH at most.
+A trend needs at least two independent signal TYPES (search, book demand,
+product demand, social, event, press, money) to be GO. Several sources of
+one type, such as two articles that both show event demand, count as one
+type. A trend with only one type is WATCH at most.
 
 Use only these seven stage names. The first report (2026-10-19) scored early-rising at 80 and steady and maturing at 50; these are the same values.
