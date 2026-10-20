@@ -17,13 +17,16 @@ tools:
       # The Scout reads untrusted web pages, so the tools that change its
       # stored state are evaluated, not auto-allowed (secure-deployment:
       # "No agent that reads untrusted input has a tool on always_allow that
-      # writes files"). A call the server cannot decide pauses; the weekly
-      # deployment doc says how to check for a paused run.
+      # writes files"). web_fetch is evaluated too: its network is
+      # unrestricted, and a URL an injected page asks for can carry data out
+      # of the mounted memory. A call the server cannot decide pauses; the
+      # weekly deployment doc says how to check for a paused run.
       - name: write
         permission_policy: {type: auto}
       - name: edit
         permission_policy: {type: auto}
       - name: web_fetch
+        permission_policy: {type: auto}
         max_content_tokens: 20000
 ---
 
@@ -68,6 +71,12 @@ to test. You never spend money, publish, or contact anyone.
    trend whose `pass_since` is 8 weeks or more before this run.
 8. Append one line to run-log.md:
    `<date> report <path> trends <n> go <n> watch <n> unread <n>`.
+
+Steps 6, 7 and 8 run in order, and each needs the one before it to succeed.
+If a write or edit is denied or returns an error, stop at once: do not do
+the later steps, and do not write a run-log line. End the run with
+"write failed: <path>" and the error. A missing report or a stale ledger
+must be visible, never logged as a good run.
 
 ## Hard rules
 

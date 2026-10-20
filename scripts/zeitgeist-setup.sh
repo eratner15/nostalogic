@@ -32,7 +32,8 @@ STATE=$(id_of ./memory_stores/zeitgeist-state.yaml)
 #    not the path, to read, update, or delete the memory"), and has no
 #    get-by-path, so the id is found by listing the store and matching .path.
 #    A 409 can also mean an ancestor/descendant path overlap; that case has no
-#    exact-path match in the listing and stops the script.
+#    exact-path match in the listing and stops the script, for state and
+#    preferences alike.
 create() {  # store file -> 0 created, 1 exists (409), exits on other errors
   local store=$1 f=$2 out
   if out=$(ant beta:memory-stores:memories create --memory-store-id "$store" \
@@ -43,20 +44,30 @@ create() {  # store file -> 0 created, 1 exists (409), exits on other errors
   echo "memory seed failed for $f: $out" >&2
   exit 1
 }
+exact_id() {  # store path -> id of the memory at exactly that path, or ""
+  # list flags per the CLI reference (path_prefix, format); check
+  # `ant beta:memory-stores:memories list --help` if this step fails.
+  ant beta:memory-stores:memories list --memory-store-id "$1" \
+      --path-prefix "/" --format json \
+    | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{
+        const j=JSON.parse(s); const items=Array.isArray(j)?j:(j.data||[]);
+        const m=items.find(x=>x.path===process.argv[1]); console.log(m?m.id:"");})' "$2"
+}
 seed_state() {
-  if ! create "$1" "$2"; then echo "kept existing /$(basename "$2")"; fi
+  local store=$1 f=$2 path
+  path="/$(basename "$f")"
+  create "$store" "$f" && return 0
+  if [[ -z "$(exact_id "$store" "$path")" ]]; then
+    echo "memory seed failed for $f: $path conflicts with another path and has no exact match" >&2
+    exit 1
+  fi
+  echo "kept existing $path"
 }
 seed_pref() {
   local store=$1 f=$2 path id
   path="/$(basename "$f")"
   create "$store" "$f" && return 0
-  # list flags per the CLI reference (path_prefix, format); check
-  # `ant beta:memory-stores:memories list --help` if this step fails.
-  id=$(ant beta:memory-stores:memories list --memory-store-id "$store" \
-         --path-prefix "/" --format json \
-       | node -e 'let s="";process.stdin.on("data",d=>s+=d).on("end",()=>{
-           const j=JSON.parse(s); const items=Array.isArray(j)?j:(j.data||[]);
-           const m=items.find(x=>x.path===process.argv[1]); console.log(m?m.id:"");})' "$path")
+  id=$(exact_id "$store" "$path")
   if [[ -z "$id" ]]; then
     echo "memory seed failed for $f: $path conflicts with another path and has no exact match" >&2
     exit 1

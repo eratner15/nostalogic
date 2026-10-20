@@ -16,7 +16,7 @@ Working name: **Hatchling** (placeholder).
 
 ```
  [Pet model]         [Firmware]            [Device]             [Web]
- 5-15M params  --->  ESP32-S3, C/C++  ---> board + battery ---> landing page
+ 3-5M params   --->  ESP32-S3, C/C++  ---> board + battery ---> landing page
  trained on HF       open source           + 3D shell           + browser twin
  open weights        GitHub                 numbered batch       (HF Space)
 ```
@@ -47,12 +47,14 @@ This gives demand data before any hardware ships. It also makes the Hugging Face
 
 | Board | Why | Check before you buy |
 |---|---|---|
-| Waveshare ESP32-S3 round touch LCD (1.28") | Battery charge circuit, IMU, low cost | Exact variant with 8 MB PSRAM; stock for 300 |
-| M5Stack Dial (ESP32-S3, 1.28" round touch, rotary ring, buzzer) | Comes in a finished shell. A ring to "feed" the pet is a strong toy action. About $35 list. | **PSRAM.** If the module has no PSRAM, only a very small model fits. Battery option. |
+| Waveshare ESP32-S3-Touch-LCD-1.46 (ESP32-S3R8) | 8 MB PSRAM, 16 MB flash, round touch, IMU, battery charging | It has a microphone and a speaker on board. Stock for 310. |
+| Waveshare ESP32-S3-Touch-LCD-1.85C V2 (ESP32-S3R8) | 8 MB PSRAM, 16 MB flash, round screen, battery charging | V2 (V1 was replaced) has **two** microphones; touch is an option; no IMU listed. Stock for 310. |
+| Ruled out: Waveshare ESP32-S3-LCD-1.28 | Cheap, IMU, battery charging | 2 MB PSRAM (ESP32-S3R2): only the 260K model fits |
+| Ruled out: M5Stack Dial | Finished shell, rotary ring | ESP32-S3FN8, 8 MB flash, no PSRAM listed |
 | Seeed XIAO ESP32-S3 + round display | Small; Seeed offers agile manufacturing later | Battery fit inside your shell |
 | LilyGO T-Watch S3 class | Finished wearable with battery | It has a microphone; firmware must keep it off. This weakens the "no mic" claim. |
 
-Recommendation: buy 5 Waveshare and 5 M5Stack Dial on 2026-10-21 (10 boards, matching the $400 prototype line in the Christmas plan; the Week 2 gate tests 5 of whichever is chosen). If the Dial has PSRAM and a battery option, use it for the Founders Edition and skip shell work for 2026.
+Recommendation: buy 5 Waveshare 1.46" and 5 Waveshare 1.85C on 2026-10-21 (10 boards, matching the $400 prototype line in the Christmas plan; the Week 2 gate tests 5 of whichever is chosen). Both are ESP32-S3R8 boards with 8 MB PSRAM, which the model runtime needs. Both carry microphones (the 1.85C V2 has two): ask Waveshare whether every microphone can be left off the board for 310 units (Christmas plan, decision 6). On arrival, test each sample: no microphone may return audio. Shell work goes ahead for all units; the 50 Developer Edition units get a clear shell, quoted with the shell farms below. If none is quoted by Nov 2, the Developer Edition offer drops "clear shell" before preorders open.
 
 ## 3. Who to contact
 
@@ -62,13 +64,13 @@ Evan sends every first message. An agent drafts it in Gmail, and Evan reviews an
 
 | Contact | Why | First ask |
 |---|---|---|
-| M5Stack (Espressif majority-owned since 2024) sales / OEM | Finished ESP32-S3 devices; custom print on shell; volume price | Price and lead time for 300 and 3,000 Dials; custom logo on shell |
-| Waveshare sales | Bare round-screen boards | Price and stock for 300 of one SKU |
+| M5Stack (Espressif majority-owned since 2024) sales / OEM | Finished ESP32-S3 devices; custom print on shell; volume price | Not for 2026 (the Dial lists no PSRAM). Ask whether a round-screen device with 8 MB PSRAM is planned, for the 2027 run |
+| Waveshare sales | Bare round-screen boards | Price and stock for 310 of one SKU; can every microphone (two on the 1.85C V2) be left off the board |
 | Seeed Studio (Fusion, agile manufacturing) | Path to a custom board in 2027 | Process and minimums for a custom ESP32-S3 board |
 | Espressif | Chip maker; partner programs and press | Partner listing; co-marketing on "LLM on ESP32-S3" |
-| Slant 3D | US print farm with an order API | 300 shells, 5-day turn, price per part |
+| Slant 3D | US print farm with an order API | 310 shells (including 50 clear), 5-day turn, price per part |
 | Craftcloud or JLC3DP | Second quote for shells | Same as above |
-| Battery supplier with UN38.3 papers | Legal battery shipping | 300 cells with test summary |
+| Battery supplier with UN38.3 papers | Legal battery shipping | 310 cells with test summary |
 
 ### 3.2 Software, model, and community
 
@@ -92,7 +94,7 @@ Evan sends every first message. An agent drafts it in Gmail, and Evan reviews an
 | Contact | Why | First ask |
 |---|---|---|
 | Trademark attorney | Name clearance and filing | Clear 3 names; file the winner |
-| FCC compliance consultant | Labeling with a pre-certified module | What the label and docs must say |
+| Accredited FCC/EMC test lab | The finished device needs its own test and authorization; a pre-certified module is not enough | Price, lead time, and which authorization applies; a slot by Oct 27 |
 | Product liability insurer | Required by most retailers and fulfillment firms | Quote for $1M cover, consumer electronics |
 | Toy safety lab (for 2027, only if you sell to children) | ASTM F963 and CPSIA | Scope and cost |
 
@@ -142,7 +144,7 @@ This repo already uses **Claude Managed Agents** (`agents/`, `environments/`, `m
 - Sign a supplier contract or a purchase order.
 - Pass a lab test.
 
-Plan for one human embedded contractor (part-time, 6 weeks) and one person for packing and shipping in December.
+Plan for one human embedded contractor (part-time, 6 weeks) and one person for packing and shipping in December. The contractor is outside the $2,000 two-week cap: get a quote first, and hire only after Evan approves it or names the funding (Christmas plan, section 4.4).
 
 ## 5. Open-source plan ("Hugging Face style")
 
@@ -183,7 +185,7 @@ What a buyer checks, so keep it clean from day one:
 4. Claude: draft supplier emails to M5Stack, Waveshare, Slant 3D, and one battery supplier as Gmail drafts.
 5. Evan: order the 10 sample boards (5 of each).
 6. Claude: start the Hugging Face model repo and the browser twin.
-7. Evan: hire the embedded contractor (post the brief that Claude drafts).
+7. Evan: post the contractor brief that Claude drafts and get quotes. Hire only after approving a quote; it is outside the $2,000 cap.
 
 ## Sources
 

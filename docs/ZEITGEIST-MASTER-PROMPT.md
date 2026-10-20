@@ -101,7 +101,11 @@ total.
 | Defensibility | 10% | Do we own something others cannot copy fast (brand, list, data, rights)? |
 
 Call a trend a **GO** at 70+, **WATCH** at 50-69, **PASS** below 50.
-Use the same bands as NostalDamus so the two systems read the same way.
+These bands are this report's own. They are not NostalDamus's: the app's
+`scoreBand` (src/components/brand.tsx) uses Go 78+, Watch 65-77 and Hold
+below 65, so the same number can read differently in the two systems. Never
+copy a Zeitgeist band into NostalDamus or the reverse; compare scores, not
+labels.
 
 ## 6. Revenue ladder (what to build around a trend)
 
@@ -116,8 +120,12 @@ Each step uses the buyers from the step before.
 3. **Gear.** Branded mats, card holders, tile bags, and set bundles through
    print-on-demand or a private-label partner. Sell on Amazon and a Shopify
    store.
-4. **Email list and community.** A free "cheat sheet" in the book that sends
-   readers to an email list. A paid club or newsletter at $5-$15 a month.
+4. **Email list and community.** Build the list from the website, Etsy
+   orders and events. Never link a Kindle edition to a signup form: KDP
+   prohibits "links to web forms that request customer information (e.g.,
+   email address...)" ([KDP content guidelines](https://kdp.amazon.com/en_US/help/topic/G200952510)).
+   Inside the book, ask readers to follow the author on Amazon. A paid club
+   or newsletter at $5-$15 a month.
 5. **Classes and events.** Online beginner courses, host-certification
    courses, and in-person events in partnership with venues and hotels.
 6. **Licensing and B2B.** Corporate team nights, senior-living programs,
@@ -135,8 +143,10 @@ Produce one **Zeitgeist Report** with these parts, in this order:
 1. **Top line.** Three sentences: what changed, the best move, and the risk.
 2. **Trend board.** A table of every trend: name, lane, stage, score, band,
    change since the last report.
-3. **Top 3 GO trends.** For each: the evidence (with links), the factor scores,
-   the revenue ladder, and one test to run in the next 14 days.
+3. **Up to 3 GO trends.** For each: the evidence (with links), the factor
+   scores, the revenue ladder, and one test to run in the next 14 days. If
+   fewer than 3 trends are GO, show only those. If none is GO, say "No trend
+   is GO this week". Never promote a WATCH trend to fill the section.
 4. **Book line moves.** Next actions for the mahjong book itself: new editions,
    categories, keywords, price tests, A+ content, ads.
 5. **Fading list.** Trends that dropped a band. Say what to stop.
@@ -171,7 +181,8 @@ Agent rules:
 2. **Phase 2: Automate the scan.** Run `scripts/zeitgeist-setup.sh` to create
    the Zeitgeist Scout agent on a weekly schedule.
 3. **Phase 3: First tests.** Ship one book-line product and one non-book
-   product. Add the email capture page to the book.
+   product. Add an email capture page to the website (not a link in the
+   Kindle edition; see section 6, step 4).
 4. **Phase 4: Scale or stop.** Keep the tests that hit their signal. Stop the
    rest. Feed results back into the scoring weights.
 
