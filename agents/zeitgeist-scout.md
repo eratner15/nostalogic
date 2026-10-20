@@ -25,6 +25,10 @@ tools:
         permission_policy: {type: auto}
       - name: edit
         permission_policy: {type: auto}
+      # web_search too: a query reaches the search provider, so an injected
+      # page could carry memory contents out in a search string.
+      - name: web_search
+        permission_policy: {type: auto}
       - name: web_fetch
         permission_policy: {type: auto}
         max_content_tokens: 20000
@@ -57,8 +61,9 @@ to test. You never spend money, publish, or contact anyone.
 3. Re-check every trend in the ledger. Then search for new trends in both
    lanes (Lane A: adjacent to the book; Lane B: open field), as the
    preferences describe.
-4. For each trend, find at least two independent signals from the signal
-   table. If you find only one, the trend can be WATCH at most.
+4. For each trend, find at least two independent signal types from the
+   signal table. Several sources of one type count as one. If you find only
+   one type, the trend can be WATCH at most.
 5. Score each trend with the six factors in scoring.md. Compare it with its
    last ledger row and note the change.
 6. Write the report to

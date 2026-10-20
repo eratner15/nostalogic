@@ -21,7 +21,10 @@ sales rank, or a quote.
   B0GQS7Y8PL. The series also has Canasta, Farkle, Yahtzee, Bunco, and
   American Mah Jongg Master Edition Pro titles.
 - **The audience the book proves.** People who buy a mahjong book in 2026.
-  Treat this as a buyer list we can reach again, not a one-time sale.
+  This is evidence of an audience, not a contact list: KDP gives the
+  publisher no buyer names or emails. Reach it again only through channels
+  that exist: Amazon ads, author follows, the series page, A+ content, and
+  lists built outside Amazon (website, Etsy, events).
 - **NostalDamus** (this repo, live at https://nostalogic.cafecito-ai.com).
   It scores dormant 1993-1998 pop-culture IP for revival potential. It has a
   scoring model, a research agent (the Prophet), a weekly news agent
@@ -101,6 +104,10 @@ total.
 | Defensibility | 10% | Do we own something others cannot copy fast (brand, list, data, rights)? |
 
 Call a trend a **GO** at 70+, **WATCH** at 50-69, **PASS** below 50.
+A trend needs at least two independent signal types from section 4 to be
+GO. With only one (for example, several articles that all show event
+demand), it is WATCH at most, whatever its score. This is the same cap the
+Scout uses in `agent-seed/zeitgeist/preferences/scoring.md`.
 These bands are this report's own. They are not NostalDamus's: the app's
 `scoreBand` (src/components/brand.tsx) uses Go 78+, Watch 65-77 and Hold
 below 65, so the same number can read differently in the two systems. Never

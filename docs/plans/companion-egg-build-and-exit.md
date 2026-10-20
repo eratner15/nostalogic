@@ -96,7 +96,7 @@ Evan sends every first message. An agent drafts it in Gmail, and Evan reviews an
 | Trademark attorney | Name clearance and filing | Clear 3 names; file the winner |
 | Accredited FCC/EMC test lab | The finished device needs its own test and authorization; a pre-certified module is not enough | Price, lead time, and which authorization applies; a slot by Oct 27 |
 | Product liability insurer | Required by most retailers and fulfillment firms | Quote for $1M cover, consumer electronics |
-| Toy safety lab (for 2027, only if you sell to children) | ASTM F963 and CPSIA | Scope and cost |
+| Product-safety counsel or a CPSC-accepted lab | Classification: adults-only marketing does not settle whether this is a children's product | A written classification by Nov 2; if it is a children's product, ASTM F963 and CPSIA testing scope, cost and lead time |
 
 ### 3.5 Buyers (for later, not now)
 
@@ -163,7 +163,7 @@ Community loop: makers make new species. The best ones become paid packs. The ma
 
 | Stage | When | Units | Proof a buyer wants |
 |---|---|---|---|
-| Founders Edition | Dec 2026 | 300 | Sells out; review quotes; open-source traction |
+| First batch (Founders, Developer, gift-box eggs) | Dec 2026 | 300 | Sells out; review quotes; open-source traction |
 | Developer Edition on Crowd Supply | Q1 2027 | 1,000 to 3,000 | Maker community; HF downloads |
 | Kickstarter, custom board, true egg shell | Q2 2027 | 5,000 to 15,000 | Consumer demand at scale; unit cost under $25 |
 | Amazon + one retail test | Q3 2027 | 10,000+ | Sell-through at a real retailer |

@@ -16,6 +16,20 @@ def score(f):
 def band(s):
     return 'GO' if s >= 70 else 'WATCH' if s >= 50 else 'PASS'
 
+# Two-signal-type rule (scoring.md): a trend with fewer than two independent
+# signal types is WATCH at most, whatever its score.
+CAP = {  # this run
+    "Game-night journals and score pads": "one signal type (Amazon best sellers)",
+}
+LAST_CAP = {  # run 1 as corrected on 2026-10-20
+    "Canasta": "one signal type (event demand)",
+    "Supper clubs and home hosting": "one signal type (press)",
+    "Game-night journals and score pads": "no cited signal",
+}
+
+def capped(b, why):
+    return 'WATCH' if why and b == 'GO' else b
+
 # name, lane, stage, factors, last score (None = new)
 T = [
  ("Needlepoint and stitch clubs", "A", "rising", dict(mom=85, stg=70, aud=85, spd=95, mar=80, dfn=55), 75),
@@ -48,8 +62,10 @@ T = [
 board = []
 for name, lane, stage, f, last in T:
     s = score(f)
-    board.append(dict(name=name, lane=lane, stage=stage, f=f, score=s, band=band(s),
-                      last=last, last_band=band(last) if last is not None else None))
+    board.append(dict(name=name, lane=lane, stage=stage, f=f, score=s,
+                      band=capped(band(s), CAP.get(name)), cap=CAP.get(name),
+                      last=last,
+                      last_band=capped(band(last), LAST_CAP.get(name)) if last is not None else None))
 board.sort(key=lambda r: -r['score'])
 
 # ---------------- Etsy fees (checkoutpage.com, 19 Jul 2026, read 2026-10-20) --------

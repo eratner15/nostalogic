@@ -7,7 +7,7 @@
 | Hand and Foot | A | early-rising | 76 | GO | 2026-10-20 |  |
 | Mahjong (the base) | A | peak | 76 | GO | 2026-10-20 |  |
 | Craft nights / girls' night hosting | A | rising | 71 | GO | 2026-10-20 |  |
-| Game-night journals and stationery | A | rising | 71 | GO | 2026-10-20 |  |
+| Game-night journals and stationery | A | rising | 71 | WATCH (capped: one signal type) | 2026-10-20 |  |
 | Supper clubs and home hosting | A | rising | 69 | WATCH | 2026-10-20 |  |
 | Phone-free social events | B | rising | 69 | WATCH | 2026-10-20 |  |
 | Speed puzzling and puzzle swaps | A | early-rising | 69 | WATCH | 2026-10-20 |  |
