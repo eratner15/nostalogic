@@ -25,6 +25,10 @@ tools:
         permission_policy: {type: auto}
       - name: edit
         permission_policy: {type: auto}
+      # web_search too: a query reaches the search provider, so an injected
+      # page could carry memory contents out in a search string.
+      - name: web_search
+        permission_policy: {type: auto}
       - name: web_fetch
         permission_policy: {type: auto}
         max_content_tokens: 20000

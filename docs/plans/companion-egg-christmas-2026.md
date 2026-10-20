@@ -121,7 +121,7 @@ Model gate: a 200-line human review of model output runs on Sun Nov 8, before fu
 | Gift box (certificate + sticker + egg ships in January) | $99 | By Dec 18 | The Christmas hedge. Each gift box reserves one egg counted inside the 300-unit batch (not extra hardware); its cash counts toward the batch gate, and its egg ships in January from that batch |
 | Developer Edition (open firmware, clear shell) | $149 | Dec 8 to Dec 15 | Limit 50, counted inside the 300-unit batch (not extra hardware); the larger Developer Edition run is the Q1 2027 Crowd Supply campaign. The clear shell for these 50 is part of the shell quotes; if no clear shell is quoted by Nov 2, the offer drops "clear shell" before preorders open on Nov 9 |
 | Personality pack | $12 | Digital, USB install | From January |
-| Refundable deposit (Oct 24 to Oct 30) | $25 | n/a | Measures demand; stays open through the Oct 30 go/no-go |
+| Refundable deposit (Oct 24 to Oct 30) | $25 | n/a | Measures demand; stays open through the Oct 30 go/no-go. On Nov 9 each depositor gets a preorder link for the balance ($104 for Founders), with the $25 credited, never charged twice. A depositor who does not convert by Dec 6, when preorders close, gets the $25 back in full. Until then every deposit is a refund liability, not batch cash |
 
 ### 4.3 Unit economics (Founders Edition)
 
@@ -134,7 +134,7 @@ Model gate: a 200-line human review of model output runs on Sun Nov 8, before fu
 | Paid ads, if used (target cost per sale) | -$20 |
 | **Contribution per unit** | **about $36 with ads, $56 without** |
 
-300 units give about $11k to $17k contribution. That is not the prize. The prize is a **buyer list of 300 people who paid** and proof for a 2027 retail run.
+Contribution depends on the mix, because all three offers share the 300 slots. At the high cost estimate, each order contributes: Founders $36 with ads or $56 without; Developer $56 or $76; gift box $7 or $27 (before the December certificate mailing). 250 Founders and 50 Developer give about $11.8k to $17.8k; 300 gift boxes give only $2.1k to $8.1k. Watch the mix as orders arrive. That is not the prize. The prize is a **buyer list of 300 people who paid** and proof for a 2027 retail run.
 
 ### 4.4 Startup cost
 
