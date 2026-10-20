@@ -103,7 +103,7 @@ Plan:
 4. Add a word blocklist on the output. Add a fallback to scripted lines if the filter trips.
 5. Ship the model in flash. Ship personality packs as new model weights plus sprites.
 
-Fallback if the model is not ready by 2026-11-20: ship scripted lines with the model "hatching" in a January update over USB. Say this on the preorder page only if it happens.
+Model gate: a 200-line human review of model output runs on Sun Nov 8, before full preorders open and before the batch order. If it fails, preorders open for the scripted-lines pet, and the preorder page says so: the model "hatches" in a January update over USB, and any buyer can cancel for a full refund until their unit ships. If the model passes Nov 8 but is not ready for the freeze on 2026-11-20, the same fallback applies: email every preorder buyer before shipping, with the same full-refund offer.
 
 ## 4. Business plan
 
@@ -118,7 +118,7 @@ Fallback if the model is not ready by 2026-11-20: ship scripted lines with the m
 | Offer | Price | Ships | Notes |
 |---|---|---|---|
 | Founders Edition (numbered, 1 of 300) | $129 | Dec 8 to Dec 15 | Includes 2 species packs |
-| Gift box (certificate + sticker + egg ships in January) | $99 | By Dec 18 | The Christmas hedge |
+| Gift box (certificate + sticker + egg ships in January) | $99 | By Dec 18 | The Christmas hedge. Each gift box reserves one egg counted inside the 300-unit batch (not extra hardware); its cash counts toward the batch gate, and its egg ships in January from that batch |
 | Developer Edition (open firmware, clear shell) | $149 | Dec 8 to Dec 15 | Limit 50, counted inside the 300-unit batch (not extra hardware); the larger Developer Edition run is the Q1 2027 Crowd Supply campaign |
 | Personality pack | $12 | Digital, USB install | From January |
 | Refundable deposit (this week only) | $25 | n/a | Measures demand |
@@ -156,12 +156,12 @@ The batch order (about $15k for 300 units) is paid from preorder cash. Do not or
 |---|---|
 | Board out of stock | Name two boards that use the same chip; order samples of both on 2026-10-21 |
 | Shell late | Use a 3D-print farm with 5-day turns; resin is a later option |
-| Model output is odd or rude | Short outputs, blocklist, scripted fallback, 200-line human review before freeze |
+| Model output is odd or rude | Short outputs, blocklist, scripted fallback; 200-line human review on Nov 8, before preorders and the batch order, repeated on the freeze candidate |
 | Bandai trademark or trade dress | Own name, own character, no egg-plus-three-buttons copy, no "Tamagotchi" in ads |
 | Lithium battery shipping | Buy cells with UN38.3 papers; ship ground with the right label |
 | FCC | Use a pre-certified radio module; disable Wi-Fi and Bluetooth in firmware; confirm labeling with a compliance consultant |
 | Too few preorders | Refund deposits; keep the gift-box list; move to a 2027 Kickstarter |
-| Too many preorders | Cap at 300; open a numbered "second hatch" for February |
+| Too many preorders | Cap at 300, Founders, Developer and gift-box eggs together; open a numbered "second hatch" for February |
 
 ## 5. Go-to-market
 
@@ -199,9 +199,9 @@ The batch order (about $15k for 300 units) is paid from preorder cash. Do not or
 |---|---|---|---|
 | 0 | Oct 19 to Oct 25 | Prototype v0, name, deposits page live | 50 deposits by Oct 30, or rethink |
 | 1 | Oct 26 to Nov 1 | Board chosen; first trained model on device; shell v1 | Model runs above 8 tokens/s |
-| 2 | Nov 2 to Nov 8 | 5 working units of the chosen board; shell v2; quotes signed | 5 units of the chosen board pass a 48-hour battery test |
+| 2 | Nov 2 to Nov 8 | 5 working units of the chosen board; shell v2; quotes signed | 5 units of the chosen board pass a 48-hour battery test; 200-line output review passes, or preorders open on the scripted fallback (section 3.5) |
 | 3 | Nov 9 to Nov 15 | Preorders open; order parts for 300 | Preorder cash covers the full batch cost plus 10%, or the batch is cut to match |
-| 4 | Nov 16 to Nov 22 | Firmware freeze candidate; packaging printed | 200-line output review passes |
+| 4 | Nov 16 to Nov 22 | Firmware freeze candidate; packaging printed | 200-line output review repeated on the freeze candidate passes |
 | 5 | Nov 23 to Nov 29 | Black Friday; parts arrive | All parts in hand by Nov 30 |
 | 6 | Nov 30 to Dec 6 | Assembly and flash, 300 units | QA fail rate under 3% |
 | 7 | Dec 7 to Dec 13 | Ship Founders units | 100% shipped by Dec 15 |

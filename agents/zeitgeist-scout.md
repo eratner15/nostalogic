@@ -17,13 +17,16 @@ tools:
       # The Scout reads untrusted web pages, so the tools that change its
       # stored state are evaluated, not auto-allowed (secure-deployment:
       # "No agent that reads untrusted input has a tool on always_allow that
-      # writes files"). A call the server cannot decide pauses; the weekly
-      # deployment doc says how to check for a paused run.
+      # writes files"). web_fetch is evaluated too: its network is
+      # unrestricted, and a URL an injected page asks for can carry data out
+      # of the mounted memory. A call the server cannot decide pauses; the
+      # weekly deployment doc says how to check for a paused run.
       - name: write
         permission_policy: {type: auto}
       - name: edit
         permission_policy: {type: auto}
       - name: web_fetch
+        permission_policy: {type: auto}
         max_content_tokens: 20000
 ---
 
