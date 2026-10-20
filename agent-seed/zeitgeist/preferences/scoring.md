@@ -5,7 +5,7 @@ Score each factor 0-100. Total = weighted sum, rounded to a whole number.
 | Factor | Weight | Question |
 |---|---|---|
 | momentum | 0.25 | How fast is attention rising over 8-26 weeks? |
-| stage | 0.15 | early 90, rising 70, peak 35, fading 10 |
+| stage | 0.15 | early 90, early-rising 80, rising 70, steady 50, maturing 50, peak 35, fading 10 |
 | audience_overlap | 0.20 | Overlap with the mahjong buyer (Lane B: how reachable the buyer is) |
 | speed_to_product | 0.15 | Can a first product ship in under 6 weeks? |
 | margin | 0.15 | Digital and licensing high; inventory and shipping low |
@@ -13,3 +13,5 @@ Score each factor 0-100. Total = weighted sum, rounded to a whole number.
 
 Bands: GO 70+, WATCH 50-69, PASS below 50.
 A trend with only one signal is WATCH at most.
+
+Use only these seven stage names. The first report (2026-10-19) scored early-rising at 80 and steady and maturing at 50; these are the same values.

@@ -52,7 +52,7 @@ This gives demand data before any hardware ships. It also makes the Hugging Face
 | Seeed XIAO ESP32-S3 + round display | Small; Seeed offers agile manufacturing later | Battery fit inside your shell |
 | LilyGO T-Watch S3 class | Finished wearable with battery | It has a microphone; firmware must keep it off. This weakens the "no mic" claim. |
 
-Recommendation: buy 5 Waveshare and 3 M5Stack Dial on 2026-10-21. If the Dial has PSRAM and a battery option, use it for the Founders Edition and skip shell work for 2026.
+Recommendation: buy 5 Waveshare and 5 M5Stack Dial on 2026-10-21 (10 boards, matching the $400 prototype line in the Christmas plan; the Week 2 gate tests 5 of whichever is chosen). If the Dial has PSRAM and a battery option, use it for the Founders Edition and skip shell work for 2026.
 
 ## 3. Who to contact
 
@@ -181,7 +181,7 @@ What a buyer checks, so keep it clean from day one:
 2. Evan: authorize the Stripe connector in claude.ai settings.
 3. Claude: write the 7 agent definitions in `agents/` with memory stores and schedules, as for the Zeitgeist Scout.
 4. Claude: draft supplier emails to M5Stack, Waveshare, Slant 3D, and one battery supplier as Gmail drafts.
-5. Evan: order the 8 sample boards.
+5. Evan: order the 10 sample boards (5 of each).
 6. Claude: start the Hugging Face model repo and the browser twin.
 7. Evan: hire the embedded contractor (post the brief that Claude drafts).
 
