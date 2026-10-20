@@ -144,7 +144,7 @@ This repo already uses **Claude Managed Agents** (`agents/`, `environments/`, `m
 - Sign a supplier contract or a purchase order.
 - Pass a lab test.
 
-Plan for one human embedded contractor (part-time, 6 weeks) and one person for packing and shipping in December. The contractor is outside the $2,000 two-week cap: get a quote first, and hire only after Evan approves it or names the funding (Christmas plan, section 4.4).
+Plan for one human embedded contractor (part-time, 6 weeks) and one person for packing and shipping in December. The second hatch needs people too: the contractor (or a second one) for assembly and QA on Jan 25 to Jan 31, and a packer for Jan 4 to Jan 10 (first-batch gift eggs) and Feb 1 to Feb 14 (second hatch). Quote and book both before second-hatch orders open on Nov 16; no people booked, no second-hatch sales. The contractor is outside the $2,000 two-week cap: get a quote first, and hire only after Evan approves it or names the funding (Christmas plan, section 4.4).
 
 ## 5. Open-source plan ("Hugging Face style")
 
