@@ -1,6 +1,7 @@
 # Trend score (read-only)
 
-Score each factor 0-100. Total = weighted sum, rounded to a whole number.
+Score each factor 0-100. Total = weighted sum, rounded to a whole number, halves up (68.50 is 69).
+Do not use a round-half-to-even function such as Python's `round()`.
 
 | Factor | Weight | Question |
 |---|---|---|

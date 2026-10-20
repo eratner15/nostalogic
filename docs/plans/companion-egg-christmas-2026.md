@@ -251,7 +251,7 @@ Each step has an owner. "Claude" means a Claude session can do the step. "Evan" 
 
 ### Sunday Oct 25
 19. Evan and Claude: review deposits, waitlist count, and video views. This is a progress check, not the decision: deposits opened only the day before.
-20. The go/no-go is on Friday Oct 30, as the schedule says: if deposits are 50 or more by then, continue. If they are under 50, cap Christmas sales at 100 (the build still follows paid orders / 0.97 on Nov 15) or move to a January Kickstarter.
+20. The go/no-go is on Friday Oct 30, as the schedule says: if deposits are 50 or more by then, continue. If they are under 50, cap Christmas sales at 100 (the build still follows paid orders / 0.97 on Nov 15) or fold the egg into the Q2 2027 Kickstarter in the roadmap.
 
 "By end of this week" means: a working prototype on video, a live deposit page, and a demand number. A shipped product is not possible this week.
 

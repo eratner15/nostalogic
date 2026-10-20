@@ -103,6 +103,9 @@ total.
 | Margin | 15% | Digital and licensing score high. Inventory and shipping score low. |
 | Defensibility | 10% | Do we own something others cannot copy fast (brand, list, data, rights)? |
 
+The total is the weighted sum, rounded to a whole number with halves up
+(68.50 is 69; do not use round-half-to-even).
+
 Call a trend a **GO** at 70+, **WATCH** at 50-69, **PASS** below 50.
 A trend needs at least two independent signal types from section 4 to be
 GO. With only one (for example, several articles that all show event
