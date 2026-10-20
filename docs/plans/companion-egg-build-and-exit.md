@@ -94,7 +94,7 @@ Evan sends every first message. An agent drafts it in Gmail, and Evan reviews an
 | Contact | Why | First ask |
 |---|---|---|
 | Trademark attorney | Name clearance and filing | Clear 3 names; file the winner |
-| FCC compliance consultant | Labeling with a pre-certified module | What the label and docs must say |
+| Accredited FCC/EMC test lab | The finished device needs its own test and authorization; a pre-certified module is not enough | Price, lead time, and which authorization applies; a slot by Oct 27 |
 | Product liability insurer | Required by most retailers and fulfillment firms | Quote for $1M cover, consumer electronics |
 | Toy safety lab (for 2027, only if you sell to children) | ASTM F963 and CPSIA | Scope and cost |
 

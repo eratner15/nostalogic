@@ -120,8 +120,12 @@ Each step uses the buyers from the step before.
 3. **Gear.** Branded mats, card holders, tile bags, and set bundles through
    print-on-demand or a private-label partner. Sell on Amazon and a Shopify
    store.
-4. **Email list and community.** A free "cheat sheet" in the book that sends
-   readers to an email list. A paid club or newsletter at $5-$15 a month.
+4. **Email list and community.** Build the list from the website, Etsy
+   orders and events. Never link a Kindle edition to a signup form: KDP
+   prohibits "links to web forms that request customer information (e.g.,
+   email address...)" ([KDP content guidelines](https://kdp.amazon.com/en_US/help/topic/G200952510)).
+   Inside the book, ask readers to follow the author on Amazon. A paid club
+   or newsletter at $5-$15 a month.
 5. **Classes and events.** Online beginner courses, host-certification
    courses, and in-person events in partnership with venues and hotels.
 6. **Licensing and B2B.** Corporate team nights, senior-living programs,
@@ -175,7 +179,8 @@ Agent rules:
 2. **Phase 2: Automate the scan.** Run `scripts/zeitgeist-setup.sh` to create
    the Zeitgeist Scout agent on a weekly schedule.
 3. **Phase 3: First tests.** Ship one book-line product and one non-book
-   product. Add the email capture page to the book.
+   product. Add an email capture page to the website (not a link in the
+   Kindle edition; see section 6, step 4).
 4. **Phase 4: Scale or stop.** Keep the tests that hit their signal. Stop the
    rest. Feed results back into the scoring weights.
 
