@@ -8,7 +8,7 @@ Written 2026-10-19. Christmas is 67 days away. Thanksgiving is 2026-11-26.
 1. Ship a limited **Founders Edition** of 300 units for Christmas. Do not try for retail shelves in 2026.
 2. Sell it to **adults** (the 1997 Tamagotchi kids, now 35 to 45). Do not sell to children this year.
 3. Run a **tiny language model on the device**. Use no microphone, no camera, no cloud, and no account.
-4. Open preorders this week. Let preorder volume decide the batch size.
+4. Open a waitlist and a refundable $25 deposit this week (Oct 24). Full $129 preorders open on Nov 9, after the prototype gates. Let preorder volume decide the batch size.
 5. Sell a **gift box with a hatch certificate** as the hedge. If units slip, the gift still arrives by 2026-12-24.
 
 The pitch in one line: *"The 1997 virtual pet, grown up. It thinks for itself, and it never talks to the internet."*
@@ -47,7 +47,7 @@ The model says WATCH, not GO. Speed and margin pull it down. This plan raises bo
 
 ### 3.1 What it is
 
-A palm-size device with a round color screen and simple controls: three buttons on a bare round-screen board, or the rotary ring on the M5Stack Dial. The board decision on 2026-10-21 picks one, and the shell CAD and firmware v0 wait for that decision. A small pet lives on it. The pet eats, sleeps, grows, and gets bored, as in 1997. The new part: the pet **writes its own short thoughts** with a language model that runs on the chip.
+A palm-size device with a round color screen and simple controls: three buttons on a bare round-screen board, or the rotary ring on the M5Stack Dial. The board is chosen on Tue Oct 27, after the samples ordered on Oct 21 are tested; firmware v0 is written against an input layer that takes either, and the shell CAD waits for Oct 27. A small pet lives on it. The pet eats, sleeps, grows, and gets bored, as in 1997. The new part: the pet **writes its own short thoughts** with a language model that runs on the chip.
 
 Examples of pet output: "I dreamed the moon was a cracker." "You were gone a long time. I counted clouds."
 
@@ -71,7 +71,7 @@ Stickerbox (an AI sticker printer for kids) shows the shape: a screen-free AI ob
 
 ### 3.4 Hardware (no custom board in 2026)
 
-Use an off-the-shelf **ESP32-S3** board with a round display, battery charging, and a motion sensor. Waveshare and similar makers sell these boards near $20 to $30 retail. Pick the exact board after a stock check on 2026-10-21.
+Use an off-the-shelf **ESP32-S3** board with a round display, battery charging, and a motion sensor. Waveshare and similar makers sell these boards near $20 to $30 retail. Order samples after a stock check on 2026-10-21, and pick the board on 2026-10-27 after testing them.
 
 | Part | Est. unit cost at 300 units |
 |---|---|
@@ -228,7 +228,7 @@ Each step has an owner. "Claude" means a Claude session can do the step. "Evan" 
 
 ### Thursday Oct 22
 10. Claude: train model v0 (5M parameters). Export it in the format the ESP32 runtime needs.
-11. Claude: write firmware v0: pet loop, sprites, buttons, sleep mode, model call.
+11. Claude: write firmware v0: pet loop, sprites, an input layer for buttons or the ring (the board is chosen Oct 27), sleep mode, model call.
 12. Evan: set up Stripe. Create the $25 refundable deposit product.
 
 ### Friday Oct 23

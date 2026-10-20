@@ -101,7 +101,11 @@ total.
 | Defensibility | 10% | Do we own something others cannot copy fast (brand, list, data, rights)? |
 
 Call a trend a **GO** at 70+, **WATCH** at 50-69, **PASS** below 50.
-Use the same bands as NostalDamus so the two systems read the same way.
+These bands are this report's own. They are not NostalDamus's: the app's
+`scoreBand` (src/components/brand.tsx) uses Go 78+, Watch 65-77 and Hold
+below 65, so the same number can read differently in the two systems. Never
+copy a Zeitgeist band into NostalDamus or the reverse; compare scores, not
+labels.
 
 ## 6. Revenue ladder (what to build around a trend)
 
