@@ -20,3 +20,13 @@ budget:
 ---
 
 Run this week's Zeitgeist Scout. Follow your instructions in order.
+
+
+## Paused runs
+
+`write` and `edit` run under the `auto` permission policy. The server runs most
+calls, denies unsafe ones, and pauses any it cannot decide. A paused session
+waits indefinitely. After each Monday run, open the session: if it shows a
+pending tool confirmation, read the proposed write and approve or deny it. If
+the run log has no line for that Monday by noon New York time, check for a
+paused session first.

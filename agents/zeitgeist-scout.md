@@ -14,6 +14,15 @@ tools:
         enabled: false
       - name: grep
         enabled: false
+      # The Scout reads untrusted web pages, so the tools that change its
+      # stored state are evaluated, not auto-allowed (secure-deployment:
+      # "No agent that reads untrusted input has a tool on always_allow that
+      # writes files"). A call the server cannot decide pauses; the weekly
+      # deployment doc says how to check for a paused run.
+      - name: write
+        permission_policy: {type: auto}
+      - name: edit
+        permission_policy: {type: auto}
       - name: web_fetch
         max_content_tokens: 20000
 ---
