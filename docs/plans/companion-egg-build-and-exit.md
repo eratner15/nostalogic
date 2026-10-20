@@ -163,7 +163,7 @@ Community loop: makers make new species. The best ones become paid packs. The ma
 
 | Stage | When | Units | Proof a buyer wants |
 |---|---|---|---|
-| Founders Edition | Dec 2026 | 300 | Sells out; review quotes; open-source traction |
+| First batch (Founders, Developer, gift-box eggs) | Dec 2026 | 300 | Sells out; review quotes; open-source traction |
 | Developer Edition on Crowd Supply | Q1 2027 | 1,000 to 3,000 | Maker community; HF downloads |
 | Kickstarter, custom board, true egg shell | Q2 2027 | 5,000 to 15,000 | Consumer demand at scale; unit cost under $25 |
 | Amazon + one retail test | Q3 2027 | 10,000+ | Sell-through at a real retailer |

@@ -5,7 +5,7 @@ Written 2026-10-19. Christmas is 67 days away. Thanksgiving is 2026-11-26.
 
 ## 1. Decision first
 
-1. Ship a limited **Founders Edition** of 300 units for Christmas. Do not try for retail shelves in 2026.
+1. Ship a limited first batch of 300 units for Christmas: numbered **Founders Edition** eggs, up to 50 Developer Edition, and gift-box eggs, all inside the 300. Do not try for retail shelves in 2026.
 2. Sell it to **adults** (the 1997 Tamagotchi kids, now 35 to 45). Do not sell to children this year.
 3. Run a **tiny language model on the device**. Use no camera, no cloud, and no account. Both boards with enough memory carry a microphone; it is left off the board or switched off in firmware (decision 6 in section 8).
 4. Open a waitlist and a refundable $25 deposit this week (Oct 24). Full $129 preorders open on Nov 9, after the prototype gates. Let preorder volume decide the batch size.
@@ -103,7 +103,7 @@ Plan:
 4. Add a word blocklist on the output. Add a fallback to scripted lines if the filter trips.
 5. Ship the model in flash. Ship personality packs as new model weights plus sprites.
 
-Model gate: a 200-line human review of model output runs on Sun Nov 8, before full preorders open and before the batch order. If it fails, preorders open for the scripted-lines pet, and the preorder page says so: the model "hatches" in a January update over USB, and any buyer can cancel for a full refund until their unit ships. If the model passes Nov 8 but is not ready for the freeze on 2026-11-20, the same fallback applies: email every preorder buyer before shipping, with the same full-refund offer.
+Model gate: a 200-line human review of model output runs on Sun Nov 8, before full preorders open and before the batch order. If it fails, preorders open for the scripted-lines pet, and the preorder page says so before anyone pays: the model "hatches" in a January update over USB, and any buyer can cancel for a full refund until the batch order on Nov 15. If the model passes Nov 8 but the Nov 20 freeze candidate fails its review, ship the Nov 8 model that already passed. The freeze can only improve on what buyers were sold, so no feature is lost and no refund round follows the batch order.
 
 ## 4. Business plan
 
@@ -117,7 +117,7 @@ Model gate: a 200-line human review of model output runs on Sun Nov 8, before fu
 
 | Offer | Price | Ships | Notes |
 |---|---|---|---|
-| Founders Edition (numbered, 1 of 300) | $129 | Dec 8 to Dec 15 | Includes 2 species packs |
+| Founders Edition (numbered within the 300-unit batch) | $129 | Dec 8 to Dec 15 | Includes 2 species packs |
 | Gift box (certificate + sticker + egg ships in January) | $99 | By Dec 18 | The Christmas hedge. Each gift box reserves one egg counted inside the 300-unit batch (not extra hardware); its cash counts toward the batch gate, and its egg ships in January from that batch |
 | Developer Edition (open firmware, clear shell) | $149 | Dec 8 to Dec 15 | Limit 50, counted inside the 300-unit batch (not extra hardware); the larger Developer Edition run is the Q1 2027 Crowd Supply campaign. The clear shell for these 50 is part of the shell quotes; if no clear shell is quoted by Nov 2, the offer drops "clear shell" before preorders open on Nov 9 |
 | Personality pack | $12 | Digital, USB install | From January |
@@ -152,7 +152,7 @@ Contribution depends on the mix, because all three offers share the 300 slots. A
 
 The contractor and the FCC test are each approved on their own quote. Get the quote before any hire; Evan approves it or names the funding in writing.
 
-The batch order (310 units built for 300 sold, about $15.5k) is paid from preorder cash. The 10 spare units cover the QA failures the Week 6 gate allows (under 3% of 310 is 9 units or fewer). Do not order the batch until collected preorder cash covers the whole order, plus $12 shipping and about 3% payment fees on every paid order, plus 10% for refunds. If preorders cover less than that by the order date, cut the batch to the number of units the cash covers, or name another source of funds in writing before ordering. A cut batch keeps the QA buffer: sell at most 97% of the units built, rounded down (build = sale cap / 0.97, rounded up).
+The batch order (310 units built for 300 sold, about $15.5k) is paid from preorder cash. The 10 spare units cover the QA failures the Week 6 gate allows (under 3% of 310 is 9 units or fewer). Size the batch to paid orders, never to cash: build = paid orders / 0.97, rounded up, at most 310, even if the cash would buy more. Do not order the batch until collected preorder cash covers the whole order, plus $12 shipping and about 3% payment fees on every paid order, plus 10% for refunds. If preorders cover less than that by the order date, cut the batch to the number of units the cash covers, or name another source of funds in writing before ordering. A cut batch keeps the QA buffer: sell at most 97% of the units built, rounded down (build = sale cap / 0.97, rounded up).
 
 ### 4.5 Risks
 
