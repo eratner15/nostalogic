@@ -87,7 +87,7 @@ Evan sends every first message. An agent drafts it in Gmail, and Evan reviews an
 | Stripe | Deposits and preorders | Account (the Stripe connector in this session needs authorization in claude.ai settings) |
 | ShipBob or ShipMonk | Fulfillment if volume passes about 500 | Quote for 1,000 units, Q1 2027 |
 | Crowd Supply | Hardware crowdfunding with Mouser fulfillment; maker audience | Q1 2027 campaign for the Developer Edition |
-| Kickstarter | Consumer campaign for batch 3 | Q1 2027 launch slot |
+| Kickstarter | Consumer campaign for batch 3 | Q2 2027 launch slot (Q1 is the Crowd Supply Developer Edition) |
 
 ### 3.4 Legal, safety, and money
 
