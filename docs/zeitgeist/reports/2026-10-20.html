@@ -1,0 +1,449 @@
+<title>Zeitgeist Report No. 2</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Public+Sans:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: one reading column; the trend board breaks out wider, like a club scoring table. */
+:root{
+  --bg:#f6f7f4; --surface:#ffffff; --fg:#1b2420; --muted:#5b6a63; --rule:#d9dfda;
+  --jade:#16705a; --jade-soft:#e2f0eb;
+  --go:#16705a; --go-bg:#dcefe7; --watch:#8a5a00; --watch-bg:#f7ecd4; --pass:#8f2d2d; --pass-bg:#f6e0de;
+  --display:"Young Serif",Georgia,serif; --body:"Public Sans",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111715; --surface:#18201d; --fg:#e4ebe7; --muted:#9aaba3; --rule:#2c3833;
+  --jade:#5cc3a4; --jade-soft:#1d3029; --go:#6fd2b2; --go-bg:#1b3229; --watch:#e3b55c; --watch-bg:#33291a; --pass:#ec8f86; --pass-bg:#3a2220; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111715; --surface:#18201d; --fg:#e4ebe7; --muted:#9aaba3; --rule:#2c3833;
+  --jade:#5cc3a4; --jade-soft:#1d3029; --go:#6fd2b2; --go-bg:#1b3229; --watch:#e3b55c; --watch-bg:#33291a; --pass:#ec8f86; --pass-bg:#3a2220; color-scheme:dark}
+body{background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:40px 64px}
+main{max-width:880px;margin:0 auto;display:flex;flex-direction:column;gap:48px}
+.col{max-width:68ch}
+h1,h2,h3{font-family:var(--display);font-weight:400;text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:clamp(2rem,5vw,2.8rem)}
+h2{font-size:1.6rem;margin-bottom:16px}
+h3{font-size:1.3rem}
+p{margin:0 0 12px}
+a{color:var(--jade)}
+a:focus-visible{outline:2px solid var(--jade);outline-offset:2px}
+.eyebrow{font:600 .75rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+header{display:flex;flex-direction:column;gap:12px;border-bottom:1px solid var(--rule);padding-bottom:24px}
+.meta{color:var(--muted);font-size:.9rem}
+.topline{background:var(--jade-soft);border-radius:6px;padding:20px 22px}
+.topline ol{margin:0;padding-left:1.2em;display:flex;flex-direction:column;gap:8px}
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:.9rem}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:middle}
+th{font:600 .7rem/1.2 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.f{font-family:var(--mono);font-size:.78rem;color:var(--muted);white-space:nowrap}
+.bar{display:inline-block;height:6px;border-radius:3px;background:var(--jade);vertical-align:middle;margin-left:8px}
+.chip{display:inline-block;font:600 .7rem/1 var(--mono);padding:5px 7px;border-radius:4px;letter-spacing:.04em}
+.GO{background:var(--go-bg);color:var(--go)} .WATCH{background:var(--watch-bg);color:var(--watch)} .PASS{background:var(--pass-bg);color:var(--pass)}
+.legend{font-size:.85rem;color:var(--muted);margin-top:10px}
+.bets{display:flex;flex-direction:column;gap:28px}
+.bet{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:22px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.bet-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 16px}
+.score{font:600 1.5rem/1 var(--mono);color:var(--go)}
+.factors{display:flex;flex-wrap:wrap;gap:6px}
+.factors span{font:400 .75rem/1 var(--mono);border:1px solid var(--rule);border-radius:4px;padding:5px 7px;color:var(--muted)}
+.factors b{color:var(--fg);font-weight:600}
+.label{font:600 .72rem/1 var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-bottom:6px}
+ul.ev{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
+.tag{font:600 .65rem/1 var(--mono);padding:3px 5px;border-radius:3px;margin-right:6px;vertical-align:1px}
+.fact{background:var(--jade-soft);color:var(--jade)} .read{background:var(--watch-bg);color:var(--watch)}
+.test{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;border-top:1px solid var(--rule);padding-top:14px}
+.test div{min-width:0;font-size:.9rem}
+ol.moves{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:10px}
+.small{font-size:.88rem;color:var(--muted)}
+ul.plain{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:6px;font-size:.92rem}
+footer{border-top:1px solid var(--rule);padding-top:20px;font-size:.85rem;color:var(--muted)}
+.dothis{background:var(--surface);border:2px solid var(--jade);border-radius:6px;padding:20px 22px}
+.dothis ol{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:14px}
+.dothis .cost{font:600 .8rem/1.4 var(--mono);color:var(--jade)}
+.q{display:flex;flex-direction:column;gap:16px}
+.verdict{border-left:4px solid var(--jade);padding:4px 0 4px 14px;font-weight:600}
+table.mini{min-width:560px}
+.warn{background:var(--pass-bg);color:var(--pass);border-radius:6px;padding:12px 14px;font-size:.92rem}
+ul.src{margin:0;padding-left:1.1em;display:flex;flex-direction:column;gap:4px;font-size:.82rem;color:var(--muted);overflow-wrap:anywhere}
+</style>
+
+<main>
+<header>
+  <span class="eyebrow">Zeitgeist Report · Run 2 · 20 October 2026</span>
+  <h1>Zeitgeist Report No. 2</h1>
+  <p class="meta">For Evan Ratner. New since run 1: <em>Sneaky Good at Canasta</em> went live on KDP today; seven mahjong-tile needlepoint charts are built but not listed; the Etsy shop is pivoting to craft nights. 25 trends scored (16 re-scored, 9 new). Every source below was read on 20 October 2026 unless it is listed under Unread sources.</p>
+</header>
+
+<section class="dothis col" aria-labelledby="dtn">
+  <h2 id="dtn">Do this next</h2>
+  <ol>
+    <li><strong>List the seven needlepoint charts and two bundles on Etsy this week, as digital charts.</strong> Buy one skein of each of the 7 DMC colours the listings name and check each number against the thread before you publish. Use the honest renders as photos for now.
+      <div class="cost">Cost: $1.80 in listing fees (9 x $0.20) + $8.05 floss (7 x $1.15) = $9.85</div>
+      <span class="small">Evidence: needlepoint searches peaked in January in every needlepoint keyword series read (chart 1,600 a month in Jan 2026 against 880 in Aug). "Mahjong needlepoint" grew from 320 to 590 a month. Listing now gives the charts 10 weeks to rank before that peak. (RankHero keyword pages.)</span></li>
+    <li><strong>Send <em>Sneaky Good at Canasta</em> to 10 canasta teachers who run classes now.</strong> Start with the CLA accredited instructor list and the library, OLLI and senior-centre class leaders named in section 6. Offer a free copy for their teaching table. Ask for nothing in return.
+      <div class="cost">Cost: $82.60 (10 author copies at $3.87 print + $4.39 Media Mail). Needs your approval: it is outbound.</div>
+      <span class="small">Evidence: the CLA lists accredited instructors by state and says many teach by Zoom. Classes are open in Scottsdale (10 Nov to 22 Dec), Delaware OH (to 30 Dec) and Huntington NY. Your book says "Modern American throughout", which is the CLA's game.</span></li>
+    <li><strong>Fix the Mah Jongg paperback's category today.</strong> The page read today still shows "#744 in Entertaining &amp; Holiday Cooking". Replace it with a games category.
+      <div class="cost">Cost: $0</div>
+      <span class="small">Evidence: Amazon paperback page B0GQS7Y8PL, read today: #45 in Card Games (Books), #744 in Entertaining &amp; Holiday Cooking.</span></li>
+    <li><strong>Make Hand and Foot the next Sneaky Good book. Start S0 (sources and rule variants) this week.</strong> Bridge waits.
+      <div class="cost">Cost: $0 now. KDP publishing is free.</div>
+      <span class="small">Evidence: the best-selling Hand and Foot book is a score pad with rules (279 ratings, #73 in Card Games). The beginner guides have 2 to 42 ratings. Bridge's leading beginner books have 457 to 927 ratings, and four of the top six are Audrey Grant's. A senior-centre Hand and Foot group says there is "no single standard rule set" and hands newcomers a rule sheet: that is the Sneaky Good method.</span></li>
+    <li><strong>Stitch one chart as the craft-night prototype.</strong> One 13-mesh foot of canvas gives four cuts. Count the skeins it uses. That count is the only missing number in the craft-night box price.
+      <div class="cost">Cost: $23.78 canvas (the floss is bought in step 1)</div>
+      <span class="small">Evidence: the box economics in section 7 rest on one assumption, 12 skeins per stitcher. If it is 8, the margin rises; if it is 16, the box needs a higher price.</span></li>
+  </ol>
+  <p class="small" style="margin-top:14px">Total cash for all five: $116.23. Item 2 is the only outbound step and the only one over $50.</p>
+</section>
+
+<section class="topline col" aria-labelledby="tl">
+  <h2 id="tl">Top line</h2>
+  <ol>
+    <li>What changed: needlepoint moved to the top of the board (81). Supper clubs dropped from GO to WATCH. Hand and Foot enters as a GO (76) and beats bridge (61) as the next book.</li>
+    <li>Best move: list the needlepoint charts before the January search peak, and market canasta through the teachers who already run canasta tables.</li>
+    <li>Risk: craft-night kits are physical goods. Shipping and tools eat the margin, so only a box for a whole group (one shipment, six people) works. Every kit price also rests on one unmeasured number: thread used per chart.</li>
+  </ol>
+</section>
+
+<section aria-labelledby="board">
+  <h2 id="board">Trend board</h2>
+  <div class="tablewrap">
+  <table>
+    <thead><tr><th>Trend</th><th>Lane</th><th>Stage</th><th>Score</th><th>Band</th><th>Change</th><th>Mom · Stg · Aud · Spd · Mar · Def</th></tr></thead>
+    <tbody>
+      <tr><td>Needlepoint and stitch clubs</td><td>A</td><td>rising</td><td class="num">81<span class="bar" style="width:81px"></span></td><td><span class="chip GO">GO</span></td><td class="num">+6</td><td class="f">85 · 70 · 85 · 95 · 80 · 55</td></tr>
+      <tr><td>Canasta</td><td>A</td><td>early to rising</td><td class="num">77<span class="bar" style="width:77px"></span></td><td><span class="chip GO">GO</span></td><td class="num">+1</td><td class="f">55 · 80 · 95 · 95 · 70 · 70</td></tr>
+      <tr><td>Hand and Foot</td><td>A</td><td>early to rising</td><td class="num">76<span class="bar" style="width:76px"></span></td><td><span class="chip GO">GO</span></td><td class="num">new</td><td class="f">65 · 80 · 90 · 85 · 70 · 60</td></tr>
+      <tr><td>Mahjong (the base)</td><td>A</td><td>peak</td><td class="num">76<span class="bar" style="width:76px"></span></td><td><span class="chip GO">GO</span></td><td class="num">0</td><td class="f">85 · 35 · 100 · 95 · 65 · 50</td></tr>
+      <tr><td>Craft nights and girls' night hosting</td><td>A</td><td>rising</td><td class="num">71<span class="bar" style="width:71px"></span></td><td><span class="chip GO">GO</span></td><td class="num">-4</td><td class="f">75 · 70 · 90 · 75 · 55 · 45</td></tr>
+      <tr><td>Game-night journals and stationery (score pads)</td><td>A</td><td>rising</td><td class="num">71<span class="bar" style="width:71px"></span></td><td><span class="chip GO">GO</span></td><td class="num">+1</td><td class="f">70 · 70 · 70 · 95 · 75 · 30</td></tr>
+      <tr><td>Supper clubs and home hosting</td><td>A</td><td>rising</td><td class="num">69<span class="bar" style="width:69px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="num">-2 (GO to WATCH)</td><td class="f">62 · 70 · 80 · 85 · 65 · 45</td></tr>
+      <tr><td>Phone-free social events</td><td>B</td><td>rising</td><td class="num">69<span class="bar" style="width:69px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="num">0</td><td class="f">85 · 70 · 65 · 80 · 60 · 35</td></tr>
+      <tr><td>Speed puzzling and puzzle swaps</td><td>A</td><td>early to rising</td><td class="num">69<span class="bar" style="width:69px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="num">0</td><td class="f">55 · 80 · 70 · 90 · 70 · 55</td></tr>
+      <tr><td>Backgammon clubs</td><td>B</td><td>early to rising</td><td class="num">69<span class="bar" style="width:69px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="num">0</td><td class="f">68 · 80 · 55 · 85 · 65 · 60</td></tr>
+      <tr><td>Tile-bead bracelet and charm bars</td><td>A</td><td>rising</td><td class="num">67<span class="bar" style="width:67px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="num">new</td><td class="f">70 · 70 · 70 · 80 · 55 · 45</td></tr>
+      <tr><td>Silent book clubs</td><td>A</td><td>maturing</td><td class="num">65<span class="bar" style="width:65px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="num">0</td><td class="f">60 · 50 · 85 · 90 · 60 · 30</td></tr>
+      <tr><td>Chess social nights</td><td>B</td><td>rising</td><td class="num">64<span class="bar" style="width:64px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="num">-3</td><td class="f">65 · 70 · 70 · 80 · 55 · 30</td></tr>
+      <tr><td>Adult Pokemon TCG</td><td>B</td><td>peak</td><td class="num">64<span class="bar" style="width:64px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="num">0</td><td class="f">85 · 35 · 75 · 75 · 55 · 25</td></tr>
+      <tr><td>Rummikub and Mexican Train</td><td>A</td><td>steady</td><td class="num">63<span class="bar" style="width:63px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="num">0</td><td class="f">45 · 50 · 80 · 95 · 65 · 40</td></tr>
+      <tr><td>Bunco nights</td><td>A</td><td>steady</td><td class="num">62<span class="bar" style="width:62px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="num">new</td><td class="f">40 · 50 · 75 · 90 · 70 · 50</td></tr>
+      <tr><td>90s toy nostalgia (Tamagotchi at 30)</td><td>B</td><td>rising</td><td class="num">62<span class="bar" style="width:62px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="num">-3</td><td class="f">60 · 70 · 75 · 60 · 50 · 50</td></tr>
+      <tr><td>Bridge</td><td>A</td><td>early</td><td class="num">61<span class="bar" style="width:61px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="num">-3</td><td class="f">30 · 90 · 80 · 60 · 70 · 40</td></tr>
+      <tr><td>Run clubs</td><td>B</td><td>peak</td><td class="num">59<span class="bar" style="width:59px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="num">0</td><td class="f">70 · 35 · 80 · 70 · 45 · 25</td></tr>
+      <tr><td>Punch needle nights</td><td>A</td><td>steady</td><td class="num">53<span class="bar" style="width:53px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="num">new</td><td class="f">50 · 50 · 65 · 70 · 45 · 30</td></tr>
+      <tr><td>Candle-making nights</td><td>A</td><td>peak</td><td class="num">52<span class="bar" style="width:52px"></span></td><td><span class="chip WATCH">WATCH</span></td><td class="num">new</td><td class="f">35 · 35 · 70 · 85 · 55 · 25</td></tr>
+      <tr><td>Line dancing</td><td>B</td><td>rising</td><td class="num">48<span class="bar" style="width:48px"></span></td><td><span class="chip PASS">PASS</span></td><td class="num">new</td><td class="f">45 · 70 · 50 · 55 · 45 · 15</td></tr>
+      <tr><td>Flower bars and bouquet nights</td><td>A</td><td>steady</td><td class="num">45<span class="bar" style="width:45px"></span></td><td><span class="chip PASS">PASS</span></td><td class="num">new</td><td class="f">40 · 50 · 65 · 50 · 35 · 20</td></tr>
+      <tr><td>Paint-and-sip kits at home</td><td>A</td><td>fading</td><td class="num">41<span class="bar" style="width:41px"></span></td><td><span class="chip PASS">PASS</span></td><td class="num">new</td><td class="f">20 · 10 · 65 · 80 · 50 · 20</td></tr>
+      <tr><td>Pickleball socials</td><td>B</td><td>peak</td><td class="num">40<span class="bar" style="width:40px"></span></td><td><span class="chip PASS">PASS</span></td><td class="num">new</td><td class="f">25 · 35 · 55 · 60 · 45 · 15</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="legend">Score = momentum 25% + stage 15% + audience overlap 20% + speed to product 15% + margin 15% + defensibility 10%. Stage points: early 90, early to rising 80, rising 70, steady 50, maturing 50, peak 35, fading 10. GO 70+, WATCH 50 to 69, PASS under 50. Change is against the 19 October ledger. Bridge is compared with its corrected baseline of 64 (its stage was scored 75 in run 1 by mistake). Scores are judgments built from the cited evidence, not measurements.</p>
+  <p class="small"><strong>Band changes this run:</strong> one. Supper clubs and home hosting, GO 71 to WATCH 69: this run found no new US primary signal, and the only fresh mention is one line in an eRank fall-trends post (Europe section). Four new trends enter at PASS.</p>
+</section>
+
+<section aria-labelledby="attn">
+  <h2 id="attn">How attention moved: two proxies</h2>
+  <p class="col">Google Trends refused every request (error 429), so this run used two public substitutes. Both are <span class="tag read">READ</span> signals, not sales.</p>
+  <div class="tablewrap">
+  <table class="mini">
+    <thead><tr><th>Keyword (RankHero)</th><th>First month</th><th>Last month</th><th>Change</th><th>Peak month</th></tr></thead>
+    <tbody>
+      <tr><td>needlepoint</td><td class="num">Sep 2025: 60,500</td><td class="num">Aug 2026: 110,000</td><td class="num">+82%</td><td>Nov 2025 (301,000)</td></tr>
+      <tr><td>needlepoint chart</td><td class="num">Sep 2025: 480</td><td class="num">Aug 2026: 880</td><td class="num">+83%</td><td>Jan 2026 (1,600)</td></tr>
+      <tr><td>mahjong needlepoint</td><td class="num">Jul 2025: 320</td><td class="num">Jun 2026: 590</td><td class="num">+84%</td><td>Jan 2026 (720)</td></tr>
+      <tr><td>needlepoint kits</td><td class="num">Sep 2025: 27,100</td><td class="num">Aug 2026: 33,100</td><td class="num">+22%</td><td>Jan 2026 (110,000)</td></tr>
+      <tr><td>hand and foot card game</td><td class="num">Sep 2025: 14,800</td><td class="num">Aug 2026: 18,100</td><td class="num">+22%</td><td>Jan 2026 (27,100)</td></tr>
+      <tr><td>canasta</td><td class="num">Sep 2025: 165,000</td><td class="num">Aug 2026: 165,000</td><td class="num">0%</td><td>Oct 2025 (201,000)</td></tr>
+      <tr><td>bridge card game</td><td class="num">Sep 2025: 49,500</td><td class="num">Aug 2026: 49,500</td><td class="num">0%</td><td>Jan 2026 (60,500)</td></tr>
+      <tr><td>bracelet making kit</td><td class="num">Sep 2025: 49,500</td><td class="num">Aug 2026: 74,000</td><td class="num">+49%</td><td>Nov 2025 (74,000)</td></tr>
+      <tr><td>punch needle kit</td><td class="num">Sep 2025: 49,500</td><td class="num">Aug 2026: 60,500</td><td class="num">+22%</td><td>Dec 2025 (74,000)</td></tr>
+      <tr><td>craft kits for adults</td><td class="num">Sep 2025: 9,900</td><td class="num">Aug 2026: 12,100</td><td class="num">+22%</td><td>Dec 2025 (33,100)</td></tr>
+      <tr><td>candle making kit</td><td class="num">Sep 2025: 49,500</td><td class="num">Aug 2026: 33,100</td><td class="num">-33%</td><td>Dec 2025 (90,500)</td></tr>
+      <tr><td>paint and sip kit</td><td class="num">Oct 2025: 3,600</td><td class="num">Sep 2026: 1,300</td><td class="num">-64%</td><td>Oct 2025 (3,600)</td></tr>
+      <tr><td>mahjong bag</td><td class="num">Sep 2025: 2,400</td><td class="num">Aug 2026: 5,400</td><td class="num">+125%</td><td>Dec 2025 (5,400)</td></tr>
+      <tr><td>mahjong card holder</td><td class="num">Oct 2025: 720</td><td class="num">Sep 2026: 3,600</td><td class="num">+400%</td><td>Sep 2026 (3,600)</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="legend">RankHero (rankhero.com/keywords/&lt;keyword&gt;) publishes a 12-month series per keyword. Its volumes are rounded buckets labelled "monthly searches globally"; they look like web search volumes, not Etsy's own data. Read them as direction, not size. The series end in different months, so each row states its own window.</p>
+  <p class="col small" style="margin-top:12px">Wikipedia pageviews, April to September 2026 against the same months of 2025 (Wikimedia API): Mahjong +8%, Pokemon TCG +22%, Canasta -19%, Contract bridge -15%, Needlepoint -21%, Rummikub -14%, Chess -11%, Backgammon -20%, Tamagotchi -19%, Bunco -28%, Cribbage -27%, Pickleball -24%, Mexican Train -27%, Supper club -3%, Cross-stitch -11%, Punch needle -30%, Line dance -20% (and -27% quarter on quarter). Baselines: Card game -20%, Board game -4%. Wikipedia traffic fell broadly this year, so only a trend that beats its baseline counts as rising. Mahjong and Pokemon beat it; needlepoint did not, which conflicts with the search data above and with Etsy's own figures. Needlepoint keeps its momentum score because three sources that measure buying intent agree.</p>
+</section>
+
+<section aria-labelledby="bets">
+  <h2 id="bets">Top 3 GO trends</h2>
+  <div class="bets">
+
+  <article class="bet">
+    <div class="bet-head"><h3>1. Needlepoint and stitch clubs</h3><span class="score">81</span><span class="chip GO">GO</span><span class="small">Lane A · rising · up 6</span></div>
+    <div class="factors"><span>momentum <b>85</b></span><span>stage <b>70</b></span><span>audience <b>85</b></span><span>speed <b>95</b></span><span>margin <b>80</b></span><span>defensibility <b>55</b></span></div>
+    <div>
+      <div class="label">Evidence</div>
+      <ul class="ev">
+        <li><span class="tag fact">FACT</span>Etsy's trend expert: beginner needlepoint kits "+175%", data "as of February 10, 2026". <a href="https://community.etsy.com/forum/tag/trend-reports/">Etsy Community, Spring/Summer 2026 trends post</a></li>
+        <li><span class="tag fact">FACT</span>Searches for "beginner needlepoint items" up 208% year over year (Etsy data via <em>Today</em>). <a href="https://fashionunited.com/news/fashion/why-grandma-hobbies-are-on-the-rise-among-young-consumers/2026072473586">FashionUnited, 24 Jul 2026</a></li>
+        <li><span class="tag fact">FACT</span>Michaels: needlepoint searches up 251% year over year; "craft night" up 103%; "girls' night craft" up 242%. <a href="https://www.aol.com/lifestyle/8-biggest-crafting-trends-2026-194606392.html">BHG via AOL, 10 Mar 2026</a></li>
+        <li><span class="tag fact">FACT</span>RankHero series: "needlepoint" +82%, "needlepoint chart" +83%, "mahjong needlepoint" +84%; all peak in November to January. <a href="https://www.rankhero.com/keywords/needlepoint-chart">rankhero.com</a></li>
+        <li><span class="tag fact">FACT</span>Mahjong needlepoint already sells off Etsy: NeedlePaint's Dot Crack Bam coaster kit is $35.40 on 18 mesh, plus $9.00 for DMC floss. <a href="https://www.needlepaint.com/needlepoint-kits/dot-crack-bam-needlepoint-coaster-ornament-kit-3039">needlepaint.com</a></li>
+        <li><span class="tag read">READ</span>The seven charts are built and priced. This is the only GO with a product finished, so speed is 95. The seasonal peak is the deadline.</li>
+      </ul>
+    </div>
+    <div class="test">
+      <div><div class="label">14-day test</div>List all 9 chart listings. Add the stitched sample as photo 1 when it exists.</div>
+      <div><div class="label">Cost</div>$9.85 (fees plus 7 skeins).</div>
+      <div><div class="label">Scale if</div>10+ chart sales in 30 days, or any bundle sale. Then build the group box (section 7).</div>
+      <div><div class="label">Stop if</div>Under 2 sales in 30 days with 500+ views: the problem is the photos, so stitch before spending more.</div>
+    </div>
+  </article>
+
+  <article class="bet">
+    <div class="bet-head"><h3>2. Canasta</h3><span class="score">77</span><span class="chip GO">GO</span><span class="small">Lane A · early to rising · up 1</span></div>
+    <div class="factors"><span>momentum <b>55</b></span><span>stage <b>80</b></span><span>audience <b>95</b></span><span>speed <b>95</b></span><span>margin <b>70</b></span><span>defensibility <b>70</b></span></div>
+    <div>
+      <div class="label">Evidence</div>
+      <ul class="ev">
+        <li><span class="tag fact">FACT</span><em>Sneaky Good at Canasta</em> is live (paperback $14.99, Kindle $4.99). Defensibility rises from 60 to 70: you now own the book.</li>
+        <li><span class="tag fact">FACT</span>Canasta books in Amazon's Card Games Best Sellers today: <em>Modern American Canasta: The Complete Guide</em> (Collins), #54, 113 ratings, $25.94; <em>Ultimate Guide to Modern Canasta</em> (Silberstein, the CLA's founders), #62, 23 ratings, $24.95. Your $14.99 undercuts both by about $10. <a href="https://www.amazon.com/gp/bestsellers/books/4409">Amazon Best Sellers: Card Games, pages 1 and 2</a></li>
+        <li><span class="tag fact">FACT</span>A senior centre held a free party "in celebration of National Canasta Day" on 13 October 2026, for ages 55 to 101. <a href="https://www.active.com/gunnison-co/classes/senior-canasta-day-2026">Gunnison Senior Center via active.com</a></li>
+        <li><span class="tag fact">FACT</span>"canasta score sheet" searches rose from 720 to 880 a month; "canasta" held flat at 165,000. <a href="https://www.rankhero.com/keywords/canasta-score-sheet">RankHero</a></li>
+        <li><span class="tag read">READ</span>Attention is flat, not rising. The upside is distribution, not demand: the buyer exists and sits at tables run by teachers. Section 6 is the plan.</li>
+      </ul>
+    </div>
+    <div class="test">
+      <div><div class="label">14-day test</div>The ads plan already written, plus Do this next item 2.</div>
+      <div><div class="label">Cost</div>$82.60 for 10 copies, on top of the ads budget.</div>
+      <div><div class="label">Scale if</div>Any teacher asks for a bulk price, or 3+ of 10 reply.</div>
+      <div><div class="label">Stop if</div>No replies in 21 days. Then put the outreach money into the product-targeting campaign instead.</div>
+    </div>
+  </article>
+
+  <article class="bet">
+    <div class="bet-head"><h3>3. Hand and Foot (new)</h3><span class="score">76</span><span class="chip GO">GO</span><span class="small">Lane A · early to rising · new</span></div>
+    <div class="factors"><span>momentum <b>65</b></span><span>stage <b>80</b></span><span>audience <b>90</b></span><span>speed <b>85</b></span><span>margin <b>70</b></span><span>defensibility <b>60</b></span></div>
+    <div>
+      <div class="label">Evidence</div>
+      <ul class="ev">
+        <li><span class="tag fact">FACT</span>SourcePoint Enrichment Center (Delaware, Ohio) runs "Hand and Foot Canasta" on Wednesdays, 7 Oct to 30 Dec 2026, ages 55+. It says there is no single standard rule set, so newcomers watch first and get a rule sheet. <a href="https://www.active.com/delaware-oh/board-games/classes/hand-and-foot-canasta-2026-110684480">active.com</a></li>
+        <li><span class="tag fact">FACT</span>"hand and foot card game" searches rose from 14,800 to 18,100 a month (+22%); "hand and foot" from 27,100 to 33,100. <a href="https://www.rankhero.com/keywords/hand-and-foot-card-game">RankHero</a></li>
+        <li><span class="tag fact">FACT</span>Amazon competition is thin (see the head-to-head below).</li>
+        <li><span class="tag read">READ</span>Same tables, same players, same canasta family as the book you just shipped. Rules vary from table to table, which suits a book that labels every rule by variant.</li>
+      </ul>
+    </div>
+    <div class="test">
+      <div><div class="label">14-day test</div>S0 for <em>Sneaky Good at Hand and Foot</em>: gather the public rule sources and list where they disagree. Check that the multi-deck maths can be counted exactly, not simulated, before you commit.</div>
+      <div><div class="label">Cost</div>$0.</div>
+      <div><div class="label">Scale if</div>The exact counts are tractable and the canasta book sells 20+ copies in its first 30 days.</div>
+      <div><div class="label">Stop if</div>The maths is not tractable without simulation. Then do a Hand and Foot scorebook only.</div>
+    </div>
+  </article>
+  </div>
+</section>
+
+<section class="q" aria-labelledby="hfb">
+  <h2 id="hfb">Hand and Foot or bridge: the next Sneaky Good book</h2>
+  <p class="verdict col">Verdict: Hand and Foot. It scores 76 (GO) against bridge's 61 (WATCH). The field is weaker, the searches are rising, and the buyer is the canasta buyer you just reached.</p>
+  <div class="tablewrap">
+  <table class="mini">
+    <thead><tr><th></th><th>Hand and Foot</th><th>Bridge</th></tr></thead>
+    <tbody>
+      <tr><td>Best-selling book</td><td><em>Hand and Foot Scorekeeping Book with Rules</em> (Creative Spirits Gaming): #73 in Card Games, 279 ratings, $9.99. A score pad.</td><td><em>Bridge at a Glance</em> (Audrey Grant): #1 in Bridge, 457 ratings, $11.95</td></tr>
+      <tr><td>Other leaders</td><td><em>Hand &amp; Foot Score Sheets with Rules</em> (Game Night Publishing): #47 in Card Games, 8 ratings, $9.99. Hand, Knee &amp; Foot sheets: #98, 13 ratings, $9.99.</td><td><em>Bridge for Dummies</em> 701 ratings; Grant's <em>Bridge Basics 1</em> 927, <em>2</em> 575, <em>3</em> 448; <em>2 Over 1</em> 410. Four of the top six are Audrey Grant's; her titles include the ACBL Bridge Series.</td></tr>
+      <tr><td>Beginner guides</td><td>Taylor Smith: 42 ratings, $12.99, 78 pages. Tim Ander: 18 ratings, $6.99, 78 pages. Tegan Hammoud (Jul 2026): 2 ratings, $10.99, 78 pages.</td><td>Taylor Smith's bridge guide: #74 in Card Games, 3.9 stars from 44 ratings. Newer bridge guides have 1 to 9 ratings.</td></tr>
+      <tr><td>Search trend (RankHero)</td><td>+22%</td><td>0% (flat at 49,500)</td></tr>
+      <tr><td>Who decides the rules</td><td>No standard rule set (SourcePoint). Room for a variant-labelled book.</td><td>The ACBL has its own teaching series, and its authors own the shelf.</td></tr>
+      <tr><td>Fit with the series</td><td>The leader is a scorebook with rules: the GameMaster format.</td><td>A long book; bidding systems take months to write and check.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small col">Sources: Amazon product pages B0FHQ7542C, B0DC58P6YR, B0HB45Q4XY, B0FXSGC93L, B0FXSHXL8Q and B09S26PMBB; Amazon Best Sellers in Bridge (node 4411, pages 1 and 2) and in Card Games (node 4409, pages 1 and 2). All read 20 Oct 2026. Amazon search pages returned 503 and were not read, so books that rank in neither list may be missing.</p>
+</section>
+
+<section class="q col" aria-labelledby="mkt">
+  <h2 id="mkt">6. Canasta marketing beyond Amazon ads</h2>
+  <p>The buyer learns canasta from a person at a table. The channels that reach her are the teachers, the class programmes and the mahjong world she came from. No reach numbers are given below, because none could be verified.</p>
+  <div class="label">Named channels, with evidence</div>
+  <ul class="plain">
+    <li><strong>CLA accredited instructors.</strong> The Canasta League of America lists "Accredited Instructors 2026" by state, with emails, and says "Many teachers are able to teach remotely". Names on the list include Jamie Meadow (Connecticut, Westchester, Palm Beach), Amy Laufer and Caroline Dann (Los Angeles), Sheree Bauer (Scottsdale) and Felicia Lurner (Orange County). <a href="https://canastaleague.org/instructors">canastaleague.org/instructors</a> <span class="tag read">READ</span>The CLA's founders sell a competing book, so pitch the teachers, not the League.</li>
+    <li><strong>Library, OLLI and recreation classes running now.</strong> Scottsdale, Horizon Park: intermediate Modern American Canasta, 10 Nov to 22 Dec 2026, Joanne Bellet, $45. Huntington Public Library (NY): beginners' Modern Canasta, Cathy Crocetti. University of Delaware OLLI: fall beginner course, ended 12 Oct. SourcePoint (Ohio): Hand and Foot Canasta, Karen Bruns, to 30 Dec. (Search-result listings on active.com, libnet and olli.udel.edu; only the SourcePoint and Gunnison pages were opened.)</li>
+    <li><strong>Mahjong teachers and parlours.</strong> Teachers who run mahjong lessons "often teach canasta as well, sometimes on alternating days for the same groups." <a href="https://www.gowanuslounge.com/mahjongs-camp-takeover-opens-door-for-canasta/">Gowanus Lounge, 4 Aug 2026</a>. Boulder's Dealt Social plans to add canasta in January (run 1 source).</li>
+    <li><strong>The Mahj Society's own list and site.</strong> It already has a subscriber table and a free Mahj Night Kit gated on email (mahj-society STATUS.md). This is the only owned channel to mahjong buyers.</li>
+    <li><strong>Mahjong clubs growing now.</strong> The Oy Luck Club in Los Angeles grew to 900 members by September 2026 (<a href="https://spectrumlocalnews.com/us/snplus/human-interest/2026/10/07/mahjong-s-rise-in-socal">Spectrum News, Oct 2026</a>). Philly Mah-jawns' weekly meetups grew from 20 to 25 people to "50, 55" (<a href="https://6abc.com/post/mahjong-clubs-see-surge-popularity-among-younger-adults/19636787/">6abc, 6 Aug 2026</a>). These players are next year's canasta learners.</li>
+    <li><strong>Facebook.</strong> Pages exist for the Canasta League of America, Canasta Junction (the CLA's app) and the New Jersey Canasta Club. Follower counts appeared only in search snippets, so they are unverified. No canasta Facebook <em>group</em> with members was found.</li>
+    <li><strong>Gift-guide writers.</strong> The OUTREACH.md list in mahj-society (The Everymom, Kveller, PureWow, Southern Living) already covers mahjong gifts. Add one line about the canasta book to the same pitches.</li>
+    <li><strong>Not found:</strong> no canasta Instagram or TikTok creator turned up in search, no canasta newsletter, no subreddit that could be read.</li>
+  </ul>
+  <div class="label" style="margin-top:8px">30-day launch plan you can run alone</div>
+  <div class="tablewrap">
+  <table class="mini">
+    <thead><tr><th>When</th><th>Do</th><th>Cost</th></tr></thead>
+    <tbody>
+      <tr><td>Days 1 to 3</td><td>Ads plan goes live as written. Check the series link puts both books in one strip. Upload the Mah Jongg interior with the "Next: Canasta" page. Fix the Mah Jongg category.</td><td class="num">ads budget only</td></tr>
+      <tr><td>Days 1 to 7</td><td>Email The Mahj Society list once: "the canasta book is out", with the house-rules card as a free PDF. Add the book to the site.</td><td class="num">$0</td></tr>
+      <tr><td>Days 4 to 10</td><td>Email 10 teachers from the CLA list and the class leaders above. Offer a free copy for their table. Ship to the 10 who reply first.</td><td class="num">$82.60</td></tr>
+      <tr><td>Days 8 to 14</td><td>Email the mahjong teachers and parlours who also teach canasta (start with Dealt Social, which adds canasta in January). Same offer, from the same 10-copy budget.</td><td class="num">$0 extra</td></tr>
+      <tr><td>Days 15 to 21</td><td>Gift-guide pitch: one line on the canasta book in each of the six staged Gmail drafts. Q4 is the gift window.</td><td class="num">$0</td></tr>
+      <tr><td>Days 22 to 30</td><td>Read the results. If 3+ teachers replied, send 10 more copies and ask whether a 10-copy class pack would help their students. Check whether a Kindle Countdown Deal can run before Black Friday (KDP Select eligibility rules were not read this run).</td><td class="num">$82.60 if it works</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small">Copy cost = $3.87 print (CLAUDE.md, gamemaster-revisions) + $4.39 Media Mail retail 1 lb (<a href="https://pe.usps.com/text/dmm300/Notice123.htm">USPS Notice 123</a>, effective 4 Oct 2026). KDP's own shipping charge for author copies was not read; weigh one copy to confirm it is under 1 lb. Every email is outbound, so each one needs your approval.</p>
+</section>
+
+<section class="q col" aria-labelledby="etsy">
+  <h2 id="etsy">7. The Etsy craft-night pivot</h2>
+  <div class="warn">Etsy blocked every page this run (403): search, listings, the help centre and the creativity standards. So "what top Etsy sellers charge" comes from RankHero's samples of Etsy listing prices and from kit sellers' own sites, not from Etsy listings directly.</div>
+  <div class="label">Which themes are rising</div>
+  <div class="tablewrap">
+  <table class="mini">
+    <thead><tr><th>Theme</th><th>Search trend</th><th>Etsy listings (RankHero)</th><th>Median Etsy price</th><th>Verdict</th></tr></thead>
+    <tbody>
+      <tr><td>Needlepoint</td><td>+82% (needlepoint); kits +22%</td><td>345,419 for "needlepoint kit"</td><td>$35 kit; $49.98 canvas; $5 chart</td><td>Top 3</td></tr>
+      <tr><td>Tile-bead bracelets</td><td>+49%</td><td>48,206</td><td>$29.99</td><td>Top 3</td></tr>
+      <tr><td>Punch needle</td><td>+22% (kit); -18% (punch needle)</td><td>13,194</td><td>$34</td><td>Top 3, with a caveat</td></tr>
+      <tr><td>Embroidery</td><td>-18%</td><td>1,573,954</td><td>$34</td><td>Crowded</td></tr>
+      <tr><td>Candle making</td><td>-33% (kit)</td><td>7,282</td><td>not shown</td><td>Falling</td></tr>
+      <tr><td>Paint and sip</td><td>-64%</td><td>4,103</td><td>not shown</td><td>PASS</td></tr>
+      <tr><td>Dried flowers</td><td>flat at 480</td><td>not shown</td><td>not shown</td><td>PASS: perishables, slow to make</td></tr>
+      <tr><td>Charcuterie / board night</td><td>not measured</td><td>n/a</td><td>n/a</td><td>Policy risk: see below</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small">Other demand evidence, read: Michaels guided-craft kit sales up 86% and group craft kit searches up 52% (<a href="https://www.michaelspressroom.com/news/detail/5048/canada.michaels.com">Michaels press release, 4 Jun 2026</a>); 71% of respondents in Michaels' research "expressed interest in joining a craft club in 2025" (<a href="https://www.michaelspressroom.com/news/detail/4991/michaels-expands-guided-crafts-to-meet-soaring-customer">Michaels, 9 Sep 2025</a>). Neither gives a figure for punch needle, beading or candles.</p>
+
+  <div class="label">The top 3 kits: cost, price, margin</div>
+  <p class="small">Each is a box for a group of six. The calculator found that a single kit shipped alone nets $6.42 at $45 and loses money under Offsite Ads, because shipping eats it. One box, one shipment and six people is the format that works.</p>
+  <div class="tablewrap">
+  <table class="mini">
+    <thead><tr><th></th><th>Mahj Night Needlepoint Box</th><th>Mahj Tile Bracelet Bar</th><th>Punch Needle Night Box</th></tr></thead>
+    <tbody>
+      <tr><td>What is in it</td><td>6 cuts of 13-mesh Zweigart canvas, DMC floss for one tile chart each, needles, printed charts, project bags, host card</td><td>Tila "tile" beads for 12 bracelets (2 per guest), cord, bead mats, host card</td><td>Monk's cloth (6 cuts, 15 in), 6 hoops, 6 Oxford #10 needles, yarn, patterns, host card</td></tr>
+      <tr><td>Sourcing (published prices)</td><td>HM Nabavian: 13ct mono deluxe, 40 in wide, $23.78 a foot (4 cuts). DMC: from $1.15 a skein.</td><td>Fire Mountain Gems: Tila 10 g packs $6.87 to $8.11, as low as $0.55 to $0.65 a gram in volume.</td><td>Icon Fiber Arts: monk's cloth $21 a yard (60 in), 6 in hoops $2.49. Gather Here: Oxford #10 needle $39.99.</td></tr>
+      <tr><td>Cost of goods</td><td class="num">$164.06</td><td class="num">$146.17</td><td class="num">$357.58</td></tr>
+      <tr><td>Price (per guest)</td><td class="num">$270 ($45)</td><td class="num">$240 ($40)</td><td class="num">$480 ($80)</td></tr>
+      <tr><td>Etsy fees</td><td class="num">$26.10</td><td class="num">$23.25</td><td class="num">$46.05</td></tr>
+      <tr><td><strong>Margin</strong></td><td class="num"><strong>$79.84 (30%)</strong></td><td class="num"><strong>$70.58 (29%)</strong></td><td class="num"><strong>$76.37 (16%)</strong></td></tr>
+      <tr><td>Margin on an Offsite Ads order (15% / 12%)</td><td class="num">$39.34 / $47.44</td><td class="num">$34.58 / $41.78</td><td class="num">$4.37 / $18.77</td></tr>
+      <tr><td>Price checks</td><td>NeedlePaint mahjong coaster kit $35.40 + $9 floss; Icon Fiber Arts 13ct printed kits $60</td><td>Mack &amp; Rex Tila trio kit (3 bracelets) $44.99, about $15 a bracelet</td><td>Oxford punch needle kits $65 and $85 at Icon Fiber Arts</td></tr>
+      <tr><td>Unmeasured input</td><td>12 skeins per stitcher</td><td>one 10 g pack per bracelet</td><td>$8 of yarn per guest</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small">Fees: $0.20 listing + 6.5% transaction + 3% + $0.25 processing (<a href="https://checkoutpage.com/blog/etsy-fees">checkoutpage.com, 19 Jul 2026</a>). Offsite Ads: 15% under $10,000 a year, 12% at $10,000 and over, capped at $100 an order. Shipping is USPS Ground Advantage retail, 2 or 3 lb to zone 5 ($14.85 or $15.70), inside the price. Etsy's label rates are likely lower; they were not read. Each cost also carries a $3 per guest (or $10 per box) allowance for bags, cards and packaging; those allowances are assumptions too. For comparison, a candle box built from the contents of CandleScience's $54.99 Starter kit (6 tins, 2 lb wax, 2 oz fragrance) nets $54.61 (36%) at $150. Candle searches are falling, though, and repacking a branded kit is not a product you made.</p>
+  <p class="small"><span class="tag read">READ</span>Punch needle has the strongest Etsy opening (difficulty 26 of 100, 13,194 listings) but the weakest box: the Oxford needles cost $239.94 at retail. It only works with a wholesale needle price from The Oxford Company, which was not found. The bracelet bar has a name the shop already owns: Tila beads are tiles. Call it "Mahj Tile Bracelet Bar".</p>
+
+  <div class="label">What must be true for "super premium, word of mouth"</div>
+  <ul class="plain">
+    <li><strong>The host sells it.</strong> The box is bought by one woman for her table of six. Every guest leaves with a card that says where it came from. That is the word of mouth.</li>
+    <li><strong>A design no one else has.</strong> Mahjong tiles in needlepoint and Tila beads are yours. A generic floral kit competes with 345,419 listings at a $35 median.</li>
+    <li><strong>Real photos of real finished work.</strong> None exist yet. The stitched sample is the first.</li>
+    <li><strong>Honest reviews only.</strong> Do not give boxes in exchange for reviews. Etsy's review rules could not be read this run, so check them before any launch offer.</li>
+    <li><strong>The price must survive Offsite Ads at 12% for ever.</strong> All three boxes do; punch needle only barely.</li>
+    <li><strong>Packaging that feels like a gift,</strong> because the buyer is giving the night to her friends.</li>
+  </ul>
+
+  <div class="label">Etsy policy flags</div>
+  <ul class="plain">
+    <li><strong>Food is out.</strong> Under "Sourced by a seller", Etsy no longer allows "Resold generic cooking tools or ingredients" (June 2025 update). A charcuterie or board-night kit is exactly that. (<a href="https://www.valueaddedresource.net/etsy-creativity-standards-update-june-2025/">Value Added Resource, Jun 2025</a>)</li>
+    <li><strong>No resold ready-to-use blanks.</strong> Same update: "Resold blank items that are ready to use without craft intervention" are not allowed. A kit must need the buyer's own making.</li>
+    <li><strong>Party favours and holiday decor</strong> were removed from the allowed "Sourced by a seller" examples. Do not sell the host card or table decor as a separate item.</li>
+    <li><strong>Photos must be your own,</strong> or the maker's or distributor's commercial images.</li>
+    <li><strong>A curated box you assembled counts as "Handpicked by a seller"</strong>, and production partners must be listed on the shop page (<a href="https://www.listadum.com/blog/etsy-creativity-standards">Listadum, 20 Jul 2026</a>, a third-party reading of Etsy's rules). Etsy's own text was blocked; confirm the kit category in the listing form before publishing.</li>
+    <li><strong>Shop rules still apply:</strong> no invented reviews, and never say a bag holds a full mahjong set.</li>
+  </ul>
+  <p class="small"><span class="tag read">READ</span>The 21 old print-on-demand listings: "mahjong bag" searches rose 125% and "mahjong card holder" 400% (RankHero). Demand for the category grew, so the listings are not selling for some other reason: photos, price or reviews. Do not delete them on a demand argument. That decision stays yours.</p>
+</section>
+
+<section class="q col" aria-labelledby="np">
+  <h2 id="np">8. The mahjong-tile needlepoint charts</h2>
+  <p class="verdict">Verdict: GO, as charts now; as a group box after the stitched sample. Do not sell single physical kits.</p>
+  <ul class="plain">
+    <li><strong>Demand.</strong> Etsy beginner needlepoint kits +175% (Etsy, Feb 2026). "mahjong needlepoint" 320 to 590 a month, almost all from the US. "needlepoint chart" 480 to 880. All peak in January.</li>
+    <li><strong>Charts against painted canvases.</strong> Etsy chart listings: $2.50 to $38, median $5, and 89% under $10 (RankHero sample of 100 listings). Etsy canvases: median $49.98, and the busiest band is $50 to $100. Off Etsy, NeedlePaint's mahjong printed canvases are $35.40 (coaster, 18 mesh), $45.40 (card bag) and $117.90 (tile bag), plus $9.00 to $34.50 for floss. A June 2026 r/BitchEatingCrafters thread (103 upvotes) complains that canvases are overpriced and some commenters want PDF patterns instead (<a href="https://redlib.groet-infra.nl/r/BitchEatingCrafters/comments/1u63h2o/needlepoint_and_pattern_pricing_insanity/">read via a Reddit mirror</a>).</li>
+    <li><strong>Price.</strong> $9 a chart sits inside the under-$10 band. The full set of seven at $45 is $6.43 a chart. Keep both. Net after fees: $7.69, $19.46 and $40.27 (matches LISTINGS.md).</li>
+    <li><strong>Charts, kits or both.</strong> Charts now: no stock, no shipping, and $7.69 of a $9 sale kept. A single kit nets $6.42, so no. The group box (section 7) nets $79.84 and turns the charts into a craft night. One caution: a chart is counted work on blank canvas, which is harder for a first-timer than a printed canvas. For a beginners' night, the next step is a printed-canvas quote. NeedlePaint and Atlantic Blue Canvas print or paint from a customer's design; neither publishes a price.</li>
+  </ul>
+  <div class="label">Minimum steps to list this week</div>
+  <ol class="moves">
+    <li>Buy one skein each of DMC 310, 321, 699, 820, 909, 3371 and 3865 ($8.05). Check each number matches the colour the key names. Fix palette.json and rebuild if any does not.</li>
+    <li>Merge the claude/needlepoint-charts branch in mahj-society, or list straight from its dist/ and listing/ folders.</li>
+    <li>Create 9 digital listings from LISTINGS.md. Upload the PDF, 6 images, 13 tags and the description each ($1.80).</li>
+    <li>Leave the 21 old listings alone. That is your separate decision.</li>
+    <li>Later, not a blocker: when the sample is stitched, make its photo image 1 on every listing.</li>
+  </ol>
+</section>
+
+<section class="col" aria-labelledby="book">
+  <h2 id="book">Book line moves</h2>
+  <p class="small">Read today: the Mah Jongg paperback shows #68,147 in Books, #45 in Card Games (Books), 5 ratings, $12.99. The Kindle shows #6 in Card Games (Kindle Store). <em>Learn American Mah Jongg with Ease</em> is #27 in Card Games (Books) with 949 ratings. A newer rival, <em>The American Mahjong Handbook Nobody Ever Gave You</em>, is #13.</p>
+  <ol class="moves">
+    <li><strong>Category fix.</strong> Still in Entertaining &amp; Holiday Cooking (#744). Do it today.</li>
+    <li><strong>Canasta cross-sell.</strong> Already in the ads plan: the series strip, A+ module and the "Next" page.</li>
+    <li><strong>Hand and Foot</strong> is the next title (above). A score pad with rules leads its category, so the scorebook half of the book matters as much as the strategy half.</li>
+    <li><strong>Score pads sell.</strong> Nine of the 60 Card Games best sellers read today (#1 to #30 and #51 to #80) are score sheets: Crowns #4 with 655 ratings, Phase 10 #21 and #79, Scrabble #28, Seven-Flip #64, Contract Bridge #66, Yatzee #72, Hand and Foot #73, Skyjou #77. Your series is built on score sheets. This lifts game-night journals and score pads to 71.</li>
+    <li><strong>Reviews remain the ceiling.</strong> 5 ratings against 949 and 113 for the category leaders. Unchanged from run 1.</li>
+  </ol>
+</section>
+
+<section class="col" aria-labelledby="fade">
+  <h2 id="fade">Fading list</h2>
+  <ul class="plain">
+    <li><strong>Supper clubs and home hosting: GO to WATCH (69).</strong> No fresh US primary signal this run. Its Wikipedia views held (-3%, about the board-game baseline), so it is flat, not falling. Stop treating it as a separate product. Fold its menu and rotation pages into the craft-night host card.</li>
+    <li><strong>New at PASS:</strong> paint-and-sip kits (41; searches -64%), pickleball socials (40; Wikipedia -24% against a -4% board-game baseline), flower bars (45; perishable, flat searches), line dancing (48; local anecdotes only, Wikipedia -20%). Do not build for any of them.</li>
+    <li><strong>Down within WATCH:</strong> chess 67 to 64 (Wikipedia -13% quarter on quarter), Tamagotchi 65 to 62 (-16% quarter on quarter), bridge 64 to 61 (crowded shelf, flat searches).</li>
+    <li><strong>Candle-making nights enter at 52.</strong> They have the cleanest sourcing, but "candle making kit" searches fell 33%. Hold.</li>
+    <li><strong>Not re-checked this run, scores held:</strong> silent book clubs, run clubs, phone-free events, speed puzzling (one new read: a first Manitoba regional with about 100 entrants, CP24, 26 Jul 2026), backgammon, adult Pokemon TCG, Rummikub.</li>
+  </ul>
+</section>
+
+<section class="col" aria-labelledby="unread">
+  <h2 id="unread">Unread sources</h2>
+  <ul class="plain small">
+    <li>Every etsy.com page: search, listings, help centre, creativity standards and fee policy (403). Etsy prices come from RankHero samples, and the policy from third-party write-ups.</li>
+    <li>Amazon search results (503). Best-seller lists and product pages were read.</li>
+    <li>Google Trends (429). RankHero series and Wikipedia pageviews stand in.</li>
+    <li>Wikimedia API: some articles returned 429 after retries (jigsaw puzzle, friendship bracelet, silent book club, speed puzzling). "Run_club" does not exist (404). The Hand and Foot articles are redirect stubs with under 200 views in six months, which is not usable.</li>
+    <li>Facebook pages and groups: not fetched. Follower counts in snippets are unverified and not used.</li>
+    <li>Reddit (blocked): one thread read through a redlib mirror.</li>
+    <li>Bramble Berry candle and face-mask party kits, eBay mahjong canvases, Michaels product pages, Walmart (403). Their prices appeared only in snippets and are not used.</li>
+    <li>Axios speed-puzzling pages (403); Business Insider supper-club piece (redirect); Mack &amp; Rex blog (429; its product data was read instead).</li>
+    <li>Oxford Company wholesale pricing, printed-canvas quotes (NeedlePaint, Atlantic Blue Canvas), Etsy shipping label rates, and KDP author-copy shipping: not published or not found.</li>
+  </ul>
+</section>
+
+<section class="col" aria-labelledby="src">
+  <h2 id="src">Sources read (all on 20 October 2026)</h2>
+  <ul class="src">
+    <li>Amazon Best Sellers: Card Games https://www.amazon.com/gp/bestsellers/books/4409 (pages 1 and 2); Bridge https://www.amazon.com/gp/bestsellers/books/4411 (pages 1 and 2); Puzzles &amp; Games https://www.amazon.com/gp/bestsellers/books/4402</li>
+    <li>Amazon product pages: https://www.amazon.com/dp/B0GQS7Y8PL, /B0GQHKVHYS, /B0FND4DYZM, /B0CHDMTXV5, /1771400919, /B0FHQ7542C, /B0DC58P6YR, /B0HB45Q4XY, /B0FXSGC93L, /B0FXSHXL8Q, /B09S26PMBB</li>
+    <li>RankHero keyword pages https://www.rankhero.com/keywords/ + needlepoint, needlepoint-kit, needlepoint-kits, needlepoint-canvas, needlepoint-chart, needlepoint-pattern, mahjong-needlepoint, punch-needle, punch-needle-kit, bracelet-making-kit, charm-bracelet-kit, candle-making, candle-making-kit, candle-kit, embroidery-kit, paint-and-sip-kit, sip-and-paint-kit, paint-party-kit, dried-flower-kit, craft-kit, craft-kits-for-adults, canasta, canasta-score-sheet, hand-and-foot, hand-and-foot-card-game, bridge-card-game, contract-bridge, bridge-score-pad, bunco, mahjong, mahjong-gift, mahjong-bag, mahjong-card-holder</li>
+    <li>Wikimedia pageviews API https://wikimedia.org/api/rest_v1/metrics/pageviews/per-article/ (monthly, Jul 2024 to Sep 2026)</li>
+    <li>https://community.etsy.com/forum/tag/trend-reports/</li>
+    <li>https://fashionunited.com/news/fashion/why-grandma-hobbies-are-on-the-rise-among-young-consumers/2026072473586</li>
+    <li>https://www.aol.com/lifestyle/8-biggest-crafting-trends-2026-194606392.html</li>
+    <li>https://www.michaelspressroom.com/news/detail/5048/canada.michaels.com ; https://www.michaelspressroom.com/news/detail/4991/michaels-expands-guided-crafts-to-meet-soaring-customer</li>
+    <li>https://help.erank.com/blog/fall-2026-trends-etsy-sellers/</li>
+    <li>https://www.valueaddedresource.net/etsy-creativity-standards-update-june-2025/ ; https://www.listadum.com/blog/etsy-creativity-standards ; https://checkoutpage.com/blog/etsy-fees</li>
+    <li>NeedlePaint: https://www.needlepaint.com/blog/tag/mahjong-needlepoint-kits/ and kit pages 3039, 3107, 3109</li>
+    <li>https://hmnabavian.com/products/zweigart-mono-deluxe-canvas-white-13-ct ; -white-18-ct ; white-18-ct-zweigart-mono-deluxe-needlepoint-canvas-pre-cut-sizes</li>
+    <li>https://www.dmc.com/US/en/products/mouline-special</li>
+    <li>https://www.iconfiberarts.com (products catalogue) ; https://gatherhereonline.com/products/oxford-rug-punchneedle-size-10 ; https://amyoxford.com (products catalogue)</li>
+    <li>https://www.firemountaingems.com/search?q=miyuki+tila ; https://mackandrex.com (products catalogue)</li>
+    <li>https://www.candlescience.com/candle-making-kits/ ; https://www.candlescience.com/kits/starter-candle-making-kit/</li>
+    <li>https://pe.usps.com/text/dmm300/Notice123.htm</li>
+    <li>https://canastaleague.org/ ; https://canastaleague.org/instructors</li>
+    <li>https://www.active.com/gunnison-co/classes/senior-canasta-day-2026 ; https://www.active.com/delaware-oh/board-games/classes/hand-and-foot-canasta-2026-110684480</li>
+    <li>https://www.gowanuslounge.com/mahjongs-camp-takeover-opens-door-for-canasta/</li>
+    <li>https://spectrumlocalnews.com/us/snplus/human-interest/2026/10/07/mahjong-s-rise-in-socal ; https://6abc.com/post/mahjong-clubs-see-surge-popularity-among-younger-adults/19636787/</li>
+    <li>https://www.cp24.com/news/canada/2026/07/26/you-just-have-to-love-doing-puzzles-winnipeg-hosts-first-ever-speed-puzzling-competition/ ; https://www.noozhawk.com/its-back-to-backgammon-in-north-county/ ; https://news.northeastern.edu/?p=85969 (2018, background only)</li>
+    <li>https://redlib.groet-infra.nl/r/BitchEatingCrafters/comments/1u63h2o/needlepoint_and_pattern_pricing_insanity/</li>
+    <li>Internal: mahj-society art/needlepoint/LISTINGS.md, build_needlepoint.py, palette.json, STATUS.md, OUTREACH.md; gamemaster-revisions canasta/sneaky-good/LISTING.md, ADS_PLAN.md, RULES.md</li>
+  </ul>
+</section>
+
+<footer>
+  Made with the master prompt in docs/ZEITGEIST-MASTER-PROMPT.md, run 2. Scores and kit economics were computed by a script from the inputs cited above. Inputs marked as assumptions were not published anywhere read and must be measured on a sample. Next run: Monday 26 October 2026.
+</footer>
+</main>
