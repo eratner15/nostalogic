@@ -68,11 +68,13 @@ td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:now
 .runs li{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:12px 16px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline}
 ol.steps{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
 code{font:.85em var(--mono);background:var(--jade-soft);padding:1px 4px;border-radius:3px}
-.gate{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:22px;max-width:420px}
-.gate form{display:flex;gap:8px;margin-top:10px}
-.gate input{flex:1;min-width:0;font:15px var(--mono);padding:9px 10px;border:1px solid var(--rule);border-radius:4px;background:var(--bg);color:var(--fg)}
-.gate button{font:600 .85rem var(--mono);padding:9px 14px;border:0;border-radius:4px;background:var(--jade);color:var(--bg);cursor:pointer}
 .err{color:var(--pass);font-size:.9rem}
+.econ{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:8px;margin:2px 0}
+.econ div{border:1px solid var(--rule);border-radius:4px;padding:8px 10px}
+.econ b{display:block;font:600 1.05rem/1.2 var(--mono);font-variant-numeric:tabular-nums}
+.econ span{font-size:.75rem;color:var(--muted)}
+.model{background:var(--jade-soft);color:var(--jade)}
+ul.checks{margin:0;padding-left:1.2em;font-size:.86rem;color:var(--muted)}
 footer{border-top:1px solid var(--rule);padding-top:18px;font-size:.85rem;color:var(--muted)}
 [hidden]{display:none!important}
 </style>
@@ -85,23 +87,18 @@ footer{border-top:1px solid var(--rule);padding-top:18px;font-size:.85rem;color:
     <p class="meta" id="meta">Loading…</p>
   </header>
 
-  <section id="gate" class="gate" hidden aria-labelledby="gate-h">
-    <h2 id="gate-h">Access key</h2>
-    <p class="small">This tracker holds prices, margins and plans, so it is private. Enter the key once on each browser.</p>
-    <p class="err" id="denied" hidden>That key did not match.</p>
-    <form method="post" action="/trends/login">
-      <label for="key" class="eyebrow" hidden>Key</label>
-      <input id="key" name="key" type="password" autocomplete="current-password" required>
-      <button type="submit">Open</button>
-    </form>
-  </section>
-
   <section id="summary" hidden aria-label="Summary"><div class="tiles" id="tiles"></div></section>
 
   <section id="building" hidden aria-labelledby="building-h">
     <h2 id="building-h">What we are building</h2>
     <p class="small" id="tracker-meta"></p>
     <div class="cards" id="cards"></div>
+  </section>
+
+  <section id="ideas" hidden aria-labelledby="ideas-h">
+    <h2 id="ideas-h">Product ideas</h2>
+    <p class="small" id="ideas-meta"></p>
+    <div class="cards" id="idea-cards"></div>
   </section>
 
   <section id="board" hidden aria-labelledby="board-h">
@@ -133,6 +130,7 @@ footer{border-top:1px solid var(--rule);padding-top:18px;font-size:.85rem;color:
     <ol class="steps">
       <li>After a new run, commit its report to <code>docs/zeitgeist/reports/</code>, its calculator as <code>scripts/zeitgeist/calc_&lt;date&gt;.py</code>, its line in the run log, and its rows in <code>docs/zeitgeist/history.csv</code>.</li>
       <li>To track a project, add or edit an item in <code>docs/zeitgeist/tracker.json</code>. Its <code>trend</code> must match a board name exactly.</li>
+      <li>To add or change a product idea, copy the newest <code>scripts/zeitgeist/products_&lt;date&gt;.py</code> to today's date and edit it. Every price it uses names its source or is marked ASSUMPTION.</li>
       <li>Run <code>python3 -I scripts/zeitgeist/build_trends.py</code>. It recomputes every score and stops if any file disagrees.</li>
       <li>Deploy the nostalogic Worker. The page updates at cafecito-ai.com/trends.</li>
     </ol>
@@ -156,10 +154,7 @@ footer{border-top:1px solid var(--rule);padding-top:18px;font-size:.85rem;color:
   const FACTOR_LABEL = { mom: "momentum", stg: "stage", aud: "audience", spd: "speed", mar: "margin", dfn: "defensibility" };
   const safeUrl = (u) => /^https?:\/\//.test(u) ? u : null;
 
-  if (new URLSearchParams(location.search).has("denied")) $("denied").hidden = false;
-
-  fetch("/trends/data.json", { credentials: "same-origin", cache: "no-store" }).then(async (res) => {
-    if (res.status === 401) { $("meta").textContent = "Private page."; $("gate").hidden = false; return; }
+  fetch("/trends/data.json", { cache: "no-store" }).then(async (res) => {
     if (!res.ok) { $("meta").textContent = `The data could not load (${res.status}).`; return; }
     render(await res.json());
   }).catch(() => { $("meta").textContent = "The data could not load."; });
@@ -211,6 +206,31 @@ footer{border-top:1px solid var(--rule);padding-top:18px;font-size:.85rem;color:
         linkRow));
     }
     $("building").hidden = false;
+
+    if (d.products) {
+      const P = d.products;
+      $("ideas-meta").textContent = `Built from ${P.built_from}. Upfront cash is the build cost plus a capped $${P.test_ads} ad test. `
+        + `The scenario is ${P.scenario_units} sales of each idea, an assumption to compare ideas, not a forecast. Break-even units is the number to watch.`;
+      const bandOf = Object.fromEntries(d.board.map(r => [r.name, r]));
+      for (const i of P.ideas) {
+        const e = i.econ, t = bandOf[i.trend];
+        const stat = (v, label) => el("div", {}, el("b", { text: v }), el("span", { text: label }));
+        $("idea-cards").append(el("article", { class: "card" },
+          el("span", { class: "chip model", style: "align-self:flex-start", text: i.model }), el("h3", { text: i.title }),
+          el("p", { class: "small" }, `Trend: ${i.trend} `, t ? el("span", { class: `chip ${t.band}`, text: `${t.band} ${t.score}` }) : null, ` · ${i.channel} · `,
+            el("span", { class: `chip st st-${i.status}`, text: STATUS_LABEL[i.status] })),
+          el("p", {}, el("span", { class: "label", text: "Sourcing" }), i.sourcing),
+          el("div", { class: "econ" },
+            stat(`$${e.price}`, "price"), stat(`$${e.unit_net}`, `net per sale (${e.net_pct}%)`),
+            stat(`$${e.upfront}`, "upfront cash"), stat(String(e.breakeven_units), "sales to break even"),
+            stat(`$${e.scenario_profit}`, `profit at ${e.scenario_units} sales (${e.scenario_roi_pct}% ROI)`)),
+          el("p", { class: "small", text: `Net: ${i.net_note} Upfront: ${i.upfront_note} Ads can cost up to $${e.max_ad_per_sale} per sale before a sale loses money.` }),
+          el("p", {}, el("span", { class: "label", text: "Build" })),
+          el("ol", { class: "steps" }, ...i.build.map(b => el("li", { text: b }))),
+          i.checks.length ? el("ul", { class: "checks" }, ...i.checks.map(b => el("li", { text: b }))) : null));
+      }
+      $("ideas").hidden = false;
+    }
 
     const rows = d.board.map(r => {
       const prev = r.history.length > 1 ? r.history[r.history.length - 2] : null;

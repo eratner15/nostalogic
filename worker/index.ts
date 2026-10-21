@@ -37,8 +37,6 @@ type Env = AgentEnv & ImageEnv & {
   STUDIO_DAILY_PER_IP?: string;
   STUDIO_DAILY_TOTAL?: string;
   REPORT_CHECKOUT_URL?: string;
-  /** Access key for cafecito-ai.com/trends data (wrangler secret put TRENDS_KEY). */
-  TRENDS_KEY?: string;
 };
 
 const app = new Hono<{ Bindings: Env }>().basePath("/api");
@@ -530,7 +528,7 @@ export default {
   async fetch(req: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(req.url);
     // The trend tracker lives at cafecito-ai.com/trends (also reachable on the
-    // subdomain); see worker/trends.ts for the access-key gate.
+    // subdomain); see worker/trends.ts for the paths it serves.
     if (isTrendsPath(url.pathname)) return trendsRoute(req, env);
     // The subdomain is canonical. The old cafecito-ai.com/nostaldamus path
     // stays routed here purely so shared links keep working.
