@@ -1,0 +1,119 @@
+{
+  "_about": "What we are building off the trend board. Hand-maintained: edit a status or next step, then run scripts/zeitgeist/build_trends.py. Status is one of live, ready, in_progress, planned, waiting, done, stopped. Facts only; no projected numbers.",
+  "updated": "2026-10-21",
+  "items": [
+    {
+      "title": "Sneaky Good at Canasta",
+      "trend": "Canasta",
+      "status": "live",
+      "owner": "Evan",
+      "since": "2026-10-20",
+      "detail": "Paperback and Kindle published on KDP. Kindle is in KDP Select.",
+      "next": "Check that Amazon shows the paperback and Kindle as one book. Unpublish the old Canasta title after the first sale.",
+      "links": [
+        { "label": "Paperback", "url": "https://www.amazon.com/dp/B0HNPKL7XR" },
+        { "label": "Kindle", "url": "https://www.amazon.com/dp/B0HNPGHMV9" }
+      ]
+    },
+    {
+      "title": "Canasta Amazon ads",
+      "trend": "Canasta",
+      "status": "ready",
+      "owner": "Evan",
+      "since": "2026-10-20",
+      "detail": "Cowork prompt written: four Sponsored Products campaigns, with a confirmation before every click that spends money.",
+      "next": "Run the ads prompt in Cowork. Keep the Kindle price unchanged if a Black Friday Countdown Deal is wanted.",
+      "links": []
+    },
+    {
+      "title": "Mahjong-tile needlepoint charts on Etsy",
+      "trend": "Needlepoint and stitch clubs",
+      "status": "ready",
+      "owner": "Evan",
+      "since": "2026-10-20",
+      "detail": "Nine listings packaged (seven charts and two bundles), each with a PDF, six photos and listing text.",
+      "next": "Check the seven DMC skeins against the charts, then run the Etsy prompt in Cowork. Drafts first, publish on Evan's word.",
+      "links": []
+    },
+    {
+      "title": "Mah Jongg paperback category fix",
+      "trend": "Mahjong (the base)",
+      "status": "done",
+      "owner": "Evan",
+      "since": "2026-10-20",
+      "detail": "Moved out of Entertaining & Holiday Cooking in KDP.",
+      "next": "Watch the Card Games rank for 14 days.",
+      "links": []
+    },
+    {
+      "title": "\"Next: Sneaky Good at Canasta\" page in the Mah Jongg book",
+      "trend": "Canasta",
+      "status": "planned",
+      "owner": "Claude",
+      "since": "2026-10-21",
+      "detail": "Cross-sell page in the Mah Jongg interior, uploaded as an interior update.",
+      "next": "Evan to say go.",
+      "links": []
+    },
+    {
+      "title": "Sneaky Good at Hand and Foot",
+      "trend": "Hand and Foot",
+      "status": "planned",
+      "owner": "Claude",
+      "since": "2026-10-20",
+      "detail": "Chosen as the next book over bridge in run 2.",
+      "next": "Collect and check the rule sources.",
+      "links": []
+    },
+    {
+      "title": "Canasta teacher outreach",
+      "trend": "Canasta",
+      "status": "waiting",
+      "owner": "Evan",
+      "since": "2026-10-20",
+      "detail": "Free copies for ten teachers who run canasta classes now.",
+      "next": "Needs Evan's yes before any message is drafted.",
+      "links": []
+    },
+    {
+      "title": "Stitched chart sample",
+      "trend": "Needlepoint and stitch clubs",
+      "status": "planned",
+      "owner": "Evan",
+      "since": "2026-10-20",
+      "detail": "One finished chart, for real listing photos and before any craft-night kit.",
+      "next": "Stitch one chart.",
+      "links": []
+    },
+    {
+      "title": "Craft-night kits",
+      "trend": "Craft nights and girls' night hosting",
+      "status": "waiting",
+      "owner": "Evan",
+      "since": "2026-10-20",
+      "detail": "Kit economics are in the run 2 report.",
+      "next": "Waits for the stitched sample.",
+      "links": []
+    },
+    {
+      "title": "Companion egg (Christmas 2026)",
+      "trend": "90s toy nostalgia (Tamagotchi at 30)",
+      "status": "waiting",
+      "owner": "Evan",
+      "since": "2026-10-19",
+      "detail": "Plan, build plan and slides drafted in nostalogic PR #11.",
+      "next": "Evan's decisions 1 to 7 in the plan, including refund liquidity.",
+      "links": []
+    },
+    {
+      "title": "Zeitgeist Scout weekly agent",
+      "trend": null,
+      "status": "waiting",
+      "owner": "Evan",
+      "since": "2026-10-19",
+      "detail": "Agent, environment, memory stores and Monday schedule defined; not deployed.",
+      "next": "Merge PR #11, then run scripts/zeitgeist-setup.sh.",
+      "links": []
+    }
+  ]
+}
