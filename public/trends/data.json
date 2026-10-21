@@ -1021,7 +1021,7 @@
     "upfront_note": "One sample set at landed cost ($41.92) plus $15.00 of props (assumption).",
     "net_note": "Site net at $89.95 after Printful landed cost and Stripe fees. On Etsy the net is $39.04.",
     "checks": [
-     "Never create it in Printful store 18571956; that store is Hyperlocal's."
+     "Create it only in our own Printful store, never in a shared one."
     ],
     "econ": {
      "price": "89.95",

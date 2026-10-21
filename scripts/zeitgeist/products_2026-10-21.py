@@ -156,7 +156,7 @@ ideas = [
              "List on the site and on Etsy, beside the Mahj Table Set. KDP A+ content cannot point buyers off Amazon, so the book does not advertise it."],
       upfront_note=f"One sample set at landed cost (${MAT_LANDED}) plus ${A_PHOTO_PROPS} of props (assumption).",
       net_note=f"Site net at ${MAT_PRICE} after Printful landed cost and Stripe fees. On Etsy the net is ${MAT_ETSY_NET}.",
-      checks=["Never create it in Printful store 18571956; that store is Hyperlocal's."],
+      checks=["Create it only in our own Printful store, never in a shared one."],
       econ=mat, status="planned"),
 ]
 
