@@ -8,6 +8,9 @@ routes = [
   { pattern = "nostalogic.cafecito-ai.com", custom_domain = true },
   { pattern = "cafecito-ai.com/nostaldamus", zone_name = "cafecito-ai.com" },
   { pattern = "cafecito-ai.com/nostaldamus/*", zone_name = "cafecito-ai.com" },
+  # Zeitgeist trend tracker; data gated by the TRENDS_KEY secret (worker/trends.ts).
+  { pattern = "cafecito-ai.com/trends", zone_name = "cafecito-ai.com" },
+  { pattern = "cafecito-ai.com/trends/*", zone_name = "cafecito-ai.com" },
 ]
 
 [assets]
@@ -29,6 +32,8 @@ bucket_name = "nostaldamus-media"
 
 # Secret (wrangler secret put, never here): ANTHROPIC_API_KEY. Without it the
 # library and deterministic scoring work; Remix/Chat return a clear 503.
+# Secret: TRENDS_KEY, the access key for the /trends data. Without it the
+# /trends data and reports return 503.
 
 # Optional secret: REPORT_CHECKOUT_URL. When configured, successful $199
 # brief intake redirects to hosted checkout; otherwise the team follows up manually.

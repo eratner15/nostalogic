@@ -1,0 +1,868 @@
+{
+ "built_from": "calc_2026-10-20.py",
+ "run_date": "2026-10-20",
+ "weights": {
+  "mom": 25,
+  "stg": 15,
+  "aud": 20,
+  "spd": 15,
+  "mar": 15,
+  "dfn": 10
+ },
+ "board": [
+  {
+   "name": "Needlepoint and stitch clubs",
+   "lane": "A",
+   "stage": "rising",
+   "f": {
+    "mom": 85,
+    "stg": 70,
+    "aud": 85,
+    "spd": 95,
+    "mar": 80,
+    "dfn": 55
+   },
+   "score": 81,
+   "band": "GO",
+   "cap": null,
+   "last": 75,
+   "last_band": "GO",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "score": 75,
+     "band": "GO"
+    },
+    {
+     "date": "2026-10-20",
+     "score": 81,
+     "band": "GO"
+    }
+   ]
+  },
+  {
+   "name": "Canasta",
+   "lane": "A",
+   "stage": "early-rising",
+   "f": {
+    "mom": 55,
+    "stg": 80,
+    "aud": 95,
+    "spd": 95,
+    "mar": 70,
+    "dfn": 70
+   },
+   "score": 77,
+   "band": "GO",
+   "cap": null,
+   "last": 76,
+   "last_band": "WATCH",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "score": 76,
+     "band": "WATCH"
+    },
+    {
+     "date": "2026-10-20",
+     "score": 77,
+     "band": "GO"
+    }
+   ]
+  },
+  {
+   "name": "Hand and Foot",
+   "lane": "A",
+   "stage": "early-rising",
+   "f": {
+    "mom": 65,
+    "stg": 80,
+    "aud": 90,
+    "spd": 85,
+    "mar": 70,
+    "dfn": 60
+   },
+   "score": 76,
+   "band": "GO",
+   "cap": null,
+   "last": null,
+   "last_band": null,
+   "history": [
+    {
+     "date": "2026-10-20",
+     "score": 76,
+     "band": "GO"
+    }
+   ]
+  },
+  {
+   "name": "Mahjong (the base)",
+   "lane": "A",
+   "stage": "peak",
+   "f": {
+    "mom": 85,
+    "stg": 35,
+    "aud": 100,
+    "spd": 95,
+    "mar": 65,
+    "dfn": 50
+   },
+   "score": 76,
+   "band": "GO",
+   "cap": null,
+   "last": 67,
+   "last_band": "WATCH",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "score": 67,
+     "band": "WATCH"
+    },
+    {
+     "date": "2026-10-20",
+     "score": 76,
+     "band": "GO"
+    }
+   ]
+  },
+  {
+   "name": "Craft nights and girls' night hosting",
+   "lane": "A",
+   "stage": "rising",
+   "f": {
+    "mom": 75,
+    "stg": 70,
+    "aud": 90,
+    "spd": 75,
+    "mar": 55,
+    "dfn": 45
+   },
+   "score": 71,
+   "band": "GO",
+   "cap": null,
+   "last": 75,
+   "last_band": "GO",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "score": 75,
+     "band": "GO"
+    },
+    {
+     "date": "2026-10-20",
+     "score": 71,
+     "band": "GO"
+    }
+   ]
+  },
+  {
+   "name": "Game-night journals and score pads",
+   "lane": "A",
+   "stage": "rising",
+   "f": {
+    "mom": 70,
+    "stg": 70,
+    "aud": 70,
+    "spd": 95,
+    "mar": 75,
+    "dfn": 30
+   },
+   "score": 71,
+   "band": "WATCH",
+   "cap": "one signal type (Amazon best sellers)",
+   "last": 70,
+   "last_band": "WATCH",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "score": 70,
+     "band": "WATCH"
+    },
+    {
+     "date": "2026-10-20",
+     "score": 71,
+     "band": "WATCH"
+    }
+   ]
+  },
+  {
+   "name": "Supper clubs and home hosting",
+   "lane": "A",
+   "stage": "rising",
+   "f": {
+    "mom": 62,
+    "stg": 70,
+    "aud": 80,
+    "spd": 85,
+    "mar": 65,
+    "dfn": 45
+   },
+   "score": 69,
+   "band": "WATCH",
+   "cap": null,
+   "last": 71,
+   "last_band": "WATCH",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "score": 71,
+     "band": "WATCH"
+    },
+    {
+     "date": "2026-10-20",
+     "score": 69,
+     "band": "WATCH"
+    }
+   ]
+  },
+  {
+   "name": "Phone-free social events",
+   "lane": "B",
+   "stage": "rising",
+   "f": {
+    "mom": 85,
+    "stg": 70,
+    "aud": 65,
+    "spd": 80,
+    "mar": 60,
+    "dfn": 35
+   },
+   "score": 69,
+   "band": "WATCH",
+   "cap": null,
+   "last": 69,
+   "last_band": "WATCH",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "score": 69,
+     "band": "WATCH"
+    },
+    {
+     "date": "2026-10-20",
+     "score": 69,
+     "band": "WATCH"
+    }
+   ]
+  },
+  {
+   "name": "Speed puzzling and puzzle swaps",
+   "lane": "A",
+   "stage": "early-rising",
+   "f": {
+    "mom": 55,
+    "stg": 80,
+    "aud": 70,
+    "spd": 90,
+    "mar": 70,
+    "dfn": 55
+   },
+   "score": 69,
+   "band": "WATCH",
+   "cap": null,
+   "last": 69,
+   "last_band": "WATCH",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "score": 69,
+     "band": "WATCH"
+    },
+    {
+     "date": "2026-10-20",
+     "score": 69,
+     "band": "WATCH"
+    }
+   ]
+  },
+  {
+   "name": "Backgammon clubs",
+   "lane": "B",
+   "stage": "early-rising",
+   "f": {
+    "mom": 68,
+    "stg": 80,
+    "aud": 55,
+    "spd": 85,
+    "mar": 65,
+    "dfn": 60
+   },
+   "score": 69,
+   "band": "WATCH",
+   "cap": null,
+   "last": 69,
+   "last_band": "WATCH",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "score": 69,
+     "band": "WATCH"
+    },
+    {
+     "date": "2026-10-20",
+     "score": 69,
+     "band": "WATCH"
+    }
+   ]
+  },
+  {
+   "name": "Tile-bead bracelet and charm bars",
+   "lane": "A",
+   "stage": "rising",
+   "f": {
+    "mom": 70,
+    "stg": 70,
+    "aud": 70,
+    "spd": 80,
+    "mar": 55,
+    "dfn": 45
+   },
+   "score": 67,
+   "band": "WATCH",
+   "cap": null,
+   "last": null,
+   "last_band": null,
+   "history": [
+    {
+     "date": "2026-10-20",
+     "score": 67,
+     "band": "WATCH"
+    }
+   ]
+  },
+  {
+   "name": "Silent book clubs",
+   "lane": "A",
+   "stage": "maturing",
+   "f": {
+    "mom": 60,
+    "stg": 50,
+    "aud": 85,
+    "spd": 90,
+    "mar": 60,
+    "dfn": 30
+   },
+   "score": 65,
+   "band": "WATCH",
+   "cap": null,
+   "last": 65,
+   "last_band": "WATCH",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "score": 65,
+     "band": "WATCH"
+    },
+    {
+     "date": "2026-10-20",
+     "score": 65,
+     "band": "WATCH"
+    }
+   ]
+  },
+  {
+   "name": "Chess social nights",
+   "lane": "B",
+   "stage": "rising",
+   "f": {
+    "mom": 65,
+    "stg": 70,
+    "aud": 70,
+    "spd": 80,
+    "mar": 55,
+    "dfn": 30
+   },
+   "score": 64,
+   "band": "WATCH",
+   "cap": null,
+   "last": 67,
+   "last_band": "WATCH",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "score": 67,
+     "band": "WATCH"
+    },
+    {
+     "date": "2026-10-20",
+     "score": 64,
+     "band": "WATCH"
+    }
+   ]
+  },
+  {
+   "name": "Adult Pokemon TCG",
+   "lane": "B",
+   "stage": "peak",
+   "f": {
+    "mom": 85,
+    "stg": 35,
+    "aud": 75,
+    "spd": 75,
+    "mar": 55,
+    "dfn": 25
+   },
+   "score": 64,
+   "band": "WATCH",
+   "cap": null,
+   "last": 64,
+   "last_band": "WATCH",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "score": 64,
+     "band": "WATCH"
+    },
+    {
+     "date": "2026-10-20",
+     "score": 64,
+     "band": "WATCH"
+    }
+   ]
+  },
+  {
+   "name": "Rummikub and Mexican Train",
+   "lane": "A",
+   "stage": "steady",
+   "f": {
+    "mom": 45,
+    "stg": 50,
+    "aud": 80,
+    "spd": 95,
+    "mar": 65,
+    "dfn": 40
+   },
+   "score": 63,
+   "band": "WATCH",
+   "cap": null,
+   "last": 63,
+   "last_band": "WATCH",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "score": 63,
+     "band": "WATCH"
+    },
+    {
+     "date": "2026-10-20",
+     "score": 63,
+     "band": "WATCH"
+    }
+   ]
+  },
+  {
+   "name": "Bunco nights",
+   "lane": "A",
+   "stage": "steady",
+   "f": {
+    "mom": 40,
+    "stg": 50,
+    "aud": 75,
+    "spd": 90,
+    "mar": 70,
+    "dfn": 50
+   },
+   "score": 62,
+   "band": "WATCH",
+   "cap": null,
+   "last": null,
+   "last_band": null,
+   "history": [
+    {
+     "date": "2026-10-20",
+     "score": 62,
+     "band": "WATCH"
+    }
+   ]
+  },
+  {
+   "name": "90s toy nostalgia (Tamagotchi at 30)",
+   "lane": "B",
+   "stage": "rising",
+   "f": {
+    "mom": 60,
+    "stg": 70,
+    "aud": 75,
+    "spd": 60,
+    "mar": 50,
+    "dfn": 50
+   },
+   "score": 62,
+   "band": "WATCH",
+   "cap": null,
+   "last": 65,
+   "last_band": "WATCH",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "score": 65,
+     "band": "WATCH"
+    },
+    {
+     "date": "2026-10-20",
+     "score": 62,
+     "band": "WATCH"
+    }
+   ]
+  },
+  {
+   "name": "Bridge",
+   "lane": "A",
+   "stage": "early",
+   "f": {
+    "mom": 30,
+    "stg": 90,
+    "aud": 80,
+    "spd": 60,
+    "mar": 70,
+    "dfn": 40
+   },
+   "score": 61,
+   "band": "WATCH",
+   "cap": null,
+   "last": 64,
+   "last_band": "WATCH",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "score": 64,
+     "band": "WATCH"
+    },
+    {
+     "date": "2026-10-20",
+     "score": 61,
+     "band": "WATCH"
+    }
+   ]
+  },
+  {
+   "name": "Run clubs",
+   "lane": "B",
+   "stage": "peak",
+   "f": {
+    "mom": 70,
+    "stg": 35,
+    "aud": 80,
+    "spd": 70,
+    "mar": 45,
+    "dfn": 25
+   },
+   "score": 59,
+   "band": "WATCH",
+   "cap": null,
+   "last": 59,
+   "last_band": "WATCH",
+   "history": [
+    {
+     "date": "2026-10-19",
+     "score": 59,
+     "band": "WATCH"
+    },
+    {
+     "date": "2026-10-20",
+     "score": 59,
+     "band": "WATCH"
+    }
+   ]
+  },
+  {
+   "name": "Punch needle nights",
+   "lane": "A",
+   "stage": "steady",
+   "f": {
+    "mom": 50,
+    "stg": 50,
+    "aud": 65,
+    "spd": 70,
+    "mar": 45,
+    "dfn": 30
+   },
+   "score": 53,
+   "band": "WATCH",
+   "cap": null,
+   "last": null,
+   "last_band": null,
+   "history": [
+    {
+     "date": "2026-10-20",
+     "score": 53,
+     "band": "WATCH"
+    }
+   ]
+  },
+  {
+   "name": "Candle-making nights",
+   "lane": "A",
+   "stage": "peak",
+   "f": {
+    "mom": 35,
+    "stg": 35,
+    "aud": 70,
+    "spd": 85,
+    "mar": 55,
+    "dfn": 25
+   },
+   "score": 52,
+   "band": "WATCH",
+   "cap": null,
+   "last": null,
+   "last_band": null,
+   "history": [
+    {
+     "date": "2026-10-20",
+     "score": 52,
+     "band": "WATCH"
+    }
+   ]
+  },
+  {
+   "name": "Line dancing",
+   "lane": "B",
+   "stage": "rising",
+   "f": {
+    "mom": 45,
+    "stg": 70,
+    "aud": 50,
+    "spd": 55,
+    "mar": 45,
+    "dfn": 15
+   },
+   "score": 48,
+   "band": "PASS",
+   "cap": null,
+   "last": null,
+   "last_band": null,
+   "history": [
+    {
+     "date": "2026-10-20",
+     "score": 48,
+     "band": "PASS"
+    }
+   ]
+  },
+  {
+   "name": "Flower bars and bouquet nights",
+   "lane": "A",
+   "stage": "steady",
+   "f": {
+    "mom": 40,
+    "stg": 50,
+    "aud": 65,
+    "spd": 50,
+    "mar": 35,
+    "dfn": 20
+   },
+   "score": 45,
+   "band": "PASS",
+   "cap": null,
+   "last": null,
+   "last_band": null,
+   "history": [
+    {
+     "date": "2026-10-20",
+     "score": 45,
+     "band": "PASS"
+    }
+   ]
+  },
+  {
+   "name": "Paint-and-sip kits at home",
+   "lane": "A",
+   "stage": "fading",
+   "f": {
+    "mom": 20,
+    "stg": 10,
+    "aud": 65,
+    "spd": 80,
+    "mar": 50,
+    "dfn": 20
+   },
+   "score": 41,
+   "band": "PASS",
+   "cap": null,
+   "last": null,
+   "last_band": null,
+   "history": [
+    {
+     "date": "2026-10-20",
+     "score": 41,
+     "band": "PASS"
+    }
+   ]
+  },
+  {
+   "name": "Pickleball socials",
+   "lane": "B",
+   "stage": "peak",
+   "f": {
+    "mom": 25,
+    "stg": 35,
+    "aud": 55,
+    "spd": 60,
+    "mar": 45,
+    "dfn": 15
+   },
+   "score": 40,
+   "band": "PASS",
+   "cap": null,
+   "last": null,
+   "last_band": null,
+   "history": [
+    {
+     "date": "2026-10-20",
+     "score": 40,
+     "band": "PASS"
+    }
+   ]
+  }
+ ],
+ "runs": [
+  {
+   "date": "2026-10-19",
+   "report": "2026-10-19.html",
+   "trends": 16,
+   "go": 2,
+   "watch": 14,
+   "pass": 0,
+   "note": "2026-10-19 report docs/zeitgeist/reports/2026-10-19.html (manual run) trends 16 go 2 watch 14 unread 12 (corrected 2026-10-20: Canasta, supper clubs and game-night journals capped at WATCH; Mahjong re-scored 76 to 67, momentum 85 to 50)"
+  },
+  {
+   "date": "2026-10-20",
+   "report": "2026-10-20.html",
+   "trends": 25,
+   "go": 5,
+   "watch": 16,
+   "pass": 4,
+   "note": "2026-10-20 report docs/zeitgeist/reports/2026-10-20.html (manual run 2) trends 25 (16 rescored, 9 new) go 5 watch 16 pass 4 band_changes 2 (mahjong WATCH->GO and canasta WATCH->GO, both against the corrected run 1; game-night journals capped at WATCH, one signal type) unread 9 baseline: bridge 64 (stage 90), pass_since column added"
+  }
+ ],
+ "reports": [
+  "2026-10-19.html",
+  "2026-10-20.html"
+ ],
+ "tracker": {
+  "_about": "What we are building off the trend board. Hand-maintained: edit a status or next step, then run scripts/zeitgeist/build_trends.py. Status is one of live, ready, in_progress, planned, waiting, done, stopped. Facts only; no projected numbers.",
+  "updated": "2026-10-21",
+  "items": [
+   {
+    "title": "Sneaky Good at Canasta",
+    "trend": "Canasta",
+    "status": "live",
+    "owner": "Evan",
+    "since": "2026-10-20",
+    "detail": "Paperback and Kindle published on KDP. Kindle is in KDP Select.",
+    "next": "Check that Amazon shows the paperback and Kindle as one book. Unpublish the old Canasta title after the first sale.",
+    "links": [
+     {
+      "label": "Paperback",
+      "url": "https://www.amazon.com/dp/B0HNPKL7XR"
+     },
+     {
+      "label": "Kindle",
+      "url": "https://www.amazon.com/dp/B0HNPGHMV9"
+     }
+    ]
+   },
+   {
+    "title": "Canasta Amazon ads",
+    "trend": "Canasta",
+    "status": "ready",
+    "owner": "Evan",
+    "since": "2026-10-20",
+    "detail": "Cowork prompt written: four Sponsored Products campaigns, with a confirmation before every click that spends money.",
+    "next": "Run the ads prompt in Cowork. Keep the Kindle price unchanged if a Black Friday Countdown Deal is wanted.",
+    "links": []
+   },
+   {
+    "title": "Mahjong-tile needlepoint charts on Etsy",
+    "trend": "Needlepoint and stitch clubs",
+    "status": "ready",
+    "owner": "Evan",
+    "since": "2026-10-20",
+    "detail": "Nine listings packaged (seven charts and two bundles), each with a PDF, six photos and listing text.",
+    "next": "Check the seven DMC skeins against the charts, then run the Etsy prompt in Cowork. Drafts first, publish on Evan's word.",
+    "links": []
+   },
+   {
+    "title": "Mah Jongg paperback category fix",
+    "trend": "Mahjong (the base)",
+    "status": "done",
+    "owner": "Evan",
+    "since": "2026-10-20",
+    "detail": "Moved out of Entertaining & Holiday Cooking in KDP.",
+    "next": "Watch the Card Games rank for 14 days.",
+    "links": []
+   },
+   {
+    "title": "\"Next: Sneaky Good at Canasta\" page in the Mah Jongg book",
+    "trend": "Canasta",
+    "status": "planned",
+    "owner": "Claude",
+    "since": "2026-10-21",
+    "detail": "Cross-sell page in the Mah Jongg interior, uploaded as an interior update.",
+    "next": "Evan to say go.",
+    "links": []
+   },
+   {
+    "title": "Sneaky Good at Hand and Foot",
+    "trend": "Hand and Foot",
+    "status": "planned",
+    "owner": "Claude",
+    "since": "2026-10-20",
+    "detail": "Chosen as the next book over bridge in run 2.",
+    "next": "Collect and check the rule sources.",
+    "links": []
+   },
+   {
+    "title": "Canasta teacher outreach",
+    "trend": "Canasta",
+    "status": "waiting",
+    "owner": "Evan",
+    "since": "2026-10-20",
+    "detail": "Free copies for ten teachers who run canasta classes now.",
+    "next": "Needs Evan's yes before any message is drafted.",
+    "links": []
+   },
+   {
+    "title": "Stitched chart sample",
+    "trend": "Needlepoint and stitch clubs",
+    "status": "planned",
+    "owner": "Evan",
+    "since": "2026-10-20",
+    "detail": "One finished chart, for real listing photos and before any craft-night kit.",
+    "next": "Stitch one chart.",
+    "links": []
+   },
+   {
+    "title": "Craft-night kits",
+    "trend": "Craft nights and girls' night hosting",
+    "status": "waiting",
+    "owner": "Evan",
+    "since": "2026-10-20",
+    "detail": "Kit economics are in the run 2 report.",
+    "next": "Waits for the stitched sample.",
+    "links": []
+   },
+   {
+    "title": "Companion egg (Christmas 2026)",
+    "trend": "90s toy nostalgia (Tamagotchi at 30)",
+    "status": "waiting",
+    "owner": "Evan",
+    "since": "2026-10-19",
+    "detail": "Plan, build plan and slides drafted in nostalogic PR #11.",
+    "next": "Evan's decisions 1 to 7 in the plan, including refund liquidity.",
+    "links": []
+   },
+   {
+    "title": "Zeitgeist Scout weekly agent",
+    "trend": null,
+    "status": "waiting",
+    "owner": "Evan",
+    "since": "2026-10-19",
+    "detail": "Agent, environment, memory stores and Monday schedule defined; not deployed.",
+    "next": "Merge PR #11, then run scripts/zeitgeist-setup.sh.",
+    "links": []
+   }
+  ]
+ }
+}

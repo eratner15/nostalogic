@@ -1,0 +1,259 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>Trend Tracker</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Public+Sans:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Same tokens as the Zeitgeist reports, so the tracker and the reports read as one product. */
+:root{
+  --bg:#f6f7f4; --surface:#ffffff; --fg:#1b2420; --muted:#5b6a63; --rule:#d9dfda;
+  --jade:#16705a; --jade-soft:#e2f0eb;
+  --go:#16705a; --go-bg:#dcefe7; --watch:#8a5a00; --watch-bg:#f7ecd4; --pass:#8f2d2d; --pass-bg:#f6e0de;
+  --display:"Young Serif",Georgia,serif; --body:"Public Sans",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#111715; --surface:#18201d; --fg:#e4ebe7; --muted:#9aaba3; --rule:#2c3833;
+  --jade:#5cc3a4; --jade-soft:#1d3029; --go:#6fd2b2; --go-bg:#1b3229; --watch:#e3b55c; --watch-bg:#33291a; --pass:#ec8f86; --pass-bg:#3a2220; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#111715; --surface:#18201d; --fg:#e4ebe7; --muted:#9aaba3; --rule:#2c3833;
+  --jade:#5cc3a4; --jade-soft:#1d3029; --go:#6fd2b2; --go-bg:#1b3229; --watch:#e3b55c; --watch-bg:#33291a; --pass:#ec8f86; --pass-bg:#3a2220; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--fg);font:16px/1.6 var(--body);padding:40px max(16px,env(safe-area-inset-left,0px)) 64px}
+main{max-width:1040px;margin:0 auto;display:flex;flex-direction:column;gap:44px}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1.2;text-wrap:balance}
+h1{font-size:clamp(2rem,5vw,2.8rem)}
+h2{font-size:1.5rem;margin-bottom:14px}
+h3{font-size:1.1rem}
+p{margin:0 0 10px}
+a{color:var(--jade)}
+a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:2px solid var(--jade);outline-offset:2px}
+.eyebrow{font:600 .75rem/1 var(--mono);letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+header{display:flex;flex-direction:column;gap:10px;border-bottom:1px solid var(--rule);padding-bottom:22px}
+.meta,.small{color:var(--muted);font-size:.9rem}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px}
+.tile{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:14px 16px}
+.tile b{display:block;font:600 1.7rem/1.1 var(--mono);font-variant-numeric:tabular-nums}
+.tile span{font-size:.85rem;color:var(--muted)}
+.chip{display:inline-block;font:600 .68rem/1 var(--mono);padding:5px 7px;border-radius:4px;letter-spacing:.04em;white-space:nowrap}
+.GO{background:var(--go-bg);color:var(--go)} .WATCH{background:var(--watch-bg);color:var(--watch)} .PASS{background:var(--pass-bg);color:var(--pass)}
+.st{background:var(--jade-soft);color:var(--jade)}
+.st-waiting,.st-planned{background:var(--watch-bg);color:var(--watch)}
+.st-done,.st-stopped{background:var(--rule);color:var(--muted)}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:14px}
+.card{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:16px 18px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;gap:10px}
+.label{font:600 .68rem/1 var(--mono);text-transform:uppercase;letter-spacing:.07em;color:var(--muted);margin-right:6px}
+.card p{font-size:.92rem;margin:0}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:12px}
+.controls button,.controls select,.controls input{font:600 .8rem/1 var(--mono);padding:8px 10px;border:1px solid var(--rule);border-radius:4px;background:var(--surface);color:var(--fg)}
+.controls input{font-family:var(--body);font-weight:400;min-width:0;flex:1 1 180px}
+.controls button[aria-pressed="true"]{background:var(--jade);color:var(--bg);border-color:var(--jade)}
+.tablewrap{overflow-x:auto;border:1px solid var(--rule);border-radius:6px;background:var(--surface)}
+table{border-collapse:collapse;width:100%;min-width:760px;font-size:.88rem}
+th,td{padding:9px 12px;text-align:left;border-bottom:1px solid var(--rule);vertical-align:middle}
+th{font:600 .68rem/1.2 var(--mono);text-transform:uppercase;letter-spacing:.06em;color:var(--muted)}
+tbody tr:last-child td{border-bottom:0}
+td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.f{font-family:var(--mono);font-size:.75rem;color:var(--muted);white-space:nowrap}
+.up{color:var(--go)} .down{color:var(--pass)}
+.spark{vertical-align:middle;margin-left:8px}
+.spark polyline{fill:none;stroke:var(--jade);stroke-width:1.5}
+.spark circle{fill:var(--jade)}
+.cap{display:block;font-size:.72rem;color:var(--muted);margin-top:3px}
+.runs{display:flex;flex-direction:column;gap:8px;margin:0;padding:0;list-style:none}
+.runs li{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:12px 16px;display:flex;flex-wrap:wrap;gap:6px 16px;align-items:baseline}
+ol.steps{margin:0;padding-left:1.3em;display:flex;flex-direction:column;gap:6px;font-size:.93rem}
+code{font:.85em var(--mono);background:var(--jade-soft);padding:1px 4px;border-radius:3px}
+.gate{background:var(--surface);border:1px solid var(--rule);border-radius:6px;padding:22px;max-width:420px}
+.gate form{display:flex;gap:8px;margin-top:10px}
+.gate input{flex:1;min-width:0;font:15px var(--mono);padding:9px 10px;border:1px solid var(--rule);border-radius:4px;background:var(--bg);color:var(--fg)}
+.gate button{font:600 .85rem var(--mono);padding:9px 14px;border:0;border-radius:4px;background:var(--jade);color:var(--bg);cursor:pointer}
+.err{color:var(--pass);font-size:.9rem}
+footer{border-top:1px solid var(--rule);padding-top:18px;font-size:.85rem;color:var(--muted)}
+[hidden]{display:none!important}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <div class="eyebrow">Cafecito AI · Zeitgeist</div>
+    <h1>Trend Tracker</h1>
+    <p class="meta" id="meta">Loading…</p>
+  </header>
+
+  <section id="gate" class="gate" hidden aria-labelledby="gate-h">
+    <h2 id="gate-h">Access key</h2>
+    <p class="small">This tracker holds prices, margins and plans, so it is private. Enter the key once on each browser.</p>
+    <p class="err" id="denied" hidden>That key did not match.</p>
+    <form method="post" action="/trends/login">
+      <label for="key" class="eyebrow" hidden>Key</label>
+      <input id="key" name="key" type="password" autocomplete="current-password" required>
+      <button type="submit">Open</button>
+    </form>
+  </section>
+
+  <section id="summary" hidden aria-label="Summary"><div class="tiles" id="tiles"></div></section>
+
+  <section id="building" hidden aria-labelledby="building-h">
+    <h2 id="building-h">What we are building</h2>
+    <p class="small" id="tracker-meta"></p>
+    <div class="cards" id="cards"></div>
+  </section>
+
+  <section id="board" hidden aria-labelledby="board-h">
+    <h2 id="board-h">Trend board</h2>
+    <div class="controls" role="group" aria-label="Filter trends">
+      <button type="button" data-band="all" aria-pressed="true">All</button>
+      <button type="button" data-band="GO" aria-pressed="false">GO</button>
+      <button type="button" data-band="WATCH" aria-pressed="false">WATCH</button>
+      <button type="button" data-band="PASS" aria-pressed="false">PASS</button>
+      <select id="lane" aria-label="Lane"><option value="all">Both lanes</option><option value="A">Lane A</option><option value="B">Lane B</option></select>
+      <input id="q" type="search" placeholder="Search trends" aria-label="Search trends">
+    </div>
+    <div class="tablewrap">
+      <table>
+        <thead><tr><th>Trend</th><th>Lane</th><th>Stage</th><th>Score</th><th>Band</th><th>Change</th><th>Factors</th><th>Building</th></tr></thead>
+        <tbody id="rows"></tbody>
+      </table>
+    </div>
+    <p class="small" id="factor-key" style="margin-top:10px"></p>
+  </section>
+
+  <section id="history" hidden aria-labelledby="runs-h">
+    <h2 id="runs-h">Runs and reports</h2>
+    <ul class="runs" id="runs"></ul>
+  </section>
+
+  <section id="how" hidden aria-labelledby="how-h">
+    <h2 id="how-h">How to add to this</h2>
+    <ol class="steps">
+      <li>After a new run, commit its report to <code>docs/zeitgeist/reports/</code>, its calculator as <code>scripts/zeitgeist/calc_&lt;date&gt;.py</code>, its line in the run log, and its rows in <code>docs/zeitgeist/history.csv</code>.</li>
+      <li>To track a project, add or edit an item in <code>docs/zeitgeist/tracker.json</code>. Its <code>trend</code> must match a board name exactly.</li>
+      <li>Run <code>python3 -I scripts/zeitgeist/build_trends.py</code>. It recomputes every score and stops if any file disagrees.</li>
+      <li>Deploy the nostalogic Worker. The page updates at cafecito-ai.com/trends.</li>
+    </ol>
+  </section>
+
+  <footer id="foot">Every score here is recomputed from the committed calculator on each build. Nothing is typed in by hand.</footer>
+</main>
+<script>
+(() => {
+  const $ = (id) => document.getElementById(id);
+  const el = (tag, props = {}, ...kids) => {
+    const n = document.createElement(tag);
+    for (const [k, v] of Object.entries(props)) {
+      if (k === "class") n.className = v; else if (k === "text") n.textContent = v; else n.setAttribute(k, v);
+    }
+    for (const k of kids) if (k != null) n.append(k);
+    return n;
+  };
+  const STATUS_ORDER = ["live", "ready", "in_progress", "waiting", "planned", "done", "stopped"];
+  const STATUS_LABEL = { live: "Live", ready: "Ready to run", in_progress: "In progress", waiting: "Waiting", planned: "Planned", done: "Done", stopped: "Stopped" };
+  const FACTOR_LABEL = { mom: "momentum", stg: "stage", aud: "audience", spd: "speed", mar: "margin", dfn: "defensibility" };
+  const safeUrl = (u) => /^https?:\/\//.test(u) ? u : null;
+
+  if (new URLSearchParams(location.search).has("denied")) $("denied").hidden = false;
+
+  fetch("/trends/data.json", { credentials: "same-origin", cache: "no-store" }).then(async (res) => {
+    if (res.status === 401) { $("meta").textContent = "Private page."; $("gate").hidden = false; return; }
+    if (!res.ok) { $("meta").textContent = `The data could not load (${res.status}).`; return; }
+    render(await res.json());
+  }).catch(() => { $("meta").textContent = "The data could not load."; });
+
+  function spark(points) {
+    if (points.length < 2) return null;
+    const w = 56, h = 18, min = Math.min(...points.map(p => p.score)), max = Math.max(...points.map(p => p.score));
+    const span = Math.max(max - min, 1);
+    const xy = points.map((p, i) => [2 + i * (w - 4) / (points.length - 1), h - 2 - (p.score - min) * (h - 4) / span]);
+    const ns = "http://www.w3.org/2000/svg";
+    const svg = document.createElementNS(ns, "svg");
+    svg.setAttribute("width", w); svg.setAttribute("height", h); svg.setAttribute("class", "spark");
+    svg.setAttribute("role", "img");
+    svg.setAttribute("aria-label", "Score by run: " + points.map(p => `${p.date} ${p.score}`).join(", "));
+    const line = document.createElementNS(ns, "polyline");
+    line.setAttribute("points", xy.map(([x, y]) => `${x.toFixed(1)},${y.toFixed(1)}`).join(" "));
+    const dot = document.createElementNS(ns, "circle");
+    const [lx, ly] = xy[xy.length - 1];
+    dot.setAttribute("cx", lx.toFixed(1)); dot.setAttribute("cy", ly.toFixed(1)); dot.setAttribute("r", "2.2");
+    svg.append(line, dot);
+    return svg;
+  }
+
+  function render(d) {
+    $("meta").textContent = `Latest run ${d.run_date} · ${d.board.length} trends · built from ${d.built_from}`;
+
+    const count = (band) => d.board.filter(r => r.band === band).length;
+    const items = d.tracker.items;
+    const active = items.filter(i => ["live", "ready", "in_progress"].includes(i.status)).length;
+    const tiles = [
+      [count("GO"), "GO trends"], [count("WATCH"), "WATCH"], [count("PASS"), "PASS"],
+      [active, "projects live or ready"], [items.filter(i => i.status === "waiting").length, "waiting on a decision"],
+    ];
+    for (const [n, t] of tiles) $("tiles").append(el("div", { class: "tile" }, el("b", { text: String(n) }), el("span", { text: t })));
+    $("summary").hidden = false;
+
+    $("tracker-meta").textContent = `Tracker updated ${d.tracker.updated}. Ordered by status.`;
+    const byTrend = {};
+    for (const i of items) if (i.trend) (byTrend[i.trend] ||= []).push(i);
+    const sorted = [...items].sort((a, b) => STATUS_ORDER.indexOf(a.status) - STATUS_ORDER.indexOf(b.status));
+    for (const i of sorted) {
+      const links = (i.links || []).map(l => safeUrl(l.url) ? el("a", { href: l.url, rel: "noopener", target: "_blank", text: l.label }) : null).filter(Boolean);
+      const linkRow = links.length ? el("p", {}, el("span", { class: "label", text: "Links" }), ...links.flatMap((a, k) => k ? [" · ", a] : [a])) : null;
+      $("cards").append(el("article", { class: "card" },
+        el("div", { class: "card-head" }, el("h3", { text: i.title }), el("span", { class: `chip st st-${i.status}`, text: STATUS_LABEL[i.status] })),
+        el("p", { class: "small", text: [i.trend ? `Trend: ${i.trend}` : "Tooling", `Owner: ${i.owner}`, `Since ${i.since}`].join(" · ") }),
+        el("p", { text: i.detail }),
+        el("p", {}, el("span", { class: "label", text: "Next" }), i.next),
+        linkRow));
+    }
+    $("building").hidden = false;
+
+    const rows = d.board.map(r => {
+      const prev = r.history.length > 1 ? r.history[r.history.length - 2] : null;
+      const delta = prev ? r.score - prev.score : null;
+      const change = prev == null ? el("span", { class: "small", text: "new" })
+        : el("span", { class: delta > 0 ? "up" : delta < 0 ? "down" : "", text: (delta > 0 ? "+" : "") + delta + (prev.band !== r.band ? ` (${prev.band}→${r.band})` : "") });
+      const band = el("td", {}, el("span", { class: `chip ${r.band}`, text: r.band }), r.cap ? el("span", { class: "cap", text: `capped: ${r.cap}` }) : null);
+      const factors = Object.keys(d.weights).map(k => r.f[k]).join(" · ");
+      const building = (byTrend[r.name] || []).length;
+      const tr = el("tr", {},
+        el("td", { text: r.name }), el("td", { text: r.lane }), el("td", { text: r.stage }),
+        el("td", { class: "num" }, String(r.score), spark(r.history)),
+        band, el("td", { class: "num" }, change), el("td", { class: "f", text: factors }),
+        el("td", { class: "num", text: building ? String(building) : "" }));
+      tr.dataset.band = r.band; tr.dataset.lane = r.lane; tr.dataset.name = r.name.toLowerCase();
+      return tr;
+    });
+    $("rows").append(...rows);
+    $("factor-key").textContent = "Factors, in order: " + Object.entries(d.weights).map(([k, w]) => `${FACTOR_LABEL[k] || k} ${w}%`).join(", ")
+      + ". GO is 70+, WATCH 50 to 69, PASS under 50. A trend needs two independent signal types to be GO.";
+    let band = "all";
+    const apply = () => {
+      const lane = $("lane").value, q = $("q").value.trim().toLowerCase();
+      for (const tr of rows) tr.hidden = (band !== "all" && tr.dataset.band !== band) || (lane !== "all" && tr.dataset.lane !== lane) || (q && !tr.dataset.name.includes(q));
+    };
+    for (const b of document.querySelectorAll("[data-band]")) b.addEventListener("click", () => {
+      band = b.dataset.band;
+      for (const o of document.querySelectorAll("[data-band]")) o.setAttribute("aria-pressed", String(o === b));
+      apply();
+    });
+    $("lane").addEventListener("change", apply); $("q").addEventListener("input", apply);
+    $("board").hidden = false;
+
+    for (const run of [...d.runs].reverse()) {
+      $("runs").append(el("li", {},
+        el("b", { text: run.date }),
+        el("span", { class: "small", text: `${run.trends} trends · ${run.go} GO · ${run.watch} WATCH · ${run.pass} PASS` }),
+        el("a", { href: `/trends/reports/${encodeURIComponent(run.report)}`, text: "Report" })));
+    }
+    $("history").hidden = false;
+    $("how").hidden = false;
+  }
+})();
+</script>
+</body>
+</html>
