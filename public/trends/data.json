@@ -864,5 +864,181 @@
     "links": []
    }
   ]
+ },
+ "products": {
+  "date": "2026-10-21",
+  "scenario_units": 25,
+  "test_ads": "70.00",
+  "kdp_fixed": "0.85",
+  "ideas": [
+   {
+    "id": "hand-and-foot",
+    "title": "Sneaky Good at Hand and Foot",
+    "trend": "Hand and Foot",
+    "model": "Print-on-demand book",
+    "channel": "Amazon KDP, paperback and Kindle",
+    "sourcing": "Amazon prints and ships each copy when it sells. No stock, no shipping on our side.",
+    "build": [
+     "Collect and check the public rule sources; label every rule by variant.",
+     "Reuse the Canasta solver, figure tools, score sheets and cast.",
+     "Write, verify every number from a committed script, typeset 6x9.",
+     "Order one proof copy, then publish paperback and Kindle.",
+     "Add it to the Canasta and Mah Jongg cross-sell ad campaigns."
+    ],
+    "upfront_note": "One proof copy at print cost ($3.87); KDP adds shipping at checkout.",
+    "net_note": "Paperback royalty at $14.99, 60% less $3.87 print. Kindle adds royalty on top.",
+    "checks": [
+     "Page count is assumed 252, like Canasta."
+    ],
+    "econ": {
+     "price": "14.99",
+     "unit_net": "5.12",
+     "net_pct": 34,
+     "build_cash": "3.87",
+     "test_ads": "70.00",
+     "upfront": "73.87",
+     "breakeven_units": 15,
+     "scenario_units": 25,
+     "scenario_profit": "54.13",
+     "scenario_roi_pct": 73,
+     "max_ad_per_sale": "5.12"
+    },
+    "status": "planned"
+   },
+   {
+    "id": "score-pad",
+    "title": "Hand and Foot and Canasta score-pad journal",
+    "trend": "Game-night journals and score pads",
+    "model": "Print-on-demand book (low content)",
+    "channel": "Amazon KDP, paperback",
+    "sourcing": "Amazon prints on demand. The sheets come from the Canasta score-sheet builder.",
+    "build": [
+     "Adapt the Canasta score sheet to Hand and Foot; prove a full game fits one sheet.",
+     "Build a 120-page pad with a rules card and house-rules page.",
+     "Order one proof, play one game on it, then publish.",
+     "Sell it as the add-on to both books in the same ads."
+    ],
+    "upfront_note": "One proof copy at print cost ($2.29).",
+    "net_note": "Royalty at $9.99, 60% less $2.29 print.",
+    "checks": [
+     "Price $9.99 and 120 pages are assumptions; check the score-pad shelf first.",
+     "This trend is capped at WATCH: only one signal type so far."
+    ],
+    "econ": {
+     "price": "9.99",
+     "unit_net": "3.70",
+     "net_pct": 37,
+     "build_cash": "2.29",
+     "test_ads": "70.00",
+     "upfront": "72.29",
+     "breakeven_units": 20,
+     "scenario_units": 25,
+     "scenario_profit": "20.21",
+     "scenario_roi_pct": 28,
+     "max_ad_per_sale": "3.70"
+    },
+    "status": "planned"
+   },
+   {
+    "id": "needlepoint-charts",
+    "title": "Mahjong-tile needlepoint charts",
+    "trend": "Needlepoint and stitch clubs",
+    "model": "Digital download",
+    "channel": "Etsy",
+    "sourcing": "A PDF the buyer downloads. Nothing to make or ship.",
+    "build": [
+     "Stitch one chart to confirm the thread count and get a real photo.",
+     "Run the Etsy Cowork prompt: 7 charts and 2 bundles as drafts.",
+     "Publish on Evan's word, then add the real photo."
+    ],
+    "upfront_note": "One sample: 7 DMC skeins and 1 ft of canvas ($31.83).",
+    "net_note": "The $22 chart, after Etsy listing, transaction and payment fees.",
+    "checks": [
+     "Charts and listings are built and merged; only the sample and listing remain."
+    ],
+    "econ": {
+     "price": "22.00",
+     "unit_net": "19.46",
+     "net_pct": 88,
+     "build_cash": "31.83",
+     "test_ads": "70.00",
+     "upfront": "101.83",
+     "breakeven_units": 6,
+     "scenario_units": 25,
+     "scenario_profit": "384.67",
+     "scenario_roi_pct": 378,
+     "max_ad_per_sale": "19.46"
+    },
+    "status": "ready"
+   },
+   {
+    "id": "needlepoint-box",
+    "title": "Mahj Night Needlepoint Box (6 stitchers)",
+    "trend": "Craft nights and girls' night hosting",
+    "model": "Physical kit, made to order",
+    "channel": "Etsy",
+    "sourcing": "Buy canvas and DMC floss per order from the named suppliers; pack and ship by USPS Ground Advantage.",
+    "build": [
+     "Make one box from the sample to fix the floss count per stitcher.",
+     "Photograph it set for six.",
+     "List at $270; buy materials only when an order lands."
+    ],
+    "upfront_note": "One box of materials without shipping, plus $15.00 of photo props (assumption).",
+    "net_note": "After Etsy fees, materials and USPS shipping, from the run 2 kit calculator.",
+    "checks": [
+     "Floss per stitcher is an assumption until the sample is stitched.",
+     "Under Etsy Offsite Ads the margin drops; see the run 2 report.",
+     "The net excludes your time to pack each box."
+    ],
+    "econ": {
+     "price": "270.00",
+     "unit_net": "79.84",
+     "net_pct": 30,
+     "build_cash": "163.36",
+     "test_ads": "70.00",
+     "upfront": "233.36",
+     "breakeven_units": 3,
+     "scenario_units": 25,
+     "scenario_profit": "1762.64",
+     "scenario_roi_pct": 755,
+     "max_ad_per_sale": "79.84"
+    },
+    "status": "planned"
+   },
+   {
+    "id": "canasta-table-set",
+    "title": "Canasta Night Table Set (four placemats)",
+    "trend": "Canasta",
+    "model": "Print on demand, drop shipped",
+    "channel": "mahj-society site (Stripe) and Etsy",
+    "sourcing": "Printful prints and ships each set direct to the buyer, the same product as the live Mahj Table Set.",
+    "build": [
+     "Design four canasta patterns (no trademark card faces).",
+     "Add them to the existing Printful placemat product in our own store.",
+     "Order one sample set to photograph.",
+     "List on the site and on Etsy, beside the Mahj Table Set. KDP A+ content cannot point buyers off Amazon, so the book does not advertise it."
+    ],
+    "upfront_note": "One sample set at landed cost ($41.92) plus $15.00 of props (assumption).",
+    "net_note": "Site net at $89.95 after Printful landed cost and Stripe fees. On Etsy the net is $39.04.",
+    "checks": [
+     "Never create it in Printful store 18571956; that store is Hyperlocal's."
+    ],
+    "econ": {
+     "price": "89.95",
+     "unit_net": "45.12",
+     "net_pct": 50,
+     "build_cash": "56.92",
+     "test_ads": "70.00",
+     "upfront": "126.92",
+     "breakeven_units": 3,
+     "scenario_units": 25,
+     "scenario_profit": "1001.08",
+     "scenario_roi_pct": 789,
+     "max_ad_per_sale": "45.12"
+    },
+    "status": "planned"
+   }
+  ],
+  "built_from": "products_2026-10-21.py"
  }
 }

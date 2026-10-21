@@ -7,7 +7,9 @@ comes from a verifier, never from typing:
   - docs/zeitgeist/history.csv: each trend's score and band by run;
   - agent-seed/zeitgeist/state/run-log.md: one line per run;
   - docs/zeitgeist/reports/*.html: copied for the page to link;
-  - docs/zeitgeist/tracker.json: what we are building, hand-maintained.
+  - docs/zeitgeist/tracker.json: what we are building, hand-maintained;
+  - the newest scripts/zeitgeist/products_*.py: product ideas with sourcing,
+    build steps and unit economics, recomputed on every build.
 Writes public/trends/data.json and public/trends/reports/. Run from the repo
 root: python3 -I scripts/zeitgeist/build_trends.py
 """
@@ -38,6 +40,11 @@ def calc_weights(path: Path) -> dict:
         sys.exit(f"no W = dict(...) in {path.name}")
     pairs = dict(kv.split("=") for kv in m.group(1).replace(" ", "").split(","))
     return {k: round(float(v) * 100) for k, v in pairs.items()}
+
+
+def latest_products() -> Path | None:
+    found = sorted((ROOT / "scripts" / "zeitgeist").glob("products_*.py"))
+    return found[-1] if found else None
 
 
 def run_calc(path: Path) -> dict:
@@ -89,6 +96,16 @@ def main() -> None:
         if item["trend"] is not None and item["trend"] not in names:
             sys.exit(f"tracker: {item['title']!r} names unknown trend {item['trend']!r}")
 
+    products_path = latest_products()
+    products = run_calc(products_path) if products_path else None
+    if products:
+        for idea in products["ideas"]:
+            if idea["trend"] not in names:
+                sys.exit(f"products: {idea['title']!r} names unknown trend {idea['trend']!r}")
+            if idea["status"] not in STATUSES:
+                sys.exit(f"products: bad status {idea['status']!r} on {idea['title']!r}")
+        products["built_from"] = products_path.name
+
     runs = read_runs()
     reports_dir = ROOT / "docs" / "zeitgeist" / "reports"
     reports = sorted(p.name for p in reports_dir.glob("*.html"))
@@ -118,10 +135,12 @@ def main() -> None:
         "runs": runs,
         "reports": reports,
         "tracker": tracker,
+        "products": products,
     }
     (OUT / "data.json").write_text(json.dumps(data, indent=1, default=str) + "\n")
     print(f"wrote {OUT / 'data.json'}: {len(board)} trends, {len(runs)} runs, "
-          f"{len(reports)} reports, {len(tracker['items'])} tracker items")
+          f"{len(reports)} reports, {len(tracker['items'])} tracker items, "
+          f"{len(products['ideas']) if products else 0} product ideas")
 
 
 if __name__ == "__main__":
